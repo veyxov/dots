@@ -1,0 +1,8 @@
+# Set a random wallpaper
+if [ $# -eq 0 ]; then
+    files=(~/.local/walls/*)
+    wall="${files[RANDOM % ${#files[@]}]}"
+else
+    wall=$1
+fi
+xsetwallpaper --maximize $wall

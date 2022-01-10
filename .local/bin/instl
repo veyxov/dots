@@ -1,0 +1,21 @@
+#!/bin/bash
+# If cache is 1 or more day old renew it
+file="$HOME/.local/bin/list_of_apps"
+if [ ! -f "$file" ] || [ $(find "$file" -mtime +1 -print) ]; then
+    # Create a cache for apps list
+    echo "Creating cache..."
+    yay -Slq > $file
+    echo "Done"
+fi
+
+list_of_apps=$(cat $file)
+
+if [ $# -eq 0 ]; then
+	# Show a full screen menu for choosing a package to install
+	cat $file | fzf --multi --no-height --preview 'yay -Si {1}' | xargs -ro yay -S
+# TODO: elif [ $# -eq 1 ]; then
+	# If not found such package try to fuzzy correct it 
+else
+	# Install all given arguments
+	yay -S $*
+fi
