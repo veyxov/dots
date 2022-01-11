@@ -5,4 +5,5 @@ if [ $# -eq 0 ]; then
 else
     wall=$1
 fi
+
 xsetwallpaper --maximize $wall
