@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Vim mode
+set -o vi
+
 # Aliases
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
@@ -26,6 +29,8 @@ bind 'TAB:menu-complete'
 # Bash options
 shopt -s autocd # Go to typed directory
 shopt -s cdspell # Correct minor mistakes
+
+# ZOXIDE
 # =============================================================================
 #
 # Utility functions for zoxide.
@@ -155,4 +160,7 @@ fi
 #
 # To initialize zoxide, add this to your configuration (usually ~/.bashrc):
 #
-# eval "$(zoxide init bash)"
+eval "$(zoxide init bash)"
+
+# Starship
+eval "$(starship init bash)"
