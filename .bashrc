@@ -30,6 +30,9 @@ bind 'TAB:menu-complete'
 shopt -s autocd # Go to typed directory
 shopt -s cdspell # Correct minor mistakes
 
+# Binds
+bind -x '"\C-l": clear; ls'
+
 # ZOXIDE
 # =============================================================================
 #
