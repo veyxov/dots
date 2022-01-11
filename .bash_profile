@@ -1,5 +1,6 @@
 # Add my bin's to PATH
 export PATH="$PATH:$HOME/.local/bin/"
+export PATH="$PATH:$HOME/.local/src/dwmblocks/src"
 
 # Programs
 export EDITOR="nvim"

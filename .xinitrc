@@ -14,7 +14,7 @@ setxkbmap -option caps:super
 setxkbmap -layout us,ru -variant ,phonetic -option grp:alt_shift_toggle
 
 # Set the bar to show the date
-xsetroot -name "$(date "+%A %e %B %Y") TODO:DWMBLOCKS"
+dwmblocks &
 
 # Run the desktop
 exec dwm
