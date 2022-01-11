@@ -47,21 +47,24 @@ return packer.startup({function()
         'neovim/nvim-lspconfig',
         requires = 'williamboman/nvim-lsp-installer',
 
-        config = kfg 'lsp'
+        config = kfg 'lsp',
+
+        event = 'InsertEnter'
     }
 
     use { -- AutoCompletion
         'hrsh7th/nvim-cmp',
         requires = {
-            'hrsh7th/cmp-nvim-lsp', -- LSP
-            'hrsh7th/cmp-cmdline', -- CmdLine
-            'onsails/lspkind-nvim', -- Nice icons
-            'ray-x/cmp-treesitter', -- Treesitter
-            'hrsh7th/cmp-path', -- FileSystem Path
-            'saadparwaiz1/cmp_luasnip', -- Snippets
-            'hrsh7th/cmp-buffer', -- Current buffer
+            {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp'}, -- LSP
+            {'hrsh7th/cmp-cmdline', after = 'nvim-cmp'}, -- CmdLine
+            {'onsails/lspkind-nvim', before = 'nvim-cmp'}, -- Nice icons
+            {'ray-x/cmp-treesitter', after = 'nvim-cmp'}, -- Treesitter
+            {'hrsh7th/cmp-path', after = 'nvim-cmp'}, -- FileSystem Path
+            {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp'}, -- Snippets
+            {'hrsh7th/cmp-buffer', after = 'nvim-cmp'}, -- Current buffer
         },
         config = kfg 'cmp',
+        after = 'nvim-lspconfig'
     }
 
     use { -- Help with pairing
@@ -73,7 +76,11 @@ return packer.startup({function()
 
     use { -- Snippets Engine
         'L3MON4D3/LuaSnip',
-        requires = 'rafamadriz/friendly-snippets'
+        requires = {
+            'rafamadriz/friendly-snippets',
+            before = 'nvim-cmp'
+        },
+        after = 'friendly-snippets'
     }
 
     use { -- Max focus editing
