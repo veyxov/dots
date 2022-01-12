@@ -26,6 +26,20 @@ alias config='/usr/bin/git --git-dir=/home/iz/.dots/ --work-tree=/home/iz'
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoredups:ignorespace
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# Prevent ^S and ^Q doing XON/XOFF (mostly for Vim)
+stty -ixon
+
 # Bash options
 shopt -s autocd # Go to typed directory
 shopt -s cdspell # Correct minor mistakes
