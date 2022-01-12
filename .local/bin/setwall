@@ -6,4 +6,4 @@ else
     wall=$1
 fi
 
-xsetwallpaper --maximize $wall
+xwallpaper --maximize $wall
