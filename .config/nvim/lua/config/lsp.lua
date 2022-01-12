@@ -13,12 +13,7 @@ lsp_installer.settings{
 }
 
 -- Servers to install with nvim-lsp-installer
-local servers = {
-    'html',
-    'clangd',
-    'omnisharp',
-    'sumneko_lua'
-}
+local servers = { 'html', 'clangd', 'omnisharp', 'sumneko_lua' }
 
 -- Install servers of the list if they aren't installed
 for _, currServer in ipairs(servers) do

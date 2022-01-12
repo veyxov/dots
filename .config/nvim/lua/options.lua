@@ -7,10 +7,10 @@ opt.relativenumber = true
 opt.signcolumn = 'number' -- One line for everything
 
 -- Optimizations
-opt.lazyredraw = true
 opt.wrap = false
 opt.showmode = false
 opt.swapfile = false
+opt.lazyredraw = true
 
 -- Tabs or spaces ?
 opt.expandtab = true
@@ -21,9 +21,6 @@ opt.tabstop = tab_size
 opt.shiftwidth = tab_size
 opt.softtabstop = tab_size
 
--- Check out invisible characters
-opt.listchars = "tab:>·,trail:•,extends:>,precedes:<,space:␣,eol:↴"
-
 -- Nice colors in the terminal
 opt.termguicolors = true
 
@@ -32,12 +29,12 @@ opt.pumblend = 20
 vim.cmd [[ hi PmenuSel blend=15 ]]
 
 -- Smart searching
-opt.ignorecase = true
 opt.smartcase = true
+opt.ignorecase = true
 
 -- Experimental
-opt.completeopt = {"menu", "menuone", "preview", "noselect", "noinsert"}
 opt.wildignorecase = true
+opt.completeopt = {"menu", "menuone", "preview", "noselect", "noinsert"}
 
 -- For opening splits on right or bottom.
 opt.splitbelow = true
@@ -53,6 +50,7 @@ local disabled_built_ins = {
     "vimball", "vimballPlugin", "zip", "zipPlugin",
 }
 
-for _, plugin in pairs(disabled_built_ins) do
-        vim.g["loaded_" .. plugin] = 1
-end
+for _, plugin in pairs(disabled_built_ins) do vim.g["loaded_" .. plugin] = 1 end
+
+-- Check out invisible characters
+opt.listchars = "tab:>·,trail:•,extends:>,precedes:<,space:␣,eol:↴"

@@ -5,31 +5,18 @@ local luasnip = require 'luasnip'
 
 lspkind.init({
 	symbol_map = {
-		Enum = '',
-		File = '',
-		Text = '',
-		Unit = '塞',
-		Class = 'ﴯ',
-		Color = '',
-		Event = '',
-		Field = 'ﰠ',
-		Value = '',
-		Folder = '',
-		Method = '',
-		Module = '',
-		Struct = 'פּ',
-		Keyword = '',
-		Snippet = '',
-		Constant = '',
-		Function = '',
-		Operator = '',
-		Property = 'ﰠ',
-		Variable = '',
-		Interface = '',
-		Reference = '',
-		EnumMember = '',
-		Constructor = '',
-		TypeParameter = ''
+		Enum = '', File = '',
+		Text = '', Unit = '塞',
+		Class = 'ﴯ', Color = '',
+		Event = '', Field = 'ﰠ',
+		Value = '', Folder = '',
+		Method = '', Module = '',
+		Struct = 'פּ', Keyword = '',
+		Snippet = '', Constant = '',
+		Function = '', Operator = '',
+		Property = 'ﰠ', Variable = '',
+		Interface = '', Reference = '',
+		EnumMember = '', Constructor = '',
 	}
 })
 
@@ -83,10 +70,8 @@ cmp.setup({
 				end,
 			},
 		},
-		{name = 'path'},
-		{name = 'luasnip'},
-		{name = 'nvim_lsp'},
-		{name = 'treesitter'}
+		{name = 'path'},     {name = 'luasnip'},
+		{name = 'nvim_lsp'}, {name = 'treesitter'}
 	}
 })
 

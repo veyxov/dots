@@ -1,12 +1,13 @@
-function Map(mode, x, y) vim.api.nvim_set_keymap(mode, x, y, { noremap = true, silent = true }) end
-function Cmd(what) return string.format('<CMD>%s<CR>', what) end
-
 vim.g.mapleader = " "
--- center search results
+
+function Map(mode, x, y) vim.api.nvim_set_keymap(mode, x, y, { noremap = true, silent = true }) end
+function Cmd(what)       return string.format('<CMD>%s<CR>', what) end
+
+-- Center search results
 Map('n', 'n', 'nzz')
 Map('n', 'N', 'Nzz')
 
--- yanking
+-- Yanking
 Map('n', 'Y', 'y$')
 Map('n', '<leader>y', '"+y')
 Map('n', '<leader>ya', Cmd '%y+')
@@ -14,7 +15,7 @@ Map('n', '<leader>ya', Cmd '%y+')
 -- Change the dir to current file dir
 Map('n', '<leader>cd', Cmd 'tcd %:h')
 
--- better indenting
+-- Better indenting
 Map('v', '<', '<gv')
 Map('v', '>', '>gv')
 
@@ -94,11 +95,11 @@ Map ('n', '<leader>5', Cmd 'BufferLineGoToBuffer 5')
 
 -- Packer
 Map ('n', '<leader>pi', Cmd 'PackerSync')
-Map ('n', '<leader>pc', Cmd 'PackerCompile')
 Map ('n', '<leader>ps', Cmd 'PackerStatus')
-
+Map ('n', '<leader>pc', Cmd 'PackerCompile')
 
 -- Misc
+
 -- Sort current selection with line length
 Map ('v', '<leader>ss', [[:'<,'> ! awk '{ print length(), $0 | "sort -n | cut -d\\  -f2-" }'<CR>]])
 -- EZ commands
