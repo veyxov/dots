@@ -8,9 +8,10 @@ function Build()
 end
 
 function Run() RunTmux('dotnet run -v d; read', 'neww') end
-
 function OnlyRun() RunTmux('dotnet run -v d --no-build; read', 'neww') end
+function WatchRun() RunTmux('dotnet watch run -v n', 'neww') end
 
 Map('n', '<leader>bb', Cmd 'lua Build()')
 Map('n', '<leader>br', Cmd 'lua OnlyRun()')
 Map('n', '<leader>bR', Cmd 'lua Run()')
+Map('n', '<leader>bw', Cmd 'lua WatchRun()')
