@@ -1,1 +1,3 @@
-nmcli dev wifi list | grep "\*" | awk '{print $3}'
+# Method1: nmcli -t -f active,ssid dev wifi | grep -E '^yes' | cut -d\: -f2
+
+nmcli -t -f name connection show --active
