@@ -173,6 +173,11 @@ return packer.startup({function()
         keys = { 'sa', 'sr', 'sd' }
     }
 
+    use {
+        'adamclerk/vim-razor',
+        ft = 'cshtml'
+    }
+
     use { -- More pleasant LSP
         'tami5/lspsaga.nvim',
         config = kfg 'lspsaga',
