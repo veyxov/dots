@@ -1,23 +1,23 @@
-# Compositor
-picom --config $HOME/.config/picom.conf -b
+# Load Xresources
+xrdb $HOME/.config/X11/Xresources
 
-# Set the desktop wallpaper (custom scirpt)
-setwall &
+# Set keyboard to eng and rus (phonetic)
+setxkbmap -layout us,ru -variant ,phonetic -option grp:alt_shift_toggle
 
 # Increase key speed via a rate change
 xset r rate 300 55 &
 
+# Compositor
+picom --config $HOME/.config/picom.conf -b
+
 # Map the caps lock key to SUPER
 setxkbmap -option caps:super &
 
-# Set keyboard to eng and rus (phonetic)
-setxkbmap -layout us,ru -variant ,phonetic -option grp:alt_shift_toggle &
+# Set the desktop wallpaper (custom scirpt)
+setwall &
 
 # Set the bar to show the date
 dwmblocks &
-
-# Load Xresources
-xrdb $HOME/.config/X11/Xresources
 
 # Run the desktop
 exec dwm
