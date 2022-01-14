@@ -18,6 +18,8 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 # Programs
 export EDITOR="nvim"
+# Fzf defaults
+export FZF_DEFAULT_OPTS='--no-height --no-reverse --select-1 --exit-0'
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 

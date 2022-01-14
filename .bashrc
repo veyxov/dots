@@ -47,6 +47,10 @@ shopt -s cdspell # Correct minor mistakes
 # Binds
 bind -x '"\C-l": clear; ls'
 
+# FZF
+source "/usr/share/fzf/key-bindings.bash"
+source "/usr/share/fzf/completion.bash"
+
 # ZOXIDE
 # =============================================================================
 #
