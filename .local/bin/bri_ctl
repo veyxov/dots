@@ -1,0 +1,18 @@
+#!/bin/bash
+STEP=20
+
+if [[ "$1" == "up" ]]; then
+    xbacklight -inc $STEP
+elif [[ "$1" == "down" ]]; then
+    xbacklight -dec $STEP
+else
+  echo "provide yes or no"
+fi
+
+# Show notification
+CUR_BRIGHTNESS=$(xbacklight -get)
+
+# First kill the previous notif
+pkill -SIGUSR1 herbe
+# NOTE: Running in the background
+herbe "Level: $CUR_BRIGHTNESS" &
