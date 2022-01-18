@@ -79,6 +79,10 @@ Map('n', '<leader>ldj', Cmd 'Lspsaga diagnostic_jump_next')
 Map('n', '<leader>ldk', Cmd 'Lspsaga diagnostic_jump_prev')
 Map('n', '<leader>ldd', Cmd 'Lspsaga show_cursor_diagnostics')
 
+-- Built-in LSP functionality
+Map('n', '<leader>gd', Cmd 'lua vim.lsp.buf.definition()')
+Map('n', '<leader>gD', Cmd 'lua vim.lsp.buf.declaration()')
+Map('n', '<leader>gr', Cmd 'lua vim.lsp.buf.references()')
 Map('n', '<leader>lf', Cmd 'lua vim.lsp.buf.formatting(nil, 1000)');
 
 -- Trouble
