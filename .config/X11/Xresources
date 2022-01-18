@@ -1,5 +1,5 @@
 *background: #222222
 *foreground: #ebdbb2
 
-# Xft.dpi: 192
-Xft.dpi: 144
+# Xft.dpi: 192 -- too big
+Xft.dpi: 157
