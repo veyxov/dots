@@ -1,0 +1,27 @@
+#!/bin/bash
+STEP=10
+
+# Determine what to do
+if [[ "$1" == "up" ]]; then
+    CMD="$STEP%+"
+elif [[ "$1" == "down" ]]; then
+    CMD="$STEP%-"
+elif [[ "$1" == "mute" ]]; then
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+else
+  echo "provide yes or no"
+fi
+
+# Make the changes
+#CUR_VOLUME=$(pactl list sinks | awk '$1=="Volume:" {print $5}')
+
+# Get advantage that, when setting returns the new volume
+CUR_VOLUME=$(amixer set 'Master' $CMD | grep -om 1 "\[.*%]\s\[.*]")
+
+# First kill the previous notif
+pkill -SIGUSR1 herbe
+# Show notification
+# NOTE: Running in the background
+herbe "Volume: $CUR_VOLUME" &
+
+# TODO: Blank notification when toggling
