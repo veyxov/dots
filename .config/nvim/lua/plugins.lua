@@ -128,19 +128,21 @@ return packer.startup({function()
         }
     }
 
-    use { -- Git inside cozzy vim
-        'TimUntersberger/neogit',
-        requires = {
-            {
-                'sindrets/diffview.nvim',
-                config = kfg 'diffview',
-            }
-        },
-        config = kfg 'neogit',
-
-        cmd = 'Neogit'
+    -- use { -- Git inside cozzy vim
+    --     'TimUntersberger/neogit',
+    --     requires = {
+    --         {
+    --             'sindrets/diffview.nvim',
+    --             config = kfg 'diffview',
+    --         }
+    --     },
+    --     config = kfg 'neogit',
+    --
+    --     cmd = 'Neogit'
+    use {
+        'tpope/vim-fugitive',
+        cmd = 'G'
     }
-
     use { -- Show dagnostics summary
         'folke/trouble.nvim',
         config = kfg 'trouble',
