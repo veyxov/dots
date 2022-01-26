@@ -16,6 +16,9 @@ export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
+# Graphics driver
+export LIBVA_DRIVER_NAME=iris
+
 # Programs
 export EDITOR="nvim"
 # Fzf defaults
