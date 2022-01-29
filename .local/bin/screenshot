@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SAVE_LOCATION="$HOME/Files/Pix/Screenshots/"
+SAVE_LOCATION="$HOME"
 
 case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -p "Screenshot which area?")" in
 	"a selected area") maim -s $SAVE_LOCATION/pic-selected-"$(date '+%y%m%d-%H%M-%S').png" ;;
