@@ -1,5 +1,10 @@
 # Display vim mode
+set editing-mode vi
+
 set show-mode-in-prompt on
+
+# Don't show ^C
+set echo-control-characters off
 
 # Show mode info
 set vi-ins-mode-string ""
@@ -9,3 +14,22 @@ set vi-cmd-mode-string "\1\e[1;31m\2:\1\e[0m\2"
 set show-all-if-ambiguous on
 set completion-ignore-case on
 set completion-map-case on
+set show-all-if-unmodified on
+
+set vi-ins-mode-string \1\e[6 q\2
+set vi-cmd-mode-string \1\e[2 q\2
+
+
+# More colors
+# Color files by types
+# Note that this may cause completion text blink in some terminals (e.g. xterm).
+set colored-stats On
+# Append char to indicate type
+set visible-stats On
+# Mark symlinked directories
+set mark-symlinked-directories On
+# Color the common prefix
+set colored-completion-prefix On
+# Color the common prefix in menu-complete
+set menu-complete-display-prefix On
+
