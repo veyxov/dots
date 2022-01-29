@@ -9,3 +9,11 @@
     colorMoved = zebra
 [color]
     ui = true
+[core]
+	excludesFile = /home/iz/.config/gitignore
+[rebase]
+	autosquash = true
+[fetch]
+	prune = true
+[help]
+	autocorrect = 1
