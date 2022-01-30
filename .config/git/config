@@ -16,4 +16,4 @@
 [fetch]
 	prune = true
 [help]
-	autocorrect = 1
+	autocorrect = 20
