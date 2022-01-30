@@ -18,6 +18,10 @@ fi
 # Get advantage that, when setting returns the new volume
 CUR_VOLUME=$(amixer set 'Master' $CMD | grep -om 1 "\[.*%]\s\[.*]")
 
+if [ -z "$CUR_VOLUME" ]; then
+    CUR_VOLUME="Mute toggled"
+fi
+
 # First kill the previous notif
 pkill -SIGUSR1 herbe
 # Show notification
