@@ -31,12 +31,6 @@ return packer.startup({function()
                 after = 'telescope.nvim',
                 opt = true
             },
-            {
-                'jvgrootveld/telescope-zoxide',
-                config = kfg 'telescope-zoxide',
-                after = 'telescope.nvim',
-                opt = true
-            }
         },
         config = kfg 'telescope',
 
@@ -173,11 +167,6 @@ return packer.startup({function()
         'machakann/vim-sandwich',
 
         keys = { 'sa', 'sr', 'sd' }
-    }
-
-    use {
-        'adamclerk/vim-razor',
-        ft = 'cshtml'
     }
 
     use { -- More pleasant LSP

@@ -6,4 +6,5 @@ else
     wall=$1
 fi
 
-xwallpaper --maximize $wall
+#xwallpaper --maximize $wall
+feh --bg-scale $wall
