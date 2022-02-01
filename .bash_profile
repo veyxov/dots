@@ -19,6 +19,9 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 # Graphics driver
 export LIBVA_DRIVER_NAME=iris
 
+# ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
+export LESS="-iMFXR"
+
 # Programs
 export EDITOR="nvim"
 # Fzf defaults

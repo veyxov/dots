@@ -3,6 +3,14 @@
 
 # Vim mode
 set -o vi
+#use extra globing features. See man bash, search extglob.
+shopt -s extglob
+#include .files when globbing.
+shopt -s dotglob
+#When a glob expands to nothing, make it an empty string instead of the literal characters.
+shopt -s nullglob
+# fix spelling errors for cd, only in interactive shell
+shopt -s cdspell
 
 # Aliases
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -50,6 +58,28 @@ bind -x '"\C-l": clear; ls'
 # FZF
 source "/usr/share/fzf/key-bindings.bash"
 source "/usr/share/fzf/completion.bash"
+
+# Make extracting archives easier
+extract () {
+   if [ -f $1 ] ; then
+       case $1 in
+           *.tar.bz2)   tar xvjf $1    ;;
+           *.tar.gz)    tar xvzf $1    ;;
+           *.bz2)       bunzip2 $1     ;;
+           *.rar)       unrar x $1       ;;
+           *.gz)        gunzip $1      ;;
+           *.tar)       tar xvf $1     ;;
+           *.tbz2)      tar xvjf $1    ;;
+           *.tgz)       tar xvzf $1    ;;
+           *.zip)       unzip $1       ;;
+           *.Z)         uncompress $1  ;;
+           *.7z)        7z x $1        ;;
+           *)           echo "don't know how to extract '$1'..." ;;
+       esac
+   else
+       echo "'$1' is not a valid file!"
+   fi
+ }
 
 # ZOXIDE
 # =============================================================================
