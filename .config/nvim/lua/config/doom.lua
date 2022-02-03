@@ -3,7 +3,7 @@ require('doom-one').setup({
 	italic_comments = true,
 	terminal_colors = true,
 	enable_treesitter = true,
-	transparent_background = true,
+	transparent_background = false,
 	pumblend = {
 		enable = true,
 		transparency_amount = 20,

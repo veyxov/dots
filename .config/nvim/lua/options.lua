@@ -14,7 +14,6 @@ opt.lazyredraw = true
 
 -- Tabs or spaces ?
 opt.expandtab = true
-opt.cursorline = true
 
 local tab_size = 4
 opt.tabstop = tab_size
