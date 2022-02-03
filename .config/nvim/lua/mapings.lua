@@ -55,16 +55,6 @@ Map('n', '<leader>zf', Cmd 'TZFocus')
 Map('n', '<leader>zz', Cmd 'TZAtaraxis')
 Map('n', '<leader>zm', Cmd 'TZMinimalist')
 
--- HOP
-Map('n', '<leader>j', Cmd 'HopChar1')
-Map('n', '<leader>m', Cmd 'HopChar2')
-Map('n', '<leader>sL', Cmd 'HopLine')
-Map('n', '<leader>sw', Cmd 'HopWord')
-Map('n', '<leader>sj', Cmd 'HopChar1AC')
-Map('n', '<leader>sk', Cmd 'HopChar1BC')
-Map('n', '<leader>sp', Cmd 'HopPattern')
-Map('n', '<leader>sl', Cmd 'HopLineStart')
-
 -- Git
 Map('n', '<leader>gg', Cmd 'Neogit')
 

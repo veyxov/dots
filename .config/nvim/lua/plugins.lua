@@ -110,18 +110,6 @@ return packer.startup({function()
         event = 'BufRead'
     }
 
-    use { -- Move with the speed of light
-        'phaazon/hop.nvim',
-        branch = 'v1.2',
-        config = kfg 'hop',
-
-        cmd = {
-            'HopChar1',
-            'HopChar2',
-            'HopWord'
-        }
-    }
-
     -- use { -- Git inside cozzy vim
     --     'TimUntersberger/neogit',
     --     requires = {
@@ -133,6 +121,12 @@ return packer.startup({function()
     --     config = kfg 'neogit',
     --
     --     cmd = 'Neogit'
+
+    use {
+        'ggandor/lightspeed.nvim',
+        config = kfg 'lightspeed'
+    }
+
     use {
         'tpope/vim-fugitive',
         cmd = 'G'
