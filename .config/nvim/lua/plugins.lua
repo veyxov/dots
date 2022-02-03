@@ -12,6 +12,7 @@ return packer.startup({function()
         "kyazdani42/nvim-web-devicons",
         event = "BufEnter"
     }
+
     use {
         'nvim-lua/plenary.nvim',
     }
@@ -27,8 +28,7 @@ return packer.startup({function()
             },
             {
                 'nvim-telescope/telescope-file-browser.nvim',
-                config = kfg 'telescope-file-browser',
-                after = 'telescope.nvim',
+                config = kfg 'telescope-file-browser', after = 'telescope.nvim',
                 opt = true
             },
         },
@@ -188,10 +188,13 @@ return packer.startup({function()
         event = 'ColorSchemePre' }
 
     use {
-        'eddyekofo94/gruvbox-flat.nvim',
-        config = kfg 'gruvbox'
+        'sainnhe/gruvbox-material',
+        setup = kfg 'gruvbox'
     }
     use { "folke/tokyonight.nvim" }
+    use {
+        'tjdevries/train.nvim'
+    }
 
     -- Packer configuration
 end,
