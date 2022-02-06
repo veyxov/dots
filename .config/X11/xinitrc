@@ -16,6 +16,9 @@ setxkbmap -option caps:super &
 # Set the desktop wallpaper (custom scirpt)
 setwall &
 
+# Clipboard deamon
+clipmenud &
+
 # Set the bar to show the date
 dwmblocks &
 
