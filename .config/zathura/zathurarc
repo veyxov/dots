@@ -1,3 +1,6 @@
+# No sandboxing
+set sandbox none
+
 # No GUI nonsense
 set guioptions none
 # Copy paste convenience
