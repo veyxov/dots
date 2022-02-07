@@ -99,3 +99,18 @@ Map ('n', '<leader>pc', Cmd 'PackerCompile')
 Map ('v', '<leader>ss', [[:'<,'> ! awk '{ print length(), $0 | "sort -n | cut -d\\  -f2-" }'<CR>]])
 -- EZ commands
 Map ('n', '<leader>;', ':')
+
+-- NVim-DAP
+Map ('n', '<F9>', ':lua require"dap".toggle_breakpoint()<CR>')
+Map ('n', '<F11>', ':lua require"dap".step_out()<CR>')
+Map ('n', '<F10>', ':lua require"dap".step_into()<CR>')
+Map ('n', '<F6>', ':lua require"dap".step_over()<CR>')
+Map ('n', '<F5>', ':lua require"dap".continue()<CR>')
+Map ('n', '<leader>dn', ':lua require"dap".run_to_cursor()<CR>')
+Map ('n', '<leader>dk', ':lua require"dap".up()<CR>')
+Map ('n', '<leader>dj', ':lua require"dap".down()<CR>')
+Map ('n', '<leader>dc', ':lua require"dap".terminate()<CR>')
+Map ('n', '<leader>dr', ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l')
+Map ('n', '<leader>de', ':lua require"dap".set_exception_breakpoints({"all"})<CR>')
+Map ('n', '<leader>di', ':lua require"dap.ui.widgets".hover()<CR>')
+Map ('n', '<leader>d?', ':lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')

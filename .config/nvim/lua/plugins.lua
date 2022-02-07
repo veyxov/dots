@@ -109,19 +109,6 @@ return packer.startup({function()
 
         event = 'BufRead'
     }
-
-    -- use { -- Git inside cozzy vim
-    --     'TimUntersberger/neogit',
-    --     requires = {
-    --         {
-    --             'sindrets/diffview.nvim',
-    --             config = kfg 'diffview',
-    --         }
-    --     },
-    --     config = kfg 'neogit',
-    --
-    --     cmd = 'Neogit'
-
     use {
         'ggandor/lightspeed.nvim',
         config = kfg 'lightspeed'
@@ -185,9 +172,23 @@ return packer.startup({function()
         'sainnhe/gruvbox-material',
         setup = kfg 'gruvbox'
     }
-    use { "folke/tokyonight.nvim" }
+    use { 'folke/tokyonight.nvim' }
     use {
         'tjdevries/train.nvim'
+    }
+
+    -- Debugging
+    use {
+        'mfussenegger/nvim-dap',
+        config = kfg 'nvim-dap'
+    }
+    use {
+        'Pocco81/DAPInstall.nvim'
+    }
+
+    use {
+        'rcarriga/nvim-dap-ui',
+        config = kfg 'nvim-dap-ui'
     }
 
     -- Packer configuration
