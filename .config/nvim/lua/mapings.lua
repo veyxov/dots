@@ -45,7 +45,6 @@ Map('n', '<leader>ff', Cmd 'Telescope find_files') -- Find
 Map('n', '<leader>fj', Cmd 'Telescope jumplist') -- Jumplist
 Map('n', '<leader>fd', Cmd 'Telescope zoxide list') -- Zoxide
 Map('n', '<leader>fm', Cmd 'Telescope man_pages') -- Man pages
-Map('n', '<leader>f<leader>', Cmd 'Telescope keymaps') -- Keymaps
 Map('n', '<leader>fc', Cmd 'Telescope colorscheme') -- colorscheme
 Map('n', '<leader>fo', Cmd 'Telescope file_browser file_browser') -- File Browser
 Map('n', '<leader>fg', Cmd 'Telescope current_buffer_fuzzy_find') -- Grep only cur
@@ -56,7 +55,7 @@ Map('n', '<leader>zz', Cmd 'TZAtaraxis')
 Map('n', '<leader>zm', Cmd 'TZMinimalist')
 
 -- Git
-Map('n', '<leader>gg', Cmd 'Neogit')
+Map('n', '<leader>gg', Cmd 'G')
 
 -- LSP
 Map('n', '<C-K>', Cmd 'Lspsaga hover_doc')
@@ -97,20 +96,19 @@ Map ('n', '<leader>pc', Cmd 'PackerCompile')
 
 -- Sort current selection with line length
 Map ('v', '<leader>ss', [[:'<,'> ! awk '{ print length(), $0 | "sort -n | cut -d\\  -f2-" }'<CR>]])
+
 -- EZ commands
 Map ('n', '<leader>;', ':')
 
 -- NVim-DAP
-Map ('n', '<F9>', ':lua require"dap".toggle_breakpoint()<CR>')
-Map ('n', '<F11>', ':lua require"dap".step_out()<CR>')
-Map ('n', '<F10>', ':lua require"dap".step_into()<CR>')
-Map ('n', '<F6>', ':lua require"dap".step_over()<CR>')
-Map ('n', '<F5>', ':lua require"dap".continue()<CR>')
-Map ('n', '<leader>dn', ':lua require"dap".run_to_cursor()<CR>')
-Map ('n', '<leader>dk', ':lua require"dap".up()<CR>')
-Map ('n', '<leader>dj', ':lua require"dap".down()<CR>')
-Map ('n', '<leader>dc', ':lua require"dap".terminate()<CR>')
-Map ('n', '<leader>dr', ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l')
-Map ('n', '<leader>de', ':lua require"dap".set_exception_breakpoints({"all"})<CR>')
-Map ('n', '<leader>di', ':lua require"dap.ui.widgets".hover()<CR>')
+Map ('n', '<F11>', Cmd 'lua require"dap".step_out()')
+Map ('n', '<F10>', Cmd 'lua require"dap".step_into()')
+Map ('n', '<F9>', Cmd 'lua require"dap".toggle_breakpoint()')
+Map ('n', '<F6>', Cmd 'lua require"dap".step_over()')
+Map ('n', '<F5>', Cmd 'lua require"dap".continue()')
+Map ('n', '<leader>dn', Cmd 'lua require"dap".run_to_cursor()')
+Map ('n', '<leader>dk', Cmd 'lua require"dap".up()')
+Map ('n', '<leader>dj', Cmd 'lua require"dap".down()')
+Map ('n', '<leader>dq', Cmd 'lua require"dap".terminate()')
+Map ('n', '<leader>dd', Cmd 'lua require"dap.ui.widgets".hover()')
 Map ('n', '<leader>d?', ':lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')

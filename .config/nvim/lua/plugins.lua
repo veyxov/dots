@@ -70,11 +70,7 @@ return packer.startup({function()
 
     use { -- Snippets Engine
         'L3MON4D3/LuaSnip',
-        requires = {
-            'rafamadriz/friendly-snippets',
-            before = 'nvim-cmp'
-        },
-        after = 'friendly-snippets'
+        config = kfg 'snip',
     }
 
     use { -- Max focus editing
@@ -118,6 +114,7 @@ return packer.startup({function()
         'tpope/vim-fugitive',
         cmd = 'G'
     }
+
     use { -- Show dagnostics summary
         'folke/trouble.nvim',
         config = kfg 'trouble',
@@ -166,13 +163,16 @@ return packer.startup({function()
     use {
         'EdenEast/nightfox.nvim',
         config = kfg 'nightfox',
-        event = 'ColorSchemePre' }
+        -- event = 'ColorSchemePre'
+    }
 
     use {
         'sainnhe/gruvbox-material',
         setup = kfg 'gruvbox'
     }
+
     use { 'folke/tokyonight.nvim' }
+
     use {
         'tjdevries/train.nvim'
     }
