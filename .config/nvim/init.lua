@@ -5,4 +5,5 @@ require 'mapings'
 
 -- Nice tmux/terminal colors
 vim.cmd [[
+    colorscheme nordfox
 ]]
