@@ -191,6 +191,11 @@ return packer.startup({function()
         config = kfg 'nvim-dap-ui'
     }
 
+    use {
+        'kyazdani42/nvim-tree.lua',
+        config = kfg 'nvim-tree'
+    }
+
     -- Packer configuration
 end,
     -- Packer comfiguration
