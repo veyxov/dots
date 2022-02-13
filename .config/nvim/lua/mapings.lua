@@ -101,7 +101,6 @@ Map ('v', '<leader>ss', [[:'<,'> ! awk '{ print length(), $0 | "sort -n | cut -d
 Map ('n', '<leader>;', ':')
 
 -- NVim-DAP
-Map ('n', '<F11>', Cmd 'lua require"dap".step_out()')
 Map ('n', '<F10>', Cmd 'lua require"dap".step_into()')
 Map ('n', '<F9>', Cmd 'lua require"dap".toggle_breakpoint()')
 Map ('n', '<F6>', Cmd 'lua require"dap".step_over()')
@@ -112,3 +111,6 @@ Map ('n', '<leader>dj', Cmd 'lua require"dap".down()')
 Map ('n', '<leader>dq', Cmd 'lua require"dap".terminate()')
 Map ('n', '<leader>dd', Cmd 'lua require"dap.ui.widgets".hover()')
 Map ('n', '<leader>d?', ':lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
+
+-- Tree
+Map ('n', '<c-n>', Cmd 'NvimTreeToggle')
