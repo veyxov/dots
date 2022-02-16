@@ -7,6 +7,8 @@ local use = packer.use
 return packer.startup({function()
     use 'wbthomason/packer.nvim' -- AutoManage
 
+    use 'jlcrochet/vim-razor'
+
     -- Global requirements
     use {
         "kyazdani42/nvim-web-devicons",
@@ -196,6 +198,11 @@ return packer.startup({function()
         cmd = 'NvimTreeToggle',
 
         config = kfg 'nvim-tree'
+    }
+
+    use {
+        'marko-cerovac/material.nvim',
+        cfg = kfg 'material'
     }
 
     -- Packer configuration
