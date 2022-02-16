@@ -1,6 +1,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Prevent ^S and ^Q doing XON/XOFF (mostly for Vim)
+if [[ -t 0 && $- = *i* ]]
+then
+    stty -ixon
+fi 
+
 # Vim mode
 set -o vi
 #use extra globing features. See man bash, search extglob.
@@ -45,8 +51,6 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# Prevent ^S and ^Q doing XON/XOFF (mostly for Vim)
-stty -ixon
 
 # Bash options
 shopt -s autocd # Go to typed directory
