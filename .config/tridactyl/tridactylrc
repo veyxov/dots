@@ -1,0 +1,2 @@
+" Reddit comment toggler
+bind ;c hint -Jc [class*="expand"],[class="togg"],[class="comment_folder"]
