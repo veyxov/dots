@@ -1,2 +1,57 @@
 " Reddit comment toggler
 bind ;c hint -Jc [class*="expand"],[class="togg"],[class="comment_folder"]
+
+" make d take you to the left (I find it much less confusing)
+
+bind d composite tabprev; tabclose #
+bind D tabclose
+
+" Only hint search results on Google and DDG
+bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
+bindurl www.google.com F hint -Jbc #search div:not(.action-menu) > a
+bindurl ^https://duckduckgo.com f hint -Jc [class~=result__a]
+bindurl ^https://duckduckgo.com F hint -Jbc [class~=result__a]
+
+" Use sensitive case. Smart case would be nice here, but it doesn't work.
+set findcase sensitive
+
+" Smooth scrolling, yes please. This is still a bit janky in Tridactyl.
+set smoothscroll true
+
+" The default jump of 10 is a bit much.
+bind j scrollline 5
+bind k scrollline -5
+
+" Fix codeforces blank screen
+seturl codeforces.com noiframe true
+
+" TODO: Research more about this ----------------------------
+" " Add helper commands that Mozillians think make Firefox irredeemably
+" " insecure. For details, read the comment at the top of this file.
+command fixamo_quiet jsb tri.excmds.setpref("privacy.resistFingerprinting.block_mozAddonManager", "true").then(tri.excmds.setpref("extensions.webextensions.restrictedDomains", '""'))
+command fixamo js tri.excmds.setpref("privacy.resistFingerprinting.block_mozAddonManager", "true").then(tri.excmds.setpref("extensions.webextensions.restrictedDomains", '""').then(tri.excmds.fillcmdline_tmp(3000, "Permissions added to user.js. Please restart Firefox to make them take affect.")))
+" 
+" " Make Tridactyl work on more sites at the expense of some security. For
+" " details, read the comment at the top of this file.
+fixamo_quiet
+" 
+" " Equivalent to `set csp clobber` before it was removed. This weakens your
+" " defences against cross-site-scripting attacks and other types of
+" " code-injection by reducing the strictness of Content Security Policy on
+" " every site in a couple of ways.
+" "
+" " You may not wish to run this. Mozilla strongly feels that you shouldn't.
+" "
+" " It allows Tridactyl to function on more pages, e.g. raw GitHub pages.
+" " 
+" " We remove the sandbox directive
+" " https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/sandbox
+" " which allows our iframe to run (and anyone else's) on any website.
+" "
+" " We weaken the style-src directive
+" " https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src
+" " to allow us to theme our elements. This exposes you to 'cross site styling'
+" " attacks.
+" "
+" " Read https://wiki.mozilla.org/Security/CSP#Goals for more information.
+jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{urls:["<all_urls>"],types:["main_frame"]},["blocking","responseHeaders"])
