@@ -26,12 +26,19 @@ alias grep='grep --color=auto'
 alias tmux='TERM=xterm-256color tmux -2'
 alias ls='exa -F --icons --color=automatic'
 alias la='ls -a'
+alias tree='exa -T'
 
 # More verbose output for risky commands
 alias mkdir='mkdir -v'
 alias cp='cp -vi'
 alias mv='mv -v'
 alias rm='rm -v'
+
+# Git aliases
+alias gs='git status -s'
+alias gc='git commit'
+alias gp='git push'
+alias gP='git pull'
 
 # Dotfiles managment
 alias config='/usr/bin/git --git-dir=/home/iz/.dots/ --work-tree=/home/iz'
