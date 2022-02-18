@@ -7,6 +7,9 @@ function Cmd(what)       return string.format('<CMD>%s<CR>', what) end
 Map('n', 'n', 'nzz')
 Map('n', 'N', 'Nzz')
 
+-- Normal mode inside terminal
+Map ('t', '<ESC>', '<C-\\><C-n>')
+
 -- Yanking
 Map('n', 'Y', 'y$')
 Map('n', '<leader>y', '"+y')
@@ -24,10 +27,10 @@ Map('n', 'p', 'p==') -- Paste and indent
 Map('v', 'p', '"_dP') -- Paste without yanking
 
 -- Resizing panes
-Map('n', '<Up>', Cmd 'resize +1')
-Map('n', '<Down>', Cmd 'resize -1')
-Map('n', '<Left>', Cmd 'vertical resize -1')
-Map('n', '<Right>', Cmd 'vertical resize +1')
+Map('n', '<Up>', Cmd 'resize -1')
+Map('n', '<Down>', Cmd 'resize +1')
+Map('n', '<Left>', Cmd 'vertical resize +1')
+Map('n', '<Right>', Cmd 'vertical resize -1')
 
 -- Saving and quiting
 Map('n', '<leader>q', Cmd 'q')

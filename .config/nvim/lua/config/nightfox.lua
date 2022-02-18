@@ -7,3 +7,7 @@ nightfox.setup({
         search = true, -- Enable/Disable inverse highlights for search highlights
     },
 })
+
+vim.cmd [[
+    colorscheme nordfox
+]]
