@@ -5,19 +5,15 @@ local packer = require 'packer'
 local use = packer.use
 
 return packer.startup({function()
-    use 'wbthomason/packer.nvim' -- AutoManage
-
     use 'jlcrochet/vim-razor'
 
     -- Global requirements
     use {
-        "kyazdani42/nvim-web-devicons",
-        event = "BufEnter"
+        {'wbthomason/packer.nvim'}, -- AutoManage
+        {'nvim-lua/plenary.nvim', event = "BufEnter"},
+        {"kyazdani42/nvim-web-devicons", event = "BufEnter"}
     }
 
-    use {
-        'nvim-lua/plenary.nvim',
-    }
 
     use { -- Telescope FuzzyFinder
         'nvim-telescope/telescope.nvim',
@@ -40,12 +36,12 @@ return packer.startup({function()
     }
 
     use { -- Languge Server Protocole
-        'neovim/nvim-lspconfig',
-        requires = 'williamboman/nvim-lsp-installer',
-
-        config = kfg 'lsp',
-
-        event = 'InsertEnter'
+        {
+            'neovim/nvim-lspconfig', requires = 'williamboman/nvim-lsp-installer',
+            config = kfg 'lsp', event = 'InsertEnter'
+        },
+        -- Lsp improvments
+        {'tami5/lspsaga.nvim', config = kfg 'lspsaga', cmd = 'Lspsaga'},
     }
 
     use { -- AutoCompletion
@@ -75,30 +71,7 @@ return packer.startup({function()
         config = kfg 'snip',
     }
 
-    use { -- Max focus editing
-        'Pocco81/TrueZen.nvim',
-        config = kfg 'zen',
 
-        cmd = {
-            'TZAtaraxis',
-            'TZMinimalist',
-            'TZFocus',
-        },
-
-        requires = {
-            {
-                'folke/twilight.nvim',
-                config = kfg 'twilight',
-                after = 'TrueZen.nvim'
-            }
-        }
-    }
-
-    use { -- StatusLine
-        'nvim-lualine/lualine.nvim',
-        config = kfg 'lualine',
-        event = 'BufRead'
-    }
 
     use { -- Treesitter
         'nvim-treesitter/nvim-treesitter',
@@ -123,13 +96,6 @@ return packer.startup({function()
         cmd = { 'Trouble' }
     }
 
-    use { -- Show buffers, mostly eye-candy
-        'akinsho/bufferline.nvim',
-        config = kfg 'bufferline',
-
-        event = 'BufRead'
-    }
-
     use { -- Commenting made easy
         'numToStr/Comment.nvim',
         config = kfg 'comment',
@@ -137,79 +103,55 @@ return packer.startup({function()
         keys = {'gc', 'gcc'}
     }
 
-    use { -- Show Indentation level
-        'lukas-reineke/indent-blankline.nvim',
-        config = kfg 'blankline',
 
-        event = 'BufRead',
-    }
-    use { -- For surrounding text objects
-        'machakann/vim-sandwich',
-
-        keys = { 'sa', 'sr', 'sd' }
-    }
-
-    use { -- More pleasant LSP
-        'tami5/lspsaga.nvim',
-        config = kfg 'lspsaga',
-
-        cmd = 'Lspsaga'
-    }
-    -- Colorschemes
-    use {
-        'NTBBloodbath/doom-one.nvim',
-        config = kfg 'doom',
-
-        event = 'ColorSchemePre'
-    }
-    use {
-        'EdenEast/nightfox.nvim',
-        config = kfg 'nightfox',
-        -- event = 'ColorSchemePre'
-    }
-
-    use {
-        'sainnhe/gruvbox-material',
-        setup = kfg 'gruvbox'
-    }
-
-    use { 'folke/tokyonight.nvim' }
-
-    use {
-        'tjdevries/train.nvim'
-    }
 
     -- Debugging
     use {
-        'mfussenegger/nvim-dap',
-        config = kfg 'nvim-dap'
+        {'mfussenegger/nvim-dap', config = kfg 'nvim-dap'},
+        {'rcarriga/nvim-dap-ui', config = kfg 'nvim-dap-ui'},
+        {'Pocco81/DAPInstall.nvim'},
     }
+
+    -- Eye eye-candy
     use {
-        'Pocco81/DAPInstall.nvim'
+        -- Fancy files tree
+        {'kyazdani42/nvim-tree.lua', cmd = 'NvimTreeToggle', config = kfg 'nvim-tree'},
+        -- Show Indentation level
+        {'lukas-reineke/indent-blankline.nvim', config = kfg 'blankline', event = 'BufRead'},
+        -- Buffers name and icon
+        {'akinsho/bufferline.nvim', config = kfg 'bufferline', event = 'BufRead'},
+        -- Status line
+        {'nvim-lualine/lualine.nvim', config = kfg 'lualine', event = 'BufRead'}
     }
 
+    -- Colorschemes
     use {
-        'rcarriga/nvim-dap-ui',
-        config = kfg 'nvim-dap-ui'
+        {'NTBBloodbath/doom-one.nvim', config = kfg 'doom', event = 'ColorSchemePre'},
+        {'EdenEast/nightfox.nvim', config = kfg 'nightfox', event = 'ColorSchemePre'},
+        {'sainnhe/gruvbox-material', setup = kfg 'gruvbox', event = 'ColorSchemePre'},
+        {'marko-cerovac/material.nvim', cfg = kfg 'material', event = 'ColorSchemePre'}
     }
 
+    -- Focus
     use {
-        'kyazdani42/nvim-tree.lua',
-        cmd = 'NvimTreeToggle',
+        'Pocco81/TrueZen.nvim',
+        config = kfg 'zen',
 
-        config = kfg 'nvim-tree'
+        cmd = {
+            'TZAtaraxis',
+            'TZMinimalist',
+            'TZFocus',
+        },
+
+        requires = {
+            {
+                'folke/twilight.nvim',
+                config = kfg 'twilight',
+                after = 'TrueZen.nvim'
+            }
+        }
     }
-
-    use {
-        'marko-cerovac/material.nvim',
-        cfg = kfg 'material'
-    }
-
-    -- Packer configuration
 end,
     -- Packer comfiguration
     config = { git = { clone_timeout = false } }
 })
-
--- TOCHECK:
--- https://github.com/lewis6991/gitsigns.nvim
