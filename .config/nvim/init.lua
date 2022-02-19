@@ -1,3 +1,4 @@
+require 'globals'
 require 'options'
 require 'autocmd'
 require 'mapings'
