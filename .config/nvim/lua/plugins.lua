@@ -5,6 +5,7 @@ local packer = require 'packer'
 local use = packer.use
 
 return packer.startup({function()
+    use '/home/iz/Projects/mvc.nvim/'
     use 'jlcrochet/vim-razor'
 
     -- Global requirements
@@ -129,7 +130,6 @@ return packer.startup({function()
         {'NTBBloodbath/doom-one.nvim', config = kfg 'doom', event = 'ColorSchemePre'},
         {'EdenEast/nightfox.nvim', config = kfg 'nightfox', event = 'ColorSchemePre'},
         {'sainnhe/gruvbox-material', setup = kfg 'gruvbox', event = 'ColorSchemePre'},
-        {'marko-cerovac/material.nvim', cfg = kfg 'material', event = 'ColorSchemePre'}
     }
 
     -- Focus

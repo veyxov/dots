@@ -3,6 +3,6 @@ require 'twilight'.setup {
         alpha = 0.25, -- amount of dimming
         inactive = true,
     },
-    context = 5,
+    context = 10,
     treesitter = true,
 }

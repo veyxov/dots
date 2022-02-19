@@ -1,8 +1,5 @@
 vim.g.mapleader = " "
 
-function Map(mode, x, y) vim.api.nvim_set_keymap(mode, x, y, { noremap = true, silent = true }) end
-function Cmd(what)       return string.format('<CMD>%s<CR>', what) end
-
 -- Center search results
 Map('n', 'n', 'nzz')
 Map('n', 'N', 'Nzz')
