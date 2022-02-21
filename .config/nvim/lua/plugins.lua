@@ -8,6 +8,9 @@ return packer.startup({function()
     use '/home/iz/Projects/mvc.nvim/'
     use 'jlcrochet/vim-razor'
 
+    -- Faster startup
+    use 'lewis6991/impatient.nvim'
+
     -- Global requirements
     use {
         {'wbthomason/packer.nvim'}, -- AutoManage
