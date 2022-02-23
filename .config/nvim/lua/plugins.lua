@@ -5,8 +5,15 @@ local packer = require 'packer'
 local use = packer.use
 
 return packer.startup({function()
-    use '/home/iz/Projects/mvc.nvim/'
     use 'jlcrochet/vim-razor'
+
+    use {
+        'wexouv/mvc.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-treesitter/nvim-treesitter'
+        }
+    }
 
     -- Faster startup
     use 'lewis6991/impatient.nvim'
