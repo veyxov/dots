@@ -47,17 +47,14 @@ alias config='/usr/bin/git --git-dir=/home/iz/.dots/ --work-tree=/home/iz'
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
+# avoid duplicates..
+export HISTCONTROL=ignoredups:erasedups
 
-# append to the history file, don't overwrite it
+# append history entries..
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
-
+# After each command, save and reload history
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # Bash options
 shopt -s autocd # Go to typed directory
