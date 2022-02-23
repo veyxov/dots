@@ -24,6 +24,8 @@ export LESS="-iMFXR"
 
 # Programs
 export EDITOR="nvim"
+# Open man pages in neovim
+export MANPAGER='nvim +Man!'
 # Fzf defaults
 export FZF_DEFAULT_OPTS='--no-height --no-reverse --select-1 --exit-0'
 
