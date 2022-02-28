@@ -1,0 +1,16 @@
+#!/usr/bin/python
+# -*- encoding: utf-8 -*-
+
+"""
+Measures your typing speed in words per minute (WPM).
+"""
+
+from wpm.commandline import main
+from wpm.error import WpmError
+
+if __name__ == "__main__":
+    try:
+        main()
+    except WpmError as error:
+        print(error)
+        sys.exit(1)
