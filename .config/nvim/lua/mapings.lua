@@ -94,6 +94,9 @@ Map ('n', '<leader>pc', Cmd 'PackerCompile')
 
 -- Misc
 
+-- Don't move the cursor when concating lines
+Map ('n', 'J', 'mzJ`z')
+
 -- Sort current selection with line length
 Map ('v', '<leader>ss', [[:'<,'> ! awk '{ print length(), $0 | "sort -n | cut -d\\  -f2-" }'<CR>]])
 
