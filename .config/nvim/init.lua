@@ -4,6 +4,8 @@ require 'impatient'
 -- Load modules
 require 'globals'
 require 'options'
-require 'autocmd'
+--require 'autocmd'
 require 'mapings'
 require 'plugins'
+
+vim.cmd "color nordfox"
