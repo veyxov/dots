@@ -22,5 +22,8 @@ clipmenud &
 # Set the bar to show the date
 dwmblocks &
 
+# Locking system
+xautolock -time 1 -locker slock &
+
 # Run the desktop
-exec dwm
+exec dbus-launch dwm

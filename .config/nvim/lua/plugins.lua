@@ -5,14 +5,19 @@ local packer = require 'packer'
 local use = packer.use
 
 return packer.startup({function()
-    use 'jlcrochet/vim-razor'
-
     use {
         'wexouv/mvc.nvim',
         requires = {
             'nvim-lua/plenary.nvim',
             'nvim-treesitter/nvim-treesitter'
         }
+    }
+
+    use {
+        'j-hui/fidget.nvim',
+        config = function ()
+            require"fidget".setup{}
+        end
     }
 
     -- Faster startup
@@ -79,6 +84,7 @@ return packer.startup({function()
 
     use { -- Snippets Engine
         'L3MON4D3/LuaSnip',
+        'rafamadriz/friendly-snippets',
         config = kfg 'snip',
     }
 
@@ -140,6 +146,7 @@ return packer.startup({function()
         {'NTBBloodbath/doom-one.nvim', config = kfg 'doom', event = 'ColorSchemePre'},
         {'EdenEast/nightfox.nvim', config = kfg 'nightfox', event = 'ColorSchemePre'},
         {'sainnhe/gruvbox-material', setup = kfg 'gruvbox', event = 'ColorSchemePre'},
+        {'shaeinst/roshnivim-cs', event = 'ColorSchemePre'},
     }
 
     -- Focus
