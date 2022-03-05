@@ -13,15 +13,6 @@ require "packer".startup({function()
         },
 	}
 
-    use {
-        "folke/trouble.nvim",
-        config = function()
-            require("trouble").setup {}
-        end,
-
-        cmd = "TroubleToggle"
-    }
-
 	-- LSP and Autocompletion
 	use {
 		{
@@ -33,7 +24,11 @@ require "packer".startup({function()
 
 		{ "ms-jpq/coq.thirdparty", after = "coq_nvim" },
 		{ 'neovim/nvim-lspconfig', after = "nvim-lsp-installer" },
-		{ "williamboman/nvim-lsp-installer", event = "InsertEnter" }
+		{ "williamboman/nvim-lsp-installer", event = "InsertEnter" },
+        {
+            'tami5/lspsaga.nvim',
+            cmd = "Lspsaga"
+        }
 	}
 
 	use {
