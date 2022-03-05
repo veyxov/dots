@@ -1,8 +1,8 @@
-require 'telescope'.setup {
+require "telescope".setup {
 	defaults = {
-		prompt_prefix = '→ ',
-		selection_caret = '❯ ',
-		winblend = 10, -- Pseudo transparency
+		selection_caret = '→ ',
+		prompt_prefix = '❯ ',
+		winblend = 10,
 		borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
 		preview = {
 			timeout = 100,

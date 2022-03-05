@@ -1,44 +1,30 @@
--- Settings and options
-local opt = vim.opt
+local o = vim.o
 
--- NumberLine
-opt.number = true
-opt.relativenumber = true
-opt.signcolumn = 'number' -- One line for everything
+o.termguicolors = true
+o.number = true
 
--- Optimizations
-opt.wrap = false
-opt.showmode = false
-opt.swapfile = false
-opt.lazyredraw = true
+o.ignorecase = true
+o.smartcase = true
+o.expandtab = true
+
+o.signcolumn = 'number' -- One line for everything
+
+-- oimizations
+o.wrap = false
+o.showmode = false
+o.swapfile = false
+o.lazyredraw = true
 
 -- Tabs or spaces ?
-opt.expandtab = true
-
+o.expandtab = true
 local tab_size = 4
-opt.tabstop = tab_size
-opt.shiftwidth = tab_size
-opt.softtabstop = tab_size
-
--- Nice colors in the terminal
-opt.termguicolors = true
+o.tabstop = tab_size
+o.shiftwidth = tab_size
+o.softtabstop = tab_size
 
 -- Pseudo transparent menu popups
-opt.pumblend = 20
+o.pumblend = 20
 vim.cmd [[ hi PmenuSel blend=15 ]]
-
--- Smart searching
-opt.smartcase = true
-opt.ignorecase = true
-
--- Experimental
-opt.wildignorecase = true
-opt.completeopt = {"menu", "menuone", "preview", "noselect", "noinsert"}
-
--- For opening splits on right or bottom.
-opt.splitbelow = true
-opt.splitright = true
-
 
 -- Disable some builtin vim plugins
 local disabled_built_ins = {
@@ -52,4 +38,4 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do vim.g["loaded_" .. plugin] = 1 end
 
 -- Check out invisible characters
-opt.listchars = "tab:>·,trail:•,extends:>,precedes:<,space:␣,eol:↴"
+o.listchars = "tab:>·,trail:•,extends:>,precedes:<,space:␣,eol:↴"
