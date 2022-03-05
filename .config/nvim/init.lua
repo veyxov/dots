@@ -1,11 +1,7 @@
--- Make things faster
-require 'impatient'
+require "globals"
+require "options"
+require "plugins"
+require "mapings"
+require "autocmd"
 
--- Load modules
-require 'globals'
-require 'options'
---require 'autocmd'
-require 'mapings'
-require 'plugins'
-
-vim.cmd "color nordfox"
+vim.cmd "color gruvbox-material"
