@@ -40,3 +40,6 @@ Map('<Right>', Cmd 'vertical resize -5')
 
 -- GIT
 Map('<leader>g', Cmd 'G')
+
+-- Zen
+Map('<leader>zz', Cmd 'TZAtaraxis')

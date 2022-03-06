@@ -78,7 +78,7 @@ require "packer".startup({function()
 
     use {
         'nvim-lualine/lualine.nvim',
-        config = function() require('lualine').setup() end,
+        config = kfg 'lualine',
 
         event = "InsertEnter"
     }
