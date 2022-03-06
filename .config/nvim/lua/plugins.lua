@@ -73,8 +73,40 @@ require "packer".startup({function()
 		"ggandor/lightspeed.nvim",
 		keys = { "s", "S" }
 	}
+
+    -- StatusLine
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        config = function() require('lualine').setup() end,
+
+        event = "InsertEnter"
+    }
+
+    -- Zen
+
+    use {
+        {
+            "Pocco81/TrueZen.nvim",
+            config = kfg 'zen',
+
+            cmd = { "TZAtaraxis" }
+        },
+        {
+            "folke/twilight.nvim",
+            config = kfg 'twilight',
+            after = "TrueZen.nvim",
+        }
+    }
+
 	-- Colorschemes
 	use {
+        {
+            "marko-cerovac/material.nvim",
+            -- Set the style for the colorscheme
+            setup = function() vim.g.material_style = "deep ocean" end,
+            config = kfg 'material'
+        },
 		"sainnhe/gruvbox-material"
 	}
 end,
