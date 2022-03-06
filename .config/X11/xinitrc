@@ -23,7 +23,7 @@ clipmenud &
 dwmblocks &
 
 # Locking system
-xautolock -time 1 -locker slock &
+xautolock -time 1 -corners 000- -locker slock &
 
 # Run the desktop
 exec dbus-launch dwm
