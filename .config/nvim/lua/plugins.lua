@@ -62,20 +62,28 @@ require "packer".startup({function()
 		config = kfg "treesitter"
 	}
 
-        -- GIT
-        use {
-                "tpope/vim-fugitive",
-                cmd = "G"
-        }
+    -- Harpoon
+    use {
+        "ThePrimeagen/harpoon",
+        config = function ()
+            require("telescope").load_extension('harpoon')
+        end,
+        after = 'telescope.nvim'
+    }
 
-	-- MISC
+    -- GIT
+    use {
+        "tpope/vim-fugitive",
+        cmd = "G"
+    }
+
+    -- MISC
 	use {
 		"ggandor/lightspeed.nvim",
 		keys = { "s", "S" }
 	}
 
     -- StatusLine
-
     use {
         'nvim-lualine/lualine.nvim',
         config = kfg 'lualine',
@@ -84,7 +92,6 @@ require "packer".startup({function()
     }
 
     -- Zen
-
     use {
         {
             "Pocco81/TrueZen.nvim",
@@ -107,7 +114,20 @@ require "packer".startup({function()
             setup = function() vim.g.material_style = "deep ocean" end,
             config = kfg 'material'
         },
-		"sainnhe/gruvbox-material"
+
+        {
+            "sainnhe/gruvbox-material",
+            setup = function ()
+                local g = vim.g
+                g.gruvbox_material_background = 'hard'
+                g.gruvbox_material_enable_italic = 1
+                g.gruvbox_material_transparent_background = 0
+                g.gruvbox_material_diagnostic_virtual_text = 'colored'
+            end,
+            config = function ()
+                vim.cmd "color gruvbox-material"
+             end
+        }
 	}
 end,
 
