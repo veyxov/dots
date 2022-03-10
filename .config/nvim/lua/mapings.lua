@@ -43,3 +43,14 @@ Map('<leader>g', Cmd 'G')
 
 -- Zen
 Map('<leader>zz', Cmd 'TZAtaraxis')
+
+-- Harpoon
+Map('<leader>ha', Cmd 'lua require("harpoon.mark").add_file()')
+Map('<leader>hm', Cmd 'lua require("harpoon.ui").toggle_quick_menu()')
+Map('<leader>1', Cmd 'lua require("harpoon.ui").nav_file(1)')
+Map('<leader>2', Cmd 'lua require("harpoon.ui").nav_file(2)')
+Map('<leader>3', Cmd 'lua require("harpoon.ui").nav_file(3)')
+Map('<leader>4', Cmd 'lua require("harpoon.ui").nav_file(4)')
+Map('<leader>5', Cmd 'lua require("harpoon.ui").nav_file(5)')
+Map('<leader>ht', Cmd 'lua require("harpoon.term").gotoTerminal(1)')
+Map('<leader>hh', Cmd 'Telescope harpoon marks')
