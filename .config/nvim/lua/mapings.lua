@@ -32,11 +32,6 @@ Map ("<C-T>", Cmd "Lspsaga open_floaterm")
 Map ("<C-T>", Cmd "Lspsaga close_floaterm", "t")
 
 
--- Resizing panes
-Map('<Up>', Cmd 'resize -5')
-Map('<Down>', Cmd 'resize +5')
-Map('<Left>', Cmd 'vertical resize +5')
-Map('<Right>', Cmd 'vertical resize -5')
 
 -- GIT
 Map('<leader>g', Cmd 'G')

@@ -80,7 +80,8 @@ require "packer".startup({function()
     -- MISC
 	use {
 		"ggandor/lightspeed.nvim",
-		keys = { "s", "S" }
+		keys = { "s", "S" },
+        config = kfg 'lightspeed'
 	}
 
     -- StatusLine
