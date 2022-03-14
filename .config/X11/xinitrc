@@ -1,29 +1,23 @@
 # Load Xresources
-xrdb $HOME/.config/X11/Xresources
+#xrdb $HOME/.config/X11/Xresources
 
-# Set keyboard to eng and rus (phonetic)
-setxkbmap -layout us,ru -variant ,phonetic -option grp:alt_shift_toggle
+# Set keyboard to my custom config
+kmonad -w 0 .config/keyboard/kb_test.kbd &
 
-# Increase key speed via a rate change
-xset r rate 300 55 &
-
-# Compositor
-picom --config $HOME/.config/picom.conf -b
-
-# Map the caps lock key to SUPER
-setxkbmap -option caps:super &
-
-# Set the desktop wallpaper (custom scirpt)
-setwall &
-
-# Clipboard deamon
-clipmenud &
+# Locking system
+xautolock -time 1 -corners 000- -locker slock &
 
 # Set the bar to show the date
 dwmblocks &
 
-# Locking system
-xautolock -time 1 -corners 000- -locker slock &
+# Clipboard deamon
+clipmenud &
+
+# Compositor
+picom --config $HOME/.config/picom.conf -b
+
+# Set the desktop wallpaper (custom scirpt)
+setwall &
 
 # Run the desktop
 exec dbus-launch dwm
