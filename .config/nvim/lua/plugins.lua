@@ -8,23 +8,39 @@ require "packer".startup({function()
 		"nvim-lua/plenary.nvim",
         {
             "kyazdani42/nvim-web-devicons",
-            after = 'nvim-tree.lua',
-            opt = true
+            after = 'nvim-tree.lua'
         },
 	}
 
 	-- LSP and Autocompletion
-	use {
-		{
-			"ms-jpq/coq_nvim",
-			setup = kfg 'coq',
-			config = kfg 'coq_post',
-			after = "nvim-lsp-installer"
-		},
+    use {
+        'hrsh7th/nvim-cmp',
+        config = kfg 'cmp',
+        after = "nvim-lsp-installer"
+    }
 
-		{ "ms-jpq/coq.thirdparty", after = "coq_nvim" },
+    use {
+        "onsails/lspkind-nvim"
+    }
+
+    use {
+        {"hrsh7th/cmp-buffer", after = "nvim-cmp" },
+        {"hrsh7th/cmp-path", after = "nvim-cmp" },
+        {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
+        {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
+        {"saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+        {"ray-x/cmp-treesitter", after = "nvim-cmp" },
+        {"hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
+        {"andersevenrud/cmp-tmux", after = "nvim-cmp" },
+    }
+
+    use {
+        'L3MON4D3/LuaSnip'
+    }
+
+	use {
 		{ 'neovim/nvim-lspconfig', after = "nvim-lsp-installer" },
-		{ "williamboman/nvim-lsp-installer", event = "InsertEnter" },
+		{ "williamboman/nvim-lsp-installer", event = "InsertEnter", before = "nvim-cmp" },
         {
             'tami5/lspsaga.nvim',
             cmd = "Lspsaga"
