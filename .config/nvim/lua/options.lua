@@ -11,6 +11,8 @@ o.expandtab = true
 
 o.signcolumn = 'number' -- One line for everything
 
+--o.completeopt = { "menu", "menuone", "noselect" }
+
 -- oimizations
 o.wrap = false
 o.showmode = false
