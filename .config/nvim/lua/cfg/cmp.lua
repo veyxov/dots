@@ -1,49 +1,56 @@
 local luasnip = require("luasnip")
+local types = require("luasnip.util.types")
 local cmp = require("cmp")
 
 local lspkind = require "lspkind"
 lspkind.init()
-
-local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
 
 cmp.setup({
     formatting = {
         format = lspkind.cmp_format({
             mode = 'symbol_text',
             maxwidth = nil,
+
+            menu = {
+                buffer = "[BUF]",
+                nvim_lsp = "[LSP]",
+            }
         })
     },
     mapping = {
+        ["<C-Y>"] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true,
+        },
         ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
+            if luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
-            elseif has_words_before() then
-                cmp.complete()
+            elseif cmp.visible() then
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
             else
                 fallback()
             end
         end, { "i", "s" }),
 
         ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
+            if luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else
                 fallback()
             end
         end, { "i", "s" }),
     },
+    snippet = {
+        expand = function(args)
+            local luasnip = require("luasnip")
+            luasnip.lsp_expand(args.body)
+        end,
+    },
     sources = {
-        { name = "nvim_lsp" }, { name = "path" },
-        { name = 'cmdline' }, { name = 'luasnip' },
-        { name = 'nvim_lua' }, { name = 'treesitter' },
-        {
+    { name = "nvim_lsp" }, { name = "path" },
+    { name = 'cmdline' }, { name = 'luasnip' },
+    { name = 'nvim_lua' }, { name = 'treesitter', keyword_length = 3 },
+    {
             name = 'tmux',
             option = {
                 all_panes = true,
@@ -52,16 +59,18 @@ cmp.setup({
                 trigger_characters_ft = {}
             }
         },
-        {
+    {
             name = 'buffer',
-            get_bufnrs = function() return vim.api.nvim_list_bufs() end
+            get_bufnrs = function() return vim.api.nvim_list_bufs() end,
+            keyword_length = 5
         },
     },
     experimental = {
         native_menu = false,
         ghost_text = true,
-    },
+    }
 })
+
 
 -- server's setup via lsp_installer
 local lsp_installer = require("nvim-lsp-installer")
@@ -77,18 +86,26 @@ lsp_installer.on_server_ready(function(server)
     vim.cmd [[ do user lspattachbuffers ]]
 end)
 
-require'cmp'.setup.cmdline('/', {
-  sources = {
-    { name = 'buffer' },
-    { name = 'nvim_lsp_document_symbol' }
-  }
+cmp.setup.cmdline(':', {
+    sources = {
+    { name = 'cmdline', keyword_length = 3 }
+    }
 })
 
-require'cmp'.setup.cmdline(':', {
-  sources = {
-    { name = 'cmdline' },
-    { name = 'buffer' },
-    { name = 'path' }
-  }
+cmp.setup.cmdline('/', {
+    sources = {
+    { name = 'buffer' }
+    }
 })
 
+cmp.setup.cmdline('?', {
+    sources = {
+    { name = 'buffer' },
+    }
+})
+
+cmp.setup.cmdline(':%s/', {
+    sources = {
+    { name = 'buffer' }
+    }
+})

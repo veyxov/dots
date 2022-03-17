@@ -1,45 +1,26 @@
-local o = vim.o
+local opt = vim.opt
 
-o.termguicolors = true
+vim.g.mapleader = " "
 
--- o.number = true
--- o.relativenumber = true
+-- Cool floating window popup menu for completion on command line
+opt.pumblend = 20
+opt.wildmode = "longest:full"
+opt.wildoptions = "pum"
+opt.termguicolors = true
 
-o.ignorecase = true
-o.smartcase = true
-o.expandtab = true
+opt.showmode = false
 
-o.signcolumn = 'number' -- One line for everything
+-- Searching
+opt.ignorecase = true
+opt.smartcase = true
 
---o.completeopt = { "menu", "menuone", "noselect" }
+opt.wrap = false
 
--- oimizations
-o.wrap = false
-o.showmode = false
-o.swapfile = false
-o.lazyredraw = true
+-- Tab or space ?
+local tab = 4
+opt.tabstop = tab
+opt.shiftwidth = tab
+opt.softtabstop = tab
+opt.expandtab = true
 
--- Tabs or spaces ?
-o.expandtab = true
-local tab_size = 4
-o.tabstop = tab_size
-o.shiftwidth = tab_size
-o.softtabstop = tab_size
-
--- Pseudo transparent menu popups
-o.pumblend = 20
-vim.cmd [[ hi PmenuSel blend=15 ]]
-
--- Disable some builtin vim plugins
-local disabled_built_ins = {
-    "2html_plugin", "getscript", "getscriptPlugin",
-    "gzip", "logipat", "netrw", "netrwPlugin",
-    "netrwSettings", "netrwFileHandlers", "matchit",
-    "tar", "tarPlugin", "rrhelper", "spellfile_plugin",
-    "vimball", "vimballPlugin", "zip", "zipPlugin",
-}
-
-for _, plugin in pairs(disabled_built_ins) do vim.g["loaded_" .. plugin] = 1 end
-
--- Check out invisible characters
-o.listchars = "tab:>·,trail:•,extends:>,precedes:<,space:␣,eol:↴"
+opt.formatoptions = "rnj"
