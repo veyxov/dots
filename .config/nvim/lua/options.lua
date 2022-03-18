@@ -9,6 +9,7 @@ opt.wildoptions = "pum"
 opt.termguicolors = true
 
 opt.showmode = false
+opt.updatetime = 1000
 
 -- Searching
 opt.ignorecase = true
@@ -24,3 +25,7 @@ opt.softtabstop = tab
 opt.expandtab = true
 
 opt.formatoptions = "rnj"
+
+-- global status line
+opt.laststatus = 3
+vim.cmd 'hi WinSeparator guibg=None guifg=Comment'
