@@ -74,7 +74,7 @@ require 'packer'.startup({function(use)
 
         setup = function ()
             -- Lsp
-            Map ("<leader>la", Cmd "Lspsaga code_action")
+            Map ("<C-A>", Cmd "Lspsaga code_action")
             Map ("<leader>ld", Cmd "lua vim.lsp.buf.implementation()")
             Map ("<leader>lD", Cmd "lua vim.lsp.buf.definition()")
             Map ("<leader>lf", Cmd "Lspsaga lsp_finder")
