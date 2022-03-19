@@ -1,8 +1,8 @@
 # Load Xresources
-#xrdb $HOME/.config/X11/Xresources
+xrdb $HOME/.config/X11/Xresources
 
 # Set keyboard to my custom config
-kmonad -w 0 .config/keyboard/kb_test.kbd &
+kmonad -w 0 $HOME/.config/keyboard/colex.kbd &
 
 # Locking system
 xautolock -time 1 -corners 000- -locker slock &
@@ -14,7 +14,7 @@ dwmblocks &
 clipmenud &
 
 # Compositor
-picom --config $HOME/.config/picom.conf -b
+picom --experimental-backends --config $HOME/.config/picom.conf -b
 
 # Set the desktop wallpaper (custom scirpt)
 setwall &
