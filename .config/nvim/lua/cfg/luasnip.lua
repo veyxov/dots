@@ -37,9 +37,19 @@ ls.config.set_config {
 ls.snippets = {
     lua = {
         s('req', fmt("local {} = require '{}'", { i(1, "module"), rep(1) })),
+        s('map', fmt("Map ('{}', '{}')", { i(1, "<leader>"), i(2) }))
     },
 
     cs = {
+        s('summary',
+        fmt(
+        [[
+        /// <summary>
+        /// {}
+        /// </summary>
+        ]],
+        { i(1, "Some api documentation") })),
+
         s('prop',
         fmt("public {} {} {{ get; set; }}\n{}", { i(1, "string"), i(2, "Name"), i(0) })),
 

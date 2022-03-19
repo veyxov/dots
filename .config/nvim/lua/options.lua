@@ -27,5 +27,14 @@ opt.expandtab = true
 opt.formatoptions = "rnj"
 
 -- global status line
-opt.laststatus = 3
+vim.opt.laststatus = 3
+vim.opt.fillchars:append({
+    horiz = '━',
+    horizup = '┻',
+    horizdown = '┳',
+    vert = '┃',
+    vertleft = '┨',
+    vertright = '┣',
+    verthoriz = '╋',
+})
 vim.cmd 'hi WinSeparator guibg=None guifg=Comment'
