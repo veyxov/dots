@@ -225,4 +225,5 @@ then
 
     # Starship
     eval "$(starship init bash)"
+    revquote
 fi
