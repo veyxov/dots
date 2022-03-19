@@ -19,14 +19,9 @@
   sl (sticky-key 1000 lsft)
   sr (sticky-key 1000 rsft)
 
-  left (tap-hold 200 Left C-Left)
-  right (tap-hold 200 Right C-Right)
-  up (tap-hold 200 Up C-Up)
-  down (tap-hold 200 Down C-Down)
-
   ;; Backspace on tap, extend on hold
   ext1 (tap-hold 150 Backspace (layer-toggle extend))
-  ext2 (tap-hold 150 Enter rmet)
+  ext2 (tap-hold 250 Enter rmet)
   mouse1 (cmd-button "DISPLAY=:0 xdotool click 1")
 )
 
@@ -42,8 +37,8 @@
 (deflayer extend
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _     Esc    w    e    r    t    y    u    @up    o    p    [    ]    \
-  caps    a    s    {    \(    g    h    @left    @down    @right    Delete    '    ret
+ _     Esc    w    e    r    t    y    u    Up    o    p    [    ]    \
+  caps    a    s    {    \(    g    h    Left    Down    Right    Delete    '    ret
   lsft      z    }    \)    v    b    @mouse1    m    ,    .    /    rsft
   lctl    lmet lalt           Enter            ralt rctl)
 
