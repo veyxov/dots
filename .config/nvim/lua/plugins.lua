@@ -1,6 +1,4 @@
 local kfg = function (name) return string.format('require("cfg/%s")', name) end
-Map = require 'globals'.Map;
-Cmd = require 'globals'.Cmd;
 
 require 'packer'.startup({function(use)
     -- Global deps
@@ -30,8 +28,6 @@ require 'packer'.startup({function(use)
 
         config = kfg 'telescope',
         setup = function()
-            require'globals'.Map('<C-F>', require'globals'.Cmd 'Telescope find_files')
-            require'globals'.Map('<leader>ff', require'globals'.Cmd 'Telescope')
         end,
     }
 
@@ -71,25 +67,12 @@ require 'packer'.startup({function(use)
         { 'williamboman/nvim-lsp-installer', after = "nvim-lspconfig", config = kfg "lsp" },
 
         { 'tami5/lspsaga.nvim', cmd = 'Lspsaga' },
-
-        setup = function ()
-            -- Lsp
-            Map ("<C-A>", Cmd "Lspsaga code_action")
-            Map ("<leader>ld", Cmd "lua vim.lsp.buf.implementation()")
-            Map ("<leader>lD", Cmd "lua vim.lsp.buf.definition()")
-            Map ("<leader>lf", Cmd "Lspsaga lsp_finder")
-            Map ("<leader>lr", Cmd "Lspsaga rename")
-            Map ("<leader>pd", Cmd "Lspsaga preview_definition")
-            Map ("<C-K>", Cmd "Lspsaga hover_doc")
-            Map ("<C-T>", Cmd "Lspsaga open_floaterm")
-            Map ("<C-T>", Cmd "Lspsaga close_floaterm", "t")
-        end
     }
 
     -- Git
     use {
         'tpope/vim-fugitive',
-        cmd = "G",
+        cmd = "Gedit",
     }
 
     use {
@@ -97,15 +80,27 @@ require 'packer'.startup({function(use)
         config = function()
             require('gitsigns').setup()
         end,
-        after = "plenary.nvim"
+
+        event = "BufWritePre"
     }
 
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icon
+            'kyazdani42/nvim-web-devicons',
+            before = "nvim-tree.lua"
         },
-        config = function() require'nvim-tree'.setup {} end
+        config = function() require'nvim-tree'.setup {} end,
+
+        cmd = "NvimTreeToggle"
+    }
+
+    use {
+        'ThePrimeagen/harpoon',
+        config = function ()
+            require("telescope").load_extension('harpoon')
+        end,
+        after = "telescope.nvim"
     }
 
     use {
@@ -120,12 +115,32 @@ require 'packer'.startup({function(use)
         end
     }
 
+    -- Full project lsp diagnostics
+    use {
+        'folke/trouble.nvim',
+        cmd = "Trouble"
+    }
+
     -- Colors
     use {
-        'bluz71/vim-nightfly-guicolors',
-        config = function()
-            vim.cmd "colorscheme nightfly"
-        end
+        {
+            'bluz71/vim-nightfly-guicolors',
+            config = function()
+                -- vim.cmd "colorscheme nightfly"
+            end
+        },
+        {
+            'rebelot/kanagawa.nvim',
+            config = function ()
+                -- Default options:
+                require('kanagawa').setup({
+                    transparent = false,        -- do not set background color
+                    dimInactive = true,        -- dim inactive window `:h hl-NormalNC`
+                    globalStatus = true,       -- adjust window separators highlight for laststatus=3
+                })
+                vim.cmd 'color kanagawa'
+            end
+        }
     }
 end,
 

@@ -3,7 +3,7 @@ local api = vim.api
 local group = api.nvim_create_augroup('WEXOV', { clear = true })
 
 api.nvim_create_autocmd('BufWritePost', {
-    pattern = '*',
+    pattern = '*.lua',
     callback = function()
         vim.cmd "source <afile>"
         vim.cmd "PackerCompile"
