@@ -3,13 +3,9 @@ local kfg = function (name) return string.format('require("cfg/%s")', name) end
 require 'packer'.startup({function(use)
     -- Global deps
     use {
-        {
-            'wbthomason/packer.nvim'
-        },
-        {
+            'wbthomason/packer.nvim',
             'nvim-lua/plenary.nvim',
-            after = 'packer.nvim'
-        }
+            'kyazdani42/nvim-web-devicons'
     }
 
     -- Telescope
@@ -86,10 +82,6 @@ require 'packer'.startup({function(use)
 
     use {
         'kyazdani42/nvim-tree.lua',
-        requires = {
-            'kyazdani42/nvim-web-devicons',
-            before = "nvim-tree.lua"
-        },
         config = function() require'nvim-tree'.setup {} end,
 
         cmd = "NvimTreeToggle"
@@ -121,6 +113,13 @@ require 'packer'.startup({function(use)
         cmd = "Trouble"
     }
 
+    -- Status line
+    use {
+        'nvim-lualine/lualine.nvim',
+        config = kfg 'lualine',
+        after = "kanagawa.nvim"
+    }
+
     -- Colors
     use {
         {
@@ -139,7 +138,8 @@ require 'packer'.startup({function(use)
                     globalStatus = true,       -- adjust window separators highlight for laststatus=3
                 })
                 vim.cmd 'color kanagawa'
-            end
+            end,
+            event = "InsertEnter"
         }
     }
 end,

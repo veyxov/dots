@@ -2,6 +2,8 @@ local opt = vim.opt
 
 vim.g.mapleader = " "
 
+opt.swapfile = false
+
 -- Cool floating window popup menu for completion on command line
 opt.pumblend = 20
 opt.wildmode = "longest:full"
@@ -28,13 +30,4 @@ opt.formatoptions = "rnj"
 
 -- global status line
 vim.opt.laststatus = 3
-vim.opt.fillchars:append({
-    horiz = '━',
-    horizup = '┻',
-    horizdown = '┳',
-    vert = '┃',
-    vertleft = '┨',
-    vertright = '┣',
-    verthoriz = '╋',
-})
 vim.cmd 'hi WinSeparator guibg=None guifg=Comment'
