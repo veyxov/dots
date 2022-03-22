@@ -37,3 +37,15 @@ Map ('<leader>hh', Cmd 'Telescope harpoon marks')
 
 -- GIT
 Map('<leader>g', Cmd 'Gedit:')
+
+-- Dap
+Map ('<F5>', Cmd 'lua require "dap".continue()')
+Map ('<F10>', Cmd 'lua require "dap".step_over()')
+Map ('<F11>', Cmd 'lua require "dap".step_into()')
+Map ('<F12>', Cmd 'lua require "dap".step_out()')
+Map ('<leader>b', Cmd 'lua require "dap".toggle_breakpoint()')
+Map ('<leader>B', Cmd 'lua require "dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))')
+Map ('<leader>lp', Cmd 'lua require "dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))')
+Map ('<leader>dr', Cmd 'lua require "dap".repl.open()')
+Map ('<leader>dl', Cmd 'lua require "dap".run_last()')
+

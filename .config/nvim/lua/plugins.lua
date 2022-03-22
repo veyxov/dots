@@ -121,6 +121,55 @@ require 'packer'.startup({function(use)
         cmd = "Trouble"
     }
 
+    use {
+        'mfussenegger/nvim-dap',
+        config = function ()
+            local dap, dapui = require("dap"), require("dapui")
+            dap.listeners.after.event_initialized["dapui_config"] = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"] = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"] = function()
+                dapui.close()
+            end
+
+            dap.adapters.coreclr = {
+                type = 'executable',
+                command = '/home/iz/.local/share/nvim/dapinstall/dnetcs/netcoredbg/netcoredbg',
+                args = {'--interpreter=vscode'}
+            }
+
+            dap.configurations.cs = {
+            {
+                    type = "coreclr",
+                    name = "launch - netcoredbg",
+                    request = "launch",
+                    program = function()
+                        return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+                    end,
+                },
+            }
+            dapui.setup()
+        end,
+        requires = {
+            {
+                "rcarriga/nvim-dap-ui",
+            },
+            {
+                "Pocco81/DAPInstall.nvim",
+                config = function ()
+                    local dap_install = require("dap-install")
+
+                    dap_install.setup({
+                        installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
+                    })
+                end
+            },
+        }
+    }
+
     -- Colors
     use {
         {
