@@ -29,5 +29,5 @@ opt.expandtab = true
 opt.formatoptions = "rnj"
 
 -- global status line
-vim.opt.laststatus = 3
+opt.laststatus = 3
 vim.cmd 'hi WinSeparator guibg=None guifg=Comment'
