@@ -50,6 +50,11 @@ ls.snippets = {
         ]],
         { i(1, "Some api documentation") })),
 
+        s('response',
+        fmt(
+        [[<response code="{}">{}</response>{}]],
+        { i(1, "200"), i(2), i(0) })),
+
         s('prop',
         fmt("public {} {} {{ get; set; }}\n{}", { i(1, "string"), i(2, "Name"), i(0) })),
 

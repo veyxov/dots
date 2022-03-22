@@ -25,3 +25,16 @@ vim.api.nvim_create_autocmd('CursorHold', {
     end,
     group = group,
 })
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+    desc = 'Strip trialling spaces',
+    command = [[%s/\s\+$//e"]],
+    group = group,
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+    callback = function ()
+        vim.lsp.buf.formatting_sync()
+    end,
+    group = group,
+})

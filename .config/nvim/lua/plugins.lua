@@ -35,6 +35,14 @@ require 'packer'.startup({function(use)
         config = kfg "treesitter"
     }
 
+    -- LSP
+    use {
+        { 'neovim/nvim-lspconfig', after = "nvim-treesitter" },
+        { 'williamboman/nvim-lsp-installer', after = "nvim-lspconfig", config = kfg "lsp" },
+
+        { 'tami5/lspsaga.nvim', cmd = 'Lspsaga' },
+    }
+
     -- Autocomplete
     use {
         -- EyeCandy
@@ -57,12 +65,11 @@ require 'packer'.startup({function(use)
 
     }
 
-    -- LSP
+    -- Status line
     use {
-        { 'neovim/nvim-lspconfig', after = "nvim-treesitter" },
-        { 'williamboman/nvim-lsp-installer', after = "nvim-lspconfig", config = kfg "lsp" },
-
-        { 'tami5/lspsaga.nvim', cmd = 'Lspsaga' },
+        'nvim-lualine/lualine.nvim',
+        config = kfg 'lualine',
+        after = "nvim-cmp"
     }
 
     -- Git
@@ -77,7 +84,7 @@ require 'packer'.startup({function(use)
             require('gitsigns').setup()
         end,
 
-        event = "BufWritePre"
+        event = "BufWritePost"
     }
 
     use {
@@ -92,7 +99,8 @@ require 'packer'.startup({function(use)
         config = function ()
             require("telescope").load_extension('harpoon')
         end,
-        after = "telescope.nvim"
+
+        keys = { '<leader>hh' }
     }
 
     use {
@@ -113,19 +121,12 @@ require 'packer'.startup({function(use)
         cmd = "Trouble"
     }
 
-    -- Status line
-    use {
-        'nvim-lualine/lualine.nvim',
-        config = kfg 'lualine',
-        after = "kanagawa.nvim"
-    }
-
     -- Colors
     use {
         {
             'bluz71/vim-nightfly-guicolors',
             config = function()
-                -- vim.cmd "colorscheme nightfly"
+                vim.cmd "colorscheme nightfly"
             end
         },
         {
@@ -133,11 +134,10 @@ require 'packer'.startup({function(use)
             config = function ()
                 -- Default options:
                 require('kanagawa').setup({
-                    transparent = false,        -- do not set background color
                     dimInactive = true,        -- dim inactive window `:h hl-NormalNC`
-                    globalStatus = true,       -- adjust window separators highlight for laststatus=3
+                    globalStatus = false,       -- adjust window separators highlight for laststatus=3
                 })
-                vim.cmd 'color kanagawa'
+                -- vim.cmd 'color kanagawa'
             end,
             event = "InsertEnter"
         }
