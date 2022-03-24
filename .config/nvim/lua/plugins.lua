@@ -17,14 +17,11 @@ require 'packer'.startup({function(use)
             {
                 'nvim-telescope/telescope-fzf-native.nvim', run = 'make',
                 config = function () require('telescope').load_extension('fzf') end,
-                after = 'telescope.nvim',
-                opt = true
+                after = 'telescope.nvim'
             },
         },
 
         config = kfg 'telescope',
-        setup = function()
-        end,
     }
 
     -- TreeSitter
@@ -52,7 +49,6 @@ require 'packer'.startup({function(use)
         { 'L3MON4D3/LuaSnip', after = "lspkind-nvim", config = kfg 'luasnip' },
 
         { 'hrsh7th/nvim-cmp', after = "LuaSnip", config = kfg 'cmp' },
-
         -- Source
         { "hrsh7th/cmp-path",                     after = "nvim-cmp" },
         { "hrsh7th/cmp-buffer",                   after = "nvim-cmp" },
@@ -69,7 +65,7 @@ require 'packer'.startup({function(use)
     use {
         'nvim-lualine/lualine.nvim',
         config = kfg 'lualine',
-        after = "nvim-cmp"
+        after = "vim-nightfly-guicolors"
     }
 
     -- Git
@@ -89,7 +85,7 @@ require 'packer'.startup({function(use)
 
     use {
         'kyazdani42/nvim-tree.lua',
-        config = function() require'nvim-tree'.setup {} end,
+        config = kfg 'tree',
 
         cmd = "NvimTreeToggle"
     }
@@ -102,7 +98,7 @@ require 'packer'.startup({function(use)
 
         keys = { '<leader>hh' }
     }
-
+--[[
     use {
         "ggandor/lightspeed.nvim",
         keys = { "s", "S" },
@@ -110,64 +106,22 @@ require 'packer'.startup({function(use)
         config = function ()
             require "lightspeed".setup {
                 ignore_case = true,
-                limit_ft_matches = 10,
+                jump_to_unique_chars = { safety_timeout = nil },
             }
         end
     }
-
+--]]
+    use {
+        'ggandor/leap.nvim',
+        config = function()
+            require 'leap'.set_default_keymaps()
+        end,
+        keys = { 's', 'S'}
+    }
     -- Full project lsp diagnostics
     use {
         'folke/trouble.nvim',
         cmd = "Trouble"
-    }
-
-    use {
-        'mfussenegger/nvim-dap',
-        config = function ()
-            local dap, dapui = require("dap"), require("dapui")
-            dap.listeners.after.event_initialized["dapui_config"] = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated["dapui_config"] = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited["dapui_config"] = function()
-                dapui.close()
-            end
-
-            dap.adapters.coreclr = {
-                type = 'executable',
-                command = '/home/iz/.local/share/nvim/dapinstall/dnetcs/netcoredbg/netcoredbg',
-                args = {'--interpreter=vscode'}
-            }
-
-            dap.configurations.cs = {
-            {
-                    type = "coreclr",
-                    name = "launch - netcoredbg",
-                    request = "launch",
-                    program = function()
-                        return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-                    end,
-                },
-            }
-            dapui.setup()
-        end,
-        requires = {
-            {
-                "rcarriga/nvim-dap-ui",
-            },
-            {
-                "Pocco81/DAPInstall.nvim",
-                config = function ()
-                    local dap_install = require("dap-install")
-
-                    dap_install.setup({
-                        installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
-                    })
-                end
-            },
-        }
     }
 
     -- Colors
@@ -176,15 +130,16 @@ require 'packer'.startup({function(use)
             'bluz71/vim-nightfly-guicolors',
             config = function()
                 vim.cmd "colorscheme nightfly"
-            end
+            end,
+            event = "InsertEnter"
         },
         {
             'rebelot/kanagawa.nvim',
             config = function ()
                 -- Default options:
                 require('kanagawa').setup({
-                    dimInactive = true,        -- dim inactive window `:h hl-NormalNC`
-                    globalStatus = false,       -- adjust window separators highlight for laststatus=3
+                    dimInactive = true,
+                    globalStatus = true,
                 })
                 -- vim.cmd 'color kanagawa'
             end,

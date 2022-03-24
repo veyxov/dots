@@ -27,7 +27,16 @@ opt.softtabstop = tab
 opt.expandtab = true
 
 opt.formatoptions = "rnj"
+-- Disable some builtin vim plugins
+local disabled_built_ins = {
+    "2html_plugin", "getscript", "getscriptPlugin",
+    "gzip", "logipat", "netrw", "netrwPlugin",
+    "netrwSettings", "netrwFileHandlers", "matchit",
+    "tar", "tarPlugin", "rrhelper", "spellfile_plugin",
+    "vimball", "vimballPlugin", "zip", "zipPlugin",
+}
 
--- global status line
-opt.laststatus = 3
-vim.cmd 'hi WinSeparator guibg=None guifg=Comment'
+for _, plugin in pairs(disabled_built_ins) do vim.g["loaded_" .. plugin] = 1 end
+
+-- Check out invisible characters
+opt.listchars = "tab:>·,trail:•,extends:>,precedes:<,space:␣,eol:↴"
