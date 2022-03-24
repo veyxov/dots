@@ -115,6 +115,10 @@ require 'packer'.startup({function(use)
         'ggandor/leap.nvim',
         config = function()
             require 'leap'.set_default_keymaps()
+            require('leap').setup {
+                safe_labels = {'a', 'r', 's', 't', 'n', 'e', 'i', 'o', 'f', 'l', 'u', 'y', 'w', 'q', 'g', 'm' },
+                labels = {'a', 'r', 's', 't', 'n', 'e', 'i', 'o', 'f', 'l', 'u', 'y', 'w', 'q', 'g', 'm' },
+            }
         end,
         keys = { 's', 'S'}
     }
@@ -151,3 +155,5 @@ end,
 config = {
     git = { clone_timeout = nil }
 }})
+-- Chek:
+-- https://github.com/nvim-neo-tree/neo-tree.nvim/tree/v2.x

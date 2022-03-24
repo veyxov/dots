@@ -1,6 +1,9 @@
 " Reddit comment toggler
 bind ;c hint -Jc [class*="expand"],[class="togg"],[class="comment_folder"]
 
+" Colemak
+set hintchars arstneiogmfuywdh
+
 " make d take you to the left (I find it much less confusing)
 
 bind d composite tabprev; tabclose #
@@ -30,11 +33,11 @@ seturl codeforces.com noiframe true
 " " insecure. For details, read the comment at the top of this file.
 command fixamo_quiet jsb tri.excmds.setpref("privacy.resistFingerprinting.block_mozAddonManager", "true").then(tri.excmds.setpref("extensions.webextensions.restrictedDomains", '""'))
 command fixamo js tri.excmds.setpref("privacy.resistFingerprinting.block_mozAddonManager", "true").then(tri.excmds.setpref("extensions.webextensions.restrictedDomains", '""').then(tri.excmds.fillcmdline_tmp(3000, "Permissions added to user.js. Please restart Firefox to make them take affect.")))
-" 
+"
 " " Make Tridactyl work on more sites at the expense of some security. For
 " " details, read the comment at the top of this file.
 fixamo_quiet
-" 
+"
 " " Equivalent to `set csp clobber` before it was removed. This weakens your
 " " defences against cross-site-scripting attacks and other types of
 " " code-injection by reducing the strictness of Content Security Policy on
@@ -43,7 +46,7 @@ fixamo_quiet
 " " You may not wish to run this. Mozilla strongly feels that you shouldn't.
 " "
 " " It allows Tridactyl to function on more pages, e.g. raw GitHub pages.
-" " 
+" "
 " " We remove the sandbox directive
 " " https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/sandbox
 " " which allows our iframe to run (and anyone else's) on any website.
