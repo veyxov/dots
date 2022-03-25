@@ -3,9 +3,10 @@ local kfg = function (name) return string.format('require("cfg/%s")', name) end
 require 'packer'.startup({function(use)
     -- Global deps
     use {
-            'wbthomason/packer.nvim',
-            'nvim-lua/plenary.nvim',
-            'kyazdani42/nvim-web-devicons'
+        'lewis6991/impatient.nvim',
+        'wbthomason/packer.nvim',
+        'nvim-lua/plenary.nvim',
+        'kyazdani42/nvim-web-devicons'
     }
 
     -- Telescope
