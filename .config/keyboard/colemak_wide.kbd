@@ -19,10 +19,8 @@
   sl (sticky-key 1000 lsft)
   sr (sticky-key 1000 rsft)
 
-  BS C-Backspace
-
   ;; Backspace on tap, extend on hold
-  ext1 (tap-hold 200 @BS (layer-toggle extend))
+  ext1 (tap-hold 200 Backspace (layer-toggle extend))
   ext2 (tap-hold 200 Enter (layer-toggle symbol))
   ext3 (tap-hold 200 Enter (layer-toggle numbers))
   mouse1 (cmd-button "DISPLAY=:0 xdotool click 1")
