@@ -50,6 +50,22 @@ ls.snippets = {
         ]],
         { i(1, "Some api documentation") })),
 
+        s('amethod',
+        fmt(
+        [[
+        {} async Task{} {}({})
+        {{
+            {}
+        }}
+        ]],
+        {
+            i(1, "public"),
+            i(2, "<string>"),
+            i(3, "Method"),
+            i(4, "string a"),
+            i(0),
+        })),
+
         s('response',
         fmt(
         [[<response code="{}">{}</response>{}]],
