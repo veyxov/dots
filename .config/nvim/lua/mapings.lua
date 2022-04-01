@@ -1,6 +1,8 @@
 Map = require 'globals'.Map;
 Cmd = require 'globals'.Cmd;
 
+Map ("<leader>y", '"+y')
+
 -- Mappings
 Map ("<leader>q", Cmd "q")
 Map ("<leader>w", Cmd "wall")
@@ -28,12 +30,12 @@ Map ("<C-T>", Cmd "Lspsaga open_floaterm")
 Map ("<C-T>", Cmd "Lspsaga close_floaterm", "t")
 
 -- Harpoon
-Map ('<leader>h',  Cmd 'lua require("harpoon.mark").add_file()')
+Map ('<leader>hh',  Cmd 'lua require("harpoon.mark").add_file()')
 Map ('<leader>ha', Cmd 'lua require("harpoon.ui").nav_file(1)')
 Map ('<leader>hr', Cmd 'lua require("harpoon.ui").nav_file(2)')
 Map ('<leader>hs', Cmd 'lua require("harpoon.ui").nav_file(3)')
 Map ('<leader>ht', Cmd 'lua require("harpoon.ui").nav_file(4)')
-Map ('<leader>hh', Cmd 'Telescope harpoon marks')
+Map ('<leader>hp', Cmd 'lua require("harpoon.ui").toggle_quick_menu()')
 
 -- GIT
 Map('<leader>g', Cmd 'Gedit:')
@@ -48,4 +50,4 @@ Map ('<leader>B', Cmd 'lua require "dap".set_breakpoint(vim.fn.input("Breakpoint
 Map ('<leader>lp', Cmd 'lua require "dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))')
 Map ('<leader>dr', Cmd 'lua require "dap".repl.open()')
 Map ('<leader>dl', Cmd 'lua require "dap".run_last()')
-
+Map ('<leader>dx', Cmd 'lua require("dap").disconnect()')
