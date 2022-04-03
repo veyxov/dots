@@ -25,12 +25,18 @@
   ext1 (tap-hold 200 @BS (layer-toggle extend))
   ext2 (tap-hold 200 Enter (layer-toggle symbol))
   ext3 (tap-hold 200 Enter (layer-toggle numbers))
-  mouse1 (cmd-button "DISPLAY=:0 xdotool click 1")
+
+  m1 (cmd-button "DISPLAY=:0 xdotool click 1")
+  m2 (cmd-button "DISPLAY=:0 xdotool click 2")
+  mRight (cmd-button "DISPLAY=:0 xdotool mousemove_relative --sync 10 0")
+  mLeft (cmd-button "DISPLAY=:0 xdotool mousemove_relative --sync -- -10 0")
+  mDown (cmd-button "DISPLAY=:0 xdotool mousemove_relative --sync -- 0 -10")
+  mUp (cmd-button "DISPLAY=:0 xdotool mousemove_relative --sync -- 0 10")
 )
 
 (deflayer colemak-CAWS
  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
- grv    1  2    3    4    5    6    _    7   8    9   0    -    .
+ _    _  _    _    _    _    _    _    _   _    _   _    -    .
  tab     q    w    f    p    b    _    j    l    u    y    ;   '    \
  @ext1    a    r    s    t    g    _    m    n    e    i    o    rmet
  @sl       x    c    d    v    z    _    k    h    ,    .    @sr
@@ -40,25 +46,25 @@
 (deflayer extend
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _     Esc    \(   \)    r    t    y    u    _    Up    p    [    ]    \
-  _    -    {    }    =    g    h  _  Left    Down    Right    Delete   ret
-  lsft      [   ]    \)    v    b    @mouse1    m    ,    .    /    rsft
+ _     Esc    \(   \)    _    _    _    _    _   Up _    _    _    _
+  _    -    {    }    =    _    _  _  Left    Down    Right    _   _
+  lsft      [   ]    \)    _    _    _    m    ,    .    /    rsft
   lctl    lmet lalt           bspc            ret rctl)
 
 (deflayer symbol
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _     _    \(   \)    _    _    _    _    _    *    p    _    _    _
-  _    !    {    }    ?    _    _  _      -    /    +    =   ret
-  lsft      [   ]    \)    _    _    @mouse1    _    _    _    _    rsft
-  lctl    lmet @ext3           Space            ret rctl)
+ _     @    {   }    #    _    _    _    %    *    ^    _    _    _
+  _    !    \(    \)  ?    _    _  _      |    /    +    =   _
+  lsft      [   ]    _    _    _     _   _    _    _    _    rsft
+  @ext3    lmet lalt           Space            ret rctl)
 
 (deflayer numbers
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        4    5    6    _    _    _    _    _    _    _    _    _    _
- _        1    2    3    0    _    _    _    _    _    _    _    _
- _        7    8    9    _    _    _    _    _    _    _    _
+ _        _    _    _    _    _    _    _    _    _    _    _    _    _
+ _        1    2    3    4    _    _  _  7    6    5   0  _
+ _        _    _    9    _    _    _    _    8    _    _    _
  _        _    _              _              _    _
 )
 
