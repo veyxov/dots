@@ -1,0 +1,5 @@
+hidden partial alphanumeric_keys
+xkb_symbols "slashswitch" {
+  key <TLDE> { [     slash,       bar,        notsign,       notsign ] };
+  key <AE07> { [     7,           backslash,  braceleft,     0x0100032D ] };
+}

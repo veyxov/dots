@@ -14,50 +14,59 @@
   lctl    lmet lalt           spc            ralt rctl
 )
 
-;; Make shift keys "sticky-key", tap once on shift, then a key
 (defalias
+  ;; Make shift keys "sticky-key", tap once on shift, then a key
   sl (sticky-key 1000 lsft)
   sr (sticky-key 1000 rsft)
 
-  BS C-Backspace
-
   ;; Backspace on tap, extend on hold
-  ext1 (tap-hold 200 @BS (layer-toggle extend))
-  ext2 (tap-hold 200 Enter (layer-toggle symbol))
-  ext3 (tap-hold 200 Enter (layer-toggle numbers))
+  navl (tap-hold-next-release 175 spc (layer-toggle nav))
+  syml (tap-hold-next-release 175 Enter (layer-toggle symbol))
+  numl (tap-hold-next-release 200 tab (layer-toggle numbers))
+
+  BS (tap-hold-next-release 175 C-Backspace (layer-toggle symbol))
+
+  Rus (around (cmd-button "st -e '/home/iz/loadkb/loadkb.sh'")
+            (layer-switch rus))
+
+  Col (around (cmd-button "setxkbmap us")
+            (layer-switch colemak))
 
   m1 (cmd-button "DISPLAY=:0 xdotool click 1")
   m2 (cmd-button "DISPLAY=:0 xdotool click 2")
-  mRight (cmd-button "DISPLAY=:0 xdotool mousemove_relative --sync 10 0")
-  mLeft (cmd-button "DISPLAY=:0 xdotool mousemove_relative --sync -- -10 0")
-  mDown (cmd-button "DISPLAY=:0 xdotool mousemove_relative --sync -- 0 -10")
-  mUp (cmd-button "DISPLAY=:0 xdotool mousemove_relative --sync -- 0 10")
+
+  redo C-Z
+  paste C-v
+  cut C-x
+  copy C-c
+  undo C-z
 )
 
-(deflayer colemak-CAWS
- esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
- _    _  _    _    _    _    _    _    _   _    _   _    -    .
- tab     q    w    f    p    b    _    j    l    u    y    ;   '    \
- @ext1    a    r    s    t    g    _    m    n    e    i    o    rmet
+(deflayer colemak
+ _        _    _    _    _    _    _    _    _    _    _    _    _
+ _    _  _    _    _    _    _    _    _   _    _   _    -    @Rus
+ @numl  _    _    f    p    b    _    j    l    u    y    ;   '    \
+  @BS   _    r    s    t    _    _    m    n    e    i    o    rmet
  @sl       x    c    d    v    z    _    k    h    ,    .    @sr
- lctl     lmet lalt                spc             @ext2  rctl
+ _    _ _                @navl             @syml  _
 )
 
-(deflayer extend
+(deflayer nav
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _     Esc    \(   \)    _    _    _    _    _   Up _    _    _    _
-  _    -    {    }    =    _    _  _  Left    Down    Right    _   _
-  lsft      [   ]    \)    _    _    _    m    ,    .    /    rsft
-  lctl    lmet lalt           bspc            ret rctl)
+ _     esc    _   _    _    _    _    @redo @cut @paste   @copy   @undo _ _
+  _    lmet    lalt    lctl    lshft    _    _  _  Left   Down Up    Right    _
+  _      _   _    _    _    _    _    _    _    pgdn    pgup    _
+  _    _ _           _            _ _
+)
 
 (deflayer symbol
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _     @    {   }    #    _    _    _    %    *    ^    _    _    _
-  _    !    \(    \)  ?    _    _  _      |    /    +    =   _
-  lsft      [   ]    _    _    _     _   _    _    _    _    rsft
-  @ext3    lmet lalt           Space            ret rctl)
+ _     @    {   }    &    _    _    _    %    *    ^    _    _    _
+  _    !    \(    \)  ?    _    _  \_   -    /    +    =   _
+  _     [   ]    #    _    _     _   _    _    _    _    _
+  _    _ _           Space            _ _)
 
 (deflayer numbers
  _        _    _    _    _    _    _    _    _    _    _    _    _
@@ -65,6 +74,15 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
  _        1    2    3    4    _    _  _  7    6    5   0  _
  _        _    _    9    _    _    _    _    8    _    _    _
+ _        _    _              _              _    _
+)
+
+(deflayer rus
+ _        _    _    _    _    _    _    _    _    _    _    _    _
+ _        _    _    _    _    _    _    _    _    _    _    _    _    @Col
+ _        _    _    _    _    _    _    _    _    _    _    _    _    _
+ _        _    _    _    _    _    _    _    _    _    _    _    _
+ _          _    _    _    _    _    _    _    _    _    _    _
  _        _    _              _              _    _
 )
 

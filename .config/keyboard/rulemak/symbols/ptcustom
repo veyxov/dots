@@ -1,0 +1,44 @@
+// `partial' means not fully defined keyboard
+// `alphanumeric_keys' and `modifier_keys' is which part that is modified
+// https://unix.stackexchange.com/a/506185
+// https://askubuntu.com/q/1044474
+
+
+default alphanumeric_keys modifier_keys
+xkb_symbols "base" {
+    // typo includes lots of symbols for 
+    // 3rd and 4th layer
+    // include "typo"
+
+    // se(us) == us layout with åäö on layer 3 & 4
+    include "pt(basic)"
+
+    // € on e
+    // include "eurosign(e)"
+
+    // use extra key next to left shift to switch level
+    // include "level3(lsgt_switch)"
+    // include "level3(ralt_switch)"
+
+    // Toggle CapsLock when pressed together with 
+    // the other Shift key.
+    // include "shift(both_capslock)"
+    // include "compose(ralt)"
+
+    // all includes prior to this line found in
+    // /usr/share/X11/xkb/symbols/
+
+    // below are custom symbols declared in here
+    // include "caps_esc_ctrl"
+    // include "hjkl-like-vi"
+
+    include "ptcustom(custom)"
+};
+
+partial alphanumeric_keys modifier_keys
+xkb_symbols "custom" {
+  key <TLDE> { [     slash,       bar,        notsign,       notsign ] };
+  key <AE07> { [     7,           backslash,  braceleft,     0x0100032D ] };
+};
+
+// syntax:ssDslash
