@@ -1,0 +1,32 @@
+hidden partial alphanumeric_keys
+xkb_symbols "hjkl-like-vi" {
+    // arrow keys (like vim)
+  key <AC06> {
+    actions = [ NoAction(), NoAction(), Redirect(key=<LEFT>), Redirect(key=<LEFT>) ] 
+  };
+  key <AC07> { 
+    actions = [ NoAction(), NoAction(), Redirect(key=<DOWN>), Redirect(key=<DOWN>) ] 
+  };
+  key <AC08> { 
+    actions = [ NoAction(), NoAction(), Redirect(key=<UP>), Redirect(key=<UP>) ] 
+  };
+  key <AC09> { 
+    actions = [ NoAction(), NoAction(), Redirect(key=<RGHT>), Redirect(key=<RGHT>) ] 
+  };
+
+  // row over HJKL
+  key <AD06> {
+    actions =   [ NoAction(), NoAction(), Redirect(key=<HOME>), Redirect(key=<HOME>) ] 
+  };
+  key <AD07> { 
+    actions =   [ NoAction(), NoAction(), Redirect(key=<PGDN>), Redirect(key=<PGDN>) ] 
+  };
+  key <AD08> { 
+    actions =   [ NoAction(), NoAction(), Redirect(key=<PGUP>), Redirect(key=<PGUP>) ] 
+  };
+  key <AD09> { 
+    actions =   [ NoAction(), NoAction(), Redirect(key=<END>), Redirect(key=<END>) ] 
+  };
+};
+
+// syntax:ssDslash

@@ -1,0 +1,14 @@
+// This changes the <CAPS> key to become a Control modifier,
+// but it will still produce the Escape keysym.
+// seems much faster then using xcape..
+hidden partial modifier_keys
+xkb_symbols "caps_esc_ctrl" {
+    replace key <CAPS> {
+        type[Group1] = "ONE_LEVEL",
+        symbols[Group1] = [ Escape ],
+        actions[Group1] = [ SetMods(modifiers=Control) ]
+    };
+    modifier_map Control { <CAPS> };
+};
+
+// syntax:ssDslash
