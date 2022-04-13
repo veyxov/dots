@@ -26,7 +26,7 @@
 
   BS (tap-hold-next-release 175 C-Backspace (layer-toggle symbol))
 
-  Rus (around (cmd-button "st -e '/home/iz/loadkb/loadkb.sh'")
+  Rus (around (cmd-button "st -e '/home/iz/.config/keyboard/rulemak/rulemak.sh'")
             (layer-switch rus))
 
   Col (around (cmd-button "setxkbmap us")
@@ -80,10 +80,10 @@
 (deflayer rus
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    @Col
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _
+ @numl        _    _    _    _    _    _    _    _    _    _    _    _    _
+  @BS   _    _    _    _    _    _    _    _    _    _    _    rmet
  _          _    _    _    _    _    _    _    _    _    _    _
- _        _    _              _              _    _
+ _    _ _                @navl             @syml  _
 )
 
 (deflayer empty
