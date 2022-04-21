@@ -26,9 +26,9 @@ vim.api.nvim_create_autocmd('CursorHold', {
     group = group,
 })
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-    desc = 'Strip trialling spaces',
-    command = [[%s/\s\+$//e"]],
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = '*.kbd',
+    command = [[!killall kmonad ; kmonad -w 500 "$HOME/.config/keyboard/colex.kbd" &]],
     group = group,
 })
 

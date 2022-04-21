@@ -48,25 +48,45 @@ require 'packer'.startup({function(use)
 
         -- Snippets
         { 'L3MON4D3/LuaSnip', after = "lspkind-nvim", config = kfg 'luasnip' },
+        { 'rafamadriz/friendly-snippets' },
 
         { 'hrsh7th/nvim-cmp', after = "LuaSnip", config = kfg 'cmp' },
         -- Source
         { "hrsh7th/cmp-path",                     after = "nvim-cmp" },
         { "hrsh7th/cmp-buffer",                   after = "nvim-cmp" },
+        { "hrsh7th/cmp-cmdline",                  after = "nvim-cmp" },
         { "hrsh7th/cmp-nvim-lua",                 after = "nvim-cmp" },
         { "hrsh7th/cmp-nvim-lsp",                 after = "nvim-cmp" },
         { "ray-x/cmp-treesitter",                 after = "nvim-cmp" },
         { "andersevenrud/cmp-tmux",               after = "nvim-cmp" },
         { "saadparwaiz1/cmp_luasnip",             after = "nvim-cmp" },
         { "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
-
     }
 
     -- Status line
     use {
         'nvim-lualine/lualine.nvim',
         config = kfg 'lualine',
-        after = "vim-nightfly-guicolors"
+    }
+
+    use {
+        "folke/twilight.nvim",
+        config = function()
+            require("twilight").setup {
+            }
+        end
+    }
+
+    use {
+        "Pocco81/TrueZen.nvim",
+        config = kfg 'zen'
+    }
+
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function ()
+            require("indent_blankline").setup {}
+        end
     }
 
     -- Git
@@ -97,28 +117,10 @@ require 'packer'.startup({function(use)
             require("telescope").load_extension('harpoon')
         end,
     }
---[[
-    use {
-        "ggandor/lightspeed.nvim",
-        keys = { "s", "S" },
 
-        config = function ()
-            require "lightspeed".setup {
-                ignore_case = true,
-                jump_to_unique_chars = { safety_timeout = nil },
-            }
-        end
-    }
---]]
     use {
         'ggandor/leap.nvim',
-        config = function()
-            require 'leap'.set_default_keymaps()
-            require('leap').setup {
-                safe_labels = {'a', 'r', 's', 't', 'n', 'e', 'i', 'o', 'f', 'l', 'u', 'y', 'w', 'q', 'g', 'm' },
-                labels = {'a', 'r', 's', 't', 'n', 'e', 'i', 'o', 'f', 'l', 'u', 'y', 'w', 'q', 'g', 'm' },
-            }
-        end,
+        config = kfg 'speed',
         keys = { 's', 'S'}
     }
     -- Full project lsp diagnostics
@@ -129,78 +131,20 @@ require 'packer'.startup({function(use)
 
     -- Colors
     use {
-        {
-            'bluz71/vim-nightfly-guicolors',
-            config = function()
-                vim.cmd "colorscheme nightfly"
-            end,
-            event = "InsertEnter"
-        },
-        {
-            'rebelot/kanagawa.nvim',
-            config = function ()
-                -- Default options:
-                require('kanagawa').setup({
-                    dimInactive = true,
-                    globalStatus = true,
-                })
-                -- vim.cmd 'color kanagawa'
-            end,
-            event = "InsertEnter"
-        }
-    }
-    use {
-        'mfussenegger/nvim-dap',
-        config = function ()
-            local dap, dapui = require("dap"), require("dapui")
-            dap.listeners.after.event_initialized["dapui_config"] = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated["dapui_config"] = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited["dapui_config"] = function()
-                dapui.close()
-            end
-
-            dap.adapters.coreclr = {
-                type = 'executable',
-                command = '/home/iz/.local/share/nvim/dapinstall/dnetcs/netcoredbg/netcoredbg',
-                args = {'--interpreter=vscode'}
-            }
-
-            dap.configurations.cs = {
-            {
-                    type = "coreclr",
-                    name = "launch - netcoredbg",
-                    request = "launch",
-                    program = function()
-                        return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-                    end,
-                },
-            }
-            dapui.setup()
+        'luisiacc/gruvbox-baby',
+        setup = function ()
+            vim.g.gruvbox_baby_transparent_mode = 1
+            vim.g.background_color = 'dark'
         end,
-        requires = {
-            {
-                "rcarriga/nvim-dap-ui",
-            },
-            {
-                "Pocco81/DAPInstall.nvim",
-                config = function ()
-                    local dap_install = require("dap-install")
 
-                    dap_install.setup({
-                        installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
-                    })
-                end
-            },
-        }
+        config = function ()
+            vim.cmd "color gruvbox-baby"
+        end
     }
 end,
 
-config = {
-    git = { clone_timeout = nil }
-}})
+    config = {
+        git = { clone_timeout = nil }
+    }})
 -- Chek:
 -- https://github.com/nvim-neo-tree/neo-tree.nvim/tree/v2.x
