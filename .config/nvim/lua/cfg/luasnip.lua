@@ -35,6 +35,10 @@ ls.config.set_config {
 
 
 ls.snippets = {
+    all = {
+        s('test', fmt("Test", {}))
+    },
+
     lua = {
         s('req', fmt("local {} = require '{}'", { i(1, "module"), rep(1) })),
         s('map', fmt("Map ('{}', '{}')", { i(1, "<leader>"), i(2) }))
@@ -98,3 +102,5 @@ ls.snippets = {
         ),
     }
 }
+
+require('luasnip.loaders.from_vscode').lazy_load()
