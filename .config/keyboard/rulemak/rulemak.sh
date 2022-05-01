@@ -16,7 +16,7 @@ main() {
 
   # -w 0 ; warning level 0, no warnings
   setxkbmap "$_name" -option -print \
-    | xkbcomp -w 0 -I"${_dir%/*}" - ":0"
+    | xkbcomp -w 10 -I"${_dir%/*}" - ":0"
 }
 
 set -E
