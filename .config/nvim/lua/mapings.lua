@@ -14,7 +14,7 @@ Map ("<leader>fc", Cmd "Telescope colorscheme")
 Map ("<leader>fh", Cmd "Telescope help_tags")
 Map ("<leader>fg", Cmd "Telescope live_grep")
 
-Map ("<C-N>", Cmd "NvimTreeToggle")
+Map ("<C-N>", Cmd "Neotree filesystem toggle")
 
 -- Lsp
 Map ("<C-A>", Cmd "Lspsaga code_action")
@@ -51,3 +51,9 @@ Map ('<leader>lp', Cmd 'lua require "dap".set_breakpoint(nil, nil, vim.fn.input(
 Map ('<leader>dr', Cmd 'lua require "dap".repl.open()')
 Map ('<leader>dl', Cmd 'lua require "dap".run_last()')
 Map ('<leader>dx', Cmd 'lua require("dap").disconnect()')
+
+Map ("<leader>rr", "<Plug>RestNvim")
+Map ("<leader>rp", "<Plug>RestNvimPreview")
+Map ("<leader>r.", "<Plug>RestNvimLast")
+
+Map("<C-c>", Cmd ":%y+") -- copy whole file content

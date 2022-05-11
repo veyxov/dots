@@ -67,19 +67,21 @@ require 'packer'.startup({function(use)
     use {
         'nvim-lualine/lualine.nvim',
         config = kfg 'lualine',
+        after = "nvim-cmp"
     }
 
     use {
         "folke/twilight.nvim",
         config = function()
-            require("twilight").setup {
-            }
-        end
+            require("twilight").setup { }
+        end,
+        after = "TrueZen.nvim",
     }
 
     use {
         "Pocco81/TrueZen.nvim",
-        config = kfg 'zen'
+        config = kfg 'zen',
+        cmd = "TZAtaraxis"
     }
 
     use {
@@ -101,15 +103,16 @@ require 'packer'.startup({function(use)
             require('gitsigns').setup()
         end,
 
-        event = "BufWritePost"
+        event = { "BufRead", "BufNewFile" },
     }
 
     use {
-        'kyazdani42/nvim-tree.lua',
-        config = kfg 'tree',
-
-        cmd = "NvimTreeToggle"
-    }
+		--a minimalist autopairs
+		'windwp/nvim-autopairs',
+		config = function()
+			require 'nvim-autopairs'.setup()
+		end
+	}
 
     use {
         'ThePrimeagen/harpoon',
@@ -129,18 +132,21 @@ require 'packer'.startup({function(use)
         cmd = "Trouble"
     }
 
-    -- Colors
-    use {
-        'luisiacc/gruvbox-baby',
-        setup = function ()
-            vim.g.gruvbox_baby_transparent_mode = 1
-            vim.g.background_color = 'dark'
-        end,
+    -- Unless you are still migrating, remove the deprecated commands from v1.x
 
-        config = function ()
-            vim.cmd "color gruvbox-baby"
-        end
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = "MunifTanjim/nui.nvim",
+        config = kfg 'tree',
+        cmd = "Neotree"
     }
+
+    -- Colors
+    use { "rmehri01/onenord.nvim" }
+    use 'folke/tokyonight.nvim'
+    use { "ellisonleao/gruvbox.nvim" }
+    use { "karb94/neoscroll.nvim", config = kfg "neoscroll" }
 end,
 
     config = {
