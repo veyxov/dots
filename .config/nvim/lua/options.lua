@@ -27,5 +27,10 @@ opt.shiftwidth = tab
 opt.softtabstop = tab
 opt.expandtab = true
 
+
+vim.opt_local.formatoptions = vim.opt_local.formatoptions - { "c", "r", "o" }
 -- Check out invisible characters
 opt.listchars = "tab:>·,trail:•,extends:>,precedes:<,space:␣,eol:↴"
+opt.fillchars = "vert:┃,horiz:━,verthoriz:╋,horizup:┻,horizdown:┳,vertleft:┫,vertright:┣"
+
+opt.laststatus = 3 -- global statusline
