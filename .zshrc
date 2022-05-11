@@ -1,3 +1,5 @@
+bindkey '^H' backward-kill-word
+
 source ~/.cache/znap/zsh-snap/znap.zsh
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -91,6 +93,11 @@ source $ZSH/oh-my-zsh.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+alias v="~/.local/bin/nvim"
+
+# Fix for RIDER
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

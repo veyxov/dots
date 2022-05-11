@@ -1,6 +1,9 @@
 # Add my bin's to PATH
 export PATH="$PATH:$HOME/.local/bin/"
 export PATH="$PATH:$HOME/.local/src/dwmblocks/src"
+# Fix for RIDER
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 
 # XDG
 export XDG_CONFIG_HOME="${HOME}/.config"
