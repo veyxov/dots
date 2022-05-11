@@ -1,12 +1,14 @@
 window:
   decorations: none
-  opacity: 0.75
+  opacity: 0.88
   startup_mode: Fullscreen
 
   title: terminal
   dynamic_title: false
   history: 10000
 
+env:
+  TERM: xterm-256color
 # Font configuration
 font:
   normal:
