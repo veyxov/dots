@@ -21,9 +21,9 @@ set findcase sensitive
 " Smooth scrolling, yes please. This is still a bit janky in Tridactyl.
 set smoothscroll true
 
-" The default jump of 10 is a bit much.
-bind j scrollline 5
-bind k scrollline -5
+" Fast tab switch
+bind n tabprev
+bind o tabnext
 
 " Fix codeforces blank screen
 seturl codeforces.com noiframe true
