@@ -1,7 +1,7 @@
 local kfg = function (name) return string.format('require("cfg/%s")', name) end
 
 require 'packer'.startup({function(use)
-    -- Global deps
+    -- Global dependencies
     use {
         'lewis6991/impatient.nvim',
         'wbthomason/packer.nvim',
@@ -25,7 +25,7 @@ require 'packer'.startup({function(use)
         config = kfg 'telescope',
     }
 
-    -- TreeSitter
+    -- Tree-Sitter
     use {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate", event = "InsertEnter",
@@ -33,7 +33,7 @@ require 'packer'.startup({function(use)
         config = kfg "treesitter"
     }
 
-    -- LSP
+    -- Language server protocol
     use {
         { 'neovim/nvim-lspconfig', after = "nvim-treesitter" },
         { 'williamboman/nvim-lsp-installer', after = "nvim-lspconfig", config = kfg "lsp" },
@@ -43,7 +43,7 @@ require 'packer'.startup({function(use)
 
     -- Autocomplete
     use {
-        -- EyeCandy
+        -- Eye candy
         { "onsails/lspkind-nvim", after = "nvim-lsp-installer" },
 
         -- Snippets
@@ -52,15 +52,31 @@ require 'packer'.startup({function(use)
 
         { 'hrsh7th/nvim-cmp', after = "LuaSnip", config = kfg 'cmp' },
         -- Source
-        { "hrsh7th/cmp-path",                     after = "nvim-cmp" },
-        { "hrsh7th/cmp-buffer",                   after = "nvim-cmp" },
-        { "hrsh7th/cmp-cmdline",                  after = "nvim-cmp" },
-        { "hrsh7th/cmp-nvim-lua",                 after = "nvim-cmp" },
-        { "hrsh7th/cmp-nvim-lsp",                 after = "nvim-cmp" },
-        { "ray-x/cmp-treesitter",                 after = "nvim-cmp" },
-        { "andersevenrud/cmp-tmux",               after = "nvim-cmp" },
-        { "saadparwaiz1/cmp_luasnip",             after = "nvim-cmp" },
-        { "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
+        { "f3fora/cmp-spell",                        after = "nvim-cmp" },
+        { "hrsh7th/cmp-path",                        after = "nvim-cmp" },
+        { "hrsh7th/cmp-buffer",                      after = "nvim-cmp" },
+        { "hrsh7th/cmp-cmdline",                     after = "nvim-cmp" },
+        { "hrsh7th/cmp-nvim-lua",                    after = "nvim-cmp" },
+        { "hrsh7th/cmp-nvim-lsp",                    after = "nvim-cmp" },
+        { "ray-x/cmp-treesitter",                    after = "nvim-cmp" },
+        { "andersevenrud/cmp-tmux",                  after = "nvim-cmp" },
+        { "saadparwaiz1/cmp_luasnip",                after = "nvim-cmp" },
+        { "hrsh7th/cmp-nvim-lsp-document-symbol",    after = "nvim-cmp" },
+        { 'tzachar/cmp-tabnine', run='./install.sh', after = "nvim-cmp", config = function ()
+            local tabnine = require('cmp_tabnine.config')
+            tabnine:setup({
+                max_lines = 1000;
+                max_num_results = 20;
+                sort = true;
+                run_on_every_keystroke = true;
+                snippet_placeholder = '..';
+                ignored_file_types = { -- default is not to ignore
+                    -- uncomment to ignore in lua:
+                    -- lua = true
+                };
+                show_prediction_strength = false;
+            })
+        end }
     }
 
     -- Status line
@@ -132,8 +148,6 @@ require 'packer'.startup({function(use)
         cmd = "Trouble"
     }
 
-    -- Unless you are still migrating, remove the deprecated commands from v1.x
-
     use {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
@@ -142,6 +156,14 @@ require 'packer'.startup({function(use)
         cmd = "Neotree"
     }
 
+    use {
+        'lewis6991/spellsitter.nvim',
+        config = function()
+            require('spellsitter').setup()
+        end
+    }
+
+    use 'seandewar/killersheep.nvim'
     -- Colors
     use { "rmehri01/onenord.nvim" }
     use 'folke/tokyonight.nvim'
