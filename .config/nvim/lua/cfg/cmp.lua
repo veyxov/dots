@@ -1,5 +1,6 @@
 local cmp = require "cmp"
 local luasnip = require "luasnip"
+local lspkind = require('lspkind')
 
 local kind_icons = {
   Text = "",     Method = "m",
@@ -16,6 +17,15 @@ local kind_icons = {
   Event = "",    Operator = "",
   TypeParameter = "",
 }
+
+local source_mapping = {
+	buffer = "[Buffer]",
+	nvim_lsp = "[LSP]",
+	nvim_lua = "[Lua]",
+	cmp_tabnine = "[TN]",
+	path = "[Path]",
+}
+
 
 cmp.setup {
   snippet = {
@@ -44,23 +54,25 @@ cmp.setup {
       end
     end, { "i", "s"}),
   },
-  formatting = {
-    fields = { "kind", "abbr", "menu" },
-    format = function(entry, vim_item)
-      vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-      vim_item.menu = ({
-        buffer = "[buf]",
-        nvim_lsp = "[lsp]",
-        nvim_lua = "[api]",
-        luasnip = "[snip]",
-        path = "[path]",
-      })[entry.source.name]
-      return vim_item
-    end,
-  },
+    formatting = {
+        format = function(entry, vim_item)
+            vim_item.kind = lspkind.presets.default[vim_item.kind]
+            local menu = source_mapping[entry.source.name]
+            if entry.source.name == 'cmp_tabnine' then
+                if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+                    menu = entry.completion_item.data.detail .. ' ' .. menu
+                end
+                vim_item.kind = ''
+            end
+            vim_item.menu = menu
+            return vim_item
+        end
+    },
   sources = {
+    { name = 'cmp_tabnine' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'spell' },
     { name = 'path' },
     { name = 'treesitter', keyword_length = 3 },
     { name = 'buffer', keyword_length = 3 },
@@ -83,6 +95,24 @@ cmp.setup {
     ghost_text = true,
   },
 }
+
+local compare = require('cmp.config.compare')
+cmp.setup({
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      require('cmp_tabnine.compare'),
+      compare.offset,
+      compare.exact,
+      compare.score,
+      compare.recently_used,
+      compare.kind,
+      compare.sort_text,
+      compare.length,
+      compare.order,
+    },
+  },
+})
 
 cmp.setup.cmdline(":", {
     completion = {autocomplete = true},

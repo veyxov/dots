@@ -4,8 +4,8 @@ vim.g.mapleader = " "
 
 opt.swapfile = false
 
--- Cool floating window popup menu for completion on command line
-opt.completeopt = { 'menu', 'menuone' } -- for cmp
+-- Cool floating window pop-up menu for completion on command line
+opt.completeopt = { 'menu', 'menuone' } -- for completion
 opt.pumblend = 20
 opt.wildmode = "longest:full"
 opt.wildoptions = "pum"
@@ -33,4 +33,4 @@ vim.opt_local.formatoptions = vim.opt_local.formatoptions - { "c", "r", "o" }
 opt.listchars = "tab:>·,trail:•,extends:>,precedes:<,space:␣,eol:↴"
 opt.fillchars = "vert:┃,horiz:━,verthoriz:╋,horizup:┻,horizdown:┳,vertleft:┫,vertright:┣"
 
-opt.laststatus = 3 -- global statusline
+opt.laststatus = 3 -- global status line
