@@ -57,3 +57,7 @@ Map ("<leader>rp", "<Plug>RestNvimPreview")
 Map ("<leader>r.", "<Plug>RestNvimLast")
 
 Map("<C-c>", Cmd ":%y+") -- copy whole file content
+
+-- Movement between tabs
+Map("<leader>n", Cmd "tabprevious")
+Map("<leader>o", Cmd "tabnext")

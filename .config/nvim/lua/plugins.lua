@@ -165,6 +165,7 @@ require 'packer'.startup({function(use)
 
     use 'seandewar/killersheep.nvim'
     -- Colors
+    use { 'dracula/vim' }
     use { "rmehri01/onenord.nvim" }
     use 'folke/tokyonight.nvim'
     use { "ellisonleao/gruvbox.nvim" }
