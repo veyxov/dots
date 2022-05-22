@@ -35,7 +35,7 @@ autocmd('BufWritePost', {
 
 autocmd('BufWritePre', {
     callback = function ()
-        vim.lsp.buf.formatting_sync()
+        vim.lsp.buf.format()
     end,
     group = group,
 })

@@ -42,9 +42,6 @@ then
     alias gp='git push'
     alias gP='git pull'
 
-    # Dotfiles managment
-    alias config='/usr/bin/git --git-dir=/home/iz/.dots/ --work-tree=/home/iz'
-
     # Zsh-like completion
     bind 'set show-all-if-ambiguous on'
     bind 'TAB:menu-complete'
