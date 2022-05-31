@@ -4,6 +4,9 @@ xrdb $HOME/.config/X11/Xresources
 # Set keyboard to my custom config
 kmonad -w 0 $HOME/.config/keyboard/colex.kbd &
 
+# Faster input
+xset r rate 300 50
+
 # Locking system
 xautolock -time 1 -corners 000- -locker slock &
 
