@@ -23,4 +23,5 @@ picom --experimental-backends --config $HOME/.config/picom.conf -b
 setwall &
 
 # Run the desktop
-exec dbus-launch dwm
+# exec dbus-launch dwm
+exec bspwm
