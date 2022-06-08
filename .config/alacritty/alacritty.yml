@@ -1,7 +1,7 @@
 window:
   decorations: none
   opacity: 0.88
-  startup_mode: Fullscreen
+  startup_mode: Windowed
 
   title: terminal
   dynamic_title: false
