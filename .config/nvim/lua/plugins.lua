@@ -1,6 +1,6 @@
-local kfg = function (name) return string.format('require("cfg/%s")', name) end
+local kfg = function(name) return string.format('require("cfg/%s")', name) end
 
-require 'packer'.startup({function(use)
+require 'packer'.startup({ function(use)
     -- Global dependencies
     use {
         'lewis6991/impatient.nvim',
@@ -17,7 +17,7 @@ require 'packer'.startup({function(use)
         requires = {
             {
                 'nvim-telescope/telescope-fzf-native.nvim', run = 'make',
-                config = function () require('telescope').load_extension('fzf') end,
+                config = function() require('telescope').load_extension('fzf') end,
                 after = 'telescope.nvim'
             },
         },
@@ -39,6 +39,7 @@ require 'packer'.startup({function(use)
         { 'williamboman/nvim-lsp-installer', after = "nvim-lspconfig", config = kfg "lsp" },
 
         { 'tami5/lspsaga.nvim', cmd = 'Lspsaga' },
+        { 'jubnzv/virtual-types.nvim' }
     }
 
     -- Autocomplete
@@ -52,31 +53,17 @@ require 'packer'.startup({function(use)
 
         { 'hrsh7th/nvim-cmp', after = "LuaSnip", config = kfg 'cmp' },
         -- Source
-        { "f3fora/cmp-spell",                        after = "nvim-cmp" },
-        { "hrsh7th/cmp-path",                        after = "nvim-cmp" },
-        { "hrsh7th/cmp-buffer",                      after = "nvim-cmp" },
-        { "hrsh7th/cmp-cmdline",                     after = "nvim-cmp" },
-        { "hrsh7th/cmp-nvim-lua",                    after = "nvim-cmp" },
-        { "hrsh7th/cmp-nvim-lsp",                    after = "nvim-cmp" },
-        { "ray-x/cmp-treesitter",                    after = "nvim-cmp" },
-        { "andersevenrud/cmp-tmux",                  after = "nvim-cmp" },
-        { "saadparwaiz1/cmp_luasnip",                after = "nvim-cmp" },
-        { "hrsh7th/cmp-nvim-lsp-document-symbol",    after = "nvim-cmp" },
-        { 'tzachar/cmp-tabnine', run='./install.sh', after = "nvim-cmp", config = function ()
-            local tabnine = require('cmp_tabnine.config')
-            tabnine:setup({
-                max_lines = 1000;
-                max_num_results = 20;
-                sort = true;
-                run_on_every_keystroke = true;
-                snippet_placeholder = '..';
-                ignored_file_types = { -- default is not to ignore
-                    -- uncomment to ignore in lua:
-                    -- lua = true
-                };
-                show_prediction_strength = false;
-            })
-        end }
+        { "f3fora/cmp-spell", after = "nvim-cmp" },
+        { "hrsh7th/cmp-path", after = "nvim-cmp" },
+        { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+        { "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
+        { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
+        { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
+        { "ray-x/cmp-treesitter", after = "nvim-cmp" },
+        { "andersevenrud/cmp-tmux", after = "nvim-cmp" },
+        { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+        { "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
+        { "github/copilot.vim" },
     }
 
     -- Status line
@@ -89,7 +76,7 @@ require 'packer'.startup({function(use)
     use {
         "folke/twilight.nvim",
         config = function()
-            require("twilight").setup { }
+            require("twilight").setup {}
         end,
         after = "TrueZen.nvim",
     }
@@ -102,7 +89,7 @@ require 'packer'.startup({function(use)
 
     use {
         "lukas-reineke/indent-blankline.nvim",
-        config = function ()
+        config = function()
             require("indent_blankline").setup {}
         end
     }
@@ -123,16 +110,16 @@ require 'packer'.startup({function(use)
     }
 
     use {
-		--a minimalist autopairs
-		'windwp/nvim-autopairs',
-		config = function()
-			require 'nvim-autopairs'.setup()
-		end
-	}
+        --a minimalist autopairs
+        'windwp/nvim-autopairs',
+        config = function()
+            require 'nvim-autopairs'.setup()
+        end
+    }
 
     use {
         'ThePrimeagen/harpoon',
-        config = function ()
+        config = function()
             require("telescope").load_extension('harpoon')
         end,
     }
@@ -140,7 +127,7 @@ require 'packer'.startup({function(use)
     use {
         'ggandor/leap.nvim',
         config = kfg 'speed',
-        keys = { 's', 'S'}
+        keys = { 's', 'S' }
     }
     -- Full project lsp diagnostics
     use {
@@ -166,14 +153,17 @@ require 'packer'.startup({function(use)
     use 'seandewar/killersheep.nvim'
     -- Colors
     use { 'dracula/vim' }
+    use { 'adamclerk/vim-razor' }
     use { "rmehri01/onenord.nvim" }
-    use 'folke/tokyonight.nvim'
+    use { 'folke/tokyonight.nvim' }
     use { "ellisonleao/gruvbox.nvim" }
-    use { "karb94/neoscroll.nvim", config = kfg "neoscroll" }
+    use { 'marko-cerovac/material.nvim' }
+    use { 'sainnhe/sonokai', config = function() vim.cmd [[ colorscheme sonokai ]] end }
+
 end,
 
     config = {
         git = { clone_timeout = nil }
-    }})
+    } })
 -- Chek:
 -- https://github.com/nvim-neo-tree/neo-tree.nvim/tree/v2.x
