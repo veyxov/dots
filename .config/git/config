@@ -11,6 +11,7 @@
     ui = true
 [core]
 	excludesFile = /home/iz/.config/gitignore
+	autocrlf = input
 [rebase]
 	autosquash = true
 [fetch]
