@@ -21,7 +21,8 @@ then
     shopt -s cdspell
 
     # Aliases
-    alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+    alias cfgg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+    alias cfg='lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
     # Eye candy
     alias grep='grep --color=auto'
