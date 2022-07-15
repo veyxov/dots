@@ -1,119 +1,118 @@
-local cmp = require "cmp"
-local luasnip = require "luasnip"
 local lspkind = require('lspkind')
+local cmp = require'cmp'
+local luasnip = require("luasnip")
 
-local kind_icons = {
-    Text = "", Method = "m",
-    Function = "", Constructor = "",
-    Field = "", Variable = "",
-    Class = "", Interface = "",
-    Module = "", Property = "",
-    Unit = "", Value = "",
-    Enum = "", Keyword = "",
-    Snippet = "", Color = "",
-    File = "", Reference = "",
-    Folder = "", EnumMember = "",
-    Constant = "", Struct = "",
-    Event = "", Operator = "",
-    TypeParameter = "",
-}
-
-local source_mapping = {
-    buffer = "[Buffer]",
-    nvim_lsp = "[LSP]",
-    nvim_lua = "[Lua]",
-    path = "[Path]",
-}
-
-
-cmp.setup {
+cmp.setup({
+    completion = {
+        completeopt = "menu,menuone,noselect",
+    },
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
         end,
     },
     mapping = {
-        ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-        ["<C-q>"] = cmp.mapping { i = cmp.mapping.abort(), c = cmp.mapping.close() },
-        ["<Up>"] = cmp.mapping.select_prev_item(),
-        ["<Down>"] = cmp.mapping.select_next_item(),
-        ["<CR>"] = cmp.mapping.confirm { select = true },
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then cmp.confirm()
-            elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
-            else fallback()
+        ["<C-Up>"] = cmp.mapping.select_prev_item(),
+        ["<C-Down>"] = cmp.mapping.select_next_item(),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.close(),
+        ["<CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        }),
+        ["<Tab>"] = function(fallback)
+            if vim.fn.pumvisible() == 1 then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, true, true), "n")
+            elseif luasnip.expand_or_jumpable() then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+            else
+                fallback()
             end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then luasnip.jump(-1)
-            else fallback()
+        end,
+        ["<S-Tab>"] = function(fallback)
+            if vim.fn.pumvisible() == 1 then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-p>", true, true, true), "n")
+            elseif luasnip.jumpable(-1) then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+            else
+                fallback()
             end
-        end, { "i", "s" }),
+        end,
     },
     formatting = {
-        format = function(entry, vim_item)
-            vim_item.kind = lspkind.presets.default[vim_item.kind]
-            local menu = source_mapping[entry.source.name]
-            vim_item.menu = menu
-            return vim_item
+        format = function (entry, vim_item)
+            if entry.source.name == "copilot" then
+                vim_item.kind = "[] Copilot"
+                vim_item.kind_hl_group = "CmpItemKindCopilot"
+                return vim_item
+            end
+            return lspkind.cmp_format({ with_text = false, maxwidth = 50 })(entry, vim_item)
         end
     },
+
+    sorting = {
+        priority_weight = 2,
+        comparators = {
+            require("copilot_cmp.comparators").prioritize,
+            require("copilot_cmp.comparators").score,
+
+            -- Below is the default comparitor list and order for nvim-cmp
+            cmp.config.compare.offset,
+            -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.locality,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        },
+    },
+
     sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'spell' },
-        { name = 'path' },
-        { name = 'treesitter', keyword_length = 3 },
-        { name = 'buffer', keyword_length = 3 },
+        { name = "nvim_lsp" },
         { name = 'nvim_lua' },
+        { name = "luasnip" },
+        { name = "path" },
+        { name = "buffer" },
+        { name = "calc" },
+        { name = "nvim_lua" },
         {
             name = 'tmux',
             option = {
-                all_panes = true,
-                label = '[tmux]',
-                trigger_characters = { '.' },
-                trigger_characters_ft = {}
+                all_panes = true
             }
         },
+        { name = "copilot" }
     },
-    confirm_opts = {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = false,
-    },
-    experimental = {
-        ghost_text = true,
-    },
-}
+})
 
-cmp.setup.cmdline(":", {
-    completion = { autocomplete = true },
-
-    sources = cmp.config.sources({ { name = "path" } }, {
-        { name = "cmdline", max_item_count = 20, keyword_length = 1 }
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+        { name = 'buffer' },
     })
 })
 
-cmp.setup.cmdline("/", {
-    mapping = cmp.mapping.preset.cmdline {},
-    sources = cmp.config.sources {
+cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+
+    sources = {
         { name = "buffer" },
     },
 })
 
-cmp.setup.cmdline(":%s/", {
-    mapping = cmp.mapping.preset.cmdline {},
-    sources = cmp.config.sources {
-        { name = "buffer" },
-    },
-})
-
-cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline {},
-    sources = cmp.config.sources {
-        { name = "cmdline" },
-        { name = "path" },
-    },
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
+    })
 })

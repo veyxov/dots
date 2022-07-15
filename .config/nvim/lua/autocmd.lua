@@ -2,6 +2,7 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local group = vim.api.nvim_create_augroup('WEXOV', { clear = true })
 
+-- If it's a configuration file, resource it.
 autocmd('BufWritePost', {
     pattern = '*.lua',
     callback = function()
@@ -11,41 +12,26 @@ autocmd('BufWritePost', {
     group = group,
 })
 
+-- Highlight the yanked area.
 autocmd('TextYankPost', {
     callback = function()
-        vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 250 })
+        vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 200 })
     end,
     group = group,
 })
 
+-- Show diagnostics when hold curson on.
 autocmd('CursorHold', {
     desc = 'Show current line diagnostics',
-    callback = function()
-        vim.diagnostic.open_float(nil, { scope = 'cursor', focusable = false, border = 'single' })
-    end,
+    command = "Lspsaga show_line_diagnostics",
     group = group,
 })
 
+-- Restart the keyboard configuration deamon
 autocmd('BufWritePost', {
     pattern = '*.kbd',
     command = [[!killall kmonad ; kmonad -w 500 "$HOME/.config/keyboard/colex.kbd" &]],
     group = group,
-})
-
-
-autocmd('BufWritePre', {
-    callback = function ()
-        vim.lsp.buf.format()
-    end,
-    group = group,
-})
-
--- Disable comment new line
-autocmd("BufWinEnter", {
-    pattern = "*",
-    callback = function()
-        vim.opt_local.formatoptions:remove { "c", "r", "o" }
-    end,
 })
 
 -- Open a file from its last left off position
@@ -55,12 +41,5 @@ autocmd("BufReadPost", {
          vim.cmd "normal! g'\""
          vim.cmd "normal zz"
       end
-   end,
-})
--- Enable spellchecking in markdown, text and gitcommit files
-autocmd("FileType", {
-   pattern = { "gitcommit", "markdown", "text" },
-   callback = function()
-      vim.opt_local.spell = true
    end,
 })

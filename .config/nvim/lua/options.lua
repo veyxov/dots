@@ -4,33 +4,24 @@ vim.g.mapleader = " "
 
 opt.swapfile = false
 
--- Cool floating window pop-up menu for completion on command line
-opt.completeopt = { 'menu', 'menuone' } -- for completion
+vim.o.completeopt = "menu,menuone,noselect"
+
+-- Visuals
+opt.wrap = false
+opt.cmdheight = 0
 opt.pumblend = 20
-opt.wildmode = "longest:full"
-opt.wildoptions = "pum"
+opt.laststatus = 0
 opt.termguicolors = true
 
-opt.showmode = false
 opt.updatetime = 250
 
 -- Searching
 opt.ignorecase = true
-opt.smartcase = true
-
-opt.wrap = false
+opt.smartcase  = true
 
 -- Tab or space ?
 local tab = 4
-opt.tabstop = tab
-opt.shiftwidth = tab
+opt.tabstop     = tab
+opt.shiftwidth  = tab
 opt.softtabstop = tab
-opt.expandtab = true
-
-
-vim.opt_local.formatoptions = vim.opt_local.formatoptions - { "c", "r", "o" }
--- Check out invisible characters
-opt.listchars = "tab:>·,trail:•,extends:>,precedes:<,space:␣,eol:↴"
-opt.fillchars = "vert:┃,horiz:━,verthoriz:╋,horizup:┻,horizdown:┳,vertleft:┫,vertright:┣"
-
-opt.laststatus = 3 -- global status line
+opt.expandtab   = true
