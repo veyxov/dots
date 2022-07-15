@@ -1,6 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+
 # Prevent ^S and ^Q doing XON/XOFF (mostly for Vim)
 if [[ -t 0 && $- = *i* ]]
 then
@@ -9,6 +10,9 @@ fi
 
 if [ "$TERM" != "linux" ]
 then
+    # Faster input
+    xset r rate 300 50
+
     # Vim mode
     set -o vi
     #use extra globing features. See man bash, search extglob.
@@ -19,6 +23,9 @@ then
     shopt -s nullglob
     # fix spelling errors for cd, only in interactive shell
     shopt -s cdspell
+
+    # XDG
+    alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts'
 
     # Aliases
     alias cfgg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
