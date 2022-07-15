@@ -4,12 +4,16 @@ export PATH="$PATH:$HOME/.local/src/dwmblocks/src"
 # Fix for RIDER
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+# ZSH
+export ZDOTDIR="$HOME"/.config/zsh
+export HISTFILE="$XDG_STATE_HOME"/zsh/history
 
 # XDG
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
+export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
 
 # Move to XDG complaiant folders
 export HISTFILE="$HOME"/.cache/history
