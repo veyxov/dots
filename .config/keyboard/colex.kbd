@@ -22,7 +22,7 @@
   ;; Backspace on tap, extend on hold
   navl (tap-hold-next-release 175 spc (layer-toggle nav))
   syml (tap-hold-next-release 175 Enter (layer-toggle symbol))
-  numl (tap-hold-next-release 200 tab (layer-toggle numbers))
+  numl (tap-hold-next-release 200 rctl (layer-toggle numbers))
 
   BS (tap-hold-next-release 175 C-Backspace (layer-toggle symbol))
 
@@ -45,10 +45,10 @@
 (deflayer colemak
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _    _  _    _    _    _    _    _    _   _    _   _    -    @Rus
- @numl  _    _    f    p    b    _    j    l    u    y    ;   '    \
+ _  _    _    f    p    b    _    j    l    u    y    ;   '    \
   @BS   _    r    s    t    _    _    m    n    e    i    o    rmet
  @sl       x    c    d    v    z    _    k    h    ,    .    @sr
- _    _ _                @navl             @syml  _
+ _    _ _                @navl             @syml  @numl
 )
 
 (deflayer nav
@@ -72,8 +72,8 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        1    2    3    4    _    _  _  7    6    5   0  _
- _        _    _    9    _    _    _    _    8    _    _    _
+ _        1    2    3    4    _    _  _  5    6    7   8  _
+ _        _    _    0   _    _    _    _    9    _    _    _
  _        _    _              _              _    _
 )
 
