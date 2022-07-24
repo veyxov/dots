@@ -36,5 +36,5 @@ Map("<leader>o", Cmd "tabnext")
 Map("<leader>ps", Cmd "PackerSync")
 
 -- Tree
-Map("/", Cmd "Neotree toggle right")
-Map("<leader>/", Cmd "Neotree toggle show buffers right")
+Map("\\", Cmd "Neotree toggle right")
+Map("<leader>\\", Cmd "Neotree toggle show buffers right")
