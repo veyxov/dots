@@ -13,11 +13,7 @@ require 'packer'.startup({ function(use)
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
-            require("trouble").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
+            require("trouble").setup { }
         end
     }
 
@@ -30,14 +26,20 @@ require 'packer'.startup({ function(use)
             end, 100)
         end,
     }
-    -- Lsp
+
+    use {
+        'L3MON4D3/LuaSnip',
+        config = kfg 'luasnip'
+    }
+    -- LTestsp
     use {{
         'neovim/nvim-lspconfig',
         config = kfg 'lsp',
     },{
         "williamboman/nvim-lsp-installer",
     },{
-        'kkharji/lspsaga.nvim',
+        'glepnir/lspsaga.nvim',
+        config = kfg 'lspsaga',
     },{
         'ray-x/lsp_signature.nvim',
         config = kfg 'signature',
@@ -54,7 +56,6 @@ require 'packer'.startup({ function(use)
         { 'hrsh7th/cmp-buffer' },
         { 'hrsh7th/cmp-path' },
         { 'hrsh7th/cmp-cmdline' },
-        { 'L3MON4D3/LuaSnip' },
         { 'saadparwaiz1/cmp_luasnip' },
         { 'hrsh7th/cmp-nvim-lua' },
         { 'andersevenrud/cmp-tmux' },
@@ -68,6 +69,52 @@ require 'packer'.startup({ function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         config = kfg 'treesitter',
+    }
+
+    use {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        require'nvim-treesitter.configs'.setup {
+            textobjects = {
+                select = {
+                    enable = true,
+
+                    -- Automatically jump forward to textobj, similar to targets.vim
+                    lookahead = true,
+
+                    keymaps = {
+                        -- You can use the capture groups defined in textobjects.scm
+                        ["af"] = "@function.outer",
+                        ["if"] = "@function.inner",
+                        ["aC"] = "@class.outer",
+                        ["iC"] = "@class.inner",
+                        ["ac"] = "@comment.outer",
+                        ["aa"] = "@parameter.inner",
+                        ["al"] = "@loop.outer",
+                        ["il"] = "@loop.inner",
+                    },
+                },
+                move = {
+                    enable = true,
+                    set_jumps = true,
+                    goto_next_start = {
+                        ["]m"] = "@function.outer",
+                        ["]]"] = "@class.outer",
+                    },
+                    goto_next_end = {
+                        ["]M"] = "@function.outer",
+                        ["]["] = "@class.outer",
+                    },
+                    goto_previous_start = {
+                        ["[m"] = "@function.outer",
+                        ["[["] = "@class.outer",
+                    },
+                    goto_previous_end = {
+                        ["[M"] = "@function.outer",
+                        ["[]"] = "@class.outer",
+                    },
+                },
+            },
+        }
     }
 
     -- Debugger
@@ -88,7 +135,14 @@ require 'packer'.startup({ function(use)
                 invert_selection = false,
                 contrast = "hard",
             })
-            vim.cmd("colorscheme gruvbox")
+        end
+    }
+    use {
+        'folke/tokyonight.nvim',
+        config = function()
+            vim.g.tokyonight_style = "night"
+            vim.g.tokyonight_italic_comments = true
+            vim.cmd[[colorscheme tokyonight]]
         end
     }
 
@@ -125,6 +179,17 @@ use {
     "NTBBloodbath/rest.nvim",
     config = kfg 'rest'
 }
+
+
+use({
+  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  config = function()
+    require("lsp_lines").setup()
+    vim.diagnostic.config({
+        virtual_text = false,
+    })
+  end,
+})
 
 use {
     "lukas-reineke/indent-blankline.nvim",
