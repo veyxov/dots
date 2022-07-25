@@ -70,11 +70,12 @@ ls.add_snippets("cs", {
                         // Arrange
                         {}
                         // Act
-
+                        {}
                         // Assert
+                        {}
                     }}
                 ]],
-            { i(1, "TestName"), i(2, "") }
+            { i(1, "TestName"), i(2, ""), i(3, ""), i(4, "") }
             )
         ),
 })
@@ -139,6 +140,23 @@ ls.add_snippets("cs", {
                 }}
                 ]],
             { i(1, "Name"), i(2), i(3), rep(1), rep(1), rep(3), rep(1), i(4), rep(3), rep(1), i(0) }
+            )
+        ),
+})
+
+ls.add_snippets("cs", {
+        s('validator',
+            fmt(
+                [[
+                public class {}Validator : AbstractValidator<{}>
+                {{
+                    public {}Validator()
+                    {{
+                        {}
+                    }}
+                }}
+                ]],
+            { i(1, "Name"), rep(1), rep(1), i(0) }
             )
         ),
 })
