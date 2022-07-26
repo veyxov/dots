@@ -6,6 +6,7 @@ lspinstaller.setup {}
 
 lspconfig.omnisharp.setup { on_attach = on_attach }
 lspconfig.tsserver.setup {}
+lspconfig.rust_analyzer.setup{}
 
 lspconfig.sqls.setup {
     on_attach = function(client, bufnr)

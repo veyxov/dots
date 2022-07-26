@@ -73,48 +73,15 @@ require 'packer'.startup({ function(use)
 
     use {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        require'nvim-treesitter.configs'.setup {
-            textobjects = {
-                select = {
-                    enable = true,
+    }
 
-                    -- Automatically jump forward to textobj, similar to targets.vim
-                    lookahead = true,
+    use {
+        'rmagatti/auto-session',
+    }
 
-                    keymaps = {
-                        -- You can use the capture groups defined in textobjects.scm
-                        ["af"] = "@function.outer",
-                        ["if"] = "@function.inner",
-                        ["aC"] = "@class.outer",
-                        ["iC"] = "@class.inner",
-                        ["ac"] = "@comment.outer",
-                        ["aa"] = "@parameter.inner",
-                        ["al"] = "@loop.outer",
-                        ["il"] = "@loop.inner",
-                    },
-                },
-                move = {
-                    enable = true,
-                    set_jumps = true,
-                    goto_next_start = {
-                        ["]m"] = "@function.outer",
-                        ["]]"] = "@class.outer",
-                    },
-                    goto_next_end = {
-                        ["]M"] = "@function.outer",
-                        ["]["] = "@class.outer",
-                    },
-                    goto_previous_start = {
-                        ["[m"] = "@function.outer",
-                        ["[["] = "@class.outer",
-                    },
-                    goto_previous_end = {
-                        ["[M"] = "@function.outer",
-                        ["[]"] = "@class.outer",
-                    },
-                },
-            },
-        }
+    use {
+        'windwp/nvim-autopairs',
+        config = function() require("nvim-autopairs").setup {} end
     }
 
     -- Debugger
@@ -126,6 +93,8 @@ require 'packer'.startup({ function(use)
         "rcarriga/nvim-dap-ui",
         config = kfg 'dapui',
     }}
+
+    use 'Yazeed1s/minimal.nvim'
 
     use { 
         "ellisonleao/gruvbox.nvim",
