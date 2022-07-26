@@ -20,13 +20,6 @@ autocmd('TextYankPost', {
     group = group,
 })
 
--- Show diagnostics when hold curson on.
-autocmd('CursorHold', {
-    desc = 'Show current line diagnostics',
-    command = "Lspsaga show_line_diagnostics",
-    group = group,
-})
-
 -- Restart the keyboard configuration deamon
 autocmd('BufWritePost', {
     pattern = '*.kbd',

@@ -148,7 +148,7 @@ ls.add_snippets("cs", {
         s('validator',
             fmt(
                 [[
-                public class {}Validator : AbstractValidator<{}>
+                public class {}Validator : AbstractValidator<{}Command>
                 {{
                     public {}Validator()
                     {{
