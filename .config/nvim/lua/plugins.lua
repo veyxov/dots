@@ -1,6 +1,5 @@
 local kfg = function(name) return string.format('require("cfg/%s")', name) end
 
-
 require 'packer'.startup({ function(use)
     -- Global dependencies
     use {
@@ -8,13 +7,14 @@ require 'packer'.startup({ function(use)
         'nvim-lua/plenary.nvim',    'kyazdani42/nvim-web-devicons'
     }
 
+    use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
+
+    use { 'vim-test/vim-test' }
+
     -- Lua
     use {
         "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
-        config = function()
-            require("trouble").setup { }
-        end
+        config = kfg 'trouble'
     }
 
     use {
@@ -143,45 +143,45 @@ require 'packer'.startup({ function(use)
         requires = "MunifTanjim/nui.nvim"
     }
 
--- Rest
-use {
-    "NTBBloodbath/rest.nvim",
-    config = kfg 'rest'
-}
+    -- Rest
+    use {
+        "NTBBloodbath/rest.nvim",
+        config = kfg 'rest'
+    }
 
 
-use({
-  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  config = function()
-    require("lsp_lines").setup()
-    vim.diagnostic.config({
-        virtual_text = false,
+    use({
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+            require("lsp_lines").setup()
+            vim.diagnostic.config({
+                virtual_text = false,
+            })
+        end,
     })
-  end,
-})
 
-use {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-        require("indent_blankline").setup {
-            show_current_context = true,
-            show_current_context_start = false,
-            indent_blankline_show_first_indent_level = false
-        }
-    end
-}
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("indent_blankline").setup {
+                show_current_context = true,
+                show_current_context_start = false,
+                indent_blankline_show_first_indent_level = false
+            }
+        end
+    }
 
--- Sql
-use {
-    'nanotee/sqls.nvim',
-}
+    -- Sql
+    use {
+        'nanotee/sqls.nvim',
+    }
 
-use {
-    'kdheepak/lazygit.nvim',
-    cmd = "LazyGit"
-}
+    use {
+        'kdheepak/lazygit.nvim',
+        cmd = "LazyGit"
+    }
 end,
-config = {
-    git = { clone_timeout = nil }
-}
+    config = {
+        git = { clone_timeout = nil }
+    }
 })
