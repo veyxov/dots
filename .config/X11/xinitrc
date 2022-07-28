@@ -2,7 +2,7 @@
 xrdb $HOME/.config/X11/Xresources
 
 # Set keyboard to my custom config
-kmonad -w 0 $HOME/.config/keyboard/colex.kbd &
+sudo kmonad -w 0 $HOME/.config/keyboard/colex.kbd &
 
 # Faster input
 xset r rate 300 50
@@ -23,5 +23,5 @@ picom --experimental-backends --config $HOME/.config/picom.conf -b
 setwall &
 
 # Run the desktop
-exec dbus-launch dwm
+dwm
 # exec bspwm
