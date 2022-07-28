@@ -1,0 +1,5 @@
+[Default Applications]
+x-scheme-handler/tg=userapp-Telegram Desktop-JUBEQ1.desktop
+
+[Added Associations]
+x-scheme-handler/tg=userapp-Telegram Desktop-JUBEQ1.desktop;
