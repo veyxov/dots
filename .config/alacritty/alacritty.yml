@@ -12,19 +12,19 @@ env:
 # Font configuration
 font:
   normal:
-    family: Jetbrains mono
+    family: Source code pro
     style: Regular
 
   bold:
-    family: Jetbrains mono
+    family: Source code pro
     style: Bold
 
   italic:
-    family: Fira Code Nerd Font
+    family: Source code pro
     style: Italic
 
   bold_italic:
-    family: Jetbrains mono
+    family: Source code pro
     style: Bold Italic
 
   size: 11.0
@@ -129,7 +129,7 @@ cursor:
 # Live config reload (changes require restart)
 live_config_reload: true
 shell:
-  program: /bin/zsh
+  program: /bin/bash
 hints:
   # Keys used for the hint labels.
   alphabet: "jfkdls;ahgurieowpq"
