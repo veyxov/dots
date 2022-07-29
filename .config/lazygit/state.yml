@@ -1,7 +1,8 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/iz/Projects/Alif/Alif-Audit
+- /home/iz/Alif-Audit
 - /home/iz/.config/nvim
 startuppopupversion: 5
 customcommandshistory: []
-hidecommandlog: false
+hidecommandlog: true
