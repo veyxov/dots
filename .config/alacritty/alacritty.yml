@@ -219,7 +219,7 @@ key_bindings:
   # (Windows, Linux, and BSD only)
   - { key: V,               mods: Alt,                              action: Paste            }
   - { key: C,               mods: Alt,                              action: Copy             }
-  - { key: U,               mods: Alt,                              action: IncreaseFontSize }
+  - { key: I,               mods: Alt,                              action: IncreaseFontSize }
   - { key: E,               mods: Alt,                              action: DecreaseFontSize }
   - { key: Space,           mods: Control,                          action: ToggleViMode }
 
