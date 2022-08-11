@@ -45,6 +45,7 @@ then
     alias rm='rm -v'
 
     # Git aliases
+    alias gg='lazygit status'
     alias gs='git status -s'
     alias gc='git commit'
     alias gp='git push'
