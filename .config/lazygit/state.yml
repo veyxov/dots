@@ -1,7 +1,10 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/iz/.config/nvim
 - /home/iz/Projects/Alif/Alif-Audit
+- /home/iz/Projects/My/qviz
+- /home/iz/.config/nvim
+- /home/iz/Projects/My/color-output
+- /home/iz/Projects/My/chatix
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: true
