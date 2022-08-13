@@ -55,6 +55,7 @@ then
     bind 'set show-all-if-ambiguous on'
     bind 'TAB:menu-complete'
     bind '"\C-n":"nvim\n"'
+    bind '"\C-g":"lazygit status\n"'
 
     # avoid duplicates..
     export HISTCONTROL=ignoredups:erasedups
