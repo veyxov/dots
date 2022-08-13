@@ -54,6 +54,7 @@ then
     # Zsh-like completion
     bind 'set show-all-if-ambiguous on'
     bind 'TAB:menu-complete'
+    bind '"\C-n":"nvim\n"'
 
     # avoid duplicates..
     export HISTCONTROL=ignoredups:erasedups
