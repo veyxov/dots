@@ -56,6 +56,7 @@ then
     bind 'TAB:menu-complete'
     bind '"\C-n":"nvim\n"'
     bind '"\C-g":"lazygit status\n"'
+    bind '"\C-p":"cd $(find ~/Projects/ -maxdepth 2 -type d -print | fzf)\n"'
 
     # avoid duplicates..
     export HISTCONTROL=ignoredups:erasedups
