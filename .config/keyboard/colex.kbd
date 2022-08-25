@@ -15,7 +15,6 @@
 )
 
 (defalias
-  ;; Make shift keys "sticky-key", tap once on shift, then a key
   sl (sticky-key 1000 lsft)
   sr (sticky-key 1000 rsft)
 
@@ -64,7 +63,7 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
  _     :    {   }    &    _    _    _    %    *    ^    _    _    _
-  _    !    \(    \)  ?    $    _  \_   -    /    +    =   _
+  ~    !    \(    \)  ?    $    _  \_   -    /    +    =   _
   _     [   ]    #    _    _     _   _    @    _    _    _
   _    _ _           Space            _ _)
 
