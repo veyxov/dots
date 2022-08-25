@@ -9,6 +9,9 @@ set hintchars arstneiogmfuywdh
 bind d composite tabprev; tabclose #
 bind D tabclose
 
+bind <ArrowLeft> tabprev
+bind <ArrowRight> tabnext
+
 " Only hint search results on Google and DDG
 bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
 bindurl www.google.com F hint -Jbc #search div:not(.action-menu) > a
@@ -20,13 +23,6 @@ set findcase sensitive
 
 " Smooth scrolling, yes please. This is still a bit janky in Tridactyl.
 set smoothscroll true
-
-" Fast tab switch
-bind n tabprev
-bind o tabnext
-
-" Fix codeforces blank screen
-seturl codeforces.com noiframe true
 
 " TODO: Research more about this ----------------------------
 " " Add helper commands that Mozillians think make Firefox irredeemably
