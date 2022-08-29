@@ -27,7 +27,7 @@ font:
     family: Source code pro
     style: Bold Italic
 
-  size: 11.0
+  size: 14.0
   use_thin_strokes: true
 draw_bold_text_with_bright_colors: false
 
