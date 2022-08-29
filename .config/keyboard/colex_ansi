@@ -15,10 +15,9 @@
 )
 
 (defalias
+  ;; Make shift keys "sticky-key", tap once on shift, then a key
   sl (sticky-key 1000 lsft)
   sr (sticky-key 1000 rsft)
-  ash (tap-hold-next-release 200 a lsft)
-  osh (tap-hold-next-release 200 o rsft)
 
   ;; Backspace on tap, extend on hold
   navl (tap-hold-next-release 175 spc (layer-toggle nav))
@@ -44,11 +43,11 @@
 )
 
 (deflayer colemak
- XX        _    _    _    _    _    _    _    _    _    _    _    _
- XX    XX  XX    XX    XX    XX    XX    XX    XX   XX    XX   XX    -    @Rus
+ _        _    _    _    _    _    _    _    _    _    _    _    _
+ _    _  _    _    _    _    _    _    _   _    _   _    -    @Rus
  _  _    _    f    p    b    _    j    l    u    y    ;   '    \
-  @BS   @ash    r    s    t    _    _    m    n    e    i    @osh    rmet
- lctl       x    c    d    v    z    _    k    h    ,    .    rctl
+  @BS   _    r    s    t    _    _    m    n    e    i    o    rmet
+ @sl       x    c    d    v    z    _    k    h    ,    .    @sr
  _    _ _                @navl             @syml  @numl
 )
 
@@ -65,7 +64,7 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
  _     :    {   }    &    _    _    _    %    *    ^    _    _    _
-  ~    !    \(    \)  ?    $    _  \_   -    /    +    =   _
+  _    !    \(    \)  ?    $    _  \_   -    /    +    =   _
   _     [   ]    #    _    _     _   _    @    _    _    _
   _    _ _           Space            _ _)
 
@@ -73,8 +72,8 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        1    2    3    4    5   _   6  7    8    9   0 _
- _        _    _    _   _    _    _    _    _    _    _    _
+ _        1    2    3    4    _    _  _  5    6    7   8  _
+ _        _    _    0   _    _    _    _    9    _    _    _
  _        _    _              _              _    _
 )
 
