@@ -114,7 +114,7 @@ cursor:
 # Live config reload (changes require restart)
 live_config_reload: true
 shell:
-  program: /bin/bash
+  program: /bin/fish
 hints:
   # Keys used for the hint labels.
   alphabet: "jfkdls;ahgurieowpq"
