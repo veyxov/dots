@@ -11,18 +11,17 @@
   tab     q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps    a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft      z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl    lmet lalt           spc            ralt rctl
+  lctl    lmet lalt           spc            ralt rctl left down up right
 )
 
 (defalias
   sl (sticky-key 1000 lsft)
   sr (sticky-key 1000 rsft)
-  ash (tap-hold-next-release 200 a lsft)
-  osh (tap-hold-next-release 200 o rsft)
 
   ;; Backspace on tap, extend on hold
   navl (tap-hold-next-release 175 spc (layer-toggle nav))
   syml (tap-hold-next-release 175 Enter (layer-toggle symbol))
+  symll (tap-hold-next-release 175 Enter lshft)
   numl (tap-hold-next-release 200 rctl (layer-toggle numbers))
 
   BS (tap-hold-next-release 175 C-Backspace (layer-toggle symbol))
@@ -47,9 +46,9 @@
  XX        _    _    _    _    _    _    _    _    _    _    _    _
  XX    XX  XX    XX    XX    XX    XX    XX    XX   XX    XX   XX    -    @Rus
  _  _    _    f    p    b    _    j    l    u    y    ;   '    \
-  @BS   @ash    r    s    t    _    _    m    n    e    i    @osh    rmet
- lctl       x    c    d    v    z    _    k    h    ,    .    rctl
- _    _ _                @navl             @syml  @numl
+  @BS   _    r    s    t    _    _    m    n    e    i    o    rmet
+ @sl       x    c    d    v    z    _    k    h    ,    .    @sr
+ _    _ @symll                @navl             @syml  @numl _ _ _ rctl
 )
 
 (deflayer nav
@@ -58,7 +57,7 @@
  _     esc    _   _    _    _    _    @redo @cut @paste   @copy   @undo _ _
   _    lmet    lalt    lctl    lshft    _    _  _  Left   Down Up    Right    _
   _      _   _    _    _    _    _    _    _    pgdn    pgup    _
-  _    _ _           _            _ _
+  _    _ _           _            _ _ _ _ _ _
 )
 
 (deflayer symbol
@@ -66,8 +65,9 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
  _     :    {   }    &    _    _    _    %    *    ^    _    _    _
   ~    !    \(    \)  ?    $    _  \_   -    /    +    =   _
-  _     [   ]    #    _    _     _   _    @    _    _    _
-  _    _ _           Space            _ _)
+  _     [   ]    #    _    _     _   _    @    `    _    _
+  _    _ _           Space            _ _ _ _ _ _
+)
 
 (deflayer numbers
  _        _    _    _    _    _    _    _    _    _    _    _    _
@@ -75,7 +75,7 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
  _        1    2    3    4    5   _   6  7    8    9   0 _
  _        _    _    _   _    _    _    _    _    _    _    _
- _        _    _              _              _    _
+ _        _    _              _              _    _ _ _ _ _
 )
 
 (deflayer rus
@@ -84,7 +84,7 @@
  @numl        _    _    _    _    _    _    _    _    _    _    _    _    _
   @BS   _    _    _    _    _    _    _    _    _    _    _    rmet
  _          _    _    _    _    _    _    _    _    _    _    _
- _    _ _                @navl             @syml  _
+ _    _ _                @navl             @syml  _ _ _ _ _
 )
 
 (deflayer empty
@@ -93,5 +93,5 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _          _    _    _    _    _    _    _    _    _    _    _
- _        _    _              _              _    _
+ _        _    _              _              _    _ _ _ _ _
 )
