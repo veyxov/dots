@@ -129,6 +129,8 @@ key_bindings:
   - { key: Period, mods: Control, chars: "\x1b[46;5u" }
   - { key: Comma, mods: Control, chars: "\x1b[44;5u" }
   - { key: Semicolon, mods: Control, chars: "\x1b[59;5u" }
+  - { key: C, mods: Control, action: Copy }
+  - { key: V, mods: Control, action: Paste }
 
   - { key: Return, mods: Shift, chars: "\x1b[13;2u" }
   #- { key: Paste,                                       action: Paste          }
@@ -141,6 +143,7 @@ key_bindings:
   #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
 
   # Vi Mode
+  - { key: C, mods: Control|Shift, chars: "\x03" }
   - { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
   - { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
   - { key: Escape,                      mode: Vi|~Search, action: ClearSelection          }
@@ -204,8 +207,8 @@ key_bindings:
   # (Windows, Linux, and BSD only)
   - { key: V,               mods: Alt,                              action: Paste            }
   - { key: C,               mods: Alt,                              action: Copy             }
-  - { key: I,               mods: Alt,                              action: IncreaseFontSize }
-  - { key: E,               mods: Alt,                              action: DecreaseFontSize }
+  - { key: I,               mods: Control,                              action: IncreaseFontSize }
+  - { key: E,               mods: Control,                              action: DecreaseFontSize }
   - { key: Space,           mods: Control,                          action: ToggleViMode }
 
 debug:
