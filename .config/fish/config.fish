@@ -26,3 +26,5 @@ end
 function kfg
     lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME
 end
+
+bind -M insert \cn 'nvim .'
