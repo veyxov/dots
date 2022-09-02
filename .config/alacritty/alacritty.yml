@@ -207,8 +207,8 @@ key_bindings:
   # (Windows, Linux, and BSD only)
   - { key: V,               mods: Alt,                              action: Paste            }
   - { key: C,               mods: Alt,                              action: Copy             }
-  - { key: I,               mods: Control,                              action: IncreaseFontSize }
-  - { key: E,               mods: Control,                              action: DecreaseFontSize }
+  - { key: I,               mods: Control|Shift,                    action: IncreaseFontSize }
+  - { key: E,               mods: Control|Shift,                    action: DecreaseFontSize }
   - { key: Space,           mods: Control,                          action: ToggleViMode }
 
 debug:
