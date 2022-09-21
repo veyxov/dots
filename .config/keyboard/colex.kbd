@@ -17,13 +17,13 @@
 (defalias
   sl (sticky-key 1000 lsft)
   sr (sticky-key 1000 rsft)
-  ;; Backspace on tap, extend on hold
-  navl (tap-hold-next-release 175 spc (layer-toggle nav))
+  navl (tap-hold-next-release 150 spc (layer-toggle nav))
   syml (tap-hold-next-release 175 Enter (layer-toggle symbol))
-  symll (tap-hold-next-release 175 Enter lshft)
   numl (tap-hold-next-release 200 rctl (layer-toggle numbers))
 
+  ;; Backspace on tap, extend on hold
   BS (tap-hold-next-release 175 C-Backspace (layer-toggle symbol))
+  bs_win (tap-hold-next-release 175 C-Backspace lmet)
 
   Rus (around (cmd-button "st -e '/home/iz/.config/keyboard/rulemak/rulemak.sh'")
             (layer-switch rus))
@@ -47,7 +47,7 @@
  _  _    _    f    p    b    _    j    l    u    y    ;   '    \
   @BS   _    r    s    t    _    _    m    n    e    i    o    @sr
  @sl       x    c    d    v    z    _    k    h    ,    .    ralt
- _    lalt lmet                @navl             @syml  @numl _ _ _ rctl
+ _    lalt @bs_win                @navl             @syml  @numl _ _ _ rctl
 )
 
 (deflayer nav
