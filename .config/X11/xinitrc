@@ -4,17 +4,14 @@ xrdb $HOME/.config/X11/Xresources
 # Set keyboard to my custom config
 sudo kmonad -w 0 $HOME/.config/keyboard/colex.kbd &
 
-# Faster input
-xset r rate 300 50
-
 # Locking system
 xautolock -time 1 -corners 000- -locker slock &
 
-# Set the bar to show the date
-dwmblocks &
-
 # Clipboard deamon
 clipmenud &
+
+# Keybinds
+sxhkd &
 
 # Compositor
 picom --experimental-backends --config $HOME/.config/picom.conf -b
@@ -24,4 +21,3 @@ setwall &
 
 # Run the desktop
 dwm
-# exec bspwm
