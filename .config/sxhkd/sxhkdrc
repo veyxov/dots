@@ -1,47 +1,9 @@
-### BSPWM ###
-
-# terminal emulator
-super + t
-	alacritty
-
-# program launcher
-super + s
-	dmenu_run
-
-# make sxhkd reload its configuration files:
+# make sxhkd reload
 super + Escape
-	pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd
 
-# Killing windows
-super + {_,shift + }q
-    bspc node -{c,k}
+super + r ; a
+    scrot -e 'xclip -selection clipboard -t image/png -i $f'
 
-super + f 
-  bspc node -t '~fullscreen'
-
-# Move and move to desktop
-super + {_,shift + }{n,e, i, o, semicolon}
-  bspc {desktop -f, node -d} '^{1, 2, 3, 4, 5}' --follow
-
-# Expand/contract a window by moving one of its side outward/inward
-super + m : {Left,Down,Up,Right}
-    STEP=100; SELECTION={1,2,3,4}; \
-    bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
-    bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
-
-# focus the node in the given direction
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
-
-
-# Volume controls
-{XF86AudioMute, XF86AudioRaiseVolume, XF86AudioLowerVolume}
-    vol_ctl {mute, up, down}
-
-# Brightness controls
-{XF86MonBrightnessUp, XF86MonBrightnessDown}
-    bri_ctl {up, down}
-
-# quit/restart bspwm
-super + alt + {q,r}
-	bspc {quit,wm -r}
+super + r ; s
+    scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
