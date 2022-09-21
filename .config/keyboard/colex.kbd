@@ -31,9 +31,6 @@
   Col (around (cmd-button "setxkbmap us")
             (layer-switch colemak))
 
-  m1 (cmd-button "DISPLAY=:0 xdotool click 1")
-  m2 (cmd-button "DISPLAY=:0 xdotool click 2")
-
   redo C-Z
   paste C-v
   cut C-x
