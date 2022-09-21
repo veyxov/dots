@@ -17,7 +17,6 @@
 (defalias
   sl (sticky-key 1000 lsft)
   sr (sticky-key 1000 rsft)
-
   ;; Backspace on tap, extend on hold
   navl (tap-hold-next-release 175 spc (layer-toggle nav))
   syml (tap-hold-next-release 175 Enter (layer-toggle symbol))
@@ -46,9 +45,9 @@
  XX        _    _    _    _    _    _    _    _    _    _    _    _
  XX    XX  XX    XX    XX    XX    XX    XX    XX   XX    XX   XX    -    @Rus
  _  _    _    f    p    b    _    j    l    u    y    ;   '    \
-  @BS   _    r    s    t    _    _    m    n    e    i    o    rmet
- @sl       x    c    d    v    z    _    k    h    ,    .    @sr
- _    _ @symll                @navl             @syml  @numl _ _ _ rctl
+  @BS   _    r    s    t    _    _    m    n    e    i    o    @sr
+ @sl       x    c    d    v    z    _    k    h    ,    .    ralt
+ _    lalt lmet                @navl             @syml  @numl _ _ _ rctl
 )
 
 (deflayer nav
