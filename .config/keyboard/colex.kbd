@@ -22,7 +22,7 @@
   numl (tap-hold-next-release 200 rctl (layer-toggle numbers))
 
   ;; Backspace on tap, extend on hold
-  BS (tap-hold-next-release 175 C-Backspace (layer-toggle symbol))
+  BS C-Backspace
   bs_win (tap-hold-next-release 175 C-Backspace lmet)
 
   Rus (around (cmd-button "st -e '/home/iz/.config/keyboard/rulemak/rulemak.sh'")
@@ -42,7 +42,7 @@
  XX        _    _    _    _    _    _    _    _    _    _    _    _
  XX    XX  XX    XX    XX    XX    XX    XX    XX   XX    XX   XX    -    @Rus
  _  _    _    f    p    b    _    j    l    u    y    ;   '    \
-  @BS   _    r    s    t    _    _    m    n    e    i    o    @sr
+  @sl   _    r    s    t    _    _    m    n    e    i    o    @sr
  @sl       x    c    d    v    z    _    k    h    ,    .    ralt
  _    lalt @bs_win                @navl             @syml  @numl _ _ _ rctl
 )
@@ -80,7 +80,7 @@
  @numl        _    _    _    _    _    _    _    _    _    _    _    _    _
   @BS   _    _    _    _    _    _    _    _    _    _    _    rmet
  _          _    _    _    _    _    _    _    _    _    _    _
- _    _ _                @navl             @syml  _ _ _ _ _
+ _    _ @BS                @navl             @syml  _ _ _ _ _
 )
 
 (deflayer empty
