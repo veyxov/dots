@@ -3,7 +3,7 @@ super + Escape
     pkill -USR1 -x sxhkd
 
 super + r ; a
-    scrot -e 'xclip -selection clipboard -t image/png -i $f'
+    scrot '/tmp/%Y-%m-%d_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'
 
 super + r ; s
-    scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
+    scrot '/tmp/%Y-%m-%d_$wx$h.png' -s -e 'xclip -selection clipboard -t image/png -i $f'
