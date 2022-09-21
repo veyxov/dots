@@ -27,4 +27,7 @@ function kfg
     lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME
 end
 
+# Faster input
+xset r rate 300 50
+
 bind -M insert \cn 'nvim .'
