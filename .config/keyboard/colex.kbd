@@ -51,7 +51,7 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
  _     esc    _   _    _    _    _    @redo @cut @paste   @copy   @undo _ _
-  _    lmet    lalt    lctl    lshft    _    _  _  Left   Down Up    Right    _
+  _    C-a    lalt    lctl    lshft    _    _  _  Left   Down Up    Right    _
   _      _   _    _    _    _    _    _    _    pgdn    pgup    _
   _    _ _           _            _ _ _ _ _ _
 )
@@ -59,8 +59,8 @@
 (deflayer symbol
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _     :    {   }    &    _    _    _    %    *    ^    <    >    _
-  ~    !    \(    \)  ?    $    _  \_   -    /    +    =   _
+ _     $    {   }    &    _    _    _    %    *    ^    <    >    _
+  ~    !    \(    \)  ?    :    _  \_   -    /    +    =   _
   _     [   ]    #    _    _     _   _    @    `    _    _
   _    _ _           Space            _ _ _ _ _ _
 )
