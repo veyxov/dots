@@ -209,7 +209,6 @@ key_bindings:
   - { key: C,               mods: Alt,                              action: Copy             }
   - { key: I,               mods: Control|Shift,                    action: IncreaseFontSize }
   - { key: E,               mods: Control|Shift,                    action: DecreaseFontSize }
-  - { key: Space,           mods: Control,                          action: ToggleViMode }
 
 debug:
   print_events: false
