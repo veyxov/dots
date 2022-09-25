@@ -1,5 +1,4 @@
-firefox
-flameshot gui
-figma-linux
-alacritty
-telegram-desktop
+arandr
+kdenlive
+gimp
+alacritty -e "nmtui"
