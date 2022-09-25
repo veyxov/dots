@@ -1,9 +1,9 @@
 # make sxhkd reload
-super + Escape
+super + R
     pkill -USR1 -x sxhkd
 
 super + r ; a
-    scrot '/tmp/%Y-%m-%d_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f'
+    scrot '/tmp/%Y-%m-%d_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f' && herbe "Shot taken"
 
 super + r ; s
-    scrot '/tmp/%Y-%m-%d_$wx$h.png' -s -e 'xclip -selection clipboard -t image/png -i $f'
+    scrot '/tmp/%Y-%m-%d_$wx$h.png' -s -e 'xclip -selection clipboard -t image/png -i $f' && herbe "Shot taken"
