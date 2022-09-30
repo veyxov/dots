@@ -10,6 +10,8 @@ xautolock -time 1 -corners 000- -locker slock &
 # Clipboard deamon
 clipmenud &
 
+warpd &
+
 # Keybinds
 sxhkd &
 
