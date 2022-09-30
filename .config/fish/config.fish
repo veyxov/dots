@@ -31,3 +31,8 @@ end
 xset r rate 300 50
 
 bind -M insert \cn 'nvim .'
+
+# pnpm
+set -gx PNPM_HOME "/home/iz/.local/share/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
