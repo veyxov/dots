@@ -11,6 +11,8 @@ bind D tabclose
 
 bind <ArrowLeft> tabprev
 bind <ArrowRight> tabnext
+bind <ArrowDown> scrollpage 0.5
+bind <ArrowUp> scrollpage -0.5
 
 " Only hint search results on Google and DDG
 bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
