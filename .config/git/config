@@ -1,6 +1,7 @@
 [user]
-    email = wexouv@gmail.com
-    name = Alex Wexov
+	email = veyxov@gmail.com
+	name = Shekhov Ismoil
+	signingkey = 0B63F08895B0273F
 [init]
     defaultBranch = main
 [alias]
@@ -23,3 +24,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[commit]
+	gpgsign = true
