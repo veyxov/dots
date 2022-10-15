@@ -28,7 +28,6 @@ font:
     style: Bold Italic
 
   size: 14.0
-  use_thin_strokes: true
 draw_bold_text_with_bright_colors: false
 
 colors:
