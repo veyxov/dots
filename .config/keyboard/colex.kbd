@@ -40,20 +40,20 @@
 
 (deflayer colemak
  XX        _    _    _    _    _    _    _    _    _    _    _    _
- XX    XX  XX    XX    XX    XX    XX    XX    XX   XX    XX   XX    -    @Rus
- _  _    _    f    p    b    _    j    l    u    y    ;   '    \
-  @sl   _    r    s    t    _    _    m    n    e    i    o    @sr
- @sl       x    c    d    v    z    _    k    h    ,    .    ralt
- _    lalt @bs_win                @navl             @syml  @numl _ _ _ rctl
+ _ q    w  f    p    b    XX _    j    l    u   y     ;     '
+ tab  a    r   s    t    g    XX  XX  m    n    e    i    o  @sr _
+ x    c    d    v  z _   _  k    h    ,    .    _
+ _       _    @bs_win    @navl    _    _    _    @sl    @syml    _   _    _
+ _    lalt _ _             @syml  @numl _ _ _ rctl
 )
 
 (deflayer nav
  _        _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _     esc    _   _    _    _    _    @redo @cut @paste   @copy   @undo _ _
-  _    C-a    lalt    lctl    lshft    _    _  _  Left   Down Up    Right    _
-  _      _   _    _    _    _    _    _    _    pgdn    pgup    _
-  _    _ _           _            _ _ _ _ _ _
+ _        esc    _    _    _    _    _    _    _    _    _    _    _    _
+_        _    _    _    _    _    _    _    _     Left    Down Up    Right    _
+ _        _    _    _    _    _    _    _    _    _    _    _    _
+ _          _    _    _    _    _    _    _    _    _    _    _
+ _        _    _              _              _    _ _ _ _ _
 )
 
 (deflayer symbol
