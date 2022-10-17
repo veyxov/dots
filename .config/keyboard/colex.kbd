@@ -38,12 +38,12 @@
 )
 
 (deflayer colemak
- XX        _    _    _    _    _    _    _    _    _    _    _    _
- XX   q    w  f    p    b    XX _    j    l    u   y     ;     '
- tab  a    r   s    t    g    XX  XX  m    n    e    i    o  @sr _
- x    c    d    v  z _   _  k    h    ,    .    _
- _       _    @bs_win    @navl    _    _    _    @sl    @syml    _   _    _
- lctl    lalt _ XX XX  XX _ _ _ rctl
+ XX  _    _    _    _    _    _    _    _    _    _    _    _
+ XX  q    w  f    p    b    XX _    j    l    u   y     ;     '
+ tab a    r   s    t    g    XX  XX  m    n    e    i    o  @sr _
+ x   c    d    v  z _   _  k    h    ,    .    _
+ _   _    lctl    @navl    _    _    _    _    @syml      @numl _    _
+ XX  lalt  _    @bs_win                @sl  XX _ _ _ rctl
 )
 
 (deflayer nav
@@ -67,8 +67,8 @@ _        _    _    _    _    _    _    _    _     Left    Down Up    Right    _
 (deflayer numbers
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        1    2    3    4    _   _   _  7    8    9   0 _
+ _        1    2    3    4    _    _    _    _   7    8    9   0   _
+ _        _ _ _ _    _   _   _  _ _ _ _ _
  _        _    _    5   _    _    _    _    6    _    _    _
  _        _    _              _              _    _ _ _ _ _
 )
