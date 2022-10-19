@@ -41,11 +41,12 @@
 (deflayer colemak
  XX        _    _    _    _    _    _    _    _    _    _    _    _
  _      q    b      w       f       XX   _      XX      j       XX       u       y     ;     '
- tab    a    r      s       p       g    XX     XX      c       l        e       i        o  @sr XX
+ tab    a    r      s       p       g    XX     XX      j       l        e       i        o  @sr XX
  x      c    t      g       z       _    _      m       n        ,       .       XX
  XX XX  d    v      XX      XX      XX   XX     k       h       XX       s
- XX     lalt XX  XX             @syml  @numl _ _ _ rctl
+ XX     lalt @navl     @sl     @bs_win  @syml _ _ _ rctl
 )
+
 
 (deflayer nav
  _        _    _    _    _    _    _    _    _    _    _    _    _
