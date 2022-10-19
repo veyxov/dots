@@ -2,7 +2,7 @@
     fallthrough true
     allow-cmd true
     input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
-    output (uinput-sink "Kmonad")
+    output (uinput-sink "My KMonad output")
 )
 
 (defsrc
@@ -10,7 +10,7 @@
   grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab     q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps    a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft    z    x    c    v    b    n    m    ,    .    /    rsft
+  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
   lctl    lmet lalt           spc            ralt rctl left down up right
 )
 
@@ -40,20 +40,20 @@
 
 (deflayer colemak
  XX        _    _    _    _    _    _    _    _    _    _    _    _
- XX    XX  XX    XX    XX    XX    XX    XX    XX   XX    XX   XX    -    @Rus
- _  _    _    f    p    b    _    j    l    u    y    ;   '    \
-  @sl   _    r    s    t    _    _    m    n    e    i    o    @sr
- @sl       x    c    d    v    z    _    k    h    ,    .    ralt
- _    lalt @bs_win                @navl             @syml  @numl _ _ _ rctl
+ _      q    b      w       f       XX   _      XX      j       XX       u       y     ;     '
+ tab    a    r      s       p       g    XX     XX      c       l        e       i        o  @sr XX
+ x      c    t      g       z       _    _      m       n        ,       .       XX
+ XX XX  d    v      XX      XX      XX   XX     k       h       XX       s
+ XX     lalt XX  XX             @syml  @numl _ _ _ rctl
 )
 
 (deflayer nav
  _        _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _     esc    _   _    _    _    _    @redo @cut @paste   @copy   @undo _ _
-  _    C-a    lalt    lctl    lshft    _    _  _  Left   Down Up    Right    _
-  _      _   _    _    _    _    _    _    _    pgdn    pgup    _
-  _    _ _           _            _ _ _ _ _ _
+ _        esc    _    _    _    _    _    _    _    _    _    _    _    _
+ _        _    _    _    _    _    _    _    _     Left    Down Up    Right    _
+ _        _    _    _    _    _    _    _    _    _    _    _    _
+ _          _    _    _    _    _    _    _    _    _    _    _
+ _        _    _              _              _    _ _ _ _ _
 )
 
 (deflayer symbol
