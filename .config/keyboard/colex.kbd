@@ -53,25 +53,25 @@
  _        esc _    _    _    _    _    _    _    _     Down Up    Right    _
  _        _    _    _    _    _    _    _    _    Left    _    _    _
  _          _    _    _    _    _    _    _    _    _    _    _
- _        _    _              _              _    _ _ _ _ _
+ _        _    _  _  _                  @numl _ _ _ _
 )
 
 (deflayer symbol
  _        _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- ~        \(    \)    {    _    _    _    _    _    &    /  +    =    _
+ _        _    _    _    _    _    _    _    _    _    *    _    _    \\
+ ~        \(    \)    {    $    _    _    _    _    &    /  +    =    _
  _        _    _    }    ? _    _    _    _    -    >    <    _
- _          _    _    _    _    _    _    _    _    _    _    _
- _        _    _              _              _    _ _ _ _ _
+ _          _    @    _    _    _    _    _    _    _    _    _
+ _        _    @numl              \_              _    _ _ _ _ _
 )
 
 (deflayer numbers
- _        _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        1    2    3    4    _   _   _  7    8    9   0 _
- _        _    _    5   _    _    _    _    6    _    _    _
- _        _    _              _              _    _ _ _ _ _
+ XX        XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX
+ XX        XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX
+ XX        1    2    3    5    XX    XX    XX XX  7    8    9    0   XX
+ XX        XX    XX    4    XX    XX    XX    XX    XX    6    XX    XX    XX
+ XX          XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX
+ XX        XX    XX              XX              XX    XX XX XX XX XX
 )
 
 (deflayer rus
