@@ -47,12 +47,11 @@
  XX     lalt @navl     @sl     @bs_win  @syml _ _ _ rctl
 )
 
-
 (deflayer nav
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        esc    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _     Left    Down Up    Right    _
- _        _    _    _    _    _    _    _    _    _    _    _    _
+ _        _    _    _    _    _    _    _    _    _     Down Up    Right    _
+ _        _    _    _    _    _    _    _    _    Left    _    _    _
  _          _    _    _    _    _    _    _    _    _    _    _
  _        _    _              _              _    _ _ _ _ _
 )
