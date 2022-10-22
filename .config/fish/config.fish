@@ -27,6 +27,10 @@ function kfg
     lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME
 end
 
+function kfgg
+    git --git-dir=$HOME/.cfg/ --work-tree=$HOME
+end
+
 # Faster input
 xset r rate 300 50
 
