@@ -1,12 +1,6 @@
 # Add my bin's to PATH
 export PATH="$PATH:$HOME/.local/bin/"
 export PATH="$PATH:$HOME/.local/src/dwmblocks/src"
-# Fix for RIDER
-export _JAVA_AWT_WM_NONREPARENTING=1
-
-# ZSH
-export ZDOTDIR="$HOME"/.config/zsh
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
 
 # XDG
 export XDG_CONFIG_HOME="${HOME}/.config"
@@ -33,6 +27,7 @@ export LESS="-iMFXR"
 export EDITOR="nvim"
 # Open man pages in neovim
 export MANPAGER='nvim +Man!'
+
 # Fzf defaults
 export FZF_DEFAULT_OPTS='--no-height --no-reverse --select-1 --exit-0'
 
