@@ -1,0 +1,21 @@
+hint_activation_key: M-h
+grid_activation_key: M-a
+activation_key: M-c
+hint: h
+
+left: left
+right: right
+down: down
+up: up
+
+grid_left: left
+grid_right: right
+grid_down: down
+grid_up: up
+
+grid_keys: a t r s
+
+buttons: m e i
+
+scroll_down: pagedown
+scroll_up: pageup
