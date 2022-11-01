@@ -1,5 +1,5 @@
 #!/bin/bash
-STEP=10
+STEP=1
 
 # Determine what to do
 if [[ "$1" == "up" ]]; then
