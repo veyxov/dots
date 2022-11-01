@@ -50,7 +50,7 @@
 (deflayer nav
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _ _    _    _    _    _    _    _    _   @paste @copy _ _
- _        esc lctl    lsft    _    _    _    _    _    _     Down Up    Right    _
+ alt        esc lctl    lsft    _    _    _    _    _    _     Down Up    Right    _
  _        _    _    _    _    _    _    _    _    Left    pgdn    pgup    _
  _          _    _    _    _    _    _    _    _    _    _    _
  _        _    _  _  _                  @numl _ _ _ _
@@ -58,7 +58,7 @@
 
 (deflayer symbol
  _        _    _    _    _    _    _    _    _    _    _    _    _
- _        !    _    _    %    _    _    _    _    _    *    ^    |    \\
+ _        !    _    _    %    _    _    _    _    _    *    ^    |    "
  ~        \(    \)    {    $    _    _    _    _    &    /  +    =    _
  _        [  ]        }    ? _    _    _    _    -    >    <    _
  _          _    @    _    _    _    _    _    _    #    _    _
