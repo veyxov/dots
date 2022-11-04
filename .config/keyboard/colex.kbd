@@ -41,7 +41,7 @@
 (deflayer colemak
  XX        _    _    _    _    _    _    _    _    _    _    _    _
  _      q    b      w       f       XX   _      XX      j       XX       u       y     ;     '
- tab    a    r      s       p       g    XX     XX      j       l        e       i        o \  XX
+ tab    a    r      s       p       g    XX     XX      j       l        e       i        o j  XX
  x      c    t      g       z       _    _      m       n        ,       .       XX
  XX XX  d    v      XX      XX      XX   XX     k       h       XX       s
  XX     lctl @navl     @sl     @syml @bs_win   _ _ _ @numl
@@ -58,8 +58,8 @@
 
 (deflayer symbol
  _        _    _    _    _    _    _    _    _    _    _    _    _
- _        !    _    _    %    _    _    _    _    _    *    ^    |    "
- ~        \(    \)    {    $    _    _    _    _    &    /  +    =    _
+ _        !    _    `    %    _    _    _    _    _    *    ^    |    "
+ ~        \(    \)    {    $    _    _    _    _    &    /  +    =    \
  _        [  ]        }    ? _    _    _    _    -    >    <    _
  _          _    @    _    _    _    _    _    _    #    _    _
  _        _    @numl              \_              _    _ _ _ _ _
