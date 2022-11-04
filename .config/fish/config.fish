@@ -40,3 +40,7 @@ bind -M insert \cn 'nvim .'
 set -gx PNPM_HOME "/home/iz/.local/share/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
+
+alias ls='exa -F --icons --color=automatic'
+alias la='ls -a'
+alias tree='exa -T'
