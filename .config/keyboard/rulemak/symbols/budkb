@@ -4,18 +4,19 @@ xkb_symbols "rulemak" {
     name[Group1]= "Russian (Rulemak, phonetic Colemak)";
 
     key <TLDE> { [     Cyrillic_io,     Cyrillic_IO,           U0300,           U030F ] }; // Combining grave, double grave
-    key <AE01> { [               Cyrillic_ka_descender,          Cyrillic_KA_descender,           U0301,           U030B ] }; // Combining acute, double acute
-    key <AE02> { [               Cyrillic_ka_descender,        Cyrillic_KA_descender,           U0308,     twosuperior ] }; // Combining diaeresis
-    key <AE03> { [               Cyrillic_sha,      Cyrillic_SHA,      numbersign,   threesuperior ] };
-    key <AE04> { [               Cyrillic_ef,       Cyrillic_EF,          dollar,        sterling ] };
-    key <AE05> { [               5,         percent,        EuroSign,             yen ] };
-    key <AE06> { [               6,           colon,           U0306,           U0304 ] }; // Combining breve, macron
-    key <AE07> { [               7,        question,       ampersand                  ] };
-    key <AE08> { [               8,        asterisk,           U20BD,           U20B4 ] }; // ruble, hryvnia
-    key <AE09> { [               9,       parenleft,     bracketleft,       braceleft ] };
-    key <AE10> { [               Cyrillic_u,      Cyrillic_U,    bracketright,      braceright ] };
-    key <AE11> { [           Cyrillic_shorti,      Cryllic_SHORTI,          endash,          emdash ] };
-    key <AE12> { [           Cyrillic_yu,            Cyrillic_YU,        multiply,        division ] };
+    key <AE01> { [     Cyrillic_ka_descender,          Cyrillic_KA_descender,           U0301,           U030B ] }; // Combining acute, double acute
+    key <AE02> { [     Cyrillic_be,        Cyrillic_BE,           U0308,     twosuperior ] }; // Combining diaeresis
+    key <AE03> { [     Cyrillic_sha,      Cyrillic_SHA,      numbersign,   threesuperior ] };
+    key <AE04> { [     Cyrillic_ef,       Cyrillic_EF,          dollar,        sterling ] };
+    key <AE05> { [     5,         percent,        EuroSign,             yen ] };
+    key <AE06> { [     6,           colon,           U0306,           U0304 ] }; // Combining breve, macron
+    key <AE07> { [     7,        question,       ampersand                  ] };
+    key <AE08> { [     8,        asterisk,           U20BD,           U20B4 ] }; // ruble, hryvnia
+    key <AE09> { [     9,       parenleft,     bracketleft,       braceleft ] };
+    key <AE10> { [     Cyrillic_u,      Cyrillic_U,    bracketright,      braceright ] };
+    key <AE11> { [     Cyrillic_shorti,      Cyrillic_i_macron,          endash,          emdash ] };
+    key <AE12> { [     Cyrillic_yu,            Cyrillic_YU,        multiply,        division ] };
+    key <BKSP> { [     Cyrillic_e,            Cyrillic_E,        multiply,        division ] };
 
     key <AD01> { [     Cyrillic_a,     Cyrillic_A                                   ] }; // a
     key <AD02> { [     Cyrillic_er,    Cyrillic_ER,           U0475,           U0474 ] }; // r
@@ -27,7 +28,7 @@ xkb_symbols "rulemak" {
     key <AD08> { [     Cyrillic_che_descender,     Cyrillic_CHE_descender,    Cyrillic_lje,    Cyrillic_LJE ] };
     key <AD09> { [     Cyrillic_el,      Cyrillic_EL, Byelorussian_shortu, Byelorussian_SHORTU ] };
     key <AD10> { [     Cyrillic_ie, Cyrillic_IE,     Cyrillic_je,     Cyrillic_JE ] };
-    key <AD11> { [     Cyrillic_i,     Cyrillic_i,       semicolon,           colon ] };
+    key <AD11> { [     Cyrillic_i,     Cyrillic_I,       semicolon,           colon ] };
     key <AD12> { [     Cyrillic_o,    Cyrillic_o,   guillemotleft,  doublelowquotemark ] };
     key <BKSL> { [     Cyrillic_e,     Cyrillic_E                                 ] }; // э Э
     key <AC01> { [     Cyrillic_ha,      Cyrillic_HA, apostrophe, rightsinglequotemark ] };
@@ -44,7 +45,7 @@ xkb_symbols "rulemak" {
 
     key <LSGT> { [     Cyrillic_hardsign, Cyrillic_HARDSIGN,  apostrophe,        quotedbl ] };
     key <AB01> { [     Cyrillic_ha,     Cyrillic_HA                                   ] };
-    key <AB02> { [     Cyrillic_de,   Cyrillic_CHE,   Cyrillic_dzhe,   Cyrillic_DZHE ] };
+    key <AB02> { [     Cyrillic_de,   Cyrillic_DE,   Cyrillic_dzhe,   Cyrillic_DZHE ] };
     key <AB03> { [     Cyrillic_de,     Cyrillic_DE,     Serbian_dje,     Serbian_DJE ] };
     key <AB04> { [     Cyrillic_ve,     Cyrillic_VE                                   ] };
     key <AB05> { [     Cyrillic_ze,     Cyrillic_ZE,   Macedonia_dse,   Macedonia_DSE ] };
