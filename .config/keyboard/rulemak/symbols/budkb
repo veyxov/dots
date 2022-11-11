@@ -16,7 +16,7 @@ xkb_symbols "rulemak" {
     key <AE10> { [     Cyrillic_u,      Cyrillic_U,    bracketright,      braceright ] };
     key <AE11> { [     Cyrillic_shorti,      Cyrillic_i_macron,          endash,          emdash ] };
     key <AE12> { [     Cyrillic_yu,            Cyrillic_YU,        multiply,        division ] };
-    key <BKSP> { [     Cyrillic_e,            Cyrillic_E,        multiply,        division ] };
+    key <TAB> { [     Cyrillic_ya,            Cyrillic_YA,        multiply,        division ] };
 
     key <AD01> { [     Cyrillic_a,     Cyrillic_A                                   ] }; // a
     key <AD02> { [     Cyrillic_er,    Cyrillic_ER,           U0475,           U0474 ] }; // r
@@ -37,7 +37,7 @@ xkb_symbols "rulemak" {
     key <AC04> { [     Cyrillic_ghe,     Cyrillic_GHE                                  ] };
     key <AC05> { [     Cyrillic_ze,    Cyrillic_ZE, Ukrainian_ghe_with_upturn, Ukrainian_GHE_WITH_UPTURN ] };
     key <AC06> { [     Cyrillic_hardsign, Cyrillic_HARDSIGN, Cyrillic_hardsign, Cyrillic_HARDSIGN ] };
-    key <AC07> { [     Cyrillic_em,     Cyrillic_EM                                   ] };
+    key <AC07> { [     Cyrillic_softsign,     Cyrillic_EM                                   ] };
     key <AC08> { [     Cyrillic_em,     Cyrillic_EM,    Cyrillic_nje,    Cyrillic_NJE ] };
     key <AC09> { [     Cyrillic_en,     Cyrillic_EN,    Ukrainian_ie,    Ukrainian_IE ] };
     key <AC10> { [     comma,      Cyrillic_I,     Cyrillic_i_macron,     Cyrillic_I_macron ] }; // ӣ Ӣ
@@ -45,13 +45,13 @@ xkb_symbols "rulemak" {
 
     key <LSGT> { [     Cyrillic_hardsign, Cyrillic_HARDSIGN,  apostrophe,        quotedbl ] };
     key <AB01> { [     Cyrillic_ha,     Cyrillic_HA                                   ] };
-    key <AB02> { [     Cyrillic_de,   Cyrillic_DE,   Cyrillic_dzhe,   Cyrillic_DZHE ] };
-    key <AB03> { [     Cyrillic_de,     Cyrillic_DE,     Serbian_dje,     Serbian_DJE ] };
-    key <AB04> { [     Cyrillic_ve,     Cyrillic_VE                                   ] };
+    key <AB02> { [     Cyrillic_de,     Cyrillic_DE,   Cyrillic_dzhe,   Cyrillic_DZHE ] };
+    key <AB03> { [     Cyrillic_ve,     Cyrillic_VE,     Serbian_dje,     Serbian_DJE ] };
+    key <AB04> { [     Cyrillic_yeru,     Cyrillic_YERU                                   ] };
     key <AB05> { [     Cyrillic_ze,     Cyrillic_ZE,   Macedonia_dse,   Macedonia_DSE ] };
-    key <AB06> { [     0x1000493,        0x1000492,       backslash,             bar ] };
-    key <AB07> { [     Cyrillic_ka,     Cyrillic_KA,   Macedonia_kje,   Macedonia_KJE ] };
-    key <AB08> { [     Cyrillic_ka, Cyrillic_KA                   ] }; // ҳ Ҳ
+    key <AB06> { [     0x1000493,       0x1000492,       backslash,             bar ] };
+    key <AB07> { [     0x1000493,       0x1000492,   Macedonia_kje,   Macedonia_KJE ] };
+    key <AB08> { [     Cyrillic_ka,     Cyrillic_KA                   ] }; // ҳ Ҳ
     key <AB09> { [     Cyrillic_ha_descender,       Cyrillic_HA_descender,            less                  ] };
     key <AB10> { [     period,           colon,         greater                  ] };
 };
