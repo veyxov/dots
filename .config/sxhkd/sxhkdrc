@@ -10,3 +10,6 @@ super + r ; s
 
 super + t; {t, f, o}
     {alacritty -e "tmux", firefox, telegram-desktop}
+
+super + b
+    xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 100 | cut -d ' ' -f 1)
