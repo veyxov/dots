@@ -8,6 +8,9 @@ right: right
 down: down
 up: up
 
+speed:10
+acceleration:1500
+
 grid_left: left
 grid_right: right
 grid_down: down
