@@ -1,5 +1,5 @@
 # make sxhkd reload
-super + R
+super + x
     pkill -USR1 -x sxhkd
 
 super + r ; a
@@ -13,3 +13,6 @@ super + t; {t, f, o}
 
 super + b
     xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 100 | cut -d ' ' -f 1)
+
+super + B
+    alacritty -e "nvim" "/home/iz/.local/share/bookmarks"
