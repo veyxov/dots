@@ -35,7 +35,7 @@ end
 xset r rate 300 50
 
 bind -M insert \cn 'nvim .'
-bind -M insert \ce 'cd ~/Projects && cd $(find * -maxdepth 4 -type d | fzf)'
+bind -M insert \ce 'cd ~/Projects && cd $(sudo find * -maxdepth 4 -type d | fzf)'
 
 # pnpm
 set -gx PNPM_HOME "/home/iz/.local/share/pnpm"
