@@ -15,7 +15,8 @@
 )
 
 (defalias
-  sht (tap-hold-next 150 (layer-next shifted) (layer-toggle shifted))
+  sl (sticky-key 1000 lsft)
+  sr (sticky-key 1000 rsft)
   navl (tap-hold-next-release 150 spc (layer-toggle nav))
   syml (tap-hold-next-release 175 Enter lmet)
   numl (tap-hold-next-release 200 rctl (layer-toggle numbers))
@@ -44,7 +45,7 @@
  tab    a    r      s       p       g    XX     XX      j       l        e       i        o ;  XX
  x      c    t      g       z       _    _      m       n        ,       .       XX
  XX XX  d    v      XX      XX      XX   XX     k       h       XX       s
- lalt     lctl @navl     @sht     @syml @bs_win   _ _ _ @Rus
+ lalt     lctl @navl     @sl     @syml @bs_win   _ _ _ @Rus
 )
 
 (deflayer nav
@@ -58,8 +59,8 @@
 
 (deflayer symbol
  _        _    _    _    _    _    _    _    _    _    _    _    _
- _        !    _    `    %    _    _    _    _    \    *    ^    |    "
- ~        \(    \)    {    $    _    _    _    _    &    /  +    =    :
+ _        !    _    `    %    _    _    _    _    _    *    ^    |    "
+ ~        \(    \)    {    $    _    _    _    _    &    /  +    =    \
  _        [  ]        }    ? _    _    _    _    -    >    <    _
  _          _    @    _    _    _    _    _    _    #    _    _
  _        _    @numl              \_              _    _ _ _ _ _
@@ -67,8 +68,8 @@
 
 (deflayer symbolRu
  _        _    _    _    _    _    _    _    _    _    _    _    _
- _        !    _    `    %    _    _    _    _    \    *    ^    |    "
- ~        \(    \)    {    $    _    _    _    _    &    /  +    =    :
+ _        !    _    `    %    _    _    _    _    _    *    ^    |    "
+ ~        \(    \)    {    $    _    _    _    _    &    /  +    =    \
  _        [  ]        }    ? _    _    _    _    -    >    <    _
  _          _    @    _    _    _    _    _    _    #    _    _
  _        _    @numl              \_              _    _ _ _ _ _
@@ -89,16 +90,7 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _          _    _    _    _    _    _    _    _    _    _    _
- _        lctl    @navl              @sht              @symlRu    @bs_win _ _ _ @Col
-)
-
-(deflayer shifted
- _        _    _    _    _    _    _    _    _    _    _    _    _
- _        Q    B    W    F    _    _    _    _    _    U    Y    _    _
- _        A    R    S    P  _   _    _      J    L    E    I    O   _   _
-          X    C    T    G    Z    _    _    M    N  _      _ _
- _          _   D   V    _    _    _    _    K    H    _    _
- _        _    _              _              _    _ _ _ _ _
+ _        lctl    @navl              @sl              @symlRu    @bs_win _ _ _ @Col
 )
 
 (deflayer empty
