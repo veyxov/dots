@@ -26,7 +26,7 @@
   bs_win (tap-hold-next-release 175 C-Backspace (layer-toggle symbol))
   symlRu (tap-hold-next-release 175 Enter (layer-toggle symbolRu))
 
-  Rus (around (cmd-button "st -e '/home/iz/.config/keyboard/rulemak/rulemak.sh'")
+  Rus (around (cmd-button "sh '/home/iz/.config/keyboard/rulemak/rulemak.sh'")
             (layer-switch rus))
 
   Col (around (cmd-button "setxkbmap us")
