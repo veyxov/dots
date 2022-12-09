@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Get key and val from user
+KEY=$(:| dmenu -p "Key:")
+VALUE=$(:| dmenu -p "Value:")
+
+# Encrypt the key with the given password
+ENC_KEY=$(echo $KEY | openssl enc -e -des3 -base64 -pass pass:$BOOKMARKS_PASSWORD -pbkdf2)
+
+# Save to the file
+NEW_ENTRY="$ENC_KEY $VALUE"
+
+echo "$KEY $VALUE $ENC_KEY $NEW_ENTRY > $BM_FILE"
+echo $NEW_ENTRY >> $BM_FILE

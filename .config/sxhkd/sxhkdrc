@@ -12,7 +12,10 @@ super + t; {t, f, o}
     {alacritty -e "tmux", firefox, telegram-desktop}
 
 super + b
-    xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 100 | cut -d ' ' -f 1)
+    bash ~/.local/bin/bookmark_get
 
 super + B
-    alacritty -e "nvim" "/home/iz/.local/share/bookmarks"
+    bash ~/.local/bin/bookmark_add
+
+super + u
+	clipmenu
