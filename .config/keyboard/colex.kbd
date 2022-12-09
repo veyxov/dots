@@ -19,7 +19,7 @@
   sr (sticky-key 1000 rsft)
   navl (tap-hold-next-release 150 spc (layer-toggle nav))
   syml (tap-hold-next-release 175 Enter lmet)
-  numl (tap-hold-next-release 200 rctl (layer-toggle numbers))
+  numl (tap-hold-next-release 200 spc (layer-toggle numbers))
 
   ;; Backspace on tap, extend on hold
   BS C-Backspace
