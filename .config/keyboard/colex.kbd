@@ -15,8 +15,14 @@
 )
 
 (defalias
+  redo C-Z
+  paste C-v
+  cut C-x
+  copy C-c
+  undo C-z
   sl (sticky-key 1000 lsft)
   sr (sticky-key 1000 rsft)
+  lctl (tap-hold-next-release 150 @redo lctl)
   navl (tap-hold-next-release 150 spc (layer-toggle nav))
   syml (tap-hold-next-release 175 Enter lmet)
   numl (tap-hold-next-release 200 spc (layer-toggle numbers))
@@ -32,11 +38,6 @@
   Col (around (cmd-button "setxkbmap us")
             (layer-switch colemak))
 
-  redo C-Z
-  paste C-v
-  cut C-x
-  copy C-c
-  undo C-z
 )
 
 (deflayer colemak
@@ -45,7 +46,7 @@
  tab    a    r      s       p       g    XX     XX      j       l        e       i        o ;  XX
  x      c    t      g       z       _    _      m       n        ,       .       XX
  XX XX  d    v      XX      XX      XX   XX     k       h       XX       s
- lalt     lctl @navl     @sl     @syml @bs_win   _ _ _ @Rus
+ lalt     @lctl @navl     @sl     @syml @bs_win   _ _ _ @Rus
 )
 
 (deflayer nav
