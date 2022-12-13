@@ -22,6 +22,9 @@
   undo C-z
   sl (sticky-key 1000 lsft)
   sr (sticky-key 1000 rsft)
+  CTL (sticky-key 1000 lctl)
+  ALT (sticky-key 1000 lalt)
+
   lctl (tap-hold-next-release 150 @redo lctl)
   navl (tap-hold-next-release 150 spc (layer-toggle nav))
   syml (tap-hold-next-release 175 Enter lmet)
@@ -52,8 +55,8 @@
 (deflayer nav
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _        _ _    _    _    _    _    _    _    _   @paste @copy _ _
- alt        esc lctl    lsft    _    _    _    _    _    _     Down Up    Right    _
- _        _    _    _    _    _    _    _    _    Left    pgdn    pgup    _
+ _        esc @CTL    @sl _      _    _    _    _    _     Down Up    Right    _
+ _        _    _    @ALT    _    _    _    _    _    Left    pgdn    pgup    _
  _          _    _    _    _    _    _    _    _    _    _    _
  _        _    _  _  _                  @numl _ _ _ _
 )
