@@ -30,47 +30,6 @@ font:
   size: 14.0
 draw_bold_text_with_bright_colors: false
 
-colors:
-  # Default colors
-  primary:
-    background: '0x000000'
-    foreground: '0xc5c8c6'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x1d1f21'
-    cursor: '0xc5c8c6'
-
-  # Normal colors
-  normal:
-    black:   '0x1d1f21'
-    red:     '0xcc6666'
-    green:   '0xb5bd68'
-    yellow:  '0xf0c674'
-    blue:    '0x81a2be'
-    magenta: '0xb294bb'
-    cyan:    '0x8abeb7'
-    white:   '0xc5c8c6'
-
-  # Bright colors
-  bright:
-    black:   '0x969896'
-    red:     '0xcc6666'
-    green:   '0xb5bd68'
-    yellow:  '0xf0c674'
-    blue:    '0x81a2be'
-    magenta: '0xb294bb'
-    cyan:    '0x8abeb7'
-    white:   '0xffffff'
-
-  indexed_colors:
-    - { index: 16, color: '0xde935f' }
-    - { index: 17, color: '0xa3685a' }
-    - { index: 18, color: '0x282a2e' }
-    - { index: 19, color: '0x373b41' }
-    - { index: 20, color: '0xb4b7b4' }
-    - { index: 21, color: '0xe0e0e0' }
-
 selection:
   save_to_clipboard: false
 
@@ -119,14 +78,8 @@ key_bindings:
   - { key: V, mods: Control, action: Paste }
 
   - { key: Return, mods: Shift, chars: "\x1b[13;2u" }
-  #- { key: Paste,                                       action: Paste          }
-  #- { key: Copy,                                        action: Copy           }
   - { key: L,         mods: Control,                    action: ClearLogNotice }
   - { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
-  #- { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  }
-  #- { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
-  #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
-  #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
 
   # Vi Mode
   - { key: C, mods: Control|Shift, chars: "\x03" }
@@ -198,3 +151,31 @@ key_bindings:
 
 debug:
   print_events: false
+
+colors:
+  # Default colors
+  primary:
+    background: '0x000000'
+    foreground: '0xfff1f3'
+
+  # Normal colors
+  normal:
+    black:   '0x2c2525'
+    red:     '0xfd6883'
+    green:   '0xadda78'
+    yellow:  '0xf9cc6c'
+    blue:    '0xf38d70'
+    magenta: '0xa8a9eb'
+    cyan:    '0x85dacc'
+    white:   '0xfff1f3'
+
+  # Bright colors
+  bright:
+    black:   '0x72696a'
+    red:     '0xfd6883'
+    green:   '0xadda78'
+    yellow:  '0xf9cc6c'
+    blue:    '0xf38d70'
+    magenta: '0xa8a9eb'
+    cyan:    '0x85dacc'
+    white:   '0xfff1f3'
