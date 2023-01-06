@@ -1,6 +1,6 @@
 window:
   decorations: none
-  opacity: 0.7
+  opacity: 1
   startup_mode: Windowed
 
   title: terminal
@@ -12,22 +12,22 @@ env:
 # Font configuration
 font:
   normal:
-    family: Source code pro
+    family: Fira code
     style: Regular
 
   bold:
-    family: Source code pro
+    family: DejaVu sans mono
     style: Bold
 
   italic:
-    family: Source code pro
+    family: Cascadia code
     style: Italic
 
   bold_italic:
     family: Source code pro
     style: Bold Italic
 
-  size: 14.0
+  size: 18
 draw_bold_text_with_bright_colors: false
 
 selection:
@@ -41,7 +41,7 @@ cursor:
     #   - | Beam
     shape: Beam
 
-    blinking: On
+    blinking: Off
 
   vi_mode_style: Block
 
@@ -62,7 +62,7 @@ shell:
   program: /bin/fish
 hints:
   # Keys used for the hint labels.
-  alphabet: "jfkdls;ahgurieowpq"
+  alphabet: "arstneio"
 key_bindings:
   - { key: H, mods: Control|Shift, chars: "\x1b[72;6u" }
   - { key: J, mods: Control|Shift, chars: "\x1b[74;6u" }
