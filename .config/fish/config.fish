@@ -47,3 +47,5 @@ alias ls='exa -F --icons --color=automatic'
 alias la='ls -a'
 alias tree='exa -T'
 alias st="cd"
+alias arst="clear"
+alias oien="exit"
