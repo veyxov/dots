@@ -49,3 +49,5 @@ alias tree='exa -T'
 alias st="cd"
 alias arst="clear"
 alias oien="exit"
+alias arstoien="lazygit"
+alias n="nvim"
