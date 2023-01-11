@@ -32,7 +32,7 @@ function kfgg
 end
 
 # Faster input
-xset r rate 300 50
+xset r rate 100 100
 
 bind -M insert \cn 'nvim .'
 bind -M insert \ce 'cd ~/Projects && cd $(sudo fd --max-depth 4 --type d | fzf)'
@@ -51,3 +51,5 @@ alias arst="clear"
 alias oien="exit"
 alias arstoien="lazygit"
 alias n="nvim"
+
+xset r rate 250 150
