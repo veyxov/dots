@@ -35,7 +35,11 @@ end
 xset r rate 100 100
 
 bind -M insert \cn 'nvim .'
-bind -M insert \ce 'cd ~/Projects && cd $(sudo fd --max-depth 4 --type d | fzf)'
+bind -M insert \cp 'cd ~/Projects && cd $(sudo fd --max-depth 4 --type d | fzf)'
+
+bind -M insert \ce 'nvim $(fd --type file | fzf)'
+bind -M insert \co 'cd $(fd --type directory --hidden --max-depth 5 | fzf)'
+bind -M insert \cs 'lazygit'
 
 # pnpm
 set -gx PNPM_HOME "/home/iz/.local/share/pnpm"
