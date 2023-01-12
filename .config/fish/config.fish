@@ -51,5 +51,8 @@ alias arst="clear"
 alias oien="exit"
 alias arstoien="lazygit"
 alias n="nvim"
+alias rm="rm -rfv"
+alias mv="mv -v"
+alias cp="cp -v"
 
 xset r rate 250 150
