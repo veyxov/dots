@@ -17,5 +17,8 @@ super + b
 super + B
     bash ~/.local/bin/bookmark_add
 
+control + f
+    ctrl_f
+
 super + p
 	clipmenu
