@@ -9,7 +9,7 @@ end)
 return {
     disable_default_key_bindings = true,
     adjust_window_size_when_changing_font_size = true,
-    window_background_opacity = 0.9,
+    window_background_opacity = 0.95,
     tab_bar_at_bottom = true,
     window_padding = {
         left = 0,
@@ -79,6 +79,12 @@ return {
         { key = "DownArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Down", 1 }) },
         { key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Up", 1 }) },
         { key = "RightArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Right", 1 }) },
+
+        { key = "DownArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection="Down" }) },
+        { key = "UpArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection="Up" }) },
+        { key = "LeftArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection="Left" }) },
+        { key = "RightArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection="Right" }) },
+
         { key = "LeftArrow", mods = "CTRL", action = wezterm.action({ ActivateTabRelative = -1 }) },
         { key = "RightArrow", mods = "CTRL", action = wezterm.action({ ActivateTabRelative = 1 }) },
         --{ key = "v", mods = "ALT", action = wezterm.action.ActivateCopyMode },
