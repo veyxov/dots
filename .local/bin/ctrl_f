@@ -5,7 +5,8 @@ if [[ $name =~ "Telegram" ]]; then
     herbe "found ! we are on $name" &
 
     xdotool mousemove 160 50 click --clearmodifiers 1 mousemove restore # Click on telegram search button
-else
-    herbe "arst" &
-    xdotool key ctrl+f
+elif [[ $name =~ "YouTube" ]]; then
+    herbe "Youtube !" &
+
+    xdotool mousemove 700 70 click --clearmodifiers 1 mousemove restore # Click on telegram search button
 fi
