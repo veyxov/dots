@@ -1,16 +1,17 @@
 local wezterm = require("wezterm")
 return {
+    disable_default_key_bindings = true,
     window_padding = {
         left = 0,
         right = 0,
         top = 0,
         bottom = 0,
     },
-    color_scheme = "Batman",
+    color_scheme = "Dracula",
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     font = wezterm.font_with_fallback({
-        "Source code pro",
+        "Noto Color emoji",
     }),
     leader = { key = 'F1', mods = 'CTRL', timeout_milliseconds = 1000 },
     default_prog = { '/usr/bin/fish' },
