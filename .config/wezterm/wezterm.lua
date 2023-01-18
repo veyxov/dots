@@ -17,6 +17,7 @@ return {
         top = 0,
         bottom = 0,
     },
+    front_end="WebGpu",
     color_scheme = "Solarized Dark Higher Contrast",
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
