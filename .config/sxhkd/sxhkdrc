@@ -9,7 +9,7 @@ super + r ; s
     scrot '/tmp/%Y-%m-%d_$wx$h.png' -s -e 'xclip -selection clipboard -t image/png -i $f' && herbe "Shot taken"
 
 super + t; {t, f, o}
-    {alacritty -e "tmux", firefox, telegram-desktop}
+    {wezterm, firefox, telegram-desktop}
 
 super + b
     bash ~/.local/bin/bookmark_get
