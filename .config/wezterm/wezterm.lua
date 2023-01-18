@@ -1,15 +1,26 @@
 local wezterm = require("wezterm")
+
+wezterm.on("update-right-status", function(window)
+    window:set_right_status(wezterm.format({
+        { Text = wezterm.strftime(" %A, %d %b %I:%M ") },
+    }))
+end)
+
 return {
     disable_default_key_bindings = true,
+    adjust_window_size_when_changing_font_size = true,
+    window_background_opacity = 0.9,
+    tab_bar_at_bottom = true,
     window_padding = {
         left = 0,
         right = 0,
         top = 0,
         bottom = 0,
     },
-    color_scheme = "Dracula",
+    color_scheme = "Solarized Dark Higher Contrast",
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
+    window_close_confirmation = 'NeverPrompt',
     font = wezterm.font_with_fallback({
         "Noto Color emoji",
     }),
@@ -17,6 +28,7 @@ return {
     default_prog = { '/usr/bin/fish' },
     font_size = 20,
     keys = {
+        { key = 'a', mods = 'ALT', action = wezterm.action.ShowLauncher },
         {
             mods = "ALT|SHIFT",
             key = [[i]],
