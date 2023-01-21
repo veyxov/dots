@@ -11,6 +11,7 @@ return {
     adjust_window_size_when_changing_font_size = true,
     window_background_opacity = 0.85,
     tab_bar_at_bottom = true,
+    quick_select_alphabet="neiosart",
     window_padding = {
         left = 0,
         right = 0,
@@ -64,17 +65,10 @@ return {
                 size = { Percent = 50 },
             }),
         },
-        {
-            key = "n",
-            mods = "ALT",
-            action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }),
-        },
-        {
-            key = "q",
-            mods = "ALT",
-            action = wezterm.action({ CloseCurrentPane = { confirm = true } }),
-        },
+        { key = "n", mods = "ALT", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
+        { key = "q", mods = "ALT", action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
         { key = "z", mods = "ALT", action = wezterm.action.TogglePaneZoomState },
+
         { key = "LeftArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Left", 1 }) },
         { key = "DownArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Down", 1 }) },
         { key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Up", 1 }) },
@@ -87,11 +81,15 @@ return {
 
         { key = "LeftArrow", mods = "CTRL", action = wezterm.action({ ActivateTabRelative = -1 }) },
         { key = "RightArrow", mods = "CTRL", action = wezterm.action({ ActivateTabRelative = 1 }) },
-        --{ key = "v", mods = "ALT", action = wezterm.action.ActivateCopyMode },
+
+        { key = "y", mods = "ALT", action = wezterm.action.QuickSelect },
+        { key = "v", mods = "ALT", action = wezterm.action.ActivateCopyMode },
         { key = "c", mods = "CTRL", action = wezterm.action({ CopyTo = "Clipboard" }) },
         { key = "v", mods = "CTRL", action = wezterm.action({ PasteFrom = "Clipboard" }) },
+
         { key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action.IncreaseFontSize },
         { key = "DownArrow", mods = "CTRL|SHIFT", action = wezterm.action.DecreaseFontSize },
+
         { key = "s", mods = "CTRL", action = wezterm.action.SpawnCommandInNewTab {
             args = { "lazygit" }
         } },
