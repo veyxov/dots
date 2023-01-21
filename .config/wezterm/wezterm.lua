@@ -90,8 +90,13 @@ return {
         { key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action.IncreaseFontSize },
         { key = "DownArrow", mods = "CTRL|SHIFT", action = wezterm.action.DecreaseFontSize },
 
-        { key = "s", mods = "CTRL", action = wezterm.action.SpawnCommandInNewTab {
-            args = { "lazygit" }
-        } },
+        {
+            key = "s", mods = "CTRL", action = wezterm.action.SpawnCommandInNewTab {
+                args = { "lazygit" }
+            }
+        },
+        -- {
+        --     key = "t", mods = "CTRL|SHIFT", action = wezterm.cli.MovePaneToNewTab { }
+        -- },
     },
 }
