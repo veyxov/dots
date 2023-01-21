@@ -9,7 +9,7 @@ end)
 return {
     disable_default_key_bindings = true,
     adjust_window_size_when_changing_font_size = true,
-    window_background_opacity = 0.95,
+    window_background_opacity = 0.85,
     tab_bar_at_bottom = true,
     window_padding = {
         left = 0,
@@ -17,8 +17,8 @@ return {
         top = 0,
         bottom = 0,
     },
-    front_end="WebGpu",
-    color_scheme = "Solarized Dark Higher Contrast",
+    front_end = "WebGpu",
+    color_scheme = "Argonaut",
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
@@ -72,7 +72,7 @@ return {
         {
             key = "q",
             mods = "ALT",
-            action = wezterm.action({ CloseCurrentTab = { confirm = false } }),
+            action = wezterm.action({ CloseCurrentPane = { confirm = true } }),
         },
         { key = "z", mods = "ALT", action = wezterm.action.TogglePaneZoomState },
         { key = "LeftArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Left", 1 }) },
@@ -80,10 +80,10 @@ return {
         { key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Up", 1 }) },
         { key = "RightArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Right", 1 }) },
 
-        { key = "DownArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection="Down" }) },
-        { key = "UpArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection="Up" }) },
-        { key = "LeftArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection="Left" }) },
-        { key = "RightArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection="Right" }) },
+        { key = "DownArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+        { key = "UpArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+        { key = "LeftArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+        { key = "RightArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
 
         { key = "LeftArrow", mods = "CTRL", action = wezterm.action({ ActivateTabRelative = -1 }) },
         { key = "RightArrow", mods = "CTRL", action = wezterm.action({ ActivateTabRelative = 1 }) },
@@ -92,5 +92,8 @@ return {
         { key = "v", mods = "CTRL", action = wezterm.action({ PasteFrom = "Clipboard" }) },
         { key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action.IncreaseFontSize },
         { key = "DownArrow", mods = "CTRL|SHIFT", action = wezterm.action.DecreaseFontSize },
+        { key = "s", mods = "CTRL", action = wezterm.action.SpawnCommandInNewTab {
+            args = { "lazygit" }
+        } },
     },
 }
