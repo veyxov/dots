@@ -25,3 +25,13 @@ control + f
 
 super + p
 	clipmenu
+
+
+XF86AudioMute
+    vol_ctl mute
+
+XF86AudioLowerVolume
+    vol_ctl down
+
+XF86AudioRaiseVolume
+    vol_ctl up
