@@ -1,12 +1,15 @@
 # make sxhkd reload
 super + x
-    pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd && herbe "reload" &
 
 super + r ; a
     scrot '/tmp/%Y-%m-%d_$wx$h.png' -e 'xclip -selection clipboard -t image/png -i $f' && herbe "Shot taken"
 
 super + r ; s
     scrot '/tmp/%Y-%m-%d_$wx$h.png' -s -e 'xclip -selection clipboard -t image/png -i $f' && herbe "Shot taken"
+
+super + s
+    dmenu_run -m 0
 
 super + t; {t, f, o}
     {wezterm, firefox, kotatogram-desktop}
