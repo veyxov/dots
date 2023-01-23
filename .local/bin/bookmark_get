@@ -1,3 +1,0 @@
-#!/bin/bash
-
-xdotool type --clearmodifiers $(cat $BM_FILE |  dmenu -l 100 | cut -d ' ' -f 1  | openssl enc -d -des3 -base64 -pass pass:$BOOKMARKS_PASSWORD -pbkdf2 )
