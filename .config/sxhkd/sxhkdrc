@@ -31,3 +31,9 @@ XF86AudioLowerVolume
 
 XF86AudioRaiseVolume
     vol_ctl up
+
+XF86MonBrightnessUp
+    bri_ctl up
+
+XF86MonBrightnessDown
+    bri_ctl down
