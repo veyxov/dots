@@ -154,7 +154,7 @@ return {
             {
                 key = 'e',
                 mods = 'NONE',
-                action = act.CopyMode 'MoveForwardWordEnd',
+                action = act.CopyMode 'MoveForwardSemanticZone',
             },
             { key = 'b', mods = 'NONE', action = act.CopyMode 'MoveBackwardWord' },
             { key = 'c', mods = 'CTRL', action = act.CopyMode 'Close' },
