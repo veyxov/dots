@@ -151,6 +151,11 @@ return {
                 mods = 'SHIFT',
                 action = act.CopyMode 'MoveToStartOfLineContent',
             },
+            {
+                key = 'e',
+                mods = 'NONE',
+                action = act.CopyMode 'MoveForwardWordEnd',
+            },
             { key = 'b', mods = 'NONE', action = act.CopyMode 'MoveBackwardWord' },
             { key = 'c', mods = 'CTRL', action = act.CopyMode 'Close' },
             {
@@ -166,10 +171,6 @@ return {
                 action = act.CopyMode 'MoveToScrollbackTop',
             },
             { key = 'g', mods = 'CTRL', action = act.CopyMode 'Close' },
-            { key = 'h', mods = 'NONE', action = act.CopyMode 'MoveLeft' },
-            { key = 'j', mods = 'NONE', action = act.CopyMode 'MoveDown' },
-            { key = 'k', mods = 'NONE', action = act.CopyMode 'MoveUp' },
-            { key = 'l', mods = 'NONE', action = act.CopyMode 'MoveRight' },
             {
                 key = 'm',
                 mods = 'ALT',
