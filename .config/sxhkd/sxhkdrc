@@ -15,17 +15,13 @@ super + t; {t, f, o}
     {wezterm, firefox, kotatogram-desktop}
 
 super + b
-    bash ~/.local/bin/bookmark_get
-
-super + B
-    bash ~/.local/bin/bookmark_add
+    passmenu --type
 
 control + f
     ctrl_f
 
 super + p
-	clipmenu
-
+    clipmenu
 
 XF86AudioMute
     vol_ctl mute
