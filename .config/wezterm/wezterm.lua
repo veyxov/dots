@@ -9,7 +9,6 @@ end)
 
 return {
     disable_default_key_bindings = true,
-    adjust_window_size_when_changing_font_size = true,
     window_background_opacity = 0.85,
     tab_bar_at_bottom = true,
     quick_select_alphabet = "neiosart",
@@ -19,13 +18,14 @@ return {
         top = 0,
         bottom = 0,
     },
+    adjust_window_size_when_changing_font_size = false,
     front_end = "WebGpu",
     color_scheme = "Argonaut",
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
     font = wezterm.font_with_fallback({
-        "Noto Color emoji",
+        "Source code pro",
     }),
     leader = { key = 'F1', mods = 'CTRL', timeout_milliseconds = 1000 },
     default_prog = { '/usr/bin/fish' },
