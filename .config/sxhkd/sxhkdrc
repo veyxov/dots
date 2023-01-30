@@ -11,7 +11,7 @@ super + x
 
 ---------------------------------------------------------------------
 super + r
-    warpd --hint2
+    warpd --oneshot --hint2 --click 1
 
 super + s
     dmenu_run -m 0
