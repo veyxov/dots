@@ -17,7 +17,7 @@ super + s
     dmenu_run -m 0
 
 super + h
-    warpd --history
+    warpd --oneshot --click 1 --history
 
 super + t; {t, f, o}
     {wezterm, firefox, kotatogram-desktop}
