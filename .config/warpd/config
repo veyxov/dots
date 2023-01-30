@@ -33,3 +33,6 @@ hint_fgcolor: #cacaca
 
 drag: t
 copy_and_exit: y
+
+cursor_color: #DB073D
+cursor_size: 10
