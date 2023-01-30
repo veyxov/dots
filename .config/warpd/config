@@ -30,6 +30,9 @@ hint_undo: C-backspace
 indicator_size: 100
 hint_bgcolor: #000000
 hint_fgcolor: #cacaca
+hint_border_radius: 0
+hint_font: Fira code
+hint_size: 20
 
 drag: t
 copy_and_exit: y
