@@ -18,7 +18,18 @@ grid_up: up
 
 grid_keys: a t r s
 
-buttons: m e i
+buttons: n e i
 
 scroll_down: pagedown
 scroll_up: pageup
+
+hint2_chars: arstneio;
+hint_chars: arstneiopluywfb'hdmg,c.x
+hint_undo: C-backspace
+
+indicator_size: 100
+hint_bgcolor: #000000
+hint_fgcolor: #cacaca
+
+drag: t
+copy_and_exit: y
