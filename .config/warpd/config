@@ -27,7 +27,6 @@ hint2_chars: arstneio;
 hint_chars: arstneiopluywfb'hdmg,c.x
 hint_undo: C-backspace
 
-indicator_size: 100
 hint_bgcolor: #000000
 hint_fgcolor: #cacaca
 hint_border_radius: 0
@@ -39,3 +38,6 @@ copy_and_exit: y
 
 cursor_color: #DB073D
 cursor_size: 10
+
+indicator_size: 15
+indicator: topleft
