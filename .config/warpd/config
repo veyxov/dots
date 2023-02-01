@@ -24,7 +24,7 @@ scroll_down: pagedown
 scroll_up: pageup
 
 hint2_chars: arstneio;
-hint_chars: qbwfparstneiodcxluy'";mgkv(){}/+
+hint_chars: arstneiolpdhxc,.qyuf
 hint_undo: C-backspace
 
 hint_bgcolor: #000000
