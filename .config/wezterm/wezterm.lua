@@ -31,6 +31,9 @@ return {
     default_prog = { '/usr/bin/fish' },
     font_size = 20,
     keys = {
+        { key = "f", mods = "ALT", action = wezterm.action({
+            Search={CaseInSensitiveString=""}
+        })},
         { key = 'a', mods = 'ALT', action = wezterm.action.ShowLauncher },
         {
             mods = "ALT|SHIFT",
