@@ -18,8 +18,11 @@ set scroll-step 100
 set pages-per-row 1
 
 # MAPPINGS
-map K zoom in
-map J zoom out
+map I zoom in
+map E zoom out
+
+map e scroll down
+map i scroll up
 
 # COLORS
 set notification-error-bg       "#1d2021" # bg
