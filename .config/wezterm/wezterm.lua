@@ -8,6 +8,10 @@ wezterm.on("update-right-status", function(window)
 end)
 
 return {
+    inactive_pane_hsb = {
+        saturation = 0,
+        brightness = 0.25,
+    },
     disable_default_key_bindings = true,
     window_background_opacity = 0.85,
     tab_bar_at_bottom = true,
