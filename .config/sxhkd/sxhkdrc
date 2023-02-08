@@ -10,7 +10,7 @@ super + x
 
 
 ---------------------------------------------------------------------
-super + r
+super + a
     warpd --oneshot --hint2 --click 1
 
 super + s
