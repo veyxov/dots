@@ -46,7 +46,7 @@
 (deflayer colemak
  XX        _    _    _    _    _    _    _    _    _    _    _    _
  _      q    b      w       f       XX   _      XX      j       XX       u       y     '    "
- tab    a    r      s       p       g    XX     XX      j       l        e       i        o ;  XX
+ tab    a    r      s       p       b    XX     XX      j       l        e       i        o ;  XX
  x      c    t      g       z       _    _      m       n        ,       .       XX
  XX XX  d    v      XX      XX      XX   XX     k       h       XX       s
  lalt     @lctl @navl     @sl     @syml @bs_win   _ _ _ @Rus
