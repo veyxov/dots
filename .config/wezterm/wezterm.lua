@@ -103,10 +103,6 @@ return {
                 args = { "lazygit" }
             }
         },
-        -- {
-        --     key = "t", mods = "CTRL|SHIFT", action = wezterm.cli.MovePaneToNewTab { }
-        -- },
-        --
     },
     key_tables = {
         copy_mode = {
