@@ -48,7 +48,7 @@ xkb_symbols "rulemak" {
     key <AB01> { [     Cyrillic_ha,     Cyrillic_HA                                   ] };
     key <AB02> { [     Cyrillic_de,     Cyrillic_DE,   Cyrillic_dzhe,   Cyrillic_DZHE ] };
     key <AB03> { [     Cyrillic_ve,     Cyrillic_VE,     Serbian_dje,     Serbian_DJE ] };
-    key <AB04> { [     Cyrillic_yeru,     Cyrillic_YERU                                   ] };
+    key <AB04> { [     Cyrillic_tse,     Cyrillic_TSE                                   ] };
     key <AB05> { [     Cyrillic_ze,     Cyrillic_ZE,   Macedonia_dse,   Macedonia_DSE ] };
     key <AB06> { [     0x1000493,       0x1000492,       backslash,             bar ] };
     key <AB07> { [     0x1000493,       0x1000492,   Macedonia_kje,   Macedonia_KJE ] };
