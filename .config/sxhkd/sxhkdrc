@@ -11,7 +11,10 @@ super + x
 
 ---------------------------------------------------------------------
 super + a
-    warpd --oneshot --hint2 --click 1
+    warpd --oneshot --hint --click 1
+
+super + shift + a
+    warpd --oneshot --hint --click 3
 
 super + s
     dmenu_run -m 0
