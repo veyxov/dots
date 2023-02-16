@@ -23,7 +23,7 @@ scroll_down: pagedown
 scroll_up: pageup
 
 hint2_chars: arstneio;
-hint_chars: arstneiolpdhxc,.qyuf
+hint_chars: `qwfparstgzxcdvbjmkh,.neioluy'";(){}
 hint_undo: C-backspace
 
 hint_bgcolor: #000000
