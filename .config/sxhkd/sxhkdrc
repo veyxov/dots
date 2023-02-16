@@ -31,9 +31,6 @@ super + t; {t, f, o}
 super + b
     passmenu --type
 
-control + f
-    ctrl_f
-
 super + p
     clipmenu
 
