@@ -13,6 +13,9 @@ super + x
 super + a
     warpd --oneshot --hint --click 1
 
+super + control + a
+    warpd --oneshot --hint2 --click 1
+
 super + shift + a
     warpd --oneshot --hint --click 3
 
