@@ -9,11 +9,7 @@ super + x
 #     scrot '/tmp/%Y-%m-%d_$wx$h.png' -s -e 'xclip -selection clipboard -t image/png -i $f' && herbe "Shot taken"
 
 
----------------------------------------------------------------------
 super + a
-    warpd --oneshot --hint --click 1
-
-super + control + a
     warpd --oneshot --hint2 --click 1
 
 super + shift + a
