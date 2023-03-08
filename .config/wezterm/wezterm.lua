@@ -32,7 +32,7 @@ return {
         "BlexMono Nerd Font"
     ),
     leader = { key = 'F1', mods = 'CTRL', timeout_milliseconds = 1000 },
-    default_prog = { '/usr/bin/fish' },
+    default_prog = { '/usr/bin/zsh' },
     font_size = 20,
     keys = {
         {
