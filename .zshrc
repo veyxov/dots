@@ -52,4 +52,9 @@ alias arst="clear"
 alias oien="exit"
 alias n="nvim ."
 
-### End of Zinit's installer chunk
+alias kfg="lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+
+# file-system manipulation
+alias rm="rm -rfv"
+alias mv="mv -v"
+alias cp="cp -v"
