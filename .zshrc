@@ -1,4 +1,4 @@
-# The following lines were added by compinstall
+colorscript random
 
 zstyle :compinstall filename '/home/iz/.zshrc'
 
