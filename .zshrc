@@ -48,9 +48,12 @@ zinit light sindresorhus/pure
 
 alias ns="exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
 alias st="cd"
+alias n="nvim ."
+
 alias arst="clear"
 alias oien="exit"
-alias n="nvim ."
+alias oine="exit"
+alias oa="lazygit"
 
 alias kfg="lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
@@ -58,3 +61,5 @@ alias kfg="lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias rm="rm -rfv"
 alias mv="mv -v"
 alias cp="cp -v"
+
+xset r rate 250 150
