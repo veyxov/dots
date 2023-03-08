@@ -41,9 +41,15 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
-zinit light Aloxaf/fzf-tab
+
+zinit light Aloxaf/fzf-tab # Todo: find out how to enable this on cd-tab
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
+alias ns="exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
+alias st="cd"
+alias arst="clear"
+alias oien="exit"
+alias n="nvim ."
 
 ### End of Zinit's installer chunk
