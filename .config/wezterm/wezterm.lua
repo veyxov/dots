@@ -29,16 +29,20 @@ return {
     use_fancy_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
     font = wezterm.font(
-        "BlexMono Nerd Font", {weight="Regular", stretch="Normal", style="Italic"}
+        "BlexMono Nerd Font"
     ),
     leader = { key = 'F1', mods = 'CTRL', timeout_milliseconds = 1000 },
     default_prog = { '/usr/bin/fish' },
     font_size = 20,
     keys = {
-        { key = "f", mods = "ALT", action = wezterm.action({
-            Search={CaseInSensitiveString=""}
-        })},
-        { key = 'a', mods = 'ALT', action = wezterm.action.ShowLauncher },
+        {
+            key = "f",
+            mods = "ALT",
+            action = wezterm.action({
+                Search = { CaseInSensitiveString = "" }
+            })
+        },
+        { key = 'a',          mods = 'ALT',        action = wezterm.action.ShowLauncher },
         {
             mods = "ALT|SHIFT",
             key = [[i]],
@@ -73,33 +77,30 @@ return {
                 size = { Percent = 50 },
             }),
         },
-        { key = "n", mods = "ALT", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
-        { key = "q", mods = "ALT", action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
-        { key = "z", mods = "ALT", action = wezterm.action.TogglePaneZoomState },
-
-        { key = "LeftArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Left", 1 }) },
-        { key = "DownArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Down", 1 }) },
-        { key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Up", 1 }) },
+        { key = "n",          mods = "ALT",        action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
+        { key = "q",          mods = "ALT",        action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
+        { key = "z",          mods = "ALT",        action = wezterm.action.TogglePaneZoomState },
+        { key = "LeftArrow",  mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Left", 1 }) },
+        { key = "DownArrow",  mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Down", 1 }) },
+        { key = "UpArrow",    mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Up", 1 }) },
         { key = "RightArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Right", 1 }) },
-
-        { key = "DownArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
-        { key = "UpArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
-        { key = "LeftArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
-        { key = "RightArrow", mods = "ALT", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
-
-        { key = "LeftArrow", mods = "CTRL", action = wezterm.action({ ActivateTabRelative = -1 }) },
-        { key = "RightArrow", mods = "CTRL", action = wezterm.action({ ActivateTabRelative = 1 }) },
-
-        { key = "y", mods = "ALT", action = wezterm.action.QuickSelect },
-        { key = "v", mods = "ALT", action = wezterm.action.ActivateCopyMode },
-        { key = "c", mods = "CTRL", action = wezterm.action({ CopyTo = "Clipboard" }) },
-        { key = "v", mods = "CTRL", action = wezterm.action({ PasteFrom = "Clipboard" }) },
-
-        { key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action.IncreaseFontSize },
-        { key = "DownArrow", mods = "CTRL|SHIFT", action = wezterm.action.DecreaseFontSize },
+        { key = "DownArrow",  mods = "ALT",        action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+        { key = "UpArrow",    mods = "ALT",        action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+        { key = "LeftArrow",  mods = "ALT",        action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+        { key = "RightArrow", mods = "ALT",        action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+        { key = "LeftArrow",  mods = "CTRL",       action = wezterm.action({ ActivateTabRelative = -1 }) },
+        { key = "RightArrow", mods = "CTRL",       action = wezterm.action({ ActivateTabRelative = 1 }) },
+        { key = "y",          mods = "ALT",        action = wezterm.action.QuickSelect },
+        { key = "v",          mods = "ALT",        action = wezterm.action.ActivateCopyMode },
+        { key = "c",          mods = "CTRL",       action = wezterm.action({ CopyTo = "Clipboard" }) },
+        { key = "v",          mods = "CTRL",       action = wezterm.action({ PasteFrom = "Clipboard" }) },
+        { key = "UpArrow",    mods = "CTRL|SHIFT", action = wezterm.action.IncreaseFontSize },
+        { key = "DownArrow",  mods = "CTRL|SHIFT", action = wezterm.action.DecreaseFontSize },
 
         {
-            key = "s", mods = "CTRL", action = wezterm.action.SpawnCommandInNewTab {
+            key = "s",
+            mods = "CTRL",
+            action = wezterm.action.SpawnCommandInNewTab {
                 args = { "lazygit" }
             }
         },
@@ -117,7 +118,7 @@ return {
                 mods = 'NONE',
                 action = act.CopyMode 'MoveToEndOfLineContent',
             },
-            { key = ',', mods = 'NONE', action = act.CopyMode 'JumpReverse' },
+            { key = ',',      mods = 'NONE', action = act.CopyMode 'JumpReverse' },
             {
                 key = '0',
                 mods = 'NONE',
@@ -166,7 +167,7 @@ return {
                 mods = 'NONE',
                 action = act.CopyMode { JumpForward = { prev_char = false } },
             },
-            { key = 'f', mods = 'ALT', action = act.CopyMode 'MoveForwardWord' },
+            { key = 'f', mods = 'ALT',  action = act.CopyMode 'MoveForwardWord' },
             { key = 'f', mods = 'CTRL', action = act.CopyMode 'PageDown' },
             {
                 key = 'g',
@@ -201,7 +202,7 @@ return {
                 action = act.CopyMode { SetSelectionMode = 'Block' },
             },
 
-            { key = 'w', mods = 'NONE', action = act.CopyMode 'MoveForwardWord' },
+            { key = 'w',          mods = 'NONE', action = act.CopyMode 'MoveForwardWord' },
 
             {
                 key = 'y',
@@ -212,12 +213,12 @@ return {
                 },
             },
 
-            { key = 'PageUp', mods = 'NONE', action = act.CopyMode 'PageUp' },
-            { key = 'PageDown', mods = 'NONE', action = act.CopyMode 'PageDown' },
-            { key = 'LeftArrow', mods = 'NONE', action = act.CopyMode 'MoveLeft' },
+            { key = 'PageUp',     mods = 'NONE', action = act.CopyMode 'PageUp' },
+            { key = 'PageDown',   mods = 'NONE', action = act.CopyMode 'PageDown' },
+            { key = 'LeftArrow',  mods = 'NONE', action = act.CopyMode 'MoveLeft' },
             { key = 'RightArrow', mods = 'NONE', action = act.CopyMode 'MoveRight', },
-            { key = 'UpArrow', mods = 'NONE', action = act.CopyMode 'MoveUp' },
-            { key = 'DownArrow', mods = 'NONE', action = act.CopyMode 'MoveDown' },
+            { key = 'UpArrow',    mods = 'NONE', action = act.CopyMode 'MoveUp' },
+            { key = 'DownArrow',  mods = 'NONE', action = act.CopyMode 'MoveDown' },
         },
     },
 }
