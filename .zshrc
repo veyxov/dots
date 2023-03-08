@@ -46,6 +46,7 @@ zinit light Aloxaf/fzf-tab # Todo: find out how to enable this on cd-tab
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
 
 alias ns="exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
 alias st="cd"
