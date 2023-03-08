@@ -28,9 +28,9 @@ return {
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
-    font = wezterm.font_with_fallback({
-        "Source code pro",
-    }),
+    font = wezterm.font(
+        "BlexMono Nerd Font", {weight="Regular", stretch="Normal", style="Italic"}
+    ),
     leader = { key = 'F1', mods = 'CTRL', timeout_milliseconds = 1000 },
     default_prog = { '/usr/bin/fish' },
     font_size = 20,
