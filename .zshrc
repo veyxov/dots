@@ -50,7 +50,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets regexp line)
 ZSH_HIGHLIGHT_STYLES[line]='bold'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 
 alias ns="exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
