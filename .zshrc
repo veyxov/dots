@@ -49,7 +49,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 
 alias ns="exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
-alias st="cd"
+alias st="z"
 alias n="nvim ."
 
 alias arst="clear"
@@ -63,5 +63,7 @@ alias kfg="lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias rm="rm -rfv"
 alias mv="mv -v"
 alias cp="cp -v"
+
+eval "$(zoxide init zsh)"
 
 xset r rate 250 150
