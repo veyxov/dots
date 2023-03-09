@@ -31,6 +31,33 @@ return {
     font = wezterm.font(
         "BlexMono Nerd Font"
     ),
+    font_rules = {
+        {
+            intensity = 'Bold',
+            italic = true,
+            font = wezterm.font {
+                family = 'VictorMono',
+                style = 'Italic',
+            },
+        },
+        {
+            italic = true,
+            intensity = 'Half',
+            font = wezterm.font {
+                family = 'VictorMono',
+                weight = 'DemiBold',
+                style = 'Italic',
+            },
+        },
+        {
+            italic = true,
+            intensity = 'Normal',
+            font = wezterm.font {
+                family = 'VictorMono',
+                style = 'Italic',
+            },
+        },
+    },
     leader = { key = 'F1', mods = 'CTRL', timeout_milliseconds = 1000 },
     default_prog = { '/usr/bin/zsh' },
     font_size = 20,
