@@ -43,8 +43,7 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 zinit light Aloxaf/fzf-tab # Todo: find out how to enable this on cd-tab
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
+zinit light eendroroy/nothing
 zinit light zsh-users/zsh-autosuggestions
 
 zinit light zsh-users/zsh-syntax-highlighting
