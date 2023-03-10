@@ -1,0 +1,3 @@
+eval "$(zoxide init zsh)"
+
+xset r rate 250 150
