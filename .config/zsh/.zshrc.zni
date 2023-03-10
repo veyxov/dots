@@ -1,0 +1,7 @@
+
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/iz/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
