@@ -11,7 +11,7 @@ export KEYTIMEOUT=1 # Kill the lag between switching to VIM mode
 
 bindkey -v
 
-source "./0zinit"
-source "./plugins"
-source "./alias"
-source "./9other"
+source "$HOME/.config/zsh/0zinit"
+source "$HOME/.config/zsh/plugins"
+source "$HOME/.config/zsh/alias"
+source "$HOME/.config/zsh/9other"
