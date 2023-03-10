@@ -1,14 +1,15 @@
 colorscript random
 
-zstyle :compinstall filename '/home/iz/.zshrc'
-
 autoload -Uz compinit
 compinit
 
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-bindkey -e
+
+export KEYTIMEOUT=1 # Kill the lag between switching to VIM mode
+
+bindkey -v
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -34,6 +35,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
+zstyle ':completion:*:*:*:default' menu yes select search # What is this ?
+
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
@@ -46,6 +49,7 @@ zinit light Aloxaf/fzf-tab # Todo: find out how to enable this on cd-tab
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 zinit light zsh-users/zsh-autosuggestions
+zinit light unixorn/fzf-zsh-plugin
 
 zinit light zsh-users/zsh-syntax-highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets regexp line)
