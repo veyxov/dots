@@ -16,6 +16,9 @@ super + a
 super + shift + a
     warpd --oneshot --hint --click 3
 
+super + z
+    ~/.local/src/dmenu-emoji/dmenu-emoji.sh
+
 super + s
     dmenu_run -m 0
 
