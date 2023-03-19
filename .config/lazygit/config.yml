@@ -84,7 +84,7 @@ confirmOnQuit: false
 quitOnTopLevelReturn: false
 disableStartupPopups: false
 notARepository: 'skip' # one of: 'prompt' | 'create' | 'skip'
-promptToReturnFromSubprocess: true # display confirmation when subprocess terminates
+promptToReturnFromSubprocess: false # display confirmation when subprocess terminates
 keybinding:
   universal:
     quit: 'q'
