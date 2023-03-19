@@ -33,23 +33,6 @@ return {
     ),
     font_rules = {
         {
-            intensity = 'Bold',
-            italic = true,
-            font = wezterm.font {
-                family = 'Comic mono',
-                style = 'Italic',
-            },
-        },
-        {
-            italic = true,
-            intensity = 'Half',
-            font = wezterm.font {
-                family = 'Comic mono',
-                weight = 'DemiBold',
-                style = 'Italic',
-            },
-        },
-        {
             italic = true,
             intensity = 'Normal',
             font = wezterm.font {
