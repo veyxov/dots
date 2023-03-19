@@ -34,7 +34,7 @@ gui:
   showListFooter: true # for seeing the '5 of 20' message in list panels
   showRandomTip: true
   showBottomLine: false # for hiding the bottom information line (unless it has important information to tell you)
-  showCommandLog: true
+  showCommandLog: false
   showIcons: true
   commandLogSize: 8
   splitDiff: 'auto' # one of 'auto' | 'always'
