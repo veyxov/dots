@@ -29,14 +29,14 @@ return {
     use_fancy_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
     font = wezterm.font(
-        "BlexMono Nerd Font"
+        "Comic mono"
     ),
     font_rules = {
         {
             intensity = 'Bold',
             italic = true,
             font = wezterm.font {
-                family = 'VictorMono',
+                family = 'Comic mono',
                 style = 'Italic',
             },
         },
@@ -44,7 +44,7 @@ return {
             italic = true,
             intensity = 'Half',
             font = wezterm.font {
-                family = 'VictorMono',
+                family = 'Comic mono',
                 weight = 'DemiBold',
                 style = 'Italic',
             },
