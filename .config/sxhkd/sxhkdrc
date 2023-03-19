@@ -26,7 +26,7 @@ super + h
     warpd --oneshot --click 1 --history
 
 super + t; {t, f, o}
-    {wezterm, firefox, telegram-desktop}
+    {wezterm, firefox, kotatogram-desktop}
 
 super + b
     passmenu --type
