@@ -53,6 +53,8 @@
   / S-/
 
   grv S-grv
+  tilde S-`
+  dquote S-'
 )
 
 (defalias
@@ -60,10 +62,10 @@
     (macro ,) ;; use macro to prevent auto-repeat of the key
     (macro bspc .)
   ))
-)
-
-(defalias
-
+  td3 (tap-dance-eager 500 (
+    (macro ') ;; use macro to prevent auto-repeat of the key
+    (macro bspc S-')
+  ))
 )
 
 (defsrc
@@ -77,7 +79,7 @@
 
 (deflayer colemak
   esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
-  grv     q    b   w    f    XX    XX    XX    XX    XX    u    y    '    '
+  grv     q    b   w    f    XX    XX    XX    XX    XX    u    y    @td3 XX
   tab     a    r    s    p    b    XX    XX   j    l    e    i    o    ;
   XX      x    c    t    g    z    XX    XX    m    n    @td2  XX
   XX    XX XX    d    v    XX    XX    XX  XX  k    h       XX    XX
@@ -94,11 +96,11 @@
 )
 
 (deflayer symbol
- _        _    _    _    _    _    _    _    _    _    _    _    _ _  _ _
- S-`        @1    _    `    @5    _    _    _    _    _    @8    @6    S-/    ' _
-        @9    @0    {    @4        _ _    _    _    @7    /  +    =    \
-        [  ]        }    S-. _ _    _    _    _    -    S-.    S-,    _
- _          _    _    _    _    _    _    _    _    @3    _    _
+ _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _
+ _        @1    _    `    @5    _    _    _    _    _    @8    @6    S-\    XX
+ @tilde        @9    @0    S-[    @4    _    _    _    _    @7    /  S-= =    \
+ _        [  ]        S-]    S-/ _    _    _    _    -    S-.    S-,    _
+ _          _    @2    _    _    _    _    _    _    @3    _    _
  _        _    @numl              S--              _    _ _ _ _ _
 )
 
@@ -109,13 +111,4 @@
  XX        XX    XX    4    XX    XX    XX    XX    XX    6    XX    XX    XX
  XX          XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX
  XX        XX    XX              XX              XX    XX XX XX XX XX
-)
-
-(deflayer empty
- _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _
- _          _    _    _    _    _    _    _    _    _    _    _
- _        _    _              _              _    _ _ _ _ _
 )
