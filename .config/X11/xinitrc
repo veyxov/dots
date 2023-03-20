@@ -2,7 +2,7 @@
 xrdb $HOME/.config/X11/Xresources
 
 # Set keyboard to my custom config
-sudo kmonad -w 0 $HOME/.config/keyboard/colex.kbd &
+exec sudo /home/iz/kanata/target/release/kanata --cfg /home/iz/.config/keyboard/kanata.kbd &
 
 # Locking system
 xautolock -time 1 -corners 000- -locker slock &
