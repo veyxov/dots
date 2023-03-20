@@ -35,7 +35,7 @@ xkb_symbols "rulemak" {
     key <AC01> { [     Cyrillic_ha,      Cyrillic_HA, apostrophe, rightsinglequotemark ] };
     key <AC02> { [     Cyrillic_che,     Cyrillic_CHE,      registered                  ] };
     key <AC03> { [     Cyrillic_te,     Cyrillic_TE                                   ] };
-    key <AC04> { [     Cyrillic_ghe,     Cyrillic_GHE                                  ] };
+    key <AC04> { [     Cyrillic_ghe,     Cyrillic_GHE, question, question                                ] };
     key <AC05> { [     Cyrillic_ze,    Cyrillic_ZE, Ukrainian_ghe_with_upturn, Ukrainian_GHE_WITH_UPTURN ] };
     key <AC06> { [     Cyrillic_hardsign, Cyrillic_HARDSIGN, Cyrillic_hardsign, Cyrillic_HARDSIGN ] };
     key <AC07> { [     Cyrillic_zhe,     Cyrillic_ZHE                                   ] };
