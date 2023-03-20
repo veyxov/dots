@@ -7,6 +7,7 @@
     kaboom (cmd bash -c "sudo killall kanata")
 )
 
+
 (defalias
   redo C-S-z
   paste C-v
@@ -26,11 +27,41 @@
   ;; Backspace on tap, extend on hold
   BS C-bks
   bs_win (tap-hold-release 150 175 @BS (layer-toggle symbol))
-
 )
 
 
-;; Current keyboard source
+(defalias
+  1 S-1
+  2 S-2
+  3 S-3
+  4 S-4
+  5 S-5
+  6 S-6
+  7 S-7
+  8 S-8
+  9 S-9
+  0 S-0
+  = S-=
+
+  , S-, 
+  . S-.
+  ; S-;
+
+  [ S-[
+  ] S-]
+
+  / S-/
+
+  grv S-grv
+)
+
+(defalias
+  td2 (tap-dance-eager 500 (
+    (macro ,) ;; use macro to prevent auto-repeat of the key
+    (macro bspc .)
+  ))
+)
+
 (defsrc
   esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc del
   grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
@@ -40,11 +71,24 @@
   lctl    lmet lalt           spc            ralt rctl lft down up rght
 )
 
+(defalias
+  cha (chord example a)
+  chb (chord example b)
+  chc (chord example c)
+)
+
+(defchords example 500
+  (a      ) a
+  (   b   ) b
+  (a     c) C-v
+  (a  b  c) 3
+)
+
 (deflayer colemak
   esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
-  grv     q    XX    w    f    XX    XX    XX    XX    XX    u    y    '    '
+  grv     q   @cha   @chb    @chc    XX    XX    XX    XX    XX    u    y    '    '
   tab     a    r    s    p    b    XX    XX   j    l    e    i    o    ;
-  XX      x    c    t    g    z    XX    XX    m    n    ,  .
+  XX      x    c    t    g    z    XX    XX    m    n    @td2  XX
   XX    XX XX    d    v    XX    XX    XX  XX  k    h       XX    XX
  lalt     @lctl @navl     @sl     @syml @bs_win   _ _ _ _
 )
@@ -60,10 +104,10 @@
 
 (deflayer symbol
  _        _    _    _    _    _    _    _    _    _    _    _    _ _  _ _
- _        S-1    _    `    S-5    _    _    _    _    _    S-8    S-6    S-/    ' _
- S-`        (    )    {    S-4    _    _    _    _    S-7    /  +    =    \
- _        [  ]        }    S-. _    _    _    _    -    S-.    S-,    _
- _          _    _    _    _    _    _    _    _    S-3    _    _
+ S-`        @1    _    `    @5    _    _    _    _    _    @8    @6    S-/    ' _
+        @9    @0    {    @4        _ _    _    _    @7    /  +    =    \
+        [  ]        }    S-. _ _    _    _    _    -    S-.    S-,    _
+ _          _    _    _    _    _    _    _    _    @3    _    _
  _        _    @numl              x              _    _ _ _ _ _
 )
 
