@@ -55,6 +55,12 @@
   grv S-grv
   tilde S-`
   dquote S-'
+
+    Rus (multi (cmd /home/iz/.config/keyboard/rulemak/rulemak.sh)
+            (layer-switch rus))
+
+  Col (multi (cmd setxkbmap us)
+            (layer-switch colemak))
 )
 
 (defalias
@@ -83,7 +89,7 @@
   tab     a    r    s    p    b    XX    XX   j    l    e    i    o    ;
   XX      x    c    t    g    z    XX    XX    m    n    @td2  XX
   XX    XX XX    d    v    XX    XX    XX  XX  k    h       XX    XX
- lalt     @lctl @navl     @sl     @syml @bs_win   _ _ _ _
+  lalt     @lctl @navl     @sl     @syml @bs_win   _ _ _ @Rus
 )
 
 (deflayer nav
@@ -94,6 +100,16 @@
  _          _    _    _    _    _    _    _    _    _    _    _
  _        _    _  _  _                  @numl _ _ _ _
 )
+
+(deflayer rus
+ _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _
+ _        _    _    _    _    _    _    _    _    _    _    _    _    _
+ _        _    _    _    _    _    _    _    _    _    _    _    _    _
+ _        _    _    _    _    _    _    _    _    _    _    _    _
+ _          _    _    _    _    _    _    _    _    _    _    _
+ _        lctl    @navl              @sl              @syml    @bs_win _ _ _ @Col
+)
+
 
 (deflayer symbol
  _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _
