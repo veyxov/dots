@@ -22,8 +22,8 @@
   lctl (tap-hold-release 150 150 @redo lctl)
   navl (tap-hold-release 150 150 spc (layer-toggle nav))
   navl_ru (tap-hold-release 150 150 spc ralt)
-  syml (tap-hold-release 150 175 ent lmet)
-  numl (tap-hold-release 150 200 spc (layer-toggle numbers))
+  syml (tap-hold 150 175 ent lmet)
+  numl (tap-hold 150 200 spc (layer-toggle numbers))
 
   ;; Backspace on tap, extend on hold
   BS C-bks
@@ -104,16 +104,6 @@
  _        _    _  _  _                  @numl _ _ _ _
 )
 
-(deflayer rus
- _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _
- _          _    _    _    _    _    _    _    _    _    _    _
- lalt        lctl    @navl_ru              @sl              @syml    @bs_win_2 _ _ _ @Col
-)
-
-
 (deflayer symbol
  _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _
  _        @1    _    `    @5    _    _    _    _    _    @8    @6    S-\    XX
@@ -131,3 +121,23 @@
  XX          XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX
  XX        XX    XX              XX              XX    XX XX XX XX XX
 )
+
+(defalias
+  grtgs (tap-dance-eager 500 (
+    (macro e)
+    (macro bspc S-e q o ] k ' spc) ;; use macro to prevent auto-repeat of the key
+    (macro bspc bspc bspc bspc bspc bspc bspc S-e q o ] k ' spc s [ spc . ] o spc x ] w p x C-f)
+  ))
+)
+
+(deflayer rus
+ _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _
+ _        _    _    _    _    _    _    _    _    _    _    _    _    _
+_      _    _    @grtgs    _    _    _    _    _    _    _    _    _    _
+ _        _    _    _    _    _    _    _    _    _    _    _    _
+ _          _    _    _    _    _    _    _    _    _    _    _
+ lalt        lctl    @navl_ru              @sl              @syml    @bs_win_2 _ _ _ @Col
+)
+
+
+
