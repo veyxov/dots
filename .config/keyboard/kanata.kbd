@@ -13,26 +13,19 @@
   cut C-x
   copy C-c
   undo C-z
-  sl (sticky-key 1000 lsft)
-  sr (sticky-key 1000 rsft)
-  CTL (sticky-key 1000 lctl)
-  ALT (sticky-key 1000 lalt)
+  sl (one-shot 1000 lsft)
+  sr (one-shot 1000 rsft)
+  CTL (one-shot 1000 lctl)
+  ALT (one-shot 1000 lalt)
 
-  lctl (tap-hold-next-release 150 @redo lctl)
-  navl (tap-hold-next-release 150 spc (layer-toggle nav))
-  syml (tap-hold-next-release 175 Enter lmet)
-  numl (tap-hold-next-release 200 spc (layer-toggle numbers))
+  lctl (tap-hold-release 150 150 @redo lctl)
+  navl (tap-hold-release 150 150 spc (layer-toggle nav))
+  syml (tap-hold-release 150 175 ent lmet)
+  numl (tap-hold-release 150 200 spc (layer-toggle numbers))
 
   ;; Backspace on tap, extend on hold
-  BS C-Backspace
-  bs_win (tap-hold-next-release 175 C-Backspace (layer-toggle symbol))
-  symlRu (tap-hold-next-release 175 Enter (layer-toggle symbolRu))
-
-  Rus (around (cmd-button "sh '/home/iz/.config/keyboard/rulemak/rulemak.sh'")
-            (layer-switch rus))
-
-  Col (around (cmd-button "setxkbmap us")
-            (layer-switch colemak))
+  BS C-bks
+  bs_win (tap-hold-release 150 175 @BS (layer-toggle symbol))
 
 )
 
@@ -53,34 +46,25 @@
   tab     a    r    s    p    b    XX    XX   j    l    e    i    o    ;
   XX      x    c    t    g    z    XX    XX    m    n    ,  .
   XX    XX XX    d    v    XX    XX    XX  XX  k    h       XX    XX
- lalt     @lctl @navl     @sl     @syml @bs_win   _ _ _ @Rus
+ lalt     @lctl @navl     @sl     @syml @bs_win   _ _ _ _
 )
 
 (deflayer nav
  _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _ 
  _        _ _    _    _    _    _    _    _    _   @paste @copy _ _
- _        esc @CTL    @sl _      _    _    _    _    _     Down Up    Right    _
- _        _    _    @ALT    _    _    _    _    _    Left    pgdn    pgup    _
+ _        esc @CTL    @sl _      _    _    _    _    _     down up    rght    _
+ _        _    _    @ALT    _    _    _    _    _    lft    pgdn    pgup    _
  _          _    _    _    _    _    _    _    _    _    _    _
  _        _    _  _  _                  @numl _ _ _ _
 )
 
 (deflayer symbol
  _        _    _    _    _    _    _    _    _    _    _    _    _ _  _ _
- _        !    _    `    %    _    _    _    _    _    *    ^    |    '
- ~        \(    \)    {    $    _    _    _    _    &    /  +    =    \
- _        [  ]        }    ? _    _    _    _    -    >    <    _
- _          _    @    _    _    _    _    _    _    #    _    _
- _        _    @numl              \_              _    _ _ _ _ _
-)
-
-(deflayer symbolRu
- _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _
- _        !    _    `    %    _    _    _    _    _    *    ^    |    '
- ~        \(    \)    {    $    _    _    _    _    &    /  +    =    \
- _        [  ]        }    ? _    _    _    _    -    >    <    _
- _          _    @    _    _    _    _    _    _    #    _    _
- _        _    @numl              \_              _    _ _ _ _ _
+ _        S-1    _    `    S-5    _    _    _    _    _    S-8    S-6    S-/    ' _
+ S-`        (    )    {    S-4    _    _    _    _    S-7    /  +    =    \
+ _        [  ]        }    S-. _    _    _    _    -    S-.    S-,    _
+ _          _    _    _    _    _    _    _    _    S-3    _    _
+ _        _    @numl              x              _    _ _ _ _ _
 )
 
 (deflayer numbers
@@ -90,15 +74,6 @@
  XX        XX    XX    4    XX    XX    XX    XX    XX    6    XX    XX    XX
  XX          XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX
  XX        XX    XX              XX              XX    XX XX XX XX XX
-)
-
-(deflayer rus
- _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _
- _          _    _    _    _    _    _    _    _    _    _    _
- _        lctl    @navl              @sl              @symlRu    @bs_win _ _ _ @Col
 )
 
 (deflayer empty
