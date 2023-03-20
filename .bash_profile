@@ -36,5 +36,5 @@ export FZF_DEFAULT_OPTS='--no-height --no-reverse --select-1 --exit-0'
 # Auto start X
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     # Startx quietly
-    exec startx "$XDG_CONFIG_HOME/X11/xinitrc" -- vt1 &> /dev/null
+    exec startx "$XDG_CONFIG_HOME/X11/xinitrc" -- vt1
 fi
