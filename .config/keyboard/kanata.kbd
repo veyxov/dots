@@ -128,6 +128,12 @@
     (macro bspc S-e q o ] k ' spc) ;; use macro to prevent auto-repeat of the key
     (macro bspc bspc bspc bspc bspc bspc bspc S-e q o ] k ' spc s [ spc . ] o spc x ] w p x C-f)
   ))
+
+  grtgs_2 (tap-dance-eager 500 (
+    (macro a)
+    (macro bspc S-a S-0 t ) ;; use macro to prevent auto-repeat of the key
+    (macro bspc bspc bspc bspc bspc bspc bspc S-e q o ] k ' spc s [ spc . ] o spc x ] w p x C-f)
+  ))
 )
 
 (deflayer rus
