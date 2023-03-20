@@ -30,7 +30,7 @@ xkb_symbols "rulemak" {
     key <AD10> { [     Cyrillic_ie, Cyrillic_IE,     Cyrillic_je,     Cyrillic_JE ] };
     key <AD11> { [     Cyrillic_i,     Cyrillic_I,       semicolon,           colon ] };
     key <AD12> { [     Cyrillic_o,    Cyrillic_O,   guillemotleft,  doublelowquotemark ] };
-    key <BKSL> { [     Cyrillic_e,     Cyrillic_E                                 ] }; // э Э
+    key <BKSL> { [     Cyrillic_e,     Cyrillic_E, colon                                 ] }; // э Э
     key <CAPS> { [     Cyrillic_softsign,     Cyrillic_hardsign                                 ] };
     key <AC01> { [     Cyrillic_ha,      Cyrillic_HA, apostrophe, rightsinglequotemark ] };
     key <AC02> { [     Cyrillic_che,     Cyrillic_CHE,      registered                  ] };
