@@ -21,6 +21,7 @@
 
   lctl (tap-hold-release 150 150 @redo lctl)
   navl (tap-hold-release 150 150 spc (layer-toggle nav))
+  navl_ru (tap-hold-release 150 150 spc ralt)
   syml (tap-hold-release 150 175 ent lmet)
   numl (tap-hold-release 150 200 spc (layer-toggle numbers))
 
@@ -109,7 +110,7 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _          _    _    _    _    _    _    _    _    _    _    _
- ralt        lctl    @navl              @sl              @syml    @bs_win_2 _ _ _ @Col
+ lalt        lctl    @navl_ru              @sl              @syml    @bs_win_2 _ _ _ @Col
 )
 
 
