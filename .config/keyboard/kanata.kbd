@@ -1,92 +1,23 @@
+;; engine configuration
+(defcfg
+    danger-enable-cmd yes ;; enable os commands
+)
 
-(defalias
-  redo C-Z
-  paste C-v
-  cut C-x
-  copy C-c
-  undo C-z
-  sl (sticky-key 1000 lsft)
-  sr (sticky-key 1000 rsft)
-  CTL (sticky-key 1000 lctl)
-  ALT (sticky-key 1000 lalt)
-
-  lctl (tap-hold-next-release 150 @redo lctl)
-  navl (tap-hold-next-release 150 spc (layer-toggle nav))
-  syml (tap-hold-next-release 175 Enter lmet)
-  numl (tap-hold-next-release 200 spc (layer-toggle numbers))
-
-  ;; Backspace on tap, extend on hold
-  BS C-Backspace
-  bs_win (tap-hold-next-release 175 C-Backspace (layer-toggle symbol))
-  symlRu (tap-hold-next-release 175 Enter (layer-toggle symbolRu))
-
-  Rus (around (cmd-button "sh '/home/iz/.config/keyboard/rulemak/rulemak.sh'")
-            (layer-switch rus))
-
-  Col (around (cmd-button "setxkbmap us")
-            (layer-switch colemak))
-
+;; Current keyboard source
+(defsrc
+  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc del
+  grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab     q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps    a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl    lmet lalt           spc            ralt rctl lft down up rght
 )
 
 (deflayer colemak
- XX        _    _    _    _    _    _    _    _    _    _    _    _
- _      q    b      w       f       XX   _      XX      j       XX       u       y     '    "
- tab    a    r      s       p       b    XX     XX      j       l        e       i        o ;  XX
- x      c    t      g       z       _    _      m       n        ,       .       XX
- XX XX  d    v      XX      XX      XX   XX     k       h       XX       s
- lalt     @lctl @navl     @sl     @syml @bs_win   _ _ _ @Rus
-)
-
-(deflayer nav
- _        _    _    _    _    _    _    _    _    _    _    _    _
- _        _ _    _    _    _    _    _    _    _   @paste @copy _ _
- _        esc @CTL    @sl _      _    _    _    _    _     Down Up    Right    _
- _        _    _    @ALT    _    _    _    _    _    Left    pgdn    pgup    _
- _          _    _    _    _    _    _    _    _    _    _    _
- _        _    _  _  _                  @numl _ _ _ _
-)
-
-(deflayer symbol
- _        _    _    _    _    _    _    _    _    _    _    _    _
- _        !    _    `    %    _    _    _    _    _    *    ^    |    "
- ~        \(    \)    {    $    _    _    _    _    &    /  +    =    \
- _        [  ]        }    ? _    _    _    _    -    >    <    _
- _          _    @    _    _    _    _    _    _    #    _    _
- _        _    @numl              \_              _    _ _ _ _ _
-)
-
-(deflayer symbolRu
- _        _    _    _    _    _    _    _    _    _    _    _    _
- _        !    _    `    %    _    _    _    _    _    *    ^    |    "
- ~        \(    \)    {    $    _    _    _    _    &    /  +    =    \
- _        [  ]        }    ? _    _    _    _    -    >    <    _
- _          _    @    _    _    _    _    _    _    #    _    _
- _        _    @numl              \_              _    _ _ _ _ _
-)
-
-(deflayer numbers
- XX        XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX
- XX        XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX
- XX        1    2    3    5    XX    XX    XX XX  7    8    9    0   XX
- XX        XX    XX    4    XX    XX    XX    XX    XX    6    XX    XX    XX
- XX          XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX
- XX        XX    XX              XX              XX    XX XX XX XX XX
-)
-
-(deflayer rus
- _        _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _
- _          _    _    _    _    _    _    _    _    _    _    _
- _        lctl    @navl              @sl              @symlRu    @bs_win _ _ _ @Col
-)
-
-(deflayer empty
- _        _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _    _
- _        _    _    _    _    _    _    _    _    _    _    _    _
- _          _    _    _    _    _    _    _    _    _    _    _
- _        _    _              _              _    _ _ _ _ _
+  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc del
+  grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab     q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps    a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl    lmet lalt           spc            ralt rctl lft down up rght
 )
