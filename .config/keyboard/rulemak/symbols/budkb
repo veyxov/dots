@@ -55,4 +55,10 @@ xkb_symbols "rulemak" {
     key <AB08> { [     Cyrillic_ka,     Cyrillic_KA                   ] }; // ҳ Ҳ
     key <AB09> { [     Cyrillic_ha_descender,       Cyrillic_HA_descender,            less                  ] };
     key <AB10> { [     period,           colon,         greater                  ] };
+
+    include "level3(ralt_switch)"
+    include "capslock(backspace)"
+    include "nbsp(level4)"
+    include "group(rwin_switch)"
+
 };

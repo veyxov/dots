@@ -27,6 +27,8 @@
   ;; Backspace on tap, extend on hold
   BS C-bks
   bs_win (tap-hold-release 150 175 @BS (layer-toggle symbol))
+
+  bs_win_2 (tap-hold-release 150 175 @BS ralt)
 )
 
 
@@ -107,7 +109,7 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _          _    _    _    _    _    _    _    _    _    _    _
- _        lctl    @navl              @sl              @syml    @bs_win _ _ _ @Col
+ ralt        lctl    @navl              @sl              @syml    @bs_win_2 _ _ _ @Col
 )
 
 
