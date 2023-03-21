@@ -109,6 +109,16 @@
   ))
 )
 
+(defalias
+    ch_lalt (chord sym_nav lalt)
+    ch_ralt (chord sym_nav ralt)
+)
+
+(defchords sym_nav 300
+    (lalt) (tap-hold-release 150 150 spc (layer-toggle nav))
+    (ralt) (tap-hold-release 150 175 @BS (layer-toggle symbol))
+    (lalt ralt) (layer-toggle numbers)
+)
 
 (deflayer colemak
   esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
@@ -116,7 +126,7 @@
 tab   @a_dnc    r    s    p    b    XX    XX   j    l   @e_dnc    i    o    ;
   XX      x    c    t    g    z    XX    XX    m    n    @td2  .
   XX    XX XX    d    v    XX    XX    XX  XX  k    h       XX    XX
-  lalt     @lctl @navl     @sl     @syml @bs_win   _ _ _ @Rus
+  lalt     @lctl @ch_lalt     @sl     @syml @ch_ralt   _ _ _ @Rus
 )
 
 (deflayer nav
