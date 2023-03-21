@@ -91,7 +91,7 @@
   a_dnc (tap-dance-eager 350 (
     (macro a) ;; literal
     (macro bspc C-a) ;; select all
-    (macro C-x) ;; cut
+    (macro C-x) ;; select all + cut
   ))
 )
 
@@ -101,6 +101,7 @@
   ))
 )
 
+;; tripple 'e' activates permanent navigation layers
 (defalias
   e_dnc (tap-dance-eager 350 (
     e ;; literal
@@ -109,11 +110,11 @@
   ))
 )
 
+;; chording for symb->number layers
 (defalias
     ch_lalt (chord sym_nav lalt)
     ch_ralt (chord sym_nav ralt)
 )
-
 (defchords sym_nav 300
     (lalt) (tap-hold-release 150 150 spc (layer-toggle nav))
     (ralt) (tap-hold-release 150 175 @BS (layer-toggle symbol))
@@ -129,13 +130,14 @@ tab   @a_dnc    r    s    p    b    XX    XX   j    l   @e_dnc    i    o    ;
   lalt     @lctl @ch_lalt     @sl     @syml @ch_ralt   _ _ _ @Rus
 )
 
+;; TODO: Complete
 (deflayer nav
  _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _ 
  _        _ _    _    _    _    _    _    _    _   @paste @copy _ _
  _        esc @CTL    @sl _      _    _    _    _    (layer-switch colemak)     down up    rght    _
  _        _    _    @ALT    _    _    _    _    _    lft    pgdn    pgup    _
  _          _    _    _    _    _    _    _    _    _    _    _
- _        _    _  _  _                  @numl _ _ _ _
+ _        _    _  _  _                  _ _ _ _ _
 )
 
 (deflayer symbol
@@ -144,7 +146,7 @@ tab   @a_dnc    r    s    p    b    XX    XX   j    l   @e_dnc    i    o    ;
  @tilde        @9    @0    S-[    @4    _    _    _    _    @7    /  S-= =    \
  _        [  ]        S-]    S-/ _    _    _    _    -    S-.    S-,    _
  _          _    @2    _    _    _    _    _    _    @3    _    _
- _        _    @numl              S--              _    _ _ _ _ _
+ _        _    _              S--              _    _ _ _ _ _
 )
 
 (deflayer numbers
@@ -166,7 +168,7 @@ tab   @a_dnc    r    s    p    b    XX    XX   j    l   @e_dnc    i    o    ;
   grtgs_2 (tap-dance-eager 500 (
     (macro a)
     (macro bspc S-a S-0 t ) ;; use macro to prevent auto-repeat of the key
-    (macro bspc bspc bspc bspc bspc bspc bspc S-e q o ] k ' spc s [ spc . ] o spc x ] w p x C-f)
+    (macro bspc bspc bspc bspc bspc bspc bspc S-e q o ] k ' spc S-s [ spc . ] o spc x ] w p x C-f)
   ))
 )
 
