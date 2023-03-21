@@ -104,7 +104,8 @@
 (defalias
   e_dnc (tap-dance-eager 350 (
     e ;; literal
-    (multi bspc (layer-switch nav))
+    e
+    (multi (macro bspc bspc) (layer-switch nav))
   ))
 )
 
