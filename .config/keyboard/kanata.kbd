@@ -1,6 +1,5 @@
-;; engine configuration
 (defcfg
-    danger-enable-cmd yes
+    danger-enable-cmd yes ;; Enable commands
 )
 
 (defalias
@@ -9,19 +8,18 @@
 
 
 (defalias
+  undo C-z
   redo C-S-z
   paste C-v
   cut C-x
   copy C-c
-  undo C-z
-  sl (one-shot 1000 lsft)
-  sr (one-shot 1000 rsft)
-  CTL (one-shot 1000 lctl)
-  ALT (one-shot 1000 lalt)
 
-  lctl (tap-hold-release 150 150 @redo lctl)
-  navl (tap-hold-release 150 150 spc (layer-toggle nav))
-  navl_ru (tap-hold-release 150 150 spc ralt)
+  ;; Sticky keys
+  stk_shft (one-shot 1000 lsft)
+  stk_alt (one-shot 1000 lalt)
+
+  navl (tap-hold 150 150 spc (layer-toggle nav))
+  navl_ru (tap-hold 150 150 spc ralt)
   syml (tap-hold 150 175 ent lmet)
   numl (tap-hold 150 200 spc (layer-toggle numbers))
 
@@ -127,15 +125,31 @@
   tab   @a_dnc    r    s    p    b    XX    XX   j    l   @e_dnc    i    o    ;
   XX      x    c    t    g    z    XX    XX    m    n    @td2  .
   XX    XX XX    d    v    XX    XX    XX  XX  k    h       XX    XX
-  lalt     @lctl @ch_lalt     @sl     @syml @ch_ralt   _ _ _ @Rus
+  lalt     @stk_alt @ch_lalt     @stk_shft     @syml @ch_ralt   _ _ _ @Rus
 )
 
 ;; TODO: Complete
+
+(defalias
+    chr (chord modif r)
+    chs (chord modif s)
+    cht (chord modif t)
+)
+
+(defchords modif 500
+(r) (one-shot 1000 lctl)
+(s) (one-shot 1000 lsft)
+(t) (one-shot 1000 lalt)
+(r s) (multi (one-shot 1000 lctl) (one-shot 1000 lsft))
+(r t) (multi (one-shot 1000 lctl) (one-shot 1000 lalt))
+(s t) (multi (one-shot 1000 lsft) (one-shot 1000 lalt))
+)
+
 (deflayer nav
  _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _ 
  _        _ _    _    _    _    _    _    _    _   @paste @copy _ _
- _        esc @CTL    @sl _      _    _    _    _    (layer-switch colemak)     down up    rght    _
- _        _    _    @ALT    _    _    _    _    _    lft    pgdn    pgup    _
+ _        esc @chr    @chs _      _    _    _    _    (layer-switch colemak)     down up    rght    _
+ _        _    _    @cht    _    _    _    _    _    lft    pgdn    pgup    _
  _          _    _    _    _    _    _    _    _    _    _    _
  _        _    spc            spc   ent                  _ _ _ _ _
 )
@@ -170,6 +184,12 @@
     (macro bspc S-a S-0 t ) ;; use macro to prevent auto-repeat of the key
     (macro bspc bspc bspc bspc bspc bspc bspc S-e q o ] k ' spc S-s [ spc . ] o spc x ] w p x C-f)
   ))
+
+  qq (tap-dance-eager 500 (
+    (macro s)
+    (macro bspc S-s [ ) ;; use macro to prevent auto-repeat of the key
+    (macro bspc bspc S-t q w ] [ spc s [)
+  ))
 )
 
 (deflayer rus
@@ -178,7 +198,7 @@
 _      _    _    @grtgs    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _          _    _    _    _    _    _    _    _    _    _    _
- lalt        lctl    @navl_ru              @sl              @syml    @bs_win_2 _ _ _ @Col
+ lalt        lctl    @navl_ru              @stk_shft              @syml    @bs_win_2 _ _ _ @Col
 )
 
 
