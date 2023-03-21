@@ -103,7 +103,7 @@
 
 ;; tripple 'e' activates permanent navigation layers
 (defalias
-  e_dnc (tap-dance-eager 350 (
+  e_dnc (tap-dance-eager 200 (
     e ;; literal
     e
     (multi (macro bspc bspc) (layer-switch nav))
@@ -137,7 +137,7 @@ tab   @a_dnc    r    s    p    b    XX    XX   j    l   @e_dnc    i    o    ;
  _        esc @CTL    @sl _      _    _    _    _    (layer-switch colemak)     down up    rght    _
  _        _    _    @ALT    _    _    _    _    _    lft    pgdn    pgup    _
  _          _    _    _    _    _    _    _    _    _    _    _
- _        _    _  _  _                  _ _ _ _ _
+ _        _    _            spc   ent                  _ _ _ _ _
 )
 
 (deflayer symbol
