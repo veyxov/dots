@@ -87,7 +87,7 @@
 ;; Tap dance for a
 (defalias
   a_dnc (tap-dance-eager 350 (
-    (macro a) ;; literal
+    a ;; literal
     (macro bspc C-a) ;; select all
     (macro C-x) ;; select all + cut
   ))
