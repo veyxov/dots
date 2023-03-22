@@ -173,33 +173,14 @@
 )
 
 (defalias
-  grtgs (tap-dance-eager 500 (
-    (macro e)
-    (macro bspc S-e q o ] k ' spc) ;; use macro to prevent auto-repeat of the key
-    (macro bspc bspc bspc bspc bspc bspc bspc S-e q o ] k ' spc s [ spc . ] o spc x ] w p x C-f)
-  ))
-
-  grtgs_2 (tap-dance-eager 500 (
-    (macro a)
-    (macro bspc S-a S-0 t ) ;; use macro to prevent auto-repeat of the key
-    (macro bspc bspc bspc bspc bspc bspc bspc S-e q o ] k ' spc S-s [ spc . ] o spc x ] w p x C-f)
-  ))
-
-  qq (tap-dance-eager 500 (
-    (macro s)
-    (macro bspc S-s [ ) ;; use macro to prevent auto-repeat of the key
-    (macro bspc bspc S-t q w ] [ spc s [)
-  ))
 )
 
 (deflayer rus
  _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _
  _        _    _    _    _    _    _    _    _    _    _    _    _    _
-_      _    _    @grtgs    _    _    _    _    _    _    _    _    _    _
+_      _    _    _    _    _    _    _    _    _    _    _    _    _
  _        _    _    _    _    _    _    _    _    _    _    _    _
  _          _    _    _    _    _    _    _    _    _    _    _
  lalt        lctl    @navl_ru              @stk_shft              @syml    @bs_win_2 _ _ _ @Col
 )
-
-
 
