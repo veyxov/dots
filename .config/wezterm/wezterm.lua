@@ -13,7 +13,7 @@ return {
         brightness = 0.25,
     },
     disable_default_key_bindings = true,
-    window_background_opacity = 0.85,
+    window_background_opacity = 1,
     tab_bar_at_bottom = true,
     quick_select_alphabet = "neiosart",
     window_padding = {
@@ -24,7 +24,7 @@ return {
     },
     adjust_window_size_when_changing_font_size = false,
     front_end = "WebGpu",
-    color_scheme = "Argonaut",
+    color_scheme = "Catppuccin Mocha",
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
