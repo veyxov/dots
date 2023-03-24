@@ -2,6 +2,8 @@
 export PATH="$PATH:$HOME/.local/bin/"
 export PATH="$PATH:$HOME/.local/src/dwmblocks/src"
 
+export WALLPAPERS_LOCATION="$HOME/.local/walls/*"
+
 # XDG
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
