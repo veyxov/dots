@@ -7,4 +7,4 @@ else
 fi
 
 #xwallpaper --maximize $wall
-feh --bg-scale $wall
+feh --bg-fill $wall
