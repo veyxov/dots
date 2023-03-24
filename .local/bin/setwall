@@ -1,10 +1,9 @@
 # Set a random wallpaper
 if [ $# -eq 0 ]; then
-    files=(~/.local/walls/*)
-    wall="${files[RANDOM % ${#files[@]}]}"
+    # Update the wallpaper every 60 seconds
+    watch -n 60 feh --randomize --bg-fill $WALLPAPERS_LOCATION &>/dev/null &
 else
     wall=$1
 fi
 
-#xwallpaper --maximize $wall
 feh --bg-fill $wall
