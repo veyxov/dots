@@ -28,19 +28,7 @@ return {
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
-    font = wezterm.font(
-        "Comic mono"
-    ),
-    font_rules = {
-        {
-            italic = true,
-            intensity = 'Normal',
-            font = wezterm.font {
-                family = 'VictorMono',
-                style = 'Italic',
-            },
-        },
-    },
+    font = wezterm.font( "Fira Code"),
     leader = { key = 'F1', mods = 'CTRL', timeout_milliseconds = 1000 },
     default_prog = { '/usr/bin/zsh' },
     font_size = 20,
