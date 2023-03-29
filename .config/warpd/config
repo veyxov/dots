@@ -2,27 +2,22 @@ hint_activation_key: M-j
 activation_key: M-c
 hint: h
 
-left: Left
-right: Right
-down: Down
-up: Up
+left: n
+down: e
+right: o
+up: i
 
 drag: t
 
 speed:8
 acceleration:2000
 
-grid_left: left
-grid_right: right
-grid_down: down
-grid_up: up
+exit: q
 
-grid_keys: a t r s
+buttons: Return w f
 
-buttons: n e i
-
-scroll_down: pagedown
-scroll_up: pageup
+scroll_down: r
+scroll_up: s
 
 hint2_chars: arstneio;
 hint_chars: qwfparstgxcdvbmkh,.neioluy;
