@@ -156,7 +156,7 @@
  _        _    _    _    _    _    _    _    _    _    _    _    _ _ _ _ 
  _        _ _    _    _    _    _    _    _    _   @paste @copy _ _
  _        esc @chr    @chs _      _    _    _    _    (layer-switch colemak)     down up    rght    _
- _        _    _    @cht    _    _    _    _    _    lft    pgdn    pgup    _
+ @ms_clck    _    _    @cht    _    _    _    _    _    lft    pgdn    pgup    _
  _          _    _    _    _    _    _    _    _    _    _    _
  _        _    spc            spc   ent                  _ _ _ _ _
 )
