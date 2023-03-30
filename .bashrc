@@ -10,9 +10,6 @@ fi
 
 if [ "$TERM" != "linux" ]
 then
-    # Faster input
-    xset r rate 300 50
-
     # Vim mode
     set -o vi
     #use extra globing features. See man bash, search extglob.
