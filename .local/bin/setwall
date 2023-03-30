@@ -1,7 +1,7 @@
 # Set a random wallpaper
 if [ $# -eq 0 ]; then
-    # Update the wallpaper every 60 seconds
-    watch -n 60 feh --randomize --bg-fill $WALLPAPERS_LOCATION &>/dev/null &
+    # Update the wallpaper every hour
+    watch -n 3600 feh --randomize --bg-fill $WALLPAPERS_LOCATION &>/dev/null &
 else
     wall=$1
 fi
