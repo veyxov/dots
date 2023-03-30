@@ -12,7 +12,7 @@ drag: t
 speed:8
 acceleration:2000
 
-exit: q
+exit: q, C-backspace
 
 buttons: Return w f
 
