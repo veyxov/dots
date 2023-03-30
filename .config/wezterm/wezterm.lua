@@ -38,6 +38,15 @@ return {
     default_prog = { '/usr/bin/zsh' },
     font_size = 20,
     keys = {
+        -- TODO: Find out why `callback` doesn't work.
+        -- {
+        --         key = 't',
+        --     mods = 'ALT',
+        --     action = callback(function(win, pane)
+        --                 wezterm.log_info 'Hello from callback!'
+        --         local tab, window = pane:move_to_new_tab()
+        --     end),
+        -- },
         {
             key = "f",
             mods = "ALT",
