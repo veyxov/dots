@@ -120,7 +120,7 @@
 )
 
 (defalias
-    y_ctl (tap-hold 150 200 y lctl)
+    y_ctl (tap-hold-release 150 200 y lctl)
 )
 
 (defalias
