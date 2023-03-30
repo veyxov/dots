@@ -12,9 +12,9 @@ drag: t
 speed:8
 acceleration:2000
 
-exit: q, C-backspace
+exit: q, c
 
-buttons: Return w f
+buttons: Return w C-backspace
 
 scroll_down: r
 scroll_up: s
