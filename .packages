@@ -20,7 +20,6 @@ clipmenu
 cmake
 cmatrix
 cool-retro-term
-cowsay
 dirb
 docker
 docker-compose
@@ -171,7 +170,6 @@ xclip
 xdo
 xf86-input-synaptics
 xf86-video-intel
-xflux
 xkblayout
 xorg-bdftopcf
 xorg-iceauth
