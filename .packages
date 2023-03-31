@@ -19,7 +19,6 @@ chafa
 clipmenu
 cmake
 cmatrix
-cool-retro-term
 dirb
 docker
 docker-compose
@@ -102,9 +101,7 @@ npm
 ntfs-3g
 obs-studio
 obsidian
-omnisharp-roslyn-bin
 openssh
-otf-comic-shanns-v2
 otf-nerd-fonts-fira-code
 pass
 patch
@@ -118,8 +115,6 @@ pulsemixer
 python
 python-pip
 qbittorrent
-qrencode
-ranger
 redis
 rider
 ripgrep
@@ -141,7 +136,6 @@ sudo
 sxhkd
 sxiv
 sysstat
-taskwarrior-tui
 telegram-desktop
 texinfo
 tidy
