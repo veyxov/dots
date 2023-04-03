@@ -57,7 +57,6 @@ xkb_symbols "rulemak" {
     key <AB10> { [     period,           colon,         greater                  ] };
 
     include "level3(ralt_switch)"
-    include "capslock(backspace)"
     include "nbsp(level4)"
     include "group(rwin_switch)"
 
