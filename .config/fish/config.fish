@@ -57,4 +57,4 @@ alias rm="rm -rfv"
 alias mv="mv -v"
 alias cp="cp -v"
 
-xset r rate 250 150
+# xset r rate 250 150
