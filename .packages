@@ -60,11 +60,14 @@ howdoi
 htop
 iftop
 intel-media-driver
+istio
 jq
 k6
 kdenlive
 kmonad-git
 kotatogram-desktop-bin
+kube-proxy
+kubectl
 lazydocker
 lazygit
 lf
@@ -83,6 +86,7 @@ lutris
 m4
 make
 mdcat
+minikube
 mono
 mpv
 navi-bin
