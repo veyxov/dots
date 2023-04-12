@@ -29,7 +29,7 @@ return {
     },
     adjust_window_size_when_changing_font_size = false,
     front_end = "WebGpu",
-    color_scheme = "Catppuccin Mocha",
+    color_scheme = "Everblush",
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
