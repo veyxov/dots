@@ -15,10 +15,12 @@ bind <ArrowDown> scrollpage 0.5
 bind <ArrowUp> scrollpage -0.5
 
 " Only hint search results on Google and DDG
-bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
-bindurl www.google.com F hint -Jbc #search div:not(.action-menu) > a
-bindurl ^https://duckduckgo.com f hint -Jc [class~=result__a]
-bindurl ^https://duckduckgo.com F hint -Jbc [class~=result__a]
+bindurl www.google.com s hint -Jc #search div:not(.action-menu) > a
+bindurl www.google.com S hint -Jbc #search div:not(.action-menu) > a
+bindurl ^https://duckduckgo.com s hint -Jc [data-testid="result-title-a"]
+bindurl ^https://duckduckgo.com S hint -Jbc [data-testid="result-title-a"]
+
+bindurl ^https://duckduckgo.com e keyfeed j
 
 " Use sensitive case. Smart case would be nice here, but it doesn't work.
 set findcase sensitive
