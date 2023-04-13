@@ -1,5 +1,7 @@
 colorscript random
 
+path+=('/home/iz/.cargo/bin')
+
 autoload -Uz compinit
 compinit
 
