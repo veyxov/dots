@@ -1,5 +1,3 @@
-# disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
@@ -11,25 +9,7 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 
 zstyle ':completion:*:*:*:default' menu yes select search # What is this ?
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
-
 zinit light Aloxaf/fzf-tab # Todo: find out how to enable this on cd-tab
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
-zinit light zsh-users/zsh-autosuggestions
-zinit light unixorn/fzf-zsh-plugin
-
-zinit light zsh-users/zsh-syntax-highlighting
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets regexp line)
-ZSH_HIGHLIGHT_STYLES[line]='bold'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
-ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 
 # Better vim mode
 zinit ice depth=1
