@@ -30,3 +30,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets regexp line)
 ZSH_HIGHLIGHT_STYLES[line]='bold'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+
+# Better vim mode
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
