@@ -1,4 +1,4 @@
-alias ns="exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
+alias ns="clear;exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
 alias st="z"
 alias n="nvim ."
 
