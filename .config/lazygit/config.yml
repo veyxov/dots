@@ -41,6 +41,7 @@ gui:
   commandLogSize: 8
   splitDiff: 'auto' # one of 'auto' | 'always'
 git:
+  parseEmoji: true
   paging:
     colorArg: always
     pager: delta --dark --paging=never
