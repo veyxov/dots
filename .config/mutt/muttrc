@@ -1,0 +1,45 @@
+# User
+set from = "veyxov@gmail.com"
+set realname = "Shekhov Ismoil"
+
+# Gmail
+set imap_user = "veyxov@gmail.com"
+set smtp_url = "smtps://veyxov@gmail.com@smtp.gmail.com:465/"
+set smtp_authenticators = 'gssapi:login'
+
+# Ensure TLS is enforced
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+# Use GPGME
+# Use my key for signing and encrypting
+set pgp_default_key = 8DB256BB0961A66472B3BD50DC2322DA96F9B768
+
+# Use GPGME
+set crypt_use_gpgme = yes
+
+# Automatically sign all out-going email
+set crypt_autosign = yes
+
+# Sign replies to signed emails
+set crypt_replysign = yes
+
+# Encrypt replies to encrypted emails
+set crypt_replyencrypt = yes
+
+# Encrypt and sign replies to encrypted and signed email
+set crypt_replysignencrypted = yes
+
+# Attempt to verify signatures automatically
+set crypt_verify_sig = yes
+
+# Attempt to encrypt automatically, if possible
+# I would recommend setting this to no as university often have spam filters
+# And this will cause your emails to be marked as spam
+# as they can't decrypt your emails LMAO
+set crypt_opportunistic_encrypt = no
+
+# So you can view encrypted emails automatically
+auto_view application/pgp-encrypted
+
+source "gpg -dq $XDG_CONFIG_HOME/passwords.gpg |"
