@@ -9,16 +9,18 @@ gui:
   timeFormat: '02 Jan 06 15:04 MST' # https://pkg.go.dev/time#Time.Format
   theme:
     activeBorderColor:
-      - green
+      - magenta
       - bold
     inactiveBorderColor:
       - white
     optionsTextColor:
       - blue
     selectedLineBgColor:
-      - blue # set to `default` to have no background colour
+      - black
+      - bold
     selectedRangeBgColor:
-      - blue
+      - black
+      - bold
     cherryPickedCommitBgColor:
       - cyan
     cherryPickedCommitFgColor:
