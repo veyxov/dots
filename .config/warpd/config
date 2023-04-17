@@ -12,12 +12,12 @@ drag: t
 speed:8
 acceleration:2000
 
-exit: q, c, l
+exit: q c l
 
 buttons: Return w C-backspace
 
-scroll_down: r
-scroll_up: s
+scroll_down: ,
+scroll_up: .
 
 hint2_chars: arstneio;
 hint_chars: qwfparstgxcdvbmkh,.neioluy;
