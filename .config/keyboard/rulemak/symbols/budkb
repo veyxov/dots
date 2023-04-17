@@ -30,13 +30,13 @@ xkb_symbols "rulemak" {
     key <AD10> { [     Cyrillic_ie, Cyrillic_IE,     Cyrillic_je,     Cyrillic_JE ] };
     key <AD11> { [     Cyrillic_i,     Cyrillic_I,       semicolon,           colon ] };
     key <AD12> { [     Cyrillic_o,    Cyrillic_O,   guillemotleft,  doublelowquotemark ] };
-    key <BKSL> { [     Cyrillic_e,     Cyrillic_E, colon                                 ] }; // э Э
+    key <BKSL> { [     Cyrillic_ze,     Cyrillic_ZE, colon                                 ] }; // э Э
     key <CAPS> { [     Cyrillic_softsign,     Cyrillic_hardsign                                 ] };
     key <AC01> { [     Cyrillic_ha,      Cyrillic_HA, apostrophe, rightsinglequotemark ] };
     key <AC02> { [     Cyrillic_che,     Cyrillic_CHE,      registered                  ] };
     key <AC03> { [     Cyrillic_te,     Cyrillic_TE                                   ] };
     key <AC04> { [     Cyrillic_ghe,     Cyrillic_GHE, question, question                                ] };
-    key <AC05> { [     Cyrillic_ze,    Cyrillic_ZE, Ukrainian_ghe_with_upturn, Ukrainian_GHE_WITH_UPTURN ] };
+    key <AC05> { [     Cyrillic_e,    Cyrillic_E, Ukrainian_ghe_with_upturn, Ukrainian_GHE_WITH_UPTURN ] };
     key <AC06> { [     Cyrillic_hardsign, Cyrillic_HARDSIGN, Cyrillic_hardsign, Cyrillic_HARDSIGN ] };
     key <AC07> { [     Cyrillic_zhe,     Cyrillic_ZHE                                   ] };
     key <AC08> { [     Cyrillic_em,     Cyrillic_EM,    Cyrillic_nje,    Cyrillic_NJE ] };
