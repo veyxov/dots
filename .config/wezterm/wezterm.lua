@@ -7,6 +7,35 @@ wezterm.on("update-right-status", function(window)
     }))
 end)
 
+-- The set of schemes that we like and want to put in our rotation
+local schemes = {}
+for name, scheme in pairs(wezterm.get_builtin_color_schemes()) do
+  table.insert(schemes, name)
+end
+
+function set_random_color(window)
+    -- Pick a random scheme name
+    local scheme = schemes[math.random(#schemes)]
+
+    window:set_config_overrides {
+      color_scheme = scheme,
+    }
+
+    local current_color_name = window:get_config_overrides().color_scheme
+    wezterm.background_child_process { '/usr/local/bin/herbe', current_color_name}
+end
+
+wezterm.on('window-config-reloaded', function(window, pane)
+if not window:get_config_overrides() then
+    set_random_color(window)
+  end
+end)
+
+wezterm.on('toggle-color', function(window, pane)
+    set_random_color(window)
+end)
+
+
 return {
     inactive_pane_hsb = {
         saturation = 0,
@@ -28,8 +57,7 @@ return {
         },
     },
     adjust_window_size_when_changing_font_size = false,
-    front_end = "WebGpu",
-    color_scheme = "Everblush",
+
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
@@ -88,6 +116,11 @@ return {
                 direction = "Up",
                 size = { Percent = 50 },
             }),
+        },
+        {
+            key = 'j',
+            mods = 'ALT',
+            action = wezterm.action.EmitEvent 'toggle-color',
         },
         { key = "n",          mods = "ALT",        action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
         { key = "q",          mods = "ALT",        action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
