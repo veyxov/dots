@@ -62,6 +62,16 @@ return {
     use_fancy_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
     font = wezterm.font("Fira Code"),
+    font_rules = {
+        {
+            italic = true,
+            intensity = 'Normal',
+            font = wezterm.font {
+                family = 'VictorMono',
+                style = 'Italic',
+            },
+        },
+    },
     leader = { key = 'F1', mods = 'CTRL', timeout_milliseconds = 1000 },
     default_prog = { '/usr/bin/zsh' },
     font_size = 20,
