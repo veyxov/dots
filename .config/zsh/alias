@@ -13,3 +13,5 @@ alias kfg="lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias rm="rm -rfv"
 alias mv="mv -v"
 alias cp="cp -v"
+
+alias man='tldr'
