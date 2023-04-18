@@ -2,7 +2,7 @@
 bind ;c hint -Jc [class*="expand"],[class="togg"],[class="comment_folder"]
 
 " Colemak
-set hintchars arstneiogmfuywdh
+set hintchars nrstaeiogmfuywdh
 
 " make d take you to the left (I find it much less confusing)
 
@@ -13,6 +13,9 @@ bind <ArrowLeft> tabprev
 bind <ArrowRight> tabnext
 bind <ArrowDown> scrollpage 0.5
 bind <ArrowUp> scrollpage -0.5
+
+bind e scrollpage 0.5
+bind i scrollpage -0.5
 
 " Only hint search results on Google and DDG
 bindurl www.google.com s hint -Jc #search div:not(.action-menu) > a
