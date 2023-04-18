@@ -8,6 +8,7 @@ aspnet-runtime-6.0
 autoconf
 automake
 autorandr
+bandwhich
 base
 bat
 bc
@@ -98,7 +99,6 @@ neofetch
 neomutt
 net-tools
 netcoredbg
-nethogs
 networkmanager
 ngrok
 ninja
