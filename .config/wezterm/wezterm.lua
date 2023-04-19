@@ -25,11 +25,6 @@ function set_random_color(window)
     wezterm.background_child_process { '/usr/local/bin/herbe', current_color_name}
 end
 
-wezterm.on('window-config-reloaded', function(window, pane)
-if not window:get_config_overrides() then
-    set_random_color(window)
-  end
-end)
 
 wezterm.on('user-var-changed', function(window, pane, name, value)
     local overrides = window:get_config_overrides() or {}
@@ -61,6 +56,7 @@ end)
 
 
 return {
+    color_scheme = 'Poimandres',
     inactive_pane_hsb = {
         saturation = 0,
         brightness = 0.25,
