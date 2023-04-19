@@ -106,15 +106,6 @@
   ))
 )
 
-;; tripple 'e' activates permanent navigation layers
-(defalias
-  e_dnc (tap-dance-eager 200 (
-    e ;; literal
-    e
-    (multi (macro bspc bspc) (layer-switch nav))
-  ))
-)
-
 ;; chording for symb->number layers
 (defalias
     ch_lalt (chord sym_nav lalt)
@@ -136,7 +127,7 @@
 (deflayer colemak
   esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
   grv     @q_dnc    @b_dnc   w    f    XX    XX    XX    XX    XX    u    @y_ctl    @td3 /
-  tab   @a_dnc    r    s    p    b    XX    XX   j    l   @e_dnc    i    o    ;
+  tab   @a_dnc    r    s    p    b    XX    XX   j    l   e    i    o    ;
   @ms_clck      x    c    t    g    z    XX    XX    m    n    @td2  .
   XX    XX XX    d    v    XX    XX    XX  XX  k    h       XX    XX
   lalt     @stk_alt @ch_lalt     @stk_shft     @syml @ch_ralt   _ _ _ @Rus
