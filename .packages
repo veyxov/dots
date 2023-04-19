@@ -2,6 +2,7 @@ alsa-firmware
 alsa-utils
 android-file-transfer
 antigen
+anydesk-bin
 arandr
 aspnet-runtime
 aspnet-runtime-6.0
@@ -114,6 +115,7 @@ openssh
 otf-nerd-fonts-fira-code
 pass
 patch
+pavucontrol
 pcmanfm-gtk3
 picom
 pipewire-alsa
@@ -124,6 +126,7 @@ pulsemixer
 python
 python-pip
 qbittorrent
+ranger
 redis
 rider
 ripgrep
