@@ -26,7 +26,6 @@ dotnet-runtime-5.0-bin
 dotnet-sdk
 dotnet-sdk-5.0-bin
 dotnet-sdk-6.0
-dust
 efibootmgr
 exa
 fakeroot
@@ -58,16 +57,12 @@ libvdpau-va-gl-i965
 libxft-bgra
 linux
 linux-firmware
-lsof
 lua-language-server
-lutris
 m4
 make
 mdcat
-minikube
 mono
 mpv
-navi-bin
 nb
 ncdu
 neomutt
