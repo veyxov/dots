@@ -93,7 +93,6 @@ pulsemixer
 python
 python-pip
 qbittorrent
-ranger
 redis
 rider
 ripgrep
@@ -103,7 +102,6 @@ rust
 rust-analyzer
 scponly
 screenkey
-scrot
 shell-color-scripts
 sl
 sloc
@@ -117,8 +115,6 @@ sysstat
 tealdeer
 telegram-desktop
 texinfo
-tidy
-timew
 tk
 tt
 ttf-dejavu
