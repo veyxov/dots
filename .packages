@@ -8,7 +8,6 @@ aspnet-runtime
 aspnet-runtime-6.0
 autoconf
 automake
-autorandr
 bandwhich
 base
 bat
@@ -124,12 +123,7 @@ pkgconf
 pnpm-bin
 pulsemixer
 python
-python-colorclass
-python-exceptiongroup
-python-iniconfig
 python-pip
-python-pluggy
-python-pytest
 qbittorrent
 ranger
 redis
