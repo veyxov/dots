@@ -72,7 +72,6 @@ networkmanager
 ngrok
 ninja
 nmap
-nnn-nerd
 nodejs
 npm
 ntfs-3g
@@ -103,7 +102,6 @@ rsync
 rust
 rust-analyzer
 scponly
-scrcpy
 screenkey
 scrot
 shell-color-scripts
@@ -113,7 +111,6 @@ slock
 sof-firmware
 strace
 sudo
-superproductivity-bin
 sxhkd
 sxiv
 sysstat
