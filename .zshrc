@@ -12,7 +12,6 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 eval "$(zoxide init zsh)"
 
-setopt inc_append_history
 # xset r rate 250 150
 alias ns="clear;exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
 alias st="z"
@@ -38,9 +37,6 @@ path+=('/home/iz/.cargo/bin')
 autoload -Uz compinit
 compinit
 
-HISTFILE=~/.histfile
-HISTSIZE=100000
-SAVEHIST=100000
 
 export KEYTIMEOUT=1 # Kill the lag between switching to VIM mode
 
@@ -60,10 +56,6 @@ zstyle ':completion:*:*:*:default' menu yes select search # What is this ?
 zinit light Aloxaf/fzf-tab # Todo: find out how to enable this on cd-tab
 
 # Better vim mode
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
-
-# In-line best history match suggestion
 # don't suggest lines longer than
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=78
 # as of v4.0 use ZSH/zpty module to async retrieve
@@ -80,3 +72,12 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
+
+# History
+setopt APPEND_HISTORY                 # append instead of overwrite file
+setopt EXTENDED_HISTORY               # extended timestamps
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE              # omit from history if space prefixed
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY                    # verify when using history cmds/params
