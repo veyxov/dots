@@ -82,3 +82,9 @@ setopt HIST_VERIFY                    # verify when using history cmds/params
 
 autoload -Uz compinit
 compinit
+
+cmd_to_clip () {
+    echo $BUFFER | tr -d '\n' | xclip -sel clip
+}
+zle -N cmd_to_clip
+bindkey '^Y' cmd_to_clip
