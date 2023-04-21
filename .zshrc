@@ -60,7 +60,13 @@ bindkey "\e\[Z" autosuggest-accept
 zinit ice lucid wait"1"
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
+PROMPT='%B%F{240}%~%f%b❯ '
+RPROMPT='%*'
+
+# Correction
+setopt CORRECT
+setopt CORRECT_ALL
+
 
 # History
 # Better vim mode
