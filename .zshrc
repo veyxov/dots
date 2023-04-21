@@ -60,8 +60,7 @@ bindkey "\e\[Z" autosuggest-accept
 zinit ice lucid wait"1"
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh' wait"1"
-zinit light sindresorhus/pure
+PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 
 # History
 # Better vim mode
