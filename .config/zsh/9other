@@ -1,4 +1,0 @@
-eval "$(zoxide init zsh)"
-
-setopt inc_append_history
-# xset r rate 250 150
