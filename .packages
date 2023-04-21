@@ -39,6 +39,7 @@ fzf
 gcc
 gimp
 git
+git-delta
 intel-media-driver
 istio
 kube-proxy
