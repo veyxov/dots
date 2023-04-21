@@ -10,8 +10,6 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Zoxide
-eval "$(zoxide init zsh)"
 
 # Aliases
 alias ns="clear;exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
@@ -57,8 +55,6 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 zinit light zsh-users/zsh-autosuggestions
 bindkey "\e\[Z" autosuggest-accept
 
-zinit ice lucid wait"1"
-zinit light zdharma-continuum/fast-syntax-highlighting
 
 NUM=$((RANDOM%255))
 PROMPT="%B%F{240}%~%b%F{$NUM}❯ %f"
@@ -80,11 +76,15 @@ setopt HIST_IGNORE_SPACE              # omit from history if space prefixed
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY                    # verify when using history cmds/params
 
-autoload -Uz compinit
-compinit
+zinit wait"1" lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting
 
 cmd_to_clip () {
     echo $BUFFER | tr -d '\n' | xclip -sel clip
 }
 zle -N cmd_to_clip
 bindkey '^Y' cmd_to_clip
+
+# Zoxide
+eval "$(zoxide init zsh)"
