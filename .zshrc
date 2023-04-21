@@ -46,10 +46,6 @@ export KEYTIMEOUT=1 # Kill the lag between switching to VIM mode
 
 bindkey -v
 
-source "$HOME/.config/zsh/0zinit"
-source "$HOME/.config/zsh/plugins"
-source "$HOME/.config/zsh/alias"
-source "$HOME/.config/zsh/9other"
 # set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
