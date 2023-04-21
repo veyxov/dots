@@ -60,7 +60,8 @@ bindkey "\e\[Z" autosuggest-accept
 zinit ice lucid wait"1"
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-PROMPT='%B%F{240}%~%b%F{51}❯ %f'
+NUM=$((RANDOM%255))
+PROMPT="%B%F{240}%~%b%F{$NUM}❯ %f"
 RPROMPT='%*'
 
 # Correction
