@@ -15,13 +15,8 @@ zinit light Aloxaf/fzf-tab # Todo: find out how to enable this on cd-tab
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 
-zinit for \
-    light-mode \
-  zsh-users/zsh-autosuggestions \
-    light-mode \
-  zdharma-continuum/fast-syntax-highlighting \
-  zdharma-continuum/history-search-multi-word \
-    light-mode \
-    pick"async.zsh" \
-    src"pure.zsh" \
-  sindresorhus/pure
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
