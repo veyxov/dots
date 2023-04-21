@@ -15,7 +15,17 @@ zinit light Aloxaf/fzf-tab # Todo: find out how to enable this on cd-tab
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 
+# In-line best history match suggestion
+# don't suggest lines longer than
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=78
+# as of v4.0 use ZSH/zpty module to async retrieve
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
+# Removed forward-char
+export ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(vi-end-of-line)
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 zinit light zsh-users/zsh-autosuggestions
+bindkey "\e\[Z" autosuggest-accept
 
 zinit ice lucid wait"1"
 zinit light zdharma-continuum/fast-syntax-highlighting
