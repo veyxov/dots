@@ -120,15 +120,16 @@
 (defalias
     y_ctl (tap-hold-release 150 200 y lctl)
 )
+
 (defalias
     ms_clck mlft
 )
 (deflayer colemak
   esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
-  grv     ;    @b_dnc   l    c    XX    XX    XX    XX    XX    u    @y_ctl    q /
-  tab   @a_dnc    r    s    m    k    XX    XX   j    f   e    i    o    '
-  @ms_clck      x    w    t    g    x    XX    XX    p    n    @td2  .
-  XX    XX XX    d    v    XX    XX    XX  XX  b    h       XX    XX
+  grv     ;    @b_dnc   w    f    XX    XX    XX    XX    XX    u    @y_ctl    q /
+  tab   @a_dnc    r    s    p    b    XX    XX   j    l   e    i    o    '
+  @ms_clck      x    c    t    g    z    XX    XX    m    n    @td2  .
+  XX    XX XX    d    v    XX    XX    XX  XX  k    h       XX    XX
   lalt     @stk_alt @ch_lalt     @stk_shft     @syml @ch_ralt   _ _ _ @Rus
 )
 
