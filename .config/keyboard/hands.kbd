@@ -1,0 +1,26 @@
+(defcfg
+    danger-enable-cmd yes ;; Enable commands
+)
+
+(defalias
+    kaboom (cmd bash -c "sudo killall kanata")
+)
+
+
+(defsrc
+  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc del
+  grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab     q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps    a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl    lmet lalt           spc            ralt rctl lft down up rght
+)
+
+(deflayer colemak
+  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
+  grv   j    XX   f    m    p    v   XX    XX    XX    u    @y_ctl    q /
+  tab   r    s    n    d    w    XX  XX    j    a   e    i    h    '
+  x     g    l    c    b    XX   XX  XX    XX   u   o    y    k
+  XX    z    q    t    XX   XX   XX  XX    spc  h   XX   XX
+  lalt     @stk_alt @ch_lalt     @stk_shft     @syml @ch_ralt   _ _ _ @Rus
+)
