@@ -18,22 +18,23 @@
 
 (defalias
 tld S-grv
+x (one-shot 500 (layer-toggle handsup))
 )
 
 (deflayer hands
   XX  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
-  @tld  j    XX   f    m    p    v   XX    XX   XX  u    _    ' /
+  @tld  j    f    m    p    v    XX XX     =   .  /    S-'  ' /
   tab   r    s    n    d    w    XX  XX    ,    a   e    i    h    XX
-  x     g    l    c    b    XX   XX  XX    XX   u   o    y    k
-  XX    z    q    t    XX   XX   XX  XX    spc  _   XX   XX
-  lalt     _ _    (layer-toggle handsup)     _ _   _ _ _ _
+  x     g    l    c    b    XX   XX  XX    -   u   o    y    k
+  XX    z    q    @x   XX   XX   XX  XX    _  _   XX   XX
+  lalt     _ _     t    spc _   _ _ _ _
 )
 
 (deflayer handsup
   XX  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
-  @tld  j    XX   f    m    p    v   XX    XX   XX  u    _    S-1  /
+  @tld  j    XX   f    m    p    v   XX    S--   S-;  S-8  S-/  S-1  /
   tab   S-r  s    n    d    w    XX  XX    ;    a   e    i    h    XX
-  x     g    l    c    b    XX   XX  XX    XX   u   o    y    k
+  x     g    l    c    b    XX   XX  XX    S-=   u   o    y    k
   XX    z    q    t    XX   XX   XX  XX    spc  _   XX   XX
   lalt     _ _    _     _ _   _ _ _ _
 )
