@@ -106,6 +106,7 @@ slock
 sof-firmware
 strace
 sudo
+sway
 sxhkd
 sxiv
 sysstat
@@ -113,6 +114,7 @@ tealdeer
 telegram-desktop
 texinfo
 tk
+tmux
 tt
 ttf-dejavu
 ttf-fira-code
