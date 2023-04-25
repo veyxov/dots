@@ -207,8 +207,8 @@ x (one-shot 500 (layer-toggle handsup))
 (deflayer handsup
   XX  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
   @tld  j    XX   f    m    p    v   XX    S--   S-;  S-8  S-/  S-1  /
-  tab   S-r  s    n    d    w    XX  XX    ;    a   e    i    h    XX
-  x     g    l    c    b    XX   XX  XX    S-=   u   o    y    k
-  XX    z    q    t    XX   XX   XX  XX    spc  _   XX   XX
+  tab   S-r  S-s    S-n    S-d    S-w    XX  XX    ;    S-a   S-e    S-i    S-h    XX
+  S-x     S-g    S-l    S-c    S-b    XX   XX  XX    S-=   S-u   S-o    S-y    S-k
+  XX    S-z    S-q    S-t    XX   XX   XX  XX    spc  _   XX   XX
   lalt     _ _    _     _ _   _ _ _ _
 )
