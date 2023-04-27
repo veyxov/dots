@@ -11,6 +11,7 @@ bandwhich
 base
 bat
 bc
+bemenu
 bison
 breeze
 btop
@@ -107,6 +108,7 @@ sof-firmware
 strace
 sudo
 sway
+swhkd-bin
 sxhkd
 sxiv
 sysstat
