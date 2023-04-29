@@ -86,5 +86,7 @@ cmd_to_clip () {
 zle -N cmd_to_clip
 bindkey '^Y' cmd_to_clip
 
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
 # Zoxide
 eval "$(zoxide init zsh)"
