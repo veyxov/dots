@@ -1,6 +1,5 @@
 # Add my bin's to PATH
 export PATH="$PATH:$HOME/.local/bin/"
-export PATH="$PATH:$HOME/.local/src/dwmblocks/src"
 
 export WALLPAPERS_LOCATION="$HOME/.local/walls/*"
 
@@ -13,11 +12,8 @@ export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
 
 # Move to XDG complaiant folders
 export HISTFILE="$HOME"/.cache/history
-export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 # Graphics driver
 export LIBVA_DRIVER_NAME=iris
@@ -30,6 +26,8 @@ export EDITOR="nvim"
 # Open man pages in neovim
 export MANPAGER='nvim +Man!'
 
+export GPG_TTY=$(tty)
+
 # Fzf defaults
 export FZF_DEFAULT_OPTS='--no-height --no-reverse --select-1 --exit-0'
 
@@ -37,6 +35,5 @@ export FZF_DEFAULT_OPTS='--no-height --no-reverse --select-1 --exit-0'
 
 # Auto start X
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-    # Startx quietly
-    # exec startx "$XDG_CONFIG_HOME/X11/xinitrc" -- vt1
+    dwl -s ~/start.sh
 fi
