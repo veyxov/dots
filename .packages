@@ -5,6 +5,7 @@ antigen
 anydesk-bin
 arandr
 aspnet-runtime
+aspnet-runtime-6.0
 autoconf
 automake
 bandwhich
@@ -23,6 +24,7 @@ docker
 docker-compose
 dotnet-runtime
 dotnet-sdk
+dotnet-sdk-6.0
 efibootmgr
 exa
 fakeroot
