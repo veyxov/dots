@@ -195,11 +195,22 @@ tld S-grv
 x (one-shot 500 (layer-toggle handsup))
 )
 
+(defalias 
+    tuti_l (chord tuti l)
+    tuti_c (chord tuti c)
+)
+
+(defchords tuti 500
+    (l   ) l
+    (   c) c
+    (l  c) @copy
+)
+
 (deflayer hands
-  XX  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
+  lrld  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
   @tld  j    XX   f    m    p    v   XX     =   .  /    S-'  ' bspc
-  tab   r    s    n    d    w    XX  XX   ,    a   e    i    h    XX
-  x     g    l    c    b    XX   XX  esc   -   u   o    y    k
+tab   (tap-hold-release 150 300 r lctl)    (tap-hold-release 150 300 s lalt)    (tap-hold-release 150 300 n lmet)    (tap-hold-release 150 300 d (layer-toggle handsup))    w    XX  XX   ,    (tap-hold-release 150 300 a (layer-toggle handsup))    (tap-hold-release 150 300 e lmet)    (tap-hold-release 150 300 i lalt)    (tap-hold-release 150 300 h lctl)    XX
+  x     g    @tuti_l @tuti_c    b    XX   XX  esc   -   u   o    y    k
   XX    z    q    @x   XX   XX   XX  XX    _  _   XX   XX
   (layer-switch colemak)     _ (one-shot-press-pcancel 350 (layer-toggle handsup))      t    spc ret   _ _ _ _
 )
