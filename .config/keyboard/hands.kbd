@@ -27,10 +27,19 @@
   lctl lmet lalt           spc            ralt rmet cmp  rctl left down rght      kp0       kp.  kprt
 )
 
+(defalias
+    q_chrd_j (chord q_chrd j)
+    q_chrd_f (chord q_chrd f)
+)
+(defchords q_chrd 200
+    (j  ) j
+    (  f) f
+    (j f) (tap-hold 200 200 (macro q u) q)
+)
 
 (deflayer hands
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
-  lrld j    0    f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
+  lrld @q_chrd_j    0    @q_chrd_f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
   tab  @R_ctl    @S_alt        @N_sup    @D_sft    w    y    u    -    @A_sft    @E_sup    @I_alt    @H_ctl    k              kp7  kp8  kp9
   x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
   lsft 102d z    x    ret    v    b    n    spc    ,    .    /    rsft      up        kp1  kp2  kp3
