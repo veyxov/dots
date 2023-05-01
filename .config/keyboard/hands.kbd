@@ -7,34 +7,50 @@
 )
 
 
-(defsrc
-  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc del
-  grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab     q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps    a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl    lmet lalt           spc            ralt rctl lft down up rght
+(defalias
+    D_sft (tap-hold-release 200 200 d (layer-toggle handsup))
+    R_ctl (tap-hold-release 200 200 r lctl)
+    S_alt (tap-hold-release 200 200 s lalt)
+    N_sup (tap-hold-release 200 200 n lmet)
+
+    A_sft (tap-hold-release 200 200 a (layer-toggle handsup))
+    E_sup (tap-hold-release 200 200 e lmet)
+    I_alt (tap-hold-release 200 200 i lalt)
+    H_ctl (tap-hold-release 200 200 h lctl)
 )
 
-(defalias
-tld S-grv
-x (one-shot 500 (layer-toggle handsup))
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \              kp7  kp8  kp9
+  caps a    s    d    f    g    h    j    k    l    ;    '         ret            kp4  kp5  kp6  kp+
+  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
+  lctl lmet lalt           spc            ralt rmet cmp  rctl left down rght      kp0       kp.  kprt
 )
+
 
 (deflayer hands
-  XX  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
-  @tld  j    XX   f    m    p    v   XX     =   .  /    S-'  ' /
-  tab   r    s    n    d    w    XX  XX    ,    a   e    i    h    XX
-  x     g    l    c    b    XX   XX  XX    -   u   o    y    k
-  XX    z    q    @x   XX   XX   XX  XX    _  _   XX   XX
-  lalt     _ bspc      t    spc ret   _ _ _ _
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
+  lrld j    0    f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
+  tab  @R_ctl    @S_alt        @N_sup    @D_sft    w    y    u    -    @A_sft    @E_sup    @I_alt    @H_ctl    k              kp7  kp8  kp9
+  x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
+  lsft 102d z    x    (tap-hold-release 200 200 t (layer-toggle nav))    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
+  lctl lmet lalt           spc            ralt rmet cmp  rctl left down rght      kp0       kp.  kprt
+)
+(deflayer handsup
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
+  lrld j    0    f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
+  tab  @R_ctl    @S_alt        @N_sup    @D_sft    w    y    u    -    @A_sft    @E_sup    @I_alt    @H_ctl    k              kp7  kp8  kp9
+  x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
+  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
+  lctl lmet lalt           spc            ralt rmet cmp  rctl left down rght      kp0       kp.  kprt
 )
 
-(deflayer handsup
-  XX  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
-  @tld  j    XX   f    m    p    v   XX    S--   S-;  S-8  S-/  S-1  /
-  tab   S-r  s    n    d    w    XX  XX    ;    a   e    i    h    XX
-  x     g    l    c    b    XX   XX  XX    S-=   u   o    y    k
-  XX    z    q    t    XX   XX   XX  XX    spc  _   XX   XX
-  lalt     _ _    _     _ _   _ _ _ _
+(deflayer nav
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
+  lrld j    0    f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
+  tab  @R_ctl    @S_alt        @N_sup    lsft    w    y    u    -    lft down up rght    k              kp7  kp8  kp9
+  x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
+  lsft 102d z    x    c    v    b    n    m    spc    .    /    rsft      up        kp1  kp2  kp3
+  lctl lmet lalt           spc            ralt rmet cmp  rctl left down rght      kp0       kp.  kprt
 )
