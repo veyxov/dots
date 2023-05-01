@@ -24,7 +24,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \              kp7  kp8  kp9
   caps a    s    d    f    g    h    j    k    l    ;    '         ret            kp4  kp5  kp6  kp+
   lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
-  lctl lmet lalt           spc            ralt rmet cmp  rctl left down rght      kp0       kp.  kprt
+  lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
 (defalias
@@ -37,19 +37,29 @@
     (j f) (tap-hold 200 200 (macro q u) q)
 )
 
+(defalias
+    z_chrd_k (chord z_chrd k)
+    z_chrd_y (chord z_chrd y)
+)
+(defchords z_chrd 200
+    (k  ) k
+    (  y) y
+    (k y) z
+)
+
 (deflayer hands
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
-  lrld @q_chrd_j    1    @q_chrd_f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
-  tab  @R_ctl    @S_alt        @N_sup    @D_sft    w    y    u    -    @A_sft    @E_sup    @I_alt    @H_ctl    k              kp7  kp8  kp9
-  x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
+  lrld @q_chrd_j    1    @q_chrd_f    m    p    6    7    8    ;    /    S-'    '    bspc        nlck kp/  kp*  kp-
+  tab  @R_ctl    @S_alt        @N_sup    @D_sft    w    y    u    ,    @A_sft    @E_sup    @I_alt    @H_ctl    @z_chrd_k              kp7  kp8  kp9
+  x    g    l    c    b    g    h    j    -    u    o    @z_chrd_y         ret            kp4  kp5  kp6  kp+
   lsft 102d z    x    ret    v    b    n    spc    ,    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           (tap-hold-release 200 200 t (layer-toggle nav))            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 (deflayer handsup
   S-esc  f1   f2   S-f3   S-f4   S-f5   S-f6   S-f7   S-f8   S-f9   S-f10  S-f11  S-f12  S-ins S-prnt S-del   pp   mute  prev @kaboom
-  lrld S-j    S-0    S-f    S-m    S-p    S-6    S-7    S-8    S-9    S-0    -    =    S-bspc           S-nlck S-kp/  S-kp*  S-kp-
-  S-tab  S-r    S-s        S-n    S-d    S-w    S-y    S-u    -    S-a    S-e    S-i    S-h    S-k              S-kp7  S-kp8  S-kp9
-  S-x    S-g    S-l    S-c    S-b    S-g    S-h    S-j    S-k    S-u    S-o    S-y         S-ret            S-kp4  S-kp5  S-kp6  S-kp+
+  lrld S-j    S-0    S-f    S-m    S-p    S-6    S-7    S-8    S-;    S-7    S-8    S-/    S-1           S-nlck S-kp/  S-kp*  S-kp-
+  S-tab  S-r    S-s        S-n    S-d    S-w    S-y    S-u    S-\    S-a    S-e    S-i    S-h    S-k              S-kp7  S-kp8  S-kp9
+  S-x    S-g    S-l    S-c    S-b    S-g    S-h    S-j    S-=    S-u    S-o    S-y         S-ret            S-kp4  S-kp5  S-kp6  S-kp+
   S-lsft S-102d S-z    S-x    S-c    S-v    S-b    S-n    S-m    ,    .    /    S-rsft      S-up        S-kp1  S-kp2  S-kp3
   S-lctl S-lmet S-lalt           S-spc            S-ralt S-rmet S-rctl S-left S-down S-rght      S-kp0       S-kp.  S-kprt
 )
