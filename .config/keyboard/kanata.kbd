@@ -125,6 +125,17 @@
 (defalias
     ms_clck mlft
 )
+
+
+(deflayer hands
+  lrld  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
+  @tld  j    XX   f    m    p    v   XX     =   .  /    S-'  ' bspc
+  tab   @R_ctl    @S_alt    @N_sup    @D_sft    w    XX  XX   ,    @A_sft    @E_sup    @I_alt    @H_ctl    XX
+  x     g    @tuti_l @tuti_c    b    XX   XX  esc   -   u   o    y    k
+  XX    z     q   t   XX   XX   XX  spc    _  u   XX   XX
+  (layer-switch colemak)     _ ret      t    spc ret   _ _ _ _
+)
+
 (deflayer colemak
   esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
   grv     @q_dnc    @b_dnc   w    f    XX    XX    XX    XX    XX    u    @y_ctl    @td3 /
@@ -206,18 +217,21 @@ x (one-shot 500 (layer-toggle handsup))
     (l  c) @copy
 )
 
-(deflayer hands
-  lrld  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
-  @tld  j    XX   f    m    p    v   XX     =   .  /    S-'  ' bspc
-tab   (tap-hold-release 200 200 r lctl)    (tap-hold-release 200 200 s lalt)    (tap-hold-release 200 200 n lmet)    (tap-hold-release 200 200 d (layer-toggle handsup))    w    XX  XX   ,    (tap-hold-release 200 200 a (layer-toggle handsup))    (tap-hold-release 200 200 e lmet)    (tap-hold-release 200 200 i lalt)    (tap-hold-release 200 200 h lctl)    XX
-  x     g    @tuti_l @tuti_c    b    XX   XX  esc   -   u   o    y    k
-  XX    z    q    @x   XX   XX   XX  XX    _  _   XX   XX
-  (layer-switch colemak)     _ (one-shot-press-pcancel 350 (layer-toggle handsup))      t    spc ret   _ _ _ _
+(defalias
+    D_sft (tap-hold-release 200 200 d (layer-toggle handsup))
+    R_ctl (tap-hold-release 200 200 r lctl)
+    S_alt (tap-hold-release 200 200 s lalt)
+    N_sup (tap-hold-release 200 200 n lmet)
+
+    A_sft (tap-hold-release 200 200 a (layer-toggle handsup))
+    E_sup (tap-hold-release 200 200 e lmet)
+    I_alt (tap-hold-release 200 200 i lalt)
+    H_ctl (tap-hold-release 200 200 h lctl)
 )
 
 (deflayer handsup
   XX  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prtsc @kaboom
-  @tld  j    XX   f    m    p    v   XX    S--   S-;  S-8  S-/  S-1  /
+  @tld  S-j    XX   S-f    S-m    S-p    S-v   XX    S--   S-;  S-8  S-/  S-1  /
   tab   S-r  S-s    S-n    S-d    S-w    XX  XX    ;    S-a   S-e    S-i    S-h    XX
   S-x     S-g    S-l    S-c    S-b    XX   XX  XX    S-=   S-u   S-o    S-y    S-k
   XX    S-z    S-q    S-t    XX   XX   XX  XX    spc  _   XX   XX
