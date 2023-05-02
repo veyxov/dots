@@ -26,6 +26,7 @@ sof-firmware
 sudo
 swaybg
 telegram-desktop
+warpd-wayland
 wayland-protocols
 wdisplays
 wezterm
