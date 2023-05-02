@@ -12,7 +12,7 @@ autoload -Uz _zinit
 
 
 # Aliases
-alias ae="clear;exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
+alias ea="clear;exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
 alias nd="z"
 alias n="nvim"
 alias rsnd="clear"
@@ -74,6 +74,7 @@ bindkey '^Y' cmd_to_clip
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye >/dev/null
+pkill -9 gpg-agent &
+# gpg-connect-agent updatestartuptty /bye >/dev/null
 # Zoxide
 eval "$(zoxide init zsh)"
