@@ -85,6 +85,7 @@
     (g l)  C-c
     (l c)  C-v
 )
+;; ---------------------------------------
 
 (deflayer hands
   XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
@@ -100,7 +101,7 @@
   lrld S-j    S-0    S-f    S-m    S-p    S-6    S-7    S-8    S-grv    S-7    S-/    S-'    S-;           S-nlck S-kp/  S-kp*  S-kp-
   S-tab  S-r    S-s        S-n    S-d    S-w    S-y    S-u    S-\    S-a    S-e    S-i    S-h    S-;              S-kp7  S-kp8  S-kp9
   S-x    S-g    S-l    S-c    S-b    S-g    S-h    S-j    S-=    S-u    S-o    S-y         S-ret            S-kp4  S-kp5  S-kp6  S-kp+
-  S-lsft S-102d S-z    S-x    S-c    S-v    S-b    S-n    S-m    ,    .    /    S-rsft      S-up        S-kp1  S-kp2  S-kp3
+  S-lsft S-102d S-z    S-x    S-c    S-v    S-b    S-n    S-m    S-ret    .    /    S-rsft      S-up        S-kp1  S-kp2  S-kp3
   S-lctl S-lmet S-lalt           S-spc            S-ralt S-rmet S-rctl S-left S-down S-rght      S-kp0       S-kp.  S-kprt
 )
 
