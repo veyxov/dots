@@ -2,9 +2,11 @@ alsa-utils
 base
 base-devel
 cmake
+dotnet-sdk
 efibootmgr
 exa
 firefox
+firefox-tridactyl-native
 fzf
 git
 git-delta
@@ -20,6 +22,7 @@ neofetch
 neovim
 networkmanager
 openssh
+pinentry
 pipewire
 rust
 sof-firmware
