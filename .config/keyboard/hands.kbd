@@ -27,43 +27,51 @@
   lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
+;; Chord for 'q'
 (defalias
     q_chrd_j (chord q_chrd j)
     q_chrd_f (chord q_chrd f)
 )
-(defchords q_chrd 200
+(defchords q_chrd 50
     (j  ) j
     (  f) f
     (j f) (tap-hold 200 200 (macro q u) q)
 )
+;; ---------------------------------------
 
+;; Chord for 'z'
 (defalias
     z_chrd_k (chord z_chrd k)
     z_chrd_y (chord z_chrd y)
 )
-(defchords z_chrd 200
+(defchords z_chrd 50
     (k  ) k
     (  y) y
     (k y) z
 )
+;; ---------------------------------------
 
+;; Chord for 'esc'
 (defalias
     rchrd (chord r_chrd r)
     dchrd (chord r_chrd d)
 )
-(defchords r_chrd 200
+
+(defchords r_chrd 30
     (r  ) @R_alt
     (  d) @D_sft
     (r d) esc
 )
 
+;; ---------------------------------------
+
 (deflayer hands
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
-  lrld @q_chrd_j    1    @q_chrd_f    m    p    v    7    8    ;    /    S-'    '    bspc                                            nlck kp/  kp*  kp-
-  tab  @rchrd   @S_ctl        @N_sup    @dchrd    w    y    u    ,    @A_sft    @E_sup    @I_ctl    @H_alt    ret                    kp7  kp8  kp9
-  x    g    l    c    b    g    h    j    -                           u         o         @z_chrd_y        @z_chrd_k                                                       kp4  kp5  kp6  kp+
-  lsft 102d z    x    XX    XX    b    n    spc    ret    .    /    rsft      up                                                     kp1  kp2  kp3
-  lctl lmet lalt           (tap-hold-release 200 200 t (layer-toggle nav))            ralt rmet rctl left down rght                  kp0       kp.  kprt
+  XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
+  lrld       @q_chrd_j 1    @q_chrd_f     m         p         v    XX               grv ;         /         S-'              '         bspc  nlck kp/  kp*  kp-
+  tab        @rchrd         @S_ctl        @N_sup    @dchrd    w    XX        XX     ,   @A_sft    @E_sup    @I_ctl           @H_alt    .    kp7  kp8  kp9
+             x              g             l         c         b    XX    XX  XX     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
+  XX XX      XX             XX            XX        XX        XX   XX    spc ret    XX  XX        XX        XX                                                             kp1  kp2  kp3
+  XX XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          XX  XX        XX        XX  XX XX                        kp0       kp.  kprt
 )
 
 (deflayer handsup
@@ -76,7 +84,7 @@
 )
 
 (deflayer nav
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
+  @kaboom   XX   XX   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev XX
   lrld j    0    f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
   tab  @R_alt    @S_ctl        @N_sup    lsft    w    y    u    -    lft down up rght    k              kp7  kp8  kp9
   x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
