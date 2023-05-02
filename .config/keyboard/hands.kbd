@@ -65,11 +65,32 @@
 
 ;; ---------------------------------------
 
+;; Copy paste chords
+(defalias
+    gchrd (chord cp_chrd g)
+    lchrd (chord cp_chrd l)
+    cchrd (chord cp_chrd c)
+    xchrd (chord cp_chrd x)
+)
+
+(defchords cp_chrd 100
+    (x    )  x
+    ( g   )  g
+    (   l )  l
+    (    c)  c
+
+    (g l c)  C-a
+
+
+    (g l)  C-c
+    (l c)  C-v
+)
+
 (deflayer hands
   XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
   lrld       @q_chrd_j 1    @q_chrd_f     m         p         v    XX               grv .         /         S-'              '         bspc  nlck kp/  kp*  kp-
   tab        @rchrd         @S_ctl        @N_sup    @dchrd    w    XX        XX     ,   @A_sft    @E_sup    @I_ctl           @H_alt    ;    kp7  kp8  kp9
-             x              g             l         c         b    XX    XX  XX     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
+             @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  XX     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
   XX XX      XX             XX            XX        XX        XX   XX    spc ret    XX  XX        XX        XX                                                             kp1  kp2  kp3
   XX XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          XX  XX        XX        XX  XX XX                        kp0       kp.  kprt
 )
