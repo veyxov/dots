@@ -12,13 +12,12 @@ autoload -Uz _zinit
 
 
 # Aliases
-alias ns="clear;exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
-alias st="z"
-alias n="nvim ."
-alias arst="clear"
-alias oien="exit"
-alias oine="exit"
-alias oa="lazygit"
+alias ae="clear;exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
+alias nd="z"
+alias n="nvim"
+alias rsnd="clear"
+alias hiea="exit"
+alias ei="lazygit"
 alias kfg="lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 # file-system manipulation
 alias rm="rm -rfv"
@@ -42,19 +41,13 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 
 zstyle ':completion:*:*:*:default' menu yes select search # What is this ?
 
-zinit light Aloxaf/fzf-tab # Todo: find out how to enable this on cd-tab
+zinit light Aloxaf/fzf-tab
 
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=78
-# as of v4.0 use ZSH/zpty module to async retrieve
+
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
-# Removed forward-char
-export ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(vi-end-of-line)
-export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 zinit light zsh-users/zsh-autosuggestions
 bindkey "\e\[Z" autosuggest-accept
-
 
 NUM=$((RANDOM%255))
 PROMPT="%B%F{240}%~%b%F{$NUM}❯ %f"
@@ -62,19 +55,11 @@ RPROMPT='%*'
 
 # Correction
 setopt CORRECT
-setopt CORRECT_ALL
 
 
 # History
 # Better vim mode
 bindkey -v # Vim mode
-setopt APPEND_HISTORY                 # append instead of overwrite file
-setopt EXTENDED_HISTORY               # extended timestamps
-setopt SHARE_HISTORY
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE              # omit from history if space prefixed
-setopt HIST_REDUCE_BLANKS
-setopt HIST_VERIFY                    # verify when using history cmds/params
 
 zinit wait"1" lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
@@ -88,5 +73,6 @@ bindkey '^Y' cmd_to_clip
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+export GPG_TTY=$(tty)
 # Zoxide
 eval "$(zoxide init zsh)"
