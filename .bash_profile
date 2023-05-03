@@ -26,6 +26,8 @@ export EDITOR="nvim"
 # Open man pages in neovim
 export MANPAGER='nvim +Man!'
 
+export MOZ_ENABLE_WAYLAND=1
+
 export GPG_TTY=$(tty)
 
 # Fzf defaults
