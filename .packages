@@ -1,12 +1,13 @@
 alsa-utils
+aspnet-runtime
 base
 base-devel
+btop
 cmake
 dotnet-sdk
 efibootmgr
 exa
 firefox
-firefox-tridactyl-native
 fzf
 git
 git-delta
