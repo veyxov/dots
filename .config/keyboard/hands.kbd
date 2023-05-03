@@ -81,7 +81,8 @@
 
     (g l c)  C-a
 
-
+    (g c)  C-z
+    (x g)  C-x
     (g l)  C-c
     (l c)  C-v
 )
@@ -92,7 +93,7 @@
   lrld       @q_chrd_j 1    @q_chrd_f     m         p         v    XX               grv .         /         S-'              '         bspc  nlck kp/  kp*  kp-
   tab        @rchrd         @S_ctl        @N_sup    @dchrd    w    XX        XX     ,   @A_sft    @E_sup    @I_ctl           @H_alt    ;    kp7  kp8  kp9
              @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  XX     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
-  XX XX      XX             XX            XX        XX        XX   XX    spc ret    XX  XX        XX        XX                                                             kp1  kp2  kp3
+  XX XX      XX             XX            XX        XX        XX   XX    (tap-hold-release 100 150 spc (layer-toggle sym)) ret    XX  XX        XX        XX                                                             kp1  kp2  kp3
   XX XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          XX  XX        XX        XX  XX XX                        kp0       kp.  kprt
 )
 
@@ -101,7 +102,7 @@
   lrld S-j    S-0    S-f    S-m    S-p    S-v    S-7    S-8    S-grv    S-7    S-/    S-'    S-;           S-nlck S-kp/  S-kp*  S-kp-
   S-tab  S-r    S-s        S-n    S-d    S-w    S-y    S-u    S-\    S-a    S-e    S-i    S-h    S-;              S-kp7  S-kp8  S-kp9
   S-x    S-g    S-l    S-c    S-b    S-g    S-h    S-j    S-=    S-u    S-o    S-y         S-ret            S-kp4  S-kp5  S-kp6  S-kp+
-  S-lsft S-102d S-z    S-x    S-c    S-v    S-b    S-n    S-m    S-ret    .    /    S-rsft      S-up        S-kp1  S-kp2  S-kp3
+  S-lsft 102d S-z    S-x    S-c    S-v    S-b    S-n    S-m    S-ret    .    /    S-rsft      S-up        S-kp1  S-kp2  S-kp3
   S-lctl S-lmet S-lalt           S-t            S-ralt S-rmet S-rctl S-left S-down S-rght      S-kp0       S-kp.  S-kprt
 )
 
@@ -110,6 +111,15 @@
   lrld j    0    f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
   tab  @R_alt    @S_ctl        @N_sup    lsft    w    y    u    -    lft down up rght    k              kp7  kp8  kp9
   x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
+  lsft 102d z    x    c    v    b    n    m    spc    .    /    rsft      up        kp1  kp2  kp3
+  lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
+)
+
+(deflayer sym
+  @kaboom   XX   XX   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev XX
+  lrld j    0    f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
+  tab  @R_alt    S-9        S-0    lsft    w    y    u    -    lft down up rght    k              kp7  kp8  kp9
+  x    g    l   S-2     b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
   lsft 102d z    x    c    v    b    n    m    spc    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
