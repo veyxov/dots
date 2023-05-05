@@ -35,7 +35,7 @@
 (defchords q_chrd 50
     (j  ) j
     (  f) f
-    (j f) (tap-hold 200 200 (macro q u) q)
+    (j f) (tap-hold 75 120 (macro q u) q)
 )
 ;; ---------------------------------------
 
@@ -58,7 +58,7 @@
     dchrd (chord r_chrd d)
 )
 
-(defchords r_chrd 30
+(defchords r_chrd 80
     (r  ) @R_alt
     (  d) @D_sft
     ( s ) @S_ctl
