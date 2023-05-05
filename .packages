@@ -6,6 +6,7 @@ btop
 cmake
 dbus-broker
 dotnet-sdk
+dunst
 efibootmgr
 exa
 firefox
@@ -35,7 +36,6 @@ rust
 showmethekey
 sof-firmware
 sudo
-swaybg
 telegram-desktop
 warpd-wayland
 wayland-protocols
