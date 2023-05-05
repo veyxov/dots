@@ -59,7 +59,7 @@
     dchrd (chord r_chrd d)
 )
 
-(defchords r_chrd 20
+(defchords r_chrd 35
     (r  ) @R_alt
     (  d) @D_sft
     ( s ) @S_ctl
