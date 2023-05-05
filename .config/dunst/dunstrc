@@ -2,12 +2,8 @@
     monitor = 0
     follow = mouse
 
-    # dynamic width from 0 to 300
-    # width = (0, 300)
-    # constant width of 300
     width = (0, 600)
 
-    # The maximum height of a single notification, excluding the frame.
     height = 300
 
     # Position the notification in the top right corner
@@ -175,7 +171,7 @@
     min_icon_size = 0
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 32
+    max_icon_size = 0
 
     # Paths to default icons.
     icon_path = /usr/share/icons/ePapirus/32x32/apps/:/usr/share/icons/ePapirus/32x32/devices/
@@ -187,7 +183,7 @@
     sticky_history = yes
 
     # Maximum amount of notifications kept in history
-    history_length = 20
+    history_length = 2000
 
     ### Misc/Advanced ###
 
@@ -211,7 +207,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 12 
+    corner_radius = 0
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
