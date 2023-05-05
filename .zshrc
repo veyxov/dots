@@ -81,7 +81,7 @@ bindkey '^Y' cmd_to_clip
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 export GPG_TTY=$(tty)
-pkill -9 gpg-agent &
-# gpg-connect-agent updatestartuptty /bye >/dev/null
+#pkill -9 gpg-agent &
+gpg-connect-agent updatestartuptty /bye >/dev/null
 # Zoxide
 eval "$(zoxide init zsh)"
