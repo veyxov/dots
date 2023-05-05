@@ -55,14 +55,16 @@
 (defalias
     rchrd (chord r_chrd r)
     schrd (chord r_chrd s)
+    nchrd (chord r_chrd n)
     dchrd (chord r_chrd d)
 )
 
-(defchords r_chrd 80
+(defchords r_chrd 20
     (r  ) @R_alt
     (  d) @D_sft
     ( s ) @S_ctl
-    (r s) tab
+    (n) @N_sup
+    (n d) tab
     (r d) esc
 )
 
@@ -94,10 +96,10 @@
 (deflayer hands
   XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
   lrld       @q_chrd_j 1    @q_chrd_f     m         p         v    XX               grv .         /         S-'              '         bspc  nlck kp/  kp*  kp-
-  XX        @rchrd         @schrd        @N_sup    @dchrd    w    XX        XX     ,   @A_sft    @E_sup    @I_ctl           @H_alt    ;    kp7  kp8  kp9
+  XX        @rchrd         @schrd        @nchrd    @dchrd    w    XX        XX     ,   @A_sft    @E_sup    @I_ctl           @H_alt    ;    kp7  kp8  kp9
             @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  XX     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
   XX XX      XX             XX            XX        XX        XX   XX    (tap-hold-release 100 150 spc (layer-toggle sym)) (tap-hold-release 100 150 ret (layer-toggle num))    XX  XX        XX        XX                                                             kp1  kp2  kp3
-  XX XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          XX  XX        XX        XX  XX XX                        kp0       kp.  kprt
+  XX XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          (layer-toggle mouse)  XX        XX        XX  XX XX                        kp0       kp.  kprt
 )
 
 (deflayer handsup
@@ -107,6 +109,15 @@
   S-x    S-g    S-l    S-c    S-b    S-g    S-h    S-j    S-=    S-u    S-o    S-y         S-k            S-kp4  S-kp5  S-kp6  S-kp+
   S-lsft 102d S-z    S-x    S-c    S-v    S-b    S-n    S-m    S-ret    .    /    S-rsft      S-up        S-kp1  S-kp2  S-kp3
   S-lctl S-lmet S-lalt           S-t            S-ralt S-rmet S-rctl S-left S-down S-rght      S-kp0       S-kp.  S-kprt
+)
+
+(deflayer mouse
+  @kaboom   XX   XX   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev XX
+  lrld j    0    f    m    p    6    7    8    9    (mwheel-down 50 120)    (mwheel-up 50 120)    =    bspc           nlck kp/  kp*  kp-
+  tab  @R_alt    @S_ctl        @N_sup    lsft    w    y    u    (mwheel-left 50 120)    (movemouse-accel-left 1 1000 1 5) (movemouse-accel-down 1 1000 1 5) (movemouse-accel-up 1 1000 1 5) (movemouse-accel-right 1 1000 1 5)    (mwheel-right 50 120)              kp7  kp8  kp9
+  x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
+  lsft 102d z    x    mrgt    v    b    n    m    spc    .    /    rsft      up        kp1  kp2  kp3
+  lctl lmet lalt           mltp            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
 (deflayer nav
