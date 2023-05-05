@@ -5,6 +5,8 @@ base-devel
 btop
 cmake
 dbus-broker
+docker
+docker-compose
 dotnet-sdk
 dunst
 efibootmgr
@@ -39,6 +41,7 @@ sudo
 telegram-desktop
 warpd-wayland
 wayland-protocols
+waylock
 wdisplays
 wezterm
 wlroots
