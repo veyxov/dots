@@ -35,5 +35,6 @@ export FZF_DEFAULT_OPTS='--no-height --no-reverse --select-1 --exit-0'
 
 # Auto start wayland
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-    dwl -s ~/start.sh
+    # dwl -s ~/start.sh
+    river
 fi
