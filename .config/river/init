@@ -6,7 +6,6 @@ riverctl map normal Super Q close
 riverctl map normal None XF86MonBrightnessUp   spawn 'light -A 5'
 riverctl map normal None XF86MonBrightnessDown spawn 'light -U 5'
 
-riverctl background-color 0x002b36
 riverctl border-color-focused 0x93a1a1
 riverctl border-color-unfocused 0x586e75
 
