@@ -23,7 +23,6 @@ alias kfg="lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias rm="rm -rfv"
 alias mv="mv -v"
 alias cp="cp -v"
-alias man='tldr'
 
 # Exports
 path+=('/home/iz/.cargo/bin')
@@ -58,13 +57,11 @@ setopt CORRECT
 
 
 # History
-export HISTFILESIZE=
-export HISTSIZE=
-export HISTFILE=~/.zsh_history
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=1000
+setopt SHARE_HISTORY
 
-setopt HIST_FIND_NO_DUPS
-# following should be turned off, if sharing history via setopt SHARE_HISTORY
-setopt INC_APPEND_HISTORY
 # Better vim mode
 bindkey -v # Vim mode
 
