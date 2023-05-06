@@ -1,9 +1,6 @@
-# Set a random wallpaper
-if [ $# -eq 0 ]; then
-    # Update the wallpaper every hour
-    watch -n 3600 feh --randomize --bg-fill $WALLPAPERS_LOCATION &>/dev/null &
-else
-    wall=$1
-fi
+Amount=$(ls ~/.local/walls | wc -l)
+Rand=$(($RANDOM % $Amount))
+Files=(~/.local/walls/*)
+wall=${Files[Rand]}
 
-feh --bg-fill $wall
+swaybg -i $wall
