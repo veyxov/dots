@@ -3,6 +3,7 @@ aspnet-runtime
 base
 base-devel
 btop
+clipman
 cmake
 dbus-broker
 docker
@@ -28,12 +29,12 @@ mpv
 neofetch
 neovim
 networkmanager
-omnisharp-roslyn-bin
 openssh
 pinentry
 pipewire
 preload
 ripgrep
+river
 rust
 showmethekey
 sof-firmware
@@ -45,6 +46,7 @@ waylock
 wdisplays
 wezterm
 wlroots
+wofi
 wshowkeys-git
 yay
 zoxide
