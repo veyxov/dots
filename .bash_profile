@@ -28,14 +28,12 @@ export MANPAGER='nvim +Man!'
 
 export MOZ_ENABLE_WAYLAND=1
 
-export GPG_TTY=$(tty)
-
 # Fzf defaults
 export FZF_DEFAULT_OPTS='--no-height --no-reverse --select-1 --exit-0'
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-# Auto start X
+# Auto start wayland
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     dwl -s ~/start.sh
 fi
