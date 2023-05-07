@@ -29,33 +29,20 @@ path+=('/home/iz/.cargo/bin')
 export KEYTIMEOUT=1 # Kill the lag between switching to VIM mode
 export DISABLE_MAGIC_FUNCTIONS=true     # make pasting into terminal faster
 
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' completer _expand _complete _approximate
-# preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-# switch group using `,` and `.`
-zstyle ':fzf-tab:*' switch-group ',' '.'
+zstyle ':completion:*' completer _extensions _complete _approximate
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
 
-zstyle ':completion:*:*:*:default' menu yes select search # What is this ?
-
+zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
 
-
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
-
 zinit light zsh-users/zsh-autosuggestions
-bindkey "\e\[Z" autosuggest-accept
 
 NUM=$((RANDOM%255))
 PROMPT="%B%F{240}%~%b%F{$NUM}❯ %f"
 RPROMPT='%*'
-
-# Correction
-setopt CORRECT
-
 
 # History
 HISTFILE=~/.zsh_history
@@ -63,15 +50,10 @@ HISTSIZE=10000
 SAVEHIST=1000
 setopt SHARE_HISTORY
 
-# Better vim mode
 bindkey -v # Vim mode
 
-zinit wait"1" lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting
-
 cmd_to_clip () {
-    echo $BUFFER | tr -d '\n' | xclip -sel clip
+    echo $BUFFER | tr -d '\n' | wl-copy
 }
 zle -N cmd_to_clip
 bindkey '^Y' cmd_to_clip
