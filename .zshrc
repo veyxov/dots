@@ -30,7 +30,7 @@ export KEYTIMEOUT=1 # Kill the lag between switching to VIM mode
 export DISABLE_MAGIC_FUNCTIONS=true     # make pasting into terminal faster
 
 zstyle ':completion:*' completer _extensions _complete _approximate
-zinit wait lucid for \
+zinit  for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
 
