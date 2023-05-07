@@ -9,7 +9,7 @@ riverctl map normal Super Q close
 riverctl map normal  XF86MonBrightnessUp   spawn 'light -A 5'
 riverctl map normal  XF86MonBrightnessDown spawn 'light -U 5'
 
-riverctl map normal Super S spawn 'wayshot --stdout | wl-copy'
+riverctl map normal Super T spawn 'wayshot --stdout | wl-copy'
 
 riverctl map normal Super F toggle-fullscreen
 
@@ -26,6 +26,10 @@ riverctl map-pointer normal Super BTN_MIDDLE toggle-float
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
 
+riverctl set-cursor-warp on-focus-change
+
+riverctl map normal Super slash focus-view next
+
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
 riverctl rule-add float -app-id 'float*' -title 'foo'
 
@@ -33,4 +37,16 @@ riverctl rule-add float -app-id 'float*' -title 'foo'
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
 
+riverctl map normal Super a set-focused-tags 1
+riverctl map normal Super e set-focused-tags 2
+riverctl map normal Super i set-focused-tags 4
+riverctl map normal Super h set-focused-tags 8
+
+riverctl map normal Super+Shift a set-view-tags 1
+riverctl map normal Super+Shift e set-view-tags 2
+riverctl map normal Super+Shift i set-view-tags 4
+riverctl map normal Super+Shift h set-view-tags 8
+
+# No borders
+riverctl border-width 0
 rivertile -view-padding 0 -outer-padding 0 &
