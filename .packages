@@ -20,6 +20,7 @@ intel-media-driver
 intel-ucode
 irqbalance
 iwd
+kanshi
 kickoff
 lazygit
 light
@@ -34,11 +35,10 @@ pinentry
 pipewire
 preload
 ripgrep
-river
-rust
-showmethekey
+river-noxwayland-git
 sof-firmware
 sudo
+swaybg
 telegram-desktop
 warpd-wayland
 wayland-protocols
