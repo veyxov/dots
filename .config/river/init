@@ -10,6 +10,7 @@ riverctl map normal  XF86MonBrightnessUp   spawn 'light -A 5'
 riverctl map normal  XF86MonBrightnessDown spawn 'light -U 5'
 
 riverctl map normal Super T spawn 'wayshot --stdout | wl-copy'
+riverctl map normal Super B spawn 'clipman pick --tool wofi'
 
 riverctl map normal Super F toggle-fullscreen
 
