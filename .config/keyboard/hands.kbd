@@ -65,6 +65,7 @@
     ( s ) @S_ctl
     (n) @N_sup
     (r s) home
+    (s n) C-bspc
     (n d) tab
     (r d) esc
 )
