@@ -3,11 +3,8 @@ riverctl map normal Super S spawn 'wofi --show drun'
 riverctl map normal Super Q close
 
 # Control screen backlight brightness with light (https://github.com/haikarainen/light)
-riverctl map normal None XF86MonBrightnessUp   spawn 'light -A 5'
-riverctl map normal None XF86MonBrightnessDown spawn 'light -U 5'
-
-riverctl border-color-focused 0x93a1a1
-riverctl border-color-unfocused 0x586e75
+riverctl map normal  XF86MonBrightnessUp   spawn 'light -A 5'
+riverctl map normal  XF86MonBrightnessDown spawn 'light -U 5'
 
 riverctl map normal Super F toggle-fullscreen
 
@@ -27,13 +24,9 @@ riverctl set-repeat 50 300
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
 riverctl rule-add float -app-id 'float*' -title 'foo'
 
-# Make all views with app-id "bar" and any title use client-side decorations
-riverctl rule-add csd -app-id "bar"
-
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
 
-sh ~/start.sh &
-
 rivertile -view-padding 6 -outer-padding 6 &
+sh ~/start.sh &
