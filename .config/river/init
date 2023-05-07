@@ -1,3 +1,6 @@
+# Startup applications
+sh ~/start.sh &
+
 riverctl map normal Super Return spawn wezterm-gui
 riverctl map normal Super S spawn 'wofi --show drun'
 riverctl map normal Super Q close
@@ -5,6 +8,8 @@ riverctl map normal Super Q close
 # Control screen backlight brightness with light (https://github.com/haikarainen/light)
 riverctl map normal  XF86MonBrightnessUp   spawn 'light -A 5'
 riverctl map normal  XF86MonBrightnessDown spawn 'light -U 5'
+
+riverctl map normal Super S spawn 'wayshot --stdout | wl-copy'
 
 riverctl map normal Super F toggle-fullscreen
 
@@ -28,5 +33,4 @@ riverctl rule-add float -app-id 'float*' -title 'foo'
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
 
-rivertile -view-padding 6 -outer-padding 6 &
-sh ~/start.sh &
+rivertile -view-padding 0 -outer-padding 0 &
