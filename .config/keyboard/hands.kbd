@@ -64,6 +64,7 @@
     (  d) @D_sft
     ( s ) @S_ctl
     (n) @N_sup
+    (r s) home
     (n d) tab
     (r d) esc
 )
