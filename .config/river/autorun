@@ -1,0 +1,8 @@
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+dbus-update-activation-environment DISPLAY
+sudo ~/kanata/target/release/kanata -c ~/.config/keyboard/hands.kbd
+telegram-desktop
+firefox
+dunst
+wl-paste -t text --watch clipman store
+setwall
