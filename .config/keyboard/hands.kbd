@@ -127,7 +127,7 @@
   @kaboom   XX   XX   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev XX
   lrld j    0    f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
   tab  @R_alt    @S_ctl        @N_sup    lsft    w    y    u    -    lft down up rght    k              kp7  kp8  kp9
-  x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
+  x    g    l    c    b    g    h    j    k    u    pgdn    pgup         ret            kp4  kp5  kp6  kp+
   lsft 102d z    x    c    v    b    n    m    spc    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
