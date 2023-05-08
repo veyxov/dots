@@ -1,41 +1,42 @@
 # Startup applications
-while read -r cmd; do
-    pgrep -f "${cmd%% *}" >/dev/null || riverctl spawn "$cmd"
-done < "$XDG_CONFIG_HOME/river/autorun"
+riverctl spawn 'systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP'
+riverctl spawn 'dbus-update-activation-environment DISPLAY'
+riverctl spawn 'setwall'
+riverctl spawn 'sudo ~/kanata/target/release/kanata -c ~/.config/keyboard/hands.kbd'
+riverctl spawn 'dust'
+riverctl spawn 'wl-paste -t text --watch clipman store'
+# ----
 
 riverctl map normal Super Return spawn wezterm-gui
-riverctl map normal Super S spawn 'wofi --show drun'
 riverctl map normal Super Q close
+riverctl map normal Super slash focus-view next
+riverctl map normal Super F toggle-fullscreen
+
+riverctl map normal Super S spawn 'wofi --show drun'
+riverctl map normal Super T spawn 'wayshot --stdout | wl-copy'
+riverctl map normal Super B spawn 'clipman pick --tool wofi'
 
 # Control screen backlight brightness with light (https://github.com/haikarainen/light)
 riverctl map normal None XF86AudioLowerVolume spawn 'amixer set Speaker 10%-'
 riverctl map normal None XF86AudioRaiseVolume spawn 'amixer set Speaker 10%+'
 riverctl map normal None XF86AudioMute spawn 'amixer set Speaker toggle'
+# ----
 
 riverctl map normal None XF86MonBrightnessUp   spawn 'light -A 5'
 riverctl map normal None XF86MonBrightnessDown spawn 'light -U 5'
-
-riverctl map normal Super T spawn 'wayshot --stdout | wl-copy'
-riverctl map normal Super B spawn 'clipman pick --tool wofi'
-
-riverctl map normal Super F toggle-fullscreen
+# ----
 
 
 # Super + Left Mouse Button to move views
 riverctl map-pointer normal Super BTN_LEFT move-view
-
 # Super + Right Mouse Button to resize views
 riverctl map-pointer normal Super BTN_RIGHT resize-view
-
 # Super + Middle Mouse Button to toggle float
 riverctl map-pointer normal Super BTN_MIDDLE toggle-float
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
-
 riverctl set-cursor-warp on-focus-change
-
-riverctl map normal Super slash focus-view next
 
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
 riverctl rule-add float -app-id 'float*' -title 'foo'
