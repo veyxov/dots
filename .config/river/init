@@ -5,7 +5,7 @@ riverctl spawn 'setwall'
 riverctl spawn 'sudo ~/kanata/target/release/kanata -c ~/.config/keyboard/hands.kbd'
 riverctl spawn 'dust'
 riverctl spawn 'wl-paste -t text --watch clipman store'
-riverctl spawn "swayidle -w timeout 10 'swaylock'"
+riverctl spawn "swayidle -w timeout 10 'swaylock --screenshots --clock --fade 2 --indicator --indicator-radius 200 --indicator-thickness 20 --grace 2.1 --effect-scale 0.5 --effect-pixelate 7 --effect-scale 2 --separator-color 7c818c --ring-color 404552 --key-hl-color 5294e2 --inside-color 222831 --line-uses-inside --text-color eeeeee'"
 # ----
 
 riverctl map normal Super Return spawn wezterm-gui

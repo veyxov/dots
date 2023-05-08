@@ -41,7 +41,7 @@ sof-firmware
 sudo
 swaybg
 swayidle
-swaylock
+swaylock-effects-git
 telegram-desktop
 warpd-wayland
 wayland-protocols
