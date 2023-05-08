@@ -40,10 +40,11 @@ river-noxwayland-git
 sof-firmware
 sudo
 swaybg
+swayidle
+swaylock
 telegram-desktop
 warpd-wayland
 wayland-protocols
-waylock
 wayshot-bin
 wdisplays
 wezterm
