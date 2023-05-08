@@ -6,8 +6,12 @@ riverctl map normal Super S spawn 'wofi --show drun'
 riverctl map normal Super Q close
 
 # Control screen backlight brightness with light (https://github.com/haikarainen/light)
-riverctl map normal  XF86MonBrightnessUp   spawn 'light -A 5'
-riverctl map normal  XF86MonBrightnessDown spawn 'light -U 5'
+riverctl map normal None XF86AudioLowerVolume spawn 'amixer set Speaker 10%-'
+riverctl map normal None XF86AudioRaiseVolume spawn 'amixer set Speaker 10%+'
+riverctl map normal None XF86AudioMute spawn 'amixer set Speaker toggle'
+
+riverctl map normal None XF86MonBrightnessUp   spawn 'light -A 5'
+riverctl map normal None XF86MonBrightnessDown spawn 'light -U 5'
 
 riverctl map normal Super T spawn 'wayshot --stdout | wl-copy'
 riverctl map normal Super B spawn 'clipman pick --tool wofi'
