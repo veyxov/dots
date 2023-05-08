@@ -1,5 +1,7 @@
 # Startup applications
-sh ~/start.sh &
+while read -r cmd; do
+    pgrep -f "${cmd%% *}" >/dev/null || riverctl spawn "$cmd"
+done < "$XDG_CONFIG_HOME/river/autorun"
 
 riverctl map normal Super Return spawn wezterm-gui
 riverctl map normal Super S spawn 'wofi --show drun'
