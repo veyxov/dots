@@ -7,12 +7,12 @@
 )
 
 (defalias
-    D_sft (tap-hold-release 200 200 d (layer-toggle handsup))
+    D_sft (tap-hold-release 130 130 d (layer-toggle handsup))
     R_alt (tap-hold-release 200 200 r lalt)
     S_ctl (tap-hold-release 200 200 s lctl)
     N_sup (tap-hold-release 200 200 n lmet)
 
-    A_sft (tap-hold-release 200 200 a (layer-toggle handsup))
+    A_sft (tap-hold-release 130 130 a (layer-toggle handsup))
     E_sup (tap-hold-release 200 200 e lmet)
     I_ctl (tap-hold-release 200 200 i lctl)
     H_alt (tap-hold-release 200 200 h lalt)
