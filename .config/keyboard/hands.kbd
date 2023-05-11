@@ -31,11 +31,14 @@
 (defalias
     q_chrd_j (chord q_chrd j)
     q_chrd_f (chord q_chrd f)
+    q_chrd_m (chord q_chrd m)
 )
 (defchords q_chrd 50
+    (m  ) m
     (j  ) j
     (  f) f
     (j f) (tap-hold 75 120 (macro q u) q)
+    (f m) (tap-hold 75 120 (macro v) S-v)
 )
 ;; ---------------------------------------
 
@@ -98,7 +101,7 @@
 
 (deflayer hands
   XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
-  lrld       @q_chrd_j 1    @q_chrd_f     m         p         v    XX               grv .         /         S-'              '         bspc  nlck kp/  kp*  kp-
+  lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         /         S-'              '         bspc  nlck kp/  kp*  kp-
   XX        @rchrd         @schrd        @nchrd    @dchrd    w    XX        XX     ,   @A_sft    @E_sup    @I_ctl           @H_alt    ;    kp7  kp8  kp9
             @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  XX     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
   XX XX      XX             XX            XX        XX        XX   XX    (tap-hold-release 100 150 spc (layer-toggle sym)) (tap-hold-release 100 150 ret (layer-toggle num))    XX  XX        XX        XX                                                             kp1  kp2  kp3
