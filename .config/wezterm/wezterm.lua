@@ -171,6 +171,14 @@ return {
         { key = "v",          mods = "CTRL",       action = wezterm.action({ PasteFrom = "Clipboard" }) },
         { key = "UpArrow",    mods = "CTRL|SHIFT", action = wezterm.action.IncreaseFontSize },
         { key = "DownArrow",  mods = "CTRL|SHIFT", action = wezterm.action.DecreaseFontSize },
+        {
+            key = '/',
+            mods = 'ALT',
+            action = act.PaneSelect {
+                alphabet = '"asnd',
+            },
+        },
+
     },
     key_tables = {
         copy_mode = {
