@@ -22,6 +22,7 @@ irqbalance
 iwd
 kanshi
 lazygit
+libreoffice-still
 light
 linux
 linux-firmware
@@ -32,6 +33,7 @@ neovim
 networkmanager
 npm
 ntfs-3g
+obsidian
 openssh
 pinentry
 pipewire
@@ -48,6 +50,7 @@ ttf-firacode-nerd
 ttf-victor-mono
 warpd-wayland
 wayland-protocols
+wayprompt-git
 wayshot-bin
 wdisplays
 wezterm
@@ -55,5 +58,7 @@ wlroots
 wofi
 wshowkeys-git
 yay
+zathura
+zathura-pdf-mupdf
 zoxide
 zsh
