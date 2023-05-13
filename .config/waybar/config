@@ -1,11 +1,11 @@
 {
     "layer": "bottom",
-    "position": "top",
+    "position": "bottom",
     "height": 20,
 
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["clock"],
+    "modules-right": ["battery", "clock"],
     "sway/mode": {
         "format": " {}"
     },
