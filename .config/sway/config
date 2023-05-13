@@ -1,3 +1,8 @@
+assign [app_id="org.telegram.desktop"] workspace 5
+
+exec mako
+exec telegram-desktop
+
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
@@ -105,6 +110,8 @@ exec swayidle -w \
     bindsym $mod+Shift+i move container to workspace number 3
     bindsym $mod+Shift+h move container to workspace number 4
     bindsym $mod+Shift+t move container to workspace number 5
+gaps inner 10
+smart_gaps on
 #
 # Layout stuff:
 #
@@ -142,7 +149,7 @@ exec swayidle -w \
 #
 # Resizing containers:
 #
-default_border none
+default_border pixel 2
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -165,24 +172,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 bar  {
-        # will asssign id 'bar-0' by default
 	swaybar_command waybar
-	mode dock
-	position top
-}
-
-# the id can be set with `bar <id> { ... }` or with the `bar { id <id>; ... }`
-# if you don't specify the id explicitly, sway will assign `bar-1`
-bar bar-1 {
-        # placeholder command, so that sway could create the configuration but won't run an actual second bar instance
-	swaybar_command true
-	mode hide
 	position bottom
 }
-
-include /etc/sway/config.d/*
