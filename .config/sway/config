@@ -2,6 +2,9 @@ assign [app_id="org.telegram.desktop"] workspace 5
 
 exec mako
 exec telegram-desktop
+exec setwall
+exec 'sudo ~/kanata/target/release/kanata -c ~/.config/keyboard/hands.kbd'
+exec 'wl-paste -t text --watch clipman store'
 
 set $mod Mod4
 # Home row direction keys, like vim
@@ -16,10 +19,6 @@ set $term wezterm
 # on the original workspace that the command was run on.
 set $menu wofi --show run
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
