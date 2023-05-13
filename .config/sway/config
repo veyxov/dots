@@ -62,6 +62,8 @@ exec swayidle -w \
     # Start a terminal
     bindsym $mod+Return exec $term
 
+    bindsym $mod+Slash focus next
+
     # Kill focused window
     bindsym $mod+q kill
 
