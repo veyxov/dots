@@ -5,7 +5,7 @@ exec setwall
 exec 'sudo ~/kanata/target/release/kanata -c ~/.config/keyboard/hands.kbd'
 exec telegram-desktop
 exec firefox
-exec mako
+exec --no-startup-id mako
 exec 'wl-paste -t text --watch clipman store'
 
 set $mod Mod4
@@ -174,9 +174,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
     # Sreen brightness controls
+bindsym $mod+s exec 'grim - | wl-copy'
 bindsym XF86MonBrightnessUp   exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
-
 
 bar  {
 	swaybar_command waybar
