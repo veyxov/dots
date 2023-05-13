@@ -9,7 +9,6 @@ dbus-broker
 docker
 docker-compose
 dotnet-sdk
-dunst
 efibootmgr
 exa
 firefox
@@ -26,6 +25,7 @@ libreoffice-still
 light
 linux
 linux-firmware
+mako
 mpv
 ncdu
 neofetch
