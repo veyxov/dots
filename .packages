@@ -15,10 +15,12 @@ firefox
 fzf
 git
 git-delta
+grim
 intel-media-driver
 intel-ucode
 irqbalance
 iwd
+jq
 kanshi
 lazygit
 libreoffice-still
@@ -40,6 +42,7 @@ pipewire
 preload
 ripgrep
 river-noxwayland-git
+slurp
 sof-firmware
 sudo
 sway
@@ -53,7 +56,6 @@ warpd-wayland
 waybar
 wayland-protocols
 wayprompt-git
-wayshot-bin
 wdisplays
 wezterm
 wlroots
