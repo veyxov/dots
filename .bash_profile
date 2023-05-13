@@ -16,7 +16,7 @@ export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 
 # Graphics driver
-export LIBVA_DRIVER_NAME=iris
+# export LIBVA_DRIVER_NAME=iris
 
 # ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
 export LESS="-iMFXR"
