@@ -81,7 +81,7 @@ return {
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
-    font = wezterm.font("Fira Code"),
+    font = wezterm.font("Source code pro"),
     font_rules = {
         {
             italic = true,
