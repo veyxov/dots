@@ -199,3 +199,7 @@ client.urgent           $cl_urge $cl_urge $cl_fore $cl_urge $cl_urge
 
 # Reload the bar
 exec_always 'killall -SIGUSR2 waybar'
+
+#input "type:keyboard" {
+#    xkb_layout "rus"
+#}
