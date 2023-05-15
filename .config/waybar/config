@@ -5,7 +5,7 @@
 
         "modules-left": ["sway/workspaces", "sway/mode"],
         "modules-center": ["sway/window"],
-        "modules-right": ["battery", "cpu", "memory", "network", "clock", "backlight", "wireplumber"],
+        "modules-right": ["battery", "cpu", "memory", "network", "clock", "backlight"],
         "sway/mode": {
             "format": " {}"
         },
