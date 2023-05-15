@@ -1,3 +1,5 @@
+export QT_QPA_PLATFORM=wayland
+
 # Add my bin's to PATH
 export PATH="$PATH:$HOME/.local/bin/"
 
@@ -14,6 +16,7 @@ export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
 export HISTFILE="$HOME"/.cache/history
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+
 
 # Graphics driver
 # export LIBVA_DRIVER_NAME=iris
