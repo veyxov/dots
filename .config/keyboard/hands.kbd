@@ -179,7 +179,7 @@
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    @hadwch    k    l    ;    '          \             kp4  kp5  kp6  kp+
-  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
+  lsft 102d z    x    c    v    b    n    ret    ,    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
