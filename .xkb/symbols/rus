@@ -6,8 +6,8 @@ xkb_symbols "rulemak" {
     key <TLDE> { [     Cyrillic_io,     Cyrillic_IO,           U0300,           U030F ] }; // Combining grave, double grave
     key <AE01> { [     Cyrillic_ka_descender,          Cyrillic_KA_descender,           U0301,           U030B ] }; // Combining acute, double acute
     key <AE02> { [     Cyrillic_yeru,     Cyrillic_YERU                                   ] };
-    key <AE03> { [     Cyrillic_sha,      Cyrillic_SHA,      numbersign,   twosuperior ] };
-    key <AE04> { [     Cyrillic_ef,       Cyrillic_EF,          dollar,        sterling ] };
+    key <AE03> { [     Cyrillic_ef,      Cyrillic_EF,      numbersign,   twosuperior ] };
+    key <AE04> { [     Cyrillic_em,       Cyrillic_EM,          dollar,        sterling ] };
     key <AE05> { [     5,         percent,        EuroSign,             yen ] };
     key <AE06> { [     6,           colon,           U0306,           U0304 ] }; // Combining breve, macron
     key <AE07> { [     7,        question,       ampersand                  ] };
@@ -22,7 +22,7 @@ xkb_symbols "rulemak" {
     key <AD02> { [     Cyrillic_es,    Cyrillic_ES,           U0475,           U0474 ] }; // r
     key <AD03> { [     Cyrillic_en,     Cyrillic_EN,           Cyrillic_tse,           Cyrillic_TSE ] }; // fita
     key <AD04> { [     Cyrillic_de,     Cyrillic_DE                                   ] };
-    key <AD05> { [     Cyrillic_be,     Cyrillic_BE,   Cyrillic_zhe,   Cyrillic_ZHE ] };
+    key <AD05> { [     Cyrillic_ve,     Cyrillic_VE,   Cyrillic_zhe,   Cyrillic_ZHE ] };
     key <AD06> { [     0x100049b,      0x100049a, rightsinglequotemark, rightdoublequotemark ] };
     key <AD07> { [     Cyrillic_che_descender, Cyrillic_CHE_descender                 ] }; // ҷ Ҷ
     key <AD08> { [     Cyrillic_che_descender,     Cyrillic_CHE_descender,    Cyrillic_zhe,    Cyrillic_ZHE ] };
@@ -30,19 +30,21 @@ xkb_symbols "rulemak" {
     key <AD10> { [     Cyrillic_ie, Cyrillic_IE,     Cyrillic_je,     Cyrillic_JE ] };
     key <AD11> { [     Cyrillic_i,     Cyrillic_I,       semicolon,           colon ] };
     key <AD12> { [     Cyrillic_ha_descender,    Cyrillic_HA_descender,   guillemotleft,  doublelowquotemark ] };
-    key <BKSL> { [     Cyrillic_ze,     Cyrillic_ZE, colon                                 ] }; // э Э
-    key <CAPS> { [     Cyrillic_softsign,     Cyrillic_hardsign                                 ] };
-    key <AC01> { [     Cyrillic_ha,      Cyrillic_HA, apostrophe, rightsinglequotemark ] };
-    key <AC02> { [     Cyrillic_che,     Cyrillic_CHE,      registered                  ] };
+    key <BKSL> { [     Cyrillic_ka,     Cyrillic_KA, colon                                 ] }; // э Э
+    key <CAPS> { [     Cyrillic_ha,     Cyrillic_HA                                 ] };
+    key <AC01> { [     Cyrillic_ghe,      Cyrillic_GHE, apostrophe, rightsinglequotemark ] };
+    key <AC02> { [     Cyrillic_el,     Cyrillic_EL,      registered                  ] };
     key <AC03> { [     Cyrillic_te,     Cyrillic_TE                                   ] };
-    key <AC04> { [     Cyrillic_ghe,     Cyrillic_GHE, question, question                                ] };
+    key <AC04> { [     Cyrillic_be,     Cyrillic_BE, question, question                                ] };
     key <AC05> { [     Cyrillic_e,    Cyrillic_E, Ukrainian_ghe_with_upturn, Ukrainian_GHE_WITH_UPTURN ] };
     key <AC06> { [     Cyrillic_hardsign, Cyrillic_HARDSIGN, Cyrillic_hardsign, Cyrillic_HARDSIGN ] };
-    key <AC07> { [     Cyrillic_zhe,     Cyrillic_ZHE                                   ] };
+    key <AC07> { [     Cyrillic_ka,     Cyrillic_KA                                   ] };
     key <AC08> { [     Cyrillic_em,     Cyrillic_EM,    Cyrillic_nje,    Cyrillic_NJE ] };
-    key <AC09> { [     Cyrillic_en,     Cyrillic_EN,    Ukrainian_ie,    Ukrainian_IE ] };
-    key <AC10> { [     comma,      Cyrillic_I,     Cyrillic_i_macron,     Cyrillic_I_macron ] }; // ӣ Ӣ
+    key <AC09> { [     Cyrillic_u,     Cyrillic_U,    Ukrainian_IE ] };
+    key <AC10> { [     Cyrillic_o,      Cyrillic_O,     Cyrillic_i_macron,     Cyrillic_I_macron ] }; // ӣ Ӣ
     key <AC11> { [     period,      Cyrillic_O                                   ] };
+    key <SPCE> { [     Cyrillic_o,      Cyrillic_TE                                   ] };
+    
 
     key <LSGT> { [     Cyrillic_hardsign, Cyrillic_HARDSIGN,  apostrophe,        quotedbl ] };
     key <AB01> { [     Cyrillic_ha,     Cyrillic_HA                                   ] };
