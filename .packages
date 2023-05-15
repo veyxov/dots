@@ -1,4 +1,3 @@
-alsa-utils
 aspnet-runtime
 base
 base-devel
@@ -21,7 +20,6 @@ intel-ucode
 irqbalance
 iwd
 jq
-kanshi
 lazygit
 libreoffice-still
 light
@@ -41,7 +39,6 @@ pinentry
 pipewire
 preload
 ripgrep
-river-noxwayland-git
 slurp
 sof-firmware
 sudo
@@ -55,15 +52,12 @@ ttf-firacode-nerd
 ttf-sourcecodepro-nerd
 ttf-victor-mono
 unzip
-warpd-wayland
 waybar
 wayland-protocols
-wayprompt-git
 wdisplays
 wezterm
 wlroots
 wofi
-wshowkeys-git
 yay
 zathura
 zathura-pdf-mupdf
