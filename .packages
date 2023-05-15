@@ -48,11 +48,13 @@ sudo
 sway
 swaybg
 swayidle
+swayimg
 swaylock-effects-git
 telegram-desktop
 ttf-firacode-nerd
 ttf-sourcecodepro-nerd
 ttf-victor-mono
+unzip
 warpd-wayland
 waybar
 wayland-protocols
