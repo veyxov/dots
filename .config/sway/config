@@ -6,7 +6,7 @@ exec 'sudo ~/kanata/target/release/kanata -c ~/.config/keyboard/hands.kbd'
 exec telegram-desktop
 exec firefox
 exec --no-startup-id mako
-exec 'wl-paste -t text --watch clipman store'
+exec 'wl-paste -t text --watch clipman store --max-items 1000 --unix'
 
 set $mod Mod4
 # Home row direction keys, like vim
@@ -20,6 +20,8 @@ set $term wezterm
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu wofi --show drun
+
+bindsym $mod+p exec clipman pick --tool wofi
 
 #
 # Example configuration:
@@ -204,6 +206,7 @@ client.urgent           $cl_urge $cl_urge $cl_fore $cl_urge $cl_urge
 # Reload the bar
 exec_always 'killall -SIGUSR2 waybar'
 
-#input "type:keyboard" {
-#    xkb_layout "rus"
-#}
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
