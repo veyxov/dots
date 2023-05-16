@@ -18,11 +18,16 @@ alias n="nvim"
 alias rsnd="clear"
 alias hiea="exit"
 alias ei="lazygit"
-alias kfg="lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 # file-system manipulation
 alias rm="rm -rfv"
 alias mv="mv -v"
 alias cp="cp -v"
+# yadm
+function kfg() {
+    cd ~
+    yadm enter lazygit
+    cd -
+}
 
 # Exports
 path+=('/home/iz/.cargo/bin')
