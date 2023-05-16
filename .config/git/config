@@ -37,3 +37,16 @@
 	required = true
 [commit]
 	gpgsign = true
+
+[pager]
+    diff = delta
+    show = delta
+    log = delta
+    blame = delta
+    reflog = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    syntax-theme = Coldark-Dark
