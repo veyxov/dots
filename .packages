@@ -8,6 +8,7 @@ dbus-broker
 docker
 docker-compose
 dotnet-sdk
+dotnet-sdk-6.0
 efibootmgr
 exa
 firefox
@@ -58,6 +59,8 @@ wdisplays
 wezterm
 wlroots
 wofi
+xdg-utils
+yadm
 yay
 zathura
 zathura-pdf-mupdf
