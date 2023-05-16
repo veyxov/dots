@@ -1,5 +1,3 @@
-export QT_QPA_PLATFORM=wayland
-
 # Add my bin's to PATH
 export PATH="$PATH:$HOME/.local/bin/"
 
@@ -17,9 +15,9 @@ export HISTFILE="$HOME"/.cache/history
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 
-
-# Graphics driver
-# export LIBVA_DRIVER_NAME=iris
+# Wayland stuff
+export QT_QPA_PLATFORM=wayland
+export MOZ_ENABLE_WAYLAND=1
 
 # ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
 export LESS="-iMFXR"
@@ -28,8 +26,6 @@ export LESS="-iMFXR"
 export EDITOR="nvim"
 # Open man pages in neovim
 export MANPAGER='nvim +Man!'
-
-export MOZ_ENABLE_WAYLAND=1
 
 # Fzf defaults
 export FZF_DEFAULT_OPTS='--no-height --no-reverse --select-1 --exit-0'
