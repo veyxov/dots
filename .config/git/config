@@ -11,7 +11,7 @@
 [user]
 	email = veyxov@gmail.com
 	name = Shekhov Ismoil
-	signingkey = 0B63F08895B0273F
+	signingkey = D900FDA1D46E4177EB0C3D19D46786F72E36F7E5
 [init]
     defaultBranch = main
 [alias]
