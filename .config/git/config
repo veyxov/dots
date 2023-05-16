@@ -1,5 +1,7 @@
 [interactive]
     diffFilter = delta --color-only
+[gpg]
+    format=ssh
 
 [delta]
     navigate = true    # use n and N to move between diff sections
@@ -11,7 +13,7 @@
 [user]
 	email = veyxov@gmail.com
 	name = Shekhov Ismoil
-	signingkey = D900FDA1D46E4177EB0C3D19D46786F72E36F7E5
+	signingkey = ~/.ssh/id_rsa.pub
 [init]
     defaultBranch = main
 [alias]
@@ -35,8 +37,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[commit]
-	gpgsign = true
 
 [pager]
     diff = delta
