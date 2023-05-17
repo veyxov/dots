@@ -192,7 +192,7 @@
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
   tab  q    w    e    (tap-hold-release 200 200 r (layer-toggle plainsft))    t    y    u    i    (tap-hold-release 200 200 o (layer-toggle plainsft))    p    [    ]    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    @hadwch    k    l    ;    '          \             kp4  kp5  kp6  kp+
-  lsft 102d z    x    c    v    b    n    spc    ret    .    /    rsft      up        kp1  kp2  kp3
+  lsft 102d z    x    c    v    b    n    spc   (tap-hold-release 200 200 ret ralt)    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           h            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
