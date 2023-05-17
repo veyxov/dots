@@ -198,7 +198,7 @@
 
 (deflayer plainsft
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
+  grv  1    2    3    4    5    6    7    8    9    0    S--    S-=    bspc           nlck kp/  kp*  kp-
   tab  S-q    S-w    S-e    S-r    S-t    S-y    S-u    S-i    S-o    S-p    [    ]    ret            kp7  kp8  kp9
   caps S-a    S-s    S-d    S-f    S-g    S-h    @hadwch    S-k    S-l    ;    '          \             kp4  kp5  kp6  kp+
   lsft 102d z    x    c    v    b    n    spc    ret    .    /    rsft      up        kp1  kp2  kp3
