@@ -34,6 +34,12 @@
     q_chrd_f (chord q_chrd f)
     q_chrd_m (chord q_chrd m)
 )
+(defalias
+    Q_chrd_j (chord Q_chrd S-j)
+    Q_chrd_f (chord Q_chrd S-f)
+    Q_chrd_m (chord Q_chrd S-m)
+)
+
 (defchords q_chrd 50
     (m  ) m
     (j  ) j
@@ -41,6 +47,14 @@
     (j f) (tap-hold 75 120 (macro q u) q)
     (f m) v
 )
+(defchords Q_chrd 50
+    (S-m  ) S-m
+    (S-j  ) S-j
+    (  S-f) S-f
+    (S-j S-f) (macro S-q u)
+    (S-f S-m) S-v
+)
+
 ;; ---------------------------------------
 
 ;; Chord for 'z'
@@ -128,10 +142,9 @@
   (layer-switch hands) XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          (layer-toggle mouse)  XX        XX        XX  XX XX                        kp0       kp.  kprt
 )
 
-
 (deflayer handsup
   S-esc  f1   f2   S-f3   S-f4   S-f5   S-f6   S-f7   S-f8   S-f9   S-f10  S-f11  S-f12  S-ins S-prnt S-del   pp   mute  prev @kaboom
-  lrld S-j    S-0    S-f    S-m    S-p    S-v    S-7    S-8    S-grv    S-7    S-/    S-'    S-1           S-nlck S-kp/  S-kp*  S-kp-
+  lrld @Q_chrd_j 1    @Q_chrd_f    @Q_chrd_m    S-p    S-v    S-7    S-8    S-grv    S-7    S-/    S-'    S-1           S-nlck S-kp/  S-kp*  S-kp-
   S-tab  S-r    S-s        S-n    S-d    S-w    S-y    S-u    S-\    S-a    S-e    S-i    S-h    S-;              S-kp7  S-kp8  S-kp9
   S-x    S-g    S-l    S-c    S-b    S-g    S-h    S-j    S-=    S-u    S-o    S-y         S-k            S-kp4  S-kp5  S-kp6  S-kp+
   S-lsft 102d S-z    S-x    S-c    S-v    S-b    S-n    S-m    S-ret    .    /    S-rsft      S-up        S-kp1  S-kp2  S-kp3
