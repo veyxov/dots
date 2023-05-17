@@ -37,16 +37,13 @@
             "max-length": 25
         },
         "network": {
-            "interface": "wlan0",
-            "format": "{ifname}",
-            "format-wifi": "{essid} {bandwidthTotalBytes} {bandwidthTotalBits} ({signalStrength}%) ",
-            "format-ethernet": "{ipaddr}/{cidr} ",
-            "format-disconnected": "", //An empty format will hide the module.
-            "tooltip-format": "{ifname} via {gwaddr} ",
-            "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-            "tooltip-format-ethernet": "{ifname} ",
-            "tooltip-format-disconnected": "Disconnected",
-            "max-length": 50
+            // "interface": "wlp2*", // (Optional) To force the use of this interface
+            "format-wifi": " {essid} ({signalStrength}%)",
+            "format-ethernet": "LAN ",
+            "format-linked": "(No IP) ",
+            "format-disconnected": "No Internet ⚠",
+            /*"format-alt": "{ifname}: {ipaddr}/{cidr}"*/
+            "format-alt": "{ipaddr}/{cidr}"
         },
         "sway/workspaces": {
             "format": "{name}",
@@ -57,8 +54,9 @@
             "tooltip": false
         },
         "clock": {
-            "format": "{:%a %d %b %H:%M}",
-            "tooltip": false
+            "timezone": "Asia/Kolkata",
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+            "format-alt": "{:%Y-%m-%d}"
         },
         "tray": {
             "icon-size": 18
