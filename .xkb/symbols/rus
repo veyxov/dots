@@ -30,15 +30,15 @@ xkb_symbols "rulemak" {
     key <AD10> { [     Cyrillic_ie, Cyrillic_IE,     Cyrillic_je,     Cyrillic_JE ] };
     key <AD11> { [     Cyrillic_i,     Cyrillic_I,       semicolon,           colon ] };
     key <AD12> { [     Cyrillic_ha_descender,    Cyrillic_HA_descender,   guillemotleft,  doublelowquotemark ] };
-    key <BKSL> { [     Cyrillic_ka,     Cyrillic_KA, colon                                 ] }; // э Э
+    key <BKSL> { [     Cyrillic_ka,     Cyrillic_KA, Cyrillic_ka_descender, Cyrillic_KA_descender                                 ] }; // э Э
     key <CAPS> { [     Cyrillic_ha,     Cyrillic_HA                                 ] };
     key <AC01> { [     Cyrillic_ghe,      Cyrillic_GHE, apostrophe, rightsinglequotemark ] };
     key <AC02> { [     Cyrillic_el,     Cyrillic_EL,      registered                  ] };
-    key <AC03> { [     Cyrillic_che,     Cyrillic_CHE                                   ] };
+    key <AC03> { [     Cyrillic_che,     Cyrillic_CHE, Cyrillic_che_descender,     Cyrillic_CHE_descender                                   ] };
     key <AC04> { [     Cyrillic_be,     Cyrillic_BE, question, question                                ] };
     key <AC05> { [     Cyrillic_e,      Cyrillic_E, Ukrainian_ghe_with_upturn, Ukrainian_GHE_WITH_UPTURN ] };
     key <AC06> { [     Cyrillic_te,     Cyrillic_TE, Cyrillic_hardsign, Cyrillic_HARDSIGN ] };
-    key <AC07> { [     Cyrillic_ka,     Cyrillic_KA                                   ] };
+    key <AC07> { [     Cyrillic_ka,     Cyrillic_KA, Cyrillic_ka_descender,          Cyrillic_KA_descender                       ] };
     key <AC08> { [     Cyrillic_em,     Cyrillic_EM,    Cyrillic_nje,    Cyrillic_NJE ] };
     key <AC09> { [     Cyrillic_u,      Cyrillic_U,    Ukrainian_IE ] };
     key <AC10> { [     Cyrillic_o,      Cyrillic_O,     Cyrillic_i_macron,     Cyrillic_I_macron ] }; // ӣ Ӣ
