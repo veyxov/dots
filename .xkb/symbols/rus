@@ -14,7 +14,7 @@ xkb_symbols "rulemak" {
     key <AE08> { [     8,        asterisk,           U20BD,           U20B4 ] }; // ruble, hryvnia
     key <AE09> { [     9,       parenleft,     bracketleft,       braceleft ] };
     key <AE10> { [     Cyrillic_u,      Cyrillic_U,    Cyrillic_u_macron,      Cyrillic_U_macron ] };
-    key <AE11> { [     Cyrillic_shorti,      Cyrillic_i_macron,          endash,          emdash ] };
+    key <AE11> { [     Cyrillic_ze,     Cyrillic_ZE,          endash,          emdash ] };
     key <AE12> { [     Cyrillic_yu,            Cyrillic_YU,        multiply,        division ] };
     key <TAB> { [     Cyrillic_ya,            Cyrillic_YA,        multiply,        division ] };
 
