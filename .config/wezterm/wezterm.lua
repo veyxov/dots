@@ -163,6 +163,12 @@ return {
         { key = "UpArrow",    mods = "ALT",        action = wezterm.action({ ActivatePaneDirection = "Up" }) },
         { key = "LeftArrow",  mods = "ALT",        action = wezterm.action({ ActivatePaneDirection = "Left" }) },
         { key = "RightArrow", mods = "ALT",        action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+
+        { key = "r", mods = "CTRL|ALT",        action = wezterm.action({ ActivateTab = 0 }) },
+        { key = "s", mods = "CTRL|ALT",        action = wezterm.action({ ActivateTab = 1 }) },
+        { key = "n", mods = "CTRL|ALT",        action = wezterm.action({ ActivateTab = 2 }) },
+        { key = "d", mods = "CTRL|ALT",        action = wezterm.action({ ActivateTab = 3 }) },
+
         { key = "LeftArrow",  mods = "CTRL|ALT",   action = wezterm.action({ ActivateTabRelative = -1 }) },
         { key = "RightArrow", mods = "CTRL|ALT",   action = wezterm.action({ ActivateTabRelative = 1 }) },
         { key = "y",          mods = "ALT",        action = wezterm.action.QuickSelect },
