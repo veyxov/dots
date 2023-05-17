@@ -38,7 +38,7 @@
         },
         "network": {
             // "interface": "wlp2*", // (Optional) To force the use of this interface
-            "format-wifi": " {essid} ({signalStrength}%)",
+            "format-wifi": "{essid} ( {signalStrength}%)",
             "format-ethernet": "LAN ",
             "format-linked": "(No IP) ",
             "format-disconnected": "No Internet ⚠",
@@ -54,7 +54,6 @@
             "tooltip": false
         },
         "clock": {
-            "timezone": "Asia/Kolkata",
             "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
             "format-alt": "{:%Y-%m-%d}"
         },
