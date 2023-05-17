@@ -39,7 +39,7 @@
     (j  ) j
     (  f) f
     (j f) (tap-hold 75 120 (macro q u) q)
-    (f m) (tap-hold 75 120 (macro v) S-v)
+    (f m) v
 )
 ;; ---------------------------------------
 
