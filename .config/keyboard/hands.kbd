@@ -44,7 +44,7 @@
     (m  ) m
     (j  ) j
     (  f) f
-    (j f) (tap-hold 75 120 (macro q u) q)
+    (j f) (macro q u)
     (f m) v
 )
 (defchords Q_chrd 50
