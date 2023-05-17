@@ -9,15 +9,22 @@
    hadwch (multi (layer-switch hands) (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout us"))
 )
 
+(defvar
+  tap-timeout   100
+  hold-timeout  200
+  tt $tap-timeout
+  ht $hold-timeout
+)
+
 (defalias
     D_sft (tap-hold-release 130 130 d (layer-toggle handsup))
-    R_alt (tap-hold-release 200 200 r lalt)
-    S_ctl (tap-hold-release 200 200 s lctl)
-    N_sup (tap-hold-release 200 200 n (layer-toggle hands_super))
+    R_alt (tap-hold-release $tt $th r lalt)
+    S_ctl (tap-hold-release $tt $th s lctl)
+    N_sup (tap-hold-release $tt $th n (layer-toggle hands_super))
     A_sft (tap-hold-release 130 130 a (layer-toggle handsup))
-    E_sup (tap-hold-release 200 200 e lmet)
-    I_ctl (tap-hold-release 200 200 i lctl)
-    H_alt (tap-hold-release 200 200 h lalt)
+    E_sup (tap-hold-release $tt $th e lmet)
+    I_ctl (tap-hold-release $tt $th i lctl)
+    H_alt (tap-hold-release $tt $th h lalt)
 )
 
 (defsrc
@@ -191,9 +198,9 @@
 (deflayer plain
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
-  tab  q    w    e    (tap-hold-release 200 200 r (layer-toggle plainsft))    t    y    u    i    (tap-hold-release 200 200 o (layer-toggle plainsft))    p    [    ]    ret            kp7  kp8  kp9
+  tab  q    w    e    (tap-hold-release $tt $th r (layer-toggle plainsft))    t    y    u    i    (tap-hold-release $tt $th o (layer-toggle plainsft))    p    [    ]    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    @hadwch    k    l    ;    '          \             kp4  kp5  kp6  kp+
-  lsft 102d z    x    c    v    b    n    spc   (tap-hold-release 200 200 ret ralt)    .    /    rsft      up        kp1  kp2  kp3
+  lsft 102d z    x    c    v    b    n    spc   (tap-hold-release $tt $th ralt)    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           h            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
