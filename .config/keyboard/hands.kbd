@@ -116,7 +116,7 @@
 
 (deflayer hands
   XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
-  lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         /         S-'              '         bspc  nlck kp/  kp*  kp-
+  lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         /         S-/              '         bspc  nlck kp/  kp*  kp-
   XX        @rchrd         @schrd        @nchrd    @dchrd    w    XX        XX     ,   @A_sft    @E_sup    @I_ctl           @H_alt    ;    kp7  kp8  kp9
             @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  @ruswch     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
   XX XX      XX             XX            XX        XX        XX   XX    (tap-hold-release 100 150 spc (layer-toggle sym)) (tap-hold-release 100 150 ret (layer-toggle num))    XX  XX        XX        XX                                                             kp1  kp2  kp3
@@ -198,9 +198,9 @@
 
 (deflayer plainsft
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
-  grv  1    2    3    4    S-5    6    7    8    9    0    S--    S-=    bspc           nlck kp/  kp*  kp-
-  tab  S-q    S-w    S-e    S-r    S-t    S-y    S-u    S-i    S-o    S-p    [    ]    ret            kp7  kp8  kp9
-  caps S-a    S-s    S-d    S-f    S-g    S-h    @hadwch    S-k    S-l    ;    '          \             kp4  kp5  kp6  kp+
+  grv  S-1    S-2    S-3    S-4    S-5    S-6    S-7    S-8    S-9    S-0    S--    S-=    bspc           nlck kp/  kp*  kp-
+  tab  S-q    S-w    S-e    S-r    S-t    S-y    S-u    S-i    S-o    S-p    S-[    S-]    ret            kp7  kp8  kp9
+  caps S-a    S-s    S-d    S-f    S-g    S-h    @hadwch    S-k    S-l    S-;    '          \             kp4  kp5  kp6  kp+
   lsft 102d z    x    c    v    b    n    spc    ret    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           S-h            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
