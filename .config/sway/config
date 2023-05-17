@@ -162,10 +162,10 @@ exec swayidle -w \
 # right will grow the containers width
 # up will shrink the containers height
 # down will grow the containers height
-             bindsym $left resize shrink width 10px
-                 bindsym $down resize grow height 10px
-                 bindsym $up resize shrink height 10px
-                 bindsym $right resize grow width 10px
+             bindsym a resize shrink width 10px
+                 bindsym e resize grow height 10px
+                 bindsym i resize shrink height 10px
+                 bindsym h resize grow width 10px
 
 # Ditto, with arrow keys
                  bindsym Left resize shrink width 10px
@@ -199,11 +199,13 @@ set $cl_back #231f20
 set $cl_fore #d9d8d8
 set $cl_urge #ee2e24
 
-# Colors                border   bg       text     indi     childborder
-client.focused          $cl_high $cl_high $cl_fore $cl_indi $cl_high
-client.focused_inactive $cl_back $cl_back $cl_fore $cl_back $cl_back
-client.unfocused        $cl_back $cl_back $cl_fore $cl_back $cl_back
-client.urgent           $cl_urge $cl_urge $cl_fore $cl_urge $cl_urge
+#colorclass                 border      background  text      indicator   child_border
+client.focused              "#124E8Ffd" "#124789fd" "#ffffff" "#fede00ff" "#124E8Ffd"
+client.unfocused            "#eeeeee50" "#00000070" "#ffffff" "#000000a0" "#3287db00"
+client.focused_inactive     "#3287db00" "#080808c0" "#ffffff" "#F1CF5500" "#3287db00"
+client.urgent               "#FF4133c0" "#FF4133c0" "#ffffff" "#F1CF55c0" "#52AEFFa0"
+client.placeholder          "#00000000" "#2c2c2c00" "#ffffff" "#00000000" "#0c0c0c00"
+client.background           "#FFFFFF00"
 
 # Reload the bar
 exec_always 'killall -SIGUSR2 waybar'
@@ -212,3 +214,8 @@ input type:touchpad {
     tap enabled
     natural_scroll enabled
 }
+
+set $laptop eDP-1
+# Don't sleep on lid close when external monitor connected
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
