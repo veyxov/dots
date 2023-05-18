@@ -22,7 +22,7 @@ xkb_symbols "rulemak" {
     key <AD02> { [     Cyrillic_es,    Cyrillic_ES,           U0475,           U0474 ] }; // r
     key <AD03> { [     Cyrillic_en,     Cyrillic_EN,           Cyrillic_tse,           Cyrillic_TSE ] }; // fita
     key <AD04> { [     Cyrillic_de,     Cyrillic_DE                                   ] };
-    key <AD05> { [     Cyrillic_ve,     Cyrillic_VE,   Cyrillic_zhe,   Cyrillic_ZHE ] };
+    key <AD05> { [     Cyrillic_sha,     Cyrillic_SHA,   Cyrillic_zhe,   Cyrillic_ZHE ] };
     key <AD06> { [     0x100049b,      0x100049a, rightsinglequotemark, rightdoublequotemark ] };
     key <AD07> { [     Cyrillic_che_descender, Cyrillic_CHE_descender                 ] }; // ҷ Ҷ
     key <AD08> { [     Cyrillic_che_descender,     Cyrillic_CHE_descender,    Cyrillic_zhe,    Cyrillic_ZHE ] };
@@ -47,11 +47,11 @@ xkb_symbols "rulemak" {
     key <LSGT> { [     Cyrillic_hardsign, Cyrillic_HARDSIGN,  apostrophe,        quotedbl ] };
     key <AB01> { [     Cyrillic_ha,     Cyrillic_HA                                   ] };
     key <AB02> { [     Cyrillic_de,     Cyrillic_DE,   Cyrillic_dzhe,   Cyrillic_DZHE ] };
-    key <AB03> { [     Cyrillic_ve,     Cyrillic_VE,     Serbian_dje,     Serbian_DJE ] };
-    key <AB04> { [     Cyrillic_re,     Cyrillic_re                                   ] }; // NON_FUNCTIONAL
+    key <AB03> { [     Cyrillic_re,     Cyrillic_VE,     Serbian_dje,     Serbian_DJE ] };
+    key <AB04> { [     Cyrillic_ve,     Cyrillic_re                                   ] }; // NON_FUNCTIONAL
     key <AB05> { [     Cyrillic_ze,     Cyrillic_ZE,   Macedonia_dse,   Macedonia_DSE ] };
-    key <AB06> { [     0x1000493,       0x1000492,       backslash,             bar ] };
-    key <AB07> { [     0x1000493,       0x1000492,   Macedonia_kje,   Macedonia_KJE ] };
+    key <AB06> { [     Cyrillic_ve,       0x1000492,       backslash,             bar ] };
+    key <AB07> { [     Cyrillic_ve,       0x1000492,   Macedonia_kje,   Macedonia_KJE ] };
     key <AB08> { [     Cyrillic_ka,     Cyrillic_KA                   ] }; // ҳ Ҳ
     key <AB09> { [     Cyrillic_ha_descender,       Cyrillic_HA_descender,            less                  ] };
     key <AB10> { [     period,           colon,         greater                  ] };
