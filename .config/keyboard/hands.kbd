@@ -193,9 +193,26 @@
   lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
+
+;; Chord for 'v'
+(defalias
+    v_chrd_1 (chord v_chrd 1)
+    v_chrd_3 (chord v_chrd 3)
+    v_chrd_4 (chord v_chrd 4)
+)
+
+(defchords v_chrd 50
+    (1  ) 1
+    (3  ) 3
+    (4  ) 4
+    (1 3) q
+    (3 4) v
+)
+
+;; ---------------------------------------
 (deflayer plain
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
+  grv  @v_chrd_1    2    @v_chrd_3    @v_chrd_4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
   tab  q    w    e    (tap-hold-release $tt $th r (layer-toggle plainsft))    t    y    u    i    (tap-hold-release $tt $th o (layer-toggle plainsft))    p    [    ]    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    @hadwch    k    l    ;    '          \             kp4  kp5  kp6  kp+
   lsft 102d z    x    c    v    b    n    spc   (tap-hold-release $tt $th ret ralt)    .    /    rsft      up        kp1  kp2  kp3
