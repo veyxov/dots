@@ -105,7 +105,7 @@
     xchrd (chord cp_chrd x)
 )
 
-(defchords cp_chrd 100
+(defchords cp_chrd 60
     (x    )  x
     ( g   )  g
     (   l )  l
@@ -125,8 +125,8 @@
   lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         /         S-/              '         bspc  nlck kp/  kp*  kp-
   XX        @rchrd         @schrd        @nchrd    @dchrd    w    XX        XX     ,   @A_sft    @E_sup    @I_ctl           @H_alt    ;    kp7  kp8  kp9
             @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  @ruswch     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
-  XX XX      XX             XX            XX        XX        XX   XX    (tap-hold-release 100 150 spc (layer-toggle sym)) (tap-hold-release 100 150 ret (layer-toggle num))    XX  XX        XX        XX                                                             kp1  kp2  kp3
-  (layer-switch hands_fast) XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          (layer-toggle mouse)  XX        XX        XX  XX XX                        kp0       kp.  kprt
+  XX XX      XX             XX            (layer-toggle mouse)        (layer-toggle mouse)        XX   XX    (tap-hold-release 100 150 spc (layer-toggle sym)) (tap-hold-release 100 150 ret (layer-toggle num))    XX  XX        XX        XX                                                             kp1  kp2  kp3
+  (layer-switch hands_fast) XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          XX  XX        XX        XX  XX XX                        kp0       kp.  kprt
 )
 
 (deflayer hands_super
