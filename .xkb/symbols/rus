@@ -17,8 +17,8 @@ xkb_symbols "rulemak" {
     key <AE11> { [     Cyrillic_ze,     Cyrillic_ZE,          question,          emdash ] };
     key <AE12> { [     Cyrillic_yu,            Cyrillic_YU,        multiply,        division ] };
     key <TAB> { [     Cyrillic_ya,            Cyrillic_YA,        multiply,        division ] };
-
     key <AD01> { [     Cyrillic_er,     Cyrillic_ER                                   ] }; // a
+
     key <AD02> { [     Cyrillic_es,    Cyrillic_ES,           U0475,           U0474 ] }; // r
     key <AD03> { [     Cyrillic_en,     Cyrillic_EN,           Cyrillic_tse,           Cyrillic_TSE ] }; // fita
     key <AD04> { [     Cyrillic_de,     Cyrillic_DE                                   ] };
