@@ -14,7 +14,7 @@ xkb_symbols "rulemak" {
     key <AE08> { [     8,        asterisk,           U20BD,           U20B4 ] }; // ruble, hryvnia
     key <AE09> { [     9,       parenleft,     bracketleft,       braceleft ] };
     key <AE10> { [     Cyrillic_u,      Cyrillic_U,    Cyrillic_u_macron,      Cyrillic_U_macron ] };
-    key <AE11> { [     Cyrillic_ze,     Cyrillic_ZE,          endash,          emdash ] };
+    key <AE11> { [     Cyrillic_ze,     Cyrillic_ZE,          question,          emdash ] };
     key <AE12> { [     Cyrillic_yu,            Cyrillic_YU,        multiply,        division ] };
     key <TAB> { [     Cyrillic_ya,            Cyrillic_YA,        multiply,        division ] };
 
@@ -28,7 +28,7 @@ xkb_symbols "rulemak" {
     key <AD08> { [     Cyrillic_che_descender,     Cyrillic_CHE_descender,    Cyrillic_zhe,    Cyrillic_ZHE ] };
     key <AD09> { [     Cyrillic_a,      Cyrillic_A, Byelorussian_shortu, Byelorussian_SHORTU ] };
     key <AD10> { [     Cyrillic_ie, Cyrillic_IE,     Cyrillic_je,     Cyrillic_JE ] };
-    key <AD11> { [     Cyrillic_i,     Cyrillic_I,       semicolon,           colon ] };
+    key <AD11> { [     Cyrillic_i,     Cyrillic_I,       Cyrillic_i_macron,           colon ] };
     key <AD12> { [     Cyrillic_ha_descender,    Cyrillic_HA_descender,   guillemotleft,  doublelowquotemark ] };
     key <BKSL> { [     Cyrillic_ka,     Cyrillic_KA, Cyrillic_ka_descender, Cyrillic_KA_descender                                 ] }; // э Э
     key <CAPS> { [     Cyrillic_ha,     Cyrillic_HA                                 ] };
