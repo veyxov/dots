@@ -1,3 +1,4 @@
+android-file-transfer
 aspnet-runtime
 base
 base-devel
@@ -15,6 +16,7 @@ firefox
 fzf
 git
 git-delta
+gopls
 grim
 intel-media-driver
 intel-ucode
@@ -39,6 +41,7 @@ openssh
 pinentry
 pipewire
 preload
+qbittorrent
 ripgrep
 slurp
 sof-firmware
