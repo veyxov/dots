@@ -1,3 +1,4 @@
+alsa-utils
 android-file-transfer
 aspnet-runtime
 base
@@ -38,8 +39,10 @@ npm
 ntfs-3g
 obsidian
 openssh
+pavucontrol
 pinentry
 pipewire
+pipewire-pulse
 preload
 qbittorrent
 ripgrep
