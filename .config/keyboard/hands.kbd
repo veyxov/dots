@@ -129,6 +129,15 @@
   (layer-switch hands_fast) XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          XX  XX        XX        XX  XX XX                        kp0       kp.  kprt
 )
 
+(deflayer handsup
+  S-esc  f1   f2   S-f3   S-f4   S-f5   S-f6   S-f7   S-f8   S-f9   S-f10  S-f11  S-f12  S-ins S-prnt S-del   pp   mute  prev @kaboom
+  lrld @Q_chrd_j 1    @Q_chrd_f    @Q_chrd_m    S-p    S-v    S-7    S-8    S-grv    S-7    S-/    S-'    S-1           S-nlck S-kp/  S-kp*  S-kp-
+  S-tab  S-r    S-s        S-n    S-d    S-w    S-y    S-u    S-\    S-a    S-e    S-i    S-h    S-;              S-kp7  S-kp8  S-kp9
+  S-x    S-g    S-l    S-c    S-b    S-g    S-h    S-j    S-=    S-u    S-o    S-y         S-k            S-kp4  S-kp5  S-kp6  S-kp+
+  S-lsft 102d S-z    S-x    S-c    S-v    S-b    S-n    S-m    S-ret    S-.    S-/    S-rsft      S-up        S-kp1  S-kp2  S-kp3
+  S-lctl S-lmet S-lalt           S-t            S-ralt S-rmet S-rctl S-left S-down S-rght      S-kp0       S-kp.  S-kprt
+)
+
 (deflayer hands_super
   XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
   lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         M-/         S-'              '         bspc  nlck kp/  kp*  kp-
@@ -146,15 +155,6 @@
             @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  XX     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
   XX XX      XX             XX            XX        XX        XX   XX    (tap-hold-release 100 150 spc (layer-toggle sym)) (tap-hold-release 100 150 ret (layer-toggle num))    XX  XX        XX        XX                                                             kp1  kp2  kp3
   (layer-switch hands) XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          (layer-toggle mouse)  XX        XX        XX  XX XX                        kp0       kp.  kprt
-)
-
-(deflayer handsup
-  S-esc  f1   f2   S-f3   S-f4   S-f5   S-f6   S-f7   S-f8   S-f9   S-f10  S-f11  S-f12  S-ins S-prnt S-del   pp   mute  prev @kaboom
-  lrld @Q_chrd_j 1    @Q_chrd_f    @Q_chrd_m    S-p    S-v    S-7    S-8    S-grv    S-7    S-/    S-'    S-1           S-nlck S-kp/  S-kp*  S-kp-
-  S-tab  S-r    S-s        S-n    S-d    S-w    S-y    S-u    S-\    S-a    S-e    S-i    S-h    S-;              S-kp7  S-kp8  S-kp9
-  S-x    S-g    S-l    S-c    S-b    S-g    S-h    S-j    S-=    S-u    S-o    S-y         S-k            S-kp4  S-kp5  S-kp6  S-kp+
-  S-lsft 102d S-z    S-x    S-c    S-v    S-b    S-n    S-m    S-ret    .    /    S-rsft      S-up        S-kp1  S-kp2  S-kp3
-  S-lctl S-lmet S-lalt           S-t            S-ralt S-rmet S-rctl S-left S-down S-rght      S-kp0       S-kp.  S-kprt
 )
 
 (deflayer mouse
@@ -223,7 +223,7 @@
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
   grv  S-1    S-2    S-3    S-4    S-5    S-6    S-7    S-8    S-9    S-0    S--    S-=    bspc           nlck kp/  kp*  kp-
   tab  S-q    S-w    S-e    S-r    S-t    S-y    S-u    S-i    S-o    S-p    S-[    S-]    ret            kp7  kp8  kp9
-  caps S-a    S-s    S-d    S-f    S-g    S-h    @hadwch    S-k    S-l    S-;    '          \             kp4  kp5  kp6  kp+
+  caps S-a    S-s    S-d    S-f    S-g    S-h    @hadwch    S-k    S-l    S-;    '          S-\             kp4  kp5  kp6  kp+
   lsft 102d z    x    c    v    b    n    spc    ret    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           S-h            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
