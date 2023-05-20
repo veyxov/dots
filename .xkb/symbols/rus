@@ -12,7 +12,7 @@ xkb_symbols "rulemak" {
     key <AE06> { [     6,           colon,           U0306,           U0304 ] }; // Combining breve, macron
     key <AE07> { [     7,        question,       ampersand                  ] };
     key <AE08> { [     8,        asterisk,           U20BD,           U20B4 ] }; // ruble, hryvnia
-    key <AE09> { [     9,       parenleft,     bracketleft,       braceleft ] };
+    key <AE09> { [     period,       parenleft,     bracketleft,       braceleft ] };
     key <AE10> { [     Cyrillic_u,      Cyrillic_U,    Cyrillic_u_macron,      Cyrillic_U_macron ] };
     key <AE11> { [     Cyrillic_ze,     Cyrillic_ZE,          question,          emdash ] };
     key <AE12> { [     Cyrillic_yu,            Cyrillic_YU,        multiply,        division ] };
@@ -25,7 +25,7 @@ xkb_symbols "rulemak" {
     key <AD05> { [     Cyrillic_sha,     Cyrillic_SHA,   Cyrillic_zhe,   Cyrillic_ZHE ] };
     key <AD06> { [     0x100049b,      0x100049a, rightsinglequotemark, rightdoublequotemark ] };
     key <AD07> { [     Cyrillic_che_descender, Cyrillic_CHE_descender                 ] }; // ҷ Ҷ
-    key <AD08> { [     Cyrillic_che_descender,     Cyrillic_CHE_descender,    Cyrillic_zhe,    Cyrillic_ZHE ] };
+    key <AD08> { [     comma,     Cyrillic_CHE_descender,    Cyrillic_zhe,    Cyrillic_ZHE ] };
     key <AD09> { [     Cyrillic_a,      Cyrillic_A, Byelorussian_shortu, Byelorussian_SHORTU ] };
     key <AD10> { [     Cyrillic_ie, Cyrillic_IE,     Cyrillic_je,     Cyrillic_JE ] };
     key <AD11> { [     Cyrillic_i,     Cyrillic_I,       Cyrillic_i_macron,           colon ] };
