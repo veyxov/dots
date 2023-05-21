@@ -15,6 +15,7 @@ autoload -Uz _zinit
 alias ea="clear;exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
 alias nd="z"
 alias n="nvim"
+alias u="exit"
 alias rsnd="clear"
 alias hiea="exit"
 alias ei="lazygit"
