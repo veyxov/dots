@@ -11,7 +11,7 @@
 
 (defvar
   tt 200
-  th 200
+  th 250
 )
 
 (defalias
