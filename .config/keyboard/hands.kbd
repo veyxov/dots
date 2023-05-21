@@ -10,8 +10,8 @@
 )
 
 (defvar
-  tt 200
-  th 250
+  tt 275
+  th 1000
 
   ftt 185
 )
@@ -55,6 +55,7 @@
     (j f) (macro q u)
     (f m) v
 )
+
 (defchords Q_chrd 50
     (S-m  ) S-m
     (S-j  ) S-j
@@ -85,7 +86,7 @@
     dchrd (chord r_chrd d)
 )
 
-(defchords r_chrd 35
+(defchords r_chrd 20
     (r  ) @R_alt
     (  d) @D_sft
     ( s ) @S_ctl
