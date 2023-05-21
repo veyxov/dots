@@ -12,14 +12,16 @@
 (defvar
   tt 200
   th 250
+
+  ftt 185
 )
 
 (defalias
-    D_sft (tap-hold-release 130 130 d (layer-toggle handsup))
+    D_sft (tap-hold-release $ftt $ftt d (layer-toggle handsup))
     R_alt (tap-hold-release $tt $th r lalt)
     S_ctl (tap-hold-release $tt $th s lctl)
     N_sup (tap-hold-release $tt $th n (layer-toggle hands_super))
-    A_sft (tap-hold-release 130 130 a (layer-toggle handsup))
+    A_sft (tap-hold-release $ftt $ftt a (layer-toggle handsup))
     E_sup (tap-hold-release $tt $th e lmet)
     I_ctl (tap-hold-release $tt $th i lctl)
     H_alt (tap-hold-release $tt $th h lalt)
