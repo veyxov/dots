@@ -98,6 +98,26 @@
     (r d) C-bspc
 )
 
+;; Chord for right hand
+(defalias
+    achrd (chord rg_chrd a)
+    echrd (chord rg_chrd e)
+    ichrd (chord rg_chrd i)
+    hchrd (chord rg_chrd h)
+)
+
+(defchords rg_chrd 20
+    (a) @A_sft
+    (e) @E_sup
+    (i) @I_ctl
+    (h) @H_alt
+    (a e) (macro a u)
+    (e i) ret
+    (a h) esc
+    (i h) esc
+    (a i) esc
+)
+
 ;; ---------------------------------------
 
 ;; Copy paste chords
@@ -130,7 +150,7 @@
 (deflayer hands
   XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
   lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         /         S-/              @quote         bspc  nlck kp/  kp*  kp-
-  XX        @rchrd         @schrd        @nchrd    @dchrd    w    XX        XX     ,   @A_sft    @E_sup    @I_ctl           @H_alt    ;    kp7  kp8  kp9
+  XX        @rchrd         @schrd        @nchrd    @dchrd    w    XX        XX     ,   @achrd    @echrd    @ichrd           @hchrd    ;    kp7  kp8  kp9
             @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  @ruswch     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
   XX XX      XX             XX            (layer-toggle mouse)        (layer-toggle mouse)        XX   XX    (tap-hold-release 100 150 spc (layer-toggle sym)) (tap-hold-release 100 150 ret (layer-toggle num))    XX  XX        XX        XX                                                             kp1  kp2  kp3
   (layer-switch hands_fast) XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          XX  XX        XX        XX  XX XX                        kp0       kp.  kprt
@@ -170,7 +190,7 @@
   tab  @R_alt    @S_ctl        @N_sup    lsft    w    y    u    (mwheel-left 50 120)    (movemouse-accel-left 10 300 1 5) (movemouse-accel-down 10 300 1 5) (movemouse-accel-up 10 300 1 5) (movemouse-accel-right 10 300 1 5)    (mwheel-right 50 120)              kp7  kp8  kp9
   x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
   lsft 102d z    x    mrgt    v    b    n    m    spc    .    /    rsft      up        kp1  kp2  kp3
-  lctl lmet lalt           mltp            ralt rmet rctl left down rght      kp0       kp.  kprt
+  lctl lmet lalt           mlft            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
 (deflayer nav
