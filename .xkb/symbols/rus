@@ -9,10 +9,10 @@ xkb_symbols "rulemak" {
     key <AE04> { [     Cyrillic_em,                                 Cyrillic_EM                                     ] }; // м М
     key <AE05> { [     Cyrillic_pe,                                 Cyrillic_PE                                     ] }; // п П
     key <AE09> { [     period,                                      question                                        ] }; // . ?
-    key <AE10> { [     Cyrillic_u,      Cyrillic_U,    Cyrillic_u_macron,      Cyrillic_U_macron ] };
-    key <AE11> { [     Cyrillic_ze,     Cyrillic_ZE,          question,          emdash ] };
-    key <AE12> { [     Cyrillic_yu,            Cyrillic_YU,        multiply,        division ] };
-    key <TAB>  { [     Cyrillic_ya,            Cyrillic_YA,        multiply,        division ] };
+    // key <AE10> { [                                                                                               ] }; // TODO
+    key <AE11> { [     Cyrillic_ze,                                 Cyrillic_ZE                                     ] }; // з З
+    // key <AE12> { [                                                                                               ] }; // TODO
+    key <TAB>  { [     Cyrillic_ya,                                 Cyrillic_YA                                     ] }; // я Я
 
     key <AD01> { [     Cyrillic_er,      Cyrillic_ER                                   ] }; // р Р
     key <AD02> { [     Cyrillic_es,      Cyrillic_ES                                                        ] }; // с С
