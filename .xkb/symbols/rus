@@ -14,10 +14,11 @@ xkb_symbols "rulemak" {
     // key <AE12> { [                                                                                               ] }; // TODO
     key <TAB>  { [     Cyrillic_ya,                                 Cyrillic_YA                                     ] }; // я Я
 
-    key <AD01> { [     Cyrillic_er,      Cyrillic_ER                                   ] }; // р Р
-    key <AD02> { [     Cyrillic_es,      Cyrillic_ES                                                        ] }; // с С
-    key <AD03> { [     Cyrillic_en,      Cyrillic_EN,                   Cyrillic_tse,           Cyrillic_TSE ] }; // fita
-    key <AD04> { [     Cyrillic_de,      Cyrillic_DE                                                         ] }; // д Д
+    key <AD01> { [     Cyrillic_er,                                 Cyrillic_ER                                     ] }; // р Р
+    key <AD02> { [     Cyrillic_es,                                 Cyrillic_ES, Cyrillic_tse,     Cyrillic_TSE     ] }; // с С ц Ц
+    key <AD03> { [     Cyrillic_en,                                 Cyrillic_EN                                     ] }; // н Н
+    key <AD04> { [     Cyrillic_de,                                 Cyrillic_DE                                     ] }; // д Д
+
     key <AD05> { [     Cyrillic_sha,     Cyrillic_SHA,                  Cyrillic_shcha,         Cyrillic_SHCHA ] }; // ш Ш щ Щ
     // key <AD06> { [     0x100049b,      0x100049a, rightsinglequotemark, rightdoublequotemark ] }; // NOTHING
     key <AD07> { [     Cyrillic_che_descender, Cyrillic_CHE_descender                 ] }; // ҷ Ҷ
