@@ -93,9 +93,9 @@
     (n  ) @N_sup
     (r s) home
     (s d) end
-    (s n) C-bspc
+    (s n) esc
     (n d) tab
-    (r d) esc
+    (r d) C-bspc
 )
 
 ;; ---------------------------------------
