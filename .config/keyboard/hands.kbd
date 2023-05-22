@@ -115,6 +115,7 @@
     (e i) ret
     (a h) esc
     (i h) esc
+    (h e) (macro t h e)
     (a i) esc
 )
 
