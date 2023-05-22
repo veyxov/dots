@@ -3,8 +3,8 @@ xkb_symbols "rulemak" {
 
     name[Group1]= "Russian (Rulemak, phonetic Hands Down)";
 
-    key <AE01> { [     Cyrillic_ka_descender,                       Cyrillic_KA_descender        ] }; // қ Қ
-    key <AE02> { [     Cyrillic_softsign,                           Cyrillic_yeru                                   ] };
+    key <AE01> { [     Cyrillic_ka_descender,                       Cyrillic_KA_descender                           ] }; // қ Қ
+    key <AE02> { [     Cyrillic_softsign,                           Cyrillic_yeru, Cyrillic_hardsign                ] }; // ь ы ъ
     key <AE03> { [     Cyrillic_ef,      Cyrillic_EF,      numbersign,   twosuperior ] };
     key <AE04> { [     Cyrillic_em,       Cyrillic_EM,          dollar,        sterling ] };
     key <AE05> { [     Cyrillic_pe,         Cyrillic_PE,        EuroSign,             yen ] };
@@ -16,13 +16,13 @@ xkb_symbols "rulemak" {
     key <AE11> { [     Cyrillic_ze,     Cyrillic_ZE,          question,          emdash ] };
     key <AE12> { [     Cyrillic_yu,            Cyrillic_YU,        multiply,        division ] };
     key <TAB>  { [     Cyrillic_ya,            Cyrillic_YA,        multiply,        division ] };
-    key <AD01> { [     Cyrillic_er,     Cyrillic_ER                                   ] }; // a
 
-    key <AD02> { [     Cyrillic_es,    Cyrillic_ES,           U0475,           U0474 ] }; // r
-    key <AD03> { [     Cyrillic_en,     Cyrillic_EN,           Cyrillic_tse,           Cyrillic_TSE ] }; // fita
-    key <AD04> { [     Cyrillic_de,     Cyrillic_DE                                   ] };
-    key <AD05> { [     Cyrillic_sha,     Cyrillic_SHA,   Cyrillic_shcha,   Cyrillic_SHCHA ] }; // ш Ш щ Щ
-    key <AD06> { [     0x100049b,      0x100049a, rightsinglequotemark, rightdoublequotemark ] };
+    key <AD01> { [     Cyrillic_er,      Cyrillic_ER                                   ] }; // р Р
+    key <AD02> { [     Cyrillic_es,      Cyrillic_ES                                                        ] }; // с С
+    key <AD03> { [     Cyrillic_en,      Cyrillic_EN,                   Cyrillic_tse,           Cyrillic_TSE ] }; // fita
+    key <AD04> { [     Cyrillic_de,      Cyrillic_DE                                                         ] }; // д Д
+    key <AD05> { [     Cyrillic_sha,     Cyrillic_SHA,                  Cyrillic_shcha,         Cyrillic_SHCHA ] }; // ш Ш щ Щ
+    // key <AD06> { [     0x100049b,      0x100049a, rightsinglequotemark, rightdoublequotemark ] }; // NOTHING
     key <AD07> { [     Cyrillic_che_descender, Cyrillic_CHE_descender                 ] }; // ҷ Ҷ
     key <AD08> { [     comma,     Cyrillic_CHE_descender,    Cyrillic_zhe,    Cyrillic_ZHE ] };
     key <AD09> { [     Cyrillic_a,      Cyrillic_A, Byelorussian_shortu, Byelorussian_SHORTU ] };
