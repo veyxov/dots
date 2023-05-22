@@ -13,7 +13,7 @@
   tt 275
   th 1000
 
-  ftt 185
+  ftt 135
 )
 
 (defalias
@@ -123,9 +123,13 @@
 )
 ;; ---------------------------------------
 
+(defalias
+    quote (tap-dance 155 (' S-'))
+)
+
 (deflayer hands
   XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
-  lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         /         S-/              S-'         bspc  nlck kp/  kp*  kp-
+  lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         /         S-/              @quote         bspc  nlck kp/  kp*  kp-
   XX        @rchrd         @schrd        @nchrd    @dchrd    w    XX        XX     ,   @A_sft    @E_sup    @I_ctl           @H_alt    ;    kp7  kp8  kp9
             @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  @ruswch     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
   XX XX      XX             XX            (layer-toggle mouse)        (layer-toggle mouse)        XX   XX    (tap-hold-release 100 150 spc (layer-toggle sym)) (tap-hold-release 100 150 ret (layer-toggle num))    XX  XX        XX        XX                                                             kp1  kp2  kp3
