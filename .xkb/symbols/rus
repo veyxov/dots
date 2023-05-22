@@ -32,7 +32,7 @@ xkb_symbols "rulemak" {
     key <AD12> { [     Cyrillic_ha_descender,    Cyrillic_HA_descender,   guillemotleft,  doublelowquotemark ] };
     key <BKSL> { [     Cyrillic_ka,     Cyrillic_KA, Cyrillic_ka_descender, Cyrillic_KA_descender                                 ] }; // э Э
     key <CAPS> { [     Cyrillic_ha,     Cyrillic_HA                                 ] };
-    key <AC01> { [     Cyrillic_ghe,      Cyrillic_GHE, apostrophe, rightsinglequotemark ] };
+    key <AC01> { [     Cyrillic_ghe,      Cyrillic_GHE, Cyrillic_ghe_bar, Cyrillic_GHE_bar ] };
     key <AC02> { [     Cyrillic_el,     Cyrillic_EL,      registered                  ] };
     key <AC03> { [     Cyrillic_che,     Cyrillic_CHE, Cyrillic_che_descender,     Cyrillic_CHE_descender                                   ] };
     key <AC04> { [     Cyrillic_be,     Cyrillic_BE, question, question                                ] };

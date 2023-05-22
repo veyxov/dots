@@ -190,7 +190,7 @@
   lrld j    0    f    m    p    6    7    8    9    (mwheel-down 50 120)    (mwheel-up 50 120)    =    bspc           nlck kp/  kp*  kp-
   tab  @R_alt    @S_ctl        @N_sup    lsft    w    y    u    (mwheel-left 50 120)    (movemouse-accel-left 10 300 1 5) (movemouse-accel-down 10 300 1 5) (movemouse-accel-up 10 300 1 5) (movemouse-accel-right 10 300 1 5)    (mwheel-right 50 120)              kp7  kp8  kp9
   x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
-  lsft 102d z    x    mrgt    v    b    n    m    spc    .    /    rsft      up        kp1  kp2  kp3
+  lsft 102d z    x    mrgt    v    b    n    mrgt    spc    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           mlft            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
