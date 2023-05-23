@@ -56,29 +56,23 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+Space move scratchpad
 bindsym $mod+Space scratchpad show
 
-         mode "resize" {
-# left will shrink the containers width
-# right will grow the containers width
-# up will shrink the containers height
-# down will grow the containers height
-             bindsym a resize shrink width 10px
-                 bindsym e resize grow height 10px
-                 bindsym i resize shrink height 10px
-                 bindsym h resize grow width 10px
+mode "resize" {
+        bindsym a resize shrink width 10px
+        bindsym e resize grow height 10px
+        bindsym i resize shrink height 10px
+        bindsym h resize grow width 10px
 
-# Ditto, with arrow keys
-                 bindsym Left resize shrink width 10px
-                 bindsym Down resize grow height 10px
-                 bindsym Up resize shrink height 10px
-                 bindsym Right resize grow width 10px
+        bindsym Left resize shrink width 10px
+        bindsym Down resize grow height 10px
+        bindsym Up resize shrink height 10px
+        bindsym Right resize grow width 10px
 
-# Return to default mode
-                 bindsym Return mode "default"
-                 bindsym Escape mode "default"
-         }
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
 bindsym $mod+r mode "resize"
 
-# Sreen brightness controls
 bindsym $mod+s exec 'grim - | wl-copy'
 
 bindsym XF86AudioRaiseVolume  exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
