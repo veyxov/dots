@@ -11,7 +11,7 @@
 
 (defvar
   tt 275
-  th 1000
+  th 300
 
   ftt 135
 )
