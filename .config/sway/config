@@ -11,65 +11,23 @@ exec --no-startup-id mako
 exec 'wl-paste -t text --watch clipman store --max-items 1000 --unix'
 
 set $mod Mod4
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
-# Your preferred terminal emulator
+
 set $term wezterm
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
 set $menu wofi --show drun
 
 bindsym $mod+p exec clipman pick --tool wofi
 
 #
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         timeout 100 'swaylock -f -c 000000' \
+         timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
+bindsym $mod+Return exec $term
 
-### Key bindings
-#
-# Basics:
-#
-# Start a terminal
-         bindsym $mod+Return exec $term
+bindsym $mod+Slash focus next
 
-         bindsym $mod+Slash focus next
-
-# Kill focused window
-         bindsym $mod+q kill
+bindsym $mod+Backspace kill
 
 # Start your launcher
          bindsym $mod+d exec $menu
@@ -188,11 +146,6 @@ bindsym XF86AudioLowerVolume  exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86MonBrightnessUp   exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
-bar  {
-    swaybar_command waybar
-        position bottom
-}
-
 set $cl_high #009ddc
 set $cl_indi #d9d8d8
 set $cl_back #231f20
@@ -207,15 +160,13 @@ client.urgent               "#FF4133c0" "#FF4133c0" "#ffffff" "#F1CF55c0" "#52AE
 client.placeholder          "#00000000" "#2c2c2c00" "#ffffff" "#00000000" "#0c0c0c00"
 client.background           "#FFFFFF00"
 
-# Reload the bar
-exec_always 'killall -SIGUSR2 waybar'
-
 input type:touchpad {
     tap enabled
     natural_scroll enabled
 }
 
 set $laptop eDP-1
+set $external HDMI-1
 # Don't sleep on lid close when external monitor connected
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
