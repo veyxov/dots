@@ -1,6 +1,7 @@
 alsa-utils
 android-file-transfer
 aspnet-runtime
+aspnet-runtime-6.0
 base
 base-devel
 btop
@@ -10,6 +11,7 @@ dbus-broker
 docker
 docker-compose
 dotnet-sdk
+dotnet-sdk-5.0-bin
 dotnet-sdk-6.0
 efibootmgr
 exa
