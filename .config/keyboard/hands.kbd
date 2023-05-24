@@ -168,7 +168,7 @@
 
 (deflayer hands_super
   XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
-  lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         M-/         S-'              '         bspc  nlck kp/  kp*  kp-
+  lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         M-/         S-'              '         M-bspc  nlck kp/  kp*  kp-
   XX        @rchrd         @schrd        @nchrd    (tap-hold-release 100 150 M-d lsft)    w    XX        XX     ,   M-a    M-e    M-i           M-h    ;    kp7  kp8  kp9
             @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  XX     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
   XX XX      XX             XX            XX        XX        XX   XX    M-spc M-ret    XX  XX        XX        XX                                                             kp1  kp2  kp3
