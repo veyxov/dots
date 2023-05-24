@@ -10,8 +10,10 @@
 )
 
 (defvar
-  tt 275
+  tt 200
   th 300
+
+  ch_th 50
 
   ftt 135
 )
@@ -48,7 +50,7 @@
     Q_chrd_m (chord Q_chrd S-m)
 )
 
-(defchords q_chrd 50
+(defchords q_chrd $ch_th
     (m  ) m
     (j  ) j
     (  f) f
@@ -71,7 +73,7 @@
     z_chrd_k (chord z_chrd k)
     z_chrd_y (chord z_chrd y)
 )
-(defchords z_chrd 50
+(defchords z_chrd $ch_th
     (k  ) k
     (  y) y
     (k y) z
@@ -86,7 +88,7 @@
     dchrd (chord r_chrd d)
 )
 
-(defchords r_chrd 20
+(defchords r_chrd $ch_th
     (r  ) @R_alt
     (  d) @D_sft
     ( s ) @S_ctl
@@ -106,7 +108,7 @@
     hchrd (chord rg_chrd h)
 )
 
-(defchords rg_chrd 20
+(defchords rg_chrd $ch_th
     (a) @A_sft
     (e) @E_sup
     (i) @I_ctl
@@ -129,7 +131,7 @@
     xchrd (chord cp_chrd x)
 )
 
-(defchords cp_chrd 60
+(defchords cp_chrd $ch_th
     (x    )  x
     ( g   )  g
     (   l )  l
@@ -229,7 +231,7 @@
     v_chrd_4 (chord v_chrd 4)
 )
 
-(defchords v_chrd 50
+(defchords v_chrd $ch_th
     (1  ) 1
     (3  ) 3
     (4  ) 4
