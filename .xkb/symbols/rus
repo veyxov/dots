@@ -21,11 +21,11 @@ xkb_symbols "rulemak" {
 
     key <AD05> { [     Cyrillic_sha,                                Cyrillic_SHA, Cyrillic_shcha,  Cyrillic_SHCHA   ] }; // ш Ш щ Щ
     //key <AD06> { [                                                                                                ] }; // TODO
-    key <AD07> { [     Cyrillic_che_descender, Cyrillic_CHE_descender                 ] }; // ҷ Ҷ
-    key <AD08> { [     comma,     Cyrillic_CHE_descender,    Cyrillic_zhe,    Cyrillic_ZHE ] };
-    key <AD09> { [     Cyrillic_a,      Cyrillic_A, Byelorussian_shortu, Byelorussian_SHORTU ] };
-    key <AD10> { [     Cyrillic_ie, Cyrillic_IE,     Cyrillic_je,     Cyrillic_JE ] };
-    key <AD11> { [     Cyrillic_i,     Cyrillic_I,       Cyrillic_i_macron,           colon ] };
+    key <AD07> { [     Cyrillic_che_descender,                      Cyrillic_CHE_descender                          ] }; // ҷ Ҷ
+    key <AD08> { [     comma,                                       Cyrillic_CHE_descender,  Cyrillic_zhe,   Cyrillic_ZHE ] };
+    key <AD09> { [     Cyrillic_a,                                  Cyrillic_A                                      ] };
+    key <AD10> { [     Cyrillic_ie,                                 Cyrillic_IE,    Cyrillic_io,     Cyrillic_IO    ] };
+    key <AD11> { [     Cyrillic_i,                                  Cyrillic_I,       Cyrillic_i_macron,           colon ] };
     key <AD12> { [     Cyrillic_ha_descender,    Cyrillic_HA_descender,   guillemotleft,  doublelowquotemark ] };
     key <BKSL> { [     Cyrillic_ka,     Cyrillic_KA, Cyrillic_ka_descender, Cyrillic_KA_descender                                 ] }; // э Э
     key <CAPS> { [     Cyrillic_ha,     Cyrillic_HA                                 ] };
