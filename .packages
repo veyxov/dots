@@ -13,6 +13,7 @@ docker-compose
 dotnet-sdk
 dotnet-sdk-5.0-bin
 dotnet-sdk-6.0
+drawio
 efibootmgr
 exa
 firefox
@@ -61,6 +62,7 @@ telegram-desktop
 ttf-firacode-nerd
 ttf-sourcecodepro-nerd
 ttf-victor-mono
+unrar
 unzip
 wayland-protocols
 wdisplays
