@@ -40,6 +40,7 @@ neovim
 networkmanager
 npm
 ntfs-3g
+numen
 obsidian
 openssh
 pavucontrol
@@ -47,6 +48,7 @@ pinentry
 pipewire
 pipewire-pulse
 preload
+python-pip
 qbittorrent
 ripgrep
 slurp
@@ -64,9 +66,11 @@ ttf-sourcecodepro-nerd
 ttf-victor-mono
 unrar
 unzip
+vosk-api
 wayland-protocols
 wdisplays
 wezterm
+wget
 wlroots
 wofi
 xdg-utils
