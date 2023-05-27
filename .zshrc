@@ -10,6 +10,10 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+# Edit buffer in vim mode
+export VISUAL=nvim
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 
 # Aliases
 alias ea="clear;exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
