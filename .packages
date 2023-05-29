@@ -6,6 +6,7 @@ base-devel
 btop
 clipman
 cmake
+cmatrix
 dbus-broker
 docker
 docker-compose
@@ -28,6 +29,7 @@ iwd
 jq
 lazygit
 libreoffice-still
+libwebp
 light
 linux
 linux-firmware
