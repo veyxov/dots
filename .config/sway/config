@@ -60,7 +60,8 @@ bindsym $mod+Shift+t move container to workspace number 5
 
 gaps inner 10
 smart_gaps on
-default_border pixel 2
+default_border none
+default_floating_border pixel 1
 
 bindsym $mod+f fullscreen
 
