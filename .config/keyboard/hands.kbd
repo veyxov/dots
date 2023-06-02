@@ -246,7 +246,7 @@
   tab  q    w    e    (tap-hold-release $tt $th r (layer-toggle plainsft))    t    y    u    i    (tap-hold-release $tt $th o (layer-toggle plainsft))    p    [    ]    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    @hadwch    k    l    ;    '          \             kp4  kp5  kp6  kp+
   lsft 102d z    x    c    v    b    n    (tap-hold-release 100 130 spc ralt)   (tap-hold-release $tt $th ret ralt)    .    /    rsft      up        kp1  kp2  kp3
-  lctl lmet lalt           h            ralt rmet rctl left down rght      kp0       kp.  kprt
+  lctl lmet lalt           (tap-hold-release 100 150 h (layer-toggle nav))            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
 (deflayer plainsft
