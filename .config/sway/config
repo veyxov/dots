@@ -20,6 +20,7 @@ exec telegram-desktop
 exec firefox
 exec --no-startup-id mako
 exec 'wl-paste -t text --watch clipman store --max-items 1000 --unix'
+exec autotiling-rs
 
 set $mod Mod4
 
