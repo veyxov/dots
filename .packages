@@ -29,6 +29,7 @@ intel-ucode
 irqbalance
 iwd
 jq
+kdenlive
 lazygit
 libreoffice-still
 libwebp
@@ -53,6 +54,7 @@ pipewire
 pipewire-pulse
 preload
 python-pip
+python-xlib
 qbittorrent
 ripgrep
 slurp
@@ -80,6 +82,7 @@ wofi
 xdg-utils
 yadm
 yay
+ydotool
 zip
 zoxide
 zsh
