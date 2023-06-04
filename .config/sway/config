@@ -39,6 +39,7 @@ exec swayidle -w \
 bindsym $mod+Return exec $term
 
 bindsym $mod+Slash focus next
+bindsym $mod+Question focus prev
 
 bindsym $mod+Backspace kill
 
