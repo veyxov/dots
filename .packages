@@ -6,6 +6,7 @@ aspnet-runtime-6.0
 autotiling-rs
 base
 base-devel
+breeze
 btop
 clipman
 cmake
