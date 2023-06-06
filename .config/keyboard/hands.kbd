@@ -149,6 +149,12 @@
     quote (tap-dance 155 (' S-'))
 )
 
+;; Mouse aliases
+(defalias
+    mwdwn (mwheel-down 50 120)
+    mwup  (mwheel-up 50 120)
+)
+
 (deflayer hands
   XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
   lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         /         S-/              @quote         bspc  nlck kp/  kp*  kp-
@@ -188,7 +194,7 @@
 
 (deflayer mouse
   @kaboom   XX   XX   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev XX
-  lrld j    0    f    m    p    6    7    8    9    (mwheel-down 50 120)    (mwheel-up 50 120)    =    bspc           nlck kp/  kp*  kp-
+  lrld j    0    f    m    p    6    7    8    9     @mwdwn   @mwup    =    bspc           nlck kp/  kp*  kp-
   tab  @R_alt    @S_ctl        @N_sup    lsft    w    y    u    (mwheel-left 50 120)    (movemouse-accel-left 10 300 1 5) (movemouse-accel-down 10 300 1 5) (movemouse-accel-up 10 300 1 5) (movemouse-accel-right 10 300 1 5)    (mwheel-right 50 120)              kp7  kp8  kp9
   x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
   lsft 102d z    x    mrgt    v    b    n    mrgt    spc    .    /    rsft      up        kp1  kp2  kp3
@@ -197,7 +203,7 @@
 
 (deflayer nav
   @kaboom   XX   XX   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev XX
-  lrld j    0    f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
+  lrld j    0    f    m    p    6    7    8    9    @mwdwn    @mwup    =    bspc           nlck kp/  kp*  kp-
   tab  @R_alt    @S_ctl        @N_sup    lsft    w    y    u    -    lft down up rght    k              kp7  kp8  kp9
   x    g    l    c    b    g    h    j    k    u    pgdn    pgup         ret            kp4  kp5  kp6  kp+
   lsft 102d z    x    c    v    b    n    m    spc    .    /    rsft      up        kp1  kp2  kp3
