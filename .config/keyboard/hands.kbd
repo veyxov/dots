@@ -162,9 +162,9 @@
   XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
   lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         /         S-/              @quote         bspc  nlck kp/  kp*  kp-
   f5        @rchrd         @schrd        @nchrd    @dchrd    w    XX        XX     ,   @achrd    @echrd    @ichrd           @hchrd    ;    kp7  kp8  kp9
-            @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  @ruswch     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
+            @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  XX     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
   XX XX      XX             XX            (layer-toggle mouse)        (layer-toggle mouse)        XX   (layer-toggle mouse)    (tap-hold-release 100 150 spc (layer-toggle sym)) (tap-hold-release 100 150 ret (layer-toggle num))    XX  XX        XX        XX                                                             kp1  kp2  kp3
-  (layer-switch hands_fast) XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          XX  XX        XX        XX  (layer-switch qwerty) XX                        kp0       kp.  kprt
+  (layer-switch hands_fast) XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          XX  XX        @ruswch        XX  (layer-switch qwerty) XX                        kp0       kp.  kprt
 )
 
 (deflayer handsup
@@ -252,9 +252,9 @@
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
   grv  @v_chrd_1    2    @v_chrd_3    @v_chrd_4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
   tab  q    w    e    (tap-hold-release $tt_fast $th_fast r (layer-toggle plainsft))    t    y    u    i    (tap-hold-release $tt_fast $th_fast o (layer-toggle plainsft))    p    [    ]    ret            kp7  kp8  kp9
-  caps a    s    d    f    g    h    @hadwch    k    l    ;    '          \             kp4  kp5  kp6  kp+
+  caps a    s    d    f    g    h    XX    k    l    ;    '          \             kp4  kp5  kp6  kp+
   lsft 102d z    x    c    v    b    n    (tap-hold-release 100 130 spc ralt)   (tap-hold-release $tt_fast $th_fast ret ralt)    .    /    rsft      up        kp1  kp2  kp3
-  lctl lmet lalt           (tap-hold-release 100 150 h (layer-toggle nav))            ralt rmet rctl left down rght      kp0       kp.  kprt
+  lctl lmet lalt           (tap-hold-release 100 150 h (layer-toggle nav))            ralt rmet @hadwch left down rght      kp0       kp.  kprt
 )
 
 (deflayer plainsft
