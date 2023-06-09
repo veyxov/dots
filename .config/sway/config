@@ -87,6 +87,28 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+## Swap Mode:
+## Swaps focused window with window in direction in order to move it
+# around a layout without altering the layout.
+#
+# Swap Mode:
+#
+# Swaps focused window with window in direction in order to move it
+# around a layout without altering the layout.
+mode "swap" {
+        bindsym a mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap"
+        bindsym e mark --add "_swap", focus down, swap container with mark "_swap", focus down, unmark "_swap"
+        bindsym i mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap"
+        bindsym h mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap"
+
+# Return to default mode
+        bindsym q mode "default"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+w mode "swap"
+
 bindsym $mod+s exec 'grim - | wl-copy'
 bindsym $mod+Shift+s exec 'grim -g "$(slurp -d)" - | wl-copy'
 
