@@ -56,7 +56,7 @@ end)
 
 
 return {
-    color_scheme = 'Poimandres',
+    color_scheme = 'nord',
     inactive_pane_hsb = {
         saturation = 0,
         brightness = 0.25,
