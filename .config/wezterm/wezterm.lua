@@ -81,7 +81,7 @@ return {
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
-    font = wezterm.font("Source code pro"),
+    font = wezterm.font("Delugia"),
     leader = { key = 'F1', mods = 'CTRL', timeout_milliseconds = 1000 },
     default_prog = { '/usr/bin/zsh' },
     font_size = 20,
