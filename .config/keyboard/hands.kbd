@@ -174,7 +174,7 @@
   f5    @rchrd        @schrd    @nchrd    @dchrd    w         XX        XX        ,         @achrd    @echrd    @ichrd    @hchrd    ;          kp7       kp8       kp9
   @xchrd    @gchrd    @lchrd    @cchrd    b         XX   XX   XX        -         u         o         @z_chrd_y @z_chrd_k  kp4       kp5       kp6       kp+
   XX    XX         XX                 XX          XX        @mslr              XX   XX   @spc_symlr @ret_numlr XX   XX         XX        XX                                                                  kp1       kp2       kp3
-  XX    XX         XX                 @t_navlr              XX   XX         XX        @ruswch             XX   XX                  kp0        kp.       kprt
+  XX    XX         XX                 @t_navlr              XX   XX              @ruswch XX            XX   XX                  kp0        kp.       kprt
 )
 
 (deflayer handsup
