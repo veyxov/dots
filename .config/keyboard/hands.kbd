@@ -205,7 +205,7 @@
     mmlft (movemouse-accel-left 10 300 1 5)
     mmdwn (movemouse-accel-down 10 300 1 5)
     mmup  (movemouse-accel-up   10 300 1 5)
-    mmrgt (movemouse-accel-down 10 300 1 5)
+    mmrgt (movemouse-accel-right 10 300 1 5)
 )
 
 (deflayer mouse
