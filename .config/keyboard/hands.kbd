@@ -16,16 +16,32 @@
   th_fast 150
 
   ch_th 20
+  ch_slw 100
 
   ftt 135
 )
 
+;; Layers
 (defalias
-    D_sft (tap-hold-release $ftt $ftt d (layer-toggle handsup))
+    uplr (layer-toggle handsup)
+    suplr (layer-toggle hands_super)
+    mslr (layer-toggle mouse)
+    symlr (layer-toggle sym)
+    numlr (layer-toggle num)
+    navlr (layer-toggle nav)
+
+    spc_symlr (tap-hold-release $tt_fast $th_fast spc @symlr)
+    ret_numlr (tap-hold-release $tt_fast $th_fast ret @numlr)
+    t_navlr   (tap-hold-release $tt_fast $th_fast t @navlr)
+)
+
+(defalias
+    D_sft (tap-hold-release $ftt $ftt d @uplr)
     R_alt (tap-hold-release $tt $th r lalt)
     S_ctl (tap-hold-release $tt $th s lctl)
-    N_sup (tap-hold-release $tt $th n (layer-toggle hands_super))
-    A_sft (tap-hold-release $ftt $ftt a (layer-toggle handsup))
+    N_sup (tap-hold-release $tt $th n @suplr)
+
+    A_sft (tap-hold-release $ftt $ftt a @uplr)
     E_sup (tap-hold-release $tt $th e lmet)
     I_ctl (tap-hold-release $tt $th i lctl)
     H_alt (tap-hold-release $tt $th h lalt)
@@ -75,7 +91,7 @@
     z_chrd_k (chord z_chrd k)
     z_chrd_y (chord z_chrd y)
 )
-(defchords z_chrd $ch_th
+(defchords z_chrd $ch_slw
     (k  ) k
     (  y) y
     (k y) z
@@ -152,19 +168,13 @@
     quote (tap-dance 155 (' S-'))
 )
 
-;; Mouse aliases
-(defalias
-    mwdwn (mwheel-down 50 120)
-    mwup  (mwheel-up 50 120)
-)
-
 (deflayer hands
-  XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
-  lrld       @q_chrd_j 1    @q_chrd_f    @q_chrd_m p         XX    XX               grv .         /         S-/              @quote         bspc  nlck kp/  kp*  kp-
-  f5        @rchrd         @schrd        @nchrd    @dchrd    w    XX        XX     ,   @achrd    @echrd    @ichrd           @hchrd    ;    kp7  kp8  kp9
-            @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  XX     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
-  XX XX      XX             XX            (layer-toggle mouse)        (layer-toggle mouse)        XX   (layer-toggle mouse)    (tap-hold-release 100 150 spc (layer-toggle sym)) (tap-hold-release 100 150 ret (layer-toggle num))    XX  XX        XX        XX                                                             kp1  kp2  kp3
-  (layer-switch hands_fast) XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          XX  XX        @ruswch        XX  (layer-switch qwerty) XX                        kp0       kp.  kprt
+  XX    f1        f2        f3        f4        f5        f6        f7        f8        f9        f10       f11       f12       ins       prnt      del       pp        mute      prev      @kaboom
+  lrld  @q_chrd_j 1   @q_chrd_f @q_chrd_m p                   XX        XX                  grv       .         /         S-/       @quote    bspc      nlck      kp/       kp*       kp-
+  f5    @rchrd        @schrd    @nchrd    @dchrd    w         XX        XX        ,         @achrd    @echrd    @ichrd    @hchrd    ;          kp7       kp8       kp9
+  @xchrd    @gchrd    @lchrd    @cchrd    b         XX   XX   XX        -         u         o         @z_chrd_y @z_chrd_k  kp4       kp5       kp6       kp+
+  XX    XX         XX                 XX                  @mslr              XX   XX   @spc_symlr @ret_numlr XX   XX         XX        XX                                                                  kp1       kp2       kp3
+  XX    XX         XX                 @t_navlr              XX   XX         XX        @ruswch             XX   XX                  kp0        kp.       kprt
 )
 
 (deflayer handsup
@@ -182,23 +192,20 @@
   XX        @rchrd         @schrd        @nchrd    (tap-hold-release 100 150 M-d lsft)    w    XX        XX     ,   M-a    M-e    M-i           M-h    ;    kp7  kp8  kp9
             @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  XX     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
   XX XX      XX             XX            XX        XX        XX   XX    M-spc M-ret    XX  XX        XX        XX                                                             kp1  kp2  kp3
-  (layer-switch hands_fast) XX      XX            M-t          (layer-toggle mouse)  XX        XX        XX  XX XX                        kp0       kp.  kprt
+  XX XX      XX            M-t          @mslr  XX        XX        XX  XX XX                        kp0       kp.  kprt
 )
 
-
-(deflayer hands_fast
-  XX    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev @kaboom
-  lrld       @q_chrd_j 1    @q_chrd_f     @q_chrd_m         p         v    XX               grv .         /         S-'              '         bspc  nlck kp/  kp*  kp-
-  XX        r         s       n    d    w    XX        XX     ,   a    e    i           h    ;    kp7  kp8  kp9
-            @xchrd         @gchrd        @lchrd    @cchrd     b    XX    XX  XX     -   u         o         @z_chrd_y        @z_chrd_k       kp4  kp5  kp6  kp+
-  XX XX      XX             XX            XX        XX        XX   XX    (tap-hold-release 100 150 spc (layer-toggle sym)) (tap-hold-release 100 150 ret (layer-toggle num))    XX  XX        XX        XX                                                             kp1  kp2  kp3
-  (layer-switch hands) XX      XX            (tap-hold-release 100 150 t (layer-toggle nav))          (layer-toggle mouse)  XX        XX        XX  XX XX                        kp0       kp.  kprt
+;; Mouse aliases
+(defalias
+    mwdwn (mwheel-down 50 120)
+    mwup  (mwheel-up 50 120)
+    mwlft (mwheel-left 50 120)
 )
 
 (deflayer mouse
   @kaboom   XX   XX   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev XX
   lrld j    0    f    m    p    6    7    8    9     @mwdwn   @mwup    =    bspc           nlck kp/  kp*  kp-
-  tab  @R_alt    @S_ctl        @N_sup    lsft    w    y    u    (mwheel-left 50 120)    (movemouse-accel-left 10 300 1 5) (movemouse-accel-down 10 300 1 5) (movemouse-accel-up 10 300 1 5) (movemouse-accel-right 10 300 1 5)    (mwheel-right 50 120)              kp7  kp8  kp9
+  tab  @R_alt    @S_ctl        @N_sup    lsft    w    y    u    @mwlft    (movemouse-accel-left 10 300 1 5) (movemouse-accel-down 10 300 1 5) (movemouse-accel-up 10 300 1 5) (movemouse-accel-right 10 300 1 5)    (mwheel-right 50 120)              kp7  kp8  kp9
   x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
   lsft 102d z    x    mrgt    v    b    n    mrgt    spc    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           mlft            ralt rmet rctl left down rght      kp0       kp.  kprt
@@ -269,13 +276,3 @@
   lsft 102d z    x    c    v    b    n    spc    ret    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           S-h            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
-
-(deflayer qwerty
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret            kp7  kp8  kp9
-  caps a    s    d    f    g    h    j    k    l    ;    '          \             kp4  kp5  kp6  kp+
-  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft      (layer-switch hands)        kp1  kp2  kp3
-  lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
-)
-
