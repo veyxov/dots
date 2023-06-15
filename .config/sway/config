@@ -42,6 +42,8 @@ bindsym $mod+l exec swaylock $swaylock_options
 bindsym $mod+Return exec $term
 
 bindsym $mod+Slash focus next
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
 
 bindsym $mod+Backspace kill
 
