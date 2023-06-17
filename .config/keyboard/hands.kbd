@@ -73,7 +73,7 @@
     (j  ) j
     (  f) f
     (j f) (macro q u)
-    (f m) v
+    (f m) (macro f l) ;; f + m = f + l, removes scissoring
 )
 
 (defchords Q_chrd 50
@@ -170,7 +170,7 @@
 
 (deflayer hands
   XX    f1        f2        f3        f4        f5        f6        f7        f8        f9        f10       f11       f12       ins       prnt      del       pp        mute      prev      @kaboom
-  lrld  @q_chrd_j 1   @q_chrd_f @q_chrd_m p                   XX        XX                  grv       .         /         S-/       @quote    bspc      nlck      kp/       kp*       kp-
+  lrld  @q_chrd_j 1   @q_chrd_f @q_chrd_m p                   v        XX                  grv       .         /         S-/       @quote    bspc      nlck      kp/       kp*       kp-
   f5    @rchrd        @schrd    @nchrd    @dchrd    w         XX        XX        ,         @achrd    @echrd    @ichrd    @hchrd    ;          kp7       kp8       kp9
   @xchrd    @gchrd    @lchrd    @cchrd    b         XX   XX   XX        -         u         o         @z_chrd_y @z_chrd_k  kp4       kp5       kp6       kp+
   XX    XX         XX                 XX          XX        @mslr              XX   XX   @spc_symlr @ret_numlr XX   XX         XX        XX                                                                  kp1       kp2       kp3
