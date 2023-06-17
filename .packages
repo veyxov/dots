@@ -61,9 +61,12 @@ pipewire-pulse
 preload
 python-pip
 qbittorrent
+rider
 ripgrep
+rust
 slurp
 sof-firmware
+stylua
 sudo
 svelte-language-server
 sway
