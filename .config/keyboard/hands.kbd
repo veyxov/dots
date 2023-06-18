@@ -69,7 +69,7 @@
     Q_chrd_m (chord Q_chrd S-m)
 )
 
-(defchords q_chrd $ch_th
+(defchords q_chrd $ch_slw
     (m  ) m
     (j  ) j
     (  f) f
