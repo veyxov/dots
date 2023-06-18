@@ -25,7 +25,7 @@
 (defalias
     uplr (layer-toggle handsup)
     suplr (layer-toggle hands_super)
-    mslr (tap-hold-release $tt_fast $th_fast (one-shot-press-pcancel 50 (layer-toggle handsup)) (layer-toggle mouse))
+    mslr (tap-hold-release $tt_fast $th_fast (one-shot-press-pcancel 250 (layer-toggle handsup)) (layer-toggle mouse))
     symlr (layer-toggle sym)
     numlr (layer-toggle num)
     navlr (layer-toggle nav)
@@ -36,12 +36,12 @@
 )
 
 (defalias
-    D_sft (tap-hold-release $ftt $ftt d @uplr)
+    D_sft d
     R_alt (tap-hold-release $tt $th r lalt)
     S_ctl (tap-hold-release $tt $th s lctl)
     N_sup (tap-hold-release $tt $th n @suplr)
 
-    A_sft (tap-hold-release $ftt $ftt a @uplr)
+    A_sft a
     E_sup (tap-hold-release $tt $th e lmet)
     I_ctl (tap-hold-release $tt $th i lctl)
     H_alt (tap-hold-release $tt $th h lalt)
@@ -176,7 +176,7 @@
   lrld  @q_chrd_j 1   @q_chrd_f @q_chrd_m @q_chrd_p                   v        XX                  grv       .         /         S-/       @quote    bspc      nlck      kp/       kp*       kp-
   f5    @rchrd        @schrd    @nchrd    @dchrd    w         XX        XX        ,         @achrd    @echrd    @ichrd    @hchrd    ;          kp7       kp8       kp9
   @xchrd    @gchrd    @lchrd    @cchrd    b         XX   XX   XX        -         u         o         @z_chrd_y @z_chrd_k  kp4       kp5       kp6       kp+
-  XX    XX         XX                 XX          XX        @mslr              XX   XX   @spc_symlr @ret_numlr XX   XX         XX        XX                                                                  kp1       kp2       kp3
+  XX    XX         XX                 XX          @mslr        @mslr              XX   XX   @spc_symlr @ret_numlr XX   XX         XX        XX                                                                  kp1       kp2       kp3
   XX    XX         XX                 @t_navlr              XX   XX              @ruswch XX            XX   XX                  kp0        kp.       kprt
 )
 
