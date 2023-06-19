@@ -36,12 +36,12 @@
 )
 
 (defalias
-    D_sft d
+    D_sft (tap-hold-release $ftt $th d @uplr)
     R_alt (tap-hold-release $tt $th r lalt)
     S_ctl (tap-hold-release $tt $th s lctl)
     N_sup (tap-hold-release $tt $th n @suplr)
 
-    A_sft a
+    A_sft (tap-hold-release $ftt $th a @uplr)
     E_sup (tap-hold-release $tt $th e lmet)
     I_ctl (tap-hold-release $tt $th i lctl)
     H_alt (tap-hold-release $tt $th h lalt)
