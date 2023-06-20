@@ -23,15 +23,16 @@
 
 ;; Layers
 (defalias
+    onesft (one-shot-press-pcancel 250 (layer-toggle handsup))
     uplr (layer-toggle handsup)
     suplr (layer-toggle hands_super)
-    mslr (tap-hold-release $tt_fast $th_fast (one-shot-press-pcancel 250 (layer-toggle handsup)) (layer-toggle mouse))
+    mslr (tap-hold-release $tt_fast $th_fast @onesft (layer-toggle mouse))
     symlr (layer-toggle sym)
     numlr (layer-toggle num)
     navlr (layer-toggle nav)
 
     spc_symlr (tap-hold-release $tt_fast $th_fast spc @symlr)
-    ret_numlr (tap-hold-release $tt_fast $th_fast ret @numlr)
+    ret_numlr (tap-hold-release $tt_fast $th_fast @onesft @numlr)
     t_navlr   (tap-hold-release $tt_fast $th_fast t @navlr)
 )
 
