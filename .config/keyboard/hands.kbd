@@ -136,7 +136,7 @@
     (e) @E_sup
     (i) @I_ctl
     (h) @H_alt
-    (a e) (macro a u)
+    (a e) ret
     (e i) ret
     (a h) esc
     (i h) esc
@@ -179,8 +179,18 @@
   f5    @rchrd        @schrd    @nchrd    @dchrd    w         XX        XX        ,         @achrd    @echrd    @ichrd    @hchrd    ;          kp7       kp8       kp9
   @xchrd    @gchrd    @lchrd    @cchrd    b         XX   XX   XX        -         u         o         @z_chrd_y @z_chrd_k  kp4       kp5       kp6       kp+
   XX    XX         XX                 XX          @mslr        @mslr              XX   XX   @spc_symlr @ret_numlr XX   XX         XX        XX                                                                  kp1       kp2       kp3
-  XX    XX         XX                 @t_navlr              XX   XX              @ruswch XX            XX   XX                  kp0        kp.       kprt
+  (layer-switch hands_fast)    XX         XX                 @t_navlr              XX   XX              @ruswch XX            XX   XX                  kp0        kp.       kprt
 )
+
+(deflayer hands_fast
+  XX    f1        f2        f3        f4        f5        f6        f7        f8        f9        f10       f11       f12       ins       prnt      del       pp        mute      prev      @kaboom
+  lrld  @q_chrd_j 1   @q_chrd_f @q_chrd_m @q_chrd_p                   v        XX                  grv       .         /         S-/       @quote    bspc      nlck      kp/       kp*       kp-
+  f5    r        s    n    d    w         XX        XX        ,         a    e    i    h    ;          kp7       kp8       kp9
+  @xchrd    @gchrd    @lchrd    @cchrd    b         XX   XX   XX        -         u         o         @z_chrd_y @z_chrd_k  kp4       kp5       kp6       kp+
+  XX    XX         XX                 XX          @mslr        @mslr              XX   XX   spc @ret_numlr XX   XX         XX        XX                                                                  kp1       kp2       kp3
+  (layer-switch hands)    XX         XX                 t              XX   XX              @ruswch XX            XX   XX                  kp0        kp.       kprt
+)
+
 
 (deflayer handsup
   S-esc  f1   f2   S-f3   S-f4   S-f5   S-f6   S-f7   S-f8   S-f9   S-f10  S-f11  S-f12  S-ins S-prnt S-del   pp   mute  prev @kaboom
