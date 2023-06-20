@@ -16,6 +16,7 @@
   th_fast 150
 
   ch_th 20
+  ch_mid 55
   ch_slw 100
 
   ftt 135
@@ -130,7 +131,7 @@
     hchrd (chord rg_chrd h)
 )
 
-(defchords rg_chrd $ch_th
+(defchords rg_chrd $ch_mid
     (a) @A_sft
     (e) @E_sup
     (i) @I_ctl
@@ -260,7 +261,7 @@
     v_chrd_4 (chord v_chrd 4)
 )
 
-(defchords v_chrd $ch_th
+(defchords v_chrd $ch_mid
     (1  ) 1
     (3  ) 3
     (4  ) 4
