@@ -36,21 +36,34 @@
   (  n d ) (one-shot 1000 lalt) ;; s+r=control
 )
 
+;; tmp
 (defseq "git status" (r s n))
 (deffakekeys
   "git status" (macro g i t spc s t a t u s)
 )
 
 (defalias
-  FLfrk (fork m l (f))
+  ;; 'm' on press, 'l' when rolled with 'f' (for 'fl' biagram)
+  m (fork m l (f p))
 )
 
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld  XX    XX    f    @FLfrk    XX    XX    XX    XX    XX    XX    XX    XX    XX           XX XX  XX  XX
+  lrld  j    XX    f    @m    p    XX    XX    XX    XX    XX    XX    XX    XX           XX XX  XX  XX
 
   sldr  @r    @s    @n    @d    w    XX    XX    ,    a    e    i    h    ;            XX  XX  XX
-  XX XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX          XX             XX  XX  XX  XX
-  XX XX XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX      XX        XX  XX  XX
+  x g    l    c    b    XX    XX    XX    XX    u    o    y          k             XX  XX  XX  XX
+  XX (layer-switch qwerty) XX    XX    XX    XX    XX    XX    spc  XX XX  XX XX     XX                XX  XX  XX
   XX XX XX           XX            XX  XX XX XX XX      XX       XX XX  XX
 )
+
+;; tmp
+(deflayer qwerty
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret            kp7  kp8  kp9
+  caps a    s    d    f    g    h    j    k    l    ;    '          \             kp4  kp5  kp6  kp+
+  lsft (layer-switch main) z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
+  lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
+)
+
