@@ -139,8 +139,8 @@
     (a e) ret
     (e i) ret
     (a h) esc
-    (i h) esc
-    (h e) (macro t h e)
+    (i h) (macro S-;)
+    (h e) (macro S-;)
     (a i) esc
 )
 
