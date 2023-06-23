@@ -62,13 +62,23 @@
 (defalias
   ;; 'm' on press, 'l' when rolled with 'f' (for 'fl' biagram)
   m (fork m l (f p))
-  t t
+  t (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
+  c (fork c p (l))
 )
 
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
   lrld  j    XX    f    @m    p    v    XX    XX    XX    XX    XX    XX    bspc           XX XX  XX  XX
   sldr  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
+  x g    l    @c    b    XX    XX    XX    XX    u    o    y          k             XX  XX  XX  XX
+  XX (layer-switch qwerty) XX    XX    XX    XX    XX    XX    spc  XX XX  XX XX     XX                XX  XX  XX
+  XX XX XX           @t            XX  XX XX XX XX      XX       XX XX  XX
+)
+
+(deflayer nav
+  XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
+  lrld  j    XX    f    @m    p    v    XX    XX    XX    XX    XX    XX    bspc           XX XX  XX  XX
+  sldr  @r    @s    @n    @d    w    XX    XX    ,    lft down up rght    ;            XX  XX  XX
   x g    l    c    b    XX    XX    XX    XX    u    o    y          k             XX  XX  XX  XX
   XX (layer-switch qwerty) XX    XX    XX    XX    XX    XX    spc  XX XX  XX XX     XX                XX  XX  XX
   XX XX XX           @t            XX  XX XX XX XX      XX       XX XX  XX
