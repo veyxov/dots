@@ -16,9 +16,8 @@
   tt_fast 100
   th_fast 150
 
-  ch_th 15
+  ch_th 20
   ch_mid 55
-  rsndrsndrsndrsnrsndrsndrsndrrrd
   ch_slw 100
 
   ftt 135
@@ -40,10 +39,10 @@
 )
 
 (defalias
-    D_sft d
-    R_alt r
-    S_ctl s
-    N_sup n
+    D_sft (tap-hold-release $ftt $th d @uplr)
+    R_alt (tap-hold-release $tt $th r lalt)
+    S_ctl (tap-hold-release $tt $th s lctl)
+    N_sup (tap-hold-release $tt $th n @suplr)
 
     A_sft (tap-hold-release $ftt $th a @uplr)
     E_sup (tap-hold-release $tt $th e lmet)
@@ -114,10 +113,10 @@
 )
 
 (defchords r_chrd $ch_th
-    (r  ) r
-    (  d) d
-    ( s ) s
-    (n  ) n
+    (r  ) @R_alt
+    (  d) @D_sft
+    ( s ) @S_ctl
+    (n  ) @N_sup
     (r s) home
     (s d) f1
     (s n) esc
