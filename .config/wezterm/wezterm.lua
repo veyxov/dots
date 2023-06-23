@@ -116,7 +116,7 @@ return {
     },
   },
 
-	leader = { key = "F1", mods = "CTRL", timeout_milliseconds = 1000 },
+	leader = { key = "F1", mods = "", timeout_milliseconds = 1000 },
 	default_prog = { "/usr/bin/zsh" },
 	font_size = 20,
 	keys = {
@@ -132,7 +132,7 @@ return {
 		},
 		{ key = "a", mods = "ALT", action = wezterm.action.ShowLauncher },
 		{
-			mods = "ALT|SHIFT",
+			mods = "LEADER",
 			key = [[i]],
 			action = wezterm.action.SplitPane({
 				top_level = true,
@@ -140,8 +140,9 @@ return {
 				size = { Percent = 50 },
 			}),
 		},
+        -- Split right
 		{
-			mods = "ALT",
+			mods = "LEADER",
 			key = [[i]],
 			action = wezterm.action.SplitPane({
 				direction = "Right",
@@ -149,7 +150,7 @@ return {
 			}),
 		},
 		{
-			mods = "ALT|SHIFT",
+			mods = "LEADER",
 			key = [[e]],
 			action = wezterm.action.SplitPane({
 				top_level = true,
