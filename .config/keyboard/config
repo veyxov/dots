@@ -2,6 +2,7 @@
 (defcfg
     danger-enable-cmd yes ;; Enable commands
     log-layer-changes no
+    sequence-input-mode visible-backspaced
 )
 
 (defsrc
@@ -13,10 +14,42 @@
   lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
+;; Left hand home row chords
+(defvar
+    chord-timeout 15
+)
+(defalias
+  kaboom (cmd bash -c "sudo killall kanata")
+  r (chord main r)
+  s (chord main s)
+  n (chord main n)
+  d (chord main d)
+)
+
+(defchords main $chord-timeout
+  (r     ) r
+  ( s    ) s
+  (   n  ) n
+  (    d ) d
+  (s n   ) esc
+  (s r   ) (one-shot 1000 lctl) ;; s+r=control
+  (  n d ) (one-shot 1000 lalt) ;; s+r=control
+)
+
+(defseq "git status" (r s n))
+(deffakekeys
+  "git status" (macro g i t spc s t a t u s)
+)
+
+(defalias
+  FLfrk (fork m l (f))
+)
+
 (deflayer main
-  XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  XX  XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX           XX XX  XX  XX
-  tab  r    s    n    d    w    XX    XX    ,    a    e    i    h    ;            XX  XX  XX
+  @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
+  lrld  XX    XX    f    @FLfrk    XX    XX    XX    XX    XX    XX    XX    XX    XX           XX XX  XX  XX
+
+  sldr  @r    @s    @n    @d    w    XX    XX    ,    a    e    i    h    ;            XX  XX  XX
   XX XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX          XX             XX  XX  XX  XX
   XX XX XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX      XX        XX  XX  XX
   XX XX XX           XX            XX  XX XX XX XX      XX       XX XX  XX
