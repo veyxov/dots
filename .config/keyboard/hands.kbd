@@ -89,6 +89,7 @@
 )
 
 ;; ---------------------------------------
+
 ;; Chord for 'z'
 (defalias
     z_chrd_k (chord z_chrd k)
@@ -130,7 +131,7 @@
     hchrd (chord rg_chrd h)
 )
 
-(defchords rg_chrd $ch_th
+(defchords rg_chrd $ch_mid
     (a) a
     (e) e
     (i) @I_ctl
