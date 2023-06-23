@@ -62,15 +62,16 @@
 (defalias
   ;; 'm' on press, 'l' when rolled with 'f' (for 'fl' biagram)
   m (fork m l (f p))
+  t t
 )
 
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld  j    XX    f    @m    p    XX    XX    XX    XX    XX    XX    XX    XX           XX XX  XX  XX
+  lrld  j    XX    f    @m    p    XX    XX    XX    XX    XX    XX    XX    bspc           XX XX  XX  XX
   sldr  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
   x g    l    c    b    XX    XX    XX    XX    u    o    y          k             XX  XX  XX  XX
   XX (layer-switch qwerty) XX    XX    XX    XX    XX    XX    spc  XX XX  XX XX     XX                XX  XX  XX
-  XX XX XX           XX            XX  XX XX XX XX      XX       XX XX  XX
+  XX XX XX           @t            XX  XX XX XX XX      XX       XX XX  XX
 )
 
 ;; tmp
