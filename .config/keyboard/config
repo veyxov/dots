@@ -22,7 +22,7 @@
   kaboom (cmd bash -c "sudo killall kanata")
   r (chord main r)
   s (chord main s)
-  n (chord main n)
+  n (tap-hold-release 200 200 (chord main n) lmet) ;; tmp
   d (chord main d)
 )
 
