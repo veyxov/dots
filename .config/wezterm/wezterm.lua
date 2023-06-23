@@ -52,6 +52,13 @@ wezterm.on("toggle-color", function(window, pane)
 	set_random_color(window)
 end)
 
+local function font(opts)
+  return wezterm.font_with_fallback({
+    opts,
+    "Symbols Nerd Font Mono",
+  })
+end
+
 return {
 	color_scheme = "nord",
 	inactive_pane_hsb = {
@@ -78,7 +85,37 @@ return {
 	hide_tab_bar_if_only_one_tab = true,
 	use_fancy_tab_bar = false,
 	window_close_confirmation = "NeverPrompt",
-	font = wezterm.font_with_fallback({ "Delugia" }),
+
+    font = font("FiraCode Nerd Font Mono"),
+    font_rules = {
+    {
+      italic = true,
+      intensity = "Normal",
+      font = font({
+        family = "Victor Mono",
+        style = "Italic",
+      }),
+    },
+    {
+      italic = true,
+      intensity = "Half",
+      font = font({
+        family = "Victor Mono",
+        weight = "DemiBold",
+        style = "Italic",
+      }),
+    },
+    {
+      italic = true,
+      intensity = "Bold",
+      font = font({
+        family = "Victor Mono",
+        weight = "Bold",
+        style = "Italic",
+      }),
+    },
+  },
+
 	leader = { key = "F1", mods = "CTRL", timeout_milliseconds = 1000 },
 	default_prog = { "/usr/bin/zsh" },
 	font_size = 20,
