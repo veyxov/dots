@@ -18,7 +18,6 @@
 
   ch_th 15
   ch_mid 55
-  rsndrsndrsndrsnrsndrsndrsndrrrd
   ch_slw 100
 
   ftt 135
@@ -43,7 +42,7 @@
     D_sft d
     R_alt r
     S_ctl s
-    N_sup n
+    N_sup (tap-hold-release $tt $th n @suplr)
 
     A_sft (tap-hold-release $ftt $th a @uplr)
     E_sup (tap-hold-release $tt $th e lmet)
@@ -117,7 +116,7 @@
     (r  ) r
     (  d) d
     ( s ) s
-    (n  ) n
+    (n  ) @N_sup
     (r s) home
     (s d) f1
     (s n) esc
