@@ -36,6 +36,23 @@
   (  n d ) (one-shot 1000 lalt) ;; s+r=control
 )
 
+(defalias
+  a (chord mainr a)
+  e (chord mainr e)
+  i (chord mainr i)
+  h (chord mainr h)
+)
+
+(defchords mainr $chord-timeout
+  (a     ) a
+  ( e    ) e
+  (   i  ) i
+  (    h ) h
+  (e i   ) ret
+  (e a   ) (one-shot 1000 lctl) ;; e+a=control
+  (  i h ) (one-shot 1000 lalt) ;; e+a=control
+)
+
 ;; tmp
 (defseq "git status" (r s n))
 (deffakekeys
@@ -50,8 +67,7 @@
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
   lrld  j    XX    f    @m    p    XX    XX    XX    XX    XX    XX    XX    XX           XX XX  XX  XX
-
-  sldr  @r    @s    @n    @d    w    XX    XX    ,    a    e    i    h    ;            XX  XX  XX
+  sldr  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
   x g    l    c    b    XX    XX    XX    XX    u    o    y          k             XX  XX  XX  XX
   XX (layer-switch qwerty) XX    XX    XX    XX    XX    XX    spc  XX XX  XX XX     XX                XX  XX  XX
   XX XX XX           XX            XX  XX XX XX XX      XX       XX XX  XX
