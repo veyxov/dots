@@ -1,11 +1,10 @@
 (defcfg
-    danger-enable-cmd yes ;; Enable cmd commands
-    log-layer-changes no  ;; Don't log layer changes
+    danger-enable-cmd yes ;; Enable commands
+    log-layer-changes no
 )
 
 (defalias
    kaboom (cmd bash -c "sudo killall kanata")
-
    ruswch (multi (layer-switch plain) (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout rus"))
    hadwch (multi (layer-switch hands) (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout us"))
 )
@@ -45,7 +44,10 @@
     S_ctl s
     N_sup (tap-hold-release $tt $th n @suplr)
 
+    A_sft (tap-hold-release $ftt $th a @uplr)
+    E_sup (tap-hold-release $tt $th e lmet)
     I_ctl (tap-hold-release $tt $th i lctl)
+    H_alt (tap-hold-release $tt $th h lalt)
 )
 
 (defsrc
@@ -132,10 +134,10 @@
 )
 
 (defchords rg_chrd $ch_mid
-    (a) a
-    (e) e
+    (a) @A_sft
+    (e) @E_sup
     (i) @I_ctl
-    (h) h
+    (h) @H_alt
     (a e) ret
     (e i) ret
     (a h) esc
