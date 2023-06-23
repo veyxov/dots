@@ -83,8 +83,8 @@ return {
 	default_prog = { "/usr/bin/zsh" },
 	font_size = 20,
 	keys = {
-		{ mods = "ALT", key = ">", action = act.MoveTabRelative(1) },
-		{ mods = "ALT", key = "<", action = act.MoveTabRelative(-1) },
+		{ mods = "ALT|CTRL", key = "/", action = act.MoveTabRelative(1) },
+		{ mods = "ALT", key = "/", action = act.MoveTabRelative(-1) },
 		{ mods = "ALT", key = "d", action = wezterm.action.ShowDebugOverlay },
 		{
 			key = "f",
@@ -159,7 +159,7 @@ return {
 		{ key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action.IncreaseFontSize },
 		{ key = "DownArrow", mods = "CTRL|SHIFT", action = wezterm.action.DecreaseFontSize },
 		{
-			key = "/",
+			key = "p",
 			mods = "ALT",
 			action = act.PaneSelect({
 				alphabet = '"asnd',
