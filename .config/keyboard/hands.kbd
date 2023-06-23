@@ -118,10 +118,9 @@
     ( s ) @S_ctl
     (n  ) @N_sup
     (r s) home
-    (s d) f1
+    (s d) end
     (s n) esc
     (n d) tab
-    (r n) tab
     (r d) C-bspc
 )
 
