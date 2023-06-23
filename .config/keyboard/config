@@ -16,7 +16,7 @@
 
 ;; Left hand home row chords
 (defvar
-    chord-timeout 15
+    chord-timeout 35
 )
 (defalias
   kaboom (cmd bash -c "sudo killall kanata")
@@ -50,7 +50,7 @@
   (    h ) h
   (e i   ) ret
   (e a   ) (one-shot 1000 lctl) ;; e+a=control
-  (  i h ) (one-shot 1000 lalt) ;; e+a=control
+  (  i h ) S-; ;; e+a=control
 )
 
 ;; tmp
