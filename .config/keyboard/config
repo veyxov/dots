@@ -16,17 +16,18 @@
 
 ;; Left hand home row chords
 (defvar
-    chord-timeout 35
+    chord-timeout 26
 )
 
+;; Home-Row Left-Hand
 (defalias
   kaboom (cmd bash -c "sudo killall kanata")
+
   r (chord main r)
   s (chord main s)
-  n (tap-hold-release 200 200 (chord main n) lmet) ;; tmp
+  n (tap-hold-release 200 390 (chord main n) lmet) ;; tmp
   d (chord main d)
 )
-
 (defchords main $chord-timeout
   (r     ) r
   ( s    ) s
@@ -37,16 +38,16 @@
   (  n d ) (one-shot 1000 lalt) ;; s+r=control
 )
 
+;; Home-Row Right-Hand
 (defalias
   a (chord mainr a)
   e (chord mainr e)
   i (chord mainr i)
   h (chord mainr h)
 )
-
 (defchords mainr $chord-timeout
   (a     ) a
-  ( e    ) e
+  ( e    ) (fork e u (a))
   (   i  ) i
   (    h ) h
   (e i   ) ret
@@ -65,6 +66,7 @@
   m (fork m l (f p))
   t (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
   c (fork c p (l))
+  v (fork v (macro bspc l v) (p))
 )
 
 (defalias
@@ -72,11 +74,33 @@
     shft (tap-hold-release 200 200 @onesft 1)
 )
 
+;; UY chord
+(defalias
+  u (chord kyu u)
+  y (chord kyu y)
+)
+(defchords kyu $chord-timeout
+  (u) u
+  (y) (fork y (macro bspc q u u) (u))
+  (u y) (macro q u)
+)
+
+;; jf chord
+(defalias
+  j (chord rsnd j)
+  f (chord rsnd f)
+)
+(defchords rsnd $chord-timeout
+  (j) j
+  (f) (fork f (macro bspc z) (j))
+  (j f) z
+)
+
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld  j    XX    f    @m    p    v    XX    XX    .    /    (macro S-/)    '    bspc           XX XX  XX  XX
-  sldr  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
-  x g    l    @c    b    XX    XX    XX    -    u    o    y          k             XX  XX  XX  XX
+  lrld   @j    XX    @f    @m    p   @v    XX    XX    .    /    (macro S-/)    '    bspc           XX XX  XX  XX
+  tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
+  x g    l    @c    b    XX    XX    XX    -    @u    o    @y          k             XX  XX  XX  XX
   XX (layer-switch qwerty) XX    XX    XX    XX    XX    XX    spc  @onesft XX  XX XX     XX                XX  XX  XX
   XX XX XX           @t            XX  XX XX XX XX      XX       XX XX  XX
 )
@@ -89,7 +113,6 @@
   S-lsft 102d (macro S-z)    (macro S-x)    (macro S-c)    (macro S-v)    (macro S-b)    (macro S-n)    (macro S-m)    S-ret    S-.    S-/    S-rsft      S-up        S-kp1  S-kp2  S-kp3
   S-lctl S-lmet S-lalt           (macro S-t)            S-ralt S-rmet S-rctl S-left S-down S-rght      S-kp0       S-kp.  S-kprt
 )
-
 
 (deflayer nav
   XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
