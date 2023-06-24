@@ -63,10 +63,10 @@
 
 (defalias
   ;; 'm' on press, 'l' when rolled with 'f' (for 'fl' biagram)
-  m (fork m l (f p))
+  m (fork (fork m (macro bspc l) (v)) l (f p)) ;; mvm - stumble
   t (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
   c (fork c p (l))
-  v (fork v (macro bspc l v) (p))
+  v (fork v b (m))
 )
 
 (defalias
