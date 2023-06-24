@@ -65,7 +65,6 @@
   ;; 'm' on press, 'l' when rolled with 'f' (for 'fl' biagram)
   m (fork (fork m (macro bspc l) (v)) l (f p)) ;; mvm - stumble
   t (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
-  c (fork c p (l))
   v (fork v b (m))
 )
 
@@ -96,11 +95,27 @@
   (j f) z
 )
 
+;; copy/paste
+
+(defalias
+  g (chord cp g)
+  l (chord cp l)
+  c (chord cp c)
+)
+(defchords cp $chord-timeout
+    (g) g
+    (l) l
+    (c) (fork c p (l))
+    (g l) C-c
+    (l c) C-v
+    (g l c) C-a
+)
+
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
   lrld   @j    XX    @f    @m    p   @v    XX    XX    .    /    (macro S-/)    '    bspc           XX XX  XX  XX
   tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
-  x g    l    @c    b    XX    XX    XX    -    @u    o    @y          k             XX  XX  XX  XX
+  x @g    @l    @c    b    XX    XX    XX    -    @u    o    @y          k             XX  XX  XX  XX
   XX (layer-switch qwerty) XX    XX    XX    XX    XX    XX    spc  @onesft XX  XX XX     XX                XX  XX  XX
   XX XX XX           @t            XX  XX XX XX XX      XX       XX XX  XX
 )
