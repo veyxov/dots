@@ -116,7 +116,7 @@
   lrld   @j    XX    @f    @m    p   @v    XX    XX    .    /    (macro S-/)    '    bspc           XX XX  XX  XX
   tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
   x @g    @l    @c    b    XX    XX    XX    -    @u    o    @y          k             XX  XX  XX  XX
-  XX (layer-switch qwerty) XX    XX    XX    XX    XX    XX    spc  @onesft XX  XX XX     XX                XX  XX  XX
+  XX (layer-switch qwerty) XX    XX    XX    (layer-toggle mouse)    XX    XX    spc  @onesft XX  XX XX     XX                XX  XX  XX
   XX XX XX           @t            XX  XX XX XX XX      XX       XX XX  XX
 )
 
@@ -127,6 +127,28 @@
   (macro S-x)    (macro S-g)    (macro S-l)    (macro S-c)    (macro S-b)    (macro S-g)    (macro S-h)    (macro S-j)    S-=    (macro S-u)    (macro S-o)    (macro S-y)         (macro S-k)            S-kp4  S-kp5  S-kp6  S-kp+
   S-lsft 102d (macro S-z)    (macro S-x)    (macro S-c)    (macro S-v)    (macro S-b)    (macro S-n)    (macro S-m)    S-ret    S-.    S-/    S-rsft      S-up        S-kp1  S-kp2  S-kp3
   S-lctl S-lmet S-lalt           (macro S-t)            S-ralt S-rmet S-rctl S-left S-down S-rght      S-kp0       S-kp.  S-kprt
+)
+
+;; Mouse aliases
+(defalias
+    mwdwn  (mwheel-down  50 120)
+    mwup   (mwheel-up    50 120)
+    mwlft  (mwheel-left  50 120)
+    mwrght (mwheel-right 50 120)
+
+    mmlft (movemouse-accel-left 5 1000 1 15)
+    mmdwn (movemouse-accel-down 5 1000 1 15)
+    mmup  (movemouse-accel-up   5 1000 1 15)
+    mmrgt (movemouse-accel-right 5 1000 1 15)
+)
+
+(deflayer mouse
+  @kaboom   XX   XX   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev XX
+  lrld j    0    f    m    p    6    7    8    9     @mwdwn   @mwup    =    bspc           nlck kp/  kp*  kp-
+  tab  XX XX XX     lsft    w    y    u    @mwlft    @mmlft @mmdwn @mmup @mmrgt    @mwrght              kp7  kp8  kp9
+  x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
+  lsft 102d z    x    mrgt    v    b    n    mrgt    spc    .    /    rsft      up        kp1  kp2  kp3
+  lctl lmet lalt           mlft            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
 (deflayer nav
