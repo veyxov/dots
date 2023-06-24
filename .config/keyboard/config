@@ -111,9 +111,13 @@
     (g l c) C-a
 )
 
+(defalias
+  question (fork (macro S-/) (macro bspc S-9) (/))
+)
+
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld   @j    XX    @f    @m    p   @v    XX    XX    .    /    (macro S-/)    '    bspc           XX XX  XX  XX
+  lrld   @j    XX    @f    @m    p   @v    XX    XX    .    /    @question    '    bspc           XX XX  XX  XX
   tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
   x @g    @l    @c    b    XX    XX    XX    -    @u    o    @y          k             XX  XX  XX  XX
   XX (layer-switch qwerty) XX    XX    XX    (layer-toggle mouse)    XX    XX    spc  @onesft XX  XX XX     XX                XX  XX  XX
