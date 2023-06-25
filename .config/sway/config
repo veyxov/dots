@@ -47,7 +47,7 @@ bindsym $mod+Right focus right
 
 bindsym $mod+Backspace kill
 
-bindsym $mod+d exec $menu
+bindsym $mod+u exec $menu
 
 floating_modifier $mod normal
 
