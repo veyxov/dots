@@ -116,7 +116,7 @@ return {
     },
   },
 
-	leader = { key = "F1", mods = "CTRL", timeout_milliseconds = 1000 },
+	leader = { key = "F1", mods = "", timeout_milliseconds = 1000 },
 	default_prog = { "/usr/bin/zsh" },
 	font_size = 20,
 	keys = {
@@ -130,7 +130,7 @@ return {
 				Search = { CaseInSensitiveString = "" },
 			}),
 		},
-		{ key = "a", mods = "ALT", action = wezterm.action.ShowLauncher },
+		{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
 		{
 			mods = "ALT|SHIFT",
 			key = [[i]],
@@ -187,8 +187,8 @@ return {
 		{ key = "n", mods = "CTRL|ALT", action = wezterm.action({ ActivateTab = 2 }) },
 		{ key = "d", mods = "CTRL|ALT", action = wezterm.action({ ActivateTab = 3 }) },
 
-		{ key = "LeftArrow", mods = "CTRL|ALT", action = wezterm.action({ ActivateTabRelative = -1 }) },
-		{ key = "RightArrow", mods = "CTRL|ALT", action = wezterm.action({ ActivateTabRelative = 1 }) },
+		{ key = "a", mods = "ALT", action = wezterm.action({ ActivateTabRelative = -1 }) },
+		{ key = "h", mods = "ALT", action = wezterm.action({ ActivateTabRelative = 1 }) },
 		{ key = "y", mods = "ALT", action = wezterm.action.QuickSelect },
 		{ key = "v", mods = "ALT", action = wezterm.action.ActivateCopyMode },
 		{ key = "c", mods = "CTRL", action = wezterm.action({ CopyTo = "Clipboard" }) },
