@@ -193,8 +193,8 @@ return {
 		{ key = "v", mods = "ALT", action = wezterm.action.ActivateCopyMode },
 		{ key = "c", mods = "CTRL", action = wezterm.action({ CopyTo = "Clipboard" }) },
 		{ key = "v", mods = "CTRL", action = wezterm.action({ PasteFrom = "Clipboard" }) },
-		{ key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action.IncreaseFontSize },
-		{ key = "DownArrow", mods = "CTRL|SHIFT", action = wezterm.action.DecreaseFontSize },
+		{ key = "UpArrow", mods = "ALT", action = wezterm.action.IncreaseFontSize },
+		{ key = "DownArrow", mods = "ALT", action = wezterm.action.DecreaseFontSize },
 		{
 			key = "p",
 			mods = "ALT",
