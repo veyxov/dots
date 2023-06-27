@@ -85,8 +85,8 @@
 )
 (defchords kyu $chord-timeout
   (u) u
-  (y) (fork y (macro bspc q u u) (u))
-  (u y) (macro q u)
+  (y) (fork y (macro bspc z) (u))
+  (u y) (macro z)
 )
 
 ;; jf chord
@@ -96,9 +96,10 @@
 )
 (defchords rsnd $chord-timeout
   (j) j
-  (f) (fork f (macro bspc z) (j))
-  (j f) z
+  (f) (fork f (macro bspc q u) (j))
+  (j f) (macro q u)
 )
+
 
 ;; copy/paste
 
