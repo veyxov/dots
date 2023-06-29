@@ -40,7 +40,7 @@
   (    d ) d
   (s n   ) esc
   (s r   ) (one-shot 1000 lctl) ;; s+r=control
-  (  n d ) (one-shot 1000 lalt) ;; s+r=control
+  (  n d ) tab ;; s+r=control
 )
 
 ;; Home-Row Right-Hand
@@ -72,6 +72,7 @@
   t (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
   v (fork v b (m))
   quote (tap-hold-release 200 200 ' rctl) 
+  tab (tap-hold-release 200 200 f5 lalt)
 )
 
 (defalias
@@ -125,7 +126,7 @@
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
   lrld   @j    XX    @f    @m    p   @v    XX    XX    .    /    @question    @quote    bspc           XX XX  XX  XX
-  tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
+  @tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
   x @g    @l    @c    b    XX    XX    XX    -    @u    o    @y          k             XX  XX  XX  XX
   XX (layer-switch qwerty) XX    (layer-toggle num)    @onesft    (layer-toggle mouse)    XX    XX    (tap-hold-release 222 222 spc (layer-toggle sym))  @onesft XX  XX XX     XX                XX  XX  XX
   XX (layer-switch onehand) XX           @t            XX  @russch @russch XX XX      XX       XX XX  XX
@@ -243,7 +244,7 @@
 ;; Super + other layer, faster window switching because it's noticable when a delay is invonved
 (deflayer super
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
-  grv  @j    2    3    4    M-p    6    7    8    9    M-/    -    =    bspc           nlck kp/  kp*  kp-
+  grv  @j    2    M-f    4    M-p    6    7    8    9    M-/    -    =    M-bspc           nlck kp/  kp*  kp-
   tab  M-r    M-s    e    r    M-w    y    u    i    M-a    M-e    M-i    M-h    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    j    k    M-u    ;    '          \             kp4  kp5  kp6  kp+
   lsft (layer-switch main) z    x    c    v    b    n    m    @onesft    .    /    rsft      up        kp1  kp2  kp3
