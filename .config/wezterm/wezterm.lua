@@ -1,30 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-wezterm.on("update-right-status", function(window)
-	window:set_right_status(wezterm.format({
-		{ Text = wezterm.strftime(" %A, %d %b %I:%M ") },
-	}))
-end)
-
--- The set of schemes that we like and want to put in our rotation
-local schemes = {}
-for name, scheme in pairs(wezterm.get_builtin_color_schemes()) do
-	table.insert(schemes, name)
-end
-
-function set_random_color(window)
-	-- Pick a random scheme name
-	local scheme = schemes[math.random(#schemes)]
-
-	window:set_config_overrides({
-		color_scheme = scheme,
-	})
-
-	local current_color_name = window:get_config_overrides().color_scheme
-	wezterm.background_child_process({ "/usr/local/bin/herbe", current_color_name })
-end
-
 wezterm.on("user-var-changed", function(window, pane, name, value)
 	local overrides = window:get_config_overrides() or {}
 	if name == "ZEN_MODE" then
@@ -48,19 +24,15 @@ wezterm.on("user-var-changed", function(window, pane, name, value)
 	window:set_config_overrides(overrides)
 end)
 
-wezterm.on("toggle-color", function(window, pane)
-	set_random_color(window)
-end)
-
 local function font(opts)
-  return wezterm.font_with_fallback({
-    opts,
-    "Symbols Nerd Font Mono",
-  })
+	return wezterm.font_with_fallback({
+		opts,
+		"Symbols Nerd Font Mono",
+	})
 end
 
 return {
-	color_scheme = "nord",
+	color_scheme = 'Tinacious Design (Dark)',
 	inactive_pane_hsb = {
 		saturation = 0,
 		brightness = 0.25,
@@ -86,35 +58,35 @@ return {
 	use_fancy_tab_bar = false,
 	window_close_confirmation = "NeverPrompt",
 
-    font = font("FiraCode Nerd Font Mono"),
-    font_rules = {
-    {
-      italic = true,
-      intensity = "Normal",
-      font = font({
-        family = "Victor Mono",
-        style = "Italic",
-      }),
-    },
-    {
-      italic = true,
-      intensity = "Half",
-      font = font({
-        family = "Victor Mono",
-        weight = "DemiBold",
-        style = "Italic",
-      }),
-    },
-    {
-      italic = true,
-      intensity = "Bold",
-      font = font({
-        family = "Victor Mono",
-        weight = "Bold",
-        style = "Italic",
-      }),
-    },
-  },
+	font = font("FiraCode Nerd Font Mono"),
+	font_rules = {
+		{
+			italic = true,
+			intensity = "Normal",
+			font = font({
+				family = "Victor Mono",
+				style = "Italic",
+			}),
+		},
+		{
+			italic = true,
+			intensity = "Half",
+			font = font({
+				family = "Victor Mono",
+				weight = "DemiBold",
+				style = "Italic",
+			}),
+		},
+		{
+			italic = true,
+			intensity = "Bold",
+			font = font({
+				family = "Victor Mono",
+				weight = "Bold",
+				style = "Italic",
+			}),
+		},
+	},
 
 	leader = { key = "F1", mods = "", timeout_milliseconds = 1000 },
 	default_prog = { "/usr/bin/zsh" },
