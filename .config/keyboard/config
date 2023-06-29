@@ -207,7 +207,7 @@
   grv  1   2     3    4    5    v    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
   tab  q    w    e    r    t    y    u    i     o    @p_russ    @[_russ    ]    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    XX    k    l    ;    '          \             kp4  kp5  kp6  kp+
-  lsft 102d z    x    (one-shot-press-pcancel 1000 lsft)    v    b    n    (tap-hold-release 100 130 spc ralt)   (one-shot-press-pcancel 1000 lsft)    .    /    rsft      up        kp1  kp2  kp3
+  lsft 102d z    x    (one-shot-press-pcancel 1000 lsft)    (layer-toggle mouse)    b    n    (tap-hold-release 100 130 spc ralt)   (one-shot-press-pcancel 1000 lsft)    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           (tap-hold-release 100 150 h (layer-toggle nav))            ralt @mainch @mainch left down rght      kp0       kp.  kprt
 )
 
