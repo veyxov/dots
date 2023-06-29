@@ -36,7 +36,7 @@
 (defchords main $chord-timeout
   (r     ) r
   ( s    ) s
-  (   n  ) (tap-hold-release 200 390 n lmet)
+  (   n  ) (tap-hold-release 200 390 n (layer-toggle super))
   (    d ) d
   (s n   ) esc
   (s r   ) (one-shot 1000 lctl) ;; s+r=control
@@ -127,7 +127,7 @@
   lrld   @j    XX    @f    @m    p   @v    XX    XX    .    /    @question    @quote    bspc           XX XX  XX  XX
   tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
   x @g    @l    @c    b    XX    XX    XX    -    @u    o    @y          k             XX  XX  XX  XX
-  XX (layer-switch qwerty) XX    XX    @onesft    (layer-toggle mouse)    XX    XX    (tap-hold-release 222 222 spc (layer-toggle sym))  @onesft XX  XX XX     XX                XX  XX  XX
+  XX (layer-switch qwerty) XX    (layer-toggle num)    @onesft    (layer-toggle mouse)    XX    XX    (tap-hold-release 222 222 spc (layer-toggle sym))  @onesft XX  XX XX     XX                XX  XX  XX
   XX (layer-switch onehand) XX           @t            XX  @russch @russch XX XX      XX       XX XX  XX
 )
 
@@ -209,6 +209,7 @@
   (r     ) r
   (q r   ) del
 )
+
 ;; One handed layer, one hand on mouse
 (deflayer onehand
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
@@ -217,5 +218,24 @@
   caps a    s    d    f    g    h    j    k    l    ;    '          \             kp4  kp5  kp6  kp+
   lsft XX z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
   lctl (layer-switch main) lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
+)
+
+(deflayer num
+  @kaboom   XX   XX   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev XX
+  lrld j    0    f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
+  tab  1    2 3 4        t   y    u   . 6  8 9 0      k              kp7  kp8  kp9
+  x    g    l   5     b    g    h    j    k    7    o    y         ret            kp4  kp5  kp6  kp+
+  lsft 102d z    x    c    v    b    n    m    spc    .    /    rsft      up        kp1  kp2  kp3
+  lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
+)
+
+;; Super + other layer, faster window switching because it's noticable when a delay is invonved
+(deflayer super
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
+  grv  1    2    3    4    M-p    6    7    8    9    M-/    -    =    bspc           nlck kp/  kp*  kp-
+  tab  M-r    M-s    e    r    M-w    y    u    i    M-a    M-e    M-i    M-h    ret            kp7  kp8  kp9
+  caps a    s    d    f    g    h    j    k    M-u    ;    '          \             kp4  kp5  kp6  kp+
+  lsft (layer-switch main) z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
+  lctl lmet lalt           M-t            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
