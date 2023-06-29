@@ -114,8 +114,8 @@ mode "swap" {
 
 bindsym $mod+w mode "swap"
 
-bindsym $mod+s exec 'grim - | wl-copy'
-bindsym $mod+Shift+s exec 'grim -g "$(slurp -d)" - | wl-copy'
+# bindsym $mod+s exec 'grim - | wl-copy'
+bindsym $mod+s exec 'grim -g "$(slurp -d)" - | wl-copy'
 
 
 bindsym XF86AudioRaiseVolume  exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
