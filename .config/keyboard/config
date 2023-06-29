@@ -54,7 +54,7 @@
   (a     ) a
   ( e    ) (fork e u (a))
   (   i  ) i
-  (    h ) h
+  (    h ) (fork h (macro bspc = spc) (i))
   (e i   ) ret
   (e a   ) (one-shot 1000 lctl) ;; e+a=control
   (  i h ) S-; ;; e+a=control
