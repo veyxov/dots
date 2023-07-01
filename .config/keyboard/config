@@ -7,7 +7,9 @@
 
 (defalias
    russch (multi (layer-switch russ) (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout rus"))
-   mainch (multi (layer-switch main) (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout us"))
+   mainch (multi @smain (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout us"))
+
+   smain (layer-switch main)
 )
 
 (defsrc
@@ -189,7 +191,7 @@
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    j    k    l    ;    '          \             kp4  kp5  kp6  kp+
-  lsft (layer-switch main) z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
+  lsft @smain z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
@@ -230,7 +232,7 @@
   tab  @qch    lctl    e    @rch    t    y    u    i    o    p    [    ]    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    j    k    l    ;    '          \             kp4  kp5  kp6  kp+
   lsft XX z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
-  lctl (layer-switch main) lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
+  lctl @smain lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
 (deflayer num
@@ -248,7 +250,7 @@
   grv  @j    2    M-f    4    M-p    6    7    8    9    M-/    -    =    M-bspc           nlck kp/  kp*  kp-
   tab  M-r    M-s    e    r    M-w    y    u    i    M-a    M-e    M-i    M-h    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    j    k    M-u    ;    '          \             kp4  kp5  kp6  kp+
-  lsft (layer-switch main) z    x    c    v    b    n    m    @onesft    .    /    rsft      up        kp1  kp2  kp3
+  lsft @smain z    x    c    v    b    n    m    @onesft    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           M-t            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
