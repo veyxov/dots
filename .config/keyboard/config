@@ -6,10 +6,10 @@
 )
 
 (defalias
+   smain (layer-switch main)
+
    russch (multi (layer-switch russ) (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout rus"))
    mainch (multi @smain (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout us"))
-
-   smain (layer-switch main)
 )
 
 (defsrc
