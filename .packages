@@ -88,6 +88,7 @@ wezterm
 wget
 wlroots
 wofi
+wofi-emoji-git
 xdg-utils
 yadm
 yay

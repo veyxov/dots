@@ -27,8 +27,10 @@ set $mod Mod4
 
 set $term wezterm
 set $menu wofi --show drun
+set $emoji wofi-emoji
 
 bindsym $mod+p exec clipman pick --tool wofi
+bindsym $mod+j exec wofi-emoji
 
 # Idle management
 exec swayidle -w \
