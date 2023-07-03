@@ -1,0 +1,21 @@
+;; Mouse aliases
+(defalias
+    mwdwn  (mwheel-down  50 120)
+    mwup   (mwheel-up    50 120)
+    mwlft  (mwheel-left  50 120)
+    mwrght (mwheel-right 50 120)
+
+    mmlft (movemouse-accel-left 5 1000 1 15)
+    mmdwn (movemouse-accel-down 5 1000 1 15)
+    mmup  (movemouse-accel-up   5 1000 1 15)
+    mmrgt (movemouse-accel-right 5 1000 1 15)
+)
+
+(deflayer mouse
+  @kaboom   XX   XX   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev XX
+  lrld j    0    f    m    p    6    7    8    9     @mwdwn   @mwup    =    bspc           nlck kp/  kp*  kp-
+  tab  XX XX XX     lsft    w    y    u    @mwlft    @mmlft @mmdwn @mmup @mmrgt    @mwrght              kp7  kp8  kp9
+  x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
+  lsft 102d z    x    mrgt    v    b    n    mrgt    spc    .    /    rsft      up        kp1  kp2  kp3
+  lctl lmet lalt           mlft            ralt rmet rctl left down rght      kp0       kp.  kprt
+)
