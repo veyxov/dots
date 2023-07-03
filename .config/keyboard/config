@@ -129,18 +129,9 @@
   - (fork - (macro bspc S--) (u))
 )
 
-(include ./sym.kbd)
-
 (include ./mouse.kbd)
 
-(deflayer nav
-  XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld  j    XX    f    @m    p    v    XX    XX    XX    XX    XX    XX    bspc           XX XX  XX  XX
-  sldr  @r    @s    @n    @d    w    XX    XX    ,    lft down up rght    ;            XX  XX  XX
-  x g    l    c    b    XX    XX    XX    XX    u    pgdn    pgup          k             XX  XX  XX  XX
-  XX (layer-switch qwerty) XX    XX    XX    XX    XX    XX    spc  XX XX  XX XX     XX                XX  XX  XX
-  XX XX XX           @t            XX  XX XX XX XX      XX       XX XX  XX
-)
+(include ./nav.kbd)
 
 ;; tmp
 (deflayer qwerty
@@ -172,22 +163,8 @@
   lctl @smain lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
-(deflayer num
-  @kaboom   XX   XX   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute  prev XX
-  lrld j    0    f    m    p    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
-  tab  1    2 3 4        t   y    u   . 6  8 9 0      k              kp7  kp8  kp9
-  x    g    l   5     b    g    h    j    k    7    o    y         ret            kp4  kp5  kp6  kp+
-  lsft 102d z    x    c    v    b    n    m    spc    .    /    rsft      up        kp1  kp2  kp3
-  lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
-)
+(include ./sym.kbd)
 
-;; Super + other layer, faster window switching because it's noticable when a delay is invonved
-(deflayer super
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
-  grv  M-j    2    M-f    4    M-p    6    7    8    9    M-/    -    =    M-bspc           nlck kp/  kp*  kp-
-  tab  M-r    M-s    e    r    M-w    y    u    i    M-a    M-e    M-i    M-h    ret            kp7  kp8  kp9
-  caps a    s    d    f    g    h    j    k    M-u    ;    '          \             kp4  kp5  kp6  kp+
-  lsft @smain z    x    c    v    b    n    m    @onesft    .    /    rsft      up        kp1  kp2  kp3
-  lctl lmet lalt           M-t            ralt rmet rctl left down rght      kp0       kp.  kprt
-)
+(include ./num.kbd)
 
+(include ./super.kbd)
