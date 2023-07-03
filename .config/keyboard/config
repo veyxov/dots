@@ -9,6 +9,12 @@
    smain (layer-switch main)
 )
 
+;; Variables
+(defvar
+    chord-timeout 26
+)
+
+;; Source
 (defsrc
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
@@ -24,144 +30,11 @@
 ;; Cyrillic layout
 (include ./russ.kbd)
 
-;; Left hand home row chords
-(defvar
-    chord-timeout 26
-)
-
-;; Home-Row Left-Hand
-(defalias
-  kaboom (cmd bash -c "sudo killall kanata")
-
-  r (chord main r)
-  s (chord main s)
-  n (chord main n) ;; tmp
-  d (chord main d)
-)
-(defchords main $chord-timeout
-  (r     ) r
-  ( s    ) s
-  (   n  ) (tap-hold-release 200 390 n (layer-toggle super))
-  (    d ) d
-  (s n   ) esc
-  (s r   ) (one-shot 1000 lctl) ;; s+r=control
-  (  n d ) tab ;; s+r=control
-)
-
-;; Home-Row Right-Hand
-(defalias
-  a (chord mainr a)
-  e (chord mainr e)
-  i (chord mainr i)
-  h (chord mainr h)
-)
-(defchords mainr $chord-timeout
-  (a     ) a
-  ( e    ) (fork e u (a))
-  (   i  ) i
-  (    h ) (fork h (macro bspc = spc) (i))
-  (e i   ) ret
-  (e a   ) (one-shot 1000 lctl) ;; e+a=control
-  (  i h ) S-; ;; e+a=control
-)
-
-;; tmp
-(defseq "git status" (r s n))
-(deffakekeys
-  "git status" (macro g i t spc s t a t u s)
-)
-
-(defalias
-  ;; 'm' on press, 'l' when rolled with 'f' (for 'fl' biagram)
-  m (fork (fork m (macro bspc l) (v)) l (f p)) ;; mvm - stumble
-  t (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
-  v (fork v b (m))
-  quote (tap-hold-release 200 200 ' rctl) 
-  tab (tap-hold-release 200 200 f5 lalt)
-)
-
-(defalias
-    onesft (one-shot-press-pcancel 1000 (layer-toggle shifted))
-    shft (tap-hold-release 200 200 @onesft 1)
-)
-
-;; UY chord
-(defalias
-  u (chord kyu u)
-  y (chord kyu y)
-)
-(defchords kyu $chord-timeout
-  (u) u
-  (y) (fork y (macro bspc z) (u))
-  (u y) (macro z)
-)
-
-;; jf chord
-(defalias
-  j (chord rsnd j)
-  f (chord rsnd f)
-)
-(defchords rsnd $chord-timeout
-  (j) (tap-hold-release 200 200 j lctl)
-  (f) (fork f (macro bspc q u) (j))
-  (j f) (macro q u)
-)
-
-
-;; copy/paste
-
-(defalias
-  g (chord cp g)
-  l (chord cp l)
-  c (chord cp c)
-)
-(defchords cp $chord-timeout
-    (g) g
-    (l) l
-    (c) (fork c p (l))
-    (g l) C-c
-    (l c) C-v
-    (g l c) C-a
-)
-
-(defalias
-  question (fork (macro S-/) (macro bspc S-9) (/))
-  - (fork - (macro bspc S--) (u))
-)
-
 (include ./mouse.kbd)
 
 (include ./nav.kbd)
 
-;; tmp
-(deflayer qwerty
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret            kp7  kp8  kp9
-  caps a    s    d    f    g    h    j    k    l    ;    '          \             kp4  kp5  kp6  kp+
-  lsft @smain z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
-  lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
-)
-
-(defalias
-    qch (chord onehand q)
-    rch (chord onehand r)
-)
-(defchords onehand $chord-timeout
-  (q     ) q
-  (r     ) r
-  (q r   ) del
-)
-
-;; One handed layer, one hand on mouse
-(deflayer onehand
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
-  tab  @qch    lctl    e    @rch    t    y    u    i    o    p    [    ]    ret            kp7  kp8  kp9
-  caps a    s    d    f    g    h    j    k    l    ;    '          \             kp4  kp5  kp6  kp+
-  lsft XX z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
-  lctl @smain lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
-)
+(include ./qwrety.kbd)
 
 (include ./sym.kbd)
 
