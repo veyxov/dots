@@ -47,3 +47,9 @@
 
 ;; Adaptive layers
 (include ./adaptive/l.kbd)
+
+(deffakekeys
+    fk-adaptiveL (layer-while-held adaptiveL)
+    fk-adaptiveP (layer-while-held adaptiveP)
+)
+(include ./adaptive/p.kbd)
