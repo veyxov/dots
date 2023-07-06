@@ -1,6 +1,6 @@
 (deflayer adaptiveP
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld   @j    XX    @f    l    @p   @v    XX    XX    .    /    @question    @quote    bspc           XX XX  XX  XX
+  lrld   @j    XX    @f    l    @p   (macro bspc l v)    XX    XX    .    /    @question    @quote    bspc           XX XX  XX  XX
   @tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
   x @g    @l    @c    b    XX    XX    XX    @-    @u    o    @y          k             XX  XX  XX  XX
   XX (layer-switch qwerty) XX    (layer-toggle num)    @onesft    (layer-toggle mouse)    XX    XX    (tap-hold-release 222 222 spc (layer-toggle sym))  @onesft XX  XX XX     XX                XX  XX  XX
