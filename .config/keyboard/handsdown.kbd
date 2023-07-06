@@ -42,7 +42,10 @@
 
 (defalias
   ;; 'm' on press, 'l' when rolled with 'f' (for 'fl' biagram)
-  m (fork (fork m (macro bspc l) (v)) l (f p)) ;; mvm - stumble
+  m (
+    multi m (on-press-fakekey fk-adaptiveM press)
+    (macro 500 (on-press-fakekey fk-adaptiveM release))
+  ) ;; mvm - stumble
   t (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
   v (fork v b (m))
   p (
