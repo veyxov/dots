@@ -43,3 +43,7 @@
 (include ./num.kbd)
 
 (include ./super.kbd)
+
+
+;; Adaptive layers
+(include ./adaptive/l.kbd)
