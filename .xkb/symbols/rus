@@ -37,7 +37,7 @@ xkb_symbols "rulemak" {
     key <AC05> { [     Cyrillic_e,      Cyrillic_E, Ukrainian_ghe_with_upturn, Ukrainian_GHE_WITH_UPTURN ] };
     key <AC06> { [     Cyrillic_te,     Cyrillic_TE, Cyrillic_hardsign, Cyrillic_HARDSIGN ] };
     key <AC07> { [     Cyrillic_ka,     Cyrillic_KA, Cyrillic_ka_descender,          Cyrillic_KA_descender                       ] };
-    key <AC08> { [     Cyrillic_em,     Cyrillic_EM,    Cyrillic_nje,    Cyrillic_NJE ] };
+    key <AC08> { [     minus,     plus,    Cyrillic_nje,    Cyrillic_NJE ] };
     key <AC09> { [     Cyrillic_u,      Cyrillic_U,    Ukrainian_IE ] };
     key <AC10> { [     Cyrillic_o,      Cyrillic_O,     Cyrillic_i_macron,     Cyrillic_I_macron ] }; // ӣ Ӣ
     key <AC11> { [     Cyrillic_shorti,      Cyrillic_SHORTI                                   ] };
