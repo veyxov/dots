@@ -47,7 +47,6 @@
     (macro 500 (on-press-fakekey fk-adaptiveM release))
   ) ;; mvm - stumble
   t (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
-  v (fork v b (m))
   p (
     multi p (on-press-fakekey fk-adaptiveP press)
     (macro 500 (on-press-fakekey fk-adaptiveP release))
@@ -76,6 +75,11 @@
 (defalias
   j (chord rsnd j)
   f (chord rsnd f)
+
+  v (
+    multi v (on-press-fakekey fk-adaptiveV press)
+    (macro 500 (on-press-fakekey fk-adaptiveV release))
+  )
 )
 
 (defchords rsnd $chord-timeout
@@ -111,7 +115,7 @@
 
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld   @j    v    @f    @m   @p   @v    XX    XX    .    /    @question    @quote    bspc           XX XX  XX  XX
+  lrld   @j    @v    @f    @m   @p   @v    XX    XX    .    /    @question    @quote    bspc           XX XX  XX  XX
   @tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
   x @g    @l    @c    b    XX    XX    XX    @-    @u    o    @y          k             XX  XX  XX  XX
   XX (layer-switch qwerty) XX    (layer-toggle num)    @onesft    (layer-toggle mouse)    XX    XX    (tap-hold-release 222 222 spc (layer-toggle sym))  @onesft XX  XX XX     XX                XX  XX  XX
