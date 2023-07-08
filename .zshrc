@@ -75,3 +75,5 @@ export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye >/dev/null
 # Zoxide
 eval "$(zoxide init zsh)"
+
+source "./ssh.zsh"
