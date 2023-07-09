@@ -13,6 +13,7 @@ cmake
 cmatrix
 dbeaver
 dbus-broker
+dhclient
 docker
 docker-compose
 dotnet-sdk
@@ -22,6 +23,7 @@ efibootmgr
 exa
 firefox
 firefox-tridactyl-native
+freerdp
 fzf
 gimp
 git
@@ -29,12 +31,14 @@ git-delta
 gopls
 grim
 i3ipc-python-git
+inetutils
 intel-media-driver
 intel-ucode
 irqbalance
 iwd
 jq
 kanshi
+kdeconnect
 kdenlive
 lazygit
 libreoffice-still
@@ -44,10 +48,13 @@ linux
 linux-firmware
 lua-language-server
 mako
+man-db
+man-pages
 mpv
 ncdu
 neofetch
 neovim
+net-tools
 networkmanager
 npm
 ntfs-3g
@@ -61,6 +68,8 @@ pipewire-pulse
 preload
 python-pip
 qbittorrent
+rdesktop
+remmina
 rider
 ripgrep
 rust
