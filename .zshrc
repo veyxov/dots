@@ -76,4 +76,4 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 # Zoxide
 eval "$(zoxide init zsh)"
 
-source "./ssh.zsh"
+source "$HOME/ssh.zsh"
