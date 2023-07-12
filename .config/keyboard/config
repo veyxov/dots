@@ -52,7 +52,7 @@
 (include ./adaptive/v.kbd)
 
 (deffakekeys
-    fk-adaptiveL (layer-while-held adaptiveL)
+    fk-adaptiveF (layer-while-held adaptiveF)
     fk-adaptiveP (layer-while-held adaptiveP)
     fk-adaptiveM (layer-while-held adaptiveM)
     fk-adaptiveV (layer-while-held adaptiveV)
