@@ -85,8 +85,8 @@
 (defchords rsnd $chord-timeout
   (j) (tap-hold-release 200 200 j lctl)
   (f) (
-    multi f (on-press-fakekey fk-adaptiveL press)
-    (macro 250 (on-press-fakekey fk-adaptiveL release))
+    multi f (on-press-fakekey fk-adaptiveF press)
+    (macro 250 (on-press-fakekey fk-adaptiveF release))
   )
   (j f) (macro q u)
 )
