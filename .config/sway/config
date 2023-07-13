@@ -110,6 +110,11 @@ mode "swap" {
         bindsym i mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap"
         bindsym h mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap"
 
+        bindsym Shift+a move container to workspace number 1
+        bindsym Shift+e move container to workspace number 2
+        bindsym Shift+i move container to workspace number 3
+        bindsym Shift+h move container to workspace number 4
+        bindsym Shift+t move container to workspace number 5
 # Return to default mode
         bindsym q mode "default"
         bindsym Return mode "default"
