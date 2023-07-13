@@ -23,6 +23,10 @@ alias u="exit"
 alias rsnd="clear"
 alias hiea="exit"
 alias ei="lazygit"
+
+# "Hands down" did this to me :)
+alias nvil="nvim"
+
 # file-system manipulation
 alias rm="rm -rfv"
 alias mv="mv -v"
