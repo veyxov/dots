@@ -115,7 +115,7 @@
 
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld   @j    @v    @f    @m   @p   @v    XX    XX    .    /    @question    @quote    S-'           XX XX  XX  XX
+  lrld   @j    (tap-hold-release 200 200 v lsft)    @f    @m   @p   @v    XX    XX    .    /    @question    @quote    S-'           XX XX  XX  XX
   @tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    ;            XX  XX  XX
   x @g    @l    @c    b    XX    XX    XX    @-    @u    o    @y          k             XX  XX  XX  XX
   XX (layer-switch qwerty) XX    (layer-toggle num)    @onesft    (layer-toggle mouse)    XX    XX    (tap-hold-release 222 222 spc (layer-toggle sym))  @onesft XX  XX XX     XX                XX  XX  XX
