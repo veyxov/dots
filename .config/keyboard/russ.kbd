@@ -7,17 +7,20 @@
     (p) p
     ([) [
     ([ p) ret
+    (o) o
+    (o p) C-bspc
 )
 
 (defalias
     p_russ (chord russ p)
     [_russ (chord russ [)
+    o_russ (chord russ o)
 )
 
 (deflayer russ
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
   grv  1   2     3    4    5    v    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
-  tab  q    w    e    r    t    y    u    i     o    @p_russ    @[_russ    ]    ret            kp7  kp8  kp9
+  tab  q    w    e    r    t    y    u    i     @o_russ    @p_russ    @[_russ    ]    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    XX    k    l    ;    '          \             kp4  kp5  kp6  kp+
   lsft 102d z    x    (one-shot-press-pcancel 1000 (layer-toggle rushift))    (layer-toggle mouse)    b    n    (tap-hold-release 100 130 spc ralt)   (one-shot-press-pcancel 1000 (layer-toggle rushift))    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           (tap-hold-release 100 150 h (layer-toggle nav))            ralt @mainch @mainch left down rght      kp0       kp.  kprt
