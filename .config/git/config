@@ -52,3 +52,10 @@
 
 [delta]
     syntax-theme = Coldark-Dark
+
+[pull]
+    rebase = true
+
+[advice]
+    statusHints = true
+    detachedHead = true
