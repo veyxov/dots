@@ -25,7 +25,6 @@
 [color]
     ui = true
 [core]
-	excludesFile = /home/iz/.config/gitignore
 	autocrlf = input
     pager = delta
 [rebase]
