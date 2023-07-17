@@ -15,7 +15,7 @@ for_window [class = "(?i)pinentry"] floating enable
 for_window [title = "Administrator privileges required"] floating enable
 
 exec setwall
-exec 'sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/keyboard/config'
+exec 'sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/keyboard/config >> kanata.log'
 exec telegram-desktop
 exec firefox
 exec --no-startup-id mako
