@@ -153,6 +153,11 @@ input type:touchpad {
     pointer_accel 1
 }
 
+input type:keyboard {
+    repeat_delay 200
+    repeat_rate 60
+}
+
 set $laptop eDP-1
 set $external HDMI-1
 # Don't sleep on lid close when external monitor connected
