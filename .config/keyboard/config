@@ -7,7 +7,7 @@
 
 ;; Variables
 (defvar
-    chord-timeout 26
+    chord-timeout 10
 )
 
 ;; Source
