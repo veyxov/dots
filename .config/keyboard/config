@@ -5,10 +5,6 @@
     sequence-input-mode visible-backspaced
 )
 
-(defalias
-   smain (layer-switch main)
-)
-
 ;; Variables
 (defvar
     chord-timeout 26
