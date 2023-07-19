@@ -42,7 +42,7 @@
 
 
 ;; Adaptive layers
-(include ./adaptive/l.kbd)
+(include ./adaptive/f.kbd)
 (include ./adaptive/p.kbd)
 (include ./adaptive/m.kbd)
 (include ./adaptive/v.kbd)
