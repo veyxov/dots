@@ -86,10 +86,11 @@
   (j) (tap-hold-release 200 200 j lctl)
   (f) (
     multi
+    (fork f (macro bspc bspc q u) (j))
     f (on-press-fakekey fk-adaptiveF press)
     (macro 250 (on-press-fakekey fk-adaptiveF release))
   )
-  (j f) (macro q u)
+  (j f) q
 )
 
 
