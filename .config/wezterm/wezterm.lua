@@ -1,29 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-wezterm.on("user-var-changed", function(window, pane, name, value)
-	local overrides = window:get_config_overrides() or {}
-	if name == "ZEN_MODE" then
-		local incremental = value:find("+")
-		local number_value = tonumber(value)
-		if incremental ~= nil then
-			while number_value > 0 do
-				window:perform_action(wezterm.action.IncreaseFontSize, pane)
-				number_value = number_value - 1
-			end
-			overrides.enable_tab_bar = false
-		elseif number_value < 0 then
-			window:perform_action(wezterm.action.ResetFontSize, pane)
-			overrides.font_size = nil
-			overrides.enable_tab_bar = true
-		else
-			overrides.font_size = number_value
-			overrides.enable_tab_bar = false
-		end
-	end
-	window:set_config_overrides(overrides)
-end)
-
 local function font(opts)
 	return wezterm.font_with_fallback({
 		opts,
@@ -38,7 +15,7 @@ return {
 		brightness = 0.25,
 	},
 	disable_default_key_bindings = true,
-	window_background_opacity = 0.95,
+	window_background_opacity = 0.8,
 	tab_bar_at_bottom = true,
 	quick_select_alphabet = "neiosart",
 	window_padding = {
