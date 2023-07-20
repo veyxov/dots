@@ -53,3 +53,6 @@
     fk-adaptiveM (layer-while-held adaptiveM)
     fk-adaptiveV (layer-while-held adaptiveV)
 )
+
+;; App specific keymaps
+(include ./apps/org.telegram.desktop)
