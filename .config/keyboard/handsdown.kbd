@@ -82,7 +82,7 @@
   )
 )
 
-(defchords rsnd $chord-timeout
+(defchords rsnd $chord-timeout-slow
   (j) (tap-hold-release 200 200 j lctl)
   (f) (
     multi
