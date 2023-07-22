@@ -102,7 +102,7 @@
   c (chord cp c)
 )
 
-(defchords cp $chord-timeout
+(defchords cp $chord-timeout-slow
     (g) g
     (l) l
     (c) (fork c p (l))
