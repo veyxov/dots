@@ -14,7 +14,7 @@ for_window [window_type = "menu"] floating enable
 for_window [app_id = "floating"] floating enable
 
 exec setwall
-exec 'sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/keyboard/config >> kanata.log'
+exec 'sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/keyboard/config >> ~/kanata.log'
 exec telegram-desktop
 exec firefox
 exec --no-startup-id mako
