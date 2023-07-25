@@ -67,7 +67,11 @@
   y (chord kyu y)
 )
 (defchords kyu $chord-timeout
-  (u) u
+  (u) (
+    multi u (on-press-fakekey fk-adaptiveU press)
+    (macro 300 (on-press-fakekey fk-adaptiveU release))
+  ) ;; uh->ua
+
   (y) (fork y (macro bspc z) (u))
   (u y) (macro z)
 )
