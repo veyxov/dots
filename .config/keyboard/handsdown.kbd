@@ -122,6 +122,8 @@
     (l c) C-v
     (g l c) C-a
     (x g) C-z
+    (x l) C-x
+    (x c) C-f
 )
 
 (defalias
