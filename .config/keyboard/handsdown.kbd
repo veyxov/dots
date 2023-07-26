@@ -9,7 +9,7 @@
 )
 (defchords main $chord-timeout
   (r     ) r
-  ( s    ) s
+  ( s    ) (fork s (macro bspc n e s s) (n))
   (   n  ) (tap-hold 200 200 n (layer-toggle super))
   (    d ) d
   (s n   ) esc
