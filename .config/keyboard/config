@@ -49,6 +49,7 @@
 (include ./adaptive/v.kbd)
 (include ./adaptive/u.kbd)
 (include ./adaptive/e.kbd)
+(include ./adaptive/o.kbd)
 
 (deffakekeys
     fk-adaptiveF (layer-while-held adaptiveF)
@@ -57,6 +58,7 @@
     fk-adaptiveV (layer-while-held adaptiveV)
     fk-adaptiveU (layer-while-held adaptiveU)
     fk-adaptiveE (layer-while-held adaptiveE)
+    fk-adaptiveO (layer-while-held adaptiveO)
 )
 
 ;; App specific keymaps
