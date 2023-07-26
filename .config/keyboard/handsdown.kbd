@@ -26,7 +26,10 @@
 )
 (defchords mainr $chord-timeout
   (a     ) a
-  ( e    ) (fork e u (a))
+  ( e    ) (
+    multi e (on-press-fakekey fk-adaptiveE press)
+    (macro 150 (on-press-fakekey fk-adaptiveE release))
+  )
   (   i  ) i
   (    h ) (fork h (macro bspc = spc) (i))
   (e i   ) ret
