@@ -27,7 +27,9 @@
 (defchords mainr $chord-timeout
   (a     ) a
   ( e    ) (
-    multi e (on-press-fakekey fk-adaptiveE press)
+    multi
+    (fork e u (a))
+    (on-press-fakekey fk-adaptiveE press)
     (macro 150 (on-press-fakekey fk-adaptiveE release))
   )
   (   i  ) i
