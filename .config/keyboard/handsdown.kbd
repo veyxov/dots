@@ -9,7 +9,7 @@
 )
 (defchords main $chord-timeout
   (r     ) r
-  ( s    ) (fork s (macro bspc n e s s) (n))
+  ( s    ) s
   (   n  ) (tap-hold 200 200 n (layer-toggle super))
   (    d ) d
   (s n   ) esc
@@ -74,7 +74,7 @@
 (defchords kyu $chord-timeout
   (u) (
     multi u (on-press-fakekey fk-adaptiveU press)
-    (macro 300 (on-press-fakekey fk-adaptiveU release))
+    (macro 100 (on-press-fakekey fk-adaptiveU release))
   ) ;; uh->ua
 
   (y) (fork y (macro bspc z) (u))
