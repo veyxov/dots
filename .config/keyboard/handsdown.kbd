@@ -147,7 +147,7 @@
   @tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    @scolon            XX  XX  XX
   @x @g    @l    @c    b    XX    XX    XX    @-    @u    @o    @y          @k             XX  XX  XX  XX
   XX @qwertyl XX    (layer-toggle num)    @onesft    (layer-toggle mouse)    XX    XX XX      (tap-hold-release 200 200 spc (layer-toggle sym)) @onesft  XX XX     XX                XX  XX  XX
-  XX @onehandl XX           @t            XX  @russch @russch XX XX      XX       XX XX  XX
+  XX @onehandl XX           @t            @russch  @russch @russch XX XX      XX       XX XX  XX
 )
 
 (deflayer shifted
