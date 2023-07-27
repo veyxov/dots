@@ -23,7 +23,7 @@
   tab  q    w    e    r    t    y    u    i     @o_russ    @p_russ    @[_russ    ]    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    XX    k    l    ;    '          \             kp4  kp5  kp6  kp+
   lsft 102d z    x    (one-shot-press-pcancel 1000 (layer-toggle rushift))    (layer-toggle mouse)    b    n   XX (tap-hold-release 100 130 spc ralt)   (one-shot-press-pcancel 1000 (layer-toggle rushift))        /    rsft      up        kp1  kp2  kp3
-  lctl lmet lalt           (tap-hold-release 100 150 h (layer-toggle nav))            ralt @mainch @mainch left down rght      kp0       kp.  kprt
+  lctl lmet lalt           (tap-hold-release 100 150 h (layer-toggle nav))            @mainch @mainch @mainch left down rght      kp0       kp.  kprt
 )
 
 (deflayer rushift
