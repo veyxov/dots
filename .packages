@@ -19,6 +19,7 @@ docker-compose
 dotnet-sdk
 dotnet-sdk-5.0-bin
 dotnet-sdk-6.0
+dust
 efibootmgr
 exa
 fd
@@ -87,6 +88,7 @@ swayimg
 swaylock-effects-git
 tailwindcss-language-server
 telegram-desktop
+tk
 ttf-apple-emoji
 ttf-firacode-nerd
 ttf-nerd-fonts-symbols-mono
