@@ -7,13 +7,14 @@
 
     < (macro S-,)
     > (macro S-.)
-    
+
     at S-2
 
     : (macro S-;)
 
     ! (macro S-1)
     * (macro S-8)
+    # (macro S-3)
 
     brco S-[
     brcc S-]
