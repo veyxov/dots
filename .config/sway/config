@@ -3,7 +3,7 @@
 # If tap on current workspace, go to last workspace
 workspace_auto_back_and_forth yes
 
-assign [app_id="org.telegram.desktop"] workspace 5
+assign [app_id="org.telegram.desktop"] workspace 4
 assign [app_id="firefox"] workspace 1
 
 for_window [window_role = "pop-up"] floating enable
