@@ -34,9 +34,10 @@
   )
   (   i  ) i
   (    h ) (fork h (macro bspc =) (i))
+  (a i)    (macro S-;)
   (e i   ) ret
   (e a   ) C-bspc ;; e+a=control
-  (  i h ) S-; ;; e+a=control
+  (  i h ) (macro w h a t)
 )
 
 ;; tmp
