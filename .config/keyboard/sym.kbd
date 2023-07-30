@@ -13,6 +13,7 @@
     : (macro S-;)
 
     ! (macro S-1)
+    * (macro S-8)
 
     brco S-[
     brcc S-]
@@ -28,13 +29,12 @@
 (defalias 
     { (chord sym @brco)
     } (chord sym @brcc)
-    =!
 )
 
 (deflayer sym
   _  _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
   _ _ _  @{     @}            _   _    _    _    _       @>  @<    _    _           _ _  _  _
-  _ _    @bo    @bc        @:    _    _    _        _        =    _    x    @!
+  _ _    @bo    @bc        @:    \    _    _        _        =    @*    x    @!
   _            _  _  _
   _      [      ]    @at _    _    _    _    _    _    _    _          _             _  _  _  _
   _ _ _    _    _    _     _    _    _  _ _  _ _     _                _  _  _
