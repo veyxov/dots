@@ -78,49 +78,7 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+Space move scratchpad
 bindsym $mod+Space scratchpad show
 
-mode "resize" {
-        bindsym a resize shrink width 10px
-        bindsym e resize grow height 10px
-        bindsym i resize shrink height 10px
-        bindsym h resize grow width 10px
-
-        bindsym Left resize shrink width 10px
-        bindsym Down resize grow height 10px
-        bindsym Up resize shrink height 10px
-        bindsym Right resize grow width 10px
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
 bindsym $mod+r mode "resize"
-
-## Swap Mode:
-## Swaps focused window with window in direction in order to move it
-# around a layout without altering the layout.
-#
-# Swap Mode:
-#
-# Swaps focused window with window in direction in order to move it
-# around a layout without altering the layout.
-mode "swap" {
-        bindsym a mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap"
-        bindsym e mark --add "_swap", focus down, swap container with mark "_swap", focus down, unmark "_swap"
-        bindsym i mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap"
-        bindsym h mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap"
-
-        bindsym Shift+a move container to workspace number 1
-        bindsym Shift+e move container to workspace number 2
-        bindsym Shift+i move container to workspace number 3
-        bindsym Shift+h move container to workspace number 4
-        bindsym Shift+t move container to workspace number 5
-# Return to default mode
-        bindsym q mode "default"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+w mode "swap"
 
 # bindsym $mod+s exec 'grim - | wl-copy'
 bindsym $mod+s exec 'grim -g "$(slurp -d)" - | wl-copy'
