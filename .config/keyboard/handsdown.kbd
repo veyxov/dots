@@ -33,7 +33,7 @@
     (macro 150 (on-press-fakekey fk-adaptiveE release))
   )
   (   i  ) i
-  (    h ) (fork h (macro bspc = spc) (i))
+  (    h ) (fork h (macro bspc =) (i))
   (e i   ) ret
   (e a   ) C-bspc ;; e+a=control
   (  i h ) S-; ;; e+a=control
@@ -58,7 +58,10 @@
   )
   quote (tap-hold-release 200 200 ' rctl) 
   tab (tap-hold-release 200 200 f5 lalt)
-  scolon (tap-hold-release 200 200 ; lalt)
+  scolon (tap-dance-eager 200 (
+          (macro ;)
+          (multi (macro bspc) (layer-switch nav))
+          ))
 )
 
 (defalias
