@@ -2,8 +2,20 @@
 (defalias
     bopn S-9
     bcls S-0
-    { S-[
-    } S-]
+    brco S-[
+    brcc S-]
+)
+
+(defchords sym 100
+    (@brco) @brco
+    (@brcc) @brcc
+
+    (@brco @brcc) (macro @brco ret @brcc)
+)
+
+(defalias 
+    { (chord sym @brco)
+    } (chord sym @brcc)
 )
 
 (deflayer sym
