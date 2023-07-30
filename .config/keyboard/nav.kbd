@@ -3,12 +3,15 @@
     w2 (tap-dance-eager 197 ((macro M-e) (macro M-e M-S-e)))
     w3 (tap-dance-eager 197 ((macro M-i) (macro M-i M-S-i)))
     w4 (tap-dance-eager 197 ((macro M-h) (macro M-h M-S-h)))
+    lnchr (macro M-u)
+    flscr (macro M-f)
+    kll (macro M-bspc)
 )
 
 (deflayer winnav
   _  _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
-  _   _    _    _    _    _     _    _    _    _    _    _    _    _           _ _  _  _
-  _    _  _  _  _  _    _    _    _ @w1    @w2    @w3      @w4      _            _  _  _
+  _   _    _    _    _    _     _    _      _    _    _    _    _    _           _ _  _  _
+  _    @kll  _  @lnchr  @flscr  _    _    _    _ @w1    @w2    @w3      @w4      _            _  _  _
   _ _    _    _    _    _    _    _    _    _    _    _          _             _  _  _  _
   _ _ _    _    _    _     _    _    _  _ _  _ _     _                _  _  _
   _ _ _           _            _  _ _ _ _      _       _ _  _

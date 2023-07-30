@@ -10,7 +10,7 @@
 (defchords main $chord-timeout
   (r     ) r
   ( s    ) s
-  (   n  ) (tap-hold 200 200 n (layer-toggle super))
+  (   n  ) n
   (    d ) d
   (s n   ) esc
   (s r   ) (one-shot 1000 lctl) ;; s+r=control
