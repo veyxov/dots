@@ -6,12 +6,13 @@
     lnchr (macro M-u)
     flscr (macro M-f)
     kll (macro M-bspc)
+    shot (macro M-s)
 )
 
 (deflayer winnav
   _  _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
   _   _    _    _    _    _     _    _      _    _    _    _    _    _           _ _  _  _
-  _    @kll  _  @lnchr  @flscr  _    _    _    _ @w1    @w2    @w3      @w4      _            _  _  _
+  _    @kll  @shot  @lnchr  @flscr  _    _    _    _ @w1    @w2    @w3      @w4      _            _  _  _
   _ _    _    _    _    _    _    _    _    _    _    _          _             _  _  _  _
   _ _ _    _    _    _     _    _    _  _ _  _ _     _                _  _  _
   _ _ _           _            _  _ _ _ _      _       _ _  _
