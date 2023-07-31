@@ -1,7 +1,7 @@
 ;; Base layer
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld   @j    @vshift    @f    @m   @p   @v    XX    XX    .    /    @question    @quote    (macro w h a t spc t o  spc p u t S-.)          XX XX  XX  XX
+  lrld   @j    @vshift    @f    @m   @p   @v    XX    XX    .    /    @question    @quote    (macro S--)          XX XX  XX  XX
   @tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    @scolon            XX  XX  XX
   @x @g    @l    @c    b    XX    XX    XX    @-    @u    @o    @y          @k             XX  XX  XX  XX
   @qwertyl @macRec  @macPlay    @numl    rpt-any    @mousl    XX    XX XX      @spcOrSym @onesft  XX XX     XX                XX  XX  XX
