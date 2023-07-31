@@ -1,3 +1,23 @@
+;; Base layer
+(deflayer main
+  @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
+  lrld   @j    @vshift    @f    @m   @p   @v    XX    XX    .    /    @question    @quote    S-'           XX XX  XX  XX
+  @tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    @scolon            XX  XX  XX
+  @x @g    @l    @c    b    XX    XX    XX    @-    @u    @o    @y          @k             XX  XX  XX  XX
+  @qwertyl (dynamic-macro-record 0)  (dynamic-macro-play 0)    (layer-toggle num)    rpt    (layer-toggle mouse)    XX    XX XX      (tap-hold-release 200 200 spc (layer-toggle sym)) @onesft  XX XX     XX                XX  XX  XX
+  XX @onehandl XX           @t            @russch  @russch @russch XX XX      XX       XX XX  XX
+)
+
+;; Base shifted layer
+(deflayer shifted
+  S-esc  f1   f2   S-f3   S-f4   S-f5   S-f6   S-f7   S-f8   S-f9   S-f10  S-f11  S-f12  S-ins S-prnt S-del   pp   mute  prev XX
+  lrld (macro S-j) (macro S-v)    (macro S-f)    (macro S-m)    (macro S-p)    (macro S-v)    S-7    S-8    S-grv    S-7    S-/    @quote    XX           S-nlck S-kp/  S-kp*  S-kp-
+  S-tab  (macro S-r)    (macro S-s)        (macro S-n)    (macro S-d)    (macro S-w)    (macro S-y)    (macro S-u)    S-\    (macro S-a)    (macro S-e)    (macro S-i)    (macro S-h)    grv              S-kp7  S-kp8  S-kp9
+  (macro S-x)    (macro S-g)    (macro S-l)    (macro S-c)    (macro S-b)    (macro S-g)    (macro S-h)    (macro S-j)    S-=    (macro S-u)    (macro S-o)    (macro S-y)         (macro S-k)            S-kp4  S-kp5  S-kp6  S-kp+
+  S-lsft 102d (macro S-z)    (macro S-x)    (macro S-c)    (macro S-v)    (macro S-b)    (macro S-n)    (macro S-m)    S-ret    S-.    S-/    S-rsft      S-up        S-kp1  S-kp2  S-kp3
+  S-lctl S-lmet S-lalt           (macro S-t)            S-ralt S-rmet S-rctl S-left S-down S-rght      S-kp0       S-kp.  S-kprt
+)
+
 ;; Home-Row Left-Hand
 (defalias
   kaboom (cmd bash -c "sudo killall kanata")
@@ -143,23 +163,5 @@
    smain (layer-switch main)
    vshift (tap-hold-release 200 200 v lsft)
    k (fork k i (y))
-)
-
-(deflayer main
-  @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld   @j    @vshift    @f    @m   @p   @v    XX    XX    .    /    @question    @quote    S-'           XX XX  XX  XX
-  @tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    @scolon            XX  XX  XX
-  @x @g    @l    @c    b    XX    XX    XX    @-    @u    @o    @y          @k             XX  XX  XX  XX
-  @qwertyl (dynamic-macro-record 0)  (dynamic-macro-play 0)    (layer-toggle num)    rpt    (layer-toggle mouse)    XX    XX XX      (tap-hold-release 200 200 spc (layer-toggle sym)) @onesft  XX XX     XX                XX  XX  XX
-  XX @onehandl XX           @t            @russch  @russch @russch XX XX      XX       XX XX  XX
-)
-
-(deflayer shifted
-  S-esc  f1   f2   S-f3   S-f4   S-f5   S-f6   S-f7   S-f8   S-f9   S-f10  S-f11  S-f12  S-ins S-prnt S-del   pp   mute  prev XX
-  lrld (macro S-j) (macro S-v)    (macro S-f)    (macro S-m)    (macro S-p)    (macro S-v)    S-7    S-8    S-grv    S-7    S-/    @quote    XX           S-nlck S-kp/  S-kp*  S-kp-
-  S-tab  (macro S-r)    (macro S-s)        (macro S-n)    (macro S-d)    (macro S-w)    (macro S-y)    (macro S-u)    S-\    (macro S-a)    (macro S-e)    (macro S-i)    (macro S-h)    grv              S-kp7  S-kp8  S-kp9
-  (macro S-x)    (macro S-g)    (macro S-l)    (macro S-c)    (macro S-b)    (macro S-g)    (macro S-h)    (macro S-j)    S-=    (macro S-u)    (macro S-o)    (macro S-y)         (macro S-k)            S-kp4  S-kp5  S-kp6  S-kp+
-  S-lsft 102d (macro S-z)    (macro S-x)    (macro S-c)    (macro S-v)    (macro S-b)    (macro S-n)    (macro S-m)    S-ret    S-.    S-/    S-rsft      S-up        S-kp1  S-kp2  S-kp3
-  S-lctl S-lmet S-lalt           (macro S-t)            S-ralt S-rmet S-rctl S-left S-down S-rght      S-kp0       S-kp.  S-kprt
 )
 
