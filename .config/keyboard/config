@@ -24,6 +24,8 @@
 ;; Main layout
 (include ./handsdown.kbd)
 
+(include ./capsword.kbd)
+
 (include ./onehand.kbd)
 
 ;; Cyrillic layout
