@@ -56,6 +56,8 @@ bindsym $mod+u exec $menu
 
 floating_modifier $mod normal
 
+bindsym $mod+Shift+f floating toggle
+
 bindsym $mod+Shift+c reload
 
 bindsym $mod+a workspace number 1
