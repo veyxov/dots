@@ -14,11 +14,13 @@
     emoji (macro M-j)
 
     clip (macro M-p)
+
+    float (macro M-S-f)
 )
 
 (deflayer winnav
   _  _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
-  _   @emoji    _    @pad    _    @clip     _    _      _       _       _   @padshw    _    _           _ _  _  _
+  _   @emoji    _    @pad    @float    @clip     _    _      _       _       _   @padshw    _    _           _ _  _  _
   _    @kll  @shot  @lnchr  @flscr  _    _    _    _ @w1    @w2    @w3      @w4      _            _  _  _
   _ _    _    _    _    _    _    _    _    _    _    _          _             _  _  _  _
   _ _ _    _    _    _     _    _    _  _ _  _ _     _                _  _  _
