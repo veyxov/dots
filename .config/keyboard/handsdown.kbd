@@ -77,11 +77,6 @@
 )
 
 (defalias
-  ;; 'm' on press, 'l' when rolled with 'f' (for 'fl' biagram)
-  m (
-    multi m (on-press-fakekey fk-adaptiveM press)
-    (macro 260 (on-press-fakekey fk-adaptiveM release))
-  ) ;; mvm - stumble
   t (tap-dance-eager 311 (
   (tap-hold-release 200 200 t (layer-toggle nav))
   (macro bspc S-t)
@@ -125,6 +120,7 @@
 ;; jf chord
 (defalias
   j (chord rsnd j)
+  m (chord rsnd m)
   f (chord rsnd f)
 
   v (
@@ -145,6 +141,12 @@
     f (on-press-fakekey fk-adaptiveF press)
     (macro 250 (on-press-fakekey fk-adaptiveF release))
   )
+  ;; 'm' on press, 'l' when rolled with 'f' (for 'fl' biagram)
+  (m) (
+    multi m (on-press-fakekey fk-adaptiveM press)
+    (macro 260 (on-press-fakekey fk-adaptiveM release))
+  )
+  (f m) (macro f l)
   (j f) q
 )
 
