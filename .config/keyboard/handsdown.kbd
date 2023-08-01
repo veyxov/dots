@@ -66,7 +66,7 @@
   (a i)    (macro S-;)
   (e i   ) ret
   (a e  ) C-bspc ;; e+a=control
-  (a e i) @scolon ;; e+a=control
+  (a e i) @scolon ;; 
   (  i h ) (macro w h a t)
 )
 
