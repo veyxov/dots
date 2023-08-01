@@ -135,4 +135,8 @@ bindsym {
   $mod+Shift+x    splith
   $mod+Shift+y    splitv
   $mod+Shift+z    layout toggle all
+
+  $mod+Shift+s    layout stacking
+  $mod+Shift+l    layout tabbed
+  $mod+Shift+p    layout toggle split
 }
