@@ -82,8 +82,6 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+Space move scratchpad
 bindsym $mod+Space scratchpad show
 
-bindsym $mod+r mode "resize"
-
 # bindsym $mod+s exec 'grim - | wl-copy'
 bindsym $mod+s exec 'grim -g "$(slurp -d)" - | wl-copy'
 
@@ -131,4 +129,10 @@ set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme "Nordic"
     gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
+}
+
+bindsym {
+  $mod+Shift+x    splith
+  $mod+Shift+y    splitv
+  $mod+Shift+z    layout toggle all
 }
