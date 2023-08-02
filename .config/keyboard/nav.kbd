@@ -21,6 +21,8 @@
     splitv (macro M-S-y)
     splitx (macro M-S-z)
 
+    fcs (macro M-S-g)
+
     stack (macro M-S-s)
     tabbed (macro M-S-l)
     split (macro M-S-p)
@@ -30,7 +32,7 @@
   _  _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
   _   @emoji    _    @pad    @float    @clip     _    _      _       _ @splitv       @splith       _    _           _ _  _  _
   _    @kll  @shot  @lnchr  @flscr  _    _    _    _ @w1    @w2    @w3      @w4      _            _  _  _
-  _ @split    @stack    @tabbed    _    _    _    _    _    _    _    _          _             _  _  _  _
+  _ @split    @stack    @tabbed    _    _    _    _    _ _    @fcs        _          _             _  _  _  _
   _ _ _    _    _    _     _    _    _  _ _  _ _     _                _  _  _
   _ _ _           _            _  _ _ _ _      _       _ _  _
 )
@@ -43,4 +45,3 @@
   XX @qwertyl XX    XX    XX    XX    XX    XX    XX  (layer-toggle winnav) XX  XX XX     XX                XX  XX  XX
   XX XX XX           @t            XX  XX XX XX XX      XX       XX XX  XX
 )
-

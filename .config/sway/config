@@ -139,4 +139,6 @@ bindsym {
   $mod+Shift+s    layout stacking
   $mod+Shift+l    layout tabbed
   $mod+Shift+p    layout toggle split
+
+  $mod+Shift+g    focus next
 }
