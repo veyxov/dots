@@ -4,7 +4,7 @@
 )
 
 (defchords russ $chord-timeout
-    (p) p
+    (p) (tap-dance-eager 211 ((macro p) (macro bspc AG-p))) ;; e/yo
     ([) [
     ([ p) ret
     (o) o
