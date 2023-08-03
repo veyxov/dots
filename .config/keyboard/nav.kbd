@@ -32,7 +32,7 @@
   _  _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
   _   @emoji    _    @pad    @float    @clip     _    _      _       _ @splitv       @splith       _    _           _ _  _  _
   _    @kll  @shot  @lnchr  @flscr  _    _    _    _ @w1    @w2    @w3      @w4      _            _  _  _
-  _ @split    @stack    @tabbed    _    _    _    _    _ _    @fcs        _          _             _  _  _  _
+  _ @split    @fcs    @tabbed    _    _    _    _    _ _    @fcs        _          _             _  _  _  _
   _ _ _    _    _    _     _    _    _  _ _  _ _     _                _  _  _
   _ _ _           _            _  _ _ _ _      _       _ _  _
 )
