@@ -22,11 +22,14 @@
     u/hard-u (tap-dance-eager 211 ((macro l) (macro bspc AG-l)))
 
     ruSft (layer-toggle rushift)
+
+    capDot (multi 9 spc)
+    capq (multi - spc)
 )
 
 (deflayer russ
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
-  grv  1   2     3    4    5    v    7    8    (multi 9 spc (one-shot 500 (layer-toggle rushift)))    0    -    =    bspc           nlck kp/  kp*  kp-
+  grv  1   2     3    4    5    v    7    8    @capDot    0    @capq    =    bspc           nlck kp/  kp*  kp-
   tab  q    w    e    r    t    y    u    i     @o_russ    @p_russ    @[_russ    ]    rpt-any            kp7  kp8  kp9
   caps @g/ghe    s    @ch/j    f    g    h    XX    k    @u/hard-u    ;    '          \             kp4  kp5  kp6  kp+
   lsft 102d z    x    (one-shot-press-pcancel 1000 @ruSft)    (layer-toggle mouse)    b    n   XX (tap-hold-release 100 130 spc @ruSft)   (one-shot-press-pcancel 1000 (layer-toggle rushift))        /    rsft      up        kp1  kp2  kp3
