@@ -98,15 +98,6 @@ return {
 			}),
 		},
 		{
-			mods = "ALT|SHIFT",
-			key = [[e]],
-			action = wezterm.action.SplitPane({
-				top_level = true,
-				direction = "Up",
-				size = { Percent = 50 },
-			}),
-		},
-		{
 			mods = "ALT",
 			key = [[e]],
 			action = wezterm.action.SplitPane({
