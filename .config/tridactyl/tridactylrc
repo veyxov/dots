@@ -6,7 +6,7 @@ set update.lastnaggedversion 1.14.0
 set update.checkintervalsecs 86400
 set configversion 2.0
 set theme midnight
-set hintchars tsndaeirhlogyjfl/?'uc
+set hintchars nehrisadt
 set smoothscroll true
 set searchengine duckduckgo
 set hintnames short
