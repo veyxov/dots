@@ -8,7 +8,7 @@
     < (macro S-,)
     > (macro S-.)
 
-    at S-2
+    at (tap-hold 211 211 S-2 (macro S-[ S-2 S-] left))
 
     : (macro S-;)
 
