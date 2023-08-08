@@ -65,7 +65,7 @@ return {
         },
     },
 
-    leader = { key = "F1", mods = "", timeout_milliseconds = 1000 },
+    leader = { key = "F5", mods = "", timeout_milliseconds = 1000 },
     default_prog = { "/usr/bin/zsh" },
     font_size = 20,
     keys = {
@@ -119,8 +119,15 @@ return {
         { key = "v",          mods = "ALT",        action = wezterm.action.ActivateCopyMode },
         { key = "c",          mods = "CTRL",       action = wezterm.action({ CopyTo = "Clipboard" }) },
         { key = "v",          mods = "CTRL",       action = wezterm.action({ PasteFrom = "Clipboard" }) },
+
         { key = "e",  mods = "ALT",        action = wezterm.action({ ActivatePaneDirection = "Down" }) },
         { key = "i",  mods = "ALT",        action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+
+        { key = "e",  mods = "LEADER",        action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+        { key = "i",  mods = "LEADER",        action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+        { key = "a",  mods = "LEADER",        action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+        { key = "h",  mods = "LEADER",        action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+
         { key = "UpArrow",    mods = "ALT",        action = wezterm.action.IncreaseFontSize },
         { key = "DownArrow",  mods = "ALT",        action = wezterm.action.DecreaseFontSize },
         {
