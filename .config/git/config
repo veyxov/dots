@@ -1,7 +1,7 @@
 [interactive]
     diffFilter = delta --color-only
 [gpg]
-    format=ssh
+	format = ssh
 
 [delta]
     navigate = true    # use n and N to move between diff sections
@@ -13,7 +13,7 @@
 [user]
 	email = veyxov@gmail.com
 	name = Shekhov Ismoil
-	signingkey = ~/.ssh/id_rsa.pub
+	signingkey = /home/iz/.ssh/id_rsa.pub
 [push]
     autoSetupRemote = true
 [init]
