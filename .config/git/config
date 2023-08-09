@@ -58,3 +58,5 @@
 [advice]
     statusHints = true
     detachedHead = true
+[commit]
+	gpgsign = true
