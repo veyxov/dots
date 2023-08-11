@@ -123,8 +123,8 @@ return {
         { key = "a",  mods = "LEADER",        action = wezterm.action({ ActivatePaneDirection = "Left" }) },
         { key = "h",  mods = "LEADER",        action = wezterm.action({ ActivatePaneDirection = "Right" }) },
 
-        { key = "UpArrow",    mods = "ALT",        action = wezterm.action.IncreaseFontSize },
-        { key = "DownArrow",  mods = "ALT",        action = wezterm.action.DecreaseFontSize },
+        { key = "Slash",    mods = "ALT",        action = wezterm.action.IncreaseFontSize },
+        { key = "?",  mods = "ALT|SHIFT",        action = wezterm.action.DecreaseFontSize },
         {
             key = "p",
             mods = "ALT",
