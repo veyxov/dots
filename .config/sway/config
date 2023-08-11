@@ -3,9 +3,6 @@
 # If tap on current workspace, go to last workspace
 workspace_auto_back_and_forth yes
 
-# Don't switch to other outputs on focus next
-focus_wrapping no
-
 assign [app_id="org.telegram.desktop"] workspace 4
 assign [app_id="firefox"] workspace 1
 
@@ -27,7 +24,7 @@ exec 'wl-paste -t text --watch clipman store --max-items 1000 --unix'
 
 exec ianny
 
-# exec_always kanshi
+exec_always kanshi
 
 set $mod Mod4
 
