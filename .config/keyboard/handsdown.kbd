@@ -77,10 +77,7 @@
 )
 
 (defalias
-  t (tap-dance-eager 311 (
-  (tap-hold-release 200 200 t (layer-toggle nav))
-  (macro bspc S-t)
-  )) ;; tmp
+  t (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
   p (
     multi p (on-press-fakekey fk-adaptiveP press)
     (macro 270 (on-press-fakekey fk-adaptiveP release))
