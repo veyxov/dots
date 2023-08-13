@@ -65,3 +65,4 @@
 
 ;; App specific keymaps
 (include ./apps/org.telegram.desktop)
+(include ./apps/firefox)
