@@ -35,7 +35,7 @@ return {
     use_fancy_tab_bar = false,
     window_close_confirmation = "NeverPrompt",
 
-    font = font("FiraCode Nerd Font Mono"),
+    font = font("B612 Mono"),
     font_rules = {
         {
             italic = true,
