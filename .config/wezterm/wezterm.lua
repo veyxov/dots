@@ -42,6 +42,7 @@ return {
             intensity = "Normal",
             font = font({
                 family = "Victor Mono",
+                weight = "DemiBold",
                 style = "Italic",
             }),
         },
