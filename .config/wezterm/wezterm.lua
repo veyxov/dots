@@ -9,7 +9,7 @@ local function font(opts)
 end
 
 return {
-    color_scheme = 'Tinacious Design (Dark)',
+    color_scheme = 'iceberg-dark',
     inactive_pane_hsb = {
         saturation = 0,
         brightness = 0.25,
