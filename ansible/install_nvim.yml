@@ -1,0 +1,11 @@
+---
+- name: Install nvim on Arch Linux
+  hosts: localhost
+  become: yes  # This allows Ansible to escalate privileges if needed
+
+  tasks:
+    - name: Install the package
+      package:
+        name: neovim
+        state: latest
+
