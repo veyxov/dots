@@ -70,10 +70,10 @@ return {
     default_prog = { "/usr/bin/zsh" },
     font_size = 20,
     keys = {
+        { key = "p",         mods = "LEADER", action = wezterm.action.ActivateCommandPalette },
         { mods = "ALT|CTRL", key = "/",    action = act.MoveTabRelative(1) },
         { mods = "ALT",      key = "/",    action = act.MoveTabRelative(-1) },
         { mods = "ALT",      key = "d",    action = wezterm.action.ShowDebugOverlay },
-        { key = "l",         mods = "ALT", action = wezterm.action.ShowLauncher },
         {
             mods = "ALT|SHIFT",
             key = [[i]],
