@@ -112,7 +112,7 @@ return {
         { key = "a",          mods = "ALT",        action = wezterm.action({ ActivateTabRelative = -1 }) },
         { key = "h",          mods = "ALT",        action = wezterm.action({ ActivateTabRelative = 1 }) },
         { key = "y",          mods = "ALT",        action = wezterm.action.QuickSelect },
-        { key = "v",          mods = "ALT",        action = wezterm.action.ActivateCopyMode },
+        { key = "s",          mods = "LEADER",        action = wezterm.action.ActivateCopyMode },
         { key = "c",          mods = "CTRL",       action = wezterm.action({ CopyTo = "Clipboard" }) },
         { key = "v",          mods = "CTRL",       action = wezterm.action({ PasteFrom = "Clipboard" }) },
 
