@@ -136,12 +136,6 @@ return {
     },
     key_tables = {
         copy_mode = {
-            { key = 'Tab',    mods = 'NONE', action = act.CopyMode 'MoveForwardWord' },
-            {
-                key = 'Tab',
-                mods = 'SHIFT',
-                action = act.CopyMode 'MoveBackwardWord',
-            },
             {
                 key = 'Enter',
                 mods = 'NONE',
@@ -253,8 +247,6 @@ return {
                 action = act.CopyMode 'MoveToStartOfLineContent',
             },
             { key = 'b', mods = 'NONE', action = act.CopyMode 'MoveBackwardWord' },
-            { key = 'b', mods = 'ALT',  action = act.CopyMode 'MoveBackwardWord' },
-            { key = 'b', mods = 'CTRL', action = act.CopyMode 'PageUp' },
             { key = 'c', mods = 'CTRL', action = act.CopyMode 'Close' },
             {
                 key = 'd',
@@ -271,22 +263,10 @@ return {
                 mods = 'NONE',
                 action = act.CopyMode { JumpForward = { prev_char = false } },
             },
-            { key = 'f', mods = 'ALT',  action = act.CopyMode 'MoveForwardWord' },
-            { key = 'f', mods = 'CTRL', action = act.CopyMode 'PageDown' },
             {
                 key = 'g',
                 mods = 'NONE',
                 action = act.CopyMode 'MoveToScrollbackTop',
-            },
-            { key = 'g', mods = 'CTRL', action = act.CopyMode 'Close' },
-            { key = 'h', mods = 'NONE', action = act.CopyMode 'MoveLeft' },
-            { key = 'j', mods = 'NONE', action = act.CopyMode 'MoveDown' },
-            { key = 'k', mods = 'NONE', action = act.CopyMode 'MoveUp' },
-            { key = 'l', mods = 'NONE', action = act.CopyMode 'MoveRight' },
-            {
-                key = 'm',
-                mods = 'ALT',
-                action = act.CopyMode 'MoveToStartOfLineContent',
             },
             {
                 key = 'o',
@@ -298,11 +278,6 @@ return {
                 key = 't',
                 mods = 'NONE',
                 action = act.CopyMode { JumpForward = { prev_char = true } },
-            },
-            {
-                key = 'u',
-                mods = 'CTRL',
-                action = act.CopyMode { MoveByPage = -0.5 },
             },
             {
                 key = 'v',
@@ -325,31 +300,11 @@ return {
             },
             { key = 'PageUp',   mods = 'NONE', action = act.CopyMode 'PageUp' },
             { key = 'PageDown', mods = 'NONE', action = act.CopyMode 'PageDown' },
-            {
-                key = 'End',
-                mods = 'NONE',
-                action = act.CopyMode 'MoveToEndOfLineContent',
-            },
-            {
-                key = 'Home',
-                mods = 'NONE',
-                action = act.CopyMode 'MoveToStartOfLine',
-            },
             { key = 'LeftArrow', mods = 'NONE', action = act.CopyMode 'MoveLeft' },
-            {
-                key = 'LeftArrow',
-                mods = 'ALT',
-                action = act.CopyMode 'MoveBackwardWord',
-            },
             {
                 key = 'RightArrow',
                 mods = 'NONE',
                 action = act.CopyMode 'MoveRight',
-            },
-            {
-                key = 'RightArrow',
-                mods = 'ALT',
-                action = act.CopyMode 'MoveForwardWord',
             },
             { key = 'UpArrow',   mods = 'NONE', action = act.CopyMode 'MoveUp' },
             { key = 'DownArrow', mods = 'NONE', action = act.CopyMode 'MoveDown' },
