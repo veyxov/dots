@@ -71,6 +71,11 @@ return {
     font_size = 20,
     keys = {
         {
+            key = 'w',
+            mods = 'LEADER',
+            action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' },
+        },
+        {
             key = 'p',
             mods = 'LEADER',
             action = wezterm.action.ActivateCommandPalette,
