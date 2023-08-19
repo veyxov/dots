@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+selected_proj=$(find ~/personal ~/work -mindepth 1 -maxdepth 1 | fzf)
+selected_base_name=$(basename $selected_proj) 
+
+wezterm start --workspace=$selected_base_name --cwd=$selected_proj
