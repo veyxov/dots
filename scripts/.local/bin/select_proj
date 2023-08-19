@@ -3,4 +3,13 @@
 selected_proj=$(find ~/personal ~/work -mindepth 1 -maxdepth 1 | fzf)
 selected_base_name=$(basename $selected_proj) 
 
-wezterm start --workspace=$selected_base_name --cwd=$selected_proj
+list=$(wezterm cli list --format json)
+workspaces=$(echo $list | jq '.[].workspace')
+
+# Switch to workspace if it exists
+if [[ $workspaces == *"$selected_base_name"* ]]; then
+    first_pane_id_in_workspace=$(wezterm cli list --format json | jq '.[] | select(.workspace == "manager") | .pane_id' | head -n 1)
+    wezterm cli activate-pane --pane-id=$first_pane_id_in_workspace
+else
+    wezterm start --workspace=$selected_base_name --cwd=$selected_proj
+fi
