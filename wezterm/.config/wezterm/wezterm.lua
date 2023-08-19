@@ -35,7 +35,7 @@ return {
     use_fancy_tab_bar = false,
     window_close_confirmation = "NeverPrompt",
 
-    font = font("B612 Mono"),
+    font = font("Hack Nerd Font"),
     font_rules = {
         {
             italic = true,
