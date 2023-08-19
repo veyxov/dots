@@ -30,9 +30,8 @@ alias mv="mv -v"
 alias cp="cp -v"
 # yadm
 function kfg() {
-    cd ~
-    yadm enter lazygit
-    cd -
+    cd ~/dots
+    ei
 }
 
 # Exports
@@ -68,8 +67,6 @@ cmd_to_clip () {
 }
 zle -N cmd_to_clip
 bindkey '^Y' cmd_to_clip
-
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 export GPG_TTY=$(tty)
 #pkill -9 gpg-agent &
