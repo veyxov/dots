@@ -1,0 +1,6 @@
+Amount=$(ls ~/.local/walls | wc -l)
+Rand=$(($RANDOM % $Amount))
+Files=(~/.local/walls/*)
+wall=${Files[Rand]}
+
+swaybg -i $wall

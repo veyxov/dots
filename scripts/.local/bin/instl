@@ -1,0 +1,18 @@
+#!/bin/bash
+file="/tmp/repos_app_list"
+if [ ! -f "$file" ]; then
+    # Create a cache for apps list
+    yay -Sy
+    echo "Creating cache..."
+    yay -Slq > $file
+fi
+
+list_of_apps=$(cat $file)
+
+if [ $# -eq 0 ]; then
+	# Show a full screen menu for choosing a package to install
+	cat $file | fzf --multi --no-height --preview 'yay -Si {1}' | xargs -ro yay -S
+else
+	# Install all given arguments
+	yay -S $*
+fi
