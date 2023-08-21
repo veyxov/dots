@@ -5,10 +5,14 @@ selected_base_name=$(basename $selected_proj)
 
 list=$(wezterm cli list --format json)
 workspaces=$(echo $list | jq '.[].workspace')
+echo $list
 
 # Switch to workspace if it exists
 if [[ $workspaces == *"$selected_base_name"* ]]; then
-    first_pane_id_in_workspace=$(wezterm cli list --format json | jq '.[] | select(.workspace == "manager") | .pane_id' | head -n 1)
+    panes_ids=$(echo $list | jq '.[] | select(.workspace == "manager") | .pane_id')
+    echo $panes_ids
+    first_pane_id_in_workspace=$(echo $panes_ids | head -n 1)
+    echo $first_pane_id_in_workspace
     wezterm cli activate-pane --pane-id=$first_pane_id_in_workspace
 else
     wezterm start --workspace=$selected_base_name --cwd=$selected_proj
