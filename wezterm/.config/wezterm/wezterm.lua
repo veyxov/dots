@@ -28,7 +28,6 @@ return {
     },
 
     default_prog = { '/usr/bin/zsh' },
-
     quick_select_alphabet = 'neiosart',
     unix_domains = {
         {
@@ -70,6 +69,7 @@ return {
     },
 
     leader = { key = 'F5', mods = '', timeout_milliseconds = 1000 },
+
     disable_default_key_bindings = true,
     keys = {
         {
