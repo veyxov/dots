@@ -76,3 +76,4 @@ eval "$(zoxide init zsh)"
 
 # New session
 bindkey -s '^p' '^uselect_proj^M'
+bindkey -s '^e' 'cd ./$(fd -t d -d 7 | fzf)^M'
