@@ -29,7 +29,6 @@ freerdp
 fzf
 gimp
 git
-git-crypt
 git-delta
 gopls
 grim
@@ -103,6 +102,7 @@ ttf-hack-nerd
 ttf-nerd-fonts-symbols-mono
 ttf-victor-mono
 typescript-language-server
+unoconv
 unrar
 unzip
 wayland-protocols
