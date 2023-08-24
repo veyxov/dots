@@ -52,7 +52,7 @@ zinit light zsh-users/zsh-autosuggestions
 
 NUM=$((RANDOM%255))
 PROMPT="%B%F{240}%~%b%F{$NUM}❯ %f"
-RPROMPT='%*'
+# RPROMPT='%*' right prompt
 
 # History
 HISTFILE=~/.zsh_history
