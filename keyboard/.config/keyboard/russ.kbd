@@ -43,5 +43,5 @@
   (macro S-tab)  (macro S-q)    (macro S-w)    (macro S-e)    (macro S-r)    (macro S-t)    (macro S-y)    (macro S-u)    (macro S-i)     (macro S-o)    @p_russ    (macro S-[)    (macro S-])    (macro S-ret)            kp7  kp8  kp9
   (macro S-caps) (macro S-a)    (macro S-s)    (macro S-d)    (macro S-f)    (macro S-g)    (macro S-h)    XX    (macro S-k)    (macro S-l)    (macro S-;)    (macro S-')          (macro S-\)             kp4  kp5  kp6  kp+
   lsft 102d (macro S-z)    (macro S-x)    (one-shot-press-pcancel 1000 (layer-toggle rushift))    (layer-toggle mouse)    b    n    (tap-hold-release 100 130 spc ralt)   (one-shot-press-pcancel 1000 (layer-toggle rushift))    .    /    rsft      up        kp1  kp2  kp3
-  lctl lmet lalt           (tap-hold-release 100 150 h (layer-toggle nav))            ralt @mainch @mainch left down rght      kp0       kp.  kprt
+  lctl lmet lalt           (tap-hold-release 100 150 S-h (layer-toggle nav))            ralt @mainch @mainch left down rght      kp0       kp.  kprt
 )
