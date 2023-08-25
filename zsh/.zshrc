@@ -51,7 +51,7 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=1
 zinit light zsh-users/zsh-autosuggestions
 
 NUM=$((RANDOM%255))
-PROMPT="%B%F{240}%~%b%F{$NUM}❯ %f"
+PROMPT="%B%F{240}%(5~|%-1~/…/%3~|%4~)%b%F{$NUM}❯ %f"
 # RPROMPT='%*' right prompt
 
 # History
