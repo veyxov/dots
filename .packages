@@ -4,9 +4,12 @@ aspnet-runtime
 aspnet-runtime-5.0-bin
 aspnet-runtime-6.0
 autotiling-rs
+bandwhich
 base
 base-devel
+bat
 breeze
+broot
 btop
 clipman
 cmake
