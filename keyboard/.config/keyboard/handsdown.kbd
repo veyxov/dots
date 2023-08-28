@@ -177,7 +177,7 @@
 )
 
 (defalias
-  question (fork (macro S-/) (macro bspc S-9) (/))
+  question (fork (macro S-/) (macro bspc = = spc) (/))
   - (fork - (macro bspc S--) (u))
 )
 
