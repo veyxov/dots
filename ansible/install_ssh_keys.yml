@@ -1,17 +1,6 @@
----
-- name: Copy SSH Key from Vault to ~/.ssh/id_rsa
-  hosts: localhost
-  gather_facts: false
+- hosts: localhost
+  vars:
+    source_key: "./ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
   tasks:
-    - name: Retrieve SSH private key from Ansible Vault
-      include_vars: ssh_keys.yml
-      vars:
-        ssh_private_key: "{{ ssh_private_key }}"
-      no_log: true  # To prevent the private key from being printed in logs
-
-    - name: Copy private key to ~/.ssh/id_rsa
-      ansible.builtin.copy:
-        content: "{{ ssh_private_key }}"
-        dest: ~/.ssh/id_rsa
-        mode: '0600'
-
+    - include: tasks/ssh.yml
