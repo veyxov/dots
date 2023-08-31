@@ -2,5 +2,8 @@
   vars:
     source_key: "./ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    email: "veyxov@gmail.com"
+    name: "Shekhov Ismoil"
   tasks:
     - include: tasks/ssh.yml
+    - include: tasks/git.yml
