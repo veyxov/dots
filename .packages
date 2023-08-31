@@ -33,6 +33,7 @@ fzf
 gimp
 git
 git-delta
+glances
 gopls
 grim
 i3ipc-python-git
@@ -95,6 +96,7 @@ swayidle
 swayimg
 swaylock
 tailwindcss-language-server
+taskwarrior-tui
 tealdeer
 telegram-desktop
 thefuck
@@ -109,6 +111,7 @@ typescript-language-server
 unoconv
 unrar
 unzip
+vit
 wayland-protocols
 wdisplays
 wezterm
