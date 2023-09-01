@@ -4,8 +4,8 @@
 )
 
 (defchords russ $chord-timeout
-    (p) (tap-dance-eager 211 ((macro p) (macro bspc AG-p))) ;; e/yo
-    ([) (tap-dance-eager 211 ((macro [) (macro bspc AG-[))) ;; i/hard-i
+    (p) p
+    ([) [
     ([ p) ret
     (o) o
     (o p) C-bspc
@@ -17,10 +17,10 @@
     o_russ (chord russ o)
 )
 (defalias
-    ch/j (tap-dance-eager 211 ((macro d) (macro bspc AG-d)))
-    g/ghe (tap-dance-eager 211 ((macro a) (macro bspc AG-a)))
-    u/hard-u (tap-dance-eager 211 ((macro l) (macro bspc AG-l)))
-    hard (tap-dance-eager 211 (2 (macro bspc AG-2)))
+    ch/j d
+    g/ghe a
+    u/hard-u l
+    hard 2
 
     ruSft (layer-toggle rushift)
 
