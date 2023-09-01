@@ -164,7 +164,7 @@
 )
 
 (defchords cp $chord-timeout-slow
-    (x) x
+    (x) (fork x s (g))
     (g) g
     (l) l
     (c) (fork c p (l))
