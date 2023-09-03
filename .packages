@@ -35,6 +35,7 @@ git
 git-delta
 glances
 gopls
+gource
 grim
 i3ipc-python-git
 inetutils
@@ -59,7 +60,6 @@ man-pages
 mpv
 ncdu
 neofetch
-neovim
 net-tools
 networkmanager
 npm
@@ -72,6 +72,7 @@ pcmanfm
 pinentry
 pipewire
 pipewire-pulse
+postman-bin
 preload
 python-pip
 qbittorrent
