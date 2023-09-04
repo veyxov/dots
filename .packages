@@ -88,6 +88,7 @@ sdl2_ttf
 slurp
 sof-firmware
 stow
+strace
 stylua
 sudo
 svelte-language-server
