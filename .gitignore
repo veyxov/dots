@@ -1,1 +1,5 @@
 lazgit/.config/lazygit/state.yml
+fish/.config/fish/functions
+fish/.config/fish/completions/fzf_configure_bindings.fish
+fish/.config/fish/completions/fisher.fish
+fish/.config/fish/conf.d/fzf.fish
