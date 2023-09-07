@@ -6,4 +6,6 @@ if status is-interactive
     fzf_configure_bindings --directory=\ce
 
     alias fl="cd ~/dots && lazygit"
+    alias d="z"
+    alias nd="zi"
 end
