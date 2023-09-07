@@ -27,7 +27,7 @@ return {
         bottom = 0,
     },
 
-    default_prog = { '/usr/bin/zsh' },
+    default_prog = { '/usr/bin/fish' },
     quick_select_alphabet = 'neiosart',
     unix_domains = {
         {
