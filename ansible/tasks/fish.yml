@@ -4,3 +4,5 @@
     state: latest
 - name: Fetch fisher
   shell: 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
+- name: Plugin fzf
+  shell: 'fisher install PatrickF1/fzf.fish'
