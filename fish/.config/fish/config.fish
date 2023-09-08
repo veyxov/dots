@@ -10,4 +10,7 @@ if status is-interactive
 
     alias nd="zi"
     alias fl="cd ~/dots && lazygit"
+
+    abbr gc "git checkout"
+    abbr go git commit -m 
 end
