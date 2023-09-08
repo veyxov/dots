@@ -8,4 +8,5 @@ if status is-interactive
     alias fl="cd ~/dots && lazygit"
     alias d="z"
     alias nd="zi"
+    alias n="nvim"
 end
