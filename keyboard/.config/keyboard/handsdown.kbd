@@ -77,7 +77,10 @@
 )
 
 (defalias
-  t (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
+  t (tap-dance 200 (
+        (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
+        (layer-switch wordNav)
+    )) ;; tmp
   p (
     multi p (on-press-fakekey fk-adaptiveP press)
     (macro 270 (on-press-fakekey fk-adaptiveP release))
