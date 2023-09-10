@@ -3,3 +3,11 @@ fish/.config/fish/functions
 fish/.config/fish/completions/fzf_configure_bindings.fish
 fish/.config/fish/completions/fisher.fish
 fish/.config/fish/conf.d/fzf.fish
+fish/completions
+fish/conf.d
+fish/config.fish
+fish/fish_plugins
+fish/fish_variables
+fish/functions
+fish/themes
+fish/.config/fish/fish_variables
