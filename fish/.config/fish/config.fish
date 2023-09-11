@@ -12,6 +12,7 @@ if status is-interactive
     alias fl="cd ~/dots && lazygit"
 
     alias g="lazygit"
+    alias s="eza --icons"
 
     abbr gc "git checkout"
     abbr go git commit -m 
