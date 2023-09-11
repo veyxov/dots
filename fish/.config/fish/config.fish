@@ -15,5 +15,5 @@ if status is-interactive
     alias s="eza --icons"
 
     abbr gc "git checkout"
-    abbr go git commit -m 
+    abbr gl git commit -m 
 end
