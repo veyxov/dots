@@ -73,6 +73,11 @@ return {
     disable_default_key_bindings = true,
     keys = {
         {
+            key = 'F5',
+            mods = 'LEADER',
+            action = wezterm.action.SendString "clear\n"
+        },
+        {
             key = 'w',
             mods = 'LEADER',
             action = wezterm.action.ShowLauncherArgs {
