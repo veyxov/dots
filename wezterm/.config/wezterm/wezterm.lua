@@ -10,12 +10,8 @@ end
 
 return {
     -- cosmetic settings
-    font_size = 20,
-    color_scheme = 'iceberg-dark',
-    inactive_pane_hsb = {
-        saturation = 0,
-        brightness = 0.25,
-    },
+    font_size = 24,
+    color_scheme = 'dracula',
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     window_background_opacity = 0.9,
