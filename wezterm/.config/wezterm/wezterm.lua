@@ -69,6 +69,26 @@ return {
     disable_default_key_bindings = true,
     keys = {
         {
+            key = 'u',
+            mods = 'LEADER',
+            action = wezterm.action.ActivateTab(0)
+        },
+        {
+            key = 'o',
+            mods = 'LEADER',
+            action = wezterm.action.ActivateTab(1)
+        },
+        {
+            key = 'y',
+            mods = 'LEADER',
+            action = wezterm.action.ActivateTab(2)
+        },
+        {
+            key = 'k',
+            mods = 'LEADER',
+            action = wezterm.action.ActivateTab(3)
+        },
+        {
             key = 'F5',
             mods = 'LEADER',
             action = wezterm.action.SendString "clear\n"
