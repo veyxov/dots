@@ -44,6 +44,7 @@
   (s n   ) esc
   (s r   ) (one-shot 1000 lctl) ;; s+r=control
   (  n d ) tab ;; s+r=control
+  (s n d) rght
 )
 
 ;; Home-Row Right-Hand
