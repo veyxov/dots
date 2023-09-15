@@ -1,6 +1,6 @@
 ;; Base layer
 (deflayer main
-  @kaboom  _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
+  @kaboom  _   _   _   esc   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
   lrld   @j    @vshift    @f    @m   @p   @v    XX    XX    .    /    @question    @quote    (macro S--)          XX XX  XX  XX
   @tab  @r    @s    @n    @d    w    XX    XX    ,    @a    @e    @i    @h    rpt            XX  XX  XX
   @x @g    @l    @c    b    XX    XX    XX    @-    @u    @o    @y          @k             XX  XX  XX  XX
