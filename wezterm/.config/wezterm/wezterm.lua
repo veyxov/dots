@@ -11,10 +11,10 @@ end
 return {
     -- cosmetic settings
     font_size = 24,
-    color_scheme ='Icy Dark (base16)',
+    color_scheme ='GruvboxDarkHard',
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
-    window_background_opacity = 0.9,
+    window_background_opacity = 0.95,
     tab_bar_at_bottom = true,
     window_padding = {
         left = 0,
