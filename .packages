@@ -92,6 +92,7 @@ ripgrep
 rsync
 rust
 rust-analyzer
+scc
 sdl2_ttf
 slurp
 sof-firmware
