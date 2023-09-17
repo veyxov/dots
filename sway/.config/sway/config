@@ -16,7 +16,7 @@ for_window [app_id = "floating"] floating enable
 
 exec setwall
 exec 'sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/keyboard/config >> ~/kanata.log'
-exec telegram-desktop
+# exec telegram-desktop
 exec firefox
 exec --no-startup-id mako
 exec 'wl-paste -t text --watch clipman store --max-items 1000 --unix'
