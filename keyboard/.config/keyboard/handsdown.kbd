@@ -153,7 +153,8 @@
     multi m (on-press-fakekey fk-adaptiveM press)
     (macro 260 (on-press-fakekey fk-adaptiveM release))
   )
-  (f m) (macro f l)
+  (f m) (macro end)
+  (j m) (macro home)
   (j f) q
 )
 
