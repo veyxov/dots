@@ -176,9 +176,9 @@
     (g l) C-c
     (l c) C-v
     (g l c) C-a
-    (x g) C-z
+    (x g) C-f
     (x l) C-x
-    (x c) C-f
+    (x c) C-z
 )
 
 (defalias
