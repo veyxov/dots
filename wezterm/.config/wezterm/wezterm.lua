@@ -33,37 +33,6 @@ return {
     adjust_window_size_when_changing_font_size = false,
     window_close_confirmation = 'NeverPrompt',
 
-    font = font 'Hack Nerd Font',
-    font_rules = {
-        {
-            italic = true,
-            intensity = 'Normal',
-            font = font {
-                family = 'Victor Mono',
-                weight = 'DemiBold',
-                style = 'Italic',
-            },
-        },
-        {
-            italic = true,
-            intensity = 'Half',
-            font = font {
-                family = 'Victor Mono',
-                weight = 'DemiBold',
-                style = 'Italic',
-            },
-        },
-        {
-            italic = true,
-            intensity = 'Bold',
-            font = font {
-                family = 'Victor Mono',
-                weight = 'Bold',
-                style = 'Italic',
-            },
-        },
-    },
-
     leader = { key = 'F5', mods = '', timeout_milliseconds = 1000 },
 
     disable_default_key_bindings = true,
