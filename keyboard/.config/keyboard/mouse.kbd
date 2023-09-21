@@ -17,5 +17,5 @@
   tab  _ _ _ mlft    w    y    u    @mwlft    @mmlft @mmdwn @mmup @mmrgt    @mwrght              kp7  kp8  kp9
   x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
   lsft 102d z    x    mrgt    v    b    n    mrgt    (layer-toggle winnav)    .    /    rsft      up        kp1  kp2  kp3
-  lctl lmet lalt           XX            ralt rmet rctl left down rght      kp0       kp.  kprt
+  lctl lmet lalt           lmet            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
