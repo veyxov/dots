@@ -30,6 +30,7 @@ docker-compose
 dotnet-sdk
 dotnet-sdk-5.0-bin
 dotnet-sdk-6.0
+dune
 dust
 easyeffects
 efibootmgr
@@ -38,6 +39,7 @@ fd
 firefox
 firefox-tridactyl-native
 fish
+fortuner2
 freerdp
 fzf
 gimp
@@ -76,6 +78,7 @@ npm
 ntfs-3g
 obsidian
 omnisharp-roslyn-bin
+opam
 openssh
 pavucontrol
 pcmanfm
