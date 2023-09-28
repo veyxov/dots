@@ -41,7 +41,7 @@
 
 (deflayer nav
   XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  _  _ @w1    @w2    @w3      @w4      v    XX    XX    XX    XX    XX    XX    bspc           XX XX  XX  XX
+  _  _ @w1    @w2    @w3      @w4      v    XX    XX    @w1    @w2    @w3      @w4    bspc           XX XX  XX  XX
   sldr  @r    @s    @n    @d    (multi lctl rght)    XX    XX    ,    lft down up rght    (layer-switch main)            XX  XX  XX
   x g    l    c    (multi lctl left)    XX    XX    XX    XX    u    pgdn    pgup          k             XX  XX  XX  XX
   XX @qwertyl XX    XX    XX    XX    XX    XX    XX  (layer-toggle winnav) XX  XX XX     XX                XX  XX  XX
