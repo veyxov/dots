@@ -1,4 +1,4 @@
-xwayland disable
+#xwayland disable
 
 assign [app_id="org.telegram.desktop"] workspace 4
 assign [app_id="firefox"] workspace 1
@@ -70,6 +70,8 @@ bindsym $mod+Shift+e move container to workspace number 2
 bindsym $mod+Shift+i move container to workspace number 3
 bindsym $mod+Shift+h move container to workspace number 4
 bindsym $mod+Shift+t move container to workspace number 5
+
+bindsym $mod+Shift+b sticky toggle
 
 gaps inner 10
 smart_gaps on
