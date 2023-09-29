@@ -13,3 +13,7 @@
 - [x] Adaptive Keys
 - [x] Tap Hold
 - [ ] Tap Dance
+
+### What are adaptive layers
+After pressing some key X, the key Y converts to Z.
+Eliminates some SFBs
