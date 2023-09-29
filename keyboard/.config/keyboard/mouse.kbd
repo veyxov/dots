@@ -16,6 +16,6 @@
   lrld @j    0    f    m    p    6    7    8    9     @mwdwn   @mwup    =    bspc           nlck kp/  kp*  kp-
   tab  _ _ mrgt mlft    w    y    u    @mwlft    @mmlft @mmdwn @mmup @mmrgt    @mwrght              kp7  kp8  kp9
   x    g    l    c    b    g    h    j    k    u    o    y         ret            kp4  kp5  kp6  kp+
-  lsft 102d z    x    _    v    b    n    _    (layer-toggle winnav)    .    /    rsft      up        kp1  kp2  kp3
+  lsft 102d z    x    _    v    b    n    ret    (layer-toggle winnav)    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           lmet            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
