@@ -1,4 +1,5 @@
 (defalias
+    ;; these work with swaywm to move windows between workspaces
     w1 (tap-dance-eager 197 ((macro M-a) (macro M-a M-S-a)))
     w2 (tap-dance-eager 197 ((macro M-e) (macro M-e M-S-e)))
     w3 (tap-dance-eager 197 ((macro M-i) (macro M-i M-S-i)))
