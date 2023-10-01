@@ -1,7 +1,7 @@
 ;; Base layer
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld   @j    @vOrSft    @f    @m   @p   @v    XX    XX    .    /    @question    @quote    (macro S--)          XX XX  XX  XX
+  lrld   @j    @vOrSft    @f    @m   @p   @v    XX    XX    .    /    @question    @quote    @_          XX XX  XX  XX
   @tab  @r    @s    @n    @d    @w    XX    XX    ,    @a    @e    @i    @h    rpt            XX  XX  XX
   @x @g    @l    @c    b    XX    XX    XX    @-    @u    @o    @y          @k             XX  XX  XX  XX
   @qwertyl @macRec  @macPlay    @capsnum    @capsword    rpt    XX    XX @capsnum      @spcOrSym rpt-any  XX XX     XX                XX  XX  XX
@@ -14,6 +14,10 @@
     spcOrSym (tap-hold-release 200 200 spc (layer-toggle sym))
     numl (layer-toggle num)
     mousl (layer-toggle mouse)
+)
+
+(defalias
+    _ (macro S--)
 )
 
 ;; Base shifted layer
