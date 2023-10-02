@@ -1,7 +1,7 @@
 ;; Base layer
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld   @j    @vOrSft    @f    @m   @p   @v    XX    XX    .    @slash    @question    @quote    @_          XX XX  XX  XX
+  lrld   @j    @vOrSft    @f    @m   @p   @v    XX    XX    @dot    @slash    @question    @quote    @_          XX XX  XX  XX
   @tab  @r    @s    @n    @d    @w    XX    XX    ,    @a    @e    @i    @h    rpt            XX  XX  XX
   @x @g    @l    @c    b    rght    XX    XX    @-    @u    @o    @y          @k             XX  XX  XX  XX
   @qwertyl @macRec  @macPlay    @capsnum    @capsword    rght    XX    XX @capsnum      @spcOrSym rght  XX XX     XX                XX  XX  XX
@@ -194,9 +194,13 @@
     () (macro S-/) break
   )
   slash (switch 
-    (a .) (macro bspc S-9) break
-    (e /) (macro bspc S-[) break
+    (e /) (macro bspc S-]) break
+    (a) (macro bspc S-9) break
     () (macro /) break
+  )
+  dot (switch
+    (e) (macro bspc S-[) break
+    () . break
   )
   - (fork - (macro bspc S--) (u))
 )
