@@ -60,7 +60,10 @@ return {
         {
             key = 'F5',
             mods = 'LEADER',
-            action = wezterm.action.SendString "clear\n"
+            action = wezterm.action.SendKey {
+                key = 'l',
+                mods = 'CTRL',
+            }
         },
         {
             key = 'w',
