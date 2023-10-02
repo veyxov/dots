@@ -107,30 +107,12 @@ client.urgent               "#FF4133c0" "#FF4133c0" "#ffffff" "#F1CF55c0" "#52AE
 client.placeholder          "#00000000" "#2c2c2c00" "#ffffff" "#00000000" "#0c0c0c00"
 client.background           "#FFFFFF00"
 
-input type:touchpad {
-    tap enabled
-    natural_scroll enabled
-    accel_profile flat
-    pointer_accel 1
-}
-
-input type:keyboard {
-    repeat_delay 380
-    repeat_rate 70
-}
-
 set $laptop eDP-1
 set $external HDMI-1
+
 # Don't sleep on lid close when external monitor connected
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
-
-# TODO: This doesn't work
-set $gnome-schema org.gnome.desktop.interface
-exec_always {
-    gsettings set $gnome-schema gtk-theme "Nordic"
-    gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
-}
 
 bindsym {
   $mod+Shift+x    splith
@@ -143,4 +125,16 @@ bindsym {
 
   $mod+Shift+g    focus next
   $mod+3    focus output up
+}
+
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+    accel_profile flat
+    pointer_accel 1
+}
+
+input type:keyboard {
+    repeat_delay 380
+    repeat_rate 70
 }
