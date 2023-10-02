@@ -188,8 +188,16 @@
 )
 
 (defalias
-  question (fork (macro S-/) (macro bspc = = spc) (/))
-  slash (fork (macro /) (macro bspc S-9) (a))
+  question (switch 
+    (a .) (macro bspc S-0) break
+    (e /) (macro bspc S-]) break
+    () (macro S-/) break
+  )
+  slash (switch 
+    (a .) (macro bspc S-9) break
+    (e /) (macro bspc S-[) break
+    () (macro /) break
+  )
   - (fork - (macro bspc S--) (u))
 )
 
