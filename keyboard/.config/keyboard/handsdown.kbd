@@ -189,14 +189,15 @@
 
 (defalias
   question (switch 
-    (a .) (macro bspc S-0) break
-    (e /) (macro bspc S-]) break
+    (a) (macro bspc S-0) break
+    (e) (macro bspc S-]) break
+    (/) (macro bspc = =) break
     () (macro S-/) break
   )
   slash (switch 
-    (e /) (macro bspc S-]) break
+    (e) (macro bspc S-]) break
     (a) (macro bspc S-9) break
-    () (macro /) break
+    ()  / break
   )
   dot (switch
     (e) (macro bspc S-[) break
