@@ -3,8 +3,8 @@
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
   lrld   @j    @vOrSft    @f    @m   @p   @v    XX    XX    .    /    @question    @quote    @_          XX XX  XX  XX
   @tab  @r    @s    @n    @d    @w    XX    XX    ,    @a    @e    @i    @h    rpt            XX  XX  XX
-  @x @g    @l    @c    b    XX    XX    XX    @-    @u    @o    @y          @k             XX  XX  XX  XX
-  @qwertyl @macRec  @macPlay    @capsnum    @capsword    rpt    XX    XX @capsnum      @spcOrSym rpt-any  XX XX     XX                XX  XX  XX
+  @x @g    @l    @c    b    rght    XX    XX    @-    @u    @o    @y          @k             XX  XX  XX  XX
+  @qwertyl @macRec  @macPlay    @capsnum    @capsword    rght    XX    XX @capsnum      @spcOrSym rght  XX XX     XX                XX  XX  XX
   XX @onehandl XX           @t            @russch  @russch @russch XX XX      XX       XX XX  XX
 )
 
