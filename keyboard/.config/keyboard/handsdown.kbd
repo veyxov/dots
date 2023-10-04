@@ -194,7 +194,7 @@
     (/) (macro bspc = =) break
     () (macro S-/) break
   )
-  slash (switch 
+  slash (switch
     (e) (macro bspc S-]) break
     (a) (macro bspc S-9) break
     ()  / break
