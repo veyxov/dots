@@ -20,22 +20,15 @@
     brcc S-]
 )
 
-(defchords sym 19
-    (@brco) @brco
-    (@brcc) @brcc
-
-    (@brco @brcc) (macro S-, S-. left)
-)
-
 (defalias 
-    { (chord sym @brco)
-    } (chord sym @brcc)
+    { @brco
+    } @brcc
     % S-5
 )
 
 (deflayer sym
   _  _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
-  _ grv _  @{     @} @%   _    _    _    _       @>  @<    _    _           _ _  _  _
+  _ grv _  @<     @> @%   _    _    _    _       @>  @<    _    _           _ _  _  _
   _ S-4    @bo    @bc        @:    \    _    _        _        (multi (release-key shft) =)    @*    x    @!
   _            _  _  _
   _      [      ]    @at @#    _    _    _    _    _    _    _          _             _  _  _  _
