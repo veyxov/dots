@@ -24,7 +24,7 @@
     (@brco) @brco
     (@brcc) @brcc
 
-    (@brco @brcc) (macro @brco ret @brcc esc S-o)
+    (@brco @brcc) (macro S-, S-. left)
 )
 
 (defalias 
