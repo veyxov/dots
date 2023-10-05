@@ -5,7 +5,7 @@
   @tab  @r    @s    @n    @d    @w    XX    XX    ,    @a    @e    @i    @h    rpt            XX  XX  XX
   @x @g    @l    @c    b    rght    XX    XX    @-    @u    @o    @y          @k             XX  XX  XX  XX
   @qwertyl @macRec  @macPlay    @capsnum    @capsword    rght    XX    XX @capsnum      @spcOrSym rght  XX XX     XX                XX  XX  XX
-  XX @onehandl XX           @t            @russch  @russch @russch XX XX      XX       XX XX  XX
+  XX @onehandl f20           @t            @russch  @russch @russch XX XX      XX       XX XX  XX
 )
 
 (defalias

@@ -28,6 +28,7 @@ set $term wezterm
 set $menu wofi --show drun
 set $emoji wofi-emoji
 
+bindsym XF86AudioMicMute exec warpd --hint --oneshot --click 1
 bindsym $mod+p exec clipman pick --tool wofi
 bindsym $mod+j exec wofi-emoji
 
