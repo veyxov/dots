@@ -94,10 +94,7 @@
   )
   quote (tap-hold-release 200 200 ' rctl) 
   tab (tap-hold-release 200 200 f5 lalt)
-  scolon (tap-dance-eager 400 (
-          (macro ;)
-          (multi (macro bspc) (layer-switch nav))
-          ))
+  scolon ;
 )
 
 (defalias
