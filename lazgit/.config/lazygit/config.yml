@@ -1,10 +1,10 @@
 gui:
     # stuff relating to the UI
     scrollHeight: 5 # how many lines you scroll by
-    scrollPastBottom: true # enable scrolling past the bottom
-    sidePanelWidth: 0.3333 # number from 0 to 1
+    scrollPastBottom: true
+    sidePanelWidth: 0.25
     expandFocusedSidePanel: false
-    mainPanelSplitMode: 'flexible' # one of 'horizontal' | 'flexible' | 'vertical'
+    mainPanelSplitMode: 'flexible'
     language: 'en' # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl' | 'ja' | 'ko'
     timeFormat: '02 Jan 06 15:04 MST' # https://pkg.go.dev/time#Time.Format
     theme:
@@ -32,14 +32,14 @@ gui:
     mouseEvents: false
     skipDiscardChangeWarning: false
     skipStashWarning: true
-    showFileTree: true # for rendering changes files in a tree format
-    showListFooter: true # for seeing the '5 of 20' message in list panels
-    showRandomTip: true
-    showBottomLine: false # for hiding the bottom information line (unless it has important information to tell you)
+    showFileTree: true
+    showListFooter: true
+    showRandomTip: false
+    showBottomLine: false
     showCommandLog: false
     nerdFontsVersion: "3"
     commandLogSize: 8
-    splitDiff: 'auto' # one of 'auto' | 'always'
+    splitDiff: 'auto'
 git:
     paging:
         colorArg: always
