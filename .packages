@@ -24,7 +24,6 @@ cowsay
 dbeaver
 dbus-broker
 dhclient
-discord
 docker
 docker-compose
 dotnet-sdk
@@ -78,7 +77,6 @@ networkmanager
 npm
 ntfs-3g
 obsidian
-omnisharp-roslyn-bin
 opam
 openssh
 pavucontrol
@@ -87,12 +85,12 @@ pinentry
 pipewire
 pipewire-pulse
 preload
+prettier
 python-pip
 qbittorrent
 ranger
 rdesktop
 remmina
-rider
 ripgrep
 rsync
 rust
