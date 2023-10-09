@@ -4,7 +4,7 @@ if [ ! -f "$file" ]; then
     # Create a cache for apps list
     yay -Sy
     echo "Creating cache..."
-    yay -Slq > $file
+    yay -Slq --sortby popularity > $file
 fi
 
 list_of_apps=$(cat $file)
