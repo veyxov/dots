@@ -79,7 +79,6 @@ obsidian
 opam
 openssh
 pavucontrol
-pcmanfm
 pinentry
 pipewire
 pipewire-pulse
@@ -115,6 +114,7 @@ tcpdump
 tealdeer
 telegram-desktop
 thefuck
+thunar
 tk
 tmux
 traceroute
