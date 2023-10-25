@@ -48,7 +48,6 @@
   (    d ) d
   ( s  d ) (macro S-')
   (s n   ) esc
-  (s r   ) (one-shot 1000 lctl) ;; s+r=control
   (  n d ) tab ;; s+r=control
   (s n d) rght
 )
@@ -74,7 +73,6 @@
   (e i   ) ret
   (a e  ) C-bspc ;; e+a=control
   (a e i) @scolon ;; 
-  (  i h ) @scolon
 )
 
 ;; tmp
