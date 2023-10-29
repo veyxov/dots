@@ -11,13 +11,12 @@
 (defalias
     macRec (dynamic-macro-record 0)
     macPlay (dynamic-macro-play 0)
-    spcOrSym (tap-hold-release 200 200 spc (layer-toggle sym))
-    numl (layer-toggle num)
-    mousl (layer-toggle mouse)
 )
 
+;; layer switchers
 (defalias
-    _ (macro S--)
+  smain (layer-switch main)
+  spcOrSym (tap-hold-release 200 200 spc (layer-toggle sym))
 )
 
 ;; Base shifted layer
@@ -59,6 +58,7 @@
   i (chord mainr i)
   h (chord mainr h)
 )
+
 (defchords mainr $chord-timeout
   (a     ) a
   ( e    ) (
@@ -115,7 +115,7 @@
     (macro 100 (on-press-fakekey fk-adaptiveU release))
   ) ;; uh->ua
 
-  (y) (fork y (macro bspc z) (u))
+  (y) y
   (u y) (macro z)
 )
 
@@ -196,8 +196,4 @@
     () . break
   )
   - -
-)
-
-(defalias
-   smain (layer-switch main)
 )
