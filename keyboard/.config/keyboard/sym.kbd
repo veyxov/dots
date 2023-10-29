@@ -1,9 +1,7 @@
 ;; Symbols
 (defalias
-    bopn S-9
-    bcls S-0
-    bo @bopn
-    bc @bcls
+    bo S-9
+    bc S-0
 
     < (macro S-,)
     > (macro S-.)
