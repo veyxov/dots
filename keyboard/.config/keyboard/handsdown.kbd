@@ -1,7 +1,7 @@
 ;; Base layer
 (deflayer main
   @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld   @j    @vOrSft    @f    @m   @p   @v    XX    XX    @dot    @slash    @question    @quote    @_          XX XX  XX  XX
+  lrld   @j    @v    @f    @m   @p   @v    XX    XX    @dot    @slash    @question    @quote    @_          XX XX  XX  XX
   @tab  @r    @s    @n    @d    @w    XX    XX    ,    @a    @e    @i    @h    rpt            XX  XX  XX
   @x @g    @l    @c    b    rght    XX    XX    @-    @u    @o    @y          @k             XX  XX  XX  XX
   @qwertyl @macRec  @macPlay    @capsnum    @capsword    rght    XX    XX @capsnum      @spcOrSym rght  z XX     XX                XX  XX  XX
@@ -133,6 +133,7 @@
     multi o (on-press-fakekey fk-adaptiveO press)
     (macro 150 (on-press-fakekey fk-adaptiveO release))
   )
+  k k
 )
 
 (defchords rsnd $chord-timeout-slow
@@ -176,6 +177,7 @@
     (x c) C-z
 )
 
+;; main layer symbols, with adaptive modifiers for more syms
 (defalias
   question (switch 
     (a) (macro bspc S-0) break
@@ -192,12 +194,10 @@
     (e) (macro bspc S-[) break
     () . break
   )
-  - (fork - (macro bspc S--) (u))
+  - -
 )
 
 (defalias
    smain (layer-switch main)
-   vOrSft (tap-hold-release 200 200 v lsft)
-   k (fork k i (y))
+   v (tap-hold-release 200 200 v lsft)
 )
-
