@@ -125,8 +125,9 @@
   m (chord rsnd m)
   f (chord rsnd f)
 
+  vOrSft (tap-hold-release 200 200 v lsft)
   v (
-    multi v (on-press-fakekey fk-adaptiveV press)
+    multi @vOrSft (on-press-fakekey fk-adaptiveV press)
     (macro 500 (on-press-fakekey fk-adaptiveV release))
   )
   o (
@@ -199,5 +200,4 @@
 
 (defalias
    smain (layer-switch main)
-   v (tap-hold-release 200 200 v lsft)
 )
