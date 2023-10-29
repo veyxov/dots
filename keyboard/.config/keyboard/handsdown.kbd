@@ -75,12 +75,6 @@
   (a e i) @scolon ;; 
 )
 
-;; tmp
-(defseq "git status" (r s n))
-(deffakekeys
-  "git status" (macro g i t spc s t a t u s)
-)
-
 (defalias
   t (tap-dance 200 (
         (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
