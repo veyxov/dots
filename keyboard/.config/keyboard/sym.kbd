@@ -34,12 +34,12 @@
 )
 
 (deflayer sym
-  _  _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
-  _ grv _  @{     @} @%   _    _    _    _       @>  @<    _    _           _ _  _  _
-  _ S-4    @bo    @bc        @:    \    _    _        _        (multi (release-key shft) =)    @*    x    @!
-  _            _  _  _
-  _      [      ]    @at @#    _    _    _    _    _    _    _          _             _  _  _  _
-  _ _ _    _    _    _     _    _    _  _ _  _ _     _                _  _  _
-  _ _ _           (layer-toggle winnav)            _  _ _ _ _      _       _ _  _
+  XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
+  XX grv XX  @{     @} @%   XX    XX    XX    XX       @>  @<    XX    XX           XX XX  XX  XX
+  XX S-4    @bo    @bc        @:    \    XX    XX        XX        (multi (release-key shft) =)    @*    x    @!
+  XX            XX  XX  XX
+  XX      [      ]    @at @#    XX    XX    XX    XX    XX    XX    XX          XX             XX  XX  XX  XX
+  XX XX XX    XX    XX    XX     XX    XX    XX  XX XX  XX XX     XX                XX  XX  XX
+  XX XX XX           (layer-toggle winnav)            XX  XX XX XX XX      XX       XX XX  XX
 )
 
