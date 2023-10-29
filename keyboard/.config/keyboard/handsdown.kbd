@@ -35,7 +35,7 @@
 
   r (chord main r)
   s (chord main s)
-  n (chord main n) ;; tmp
+  n (chord main n)
   d (chord main d)
 
   w (fork w C-w (y)) ;; yw yields ctrl+w for word erasing
@@ -79,12 +79,12 @@
   t (tap-dance 200 (
         (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
         (layer-switch wordNav)
-    )) ;; tmp
+    ))
   p (
     multi p (on-press-fakekey fk-adaptiveP press)
     (macro 270 (on-press-fakekey fk-adaptiveP release))
   )
-  quote (tap-hold-release 200 200 ' rctl) 
+  quote (tap-hold-release 200 200 ' rctl)
   tab (tap-hold-release 200 200 f5 lalt)
   scolon ;
 )
@@ -157,7 +157,6 @@
 
 
 ;; copy/paste
-
 (defalias
   g (chord cp g)
   l (chord cp l)
@@ -173,9 +172,6 @@
     (g l) C-c
     (l c) C-v
     (g l c) C-a
-    (x g) C-f
-    (x l) C-x
-    (x c) C-z
 )
 
 ;; main layer symbols, with adaptive modifiers for more syms
