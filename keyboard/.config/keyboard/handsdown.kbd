@@ -115,7 +115,7 @@
     (macro 100 (on-press-fakekey fk-adaptiveU release))
   ) ;; uh->ua
 
-  (y) y
+  (y) (fork y (macro bspc z) (u))
   (u y) (macro z)
 )
 
