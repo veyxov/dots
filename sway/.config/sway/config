@@ -23,9 +23,9 @@ exec ianny
 exec_always kanshi
 
 # TODO: under a question mark
-exec mpd
+exec sudo mpd
 # TODO: under a question mark
-exec_always waybar
+exec_always killall waybar ; waybar
 
 set $mod Mod4
 
