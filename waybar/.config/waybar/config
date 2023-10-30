@@ -1,0 +1,66 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 15,
+
+
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": [],
+    "modules-right": ["network", "temperature", "backlight", "pulseaudio", "battery", "clock", "tray"],
+
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "disable-markup": true,
+        "format": "{index}" 
+    },
+
+    "tray": {
+        "icon-size": 20,
+        "spacing": 15
+    },
+
+
+    "clock": {
+        "format": "{:%a %b %e  %R}",
+        "interval": 30
+    },
+
+    "battery": {
+        "bat": "BAT1",
+        "states": {
+            "full": 99,
+            "good": 98,
+            "normal": 98,
+            "warning": 20,
+            "critical": 20
+        },
+
+        "format": "{icon}   {capacity}%",
+        "format-good": "{icon}   {capacity}%", 
+        "format-full": "   {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "interval": 30
+    },
+
+
+    "network": {
+        "interface": "wlp*", 
+        "format-wifi": " {essid} ({signalStrength}%) - {bandwidthTotalBits}",
+        "format-disconnected": "Disconnected",
+        "interval": 1
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%  ",
+        "format-bluetooth": "  {volume}%  ",
+        "format-muted":"婢  Mute  ",
+        "interval": 60,
+
+        "format-icons": {
+            "default": [""]
+        },
+
+        "on-click": "pavucontrol"
+    },
+}
