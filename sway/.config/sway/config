@@ -22,6 +22,11 @@ exec ianny
 
 exec_always kanshi
 
+# TODO: under a question mark
+exec mpd
+# TODO: under a question mark
+exec_always waybar
+
 set $mod Mod4
 
 set $term wezterm
