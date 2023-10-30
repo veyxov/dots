@@ -44,6 +44,7 @@ window#waybar {
     padding: 0px 11px 0px 11px; 
     background-color: #285577;
     color: #ffffff;
+    border-radius: 0;
 }
 
 
