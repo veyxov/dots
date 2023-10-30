@@ -82,7 +82,7 @@
     ))
   p (
     multi p (on-press-fakekey fk-adaptiveP press)
-    (macro 270 (on-press-fakekey fk-adaptiveP release))
+    (macro 100 (on-press-fakekey fk-adaptiveP release))
   )
   quote (tap-hold-release 200 200 ' rctl)
   tab (tap-hold-release 200 200 f5 lalt)
