@@ -45,7 +45,7 @@
 
 
     "network": {
-        "interface": "wlp*", 
+        "interface": "wlan0", 
         "format-wifi": " {essid} ({signalStrength}%) - {bandwidthTotalBits}",
         "format-disconnected": "Disconnected",
         "interval": 1
