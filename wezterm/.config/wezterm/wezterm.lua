@@ -29,6 +29,11 @@ return {
     disable_default_key_bindings = true,
     keys = {
         {
+            key = "t",
+            mods = "LEADER",
+            action = wezterm.action.ShowTabNavigator,
+        },
+        {
             key = "u",
             mods = "LEADER",
             action = wezterm.action.ActivateTab(0),
