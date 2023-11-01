@@ -17,7 +17,7 @@ set modeindicatorshowkeys true
 set scrollduration 50
 
 " Binds
-bind n fillcmdline tab
+bind n fillcmdline tabopen -b
 bind s hint
 bind e scrollline 20
 bind i scrollline -20
@@ -28,7 +28,7 @@ unbind r
 bind a tabprev
 bind h tabnext
 bind x tabclose
-bind t fillcmdline tabopen -b
+bind t fillcmdline tab
 bind <A-p> pin
 bind <A-m> mute toggle
 bind <F1> help
