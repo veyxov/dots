@@ -66,9 +66,9 @@
   )
   (   i  ) i
   (    h ) (switch
-    ((key-history e 1)) o break
-    () h break
-  )
+        ((key-history e 1)) o break
+        () (fork h a (u)) break
+    )
   (a i)    (macro S-;)
   (e i   ) ret
   (a e  ) C-bspc ;; e+a=control
@@ -110,10 +110,7 @@
 )
 
 (defchords kyu $chord-timeout
-  (u) (
-    multi u (on-press-fakekey fk-adaptiveU press)
-    (macro 100 (on-press-fakekey fk-adaptiveU release))
-  ) ;; uh->ua
+  (u) u
 
   (y) (fork y (macro bspc z) (u))
   (u y) (macro z)
