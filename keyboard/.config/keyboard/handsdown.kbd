@@ -126,10 +126,7 @@
   f (chord rsnd f)
 
   vOrSft (tap-hold-release 200 200 v lsft)
-  v (
-    multi @vOrSft (on-press-fakekey fk-adaptiveV press)
-    (macro 500 (on-press-fakekey fk-adaptiveV release))
-  )
+  v v
   o (
     multi o (on-press-fakekey fk-adaptiveO press)
     (macro 150 (on-press-fakekey fk-adaptiveO release))
