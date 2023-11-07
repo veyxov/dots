@@ -80,10 +80,7 @@
         (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
         (layer-switch wordNav)
     ))
-  p (
-    multi p (on-press-fakekey fk-adaptiveP press)
-    (macro 100 (on-press-fakekey fk-adaptiveP release))
-  )
+  p p
   quote (tap-hold-release 200 200 ' rctl)
   tab (tap-hold-release 200 200 f5 lalt)
   scolon ;
@@ -135,6 +132,8 @@
   (m) (switch
     ((key-history f 1)) l break
     ((key-history f 2)) l break
+    ((key-history p 1)) l break
+    ((key-history p 2)) l break
     () m break
   )
   (f m) (macro end)
