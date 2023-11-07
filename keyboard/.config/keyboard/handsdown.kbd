@@ -139,16 +139,12 @@
 
 (defchords rsnd $chord-timeout-slow
   (j) (tap-hold-release 200 200 j lctl)
-  (f) (
-    multi
-    (fork f (macro bspc bspc q u) (j))
-    f (on-press-fakekey fk-adaptiveF press)
-    (macro 250 (on-press-fakekey fk-adaptiveF release))
-  )
+  (f) f
   ;; 'm' on press, 'l' when rolled with 'f' (for 'fl' biagram)
-  (m) (
-    multi m (on-press-fakekey fk-adaptiveM press)
-    (macro 260 (on-press-fakekey fk-adaptiveM release))
+  (m) (switch
+    ((key-history f 1)) l break
+    ((key-history f 2)) l break
+    () m break
   )
   (f m) (macro end)
   (j m) (macro home)
