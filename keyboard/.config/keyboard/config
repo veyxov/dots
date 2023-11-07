@@ -47,14 +47,12 @@
 ;; Adaptive layers
 (include ./adaptive/f.kbd)
 (include ./adaptive/p.kbd)
-(include ./adaptive/v.kbd)
 (include ./adaptive/u.kbd)
 (include ./adaptive/o.kbd)
 
 (deffakekeys
     fk-adaptiveF (layer-while-held adaptiveF)
     fk-adaptiveP (layer-while-held adaptiveP)
-    fk-adaptiveV (layer-while-held adaptiveV)
     fk-adaptiveU (layer-while-held adaptiveU)
     fk-adaptiveO (layer-while-held adaptiveO)
 )
