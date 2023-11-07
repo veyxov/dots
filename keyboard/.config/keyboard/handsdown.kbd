@@ -124,10 +124,7 @@
 
   vOrSft (tap-hold-release 200 200 v lsft)
   v v
-  o (
-    multi o (on-press-fakekey fk-adaptiveO press)
-    (macro 150 (on-press-fakekey fk-adaptiveO release))
-  )
+  o o
   k k
 )
 
