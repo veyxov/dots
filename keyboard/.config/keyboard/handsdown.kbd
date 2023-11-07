@@ -62,17 +62,17 @@
 (defchords mainr $chord-timeout
   (a     ) a
   ( e    ) (
-    multi
-    (fork e u (a))
-    (on-press-fakekey fk-adaptiveE press)
-    (macro 150 (on-press-fakekey fk-adaptiveE release))
+    fork e u (a)
   )
   (   i  ) i
-  (    h ) (fork h (macro bspc =) (i))
+  (    h ) (switch
+    ((key-history e 1)) o break
+    () h break
+  )
   (a i)    (macro S-;)
   (e i   ) ret
   (a e  ) C-bspc ;; e+a=control
-  (a e i) @scolon ;; 
+  (a e i) @scolon ;;
 )
 
 (defalias
