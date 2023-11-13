@@ -67,6 +67,7 @@
   (   i  ) i
   (    h ) (switch
         ((key-history e 1)) o break
+        ((key-history o 1)) e break
         () (fork h a (u)) break
     )
   (a i)    (macro S-;)
