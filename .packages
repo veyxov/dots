@@ -17,7 +17,10 @@ dbus-broker
 dhclient
 docker
 docker-compose
+dotnet-runtime
 dotnet-sdk
+dotnet-targeting-pack
+dotnet-targeting-pack-preview-bin
 dune
 dust
 efibootmgr
@@ -40,6 +43,7 @@ inetutils
 intel-media-driver
 intel-ucode
 irqbalance
+iwd
 jq
 kanshi
 kdeconnect
@@ -90,6 +94,7 @@ swayidle
 swayimg
 swaylock
 tailwindcss-language-server
+talon-bin
 tealdeer
 telegram-desktop
 thunar
