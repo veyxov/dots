@@ -128,7 +128,11 @@
 
 (defchords rsnd $chord-timeout-slow
   (j) (tap-hold-release 200 200 j lctl)
-  (f) (fork f (macro bspc q u) (j))
+  (f) (switch
+    ((key-history j 1)) (macro bspc q u) break
+    ((key-history m 1)) (macro bspc l f) break
+    () f break
+  )
   ;; 'm' on press, 'l' when rolled with 'f' (for 'fl' biagram)
   (m) (switch
     ((key-history f 1)) l break
