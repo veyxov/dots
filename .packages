@@ -17,10 +17,8 @@ dbus-broker
 dhclient
 docker
 docker-compose
-dotnet-runtime
+dotnet-host
 dotnet-sdk
-dotnet-targeting-pack
-dotnet-targeting-pack-preview-bin
 dune
 dust
 efibootmgr
