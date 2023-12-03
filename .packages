@@ -64,6 +64,7 @@ net-tools
 networkmanager
 npm
 ntfs-3g
+obs-studio
 obsidian
 opam
 openssh
@@ -80,6 +81,7 @@ ripgrep
 rsync
 rust
 rust-analyzer
+scrcpy
 sdl2_ttf
 slurp
 sof-firmware
@@ -112,9 +114,11 @@ wayland-protocols
 wev
 wezterm
 wget
+wlrobs
 wlroots
 wofi
 wofi-emoji-git
+xdg-desktop-portal-wlr
 xdg-utils
 yarn
 yay
