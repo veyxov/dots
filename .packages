@@ -1,5 +1,4 @@
 ansible
-aspnet-runtime
 base
 base-devel
 blueman
@@ -17,8 +16,8 @@ dbus-broker
 dhclient
 docker
 docker-compose
-dotnet-host
 dotnet-sdk
+dotnet-targeting-pack
 dune
 dust
 efibootmgr
