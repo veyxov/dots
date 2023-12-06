@@ -17,3 +17,7 @@ if status is-interactive
     abbr gc "git checkout"
     abbr gl git commit -m 
 end
+set -x PATH $PATH $HOME/.dotnet/tools
+set -x DOTNET_ROOT $HOME/.dotnet
+set -x PATH $PATH $DOTNET_ROOT
+export DOTNET_ROOT=$(dirname $(readlink $(command -v dotnet)))
