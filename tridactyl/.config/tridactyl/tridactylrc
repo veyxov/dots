@@ -53,11 +53,8 @@ bind gh home
 bind gH home true
 bind p clipboard open
 bind P clipboard tabopen
-bind j scrollline 10
 bind <C-e> scrollline 10
-bind k scrollline -10
 bind <C-y> scrollline -10
-bind l scrollpx 50
 bind G scrollto 100
 bind gg scrollto 0
 bind <C-u> scrollpage -0.5
@@ -67,8 +64,6 @@ bind <C-b> scrollpage -1
 bind <C-v> nmode ignore 1 mode normal
 bind $ scrollto 100 x
 bind ^ scrollto 0 x
-bind H back
-bind L forward
 bind <C-o> jumpprev
 bind <C-i> jumpnext
 bind D composite tabprev; tabclose #
@@ -83,8 +78,6 @@ bind gi focusinput -l
 bind g? rot13
 bind g! jumble
 bind g; changelistjump -1
-bind J tabprev
-bind K tabnext
 bind gt tabnext_gt
 bind gT tabprev
 bind g^ tabfirst
@@ -158,6 +151,7 @@ bind <S-Escape> mode ignore
 bind <Escape> composite mode normal ; hidecmdline
 bind <C-[> composite mode normal ; hidecmdline
 bind A bmark
+
 bind zi zoom 0.1 true
 bind zo zoom -0.1 true
 bind zm zoom 0.5 true
@@ -167,16 +161,26 @@ bind zR zoom -0.5 true
 bind zz zoom 1
 bind zI zoom 3
 bind zO zoom 0.3
+
 bind . repeat
-bind <AS-ArrowUp><AS-ArrowUp><AS-ArrowDown><AS-ArrowDown><AS-ArrowLeft><AS-ArrowRight><AS-ArrowLeft><AS-ArrowRight>ba open https://www.youtube.com/watch?v=M3iOROuTuMA
+
 bind m gobble 1 markadd
 bind ` gobble 1 markjump
-bind yh hint -p
+
+" Copy hinted text
+bind yt hint -p
+
+" Search bindings
+bind / fillcmdline find
+bind & fillcmdline find --reverse
+bind f findnext --search-from-view
+bind F findnext --search-from-view --reverse
+bind gn findselect
+bind gN composite findnext --search-from-view --reverse; findselect
+bind lp nohlsearch
 
 " Autocmds
-autocmd DocLoad * no_mouse_mode
 autocmd DocLoad ^https://github.com/tridactyl/tridactyl/issues/new$ issue
-autocmd DocLoad .* no_mouse_mode
 autocmd TriStart .* source
 
 " For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
