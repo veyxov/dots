@@ -128,6 +128,8 @@ bind f findnext --search-from-view
 bind F findnext --search-from-view --reverse
 bind gn findselect
 bind gN composite findnext --search-from-view --reverse; findselect
+
+unbind --mode=normal l
 bind lp nohlsearch
 
 " Autocmds
