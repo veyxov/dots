@@ -1,4 +1,7 @@
 " General Settings
+
+set completions.Tab.statusstylepretty true
+
 set update.lastchecktime 1691987542254
 set update.nag true
 set update.nagwait 7
