@@ -138,7 +138,7 @@ bind lp nohlsearch
 unbind --mode=normal b
 bind b fillcmdline back 
 bind B fillcmdline forward 
-bind g fillcmdline goto
+bind j fillcmdline goto 
 
 " Autocmds
 autocmd DocLoad ^https://github.com/tridactyl/tridactyl/issues/new$ issue
