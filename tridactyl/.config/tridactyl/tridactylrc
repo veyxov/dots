@@ -135,6 +135,11 @@ bind gN composite findnext --search-from-view --reverse; findselect
 unbind --mode=normal l
 bind lp nohlsearch
 
+unbind --mode=normal b
+bind b fillcmdline back 
+bind B fillcmdline forward 
+bind g fillcmdline goto
+
 " Autocmds
 autocmd DocLoad ^https://github.com/tridactyl/tridactyl/issues/new$ issue
 autocmd TriStart .* source
