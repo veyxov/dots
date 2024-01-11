@@ -113,7 +113,7 @@ return {
         {
             key = "_",
             mods = "LEADER|SHIFT",
-            action = wezterm.action({ CloseCurrentPane = { confirm = true } }),
+            action = wezterm.action({ CloseCurrentPane = { confirm = false } }),
         },
         {
             key = "z",
