@@ -142,7 +142,8 @@
     ((key-history f 2)) l break
     ((key-history p 1)) l break
     ((key-history p 2)) l break
-    () m break
+    ;; m -> m, mm -> mn
+    () (tap-dance-eager 200 ((macro m) (macro n))) break
   )
   (f m) (macro end)
   (j m) (macro home)
