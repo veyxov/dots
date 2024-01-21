@@ -33,6 +33,7 @@
     % S-5
 )
 
+;; todo use `unmod` for `!=` becoming `+!`
 (deflayer sym
   XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
   XX grv XX  @{     @} @%   XX    XX    XX    XX       @>  @<    XX    XX           XX XX  XX  XX
