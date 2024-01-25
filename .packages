@@ -4,7 +4,7 @@ aspnet-runtime
 bandwhich
 base
 base-devel
-blueman
+blueberry-wayland
 bluez
 bluez-utils
 breeze
@@ -44,6 +44,7 @@ intel-media-driver
 intel-ucode
 irqbalance
 iwd
+iwgtk
 jq
 kanshi
 kdeconnect
@@ -78,6 +79,7 @@ pipewire-pulse
 pnpm
 preload
 python-pip
+rabbitmqadmin
 rdesktop
 remmina
 ripgrep
@@ -88,6 +90,7 @@ scrcpy
 sdl2_ttf
 slurp
 sof-firmware
+spotube-bin
 steam
 stow
 stylua
