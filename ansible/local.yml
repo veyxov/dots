@@ -5,6 +5,7 @@
     email: "veyxov@gmail.com"
     name: "Shekhov Ismoil"
   tasks:
-    - include: tasks/ssh.yml
-    - include: tasks/git.yml
-    - include: tasks/nvim.yml
+    - include_tasks: tasks/ssh.yml
+    - include_tasks: tasks/git.yml
+    - include_tasks: tasks/nvim.yml
+    - include_tasks: tasks/fish.yml
