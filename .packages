@@ -24,6 +24,7 @@ dotnet-targeting-pack
 dune
 dust
 efibootmgr
+eva
 eza
 fd
 firefox
@@ -83,6 +84,7 @@ rabbitmqadmin
 rdesktop
 remmina
 ripgrep
+rm-improved
 rsync
 rust
 rust-analyzer
@@ -123,8 +125,10 @@ wlrobs
 wlroots
 wofi
 wofi-emoji-git
+wshowkeys-git
 xdg-desktop-portal-wlr
 xdg-utils
+xh
 yarn
 yay
 zip

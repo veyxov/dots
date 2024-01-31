@@ -5,6 +5,7 @@ if status is-interactive
 
     fzf_configure_bindings --directory=\ce
 
+    alias r='rip'
     alias d="z"
     alias n="nvim"
 
