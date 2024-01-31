@@ -11,3 +11,4 @@ fish/fish_variables
 fish/functions
 fish/themes
 fish/.config/fish/fish_variables
+ansible/auth
