@@ -60,3 +60,5 @@
     detachedHead = true
 [commit]
 	gpgsign = true
+[rerere]
+	enabled = 1
