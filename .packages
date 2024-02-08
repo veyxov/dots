@@ -41,7 +41,6 @@ git-delta
 gitui
 gopls
 grim
-gtkglext
 htop
 i3ipc-python-git
 inetutils
@@ -92,7 +91,6 @@ python-pyautogui
 python-pylspci
 python-pynput
 python-pytelegrambotapi
-python-shiboken2
 rabbitmqadmin
 rdesktop
 remmina
