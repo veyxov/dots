@@ -4,6 +4,7 @@ aspnet-runtime
 bandwhich
 base
 base-devel
+bc
 blueberry-wayland
 bluez
 bluez-utils
@@ -52,6 +53,7 @@ jq
 kanshi
 kdeconnect
 lazygit
+libreoffice-still
 libwebp
 light
 linux
@@ -93,6 +95,7 @@ python-pytelegrambotapi
 rabbitmqadmin
 rdesktop
 remmina
+restic
 ripgrep
 rm-improved
 rsync
@@ -100,6 +103,7 @@ rust
 rust-analyzer
 scrcpy
 sdl2_ttf
+sl
 slurp
 sof-firmware
 spotube-bin
