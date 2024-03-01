@@ -52,6 +52,7 @@ iwgtk
 jq
 kanshi
 kdeconnect
+kdenlive
 lazygit
 libreoffice-still
 libwebp
@@ -76,6 +77,7 @@ npm
 ntfs-3g
 obs-studio
 obsidian
+omnisharp-roslyn
 opam
 openssh
 pavucontrol
