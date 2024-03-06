@@ -22,3 +22,10 @@ set -x PATH $PATH $HOME/.dotnet/tools
 set -x DOTNET_ROOT $HOME/.dotnet
 set -x PATH $PATH $DOTNET_ROOT
 export DOTNET_ROOT=$(dirname $(readlink $(command -v dotnet)))
+
+# vi based cursor style
+set -gx fish_vi_force_cursor 1
+set -gx fish_cursor_default block
+set -gx fish_cursor_insert line blink
+set -gx fish_cursor_visual block
+set -gx fish_cursor_replace_one underscore
