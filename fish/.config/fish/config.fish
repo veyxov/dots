@@ -5,7 +5,6 @@ if status is-interactive
 
     fzf_configure_bindings --directory=\ce
 
-    alias r='rip'
     alias d="z"
     alias n="nvim"
 
@@ -14,9 +13,6 @@ if status is-interactive
 
     alias g="lazygit"
     alias s="eza --icons"
-
-    abbr gc "git checkout"
-    abbr gl git commit -m 
 end
 set -x PATH $PATH $HOME/.dotnet/tools
 set -x DOTNET_ROOT $HOME/.dotnet
