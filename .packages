@@ -33,6 +33,7 @@ fd
 firefox
 firefox-tridactyl-native
 fish
+foliate
 freerdp
 fzf
 gimp
@@ -129,7 +130,6 @@ ttf-nerd-fonts-symbols-mono
 typescript-language-server
 unrar
 unzip
-warpd
 waybar
 wayland-protocols
 wev
