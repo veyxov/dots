@@ -1,14 +1,9 @@
-;; TODO: Add some math symbols
-(defalias
-    swtch-back (layer-switch main)
-)
-
 (deflayer num
   _  _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
   _   _    _    _    _    _   _    _    _    .    S-=    -    _    _           _ _  _  _
   _  6    4    0    2    _    _    _    bspc    3    1    5    7    _            _  _  _
   _ _ _            8    _    _    _    _    -    9    @*    /          _             _   _  _  _
-  _ _ _    _    @swtch-back    _     _    _     @swtch-back  spc _  _ _     _    _  _  _
+  _ _ _    _    @smain    _     _    _     @smain  spc _  _ _     _    _  _  _
   _ _ _           _            _  _ _ _ _      _       _ _  _
 )
 

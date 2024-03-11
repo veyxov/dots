@@ -40,7 +40,6 @@ gimp
 git
 git-delta
 gitui
-gopls
 grim
 htop
 i3ipc-python-git
@@ -117,7 +116,6 @@ swaybg
 swayidle
 swayimg
 swaylock
-tailwindcss-language-server
 talon-bin
 tealdeer
 telegram-desktop
