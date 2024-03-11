@@ -9,6 +9,22 @@
 )
 
 (defalias
+    sshifted (layer-toggle shifted)
+    smouse (layer-toggle mouse)
+    onesft (one-shot-press-pcancel 1000 @sshifted)
+    shft (tap-hold-release 200 200 @onesft 1)
+    capsword (tap-dance-eager 422 (
+        (tap-hold-release 200 200 (one-shot-press-pcancel 1000 @sshifted) @smouse)
+        (layer-switch capswrd)
+    ))
+
+    capsnum (tap-dance-eager 422 (
+        (tap-hold-release 200 200 (one-shot-press-pcancel 1000 (layer-toggle num)) @smouse);; TODO
+        (layer-switch num)
+    ))
+)
+
+(defalias
     macRec (dynamic-macro-record 0)
     macPlay (dynamic-macro-play 0)
 )
@@ -77,28 +93,15 @@
 )
 
 (defalias
+  snav (layer-toggle nav)
   t (tap-dance 200 (
-        (tap-hold-release 200 200 t (layer-toggle nav)) ;; tmp
+        (tap-hold-release 200 200 t @snav) ;; tmp
         (layer-switch wordNav)
     ))
   p p
   quote (tap-hold-release 200 200 ' rctl)
   tab (tap-hold-release 200 200 f5 lalt)
   scolon ;
-)
-
-(defalias
-    onesft (one-shot-press-pcancel 1000 (layer-toggle shifted))
-    shft (tap-hold-release 200 200 @onesft 1)
-    capsword (tap-dance-eager 422 (
-        (tap-hold-release 200 200 (one-shot-press-pcancel 1000 (layer-toggle shifted)) (layer-toggle mouse))
-        (layer-switch capswrd)
-    ))
-
-    capsnum (tap-dance-eager 422 (
-        (tap-hold-release 200 200 (one-shot-press-pcancel 1000 (layer-toggle num)) (layer-toggle mouse));; TODO
-        (layer-switch num)
-    ))
 )
 
 ;; UY chord
