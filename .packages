@@ -77,6 +77,7 @@ npm
 ntfs-3g
 obs-studio
 obsidian
+okular
 omnisharp-roslyn
 opam
 openssh
@@ -133,6 +134,7 @@ wayland-protocols
 wev
 wezterm
 wget
+wl-kbptr
 wlrobs
 wlroots
 wofi
