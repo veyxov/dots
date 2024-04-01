@@ -35,12 +35,12 @@
 
 ;; todo use `unmod` for `!=` becoming `+!`
 (deflayer sym
-  XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  XX grv XX  @{     @} @%   XX    XX    XX    XX       @>  @<    XX    XX           XX XX  XX  XX
-  XX S-4    @bo    @bc        @:    \    XX    XX        XX        (multi (release-key shft) =)    @*    x    @!
-  XX            XX  XX  XX
-  XX      [      ]    @at @#    XX    XX    XX    XX    XX    XX    XX          XX             XX  XX  XX  XX
-  XX XX XX    XX    XX    XX     XX    XX    XX  XX XX  XX XX     XX                XX  XX  XX
-  XX XX XX           (layer-toggle winnav)            XX  XX XX XX XX      XX       XX XX  XX
+  •  •   •   •   •   •   •   •   •   •   •  •  •  • • •   •   • • •
+  • grv •  @{     @} @%   •    •    •    •       @>  @<    •    •           • •  •  •
+  • S-4    @bo    @bc        @:    \    •    •        •        (multi (release-key shft) =)    @*    x    @!
+  •            •  •  •
+  •      [      ]    @at @#    •    •    •    •    •    •    •          •             •  •  •  •
+  • • •    •    •    •     •    •    •  • •  • •     •                •  •  •
+  • • •           (layer-toggle winnav)            •  • • • •      •       • •  •
 )
 
