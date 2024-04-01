@@ -2,7 +2,7 @@
 (deflayer super
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
   grv  M-j    2    M-f    4    M-p    6    7    8    9    M-/    -    =    M-bspc           nlck kp/  kp*  kp-
-  tab  M-r    M-s    XX    d    M-w    y    u    i    M-a    M-e    M-i    M-h    ret            kp7  kp8  kp9
+  tab  M-r    M-s    •    d    M-w    y    u    i    M-a    M-e    M-i    M-h    ret            kp7  kp8  kp9
   caps a    s    d    f    g    h    j    k    M-u    ;    '          \             kp4  kp5  kp6  kp+
   lsft @smain z    x    c    v    b    n    m    @onesft    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           M-t            ralt rmet rctl left down rght      kp0       kp.  kprt

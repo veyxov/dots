@@ -8,7 +8,7 @@ bc
 blueberry-wayland
 bluez
 bluez-utils
-breeze
+breeze5
 broot
 btop
 calf
@@ -54,6 +54,7 @@ jq
 kanshi
 kdeconnect
 kdenlive
+koreader-bin
 lazygit
 libreoffice-still
 libwebp
@@ -62,6 +63,7 @@ linux
 linux-firmware
 log4cxx
 lolcat
+lrzip
 lua-language-server
 mako
 man-db
@@ -95,6 +97,7 @@ python-pyautogui
 python-pylspci
 python-pynput
 python-pytelegrambotapi
+qbittorrent
 rabbitmqadmin
 rdesktop
 remmina

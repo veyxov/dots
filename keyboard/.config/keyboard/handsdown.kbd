@@ -1,11 +1,11 @@
 ;; Base layer
 (deflayer main
-  @kaboom  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX XX XX
-  lrld   @j    @v    @f    @m   @p   @v    XX    XX    @dot    @slash    @question    @quote    @_      XX XX  XX XX
-  @tab   @r    @s    @n    @d   @w   XX    XX    ,     @a      @e        @i           @h        rpt     XX XX  XX
-  @x     @g    @l    @c    b    rght XX    XX    @-    @u      @o        @y           @k                XX XX  XX XX
-  @qwertyl @macRec  @macPlay    @capsnum    @capsword    rght    XX    XX @capsnum      @spcOrSym rght  XX XX  XX XX  XX  XX
-  XX @onehandl f20           @t            f21  @russch @russch XX XX      XX       XX XX  XX
+  @kaboom  •   •   •   •   •   •   •   •   •   •  •  •  • • •   •   • • •
+  lrld   @j    @v    @f    @m   @p   @v    •    •    @dot    @slash    @question    @quote    @_      • •  • •
+  @tab   @r    @s    @n    @d   @w   •    •    ,     @a      @e        @i           @h        rpt     • •  •
+  @x     @g    @l    @c    b    rght •    •    @-    @u      @o        @y           @k                • •  • •
+  @qwertyl @macRec  @macPlay    @capsnum    @capsword    rght    •    • @capsnum      @spcOrSym rght  • •  • •  •  •
+  • @onehandl f20           @t            f21  @russch @russch • •      •       • •  •
 )
 
 (defalias
@@ -37,8 +37,8 @@
 
 ;; Base shifted layer
 (deflayer shifted
-  XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX  XX  XX XX XX   XX   XX  XX XX
-  XX (macro S-j) (macro S-v)    (macro S-f)    (macro S-m)    (macro S-p)    (macro S-v)    (macro S-7)    (macro S-8)    (macro S-grv)    (macro S-7)    (macro S-1)    (macro S-6)    (macro S-4)           S-nlck S-kp/  S-kp*  S-kp-
+  •  •   •   •   •   •   •   •   •   •   •  •  •  • • •   •   •  • •
+  • (macro S-j) (macro S-v)    (macro S-f)    (macro S-m)    (macro S-p)    (macro S-v)    (macro S-7)    (macro S-8)    (macro S-grv)    (macro S-7)    (macro S-1)    (macro S-6)    (macro S-4)           S-nlck S-kp/  S-kp*  S-kp-
   (macro S-tab)  (macro S-r)    (macro S-s)        (macro S-n)    (macro S-d)    (macro S-w)    (macro S-y)    (macro S-u)    S-\    (macro S-a)    (macro S-e)    (macro S-i)    (macro S-h)    grv              S-kp7  S-kp8  S-kp9
   (macro S-x)    (macro S-g)    (macro S-l)    (macro S-c)    (macro S-b)    (macro S-g)    (macro S-h)    (macro S-j)    (macro S-=)    (macro S-u)    (macro S-o)    (macro S-y)         (macro S-k)            S-kp4  S-kp5  S-kp6  S-kp+
   S-lsft 102d (macro S-z)    (macro S-x)    (macro S-c)    (macro S-v)    (macro S-b)    (macro S-n)    (macro S-m)    S-ret    S-.    S-/    S-rsft      S-up        S-kp1  S-kp2  S-kp3
