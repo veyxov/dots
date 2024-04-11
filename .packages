@@ -17,7 +17,7 @@ cowsay
 darktable
 dbus-broker
 dhclient
-digikam
+digikam-git
 docker
 docker-compose
 dotnet-sdk
@@ -63,6 +63,7 @@ linux-firmware
 log4cxx
 lolcat
 lrzip
+lsd
 lua-language-server
 mako
 man-db
@@ -75,6 +76,7 @@ ncdu
 neofetch
 net-tools
 networkmanager
+noto-fonts
 npm
 ntfs-3g
 obsidian
@@ -121,11 +123,14 @@ thunar
 tk
 tmux
 ttf-apple-emoji
+ttf-dejavu
+ttf-liberation
 ttf-nerd-fonts-symbols-mono
 unrar
 unzip
 waybar
 wayland-protocols
+wdisplays
 wev
 wezterm
 wget
