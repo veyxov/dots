@@ -25,6 +25,7 @@ dotnet-targeting-pack
 dust
 efibootmgr
 eva
+exfat-utils
 expac
 eza
 fd
@@ -109,6 +110,7 @@ rust
 rust-analyzer
 slurp
 sof-firmware
+spotify-launcher
 steam
 stow
 stylua
