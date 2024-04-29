@@ -12,7 +12,7 @@ if status is-interactive
     alias fl="cd ~/dots && lazygit"
 
     alias g="lazygit"
-    alias s="eza --icons"
+    alias s="lsd --ignore-config --almost-all --human-readable --total-size --extensionsort --long --blocks size,date,name --date relative"
 end
 set -x PATH $PATH $HOME/.dotnet/tools
 set -x DOTNET_ROOT $HOME/.dotnet
