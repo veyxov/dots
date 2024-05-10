@@ -67,3 +67,5 @@
 	gpgsign = true
 [rerere]
 	enabled = false
+[credential]
+	useHttpPath = true
