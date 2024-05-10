@@ -16,7 +16,7 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
 # Aliases
-alias ea="clear;exa --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
+alias ea="clear;lsd --long --octal-permissions --no-permissions  --no-user --icons --sort time --reverse"
 alias nd="z"
 alias n="nvim"
 alias ei="lazygit"
