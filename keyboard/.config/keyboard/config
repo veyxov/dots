@@ -1,5 +1,6 @@
 ;; Keyboard configuraion
 (defcfg
+    concurrent-tap-hold yes
     danger-enable-cmd yes ;; Enable commands
     log-layer-changes no
     sequence-input-mode visible-backspaced
