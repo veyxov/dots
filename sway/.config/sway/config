@@ -22,24 +22,15 @@ exec --no-startup-id mako
 exec 'wl-paste -t text --watch clipman store --max-items 1000 --unix'
 
 exec ianny
-
+exec preload
 exec_always kanshi
-
-# TODO: under a question mark
-exec sudo mpd
-# TODO: under a question mark
-exec_always killall waybar ; waybar
 
 set $mod Mod4
 
 set $term wezterm
 set $menu wofi --show drun
-set $emoji wofi-emoji
 
-bindsym XF86AudioMicMute exec warpd --hint --oneshot --click 1
-bindsym XF86TouchpadToggle exec warpd --hint --oneshot --click 3
 bindsym $mod+p exec clipman pick --tool wofi
-bindsym $mod+j exec wofi-emoji
 
 # Idle management
 exec swayidle -w \
