@@ -28,7 +28,7 @@ exec_always kanshi
 set $mod Mod4
 
 set $term wezterm
-set $menu wofi --show drun
+set $menu kickoff
 
 bindsym $mod+p exec clipman pick --tool wofi
 
@@ -74,8 +74,7 @@ bindsym $mod+Shift+t move container to workspace number 5
 
 bindsym $mod+Shift+b sticky toggle
 
-gaps inner 10
-smart_gaps on
+gaps inner 0
 default_border none
 default_floating_border pixel 1
 
