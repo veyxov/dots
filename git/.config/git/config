@@ -13,7 +13,7 @@
 [user]
 	email = veyxov@gmail.com
 	name = Shekhov Ismoil
-	signingkey = /home/iz/.ssh/id_rsa.pub
+	signingkey = /home/iz/.ssh/id_ed25519.pub
 [push]
     autoSetupRemote = true
 [init]
