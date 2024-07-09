@@ -3,7 +3,7 @@
    mainch (multi @smain (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout us"))
 )
 
-(defchords russ $chord-timeout
+(defchords russ $chord-timeout-slow
     (p) p
     ([) [
     ([ p) ret
