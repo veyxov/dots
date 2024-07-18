@@ -148,7 +148,7 @@
     ;; m -> m, mm -> mn
     () (tap-dance-eager 200 ((macro m) (macro n))) break
   )
-  (f m) (macro end)
+  (f m) (macro S-[)
   (j m) (macro home)
   (j f) q
 )
