@@ -1,9 +1,9 @@
 (defalias
-   russch (multi (layer-switch russ) (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout rus"))
+   cyrillch (multi (layer-switch cyrillic) (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout rus"))
    mainch (multi @smain (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout us"))
 )
 
-(defchords russ $chord-timeout-slow
+(defchords cyrill $chord-timeout-slow
     (p) p
     ([) [
     ([ p) ret
@@ -12,9 +12,9 @@
 )
 
 (defalias
-    p_russ (chord russ p)
-    [_russ (chord russ [)
-    o_russ (chord russ o)
+    p_cyrill (chord cyrill p)
+    [_cyrill (chord cyrill [)
+    o_cyrill (chord cyrill o)
 )
 (defalias
     ch/j d
@@ -22,31 +22,31 @@
     u/hard-u l
     hard 2
 
-    ruSft (layer-toggle rushift)
+    cyrillSft (layer-toggle shift-cyrillic)
 
     capDot (multi 9 spc)
     capq (multi - spc)
 
     altr (one-shot 5001 ralt)
-    ruSftSwch (one-shot-press-pcancel 1000 @ruSft)
+    cyrillSftSwch (one-shot-press-pcancel 1000 @cyrillSft)
 
     q (fork q a (tab)) ;; R or G, usefull for "яг" biagram
 )
 
-(deflayer russ
+(deflayer cyrillic
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
-  grv  1   @hard     3    4    5    6    7    8    @capDot    (macro r s n d)    @capq    =    bspc           nlck kp/  kp*  kp-
-  tab  @q    w    e    r    t    y    u    i     @o_russ    @p_russ    @[_russ    (fork ] ; (p))    0            kp7  kp8  kp9
+  grv  1   @hard     3    4    5    6    7    8    @capDot    0    @capq    =    bspc           nlck kp/  kp*  kp-
+  tab  @q    w    e    r    t    y    u    i     @o_cyrill    @p_cyrill    @[_cyrill    (fork ] ; (p))    0            kp7  kp8  kp9
   caps @g/ghe    s    @ch/j    f    g    h    •    k    @u/hard-u    ;    '          \             kp4  kp5  kp6  kp+
-  lsft 102d z    x    @ruSftSwch    @smouse    b    n   @altr spc   @altr        /    rsft      up        kp1  kp2  kp3
+  lsft 102d z    x    @cyrillSftSwch    @smouse    b    n   @altr spc   @altr        /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           (tap-hold-release 100 150 h @snav)            @mainch @mainch @mainch left down rght      kp0       kp.  kprt
 )
 
-(deflayer rushift
+(deflayer shift-cyrillic
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
   grv  (macro S-1)    (macro S-2)    (macro S-3)    (macro S-4)    (macro S-5)    (macro S-6)    (macro S-7)    (macro S-8)    (macro @bo)    (macro S-0)    -    =    bspc           nlck kp/  kp*  kp-
   (macro S-tab)  (macro S-q)    (macro S-w)    (macro S-e)    (macro S-r)    (macro S-t)    (macro S-y)    (macro S-u)    (macro S-i)     (macro S-o)    (macro S-p)    (macro S-[)    (macro S-])    (macro S-0)            kp7  kp8  kp9
   (macro S-caps) (macro S-a)    (macro S-s)    (macro S-d)    (macro S-f)    (macro S-g)    (macro S-h)    •    (macro S-k)    (macro S-l)    (macro S-;)    (macro S-')          (macro S-\)             kp4  kp5  kp6  kp+
-  lsft 102d (macro S-z)    (macro S-x)    C-ret    @smouse    b    n    (tap-hold-release 100 130 spc ralt)   (one-shot-press-pcancel 1000 (layer-toggle rushift))    .    /    rsft      up        kp1  kp2  kp3
+  lsft 102d (macro S-z)    (macro S-x)    C-ret    @smouse    b    n    (tap-hold-release 100 130 spc ralt)   (one-shot-press-pcancel 1000 (layer-toggle shift-cyrillic))    .    /    rsft      up        kp1  kp2  kp3
   lctl lmet lalt           (tap-hold-release 100 150 (macro S-h) @snav)            ralt @mainch @mainch left down rght      kp0       kp.  kprt
 )
