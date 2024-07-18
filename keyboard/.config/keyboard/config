@@ -30,7 +30,7 @@
 (include ./onehand.kbd)
 
 ;; Cyrillic layout
-(include ./russ.kbd)
+(include ./cyrill.kbd)
 
 (include ./mouse.kbd)
 
