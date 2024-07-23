@@ -22,6 +22,10 @@
   lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
 )
 
+(defchordsv2-experimental
+  (0 -)    =                $chord-timeout all-released ()
+)
+
 ;; Main layout
 (include ./handsdown.kbd)
 
