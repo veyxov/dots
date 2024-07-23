@@ -1,3 +1,4 @@
+android-file-transfer
 aspnet-runtime
 base
 base-devel
@@ -9,7 +10,7 @@ clipman
 cmake
 dbus-broker
 dhclient
-digikam-git
+digikam
 docker
 docker-compose
 dotnet-sdk
@@ -24,6 +25,7 @@ fish
 fzf
 git
 git-delta
+google-chrome
 grim
 htop
 i3ipc-python-git
@@ -35,7 +37,7 @@ iwgtk
 jmtpfs
 jq
 kanshi
-kdenlive
+kickoff
 lazygit
 libreoffice-still
 libwebp
@@ -44,13 +46,13 @@ linux
 linux-firmware
 lsd
 mako
-man-db
-man-pages
 mesa-utils
 mpv
 mtpfs
 ncdu
 neofetch
+neovim
+net-tools
 networkmanager
 noto-fonts
 ntfs-3g
@@ -82,6 +84,7 @@ ttf-apple-emoji
 ttf-dejavu
 ttf-liberation
 ttf-nerd-fonts-symbols-mono
+typescript-language-server
 unrar
 unzip
 wayland-protocols
@@ -91,4 +94,5 @@ wofi
 xdg-desktop-portal-wlr
 xdg-utils
 yay-bin
+zip
 zoxide
