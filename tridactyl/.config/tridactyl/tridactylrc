@@ -102,6 +102,7 @@ bind ZZ qall
 bind <S-Escape> mode ignore
 bind <Escape> composite mode normal ; hidecmdline
 bind <C-[> composite mode normal ; hidecmdline
+bind --mode=ex <C-d> ex.execute_ex_on_completion_args tabclose
 
 bind A bmark
 
