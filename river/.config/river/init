@@ -12,6 +12,7 @@
 
 # spawner
 riverctl map normal Super u spawn kickoff
+riverctl map normal Super s spawn 'grim -g "$(slurp -d)" - | wl-copy'
 
 # close
 riverctl map normal Super Q close
@@ -120,9 +121,6 @@ riverctl map passthrough Super F11 enter-mode normal
 # not have a modifier
 for mode in normal locked
 do
-    # Eject the optical drive (well if you still have one that is)
-    riverctl map $mode None XF86Eject spawn 'eject -T'
-
     # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
     riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
     riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
@@ -157,3 +155,6 @@ riverctl rule-add -app-id "bar" csd
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
+
+playerctld daemon &
+sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/keyboard/config >> ~/kanata.log &
