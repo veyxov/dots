@@ -5,6 +5,8 @@
     w3 (macro M-3)
     w4 (macro M-4)
     lnchr (macro M-u)
+    nxtscr (macro M-,)
+    mvnxtscr (macro M-S-,)
     flscr (macro M-f)
     kll (macro M-q)
     shot (macro M-s)
