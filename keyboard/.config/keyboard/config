@@ -24,6 +24,7 @@
 
 (defchordsv2-experimental
   (0 -)    =                $chord-timeout all-released ()
+  (l ; ')  @lnchr              $chord-timeout all-released ()
 )
 
 ;; Main layout

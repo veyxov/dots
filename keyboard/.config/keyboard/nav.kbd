@@ -1,12 +1,12 @@
 (defalias
     ;; these work with swaywm to move windows between workspaces
-    w1 (tap-dance-eager 197 ((macro M-a) (macro M-a M-S-a)))
-    w2 (tap-dance-eager 197 ((macro M-e) (macro M-e M-S-e)))
-    w3 (tap-dance-eager 197 ((macro M-i) (macro M-i M-S-i)))
-    w4 (tap-dance-eager 197 ((macro M-h) (macro M-h M-S-h)))
+    w1 (macro M-1)
+    w2 (macro M-2)
+    w3 (macro M-3)
+    w4 (macro M-4)
     lnchr (macro M-u)
     flscr (macro M-f)
-    kll (macro M-bspc)
+    kll (macro M-q)
     shot (macro M-s)
 
     pad (macro M-spc)
@@ -35,7 +35,7 @@
 (deflayer winnav
   _  _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
   _   @emoji    _    @pad    @float    @clip     _    _      _       @sticky @splitv       @splith       _    _           _ _  _  _
-  _    @kll  @shot  @lnchr  @flscr  _    _    _    _ @w1    @w2    @w3      @w4      @sticky            _  _  _
+  _    @kll  @shot  XX  @flscr  _    _    _    _ @w1    @w2    @w3      @w4      @sticky            _  _  _
   _ @split    @fcs    @tabbed    _    _    _    _    _ @mvnext    @fcs        @mvprev          _             _  _  _  _
   _ _ _    _    _    _     _    _    _  _ _  _ _     _                _  _  _
   _ _ _           _            _  _ _ _ _      _       _ _  _
