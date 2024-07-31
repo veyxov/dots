@@ -1,6 +1,6 @@
 (defalias
-   cyrillch (multi (layer-switch cyrillic) (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout rus"))
-   mainch (multi @smain (cmd bash -c "export SWAYSOCK=$(ls /run/user/1000/sway-ipc.* | head -n 1); swaymsg input 'type:keyboard' xkb_layout us"))
+   cyrillch (multi (layer-switch cyrillic) (cmd bash -c "export WAYLAND_DISPLAY=wayland-1; export XDG_RUNTIME_DIR=/run/user/1000; riverctl keyboard-layout rus"))
+   mainch (multi @smain (cmd bash -c "export WAYLAND_DISPLAY=wayland-1; export XDG_RUNTIME_DIR=/run/user/1000; riverctl keyboard-layout us"))
 )
 
 (defchords cyrill $chord-timeout-slow
