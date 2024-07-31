@@ -68,6 +68,7 @@ qt6-base
 qt6-tools
 restic
 ripgrep
+river
 rsync
 slurp
 sof-firmware
