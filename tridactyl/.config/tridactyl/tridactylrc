@@ -118,7 +118,7 @@ bind m gobble 1 markadd
 bind ` gobble 1 markjump
 
 " Copy hinted text
-set hintchars nehrisadt
+set hintchars nerisadt
 set hintnames short
 set hintshift true
 bind s hint
@@ -142,8 +142,4 @@ bind B fillcmdline forward
 bind j fillcmdline goto 
 
 " Autocmds
-autocmd DocLoad ^https://github.com/tridactyl/tridactyl/issues/new$ issue
 autocmd TriStart .* source
-
-" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
-" vim: set filetype=tridactyl
