@@ -9,13 +9,14 @@
     mmdwn (movemouse-accel-down 5 1000 1 15)
     mmup  (movemouse-accel-up   5 1000 1 15)
     mmrgt (movemouse-accel-right 5 1000 1 15)
+    scrsht (macro M-s)
 )
 
 (deflayer mouse
   _   _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _  _ _
   _ @j    _ _ _ _ _ _ _ _     @mwdwn   @mwup    _    _           _ _ _ _
-  tab  _ _ mrgt mlft    w    y    u    @mwlft    @mmlft @mmdwn @mmup @mmrgt    @mwrght              _ _ _
+  tab  _ @scrsht mrgt mlft    w    y    u    @mwlft    @mmlft @mmdwn @mmup @mmrgt    @mwrght              _ _ _
   _    _    _    _    _    _    _    _    _    _    _    _         _            _  _  _  _
-  _ _ _    _    _    _    _    _    _    (layer-toggle winnav)    _    _    _      _        _  _  _
+  _ _ _    _    _    _    _    _    _    XX    _    _    _      _        _  _  _
   _ _ _           _            _ _ _ _ _ _      _       _  _
 )
