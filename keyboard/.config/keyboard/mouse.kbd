@@ -10,6 +10,7 @@
     mmup  (movemouse-accel-up   5 1000 1 15)
     mmrgt (movemouse-accel-right 5 1000 1 15)
     scrsht (macro M-s)
+    close (macro M-q)
 )
 
 (deflayer mouse
@@ -18,5 +19,5 @@
   tab  _ @scrsht mrgt mlft    w    y    u    @mwlft    @mmlft @mmdwn @mmup @mmrgt    @mwrght              _ _ _
   _    _    _    _    _    _    _    _    _    _    _    _         _            _  _  _  _
   _ _ _    _    _    _    _    _    _    XX    _    _    _      _        _  _  _
-  _ _ _           _            _ _ _ _ _ _      _       _  _
+  _ _ _           @close            _ _ _ _ _ _      _       _  _
 )
