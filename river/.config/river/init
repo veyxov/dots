@@ -1,17 +1,8 @@
 #!/bin/sh
 
-# This is the example configuration file for river.
-#
-# If you wish to edit this, you will probably want to copy it to
-# $XDG_CONFIG_HOME/river/init or $HOME/.config/river/init first.
-#
-# See the river(1), riverctl(1), and rivertile(1) man pages for complete
-# documentation.
-
-# Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
-
 # spawner
 riverctl map normal Super u spawn kickoff
+# screenshot
 riverctl map normal Super s spawn 'grim -g "$(slurp -d)" - | wl-copy'
 
 # close

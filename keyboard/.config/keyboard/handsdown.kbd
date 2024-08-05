@@ -1,6 +1,6 @@
 ;; Base layer
 (deflayer main
-  @kaboom  •   •   •   •   •   •   •   •   •   •  •  •  • • •   •   • • •
+  @kaboom  •   •   •   @close   •   •   •   •   •   •  •  •  • • •   •   • • •
   lrld   @j    @v    @f    @m   @p   @v    •    •    @dot    @slash    @question    @quote    @_      • •  • •
   @tab   @r    @s    @n    @d   @w   •    •    ,     @a      @e        @i           @h        rpt     • •  •
   @x     @g    @l    @c    b    rght •    •    @-    @u      @o        @y           @k                • •  • •
