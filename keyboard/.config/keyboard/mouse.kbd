@@ -11,6 +11,7 @@
     mmrgt (movemouse-accel-right 5 1000 1 15)
     scrsht (macro M-s)
     close (macro M-q)
+    switch (macro M-j)
 )
 
 (deflayer mouse
