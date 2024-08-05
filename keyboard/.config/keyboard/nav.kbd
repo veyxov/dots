@@ -9,38 +9,8 @@
     mvnxtscr (macro M-S-,)
     flscr (macro M-f)
     kll (macro M-q)
-    shot (macro M-s)
 
     pad (macro M-spc)
-    padshw (macro M-S-spc)
-
-    emoji (macro M-j)
-
-    clip (macro M-p)
-
-    float (macro M-S-f)
-
-    splith (macro M-S-x)
-    splitv (macro M-S-y)
-    splitx (macro M-S-z)
-
-    fcs (macro M-S-g)
-
-    stack (macro M-S-s)
-    tabbed (macro M-S-l)
-    split (macro M-S-p)
-    mvnext (macro M-up)
-    mvprev (macro M-3)
-    sticky (macro M-S-b)
-)
-
-(deflayer winnav
-  _  _   _   _   _   _   _   _   _   _   _  _  _  _ _ _   _   _ _ _
-  _   @emoji    _    @pad    @float    @clip     _    _      _       @sticky @splitv       @splith       _    _           _ _  _  _
-  _    @kll  @shot  XX  @flscr  _    _    _    _ @w1    @w2    @w3      @w4      @sticky            _  _  _
-  _ @split    @fcs    @tabbed    _    _    _    _    _ @mvnext    @fcs        @mvprev          _             _  _  _  _
-  _ _ _    _    _    _     _    _    _  _ _  _ _     _                _  _  _
-  _ _ _           _            _  _ _ _ _      _       _ _  _
 )
 
 (deflayer nav
@@ -48,7 +18,7 @@
   _  _ @w1    @w2    @w3      @w4      v    •    •    @w1    @w2    @w3      @w4    bspc           • •  •  •
   sldr  @r    @s    @n    @d    (multi lctl rght)    •    •    ,    lft down up rght    @smain            •  •  •
   x g    l    c    (multi lctl left)    •    •    •    •    u    pgdn    pgup          k             •  •  •  •
-  • @qwertyl •    •    •    •    •    •    ret  (layer-toggle winnav) •  • •     •                •  •  •
+  • @qwertyl •    •    •    •    •    •    ret  XX •  • •     •                •  •  •
   • • •           @t            •  • • • •      •       • •  •
 )
 
@@ -57,6 +27,6 @@
   _  _ @w1    @w2    @w3      @w4      v    •    •    •    •    •    •    bspc           • •  •  •
   sldr  @r    lalt    (multi lsft lctl left)    (multi lsft lctl rght)    _    •    •    ,    lft down up rght    @smain            •  •  •
   x g    l    c    (multi lctl left)    •    •    •    •    u    pgdn    pgup          k             •  •  •  •
-  • @qwertyl •    •    •    •    •    •    •  (layer-toggle winnav) •  • •     •                •  •  •
+  • @qwertyl •    •    •    •    •    •    •  XX •  • •     •                •  •  •
   • • •           @smain            •  • • • •      •       • •  •
 )
