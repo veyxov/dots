@@ -151,10 +151,16 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
 
+riverctl set-cursor-warp on-output-change
+
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
 
-playerctld daemon &
-sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/keyboard/config >> ~/kanata.log &
+# autostart
+riverctl spawn 'playerctld daemon'
+riverctl spawn 'sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/keyboard/config > ~/kanata.log'
+riverctl spawn 'mako'
+riverctl spawn 'telegram-desktop'
+riverctl spawn 'firefox'
