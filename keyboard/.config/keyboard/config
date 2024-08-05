@@ -23,11 +23,11 @@
 )
 
 (defchordsv2-experimental
-  (0 -)    =                $chord-timeout all-released ()
+  (0 -)    @switch                $chord-timeout all-released ()
   (l ; ')  @lnchr           $chord-timeout all-released ()
   (l ;)    @nxtscr          $chord-timeout all-released ()
   (; ')    @mvnxtscr        $chord-timeout all-released ()
-)
+  )
 
 ;; Main layout
 (include ./handsdown.kbd)
