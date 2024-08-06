@@ -7,7 +7,7 @@
     lnchr (macro M-u)
     nxtscr (macro M-,)
     mvnxtscr (macro M-S-,)
-    flscr (macro M-f)
+    flscr (macro M-S-,)
     kll (macro M-q)
 
     pad (macro M-spc)
