@@ -16,8 +16,8 @@ riverctl map normal Super J focus-view next
 riverctl map normal Super+Control J swap next
 
 # Super+Period and Super+Comma to focus the next/previous output
-riverctl map normal Super Period focus-output next
 riverctl map normal Super Comma focus-output previous
+riverctl map normal Super+Shift+Control Comma toggle-fullscreen
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
 riverctl map normal Super+Shift Period send-to-output next
@@ -86,9 +86,6 @@ riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
 # Super+Space to toggle float
 riverctl map normal Super Space toggle-float
-
-# Super+F to toggle fullscreen
-riverctl map normal Super F toggle-fullscreen
 
 # Super+{Up,Right,Down,Left} to change layout orientation
 riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
