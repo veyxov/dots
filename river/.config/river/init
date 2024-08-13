@@ -72,10 +72,10 @@ do
     riverctl map normal Super+Shift $i set-view-tags $tags
 
     # Super+Control+[1-9] to toggle focus of tag [0-8]
-    riverctl map normal Super+Control $i toggle-focused-tags $tags
+    #riverctl map normal Super+Control $i toggle-focused-tags $tags
 
     # Super+Shift+Control+[1-9] to toggle tag [0-8] of focused view
-    riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
+    #riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
 done
 
 # Super+0 to focus all tags
@@ -150,3 +150,4 @@ riverctl spawn 'sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/k
 riverctl spawn 'mako'
 riverctl spawn 'telegram-desktop'
 riverctl spawn 'firefox'
+riverctl spawn "swayidle -w timeout 240 'swaylock -c 111111' before-sleep 'swaylock -c 111111'"
