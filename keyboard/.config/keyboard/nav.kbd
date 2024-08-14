@@ -11,6 +11,7 @@
     kll (macro M-q)
 
     pad (macro M-spc)
+    swm (layer-switch wm)
 )
 
 (deflayer nav
@@ -19,7 +20,7 @@
   sldr  @r    @s    @n    @d    (multi lctl rght)    •    •    ,    lft down up rght    @smain            •  •  •
   x g    l    c    (multi lctl left)    •    •    •    •    u    pgdn    pgup          k             •  •  •  •
   • @qwertyl •    •    •    •    •    •    ret  XX •  • •     •                •  •  •
-  • • •           @t            •  • • • •      •       • •  •
+  • • •           @swm            •  • • • •      •       • •  •
 )
 
 (deflayer wordNav
@@ -29,4 +30,12 @@
   x g    l    c    (multi lctl left)    •    •    •    •    u    pgdn    pgup          k             •  •  •  •
   • @qwertyl •    •    •    •    •    •    •  XX •  • •     •                •  •  •
   • • •           @smain            •  • • • •      •       • •  •
+)
+
+(deflayermap (wm)
+  o (macro M-h)
+  p (macro M-j)
+  [ (macro M-k)
+  ] (macro M-l)
+  x @smain
 )
