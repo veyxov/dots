@@ -52,15 +52,6 @@ riverctl map normal Super+Alt+Shift J resize vertical 100
 riverctl map normal Super+Alt+Shift K resize vertical -100
 riverctl map normal Super+Alt+Shift L resize horizontal 100
 
-# Super + Left Mouse Button to move views
-riverctl map-pointer normal Super BTN_LEFT move-view
-
-# Super + Right Mouse Button to resize views
-riverctl map-pointer normal Super BTN_RIGHT resize-view
-
-# Super + Middle Mouse Button to toggle float
-riverctl map-pointer normal Super BTN_MIDDLE toggle-float
-
 for i in $(seq 1 9)
 do
     tags=$((1 << ($i - 1)))
@@ -92,16 +83,6 @@ riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
 riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
 riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
 riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
-
-# Declare a passthrough mode. This mode has only a single mapping to return to
-# normal mode. This makes it useful for testing a nested wayland compositor
-riverctl declare-mode passthrough
-
-# Super+F11 to enter passthrough mode
-riverctl map normal Super F11 enter-mode passthrough
-
-# Super+F11 to return to normal mode
-riverctl map passthrough Super F11 enter-mode normal
 
 # Various media key mapping examples for both normal and locked mode which do
 # not have a modifier
