@@ -1,30 +1,16 @@
 #!/bin/sh
 
-# spawner
-riverctl map normal Super u spawn kickoff
-# screenshot
-riverctl map normal Super s spawn 'grim -g "$(slurp -d)" - | wl-copy'
+riverctl map normal Super u spawn kickoff # app menu
+riverctl map normal Super s spawn 'grim -g "$(slurp -d)" - | wl-copy' # screenshot
+riverctl map normal Super Q close # close
+riverctl map normal Super J focus-view next # focus next
+riverctl map normal Super+Control J swap next # swap next
 
-# close
-riverctl map normal Super Q close
+riverctl map normal Super Comma focus-output previous # next screen
+riverctl map normal Super+Shift Comma send-to-output previous # send to next screen
+riverctl map normal Super+Shift+Control Comma toggle-fullscreen # full screen
 
-# Super+J and Super+K to focus the next/previous view in the layout stack
-riverctl map normal Super J focus-view next
-
-# Super+Shift+J and Super+Shift+K to swap the focused view with the next/previous
-# view in the layout stack
-riverctl map normal Super+Control J swap next
-
-# Super+Period and Super+Comma to focus the next/previous output
-riverctl map normal Super Comma focus-output previous
-riverctl map normal Super+Shift+Control Comma toggle-fullscreen
-
-# Super+Shift+{Period,Comma} to send the focused view to the next/previous output
-riverctl map normal Super+Shift Period send-to-output next
-riverctl map normal Super+Shift Comma send-to-output previous
-
-# Super+Return to bump the focused view to the top of the layout stack
-riverctl map normal Super Return zoom
+riverctl map normal Super Return zoom # zoom
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
 riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
