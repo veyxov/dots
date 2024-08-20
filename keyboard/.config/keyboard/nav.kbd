@@ -37,5 +37,6 @@
   p (macro M-j)
   [ (macro M-k)
   ] (macro M-l)
+  0 (macro M-spc)
   x @smain
 )
