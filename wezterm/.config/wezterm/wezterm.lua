@@ -6,7 +6,7 @@ return {
     use_resize_increments = true,
     enable_tab_bar = false,
     font_size = 24,
-    color_scheme = "Rapture",
+    color_scheme = "tokyonight_night",
     window_background_opacity = 0.95,
     window_padding = {
         left = 0,
