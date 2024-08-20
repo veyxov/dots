@@ -117,4 +117,4 @@ riverctl spawn 'sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/k
 riverctl spawn 'mako'
 riverctl spawn 'telegram-desktop'
 riverctl spawn 'firefox'
-riverctl spawn "swayidle -w timeout 240 'swaylock -c 111111' before-sleep 'swaylock -c 111111'"
+riverctl spawn "swayidle -w timeout 30 'swaylock -c 111111' before-sleep 'swaylock -c 111111'"
