@@ -1,4 +1,5 @@
 android-file-transfer
+android-tools
 aspnet-runtime
 base
 base-devel
@@ -69,7 +70,6 @@ rsync
 slurp
 sof-firmware
 spotify-launcher
-steam
 stow
 sudo
 swaybg
