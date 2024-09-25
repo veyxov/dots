@@ -91,7 +91,6 @@ do
 done
 
 # Set background and border color
-riverctl background-color 0x000000
 riverctl border-color-focused 0x03346E
 riverctl border-color-unfocused 0x021526
 
@@ -111,10 +110,15 @@ riverctl set-cursor-warp on-output-change
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
 
-# autostart
+# core
+riverctl spawn "swayidle -w timeout 30 'swaylock -c 111111' before-sleep 'swaylock -c 111111'"
+riverctl spawn "setwall"
+
+# services
 riverctl spawn 'playerctld daemon'
-riverctl spawn 'sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/keyboard/config > ~/kanata.log'
 riverctl spawn 'mako'
+riverctl spawn 'sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/keyboard/config > ~/kanata.log'
+
+# apps
 riverctl spawn 'telegram-desktop'
 riverctl spawn 'firefox'
-riverctl spawn "swayidle -w timeout 30 'swaylock -c 111111' before-sleep 'swaylock -c 111111'"
