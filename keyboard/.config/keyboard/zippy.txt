@@ -1,0 +1,25 @@
+wh	while
+wh t	while(true)
+
+re	return 
+re t	return true;
+re f	return false;
+bk	break;
+bk c	continue;
+
+fn	public void Name(
+fn a	public async Task Name(
+fn a e	public async Task Name() {
+fn a e s	public static async Task Name() {
+fn a e s p	public static async Task<TYPE> Name() {
+
+sh	ghutt meknm barodar!
+
+mf	 {
+fl	 {
+
+kbr	keyboard
+
+nw	new
+ y	yes
+ y y	yes, yes, yes!!!
