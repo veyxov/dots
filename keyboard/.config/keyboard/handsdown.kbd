@@ -148,7 +148,7 @@
     ;; m -> m, mm -> mn
     () (tap-dance-eager 200 ((macro m) (macro n))) break
   )
-  (f m) (macro S-[)
+  ;; (f m) (macro S-[)
   (j m) (macro home)
   (j f) q
 )
@@ -191,4 +191,27 @@
     () . break
   )
   - -
+)
+
+(defzippy-experimental
+  zippy.txt
+  on-first-press-chord-deadline 500
+  idle-reactivate-time          500
+  smart-space-punctuation (? ! . , ; :)
+  output-character-mappings (
+    ;; This should work for US international.
+    ! S-1
+    ? S-/
+    { S-[
+    } S-]
+    % S-5
+    "(" S-9
+    ")" S-0
+    & S-7
+    : S-;
+    < S-,
+    > S-.
+    | S-\
+    _ S--
+  )
 )
