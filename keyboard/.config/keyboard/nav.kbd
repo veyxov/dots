@@ -17,7 +17,7 @@
 (deflayer nav
   •  •   •   •   •   •   •   •   •   •   •  •  •  • • •   •   • • •
   _  _ @w1    @w2    @w3      @w4      v    •    •    @w1    @w2    @w3      @w4    bspc           • •  •  •
-  lalt  @r    @s    @n    @d    (multi lctl rght)    •    •    ,    lft down up rght    @smain            •  •  •
+  lalt  @r    @s    @n    @d    (multi lctl rght)    •    •    ,    • down up •    @smain            •  •  •
   x g    l    c    (multi lctl left)    •    •    •    •    u    pgdn    pgup          k             •  •  •  •
   • @qwertyl •    •    •    •    •    •    ret  XX •  • •     •                •  •  •
   • • •           @swm            •  • • • •      •       • •  •

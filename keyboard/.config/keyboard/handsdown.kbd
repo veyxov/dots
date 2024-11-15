@@ -19,7 +19,7 @@
     ))
 
     capsnum (tap-dance-eager 422 (
-        (tap-hold-release 200 200 (one-shot-press-pcancel 1000 (layer-toggle num)) @smouse);; TODO
+        (tap-hold-release 200 200 (one-shot-press-pcancel 1000 (layer-toggle num)) @smouse)
         (layer-switch num)
     ))
 )
