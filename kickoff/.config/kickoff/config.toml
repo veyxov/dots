@@ -3,7 +3,7 @@ prompt = ''
 padding = 100
 
 fonts = [ 'Jet Brains Mono' ]
-font_size = 72.0
+font_size = 42.0
 
 [history]
 decrease_interval = 48
