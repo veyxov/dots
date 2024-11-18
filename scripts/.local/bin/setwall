@@ -1,6 +1,17 @@
-Amount=$(ls ~/.local/walls | wc -l)
+# Get all image files recursively from ~/.local/walls and its subdirectories
+Files=($(find ~/.local/walls -type f))
+
+# Count the total number of files
+Amount=${#Files[@]}
+
+# Generate a random index based on the total count
 Rand=$(($RANDOM % $Amount))
-Files=(~/.local/walls/*)
+
+# Select a random file
 wall=${Files[Rand]}
 
-swaybg -i $wall
+# Set the selected file as the wallpaper using swaybg
+
+echo "$wall" > /tmp/current_wall
+
+swaybg -i "$wall"
