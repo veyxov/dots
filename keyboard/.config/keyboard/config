@@ -23,6 +23,7 @@
 )
 
 (defchordsv2-experimental
+  (o ])    @clip          $chord-timeout all-released ()
   (0 -)    @switch          $chord-timeout all-released ()
   (l ; ')  @lnchr           $chord-timeout all-released ()
   (l ;)    @nxtscr          $chord-timeout all-released ()

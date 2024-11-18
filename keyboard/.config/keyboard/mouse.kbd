@@ -9,9 +9,11 @@
     mmdwn (movemouse-accel-down 5 1000 1 15)
     mmup  (movemouse-accel-up   5 1000 1 15)
     mmrgt (movemouse-accel-right 5 1000 1 15)
+
     scrsht (macro M-s)
     close (macro M-q)
     switch (macro M-j)
+    clip (macro M-p)
 )
 
 (deflayer mouse

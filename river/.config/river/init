@@ -119,6 +119,10 @@ riverctl spawn 'playerctld daemon'
 riverctl spawn 'mako'
 riverctl spawn 'sudo ~/.local/bin/kanata/target/release/kanata -n -c ~/.config/keyboard/config > ~/kanata.log'
 
+# clipboard manager
+riverctl spawn 'wl-paste --watch cliphist store'
+riverctl map normal Super p spawn 'cliphist list | kickoff --from-stdin --stdout | cliphist decode | wl-copy'
+
 # apps
 riverctl spawn 'telegram-desktop'
 riverctl spawn 'firefox'
