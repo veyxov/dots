@@ -27,6 +27,14 @@ local config = {
     leader = { key = "F5", mods = "", timeout_milliseconds = 1000 },
 
     disable_default_key_bindings = true,
+    mouse_bindings = {
+        {
+            event = { Down = { streak = 3, button = 'Left' } },
+            action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
+            mods = 'NONE',
+        },
+    },
+
     keys = {
         {
             key = "t",
