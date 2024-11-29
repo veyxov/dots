@@ -1,27 +1,212 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+function create_tab_navigation_mappings()
+    local keys = {"u", "o", "y", "k"}
+    local result = {}
+
+    for index, key in ipairs(keys) do
+        table.insert(result, {
+            key = key,
+            mods = "LEADER",
+            action = wezterm.action.ActivateTab(index - 1),
+        })
+    end
+
+    return result
+end
+
+local mappings = {
+    {
+        key = "t",
+        mods = "LEADER",
+        action = wezterm.action.ShowTabNavigator,
+    },
+    {
+        key = "u",
+        mods = "LEADER",
+        action = wezterm.action.ActivateTab(0),
+    },
+    {
+        key = "o",
+        mods = "LEADER",
+        action = wezterm.action.ActivateTab(1),
+    },
+    {
+        key = "y",
+        mods = "LEADER",
+        action = wezterm.action.ActivateTab(2),
+    },
+    {
+        key = "k",
+        mods = "LEADER",
+        action = wezterm.action.ActivateTab(3),
+    },
+    {
+        key = "F5",
+        mods = "LEADER",
+        action = wezterm.action.SendKey({
+            key = "l",
+            mods = "CTRL",
+        }),
+    },
+    {
+        key = "w",
+        mods = "LEADER",
+        action = wezterm.action.ShowLauncherArgs({
+            flags = "FUZZY|WORKSPACES",
+        }),
+    },
+    {
+        key = "p",
+        mods = "LEADER",
+        action = wezterm.action.ActivateCommandPalette,
+    },
+    { mods = "ALT|CTRL", key = "/", action = act.MoveTabRelative(1) },
+    { mods = "ALT", key = "/", action = act.MoveTabRelative(-1) },
+    {
+        mods = "ALT",
+        key = "d",
+        action = wezterm.action.ShowDebugOverlay,
+    },
+    {
+        mods = "ALT|SHIFT",
+        key = [[i]],
+        action = wezterm.action.SplitPane({
+            top_level = true,
+            direction = "Right",
+            size = { Percent = 50 },
+        }),
+    },
+    {
+        mods = "ALT",
+        key = [[,]],
+        action = wezterm.action.SplitPane({
+            direction = "Right",
+            size = { Percent = 50 },
+        }),
+    },
+    {
+        mods = "ALT",
+        key = [[-]],
+        action = wezterm.action.SplitPane({
+            direction = "Up",
+            size = { Percent = 50 },
+        }),
+    },
+    {
+        key = "n",
+        mods = "ALT",
+        action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }),
+    },
+    {
+        key = "_",
+        mods = "LEADER|SHIFT",
+        action = wezterm.action({ CloseCurrentPane = { confirm = false } }),
+    },
+    {
+        key = "z",
+        mods = "ALT",
+        action = wezterm.action.TogglePaneZoomState,
+    },
+    {
+        key = "a",
+        mods = "ALT",
+        action = wezterm.action({ ActivateTabRelative = -1 }),
+    },
+    {
+        key = "h",
+        mods = "ALT",
+        action = wezterm.action({ ActivateTabRelative = 1 }),
+    },
+    {
+        key = "y",
+        mods = "ALT",
+        action = wezterm.action.QuickSelect,
+    },
+    {
+        key = "s",
+        mods = "LEADER",
+        action = wezterm.action.ActivateCopyMode,
+    },
+    {
+        key = "/",
+        mods = "LEADER",
+        action = wezterm.action.Search("CurrentSelectionOrEmptyString"),
+    },
+    {
+        key = "c",
+        mods = "CTRL",
+        action = wezterm.action({ CopyTo = "Clipboard" }),
+    },
+    {
+        key = "v",
+        mods = "CTRL",
+        action = wezterm.action({ PasteFrom = "Clipboard" }),
+    },
+    {
+        key = "e",
+        mods = "ALT",
+        action = wezterm.action({ ActivatePaneDirection = "Down" }),
+    },
+    {
+        key = "i",
+        mods = "ALT",
+        action = wezterm.action({ ActivatePaneDirection = "Up" }),
+    },
+    {
+        key = "e",
+        mods = "LEADER",
+        action = wezterm.action({ ActivatePaneDirection = "Down" }),
+    },
+    {
+        key = "i",
+        mods = "LEADER",
+        action = wezterm.action({ ActivatePaneDirection = "Up" }),
+    },
+    {
+        key = "a",
+        mods = "LEADER",
+        action = wezterm.action({ ActivatePaneDirection = "Left" }),
+    },
+    {
+        key = "h",
+        mods = "LEADER",
+        action = wezterm.action({ ActivatePaneDirection = "Right" }),
+    },
+    {
+        key = "Slash",
+        mods = "ALT",
+        action = wezterm.action.IncreaseFontSize,
+    },
+    {
+        key = "?",
+        mods = "ALT|SHIFT",
+        action = wezterm.action.DecreaseFontSize,
+    },
+    {
+        key = "p",
+        mods = "ALT",
+        action = act.PaneSelect({
+            alphabet = '"asnd',
+        }),
+    },
+}
+
+for _, mapping in ipairs(create_tab_navigation_mappings()) do
+    table.insert(mappings, mapping)
+end
+
 return {
     -- cosmetic settings
     use_resize_increments = true,
     enable_tab_bar = false,
     font_size = 24,
     color_scheme = "tokyonight_night",
-    window_background_opacity = 0.95,
-    window_padding = {
-        left = 0,
-        right = 0,
-        top = 0,
-        bottom = 0,
-    },
+    window_background_opacity = 0.7,
 
     default_prog = { "/usr/bin/fish" },
     quick_select_alphabet = "neiosart",
-    unix_domains = {
-        {
-            name = "unix",
-        },
-    },
     window_close_confirmation = "NeverPrompt",
 
     leader = { key = "F5", mods = "", timeout_milliseconds = 1000 },
@@ -35,182 +220,7 @@ return {
         },
     },
 
-    keys = {
-        {
-            key = "t",
-            mods = "LEADER",
-            action = wezterm.action.ShowTabNavigator,
-        },
-        {
-            key = "u",
-            mods = "LEADER",
-            action = wezterm.action.ActivateTab(0),
-        },
-        {
-            key = "o",
-            mods = "LEADER",
-            action = wezterm.action.ActivateTab(1),
-        },
-        {
-            key = "y",
-            mods = "LEADER",
-            action = wezterm.action.ActivateTab(2),
-        },
-        {
-            key = "k",
-            mods = "LEADER",
-            action = wezterm.action.ActivateTab(3),
-        },
-        {
-            key = "F5",
-            mods = "LEADER",
-            action = wezterm.action.SendKey({
-                key = "l",
-                mods = "CTRL",
-            }),
-        },
-        {
-            key = "w",
-            mods = "LEADER",
-            action = wezterm.action.ShowLauncherArgs({
-                flags = "FUZZY|WORKSPACES",
-            }),
-        },
-        {
-            key = "p",
-            mods = "LEADER",
-            action = wezterm.action.ActivateCommandPalette,
-        },
-        { mods = "ALT|CTRL", key = "/", action = act.MoveTabRelative(1) },
-        { mods = "ALT", key = "/", action = act.MoveTabRelative(-1) },
-        {
-            mods = "ALT",
-            key = "d",
-            action = wezterm.action.ShowDebugOverlay,
-        },
-        {
-            mods = "ALT|SHIFT",
-            key = [[i]],
-            action = wezterm.action.SplitPane({
-                top_level = true,
-                direction = "Right",
-                size = { Percent = 50 },
-            }),
-        },
-        {
-            mods = "ALT",
-            key = [[,]],
-            action = wezterm.action.SplitPane({
-                direction = "Right",
-                size = { Percent = 50 },
-            }),
-        },
-        {
-            mods = "ALT",
-            key = [[-]],
-            action = wezterm.action.SplitPane({
-                direction = "Up",
-                size = { Percent = 50 },
-            }),
-        },
-        {
-            key = "n",
-            mods = "ALT",
-            action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }),
-        },
-        {
-            key = "_",
-            mods = "LEADER|SHIFT",
-            action = wezterm.action({ CloseCurrentPane = { confirm = false } }),
-        },
-        {
-            key = "z",
-            mods = "ALT",
-            action = wezterm.action.TogglePaneZoomState,
-        },
-        {
-            key = "a",
-            mods = "ALT",
-            action = wezterm.action({ ActivateTabRelative = -1 }),
-        },
-        {
-            key = "h",
-            mods = "ALT",
-            action = wezterm.action({ ActivateTabRelative = 1 }),
-        },
-        {
-            key = "y",
-            mods = "ALT",
-            action = wezterm.action.QuickSelect,
-        },
-        {
-            key = "s",
-            mods = "LEADER",
-            action = wezterm.action.ActivateCopyMode,
-        },
-        {
-            key = "/",
-            mods = "LEADER",
-            action = wezterm.action.Search("CurrentSelectionOrEmptyString"),
-        },
-        {
-            key = "c",
-            mods = "CTRL",
-            action = wezterm.action({ CopyTo = "Clipboard" }),
-        },
-        {
-            key = "v",
-            mods = "CTRL",
-            action = wezterm.action({ PasteFrom = "Clipboard" }),
-        },
-        {
-            key = "e",
-            mods = "ALT",
-            action = wezterm.action({ ActivatePaneDirection = "Down" }),
-        },
-        {
-            key = "i",
-            mods = "ALT",
-            action = wezterm.action({ ActivatePaneDirection = "Up" }),
-        },
-        {
-            key = "e",
-            mods = "LEADER",
-            action = wezterm.action({ ActivatePaneDirection = "Down" }),
-        },
-        {
-            key = "i",
-            mods = "LEADER",
-            action = wezterm.action({ ActivatePaneDirection = "Up" }),
-        },
-        {
-            key = "a",
-            mods = "LEADER",
-            action = wezterm.action({ ActivatePaneDirection = "Left" }),
-        },
-        {
-            key = "h",
-            mods = "LEADER",
-            action = wezterm.action({ ActivatePaneDirection = "Right" }),
-        },
-        {
-            key = "Slash",
-            mods = "ALT",
-            action = wezterm.action.IncreaseFontSize,
-        },
-        {
-            key = "?",
-            mods = "ALT|SHIFT",
-            action = wezterm.action.DecreaseFontSize,
-        },
-        {
-            key = "p",
-            mods = "ALT",
-            action = act.PaneSelect({
-                alphabet = '"asnd',
-            }),
-        },
-    },
+    keys = mappings,
     key_tables = {
         search_mode = {
             {
