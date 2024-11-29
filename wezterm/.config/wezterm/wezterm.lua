@@ -1,10 +1,10 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-local config = {
+return {
+    -- cosmetic settings
     use_resize_increments = true,
-    enable_tab_bar = true,
-    tab_bar_at_bottom = true,
+    enable_tab_bar = false,
     font_size = 24,
     color_scheme = "tokyonight_night",
     window_background_opacity = 0.95,
@@ -472,8 +472,3 @@ local config = {
         },
     },
 }
-
-local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
-bar.apply_to_config(config)
-
-return config
