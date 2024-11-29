@@ -1,51 +1,69 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-function create_tab_navigation_mappings()
+function create_tab_navigation_mappings(mappings)
     local keys = {"u", "o", "y", "k"}
-    local result = {}
 
     for index, key in ipairs(keys) do
-        table.insert(result, {
+        table.insert(mappings, {
             key = key,
             mods = "LEADER",
-            action = wezterm.action.ActivateTab(index - 1),
+            action = act.ActivateTab(index - 1),
         })
     end
 
-    return result
+    return mappings
+end
+
+function create_pane_navigation_mappings(mappings)
+    local directions = {
+        { key = "e", direction = "Down" },
+        { key = "i", direction = "Up" },
+        { key = "a", direction = "Left" },
+        { key = "h", direction = "Right" },
+    }
+
+    for _, mapping in ipairs(directions) do
+        table.insert(mappings, {
+            key = mapping.key,
+            mods = "LEADER",
+            action = act({ ActivatePaneDirection = mapping.direction }),
+        })
+    end
+
+    return mappings
+end
+
+function create_split_pane_mappings(mappings)
+    local splits = {
+        { key = [[,]], direction = "Right" },
+        { key = [[-]], direction = "Up" },
+    }
+
+    for _, split in ipairs(splits) do
+        table.insert(mappings, {
+            mods = "ALT",
+            key = split.key,
+            action = act.SplitPane({
+                direction = split.direction,
+                size = { Percent = 50 },
+            }),
+        })
+    end
+
+    return mappings
 end
 
 local mappings = {
     {
         key = "t",
         mods = "LEADER",
-        action = wezterm.action.ShowTabNavigator,
-    },
-    {
-        key = "u",
-        mods = "LEADER",
-        action = wezterm.action.ActivateTab(0),
-    },
-    {
-        key = "o",
-        mods = "LEADER",
-        action = wezterm.action.ActivateTab(1),
-    },
-    {
-        key = "y",
-        mods = "LEADER",
-        action = wezterm.action.ActivateTab(2),
-    },
-    {
-        key = "k",
-        mods = "LEADER",
-        action = wezterm.action.ActivateTab(3),
+        action = act.ShowTabNavigator,
     },
     {
         key = "F5",
         mods = "LEADER",
-        action = wezterm.action.SendKey({
+        action = act.SendKey({
             key = "l",
             mods = "CTRL",
         }),
@@ -53,149 +71,89 @@ local mappings = {
     {
         key = "w",
         mods = "LEADER",
-        action = wezterm.action.ShowLauncherArgs({
+        action = act.ShowLauncherArgs({
             flags = "FUZZY|WORKSPACES",
         }),
     },
     {
         key = "p",
         mods = "LEADER",
-        action = wezterm.action.ActivateCommandPalette,
-    },
-    { mods = "ALT|CTRL", key = "/", action = act.MoveTabRelative(1) },
-    { mods = "ALT", key = "/", action = act.MoveTabRelative(-1) },
-    {
-        mods = "ALT",
-        key = "d",
-        action = wezterm.action.ShowDebugOverlay,
-    },
-    {
-        mods = "ALT|SHIFT",
-        key = [[i]],
-        action = wezterm.action.SplitPane({
-            top_level = true,
-            direction = "Right",
-            size = { Percent = 50 },
-        }),
-    },
-    {
-        mods = "ALT",
-        key = [[,]],
-        action = wezterm.action.SplitPane({
-            direction = "Right",
-            size = { Percent = 50 },
-        }),
-    },
-    {
-        mods = "ALT",
-        key = [[-]],
-        action = wezterm.action.SplitPane({
-            direction = "Up",
-            size = { Percent = 50 },
-        }),
+        action = act.ActivateCommandPalette,
     },
     {
         key = "n",
         mods = "ALT",
-        action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }),
+        action = act({ SpawnTab = "CurrentPaneDomain" }),
     },
     {
         key = "_",
         mods = "LEADER|SHIFT",
-        action = wezterm.action({ CloseCurrentPane = { confirm = false } }),
+        action = act({ CloseCurrentPane = { confirm = false } }),
     },
     {
         key = "z",
         mods = "ALT",
-        action = wezterm.action.TogglePaneZoomState,
+        action = act.TogglePaneZoomState,
     },
     {
         key = "a",
         mods = "ALT",
-        action = wezterm.action({ ActivateTabRelative = -1 }),
+        action = act({ ActivateTabRelative = -1 }),
     },
     {
         key = "h",
         mods = "ALT",
-        action = wezterm.action({ ActivateTabRelative = 1 }),
+        action = act({ ActivateTabRelative = 1 }),
     },
     {
         key = "y",
         mods = "ALT",
-        action = wezterm.action.QuickSelect,
+        action = act.QuickSelect,
     },
     {
         key = "s",
         mods = "LEADER",
-        action = wezterm.action.ActivateCopyMode,
+        action = act.ActivateCopyMode,
     },
     {
         key = "/",
         mods = "LEADER",
-        action = wezterm.action.Search("CurrentSelectionOrEmptyString"),
+        action = act.Search("CurrentSelectionOrEmptyString"),
     },
     {
         key = "c",
         mods = "CTRL",
-        action = wezterm.action({ CopyTo = "Clipboard" }),
+        action = act({ CopyTo = "Clipboard" }),
     },
     {
         key = "v",
         mods = "CTRL",
-        action = wezterm.action({ PasteFrom = "Clipboard" }),
+        action = act({ PasteFrom = "Clipboard" }),
     },
-    {
-        key = "e",
-        mods = "ALT",
-        action = wezterm.action({ ActivatePaneDirection = "Down" }),
-    },
-    {
-        key = "i",
-        mods = "ALT",
-        action = wezterm.action({ ActivatePaneDirection = "Up" }),
-    },
-    {
-        key = "e",
-        mods = "LEADER",
-        action = wezterm.action({ ActivatePaneDirection = "Down" }),
-    },
-    {
-        key = "i",
-        mods = "LEADER",
-        action = wezterm.action({ ActivatePaneDirection = "Up" }),
-    },
-    {
-        key = "a",
-        mods = "LEADER",
-        action = wezterm.action({ ActivatePaneDirection = "Left" }),
-    },
-    {
-        key = "h",
-        mods = "LEADER",
-        action = wezterm.action({ ActivatePaneDirection = "Right" }),
-    },
+    -- font
     {
         key = "Slash",
         mods = "ALT",
-        action = wezterm.action.IncreaseFontSize,
+        action = act.IncreaseFontSize,
     },
     {
         key = "?",
         mods = "ALT|SHIFT",
-        action = wezterm.action.DecreaseFontSize,
+        action = act.DecreaseFontSize,
     },
+    -- navigation
     {
         key = "p",
         mods = "ALT",
         action = act.PaneSelect({
-            alphabet = '"asnd',
+            alphabet = 'aeihrsnd',
         }),
     },
 }
 
-for _, mapping in ipairs(create_tab_navigation_mappings()) do
-    table.insert(mappings, mapping)
-end
+create_pane_navigation_mappings(mappings)
+create_tab_navigation_mappings(mappings)
+create_split_pane_mappings(mappings)
 
 return {
     -- cosmetic settings
@@ -215,7 +173,7 @@ return {
     mouse_bindings = {
         {
             event = { Down = { streak = 3, button = 'Left' } },
-            action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
+            action = act.SelectTextAtMouseCursor 'SemanticZone',
             mods = 'NONE',
         },
     },
