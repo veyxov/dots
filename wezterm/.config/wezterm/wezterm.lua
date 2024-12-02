@@ -161,7 +161,7 @@ return {
     enable_tab_bar = false,
     font_size = 24,
     color_scheme = "tokyonight_night",
-    window_background_opacity = 0.7,
+    window_background_opacity = 0.9,
 
     default_prog = { "/usr/bin/fish" },
     quick_select_alphabet = "neiosart",
@@ -181,11 +181,6 @@ return {
     keys = mappings,
     key_tables = {
         search_mode = {
-            {
-                key = "Enter",
-                mods = "NONE",
-                action = act.CopyMode("PriorMatch"),
-            },
             { key = "Escape", mods = "NONE", action = act.CopyMode("Close") },
             { key = "n", mods = "CTRL", action = act.CopyMode("NextMatch") },
             { key = "p", mods = "CTRL", action = act.CopyMode("PriorMatch") },
