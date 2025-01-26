@@ -4,16 +4,17 @@ riverctl map normal Super u spawn kickoff # app menu
 riverctl map normal Super s spawn 'grim -g "$(slurp -d)" - | wl-copy' # screenshot
 riverctl map normal Super Q close # close
 riverctl map normal Super J focus-view next # focus next
+riverctl map normal Super H focus-view previous # focus prev
 riverctl map normal Super+Control J swap next # swap next
 
 riverctl map normal Super Comma focus-output previous # next screen
 riverctl map normal Super+Shift Comma send-to-output previous # send to next screen
-riverctl map normal Super+Shift+Control Comma toggle-fullscreen # full screen
+riverctl map normal Super F toggle-fullscreen # full screen
 
 riverctl map normal Super Return zoom # zoom
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
-riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
+# riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
 riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
 
 # Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivertile(1)
