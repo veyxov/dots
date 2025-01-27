@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# used: f u s q h
+riverctl keyboard-layout -options "grp:win_space_toggle" "us,rus"
+
 riverctl map normal Super F toggle-fullscreen # full screen
 riverctl map normal Super u spawn kickoff # app menu
 riverctl map normal Super s spawn 'grim -g "$(slurp -d)" - | wl-copy' # screenshot
@@ -37,9 +38,6 @@ done
 all_tags=$(((1 << 32) - 1))
 riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
-
-# Super+Space to toggle float
-riverctl map normal Super Space toggle-float
 
 # Various media key mapping examples for both normal and locked mode which do
 # not have a modifier
