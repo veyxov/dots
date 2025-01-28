@@ -49,7 +49,7 @@ xkb_symbols "rulemak" {
     key <AB03> { [     Cyrillic_che,     Cyrillic_CHE,     Serbian_dje,     Serbian_DJE ] };
     key <AB04> { [     Cyrillic_ve,     Cyrillic_VE                                   ] }; // NON_FUNCTIONAL
     key <AB05> { [     Cyrillic_be,     Cyrillic_BE,   Macedonia_dse,   Macedonia_DSE ] };
-    key <AB06> { [     Cyrillic_en,       0x1000492,       backslash,             bar ] };
+    key <AB06> { [     Cyrillic_en,       Cyrillic_EN,       backslash,             bar ] };
     key <AB07> { [     Cyrillic_em,       Cyrillic_EM,   Macedonia_kje,   Macedonia_KJE ] };
     key <AB08> { [     comma                                                          ] }; // ҳ Ҳ
     key <AB09> { [     period,       question,            less                  ] };
