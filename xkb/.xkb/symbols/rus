@@ -19,11 +19,11 @@ xkb_symbols "rulemak" {
 
     // assign as q key <AD01> { [     Cyrillic_er,                                 Cyrillic_ER                                     ] }; // р Р
     key <AD02> { [     Cyrillic_sha,                                 Cyrillic_SHA,  Cyrillic_tse,    Cyrillic_TSE     ] }; // с С ц Ц
-    key <AD03> { [     Cyrillic_ie,                                 Cyrillic_IE                                     ] }; // e
+    key <AD03> { [     Cyrillic_ie,                                 Cyrillic_IE, Cyrillic_io, Cyrillic_IO                                     ] }; // e
     key <AD04> { [     Cyrillic_er,                                 Cyrillic_ER                                     ] }; // д Д
     key <AD05> { [     Cyrillic_te,                                Cyrillic_TE, Cyrillic_shcha,  Cyrillic_SHCHA   ] }; // ш Ш щ Щ
     key <AD06> { [     Cyrillic_shorti,                                Cyrillic_SHORTI, Cyrillic_shcha,  Cyrillic_SHCHA   ] }; // ш Ш щ Щ
-    key <AD07> { [     Cyrillic_u,                      Cyrillic_U                          ] }; // ҷ Ҷ
+    key <AD07> { [     Cyrillic_u,                      Cyrillic_U, Cyrillic_yu, Cyrillic_YU                          ] }; // ҷ Ҷ
     key <AD08> { [     Cyrillic_i,                                       Cyrillic_I,  Cyrillic_zhe,   Cyrillic_ZHE ] };
     key <AD09> { [     Cyrillic_o,                                  Cyrillic_O                                      ] };
     key <AD10> { [     Cyrillic_pe,                                 Cyrillic_PE,    Cyrillic_io,     Cyrillic_IO    ] };
@@ -44,7 +44,7 @@ xkb_symbols "rulemak" {
     key <AC10> { [     Cyrillic_HARDSIGN,      Cyrillic_hardsign,     Cyrillic_i_macron,     Cyrillic_I_macron ] }; // ӣ Ӣ
     key <AC11> { [     Cyrillic_che_descender,      Cyrillic_CHE_descender                                   ] };
 
-    key <AB01> { [     Cyrillic_zhe,     Cyrillic_ZHE                                   ] };
+    key <AB01> { [     Cyrillic_ze,     Cyrillic_ZE, Cyrillic_zhe, Cyrillic_ZHE                                   ] };
     key <AB02> { [     Cyrillic_ha,     Cyrillic_HA,   Cyrillic_dzhe,   Cyrillic_DZHE ] };
     key <AB03> { [     Cyrillic_che,     Cyrillic_CHE,     Serbian_dje,     Serbian_DJE ] };
     key <AB04> { [     Cyrillic_ve,     Cyrillic_VE                                   ] }; // NON_FUNCTIONAL
