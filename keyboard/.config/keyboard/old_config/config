@@ -1,0 +1,53 @@
+;; Keyboard configuraion
+(defcfg
+    concurrent-tap-hold yes
+    danger-enable-cmd yes ;; Enable commands
+    log-layer-changes no
+    sequence-input-mode visible-backspaced
+)
+
+;; Variables
+(defvar
+    chord-timeout 20
+    chord-timeout-slow 50
+)
+
+;; Source
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins prnt del   pp   mute prev next
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc           nlck kp/  kp*  kp-
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret            kp7  kp8  kp9
+  caps a    s    d    f    g    h    j    k    l    ;    '          \             kp4  kp5  kp6  kp+
+  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft      up        kp1  kp2  kp3
+  lctl lmet lalt           spc            ralt rmet rctl left down rght      kp0       kp.  kprt
+)
+
+(defchordsv2-experimental
+  (o ])    @clip          $chord-timeout all-released ()
+  (0 -)    @switch          $chord-timeout all-released ()
+  (l ; ')  @lnchr           $chord-timeout all-released ()
+  (l ;)    @nxtscr          $chord-timeout all-released ()
+  (; ')    @mvnxtscr        $chord-timeout all-released ()
+  )
+
+;; Main layout
+(include ./handsdown.kbd)
+
+(include ./capsword.kbd)
+
+(include ./onehand.kbd)
+
+;; Cyrillic layout
+(include ./cyrill.kbd)
+
+(include ./mouse.kbd)
+
+(include ./nav.kbd)
+
+(include ./qwrety.kbd)
+
+(include ./sym.kbd)
+
+(include ./num.kbd)
+
+(include ./super.kbd)
