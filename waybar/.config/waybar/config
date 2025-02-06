@@ -1,19 +1,13 @@
 {
     "layer": "top",
-    "position": "bottom",
-    "height": 15,
+    "position": "top",
+    "height": 24,
 
 
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": [],
-    "modules-right": ["network", "temperature", "backlight", "pulseaudio", "battery", "clock", "tray"],
+    "modules-right": ["network", "temperature", "backlight", "pulseaudio", "bluetooth", "battery", "clock", "tray"],
 
-
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "disable-markup": true,
-        "format": "{index}" 
-    },
 
     "tray": {
         "icon-size": 20,
@@ -26,6 +20,16 @@
         "interval": 30
     },
 
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    },
+
     "battery": {
         "bat": "BAT1",
         "states": {
@@ -33,7 +37,7 @@
             "good": 98,
             "normal": 98,
             "warning": 20,
-            "critical": 20
+            "critical": 10
         },
 
         "format": "{icon}   {capacity}%",
