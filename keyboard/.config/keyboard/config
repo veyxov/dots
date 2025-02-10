@@ -1,22 +1,31 @@
+(defcfg
+    process-unmapped-keys yes
+    sequence-input-mode visible-backspaced
+    concurrent-tap-hold true
+)
+
 (defsrc
-  r s o b n e g t pause
+  j f m p v . / '
+  r s n d w , a e i h
+  x g l c b - u o y k
+  t spc
 )
 
 (deflayer main
-  r s o b n e g t sldr
+  j f @mOrL p @vOrL . / '
+  r s n d w , a e i h
+  x g l c b - u o y k
+  t spc
 )
-
-
-(defseq
-    https (r s)
-    brackets (s n)
-    nq (n e)
-    status (g s t)
-)
-
-(defvirtualkeys
-    https (macro h t t p s S-; / /)
-    brackets (macro S-[ S-] lft)
-    nq (macro S-q)
-    status (macro g i t spc s t a t u s ret)
+(defalias
+  mOrL (switch
+    ((key-history p 1)) l break ;;PM -> PL
+    ((key-history f 1)) l break ;;FM -> FL
+    ((key-history v 1)) (macro bspc b l) break ;; MV -> BL (stumble)
+    () m break ;; m
+  )
+  vOrL (switch
+    ((key-history p 1)) (macro bspc l v) break ;;PV -> LV.
+    () v break ;; v
+  )
 )
