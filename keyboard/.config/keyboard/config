@@ -14,7 +14,7 @@
 (deflayer main
   j f @mOrL p @vOrL . / '
   r s n d w , a e i h
-  x g l c b - u o y k
+  x g l @cOrP b - u o y k
   t spc
 )
 (defalias
@@ -27,5 +27,9 @@
   vOrL (switch
     ((key-history p 1)) (macro bspc l v) break ;;PV -> LV.
     () v break ;; v
+  )
+  cOrP (switch
+    ((key-history l 1)) p break ;; LC -> LP
+    () c break ;; c
   )
 )
