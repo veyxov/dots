@@ -29,8 +29,8 @@
       ],
       [
         "LGUI(KC_C)",
-        "TD(6)",
-        "TD(0)",
+        "LT3(KC_RIGHT)",
+        "LT1(KC_T)",
         "TD(1)",
         -1,
         -1
@@ -60,8 +60,8 @@
         "M3"
       ],
       [
-        "LGUI(KC_Q)",
-        "TD(7)",
+        "LGUI(KC_P)",
+        "LT2(KC_LEFT)",
         "KC_SPACE",
         "KC_LCTRL",
         -1,
@@ -128,8 +128,8 @@
       [
         "KC_NO",
         "KC_RSHIFT",
-        "LGUI(KC_U)",
-        "LGUI(KC_F)",
+        "LGUI(KC_R)",
+        "KC_NO",
         -1,
         -1
       ]
@@ -178,7 +178,7 @@
       [
         "LSFT(KC_5)",
         "LSFT(KC_4)",
-        "KC_SCOLON",
+        "LSFT(KC_8)",
         "LSFT(KC_RBRACKET)",
         "LSFT(KC_1)",
         "LSFT(KC_SLASH)"
@@ -1754,25 +1754,25 @@
       "KC_1"
     ],
     [
+      "KC_N",
+      "KC_M",
       "KC_NO",
       "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO"
+      "LSFT(KC_9)"
     ],
     [
+      "KC_S",
+      "KC_F",
       "KC_NO",
       "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO"
+      "LSFT(KC_LBRACKET)"
     ],
     [
+      "KC_DOT",
+      "KC_SLASH",
+      "LSFT(KC_SLASH)",
       "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO"
+      "LGUI(KC_L)"
     ],
     [
       "KC_NO",
@@ -1880,13 +1880,13 @@
       "options": 135
     },
     {
-      "trigger": "KC_NO",
-      "replacement": "KC_NO",
+      "trigger": "KC_MINUS",
+      "replacement": "LSFT(KC_EQUAL)",
       "layers": 65535,
-      "trigger_mods": 0,
+      "trigger_mods": 2,
       "negative_mod_mask": 0,
       "suppressed_mods": 0,
-      "options": 7
+      "options": 135
     },
     {
       "trigger": "KC_NO",
