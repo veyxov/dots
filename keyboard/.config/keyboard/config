@@ -13,7 +13,7 @@
 
 (deflayer main
   j f @mOrL p @vOrL . / '
-  r s n d w , a e i h
+  r s n d w , a e i @hOrA
   x g l @cOrP b - u o y k
   t spc
 )
@@ -31,5 +31,9 @@
   cOrP (switch
     ((key-history l 1)) p break ;; LC -> LP
     () c break ;; c
+  )
+  hOrA (switch
+    ((key-history u 1)) a break ;; UH -> UA
+    () h break ;; h
   )
 )
