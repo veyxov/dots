@@ -7,13 +7,144 @@
 #define _BASE 0
 #define _NAV 1
 #define _MOUSE 2
+#define _NUM 3
 
 #define LTNAV LT(_NAV, KC_T)
 
 enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
+    NUMWORD
 };
 
+
+/* Copyright 2021 Joshua T.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+static uint16_t num_word_timer = 0;
+static bool is_num_word_on = false;
+
+bool is_num_word_enabled(void) {
+    return is_num_word_on;
+}
+
+void enable_num_word(void) {
+    if (is_num_word_on) return;
+    is_num_word_on = true;
+    layer_on(_NUM);
+}
+
+void disable_num_word(void) {
+    if (!is_num_word_on) return;
+    is_num_word_on = false;
+    layer_off(_NUM);
+}
+
+void toggle_num_word(void) {
+    if (is_num_word_on) {
+        disable_num_word();
+    }
+    else {
+        enable_num_word();
+    }
+}
+
+bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
+    switch (keycode) {
+        // Keycodes which should not disable num word mode.
+        // We could probably be more brief with these definitions by using
+        // a couple more ranges, but I believe "explicit is better than
+        // implicit"
+        case KC_1 ... KC_0:
+        case KC_EQL:
+        case KC_SCLN:
+        case KC_MINS:
+        case KC_DOT:
+
+        // Numpad keycodes
+        case KC_P1 ... KC_P0:
+        case KC_PSLS ... KC_PPLS:
+        case KC_PDOT:
+
+        // Misc
+        case KC_UNDS:
+        case KC_BSPC:
+            return false;
+
+        default:
+            if (record->event.pressed) {
+                return true;
+            }
+            return false;
+    }
+
+    // Should be unreachable
+    return false;
+}
+
+
+bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
+    // Handle the custom keycodes that go with this feature
+    if (keycode == NUMWORD) {
+        if (record->event.pressed) {
+            enable_num_word();
+            num_word_timer = timer_read();
+            return false;
+        }
+        else {
+            if (timer_elapsed(num_word_timer) > TAPPING_TERM) {
+                // If the user held the key longer than TAPPING_TERM,
+                // consider it a hold, and disable the behavior on
+                // key release.
+                disable_num_word();
+                return false;
+            }
+        }
+    }
+
+    // Other than the custom keycodes, nothing else in this feature will
+    // activate if the behavior is not on, so allow QMK to handle the
+    // event as usual
+    if (!is_num_word_on) return true;
+
+    // Nothing else acts on key release, either
+    if (!record->event.pressed) {
+        return true;
+    }
+
+    // Get the base keycode of a mod or layer tap key
+    switch (keycode) {
+        case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+        case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
+            // Earlier return if this has not been considered tapped yet
+            if (record->tap.count == 0)
+                return true;
+            keycode = keycode & 0xFF;
+            break;
+        default:
+            break;
+    }
+
+    if (should_terminate_num_word(keycode, record)) {
+        disable_num_word();
+    }
+
+    return true;
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static bool shift_triggered = false;
@@ -32,6 +163,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
              record->tap.count
              );
     #endif
+
+    process_record_num_word(keycode, record);
 
     switch (keycode) {
         case S_MOUS:
@@ -67,13 +200,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        KC_Q,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLASH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
+        KC_Q,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, S(KC_9), S(KC_0),  KC_QUOT,   S(KC_MINS),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
        KC_LALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                       KC_COMM,   KC_A,   KC_E,   KC_I,   KC_H , QK_REP,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        XXXXXXX, KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                       KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K, KC_RSFT,
+        XXXXXXX, KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                       KC_SLSH,   KC_U,   KC_O,  KC_Y,  KC_K, KC_RSFT,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
-                S_MOUS, LTNAV, XXXXXXX, QK_BOOTLOADER,    XXXXXXX, QK_REP, KC_SPC,   XXXXXXX
+                S_MOUS, LTNAV, XXXXXXX, QK_BOOTLOADER,    XXXXXXX, QK_REP, KC_SPC,   NUMWORD
     ),
     [_NAV] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
@@ -95,6 +228,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
                                 XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX,         XXXXXXX,MS_BTN2,MS_BTN1,XXXXXXX
     ),
+    [_NUM] = LAYOUT(
+    // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
+        MS_ACL0, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX,XXXXXXX,MS_WHLD,MS_WHLU,XXXXXXX, XXXXXXX,
+    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
+        MS_ACL1,KC_6, KC_4, KC_0, KC_2, XXXXXXX,                                MS_WHLL,KC_3,KC_1,KC_5,  KC_7, MS_WHLR,
+    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
+        MS_ACL2, XXXXXXX, XXXXXXX, XXXXXXX, KC_8, XXXXXXX,                 XXXXXXX, KC_9, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
+                                XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX,         XXXXXXX,KC_SPC,MS_BTN1,XXXXXXX
+    ),
 };
 
 
@@ -113,6 +256,8 @@ const uint16_t PROGMEM glc_all[] = {KC_G, KC_L, KC_C, COMBO_END};
 const uint16_t PROGMEM aei_scol[] = {KC_A, KC_E, KC_I, COMBO_END};
 const uint16_t PROGMEM ai_col[] = {KC_A, KC_I, COMBO_END};
 const uint16_t PROGMEM sd_qt[] = {KC_S, KC_D, COMBO_END};
+
+const uint16_t PROGMEM leader[] = {KC_O, KC_Y, COMBO_END};
 
 const uint16_t PROGMEM sqo[] = {LTNAV, KC_S, COMBO_END};
 const uint16_t PROGMEM sqc[] = {LTNAV, KC_N, COMBO_END};
@@ -169,7 +314,7 @@ combo_t key_combos[] = {
     COMBO(b, S(KC_EQL)),
     COMBO(c, S(KC_COMM)),
     COMBO(d, S(KC_DOT)),
-    COMBO(e, S(KC_MINS)),
+    COMBO(e, KC_MINS),
     COMBO(f, KC_BSLS),
     COMBO(g, S(KC_BSLS)),
     COMBO(h, S(KC_5)),
@@ -197,6 +342,8 @@ combo_t key_combos[] = {
     COMBO(brah3, KC_4),
     COMBO(brah4, KC_6),
     COMBO(brah5, KC_8),
+
+    COMBO(leader, QK_LEAD),
 };
 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
@@ -205,3 +352,58 @@ const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC
 const key_override_t *key_overrides[] = {
 	&delete_key_override
 };
+
+#ifdef OLED_ENABLE
+static void render_logo(void) {
+    static const char PROGMEM qmk_logo[] = {
+        0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x91, 0x92, 0x93, 0x94,
+        0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4,
+        0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF, 0xD0, 0xD1, 0xD2, 0xD3, 0xD4, 0x00
+    };
+
+    oled_write_P(qmk_logo, false);
+}
+
+bool oled_task_user(void) {
+    render_logo();
+    // Host Keyboard Layer Status
+    oled_write_P(PSTR("Layer: "), false);
+
+    switch (get_highest_layer(layer_state)) {
+        case _BASE:
+            oled_write_P(PSTR("Default\n"), false);
+            break;
+        case _MOUSE:
+            oled_write_P(PSTR("Mouse\n"), false);
+            break;
+        case _NAV:
+            oled_write_P(PSTR("Nav\n"), false);
+            break;
+        default:
+            // Or use the write_ln shortcut over adding '\n' to the end of your string
+            oled_write_ln_P(PSTR("Undefined"), false);
+    }
+
+    // Host Keyboard LED Status
+    led_t led_state = host_keyboard_led_state();
+    oled_write_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false);
+    oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
+    oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
+    
+    return false;
+}
+#endif
+
+void leader_start_user(void) {
+    oled_write_P(PSTR("Leader..."), false);
+}
+
+void leader_end_user(void) {
+    if (leader_sequence_one_key(KC_F)) {
+        // Leader, f => Types the below string
+        SEND_STRING("QMK is awesome.");
+    } else if (leader_sequence_two_keys(KC_T, KC_N)) {
+        // activate the numword
+        enable_num_word();
+    }
+}
