@@ -111,6 +111,8 @@ const uint16_t PROGMEM lc_pst[] = {KC_L, KC_C, COMBO_END};
 const uint16_t PROGMEM glc_all[] = {KC_G, KC_L, KC_C, COMBO_END};
 
 const uint16_t PROGMEM aei_scol[] = {KC_A, KC_E, KC_I, COMBO_END};
+const uint16_t PROGMEM ai_col[] = {KC_A, KC_I, COMBO_END};
+const uint16_t PROGMEM sd_qt[] = {KC_S, KC_D, COMBO_END};
 
 const uint16_t PROGMEM sqo[] = {LTNAV, KC_S, COMBO_END};
 const uint16_t PROGMEM sqc[] = {LTNAV, KC_N, COMBO_END};
@@ -158,6 +160,8 @@ combo_t key_combos[] = {
     COMBO(lc_pst, C(KC_V)),
     COMBO(glc_all, C(KC_A)),
     COMBO(aei_scol, KC_SCLN),
+    COMBO(ai_col, S(KC_SCLN)),
+    COMBO(sd_qt, S(KC_QUOT)),
 
     COMBO(sqo, S(KC_LBRC)),
     COMBO(sqc, S(KC_RBRC)),
