@@ -206,7 +206,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         XXXXXXX, KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                       KC_SLSH,   KC_U,   KC_O,  KC_Y,  KC_K, KC_RSFT,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
-                S_MOUS, LTNAV, XXXXXXX, QK_BOOTLOADER,    XXXXXXX, QK_REP, KC_SPC,   NUMWORD
+                S_MOUS, LTNAV, XXXXXXX, QK_BOOTLOADER,    XXXXXXX, KC_LCTL, KC_SPC,   NUMWORD
     ),
     [_NAV] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
@@ -216,7 +216,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
-                                XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX,         XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX
+                                XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX,         XXXXXXX,XXXXXXX,LGUI(KC_R),XXXXXXX
     ),
     [_MOUSE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
@@ -294,6 +294,8 @@ const uint16_t PROGMEM brah3[] = {KC_SPC, KC_S, COMBO_END};
 const uint16_t PROGMEM brah4[] = {KC_SPC, KC_R, COMBO_END};
 const uint16_t PROGMEM brah5[] = {KC_SPC, KC_C, COMBO_END};
 
+const uint16_t PROGMEM caps[] = {KC_SPC, LTNAV, COMBO_END};
+
 combo_t key_combos[] = {
     COMBO(z, KC_Z),
     COMBO(qu, KC_Q),
@@ -344,6 +346,8 @@ combo_t key_combos[] = {
     COMBO(brah5, KC_8),
 
     COMBO(leader, QK_LEAD),
+
+    COMBO(caps, CW_TOGG),
 };
 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
