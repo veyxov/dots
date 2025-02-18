@@ -1,4 +1,4 @@
 #include "layers.h"
 
-#define LTNAV LT(_NAV, KC_T)
+#define LTNAV TD(QUOT_LAYR)
 #define F5_ALT MT(MOD_LALT, KC_F5)
