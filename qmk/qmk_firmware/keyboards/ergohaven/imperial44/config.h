@@ -27,8 +27,6 @@
 
 /* split protocol settings */
 #define SELECT_SOFT_SERIAL_SPEED 1
-#define SPLIT_WPM_ENABLE
-#define WPM_UNFILTERED
 #define SPLIT_TRANSACTION_IDS_USER RPC_SYNC_CONFIG, RPC_SYNC_HID
 
 #define RGBLIGHT_LED_COUNT 2
@@ -45,3 +43,5 @@
 #define TAP_CODE_DELAY 1
 
 #define EH_SHORT_PRODUCT_NAME "I44"
+
+#define NO_ALT_REPEAT_KEY
