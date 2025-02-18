@@ -1,37 +1,11 @@
 #include QMK_KEYBOARD_H
-#ifdef CONSOLE_ENABLE
+#include "keymap.h"
 #include "print.h"
-#endif
-
-
-#define _BASE 0
-#define _NAV 1
-#define _MOUSE 2
-#define _NUM 3
-
-#define LTNAV LT(_NAV, KC_T)
 
 enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
     NUMWORD
 };
-
-
-/* Copyright 2021 Joshua T.
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 
 
 static uint16_t num_word_timer = 0;
@@ -241,6 +215,76 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+
+// This globally defines all key overrides to be used
+const key_override_t *key_overrides[] = {
+	&delete_key_override
+};
+
+#ifdef OLED_ENABLE
+static void render_logo(void) {
+    static const char PROGMEM qmk_logo[] = {
+        0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x91, 0x92, 0x93, 0x94,
+        0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4,
+        0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF, 0xD0, 0xD1, 0xD2, 0xD3, 0xD4, 0x00
+    };
+
+    oled_write_P(qmk_logo, false);
+}
+
+bool oled_task_user(void) {
+    render_logo();
+    // Host Keyboard Layer Status
+    oled_write_P(PSTR("Layer: "), false);
+
+    switch (get_highest_layer(layer_state)) {
+        case _BASE:
+            oled_write_P(PSTR("Default\n"), false);
+            break;
+        case _MOUSE:
+            oled_write_P(PSTR("Mouse\n"), false);
+            break;
+        case _NAV:
+            oled_write_P(PSTR("Nav\n"), false);
+            break;
+        default:
+            // Or use the write_ln shortcut over adding '\n' to the end of your string
+            oled_write_ln_P(PSTR("Undefined"), false);
+    }
+
+    // Host Keyboard LED Status
+    led_t led_state = host_keyboard_led_state();
+    oled_write_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false);
+    oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
+    oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
+
+    return false;
+}
+#endif
+
+void leader_start_user(void) {
+    oled_write_P(PSTR("Leader..."), false);
+}
+
+void leader_end_user(void) {
+    if (leader_sequence_one_key(KC_F)) {
+        SEND_STRING("QMK is awesome.");
+    } else if (leader_sequence_two_keys(KC_T, KC_N)) {
+        // activate the numword
+        enable_num_word();
+    }
+}
+
+// combos
+#ifdef COMBO_TERM_PER_COMBO
+    uint16_t get_combo_term(uint16_t index, combo_t *combo) {
+        switch (combo->keycode) {
+        }
+        return COMBO_TERM;
+    }
+#endif
+
 const uint16_t PROGMEM z[] = {KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM qu[] = {KC_F, KC_M, COMBO_END};
 
@@ -350,64 +394,12 @@ combo_t key_combos[] = {
     COMBO(caps, CW_TOGG),
 };
 
-const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 
-// This globally defines all key overrides to be used
-const key_override_t *key_overrides[] = {
-	&delete_key_override
-};
+uint16_t COMBO_LEN = sizeof(key_combos) / sizeof(combo_t);
 
-#ifdef OLED_ENABLE
-static void render_logo(void) {
-    static const char PROGMEM qmk_logo[] = {
-        0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x91, 0x92, 0x93, 0x94,
-        0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4,
-        0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF, 0xD0, 0xD1, 0xD2, 0xD3, 0xD4, 0x00
-    };
-
-    oled_write_P(qmk_logo, false);
-}
-
-bool oled_task_user(void) {
-    render_logo();
-    // Host Keyboard Layer Status
-    oled_write_P(PSTR("Layer: "), false);
-
-    switch (get_highest_layer(layer_state)) {
-        case _BASE:
-            oled_write_P(PSTR("Default\n"), false);
-            break;
-        case _MOUSE:
-            oled_write_P(PSTR("Mouse\n"), false);
-            break;
-        case _NAV:
-            oled_write_P(PSTR("Nav\n"), false);
-            break;
-        default:
-            // Or use the write_ln shortcut over adding '\n' to the end of your string
-            oled_write_ln_P(PSTR("Undefined"), false);
+bool process_combo_keycode_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
     }
-
-    // Host Keyboard LED Status
-    led_t led_state = host_keyboard_led_state();
-    oled_write_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false);
-    oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
-    oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
-    
-    return false;
+    return true;
 }
-#endif
-
-void leader_start_user(void) {
-    oled_write_P(PSTR("Leader..."), false);
-}
-
-void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_F)) {
-        // Leader, f => Types the below string
-        SEND_STRING("QMK is awesome.");
-    } else if (leader_sequence_two_keys(KC_T, KC_N)) {
-        // activate the numword
-        enable_num_word();
-    }
-}
+// combo end
