@@ -217,6 +217,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_record_num_word(keycode, record);
 
     switch (keycode) {
+        // remove the lag after repeating KC_T
+        case LTNAV:
+            if (get_repeat_key_count() > 0) {
+                if (record->event.pressed) {
+                    // send directly KC_T, don't trigger tap-dance
+                    tap_code(KC_T);
+                }
+            } else {
+                // do nothing, (tap dance)
+                return true;
+            }
+            return false;
         case S_MOUS:
             if (record->event.pressed) {
                 shift_timer = timer_read();
@@ -256,7 +268,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         XXXXXXX, KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                       KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K, KC_RSFT,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
-                S_MOUS, TD(QUOT_LAYR), KC_LGUI, QK_BOOTLOADER,    XXXXXXX, KC_LCTL, KC_SPC,   XXXXXXX
+                S_MOUS, LTNAV, KC_LGUI, QK_BOOTLOADER,    XXXXXXX, KC_LCTL, KC_SPC,   XXXXXXX
     ),
     [_NAV] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
@@ -266,7 +278,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
-                                XXXXXXX,TD(QUOT_LAYR),XXXXXXX, XXXXXXX,         XXXXXXX,XXXXXXX,KC_DEL,XXXXXXX
+                                XXXXXXX, LTNAV,XXXXXXX, XXXXXXX,         XXXXXXX,XXXXXXX,KC_DEL,XXXXXXX
     ),
     [_MOUSE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
