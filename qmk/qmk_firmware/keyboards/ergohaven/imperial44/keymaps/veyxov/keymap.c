@@ -5,6 +5,7 @@
 enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
     NUMWORD,
+    CRYLTG,
 };
 
 enum tapdances {
@@ -217,6 +218,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_record_num_word(keycode, record);
 
     switch (keycode) {
+        case CRYLTG:
+            if (record->event.pressed) {
+                if (get_highest_layer(layer_state) == _CRYL) {
+                    register_code(KC_LGUI);
+                    register_code(KC_SPC);
+                    unregister_code(KC_LGUI);
+                    unregister_code(KC_SPC);
+
+                    layer_off(_CRYL);
+                } else {
+                    // toggle os langugage
+                    // for me it's win, space
+                    register_code(KC_LGUI);
+                    register_code(KC_SPC);
+                    unregister_code(KC_LGUI);
+                    unregister_code(KC_SPC);
+
+                    layer_on(_CRYL);
+                }
+            }
+            return false;
         // remove the lag after repeating KC_T
         case LTNAV:
             if (get_repeat_key_count() > 0) {
@@ -266,7 +288,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
        F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                       KC_COMM,   KC_A,   KC_E,   KC_I,   KC_H , QK_REP,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        XXXXXXX, KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                       KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K, KC_RSFT,
+        XXXXXXX, KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                       KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
                 S_MOUS, LTNAV, KC_LGUI, QK_BOOTLOADER,    XXXXXXX, KC_LCTL, KC_SPC,   XXXXXXX
     ),
@@ -299,6 +321,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         MS_ACL2, XXXXXXX, XXXXXXX, XXXXXXX, KC_8, XXXXXXX,                 XXXXXXX, KC_9, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
                                 XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX,         XXXXXXX,KC_SPC,MS_BTN1,XXXXXXX
+    ),
+    [_CRYL] = LAYOUT(
+    // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
+        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_9),  KC_QUOT,   S(KC_MINS),
+    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
+       F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                       KC_COMM,   KC_A,   KC_E,   KC_I,   KC_H , KC_Z,
+    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
+        XXXXXXX, KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                       KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
+    // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
+                S_MOUS, LTNAV, KC_LGUI, QK_BOOTLOADER,    XXXXXXX, KC_LCTL, KC_SPC,   XXXXXXX
     ),
 };
 
@@ -335,6 +367,9 @@ bool oled_task_user(void) {
             break;
         case _NAV:
             oled_write_P(PSTR("Nav\n"), false);
+            break;
+        case _CRYL:
+            oled_write_P(PSTR("Cryllic\n"), false);
             break;
         default:
             // Or use the write_ln shortcut over adding '\n' to the end of your string
