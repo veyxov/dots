@@ -40,6 +40,14 @@ static td_tap_t lnavtd_tap_state = {
     .state = TD_NONE
 };
 
+void toggle_lg()
+{
+    register_code(KC_LGUI);
+    register_code(KC_SPC);
+    unregister_code(KC_LGUI);
+    unregister_code(KC_SPC);
+}
+
 // Functions that control what our tap dance key does
 void lnavtd_finished(tap_dance_state_t *state, void *user_data) {
     lnavtd_tap_state.state = cur_dance(state);
@@ -220,23 +228,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case CRYLTG:
             if (record->event.pressed) {
-                if (get_highest_layer(layer_state) == _CRYL) {
-                    register_code(KC_LGUI);
-                    register_code(KC_SPC);
-                    unregister_code(KC_LGUI);
-                    unregister_code(KC_SPC);
-
-                    layer_off(_CRYL);
-                } else {
-                    // toggle os langugage
-                    // for me it's win, space
-                    register_code(KC_LGUI);
-                    register_code(KC_SPC);
-                    unregister_code(KC_LGUI);
-                    unregister_code(KC_SPC);
-
-                    layer_on(_CRYL);
-                }
+                toggle_lg();
+                if (get_highest_layer(layer_state) == _CRYL) layer_off(_CRYL);
+                else                                         layer_on (_CRYL);
             }
             return false;
         // remove the lag after repeating KC_T
