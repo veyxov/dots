@@ -40,8 +40,7 @@ static td_tap_t lnavtd_tap_state = {
     .state = TD_NONE
 };
 
-void toggle_lg()
-{
+void toggle_lg(void) {
     register_code(KC_LGUI);
     register_code(KC_SPC);
     unregister_code(KC_LGUI);
@@ -96,10 +95,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 static uint16_t num_word_timer = 0;
 static bool is_num_word_on = false;
 
-bool is_num_word_enabled(void) {
-    return is_num_word_on;
-}
-
 void enable_num_word(void) {
     if (is_num_word_on) return;
     is_num_word_on = true;
@@ -110,15 +105,6 @@ void disable_num_word(void) {
     if (!is_num_word_on) return;
     is_num_word_on = false;
     layer_off(_NUM);
-}
-
-void toggle_num_word(void) {
-    if (is_num_word_on) {
-        disable_num_word();
-    }
-    else {
-        enable_num_word();
-    }
 }
 
 bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
@@ -280,11 +266,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
         XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_9),  KC_QUOT,   S(KC_MINS),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-       F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                       KC_COMM,   KC_A,   KC_E,   KC_I,   KC_H , QK_REP,
+        F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I,   KC_H , QK_REP,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        XXXXXXX, KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                       KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
+        XXXXXXX, KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                        KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
-                S_MOUS, LTNAV, KC_LGUI, QK_BOOTLOADER,    XXXXXXX, KC_LCTL, KC_SPC,   XXXXXXX
+                S_MOUS, LTNAV, MT(MOD_LGUI, KC_RGHT),  QK_BOOTLOADER,      XXXXXXX,   MT(MOD_LCTL, KC_LEFT), KC_SPC,   XXXXXXX
     ),
     [_NAV] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
@@ -318,7 +304,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_CRYL] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_9),  KC_QUOT,   S(KC_MINS),
+        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                      XXXXXXX, KC_DOT, KC_SLSH, S(KC_9), KC_QUOT, S(KC_MINS),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
        F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                       KC_COMM,   KC_A,   KC_E,   KC_I,   KC_H , KC_Z,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
