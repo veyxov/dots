@@ -425,6 +425,8 @@ const uint16_t PROGMEM brah2[] = {KC_SPC, KC_D, COMBO_END};
 const uint16_t PROGMEM brah3[] = {KC_SPC, KC_S, COMBO_END};
 const uint16_t PROGMEM brah4[] = {KC_SPC, KC_R, COMBO_END};
 const uint16_t PROGMEM brah5[] = {KC_SPC, KC_C, COMBO_END};
+const uint16_t PROGMEM brah6[] = {KC_SLSH, S(KC_9), COMBO_END};
+const uint16_t PROGMEM brah7[] = {KC_U, KC_O, COMBO_END};
 
 const uint16_t PROGMEM caps[] = {KC_SPC, LTNAV, COMBO_END};
 
@@ -476,6 +478,9 @@ combo_t key_combos[] = {
     COMBO(brah3, KC_4),
     COMBO(brah4, KC_6),
     COMBO(brah5, KC_8),
+
+    COMBO(brah6, S(KC_4)),
+    COMBO(brah7, KC_EQL),
 
     COMBO(leader, QK_LEAD),
 
