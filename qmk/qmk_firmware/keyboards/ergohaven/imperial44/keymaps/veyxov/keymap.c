@@ -383,8 +383,10 @@ void leader_end_user(void) {
 #ifdef COMBO_TERM_PER_COMBO
     uint16_t get_combo_term(uint16_t index, combo_t *combo) {
         switch (combo->keycode) {
+            case S(KC_LBRC):
+                return 25;
         }
-        return COMBO_TERM;
+        return 15;
     }
 #endif
 
