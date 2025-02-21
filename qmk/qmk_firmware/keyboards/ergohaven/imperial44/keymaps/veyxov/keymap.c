@@ -264,11 +264,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_9),  KC_QUOT,   S(KC_MINS),
+        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I,   KC_H , QK_REP,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        XXXXXXX, KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                        KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
+        LT(_FN, KC_LGUI), KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                        KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
                 S_MOUS, LTNAV, MT(MOD_LGUI, KC_RGHT),  QK_BOOTLOADER,      XXXXXXX,   MT(MOD_LCTL, KC_LEFT), KC_SPC,   XXXXXXX
     ),
@@ -276,7 +276,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX,LGUI(KC_1),LGUI(KC_2),LGUI(KC_3),LGUI(KC_4), XXXXXXX,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX,KC_LEFT,KC_DOWN,KC_UP,  KC_RGHT, XXXXXXX,
+        XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX,KC_LEFT,KC_DOWN,KC_UP,  KC_RGHT, LGUI(KC_H),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
@@ -304,11 +304,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_CRYL] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                      XXXXXXX, KC_DOT, KC_SLSH, S(KC_9), KC_QUOT, S(KC_MINS),
+        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                      XXXXXXX, KC_DOT, KC_SLSH, S(KC_SLSH), KC_QUOT, S(KC_MINS),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
        F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                       KC_COMM,   KC_A,   KC_E,   KC_I,   KC_H , KC_Z,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         XXXXXXX, KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                       KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
+    // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
+                S_MOUS, LTNAV, KC_LGUI, QK_BOOTLOADER,    XXXXXXX, KC_LCTL, KC_SPC,   XXXXXXX
+    ),
+    [_FN] = LAYOUT(
+    // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
+        XXXXXXX,  DM_REC1,   DM_RSTP,   DM_PLY1,   KC_P,   KC_V,                      XXXXXXX, KC_DOT, KC_SLSH, S(KC_9), KC_QUOT, S(KC_MINS),
+    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
+       XXXXXXX,  XXXXXXX,   KC_S,   KC_N,   KC_D,   KC_W,                         KC_MUTE, KC_VOLD, KC_E,  KC_I,  KC_VOLU , KC_Z,
+    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
+        XXXXXXX, KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                       KC_MINS,   KC_MPRV, KC_MPLY,  KC_MNXT,  KC_K,   CRYLTG,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
                 S_MOUS, LTNAV, KC_LGUI, QK_BOOTLOADER,    XXXXXXX, KC_LCTL, KC_SPC,   XXXXXXX
     ),
@@ -442,8 +452,9 @@ const uint16_t PROGMEM brah2[] = {KC_SPC, KC_D, COMBO_END};
 const uint16_t PROGMEM brah3[] = {KC_SPC, KC_S, COMBO_END};
 const uint16_t PROGMEM brah4[] = {KC_SPC, KC_R, COMBO_END};
 const uint16_t PROGMEM brah5[] = {KC_SPC, KC_C, COMBO_END};
-const uint16_t PROGMEM brah6[] = {KC_SLSH, S(KC_9), COMBO_END};
+const uint16_t PROGMEM brah6[] = {KC_SLSH, S(KC_SLSH), COMBO_END};
 const uint16_t PROGMEM brah7[] = {KC_U, KC_O, COMBO_END};
+const uint16_t PROGMEM brah8[] = {KC_SPC, KC_U, COMBO_END};
 
 const uint16_t PROGMEM caps[] = {KC_SPC, LTNAV, COMBO_END};
 
@@ -467,10 +478,10 @@ combo_t key_combos[] = {
     COMBO(b, S(KC_EQL)),
     COMBO(c, S(KC_COMM)),
     COMBO(d, S(KC_DOT)),
-    COMBO(e, KC_MINS),
+    COMBO(e, S(KC_9)),
     COMBO(f, KC_BSLS),
     COMBO(g, S(KC_BSLS)),
-    COMBO(h, S(KC_5)),
+    COMBO(h, S(KC_0)),
     COMBO(j, S(KC_1)),
     COMBO(k, KC_1),
     COMBO(l, KC_5),
@@ -490,7 +501,7 @@ combo_t key_combos[] = {
     COMBO(y, KC_GRV),
     COMBO(zz, KC_GRV),
 
-    COMBO(brah1, KC_0),
+    COMBO(brah1, KC_0)
     COMBO(brah2, KC_2),
     COMBO(brah3, KC_4),
     COMBO(brah4, KC_6),
@@ -498,6 +509,7 @@ combo_t key_combos[] = {
 
     COMBO(brah6, S(KC_4)),
     COMBO(brah7, KC_EQL),
+    COMBO(brah8, S(KC_5)),
 
     COMBO(leader, QK_LEAD),
 
