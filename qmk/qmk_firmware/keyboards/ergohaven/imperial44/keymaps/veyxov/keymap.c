@@ -1,15 +1,12 @@
 #include QMK_KEYBOARD_H
 #include "keymap.h"
 #include "print.h"
+#include "g/keymap_combo.h"
 
 enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
     NUMWORD,
     CRYLTG,
-};
-
-enum tapdances {
-    LNAVTD
 };
 
 // Define a type for as many tap dance states as you need
@@ -390,127 +387,6 @@ void leader_end_user(void) {
         return 15;
     }
 #endif
-
-const uint16_t PROGMEM z[] = {KC_U, KC_Y, COMBO_END};
-const uint16_t PROGMEM qu[] = {KC_F, KC_M, COMBO_END};
-
-const uint16_t PROGMEM ei_enter[] = {KC_E, KC_I, COMBO_END};
-const uint16_t PROGMEM sn_esc[] = {KC_S, KC_N, COMBO_END};
-const uint16_t PROGMEM nd_tab[] = {KC_N, KC_D, COMBO_END};
-const uint16_t PROGMEM ae_bsp[] = {KC_A, KC_E, COMBO_END};
-
-const uint16_t PROGMEM gl_cpy[] = {KC_G, KC_L, COMBO_END};
-const uint16_t PROGMEM lc_pst[] = {KC_L, KC_C, COMBO_END};
-const uint16_t PROGMEM glc_all[] = {KC_G, KC_L, KC_C, COMBO_END};
-
-const uint16_t PROGMEM aei_scol[] = {KC_A, KC_E, KC_I, COMBO_END};
-const uint16_t PROGMEM ai_col[] = {KC_A, KC_I, COMBO_END};
-const uint16_t PROGMEM sd_qt[] = {KC_S, KC_D, COMBO_END};
-
-const uint16_t PROGMEM leader[] = {KC_O, KC_Y, COMBO_END};
-
-const uint16_t PROGMEM sqo[] = {LTNAV, KC_S, COMBO_END};
-const uint16_t PROGMEM sqc[] = {LTNAV, KC_N, COMBO_END};
-const uint16_t PROGMEM a[] = {LTNAV, KC_M, COMBO_END};
-const uint16_t PROGMEM b[] = {LTNAV, KC_F, COMBO_END};
-const uint16_t PROGMEM c[] = {LTNAV, KC_G, COMBO_END};
-const uint16_t PROGMEM d[] = {LTNAV, KC_L, COMBO_END};
-const uint16_t PROGMEM e[] = {LTNAV, KC_D, COMBO_END};
-const uint16_t PROGMEM f[] = {LTNAV, KC_W, COMBO_END};
-const uint16_t PROGMEM g[] = {LTNAV, KC_R, COMBO_END};
-const uint16_t PROGMEM h[] = {LTNAV, KC_C, COMBO_END};
-const uint16_t PROGMEM j[] = {LTNAV, KC_P, COMBO_END};
-const uint16_t PROGMEM k[] = {LTNAV, KC_E, COMBO_END};
-const uint16_t PROGMEM l[] = {LTNAV, KC_I, COMBO_END};
-const uint16_t PROGMEM m[] = {LTNAV, KC_A, COMBO_END};
-const uint16_t PROGMEM n[] = {LTNAV, KC_H, COMBO_END};
-const uint16_t PROGMEM o[] = {LTNAV, KC_U, COMBO_END};
-const uint16_t PROGMEM p[] = {LTNAV, KC_J, COMBO_END};
-
-const uint16_t PROGMEM q[] = {KC_SPC, KC_A, COMBO_END};
-const uint16_t PROGMEM r[] = {KC_SPC, KC_E, COMBO_END};
-const uint16_t PROGMEM s[] = {KC_SPC, KC_I, COMBO_END};
-const uint16_t PROGMEM t[] = {KC_SPC, KC_H, COMBO_END};
-const uint16_t PROGMEM u[] = {KC_SPC, KC_COMM, COMBO_END};
-const uint16_t PROGMEM v[] = {KC_SPC, KC_DOT, COMBO_END};
-const uint16_t PROGMEM w[] = {KC_SPC, KC_SLSH, COMBO_END};
-const uint16_t PROGMEM x[] = {KC_SPC, S(KC_SLSH), COMBO_END};
-const uint16_t PROGMEM y[] = {KC_SPC, KC_QUOT, COMBO_END};
-const uint16_t PROGMEM zz[] = {KC_SPC, KC_H, COMBO_END};
-
-const uint16_t PROGMEM brah1[] = {KC_SPC, KC_N, COMBO_END};
-const uint16_t PROGMEM brah2[] = {KC_SPC, KC_D, COMBO_END};
-const uint16_t PROGMEM brah3[] = {KC_SPC, KC_S, COMBO_END};
-const uint16_t PROGMEM brah4[] = {KC_SPC, KC_R, COMBO_END};
-const uint16_t PROGMEM brah5[] = {KC_SPC, KC_C, COMBO_END};
-const uint16_t PROGMEM brah6[] = {KC_SLSH, S(KC_SLSH), COMBO_END};
-const uint16_t PROGMEM brah7[] = {KC_U, KC_O, COMBO_END};
-const uint16_t PROGMEM brah8[] = {KC_SPC, KC_U, COMBO_END};
-const uint16_t PROGMEM brah9[] = {KC_SPC, KC_O, COMBO_END};
-
-const uint16_t PROGMEM caps[] = {KC_SPC, LTNAV, COMBO_END};
-
-combo_t key_combos[] = {
-    COMBO(z, KC_Z),
-    COMBO(qu, KC_Q),
-    COMBO(ei_enter, KC_ENT),
-    COMBO(sn_esc, KC_ESC),
-    COMBO(nd_tab, KC_TAB),
-    COMBO(ae_bsp, KC_BSPC),
-    COMBO(gl_cpy, C(KC_C)),
-    COMBO(lc_pst, C(KC_V)),
-    COMBO(glc_all, C(KC_A)),
-    COMBO(aei_scol, KC_SCLN),
-    COMBO(ai_col, S(KC_SCLN)),
-    COMBO(sd_qt, S(KC_QUOT)),
-
-    COMBO(sqo, S(KC_LBRC)),
-    COMBO(sqc, S(KC_RBRC)),
-    COMBO(a, S(KC_8)),
-    COMBO(b, S(KC_EQL)),
-    COMBO(c, S(KC_COMM)),
-    COMBO(d, S(KC_DOT)),
-    COMBO(e, S(KC_9)),
-    COMBO(f, KC_BSLS),
-    COMBO(g, S(KC_BSLS)),
-    COMBO(h, S(KC_0)),
-    COMBO(j, S(KC_1)),
-    COMBO(k, KC_1),
-    COMBO(l, KC_5),
-    COMBO(m, KC_3),
-    COMBO(n, KC_7),
-    COMBO(o, KC_9),
-    COMBO(p, S(KC_GRV)),
-
-    COMBO(q, S(KC_SLSH)),
-    COMBO(r, KC_LBRC),
-    COMBO(s, KC_RBRC),
-    COMBO(t, S(KC_MINS)),
-    COMBO(u, KC_GRV),
-    COMBO(v, S(KC_3)),
-    COMBO(w, S(KC_2)),
-    COMBO(x, S(KC_6)),
-    COMBO(y, KC_GRV),
-    COMBO(zz, KC_GRV),
-
-    COMBO(brah1, KC_0),
-    COMBO(brah2, KC_2),
-    COMBO(brah3, KC_4),
-    COMBO(brah4, KC_6),
-    COMBO(brah5, KC_8),
-
-    COMBO(brah6, S(KC_4)),
-    COMBO(brah7, KC_EQL),
-    COMBO(brah8, S(KC_5)),
-    COMBO(brah9, S(KC_7)),
-
-    COMBO(leader, QK_LEAD),
-
-    COMBO(caps, CW_TOGG),
-};
-
-
-uint16_t COMBO_LEN = sizeof(key_combos) / sizeof(combo_t);
 
 bool process_combo_keycode_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {

@@ -27,3 +27,5 @@ RAW_ENABLE = no
 
 UNICODE_COMMON = yes
 UNICODE_ENABLE = yes
+
+VPATH += keyboards/gboards
