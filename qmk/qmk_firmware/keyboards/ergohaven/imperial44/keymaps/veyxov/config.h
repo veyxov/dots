@@ -13,3 +13,7 @@
 
 // caps word
 #define CAPS_WORD_IDLE_TIMEOUT 1000
+
+// combos
+#define COMBO_TERM 15
+#define COMBO_VARIABLE_LEN
