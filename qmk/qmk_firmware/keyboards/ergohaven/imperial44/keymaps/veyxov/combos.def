@@ -1,5 +1,5 @@
-COMB(z_combo, KC_Z, KC_U, KC_Y)
-COMB(qu_combo, KC_Q, KC_F, KC_M)
+COMB(zu_y, KC_Z, KC_U, KC_Y)
+COMB(qf_m, KC_Q, KC_F, KC_M)
 
 COMB(ei_enter, KC_ENT, KC_E, KC_I)
 COMB(sn_esc, KC_ESC, KC_S, KC_N)
@@ -14,7 +14,7 @@ COMB(aei_scol, KC_SCLN, KC_A, KC_E, KC_I)
 COMB(ai_col, S(KC_SCLN), KC_A, KC_I)
 COMB(sd_qt, S(KC_QUOT), KC_S, KC_D)
 
-COMB(leader_combo, QK_LEAD, KC_O, KC_Y)
+COMB(oy_leader, QK_LEAD, KC_O, KC_Y)
 
 COMB(sqo_lbrc, S(KC_LBRC), LTNAV, KC_S)
 COMB(sqc_rbrc, S(KC_RBRC), LTNAV, KC_N)
@@ -56,3 +56,5 @@ COMB(brah7_eql, KC_EQL, KC_U, KC_O)
 COMB(brah8_5, S(KC_5), KC_SPC, KC_U)
 
 COMB(caps_combo, CW_TOGG, KC_SPC, LTNAV)
+
+SUBS(dk_comps, "docker compose ", KC_D, KC_K)
