@@ -336,6 +336,10 @@ bool oled_task_user(void) {
         oled_write_P(PSTR("CAPSWORD"), false);
     }
 
+    if (is_num_word_on) {
+        oled_write_P(PSTR("NUMWORD"), false);
+    }
+
     switch (get_highest_layer(layer_state)) {
         case _BASE:
             oled_write_P(PSTR("Default\n"), false);
@@ -369,9 +373,7 @@ void leader_start_user(void) {
 }
 
 void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_F)) {
-        SEND_STRING("QMK is awesome.");
-    } else if (leader_sequence_two_keys(KC_T, KC_N)) {
+    if (leader_sequence_one_key(KC_N)) {
         // activate the numword
         enable_num_word();
     }
