@@ -1,4 +1,12 @@
 #include QMK_KEYBOARD_H
+enum custom_keycodes {
+    S_MOUS = SAFE_RANGE,
+    NUMWORD,
+    CRYLTG,
+    LorM,
+    LorV
+};
+
 #include "keymap.h"
 #include "print.h"
 #include "g/keymap_combo.h"
@@ -7,13 +15,7 @@
 // Track last key and timestamp
 static uint16_t last_key = KC_NO;
 static uint32_t last_time = 0;
-#define ADAPTIVE_TIMEOUT 500  // 0.5-second timeout
-enum custom_keycodes {
-    S_MOUS = SAFE_RANGE,
-    NUMWORD,
-    CRYLTG,
-    LorM
-};
+#define ADAPTIVE_TIMEOUT 200  // ideally only trigger adaptiveness on rolls
 
 // Define a type for as many tap dance states as you need
 typedef enum {
@@ -200,8 +202,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         switch (keycode) {
             case LorM:  // Adaptive key pressed
                 if (last_key != KC_NO && timer_elapsed(last_time) < ADAPTIVE_TIMEOUT) {
-                    // Behavior based on last key
-                    if (last_key == KC_F) {
+                    // KC_M becomes KC_L after KC_F and KC_P
+                    // usage: play, fly
+                    // 'fm' and 'pm' are rare biagrams
+                    if (last_key == KC_F || last_key == KC_P) {
                         tap_code(KC_L);
                     } else {
                         tap_code(KC_M);
@@ -209,9 +213,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 } else {
                     tap_code(KC_M);
                 }
+                last_key = keycode;
+                last_time = timer_read();
                 return false;
-
-            default:  // Any other key pressed
+            case LorV:  // Adaptive key pressed
+                if (last_key != KC_NO && timer_elapsed(last_time) < ADAPTIVE_TIMEOUT) {
+                    // 'pv' becomes 'lv'
+                    if (last_key == KC_P) {
+                        tap_code(KC_BSPC);
+                        tap_code(KC_L);
+                        tap_code(KC_V);
+                    } else if (last_key == LorM) {
+                        // mv yields mb
+                        tap_code(KC_B);
+                    } else {
+                        tap_code(KC_V);
+                    }
+                } else {
+                    tap_code(KC_V);
+                }
+                last_key = keycode;
+                last_time = timer_read();
+                return false;
+            default:
                 last_key = keycode;
                 last_time = timer_read();
                 break;
@@ -290,7 +314,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        XXXXXXX,  KC_J,   KC_F,   LorM,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
+        XXXXXXX,  KC_J,   KC_F,   LorM,   KC_P,   LorV,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I,   KC_H , QK_REP,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
