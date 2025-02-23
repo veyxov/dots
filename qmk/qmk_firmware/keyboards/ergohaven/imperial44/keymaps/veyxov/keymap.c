@@ -3,10 +3,16 @@
 #include "print.h"
 #include "g/keymap_combo.h"
 
+
+// Track last key and timestamp
+static uint16_t last_key = KC_NO;
+static uint32_t last_time = 0;
+#define ADAPTIVE_TIMEOUT 500  // 0.5-second timeout
 enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
     NUMWORD,
     CRYLTG,
+    LorM
 };
 
 // Define a type for as many tap dance states as you need
@@ -190,6 +196,28 @@ bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        switch (keycode) {
+            case LorM:  // Adaptive key pressed
+                if (last_key != KC_NO && timer_elapsed(last_time) < ADAPTIVE_TIMEOUT) {
+                    // Behavior based on last key
+                    if (last_key == KC_F) {
+                        tap_code(KC_L);
+                    } else {
+                        tap_code(KC_M);
+                    }
+                } else {
+                    tap_code(KC_M);
+                }
+                return false;
+
+            default:  // Any other key pressed
+                last_key = keycode;
+                last_time = timer_read();
+                break;
+        }
+    }
+
     static bool shift_triggered = false;
     static uint16_t shift_timer = 0;
 
@@ -262,7 +290,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
+        XXXXXXX,  KC_J,   KC_F,   LorM,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I,   KC_H , QK_REP,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
