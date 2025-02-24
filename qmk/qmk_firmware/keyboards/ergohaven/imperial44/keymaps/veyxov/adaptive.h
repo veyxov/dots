@@ -24,77 +24,11 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
             clear_mods();
 
             switch (prior_keycode) {
-                case KC_A: // A, -> AU
-                    switch (keycode) {
-                        case KC_COMM:
-                            return_state = false;
-                            second       = KC_U;
-                            // Because "," is a gobbled letter,
-                            // switch the keycode to be U.
-                            // Otherwise, "A," will produce "AU,".
-                            keycode = KC_U;
-                            break;
-                    }
-                    break;
-                case KC_B: // BD -> BL
-                    switch (keycode) {
-                        case KC_D:
-                            return_state = false;
-                            second       = KC_L;
-                            // Because D is a gobbled letter,
-                            // switch the keycode to be L.
-                            // Otherwise, BD will produce BLD.
-                            keycode = KC_L;
-                            break;
-                    }
-                    break;
-                case KC_C: // CW -> CD
-                    switch (keycode) {
-                        case KC_L:
-                            // Forces "CL" to be "Cl" even though
-                            // it isn't technically adaptive.
-                            return_state = false;
-                            second       = KC_L;
-                            break;
-                        case KC_W:
-                            return_state = false;
-                            second       = KC_D;
-                            break;
-                    }
-                    break;
-                case KC_D: // DB -> LB
-                    switch (keycode) {
-                        case KC_B:
-                            return_state = false;
-                            first        = KC_L;
-                            second       = KC_B;
-                            break;
-                        default:
-                            tap_code(prior_keycode);
-                    }
-                    break;
-                case KC_F: // FX -> FR
-                    switch (keycode) {
-                        case KC_X:
-                            return_state = false;
-                            second       = KC_R;
-                            break;
-                    }
-                    break;
-                case KC_G: // GM -> GL
                 case KC_V: // VM -> VL
                     switch (keycode) {
                         case KC_M:
                             return_state = false;
                             second       = KC_L;
-                            break;
-                    }
-                    break;
-                case KC_L: // LF -> LS
-                    switch (keycode) {
-                        case KC_F:
-                            return_state = false;
-                            second       = KC_S;
                             break;
                     }
                     break;
@@ -122,37 +56,6 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
                             tap_code(prior_keycode);
                     }
                     break;
-                case KC_W: // WC -> WR
-                    switch (keycode) {
-                        case KC_C:
-                            return_state = false;
-                            second       = KC_R;
-                            break;
-                    }
-                    break;
-                case KC_COMM: // ,A -> UA
-                    switch (keycode) {
-                        case KC_A:
-                            return_state = false;
-                            first        = KC_U;
-                            second       = KC_A;
-                            break;
-                        default:
-                            // Manually handle KC_COMM -> KC_PIPE.
-                            if (prior_saved_mods & MOD_MASK_SHIFT) {
-                                tap_code16(KC_PIPE);
-                            } else {
-                                tap_code(prior_keycode);
-                            }
-                    }
-                    break;
-                case KC_DOT: // .: -> .com
-                    switch (keycode) {
-                        case KC_COLN:
-                            send_string("com");
-                            return false;
-                    }
-                    break;
             }
 
             if (return_state) {
@@ -168,9 +71,7 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
             // If pressed, gobble these keys until
             // `ADAPTIVE_TERM` (handled in `matrix_adaptive_user`)
             // or another keypress (handled in `case`s above)
-            case KC_D:
             case KC_P:
-            case KC_COMM:
                 return_state = false;
                 break;
         }
@@ -190,20 +91,10 @@ void matrix_adaptive_user(void) {
             // If `ADAPTIVE_TERM` has elapsed,
             // with no other key presses,
             // send our leading key.
-            case KC_D:
             case KC_P:
                 set_mods(prior_saved_mods);
                 tap_code(prior_keycode);
                 clear_mods();
-                break;
-            case KC_COMM:
-                // Manually handle KC_COMM -> KC_PIPE.
-                if (prior_saved_mods & MOD_MASK_SHIFT) {
-                    tap_code16(KC_PIPE);
-                } else {
-                    set_mods(prior_saved_mods);
-                    tap_code(KC_COMM);
-                }
                 break;
         }
         prior_keydown = timer_read32();
