@@ -1,3 +1,5 @@
+OLED_ENABLE = no
+
 AUTO_SHIFT_ENABLE = no
 COMMAND_ENABLE = no
 AUTOCORRECT_ENABLE = no
@@ -29,3 +31,5 @@ UNICODE_COMMON = yes
 UNICODE_ENABLE = yes
 
 VPATH += keyboards/gboards
+
+DEBOUNCE_TYPE = sym_eager_pk
