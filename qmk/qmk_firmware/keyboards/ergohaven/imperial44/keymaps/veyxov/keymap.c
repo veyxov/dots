@@ -332,11 +332,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
-
-// This globally defines all key overrides to be used
+const key_override_t ovr_dot = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, S(KC_GRV));
+const key_override_t ovr_slsh = ko_make_basic(MOD_MASK_SHIFT, KC_SLSH, S(KC_7));
+const key_override_t ovr_qst = ko_make_basic(MOD_MASK_SHIFT, S(KC_SLSH), S(KC_1));
+const key_override_t ovr_comm = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, S(KC_BSLS));
+const key_override_t ovr_undr = ko_make_basic(MOD_MASK_SHIFT, S(KC_MINS), KC_GRV);
 const key_override_t *key_overrides[] = {
-	&delete_key_override
+	&ovr_dot,
+    &ovr_slsh,
+    &ovr_qst,
+    &ovr_comm,
+    &ovr_undr
 };
 
 void leader_end_user(void) {
