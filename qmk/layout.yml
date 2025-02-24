@@ -1,0 +1,45 @@
+layout:
+  qmk_keyboard: corne_rotated
+  layout_name: LAYOUT_split_3x6_3
+layers:
+  Base:
+    - ["", "J", "F", "M", "P", "V", "", {t: ".", s: "~"}, {t: "/", s: "&"}, {t: "?", s: "!"}, {t: "'", s: '"'}, {t: "_", s: "`"}]
+    - [{t: "F5", h: "ALT"}, "R", "S", "N", "D", "W", {t: ",", s: "|"}, "A", "E", "I", "H", "REPEAT"]
+    - [{t: "LGui", h: "FN"}, "X", "G", "L", "C", "B", {t: "-", s: "+"}, "U", "O", "Y", "K", "RU/EN"]
+    - [{h: "MOUSE", t: "SHFT"}, {t: "T", h: "NAV"}, {h: "LGUI", t: "->"}, {t: "<-", h: "CTRL"}, "$$mdi:keyboard-space$$", ""]
+  Nav:
+    - ["", "", "", "", "", "", "", "$$mdi:dock-window$$ 1", "$$mdi:dock-window$$ 2", "$$mdi:dock-window$$ 3", "$$mdi:dock-window$$ 4", ""]
+    - ["", "", "", "", "", "", "HOME", "$$mdi:arrow-left-thin$$", "$$mdi:arrow-down-thin$$", "$$mdi:arrow-up-thin$$", "$$mdi:arrow-right-thin$$", "END"]
+    - ["", "", "", "", "", "", "", "", "", "", "", ""]
+    - ["", "", "", "", "$$mdi:backspace-reverse-outline$$", ""]
+  Mouse:
+    - ["", "", "", "", "", "", "", "", "", "", "", ""]
+    - ["", "", "", "", "", "", "", "$$mdi:arrow-left-bold$$", "$$mdi:mouse-move-down$$", "$$mdi:mouse-move-up$$", "$$mdi:arrow-right-bold$$", ""]
+    - ["", "", "", "", "", "", "", "", "", "", "", ""]
+    - ["", "", "", "$$mdi:mouse-right-click$$", "$$mdi:mouse-left-click$$", ""]
+  Num:
+    - ["", "", "", "", "", "", "", "", "", "", "", ""]
+    - ["", "6", "4", "0", "2", "", "", "3", "1", "5", "7", ""]
+    - ["", "", "", "", "8", "",  "", "9",  "", "", "", ""]
+    - ["", "", "", "", "", ""]
+  Fn:
+    - ["", "", "", "", "", "", "", "", "", "", "", ""]
+    - ["", "", "", "", "", "", "$$mdi:volume-variant-off$$", "$$mdi:volume-minus$$", "", "", "$$mdi:volume-plus$$", ""]
+    - ["", "", "", "", "", "",  "", "$$mdi:skip-previous$$",  "$$mdi:play-pause$$", "$$mdi:skip-next$$", "", ""]
+    - ["", "", "", "", "", ""]
+
+combos:
+  - { p: [1, 2], k: q, l: [Base] }
+  - { p: [2, 3], k: qu, l: [Base] }
+  - { p: [3, 4], k: z, l: [Base] }
+  - { p: [8, 9], k: $, l: [Base] }
+  - { p: [14, 15], k: Esc, l: [Base] }
+  - { p: [15, 16], k: Tab, l: [Base] }
+  - { p: [19, 20], k: Bscp, l: [Base] }
+  - { p: [20, 21], k: Enter, l: [Base] }
+  - { p: [19, 21], k: ':', l: [Base], a: "top" }
+  - { p: [26, 27], k: 'Copy', l: [Base] }
+  - { p: [27, 28], k: 'Paste', l: [Base] }
+  - { p: [26, 27, 28], k: 'Ctrl-A', l: [Base], a: "bottom" }
+  - { p: [31, 32], k: '=', l: [Base] }
+  - { p: [32, 33], k: 'Leader', l: [Base] }
