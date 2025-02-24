@@ -18,3 +18,5 @@
 // combos
 #define COMBO_TERM 15
 #define COMBO_VARIABLE_LEN
+
+#define ADAPTIVE_TERM 200

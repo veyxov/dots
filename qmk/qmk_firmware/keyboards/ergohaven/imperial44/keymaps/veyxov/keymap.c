@@ -4,7 +4,8 @@ enum custom_keycodes {
     NUMWORD,
     CRYLTG,
     LorM,
-    LorV
+    LorV,
+    HorUorO
 };
 
 #include "keymap.h"
@@ -194,10 +195,18 @@ bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+            if (record->tap.count == 0) // If not tapped yet,
+                return true;            // let QMK handle it first.
+            keycode &= QK_BASIC_MAX;    // Trim mods + taps.
+            break;
+    }
 
-    process_adaptive_key(keycode, record);
-    last_key = keycode;
-    last_time = timer_read();
+    if (!process_adaptive_user(keycode, record)) {
+        return false; // We have declared no more processing.
+    }
 
     static bool shift_triggered = false;
     static uint16_t shift_timer = 0;
@@ -271,9 +280,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        XXXXXXX,  KC_J,   KC_F,   LorM,   KC_P,   LorV,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
+        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I,   KC_H , QK_REP,
+        F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I, KC_H, QK_REP,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         LT(_FN, KC_LGUI), KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                        KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
@@ -405,3 +414,8 @@ bool process_combo_keycode_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 // combo end
+
+// matrix can
+void matrix_scan_user(void) {
+    matrix_adaptive_user();
+}
