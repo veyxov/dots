@@ -1,6 +1,6 @@
-COMB(mp, KC_Z, LorM, KC_P)
+COMB(mp, KC_Z, KC_M, KC_P)
 COMB(jf_q, KC_Q, KC_J, KC_F)
-SUBS(fm_qu, "qu", KC_F, LorM)
+SUBS(fm_qu, "qu", KC_F, KC_M)
 
 COMB(ei_enter, KC_ENT, KC_E, KC_I)
 COMB(sn_esc, KC_ESC, KC_S, KC_N)
@@ -19,7 +19,7 @@ COMB(oy_leader, QK_LEAD, KC_O, KC_Y)
 
 COMB(sqo_lbrc, S(KC_LBRC), LTNAV, KC_S)
 COMB(sqc_rbrc, S(KC_RBRC), LTNAV, KC_N)
-COMB(ltnav_8, S(KC_8), LTNAV, LorM)
+COMB(ltnav_8, S(KC_8), LTNAV, KC_M)
 COMB(ltnav_eql, S(KC_EQL), LTNAV, KC_F)
 COMB(ltnav_comma, S(KC_COMM), LTNAV, KC_G)
 COMB(ltnav_dot, S(KC_DOT), LTNAV, KC_L)
