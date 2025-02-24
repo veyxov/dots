@@ -337,6 +337,7 @@ const key_override_t ovr_slsh = ko_make_basic(MOD_MASK_SHIFT, KC_SLSH, S(KC_7));
 const key_override_t ovr_qst = ko_make_basic(MOD_MASK_SHIFT, S(KC_SLSH), S(KC_1));
 const key_override_t ovr_comm = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, S(KC_BSLS));
 const key_override_t ovr_undr = ko_make_basic(MOD_MASK_SHIFT, S(KC_MINS), KC_GRV);
+const key_override_t ovr_mins = ko_make_basic(MOD_MASK_SHIFT, KC_MINS, S(KC_EQL));
 const key_override_t *key_overrides[] = {
 	&ovr_dot,
     &ovr_slsh,
