@@ -56,6 +56,23 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
                             tap_code(prior_keycode);
                     }
                     break;
+                case KC_A:
+                    switch (keycode) {
+                        case KC_H: // AH -> AU
+                            return_state = false;
+                            second = KC_U;
+                            break;
+                    }
+                    break;
+
+                case KC_E:
+                    switch (keycode) {
+                        case KC_H: // EH -> EO
+                            return_state = false;
+                            second = KC_O;
+                            break;
+                    }
+                    break;
             }
 
             if (return_state) {
