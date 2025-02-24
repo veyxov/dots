@@ -1,13 +1,7 @@
-// --------------------------------------------------------
-// Globally store information about the previous key press.
-// --------------------------------------------------------
 static uint8_t  prior_saved_mods = 0;
 static uint16_t prior_keycode    = KC_NO;
 static uint32_t prior_keydown    = 0;
 
-// ---------------------
-// On key press/release:
-// ---------------------
 bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
     bool return_state = true;
 
@@ -98,16 +92,11 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
     }
     return return_state;
 }
-
-// ---------------------------------
-// Every time the matrix is scanned:
-// ---------------------------------
 void matrix_adaptive_user(void) {
     if (timer_elapsed32(prior_keydown) >= ADAPTIVE_TERM) {
         switch (prior_keycode) {
             // If `ADAPTIVE_TERM` has elapsed,
-            // with no other key presses,
-            // send our leading key.
+            // with no other key presses
             case KC_P:
                 set_mods(prior_saved_mods);
                 tap_code(prior_keycode);
