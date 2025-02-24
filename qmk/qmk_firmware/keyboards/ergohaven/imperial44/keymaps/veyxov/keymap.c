@@ -1,11 +1,9 @@
 #include QMK_KEYBOARD_H
+
 enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
     NUMWORD,
-    CRYLTG,
-    LorM,
-    LorV,
-    HorUorO
+    CRYLTG
 };
 
 #include "keymap.h"
@@ -13,8 +11,6 @@ enum custom_keycodes {
 #include "g/keymap_combo.h"
 #include "adaptive.h"
 
-
-// Define a type for as many tap dance states as you need
 typedef enum {
     TD_NONE,
     TD_UNKNOWN,
@@ -97,19 +93,16 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 static uint16_t num_word_timer = 0;
 static bool is_num_word_on = false;
-
 void enable_num_word(void) {
     if (is_num_word_on) return;
     is_num_word_on = true;
     layer_on(_NUM);
 }
-
 void disable_num_word(void) {
     if (!is_num_word_on) return;
     is_num_word_on = false;
     layer_off(_NUM);
 }
-
 bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
     switch (keycode) {
         // Keycodes which should not disable num word mode.
@@ -142,8 +135,6 @@ bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
     // Should be unreachable
     return false;
 }
-
-
 bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
     // Handle the custom keycodes that go with this feature
     if (keycode == NUMWORD) {
