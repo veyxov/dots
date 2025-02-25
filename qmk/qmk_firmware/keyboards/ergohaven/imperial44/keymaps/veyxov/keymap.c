@@ -3,7 +3,8 @@
 enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
     NUMWORD,
-    CRYLTG
+    CRYLTG,
+    REP
 };
 
 #include "keymap.h"
@@ -219,6 +220,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_record_num_word(keycode, record);
 
     switch (keycode) {
+        case REP:
+            // if the lgui modifier is active
+            if (get_mods() & MOD_MASK_GUI) {
+                // type the alternate
+                uint8_t temp_mods = get_mods();
+                // remove the gui mod, because it's the trigger
+                del_mods(MOD_MASK_GUI);
+                alt_repeat_key_invoke(&record->event);
+                set_mods(temp_mods);
+                return false;
+            } else {
+                repeat_key_invoke(&record->event);
+                return false;
+            }
         case CRYLTG:
             if (record->event.pressed) {
                 toggle_lg();
@@ -271,14 +286,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
+        QK_AREP,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I, KC_H,  S(KC_SCLN),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         LT(_FN, KC_LGUI), KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                        KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
-                S_MOUS, LTNAV, QK_REP,  QK_BOOTLOADER,      XXXXXXX,   MT(MOD_LCTL, KC_LEFT), KC_SPC,   MT(MOD_LGUI, KC_RGHT)
+                S_MOUS, LTNAV, REP,  QK_BOOTLOADER,      XXXXXXX,   MT(MOD_LCTL, KC_LEFT), KC_SPC,   MT(MOD_LGUI, KC_RGHT)
     ),
+
     [_NAV] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX,LGUI(KC_1),LGUI(KC_2),LGUI(KC_3),LGUI(KC_4), XXXXXXX,
@@ -338,6 +354,7 @@ const key_override_t ovr_qst = ko_make_basic(MOD_MASK_SHIFT, S(KC_SLSH), S(KC_1)
 const key_override_t ovr_comm = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, S(KC_BSLS));
 const key_override_t ovr_undr = ko_make_basic(MOD_MASK_SHIFT, S(KC_MINS), KC_GRV);
 const key_override_t ovr_mins = ko_make_basic(MOD_MASK_SHIFT, KC_MINS, S(KC_EQL));
+
 const key_override_t *key_overrides[] = {
 	&ovr_dot,
     &ovr_slsh,
@@ -374,4 +391,11 @@ bool process_combo_keycode_user(uint16_t keycode, keyrecord_t *record) {
 // matrix can
 void matrix_scan_user(void) {
     matrix_adaptive_user();
+}
+
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
+                            uint8_t* remembered_mods) {
+    // In remember_last_key_user(), we ignore the LT_REP key. Otherwise, pressing it will "remember" itself as the last key just before it is handled, in which case repeating the last key will do nothing.
+  if (keycode == REP) { return false; }
+  return true;
 }
