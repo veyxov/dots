@@ -44,5 +44,4 @@
 
 #define EH_SHORT_PRODUCT_NAME "I44"
 
-#define NO_ALT_REPEAT_KEY
 #define COMBO_TERM_PER_COMBO
