@@ -2,7 +2,7 @@
 
 // tapping term
 #define TAPPING_TERM_PER_KEY
-#define PERMISSIVE_HOLD
+#define TAPPING_TERM 250
 
 // mouse
 #define MOUSEKEY_DELAY       0
