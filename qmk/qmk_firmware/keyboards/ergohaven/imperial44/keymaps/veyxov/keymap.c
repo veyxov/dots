@@ -4,7 +4,8 @@ enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
     NUMWORD,
     CRYLTG,
-    REP
+    REP,
+    BRAH
 };
 
 #include "keymap.h"
@@ -187,6 +188,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return true;
             }
             return false;
+        case BRAH:
+            if (record->event.pressed) {
+                    SEND_STRING("brah!\n");
+            }
+            break;
         case S_MOUS:
             if (record->event.pressed) {
                 shift_timer = timer_read();
@@ -220,7 +226,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        QK_AREP,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
+        QK_AREP,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          BRAH,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I, KC_H,  S(KC_SCLN),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
