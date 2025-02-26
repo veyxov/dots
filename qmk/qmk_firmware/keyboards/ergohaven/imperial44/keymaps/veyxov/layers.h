@@ -6,8 +6,3 @@
 #define _NUM 3
 #define _CRYL 4
 #define _FN 5
-
-enum tapdances {
-    LNAVTD
-};
-

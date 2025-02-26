@@ -12,33 +12,6 @@ enum custom_keycodes {
 #include "g/keymap_combo.h"
 #include "adaptive.h"
 
-typedef enum {
-    TD_NONE,
-    TD_UNKNOWN,
-    TD_SINGLE_TAP,
-    TD_SINGLE_HOLD,
-    TD_DOUBLE_TAP
-} td_state_t;
-
-typedef struct {
-    bool is_press_action;
-    td_state_t state;
-} td_tap_t;
-
-td_state_t cur_dance(tap_dance_state_t *state) {
-    if (state->count == 1) {
-        if (!state->pressed) return TD_SINGLE_TAP;
-        else return TD_SINGLE_HOLD;
-    } else if (state->count == 2) return TD_DOUBLE_TAP;
-    else return TD_UNKNOWN;
-}
-
-// Initialize tap structure associated with example tap dance key
-static td_tap_t lnavtd_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
-
 void toggle_lg(void) {
     register_code(KC_LGUI);
     register_code(KC_SPC);
@@ -46,47 +19,8 @@ void toggle_lg(void) {
     unregister_code(KC_SPC);
 }
 
-// Functions that control what our tap dance key does
-void lnavtd_finished(tap_dance_state_t *state, void *user_data) {
-    lnavtd_tap_state.state = cur_dance(state);
-    switch (lnavtd_tap_state.state) {
-        case TD_SINGLE_TAP:
-            tap_code(KC_T);
-            break;
-        case TD_SINGLE_HOLD:
-            layer_on(_NAV);
-            break;
-        case TD_DOUBLE_TAP:
-            // Check to see if the layer is already set
-            if (layer_state_is(_NAV)) {
-                // If already set, then switch it off
-                layer_off(_NAV);
-            } else {
-                // If not already set, then switch the layer on
-                layer_on(_NAV);
-            }
-            break;
-        default:
-            break;
-    }
-}
-
-void lnavtd_reset(tap_dance_state_t *state, void *user_data) {
-    // If the key was held down and now is released then switch off the layer
-    if (lnavtd_tap_state.state == TD_SINGLE_HOLD) {
-        layer_off(_NAV);
-    }
-    lnavtd_tap_state.state = TD_NONE;
-}
-
-tap_dance_action_t tap_dance_actions[] = {
-    [LNAVTD] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, lnavtd_finished, lnavtd_reset)
-};
-
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case (TD(LNAVTD)):
-            return TAPPING_TERM - 50;
         default:
             return TAPPING_TERM;
     }
