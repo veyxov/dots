@@ -4,8 +4,7 @@ enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
     NUMWORD,
     CRYLTG,
-    REP,
-    BRAH
+    REP
 };
 
 #include "keymap.h"
@@ -131,8 +130,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
     }
 
-    if (!process_adaptive_user(keycode, record)) {
-        return false; // We have declared no more processing.
+    // no adaptive keys on the cryllic layer
+    if (get_highest_layer(layer_state) != _CRYL) {
+        if (!process_adaptive_user(keycode, record)) {
+            return false; // We have declared no more processing.
+        }
     }
 
     static bool shift_triggered = false;
@@ -157,11 +159,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case REP:
             // if the lgui modifier is active
-            if (get_mods() & MOD_MASK_GUI) {
+            if (get_mods() & MOD_MASK_CTRL) {
                 // type the alternate
                 uint8_t temp_mods = get_mods();
                 // remove the gui mod, because it's the trigger
-                del_mods(MOD_MASK_GUI);
+                del_mods(MOD_MASK_CTRL);
                 alt_repeat_key_invoke(&record->event);
                 set_mods(temp_mods);
                 return false;
@@ -188,11 +190,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return true;
             }
             return false;
-        case BRAH:
-            if (record->event.pressed) {
-                    SEND_STRING("brah!\n");
-            }
-            break;
         case S_MOUS:
             if (record->event.pressed) {
                 shift_timer = timer_read();
@@ -226,13 +223,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          BRAH,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
+        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I, KC_H,  XXXXXXX,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         LT(_FN, KC_LGUI), KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                        KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
-                S_MOUS, LTNAV, MT(MOD_LGUI, KC_RGHT),  QK_BOOTLOADER,      LGUI(KC_L),   MT(MOD_LCTL, KC_LEFT), KC_SPC,    REP
+                REP, LTNAV, MT(MOD_LGUI, KC_RGHT),  QK_BOOTLOADER,      LGUI(KC_L),   MT(MOD_LCTL, KC_LEFT), KC_SPC,    S_MOUS
     ),
 
     [_NAV] = LAYOUT(
@@ -247,13 +244,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_MOUSE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        MS_ACL0, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX,XXXXXXX,MS_WHLD,MS_WHLU,XXXXXXX, XXXXXXX,
+        MS_ACL0, XXXXXXX, MS_WHLU,MS_WHLD, XXXXXXX, XXXXXXX,                 XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        MS_ACL1,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 MS_WHLL,MS_LEFT,MS_DOWN,MS_UP,  MS_RGHT, MS_WHLR,
+        MS_WHLL,MS_LEFT,MS_DOWN,MS_UP,  MS_RGHT, MS_WHLR,                     XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         MS_ACL2, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
-                                XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX,         XXXXXXX,MS_BTN2,MS_BTN1,XXXXXXX
+                                XXXXXXX,MS_BTN1,MS_BTN2, XXXXXXX,         XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX
     ),
     [_NUM] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
