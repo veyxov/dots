@@ -18,6 +18,18 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
             clear_mods();
 
             switch (prior_keycode) {
+                case KC_F: // FM -> FL
+                    switch (keycode) {
+                        case KC_M:
+                            return_state = false;
+                            second       = KC_L;
+                            break;
+                        case KC_P: // FP -> (
+                            return_state = false;
+                            second       = S(KC_LBRC);
+                            break;
+                    }
+                    break;
                 case KC_V: // VM -> VL
                     switch (keycode) {
                         case KC_M:
@@ -83,6 +95,14 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
                     }
                     break;
 
+                case KC_O:
+                    switch (keycode) {
+                        case KC_H: // OH -> OE
+                            return_state = false;
+                            second = KC_E;
+                            break;
+                    }
+                    break;
                 case KC_E:
                     switch (keycode) {
                         case KC_H: // EH -> EO
