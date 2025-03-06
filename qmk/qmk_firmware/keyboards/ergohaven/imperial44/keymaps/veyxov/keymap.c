@@ -312,7 +312,13 @@ void leader_end_user(void) {
     uint16_t get_combo_term(uint16_t index, combo_t *combo) {
         switch (combo->keycode) {
             case S(KC_LBRC):
-                return 1000;
+            case KC_0:
+            case KC_1:
+            case KC_2:
+            case KC_3:
+            case KC_4:
+            case KC_5:
+                return 15;
         }
         return 8;
     }
