@@ -13,10 +13,10 @@ enum custom_keycodes {
 #include "adaptive.h"
 
 void toggle_lg(void) {
-    register_code(KC_LGUI);
-    register_code(KC_SPC);
-    unregister_code(KC_LGUI);
-    unregister_code(KC_SPC);
+    register_code(KC_LSFT);
+    register_code(KC_RSFT);
+    unregister_code(KC_LSFT);
+    unregister_code(KC_RSFT);
 }
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
