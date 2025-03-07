@@ -11,6 +11,7 @@ enum custom_keycodes {
 #include "print.h"
 #include "g/keymap_combo.h"
 #include "adaptive.h"
+#include "features/orbital_mouse.h"
 
 void toggle_lg(void) {
     register_code(KC_LSFT);
@@ -120,6 +121,12 @@ bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
     return true;
 }
 
+void housekeeping_task_user(void) {
+  orbital_mouse_task();
+
+  // Other tasks ...
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
@@ -129,6 +136,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             keycode &= QK_BASIC_MAX;    // Trim mods + taps.
             break;
     }
+
+    if (!process_orbital_mouse(keycode, record)) { return false; }
 
     // no adaptive keys on the cryllic layer
     if (get_highest_layer(layer_state) != _CRYL) {
@@ -244,11 +253,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_MOUSE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        MS_ACL0, XXXXXXX, MS_WHLU,MS_WHLD, XXXXXXX, XXXXXXX,                 XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        OM_W_U, OM_BTNS, OM_DBLS,MS_WHLD, XXXXXXX, XXXXXXX,                 XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        MS_WHLL,MS_LEFT,MS_DOWN,MS_UP,  MS_RGHT, MS_WHLR,                     XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        OM_W_D,OM_L,OM_U,OM_D,  OM_R, OM_SLOW,                     XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        MS_ACL2, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        OM_RELS, OM_HLDS, OM_SEL1, OM_SEL2, OM_SEL3, XXXXXXX,                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
                                 XXXXXXX,MS_BTN1,MS_BTN2, XXXXXXX,         XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX
     ),
