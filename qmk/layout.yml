@@ -4,19 +4,19 @@ layout:
 layers:
   Base:
     - ["", "J", "F", "M", "P", "V", "", {t: ".", s: "~"}, {t: "/", s: "&"}, {t: "?", s: "!"}, {t: "'", s: '"'}, {t: "_", s: "`"}]
-    - [{t: "F5", h: "ALT"}, "R", "S", "N", "D", "W", {t: ",", s: "|"}, "A", "E", "I", "H", "REPEAT"]
+    - [{t: "F5", h: "ALT"}, "R", "S", "N", "D", "W", {t: ",", s: "|"}, "A", "E", "I", "H", ""]
     - [{t: "LGui", h: "FN"}, "X", "G", "L", "C", "B", {t: "-", s: "+"}, "U", "O", "Y", "K", "RU/EN"]
-    - [{h: "MOUSE", t: "SHFT"}, {t: "T", h: "NAV"}, {h: "LGUI", t: "->"}, {t: "<-", h: "CTRL"}, "$$mdi:keyboard-space$$", ""]
+    - [{h: "", t: "REPEAT"}, {t: "T", h: "NAV"}, {h: "LGUI", t: "->"}, {t: "<-", h: "CTRL"}, "$$mdi:keyboard-space$$", {t: "O(SFT)", h: "MOUSE"}]
   Nav:
     - ["", "", "", "", "", "", "", "$$mdi:dock-window$$ 1", "$$mdi:dock-window$$ 2", "$$mdi:dock-window$$ 3", "$$mdi:dock-window$$ 4", ""]
     - ["", "", "", "", "", "", "HOME", "$$mdi:arrow-left-thin$$", "$$mdi:arrow-down-thin$$", "$$mdi:arrow-up-thin$$", "$$mdi:arrow-right-thin$$", "END"]
     - ["", "", "", "", "", "", "", "", "", "", "", ""]
     - ["", "", "", "", "$$mdi:backspace-reverse-outline$$", ""]
   Mouse:
-    - ["", "", "", "", "", "", "", "", "", "", "", ""]
-    - ["", "", "", "", "", "", "", "$$mdi:arrow-left-bold$$", "$$mdi:mouse-move-down$$", "$$mdi:mouse-move-up$$", "$$mdi:arrow-right-bold$$", ""]
-    - ["", "", "", "", "", "", "", "", "", "", "", ""]
-    - ["", "", "", "$$mdi:mouse-right-click$$", "$$mdi:mouse-left-click$$", ""]
+    - ["", "$$mdi:mouse-move-up$$", "", "$$mdi:arrow-up-bold$$", "", "", "", "", "", "", "", ""]
+    - ["", "$$mdi:mouse-move-down$$", "$$mdi:restore$$", "$$mdi:arrow-down-bold$$", "$$mdi:reload$$", "", "", "", "", "", "", ""]
+    - ["", "$$mdi:lock-open-variant-outline$$", "$$mdi:lock$$", "$$mdi:numeric-1-circle-outline$$", "$$mdi:numeric-2-circle-outline$$", "$$mdi:numeric-3-circle-outline$$", "", "", "", "", "", ""]
+    - ["$$mdi:speedometer-slow$$", "$$mdi:mouse-left-click$$", "$$mdi:gesture-two-double-tap$$", "", "", ""]
   Num:
     - ["", "", "", "", "", "", "", "", "", "", "", ""]
     - ["", "6", "4", "0", "2", "", "", "3", "1", "5", "7", ""]
