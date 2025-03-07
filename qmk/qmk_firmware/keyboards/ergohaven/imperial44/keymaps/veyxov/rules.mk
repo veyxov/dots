@@ -18,6 +18,7 @@ BOOTMAGIC_ENABLE = yes
 
 SRC += features/orbital_mouse.c
 MOUSE_ENABLE = yes
+MOUSEKEYS_ENABLE = no
 
 EXTRAKEY_ENABLE = yes
 LTO_ENABLE = yes

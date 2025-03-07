@@ -253,13 +253,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_MOUSE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        OM_W_U, OM_BTNS, OM_DBLS,MS_WHLD, XXXXXXX, XXXXXXX,                 XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, OM_W_U, XXXXXXX,OM_U, XXXXXXX, XXXXXXX,                 XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        OM_W_D,OM_L,OM_U,OM_D,  OM_R, OM_SLOW,                     XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, OM_W_D,  OM_L,   OM_D,  OM_R,   XXXXXXX,                     XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        OM_RELS, OM_HLDS, OM_SEL1, OM_SEL2, OM_SEL3, XXXXXXX,                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, OM_RELS, OM_HLDS, OM_SEL1, OM_SEL2, OM_SEL3,                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
-                                XXXXXXX,MS_BTN1,MS_BTN2, XXXXXXX,         XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX
+                                OM_SLOW,OM_BTNS,OM_DBLS, XXXXXXX,         XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX
     ),
     [_NUM] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
