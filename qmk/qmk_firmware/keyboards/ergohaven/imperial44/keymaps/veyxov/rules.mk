@@ -15,7 +15,10 @@ CONSOLE_ENABLE = yes
 LEADER_ENABLE = yes
 NKRO_ENABLE = yes
 BOOTMAGIC_ENABLE = yes
-MOUSEKEY_ENABLE = yes
+
+SRC += features/orbital_mouse.c
+MOUSE_ENABLE = yes
+
 EXTRAKEY_ENABLE = yes
 LTO_ENABLE = yes
 TAP_DANCE_ENABLE = no
