@@ -27,7 +27,6 @@ TAP_DANCE_ENABLE = no
 COMBO_ENABLE = yes
 VPATH += keyboards/gboards
 
-KEY_OVERRIDE_ENABLE = yes
 DYNAMIC_MACRO_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
 
