@@ -51,3 +51,5 @@ COMB(brah8_5, S(KC_5), KC_SPC, KC_U)
 COMB(caps_combo, CW_TOGG, KC_SPC, LTNAV)
 
 SUBS(dk_comps, "docker compose ", KC_D, KC_K)
+
+SUBS(lambda, "=>", KC_SLSH, KC_E)
