@@ -11,7 +11,6 @@ enum custom_keycodes {
 #include "print.h"
 #include "g/keymap_combo.h"
 #include "adaptive.h"
-#include "features/orbital_mouse.h"
 
 void toggle_lg(void) {
     register_code(KC_LSFT);
@@ -121,12 +120,6 @@ bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
     return true;
 }
 
-void housekeeping_task_user(void) {
-  orbital_mouse_task();
-
-  // Other tasks ...
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
@@ -136,8 +129,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             keycode &= QK_BASIC_MAX;    // Trim mods + taps.
             break;
     }
-
-    if (!process_orbital_mouse(keycode, record)) { return false; }
 
     // no adaptive keys on the cryllic layer
     if (get_highest_layer(layer_state) != _CRYL) {

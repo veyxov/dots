@@ -16,7 +16,6 @@ LEADER_ENABLE = yes
 NKRO_ENABLE = yes
 BOOTMAGIC_ENABLE = yes
 
-SRC += features/orbital_mouse.c
 MOUSE_ENABLE = yes
 MOUSEKEYS_ENABLE = no
 
