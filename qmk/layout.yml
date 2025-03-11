@@ -6,7 +6,7 @@ layers:
     - ["", "J", "F", "M", "P", "V", "", {t: ".", s: "~"}, {t: "/", s: "&"}, {t: "?", s: "!"}, {t: "'", s: '"'}, {t: "_", s: "`"}]
     - [{t: "F5", h: "ALT"}, "R", "S", "N", "D", "W", {t: ",", s: "|"}, "A", "E", "I", "H", ""]
     - [{t: "LGui", h: "FN"}, "X", "G", "L", "C", "B", {t: "-", s: "+"}, "U", "O", "Y", "K", "RU/EN"]
-    - [{h: "", t: "REPEAT"}, {t: "T", h: "NAV"}, {h: "LGUI", t: "->"}, {t: "<-", h: "CTRL"}, "$$mdi:keyboard-space$$", {t: "O(SFT)", h: "MOUSE"}]
+    - [{t: "O(SFT)", h: "MOUSE"}, {t: "T", h: "NAV"}, {t: "REPEAT", h: ""} , {t: "<-", h: "CTRL"}, "$$mdi:keyboard-space$$", {h: "LGUI", t: "->"}]
   Nav:
     - ["", "", "", "", "", "", "", "$$mdi:dock-window$$ 1", "$$mdi:dock-window$$ 2", "$$mdi:dock-window$$ 3", "$$mdi:dock-window$$ 4", ""]
     - ["", "", "", "", "", "", "HOME", "$$mdi:arrow-left-thin$$", "$$mdi:arrow-down-thin$$", "$$mdi:arrow-up-thin$$", "$$mdi:arrow-right-thin$$", "END"]
