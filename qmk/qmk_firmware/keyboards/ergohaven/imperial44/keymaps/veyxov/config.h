@@ -19,3 +19,6 @@
 #define COMBO_VARIABLE_LEN
 
 #define ADAPTIVE_TERM 200
+
+// disable "quick tap", no need to repeat when we have a "repeat key"
+#define QUICK_TAP_TERM 0
