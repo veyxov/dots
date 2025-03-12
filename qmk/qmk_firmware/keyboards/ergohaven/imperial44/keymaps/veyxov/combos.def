@@ -1,4 +1,4 @@
-COMB(mp, KC_Z, KC_M, KC_P)
+COMB(mp_z, KC_Z, KC_M, KC_P)
 COMB(jf_q, KC_Q, KC_J, KC_F)
 SUBS(fm_qu, "qu", KC_F, KC_M)
 
@@ -12,44 +12,8 @@ COMB(lc_pst, C(KC_V), KC_L, KC_C)
 COMB(glc_all, C(KC_A), KC_G, KC_L, KC_C)
 
 COMB(aei_scol, KC_SCLN, KC_A, KC_E, KC_I)
-COMB(ai_col, S(KC_SCLN), KC_A, KC_I)
-COMB(sd_qt, S(KC_QUOT), KC_S, KC_D)
 
 COMB(oy_leader, QK_LEAD, KC_O, KC_Y)
-
-COMB(sqo_lbrc, S(KC_LBRC), LTNAV, KC_S)
-COMB(sqc_rbrc, S(KC_RBRC), LTNAV, KC_N)
-COMB(ltnav_8, S(KC_8), LTNAV, KC_M)
-COMB(ltnav_comma, S(KC_COMM), LTNAV, KC_G)
-COMB(ltnav_dot, S(KC_DOT), LTNAV, KC_L)
-COMB(ltnav_9, S(KC_9), LTNAV, KC_D)
-COMB(ltnav_bsls, KC_BSLS, LTNAV, KC_W)
-COMB(ltnav_0, S(KC_0), LTNAV, KC_C)
-COMB(ltnav_1_base, KC_1, LTNAV, KC_E)
-COMB(ltnav_5, KC_5, LTNAV, KC_I)
-COMB(ltnav_3, KC_3, LTNAV, KC_A)
-COMB(ltnav_7, KC_7, LTNAV, KC_H)
-COMB(ltnav_9_base, KC_9, LTNAV, KC_U)
-
-COMB(spc_e_lbrc, KC_LBRC, SPC, KC_E)
-COMB(spc_i_rbrc, KC_RBRC, SPC, KC_I)
-COMB(spc_h_mins, S(KC_MINS), SPC, KC_H)
-COMB(spc_dot_3, S(KC_3), SPC, KC_DOT)
-COMB(spc_slash_2, S(KC_2), SPC, KC_SLSH)
-COMB(spc_s_slash_6, S(KC_6), SPC, S(KC_SLSH))
-
-COMB(brah1_0, KC_0, SPC, KC_N)
-COMB(brah2_2, KC_2, SPC, KC_D)
-COMB(brah3_4, KC_4, SPC, KC_S)
-COMB(brah4_6, KC_6, SPC, KC_R)
-COMB(brah5_8, KC_8, SPC, KC_C)
-
-COMB(brah6_4, S(KC_4), KC_SLSH, S(KC_SLSH))
-COMB(brah7_eql, KC_EQL, KC_U, KC_O)
-COMB(brah8_5, S(KC_5), SPC, KC_U)
-
 COMB(caps_combo, CW_TOGG, SPC, LTNAV)
-
-SUBS(dk_comps, "docker compose ", KC_D, KC_K)
 
 SUBS(lambda, "=>", KC_SLSH, KC_E)
