@@ -16,7 +16,8 @@ layers:
 
   Nav:
     - ["", "", "", "", "", "", "", "", "", "", "", ""]
-    - ["", "", "", "", "", "", "$$mdi:home-outline$$", "$$mdi:arrow-left-thin$$", "$$mdi:arrow-down-thin$$", "$$mdi:arrow-up-thin$$", "$$mdi:arrow-right-thin$$", "END"]
+    - ["","", "$$mdi:apple-keyboard-option$$", "$$mdi:apple-keyboard-caps$$", "$$mdi:apple-keyboard-command$$", "", "$$mdi:home-outline$$", "$$mdi:arrow-left-thin$$", "$$mdi:arrow-down-thin$$", "$$mdi:arrow-up-thin$$", "$$mdi:arrow-right-thin$$", "END"]
+
     - ["", "", "", "", "", "", "", "", "", "", "", ""]
     - ["", "", "", "", "$$mdi:backspace-reverse-outline$$", ""]
 
