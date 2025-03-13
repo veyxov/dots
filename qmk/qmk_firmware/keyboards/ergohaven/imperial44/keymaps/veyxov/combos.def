@@ -17,3 +17,6 @@ COMB(oy_leader, QK_LEAD, KC_O, KC_Y)
 COMB(caps_combo, CW_TOGG, SPC, LTNAV)
 
 SUBS(lambda, "=>", KC_SLSH, KC_E)
+
+
+SUBS(fnc, "();", S(KC_0),  S(KC_9))
