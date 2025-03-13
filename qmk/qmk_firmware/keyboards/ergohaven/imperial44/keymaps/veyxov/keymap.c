@@ -240,7 +240,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         _______, _______, _______, _______, _______, _______,                 _______, _______, _______, _______, _______, _______,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
-                                _______, _______,_______, _______,         _______,_______,KC_DEL,_______
+                                _______, _______,_______, _______,         _______,SELLINE,KC_DEL,SELWORD
     ),
 
     [_MOUSE] = LAYOUT(
@@ -346,4 +346,13 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
     // In remember_last_key_user(), we ignore the LT_REP key. Otherwise, pressing it will "remember" itself as the last key just before it is handled, in which case repeating the last key will do nothing.
   if (keycode == REP) { return false; }
   return true;
+}
+
+uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
+   switch (keycode) {
+    case SELWBAK: return SELWORD;
+    case SELWORD: return SELWBAK;
+    // ...
+  }
+  return KC_TRNS; 
 }
