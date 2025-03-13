@@ -162,7 +162,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (get_mods() & MOD_MASK_CTRL) {
                 // type the alternate
                 uint8_t temp_mods = get_mods();
-                // remove the gui mod, because it's the trigger
+                // remove the ctrl mod, because it's the trigger
                 del_mods(MOD_MASK_CTRL);
                 alt_repeat_key_invoke(&record->event);
                 set_mods(temp_mods);
@@ -288,13 +288,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_SYM] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        _______,  KC_QUOT,   S(KC_COMM),   S(KC_DOT), S(KC_QUOT),   KC_DOT,   S(KC_7), KC_LBRC, KC_RBRC, S(KC_5), _______, _______,
+        _______,  KC_QUOT,   S(KC_COMM),   S(KC_DOT), S(KC_QUOT),              _______, KC_DOT,   S(KC_7), KC_RBRC, KC_LBRC, S(KC_5), _______,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-       _______,  S(KC_1),   KC_MINS,   S(KC_EQL),   KC_EQL,   S(KC_3),         S(KC_BSLS), S(KC_SCLN), S(KC_9),  S(KC_0),  S(KC_SLSH), _______,
+       _______,  S(KC_1),   KC_MINS,   S(KC_EQL),   KC_EQL,   S(KC_3),         KC_0, S(KC_4), S(KC_0),  S(KC_9),  S(KC_BSLS), _______,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______, S(KC_6),    KC_SLSH,S(KC_2),   KC_BSLS,   _______,           S(KC_GRV),   S(KC_4), S(KC_LBRC),  S(KC_RBRC),  S(KC_2),   _______,
+        _______, S(KC_6),    KC_SLSH,S(KC_2),   KC_BSLS,   _______,           S(KC_GRV),   S(KC_8), S(KC_RBRC),  S(KC_LBRC),  S(KC_2),   _______,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
-                _______, _______, _______, _______,    _______, _______, _______,   _______
+                KC_BSPC, KC_SPC, KC_SCLN, _______,    _______, _______, _______,   _______
     ),
 };
 
@@ -306,6 +306,7 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_COMM, S(KC_BSLS)}, // ' -> "
     {S(KC_MINS), KC_GRV}, // , -> |
     {KC_MINS, S(KC_EQL)}, // - -> +
+    {S(KC_SCLN), KC_SCLN}, // : -> ;
 };
 
 void leader_end_user(void) {
