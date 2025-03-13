@@ -4,9 +4,7 @@ enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
     NUMWORD,
     CRYLTG,
-    REP,
-    DOT,
-    TOGGDOT
+    REP
 };
 
 #include "keymap.h"
@@ -140,7 +138,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     static bool shift_triggered = false;
-    static bool sentence_case_on = false;
     static uint16_t shift_timer = 0;
 
     #ifdef CONSOLE_ENABLE
@@ -160,25 +157,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_record_num_word(keycode, record);
 
     switch (keycode) {
-        case DOT:
-            if (record->event.pressed) {
-                if (sentence_case_on) {
-                    // Next sentence macro.
-                    if (record->event.pressed) {
-                        SEND_STRING(". ");
-                        add_oneshot_mods(MOD_BIT(KC_LSFT));  // Set one-shot mod for shift.
-                    }
-                    return false;
-                } else {
-                    tap_code(KC_DOT);
-                }
-                return false;
-            }
-        case TOGGDOT:
-            if (record->event.pressed) {
-                sentence_case_on = !sentence_case_on;
-            }
-            return false;
         case REP:
             // if the lgui modifier is active
             if (get_mods() & MOD_MASK_CTRL) {
@@ -245,7 +223,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          TOGGDOT,DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
+        XXXXXXX,  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                          XXXXXXX,KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         F5_ALT,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I, KC_H,  S(KC_SCLN),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
