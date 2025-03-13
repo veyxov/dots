@@ -4,42 +4,50 @@ layout:
 layers:
   Base:
     - ["", "J", "F", "M", "P", "V", "", {t: ".", s: "~"}, {t: "/", s: "&"}, {t: "?", s: "!"}, {t: "'", s: '"'}, {t: "_", s: "`"}]
-    - [{t: "F5", h: "ALT"}, "R", "S", "N", "D", "W", {t: ",", s: "|"}, "A", "E", "I", "H", ""]
-    - [{t: "LGui", h: "FN"}, "X", "G", "L", "C", "B", {t: "-", s: "+"}, "U", "O", "Y", "K", "RU/EN"]
-    - [{t: "O(SFT)", h: "MOUSE"}, {t: "T", h: "NAV"}, {t: "REPEAT", h: ""} , {t: "<-", h: "CTRL"}, "$$mdi:keyboard-space$$", {h: "LGUI", t: "->"}]
+    - [{t: "$$mdi:keyboard-f5$$", h: "$$mdi:apple-keyboard-option$$"}, "R", "S", "N", "D", "W", {t: ",", s: "|"}, "A", "E", "I", "H", ""]
+    - [{t: "$$mdi:microsoft-windows$$", h: "FN"}, "X", "G", "L", "C", "B", {t: "-", s: "+"}, "U", "O", "Y", "K", "RU/EN"]
+    - [{t: "$$mdi:apple-keyboard-caps$$", h: "MOUSE"}, {t: "T", h: "NAV"}, {t: "$$mdi:repeat$$", h: ""} , {t: "<-", h: "$$mdi:apple-keyboard-command$$"}, {t: "$$mdi:keyboard-space$$", h: "SYM"}, {h: "$$mdi:microsoft-windows$$", t: "$$mdi:arrow-right-thick$$"}]
+
+  Sym:
+    - ["", "'", "<", ">", '"', "", ".", "&", "]", "[", "%", "_"]
+    - ["", "!", "-", "+", "=", "#", "0", "$", ")", "(", "|", ":"]
+    - ["", "^", "/", "@", "\\", "",  "~", "*",  "}", "{", "@", ""]
+    - ["$$mdi:backspace$$", "$$mdi:keyboard-space$$", "", "", "", ""]  
+
   Nav:
-    - ["", "", "", "", "", "", "", "$$mdi:dock-window$$ 1", "$$mdi:dock-window$$ 2", "$$mdi:dock-window$$ 3", "$$mdi:dock-window$$ 4", ""]
-    - ["", "", "", "", "", "", "HOME", "$$mdi:arrow-left-thin$$", "$$mdi:arrow-down-thin$$", "$$mdi:arrow-up-thin$$", "$$mdi:arrow-right-thin$$", "END"]
+    - ["", "", "", "", "", "", "", "", "", "", "", ""]
+    - ["", "", "", "", "", "", "$$mdi:home-outline$$", "$$mdi:arrow-left-thin$$", "$$mdi:arrow-down-thin$$", "$$mdi:arrow-up-thin$$", "$$mdi:arrow-right-thin$$", "END"]
     - ["", "", "", "", "", "", "", "", "", "", "", ""]
     - ["", "", "", "", "$$mdi:backspace-reverse-outline$$", ""]
+
   Mouse:
     - ["", "$$mdi:mouse-move-up$$", "", "$$mdi:arrow-up-bold$$", "", "", "", "", "", "", "", ""]
     - ["", "$$mdi:mouse-move-down$$", "$$mdi:restore$$", "$$mdi:arrow-down-bold$$", "$$mdi:reload$$", "", "", "", "", "", "", ""]
     - ["", "$$mdi:lock-open-variant-outline$$", "$$mdi:lock$$", "$$mdi:numeric-1-circle-outline$$", "$$mdi:numeric-2-circle-outline$$", "$$mdi:numeric-3-circle-outline$$", "", "", "", "", "", ""]
     - ["$$mdi:speedometer-slow$$", "$$mdi:mouse-left-click$$", "$$mdi:gesture-two-double-tap$$", "", "", ""]
+
   Num:
     - ["", "", "", "", "", "", "", "", "", "", "", ""]
     - ["", "6", "4", "0", "2", "", "", "3", "1", "5", "7", ""]
     - ["", "", "", "", "8", "",  "", "9",  "", "", "", ""]
     - ["", "", "", "", "", ""]
+
   Fn:
     - ["", "", "", "", "", "", "", "", "", "", "", ""]
     - ["", "", "", "", "", "", "$$mdi:volume-variant-off$$", "$$mdi:volume-minus$$", "", "", "$$mdi:volume-plus$$", ""]
     - ["", "", "", "", "", "",  "", "$$mdi:skip-previous$$",  "$$mdi:play-pause$$", "$$mdi:skip-next$$", "", ""]
     - ["", "", "", "", "", ""]
 
+
 combos:
   - { p: [1, 2], k: q, l: [Base] }
   - { p: [2, 3], k: qu, l: [Base] }
   - { p: [3, 4], k: z, l: [Base] }
-  - { p: [8, 9], k: $, l: [Base] }
-  - { p: [14, 15], k: Esc, l: [Base] }
-  - { p: [15, 16], k: Tab, l: [Base] }
-  - { p: [19, 20], k: Bscp, l: [Base] }
-  - { p: [20, 21], k: Enter, l: [Base] }
-  - { p: [19, 21], k: ':', l: [Base], a: "top" }
-  - { p: [26, 27], k: 'Copy', l: [Base] }
-  - { p: [27, 28], k: 'Paste', l: [Base] }
-  - { p: [26, 27, 28], k: 'Ctrl-A', l: [Base], a: "bottom" }
-  - { p: [31, 32], k: '=', l: [Base] }
+  - { p: [14, 15], k: $$mdi:keyboard-esc$$, l: [Base] }
+  - { p: [15, 16], k: $$mdi:keyboard-tab$$, l: [Base] }
+  - { p: [19, 20], k: $$mdi:backspace$$, l: [Base] }
+  - { p: [20, 21], k: $$mdi:keyboard-return$$, l: [Base] }
+  - { p: [26, 27], k: $$mdi:content-copy$$, l: [Base] }
+  - { p: [27, 28], k:  $$mdi:content-paste$$, l: [Base] }
+  - { p: [26, 27, 28], k: $$mdi:select-all$$, l: [Base], a: "bottom" }
   - { p: [32, 33], k: 'Leader', l: [Base] }
