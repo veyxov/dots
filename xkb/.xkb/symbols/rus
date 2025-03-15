@@ -3,18 +3,14 @@ xkb_symbols "rulemak" {
 
     name[Group1]= "Russian (Rulemak, phonetic Hands Down)";
 
-    key <AE01> { [     Cyrillic_ka_descender,                       Cyrillic_KA_descender                           ] }; // қ Қ
-    key <AE02> { [     Cyrillic_softsign,                           Cyrillic_yeru,         Cyrillic_hardsign        ] }; // ь ы ъ
-    key <AE03> { [     Cyrillic_ef,                                 Cyrillic_EF                                     ] }; // ф Ф
-    key <AE04> { [     Cyrillic_em,                                 Cyrillic_EM                                     ] }; // м М
-    key <AE05> { [     Cyrillic_pe,                                 Cyrillic_PE                                     ] }; // п П
-    key <AE06> { [     Cyrillic_ne,                                 Cyrillic_NE                                     ] }; // п П
+    key <AE02> { [     Cyrillic_softsign,   Cyrillic_yeru,              Cyrillic_hardsign                                ] }; // 2@ -> ь ы ъ
+    key <AE03> { [     Cyrillic_yu,         Cyrillic_YU                                                                  ] }; // 3 -> юЮ
+    key <AC05> { [     Cyrillic_ghe,        Cyrillic_GHE,               Cyrillic_ghe_bar,               Cyrillic_GHE_bar ] }; // gG -> гғГҒ
+    key <AE12> { [     Cyrillic_ze,                                     Cyrillic_ZE                                      ] }; // - -> TODO
+    key <AD07> { [     Cyrillic_u,          Cyrillic_U,                 Cyrillic_u_macron,              Cyrillic_U_macron] }; // uU -> уӯУӮ
 
-    key <AE09> { [     period                                                                                       ] }; // .
-    key <AE10> { [     Cyrillic_ze,                                 Cyrillic_ZE                                     ] }; // з З
+    key <AE01> { [     Cyrillic_ka_descender,                       exclam                                     ] }; // 1! -> қ !
 
-    key <AE11> { [     question, exclam                                                                             ] }; // ? !
-    key <AE12> { [     Cyrillic_ze,                                 Cyrillic_ZE                                     ] }; // e Ю
     key <FK05>  { [     Cyrillic_ya,                                 Cyrillic_YA                                     ] }; // я Я
 
     // assign as q key <AD01> { [     Cyrillic_er,                                 Cyrillic_ER                                     ] }; // р Р
@@ -23,7 +19,6 @@ xkb_symbols "rulemak" {
     key <AD04> { [     Cyrillic_er,                                 Cyrillic_ER                                     ] }; // д Д
     key <AD05> { [     Cyrillic_te,                                Cyrillic_TE, Cyrillic_shcha,  Cyrillic_SHCHA   ] }; // ш Ш щ Щ
     key <AD06> { [     Cyrillic_shorti,                                Cyrillic_SHORTI, Cyrillic_shcha,  Cyrillic_SHCHA   ] }; // ш Ш щ Щ
-    key <AD07> { [     Cyrillic_u,                      Cyrillic_U, Cyrillic_yu, Cyrillic_YU                          ] }; // ҷ Ҷ
     key <AD08> { [Cyrillic_i,     Cyrillic_I, Cyrillic_i_macron, Cyrillic_I_macron] };
     key <AD09> { [     Cyrillic_o,                                  Cyrillic_O                                      ] };
     key <AD10> { [     Cyrillic_pe,                                 Cyrillic_PE,    Cyrillic_io,     Cyrillic_IO    ] };
@@ -36,7 +31,6 @@ xkb_symbols "rulemak" {
     key <AC02> { [     Cyrillic_es,     Cyrillic_ES,      registered                  ] };
     key <AC03> { [     Cyrillic_de,     Cyrillic_DE, Cyrillic_che_descender,     Cyrillic_CHE_descender                                   ] };
     key <AC04> { [     Cyrillic_ef,     Cyrillic_EF                                ] };
-    key <AC05> { [     Cyrillic_ghe,   Cyrillic_GHE, Cyrillic_ghe_bar, Cyrillic_GHE_bar ] };
     key <AC06> { [     Cyrillic_ha_descender,     Cyrillic_HA_descender, Cyrillic_hardsign, Cyrillic_HARDSIGN ] };
     key <AC07> { [     Cyrillic_ka_descender,     Cyrillic_KA_descender                        ] };
     key <AC08> { [     Cyrillic_ka,     Cyrillic_KA,    Cyrillic_nje,    Cyrillic_NJE ] };
@@ -53,7 +47,7 @@ xkb_symbols "rulemak" {
     key <AB07> { [     Cyrillic_em,       Cyrillic_EM,   Macedonia_kje,   Macedonia_KJE ] };
     key <AB08> { [     comma                                                          ] }; // ҳ Ҳ
     key <AB09> { [     period,       question,            less                  ] };
-    key <AB10> { [     period,           question,         greater                  ] };
+    key <AB10> { [     Cyrillic_,           question,         greater                  ] }; // /? -> TODO
 
     include "level3(ralt_switch)"
     include "nbsp(level4)"
