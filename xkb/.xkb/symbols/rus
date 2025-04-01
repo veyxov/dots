@@ -3,11 +3,14 @@ xkb_symbols "rulemak" {
 
     name[Group1]= "Russian (Rulemak, phonetic Hands Down)";
 
-    key <AE02> { [     Cyrillic_softsign,   Cyrillic_yeru,              Cyrillic_hardsign                                ] }; // 2@ -> ь ы ъ
-    key <AE03> { [     Cyrillic_yu,         Cyrillic_YU                                                                  ] }; // 3 -> юЮ
-    key <AC05> { [     Cyrillic_ghe,        Cyrillic_GHE,               Cyrillic_ghe_bar,               Cyrillic_GHE_bar ] }; // gG -> гғГҒ
-    key <AE12> { [     Cyrillic_ze,                                     Cyrillic_ZE                                      ] }; // - -> TODO
-    key <AD07> { [     Cyrillic_u,          Cyrillic_U,                 Cyrillic_u_macron,              Cyrillic_U_macron] }; // uU -> уӯУӮ
+    key <AE02> { [     Cyrillic_che_descender, Cyrillic_CHE_descender                                                    ] }; // 2@ -> ҷҶ
+    key <AE03> { [     Cyrillic_yu,            Cyrillic_YU                                                                  ] }; // 3 -> юЮ
+    key <AC05> { [     Cyrillic_ghe,           Cyrillic_GHE,               Cyrillic_ghe_bar,               Cyrillic_GHE_bar ] }; // gG -> гғГҒ
+    key <AE12> { [     Cyrillic_ze,                                        Cyrillic_ZE                                      ] }; // - -> TODO
+    key <AD07> { [     Cyrillic_u,             Cyrillic_U,                 Cyrillic_u_macron,              Cyrillic_U_macron] }; // uU -> уӯУӮ
+    key <AC11> { [     Cyrillic_yeru,          Cyrillic_hardsign                                                            ] }; // ыъ
+    key <AC03> { [     Cyrillic_de,            Cyrillic_DE                                                                  ] }; // дД
+    key <LEFT> { [     Cyrillic_softsign                                                                                    ] }; // дД
 
     key <AE01> { [     Cyrillic_ka_descender,                       exclam                                     ] }; // 1! -> қ !
 
@@ -29,14 +32,12 @@ xkb_symbols "rulemak" {
 
     key <AC01> { [     Cyrillic_a,      Cyrillic_A, Cyrillic_ghe_bar, Cyrillic_GHE_bar ] };
     key <AC02> { [     Cyrillic_es,     Cyrillic_ES,      registered                  ] };
-    key <AC03> { [     Cyrillic_de,     Cyrillic_DE, Cyrillic_che_descender,     Cyrillic_CHE_descender                                   ] };
     key <AC04> { [     Cyrillic_ef,     Cyrillic_EF                                ] };
     key <AC06> { [     Cyrillic_ha_descender,     Cyrillic_HA_descender, Cyrillic_hardsign, Cyrillic_HARDSIGN ] };
     key <AC07> { [     Cyrillic_ka_descender,     Cyrillic_KA_descender                        ] };
     key <AC08> { [     Cyrillic_ka,     Cyrillic_KA,    Cyrillic_nje,    Cyrillic_NJE ] };
     key <AC09> { [     Cyrillic_el,      Cyrillic_EL,    Cyrillic_u_macron ] };
     key <AC10> { [     Cyrillic_HARDSIGN,      Cyrillic_hardsign,     Cyrillic_i_macron,     Cyrillic_I_macron ] }; // ӣ Ӣ
-    key <AC11> { [     Cyrillic_che_descender,      Cyrillic_CHE_descender                                   ] };
 
     key <AB01> { [     Cyrillic_ze,     Cyrillic_ZE, Cyrillic_zhe, Cyrillic_ZHE                                   ] };
     key <AB02> { [     Cyrillic_ha,     Cyrillic_HA,   Cyrillic_dzhe,   Cyrillic_DZHE ] };
