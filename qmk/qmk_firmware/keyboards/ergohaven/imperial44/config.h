@@ -45,3 +45,6 @@
 #define EH_SHORT_PRODUCT_NAME "I44"
 
 #define COMBO_TERM_PER_COMBO
+
+#define ORBITAL_MOUSE_SPEED_CURVE \
+      {25, 30, 44, 69, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}
