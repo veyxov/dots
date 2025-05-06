@@ -49,9 +49,9 @@
 
 
     "network": {
-        "interface": "wlp46s0", 
+        "format-ethernet": "󰈀 {bandwidthTotalBits}",
         "format-wifi": " {essid} ({signalStrength}%) - {bandwidthTotalBits}",
-        "format-disconnected": "Disconnected",
+        "format-disconnected": "Brah",
         "interval": 1
     },
 
