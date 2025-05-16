@@ -143,3 +143,6 @@ bind j fillcmdline goto
 
 " Autocmds
 autocmd TriStart .* source
+
+set searchurls.gsc https://github.com/search?q=%s&type=code
+set searchurls.gsp https://github.com/search?q=path%3A%s
