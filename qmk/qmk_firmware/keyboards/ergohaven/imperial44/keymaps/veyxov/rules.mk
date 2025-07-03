@@ -28,6 +28,3 @@ VPATH += keyboards/gboards
 
 DYNAMIC_MACRO_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
-
-
-DEBOUNCE_TYPE = sym_eager_pk
