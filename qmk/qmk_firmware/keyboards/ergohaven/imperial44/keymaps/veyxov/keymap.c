@@ -234,11 +234,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAV] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        _______, _______, G(KC_F), _______, _______, _______,                 _______,G(KC_1),G(KC_2),G(KC_3),G(KC_4), _______,
+        _______, _______, G(KC_F), _______, G(KC_P), _______,                 _______,G(KC_1),G(KC_2),G(KC_3),G(KC_4), _______,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______,_______, KC_LALT, KC_LSFT, KC_LCTL, _______,                 KC_HOME,KC_LEFT,KC_DOWN,KC_UP,  KC_RGHT, KC_END,
+        _______,G(KC_S), KC_LALT, KC_LSFT, KC_LCTL, _______,                 KC_HOME,KC_LEFT,KC_DOWN,KC_UP,  KC_RGHT, KC_END,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______, _______, _______, G(KC_N), _______, _______,                 _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, G(KC_N), _______, _______,                 _______, G(KC_C), G(KC_R), G(KC_X), _______, _______,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
                                 _______, _______,_______, _______,         _______,SELLINE,KC_DEL,SELWORD
     ),
@@ -315,19 +315,6 @@ void leader_end_user(void) {
         enable_num_word();
     }
 }
-
-// combos
-#ifdef COMBO_TERM_PER_COMBO
-    uint16_t get_combo_term(uint16_t index, combo_t *combo) {
-        return 8;
-    }
-#endif
-
-#ifdef COMBO_SHOULD_TRIGGER
-bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    return true;
-}
-#endif
 
 bool process_combo_keycode_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
