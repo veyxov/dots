@@ -16,6 +16,8 @@ COMB(aei_scol, KC_SCLN, KC_A, KC_E, KC_I)
 COMB(oy_leader, QK_LEAD, KC_O, KC_Y)
 COMB(caps_combo, CW_TOGG, SPC, LTNAV)
 
+COMB(pg_up, KC_PGUP, KC_SLSH, S(KC_SLSH))
+
 SUBS(lambda, "=>", KC_SLSH, KC_E)
 
 
