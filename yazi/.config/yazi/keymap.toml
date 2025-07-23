@@ -1,6 +1,7 @@
 [mgr]
 
 keymap = [
+	{ on = "<C-n>", run = 'shell -- dragon-drop -x -i -T "$@"',             desc = "drag and drop" },
 	{ on = "<Esc>", run = "escape",             desc = "Exit visual mode, clear selection, or cancel search" },
 	{ on = "q",     run = "quit",               desc = "Quit the process" },
 	{ on = "Q",     run = "quit --no-cwd-file", desc = "Quit without outputting cwd-file" },
@@ -25,6 +26,7 @@ keymap = [
 	# Navigation
 	{ on = "a",  run = "leave", desc = "Back to the parent directory" },
 	{ on = "h", run = "enter", desc = "Enter the child directory" },
+	{ on = "o", run = "enter", desc = "Enter the child directory" },
 
 	# Toggle
 	{ on = "<Space>", run = [ "toggle", "arrow next" ], desc = "Toggle the current selection state" },
@@ -39,7 +41,7 @@ keymap = [
 	{ on = "<Tab>", run = "spot", desc = "Spot hovered file" },
 
 	# Operation
-	{ on = "o",         run = "open",                        desc = "Open selected files" },
+	# { on = "o",         run = "open",                        desc = "Open selected files" },
 	{ on = "O",         run = "open --interactive",          desc = "Open selected files interactively" },
 	{ on = "<Enter>",   run = "open",                        desc = "Open selected files" },
 	{ on = "<S-Enter>", run = "open --interactive",          desc = "Open selected files interactively" },

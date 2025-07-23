@@ -20,6 +20,7 @@ docker
 docker-compose
 dotnet-sdk
 dotnet-targeting-pack
+dragon-drop
 efibootmgr
 exfat-utils
 fd
