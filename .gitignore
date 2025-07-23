@@ -12,3 +12,4 @@ fish/functions
 fish/themes
 fish/.config/fish/fish_variables
 ansible/auth
+yazi/.config/yazi/flavors/gruvbox-dark.yazi
