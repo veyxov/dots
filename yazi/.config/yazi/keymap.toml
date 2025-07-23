@@ -8,8 +8,8 @@ keymap = [
 	{ on = "<C-z>", run = "suspend",            desc = "Suspend the process" },
 
 	# Hopping
-	{ on = "<Up>",   run = "arrow prev", desc = "Previous file" },
-	{ on = "<Down>", run = "arrow next", desc = "Next file" },
+	{ on = "i",   run = "arrow prev", desc = "Previous file" },
+	{ on = "e", run = "arrow next", desc = "Next file" },
 
 	{ on = "<C-u>", run = "arrow -50%",  desc = "Move cursor up half page" },
 	{ on = "<C-d>", run = "arrow 50%",   desc = "Move cursor down half page" },
@@ -23,8 +23,8 @@ keymap = [
 	{ on = "G",          run = "arrow bot", desc = "Go to bottom" },
 
 	# Navigation
-	{ on = "<Left>",  run = "leave", desc = "Back to the parent directory" },
-	{ on = "<Right>", run = "enter", desc = "Enter the child directory" },
+	{ on = "a",  run = "leave", desc = "Back to the parent directory" },
+	{ on = "h", run = "enter", desc = "Enter the child directory" },
 
 	# Toggle
 	{ on = "<Space>", run = [ "toggle", "arrow next" ], desc = "Toggle the current selection state" },
@@ -54,7 +54,7 @@ keymap = [
 	{ on = "X",         run = "unyank",                      desc = "Cancel the yank status" },
 	{ on = "d",         run = "remove",                      desc = "Trash selected files" },
 	{ on = "D",         run = "remove --permanently",        desc = "Permanently delete selected files" },
-	{ on = "a",         run = "create",                      desc = "Create a file (ends with / for directories)" },
+	{ on = "A",         run = "create",                      desc = "Create a file (ends with / for directories)" },
 	{ on = "r",         run = "rename --cursor=before_ext",  desc = "Rename selected file(s)" },
 	{ on = ";",         run = "shell --interactive",         desc = "Run a shell command" },
 	{ on = ":",         run = "shell --block --interactive", desc = "Run a shell command (block until finishes)" },
