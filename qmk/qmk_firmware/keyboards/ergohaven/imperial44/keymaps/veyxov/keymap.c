@@ -19,13 +19,6 @@ void toggle_lg(void) {
     unregister_code(KC_RSFT);
 }
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        default:
-            return TAPPING_TERM;
-    }
-}
-
 static uint16_t num_word_timer = 0;
 static bool is_num_word_on = false;
 void enable_num_word(void) {
