@@ -1,7 +1,6 @@
 #pragma once
 
 // tapping term
-#define TAPPING_TERM_PER_KEY
 #define TAPPING_TERM 250
 
 // mouse
