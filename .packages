@@ -32,6 +32,8 @@ fzf
 git
 git-delta
 grim
+hypridle
+hyprlock
 inetutils
 intel-media-driver
 intel-ucode
@@ -80,7 +82,6 @@ sudo
 swaybg
 swayidle
 swayimg
-swaylock
 telegram-desktop
 ttf-apple-emoji
 ttf-dejavu
