@@ -55,6 +55,7 @@ net-tools
 networkmanager
 noto-fonts
 ntfs-3g
+nushell
 obsidian
 omnisharp-roslyn
 openssh
@@ -73,6 +74,7 @@ rsync
 slurp
 sof-firmware
 spotify-launcher
+starship
 stow
 sudo
 swaybg
