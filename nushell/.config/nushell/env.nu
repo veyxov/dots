@@ -6,3 +6,9 @@ $env.config.history = {
   sync_on_enter: false
   isolation: false
 }
+
+$env.DOTNET_ROOT = '~/.dotnet'
+$env.PATH ++= [
+    ~/.dotnet/tools
+    $env.DOTNET_ROOT
+]
