@@ -1,7 +1,7 @@
 #pragma once
 
 // tapping term
-#define TAPPING_TERM 250
+#define TAPPING_TERM 200
 
 // mouse
 #define MOUSEKEY_DELAY       0
@@ -14,7 +14,7 @@
 #define CAPS_WORD_IDLE_TIMEOUT 1000
 
 // combos
-#define COMBO_TERM 25
+#define COMBO_TERM 15
 #define COMBO_VARIABLE_LEN
 
 #define ADAPTIVE_TERM 200
