@@ -3,6 +3,7 @@ aspnet-runtime
 atuin
 base
 base-devel
+bat
 bibata-cursor-theme-bin
 bluez
 bluez-utils
@@ -21,7 +22,9 @@ dotnet-sdk
 dotnet-targeting-pack
 dragon-drop
 efibootmgr
+evtest
 exfat-utils
+fastfetch
 fd
 feh
 firefox
@@ -30,6 +33,8 @@ fish
 fzf
 git
 git-delta
+git-filter-repo
+glances
 google-chrome
 grim
 hypridle
@@ -91,6 +96,7 @@ tcpdump
 telegram-desktop
 timew
 ttf-apple-emoji
+ttf-jetbrains-mono
 ttf-liberation
 ttf-nerd-fonts-symbols-mono
 usbutils
