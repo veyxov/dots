@@ -14,7 +14,7 @@
 #define CAPS_WORD_IDLE_TIMEOUT 1000
 
 // combos
-#define COMBO_TERM 15
+#define COMBO_TERM 20
 #define COMBO_VARIABLE_LEN
 
 #define ADAPTIVE_TERM 200
