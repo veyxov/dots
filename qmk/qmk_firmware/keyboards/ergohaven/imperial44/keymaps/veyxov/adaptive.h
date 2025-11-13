@@ -107,6 +107,14 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
                             break;
                     }
                     break;
+                case KC_D:
+                    switch (keycode) {
+                        case KC_D: // DD -> DC
+                            return_state = false;
+                            second = KC_C;
+                            break;
+                    }
+                    break;
                 case KC_E:
                     switch (keycode) {
                         case KC_H: // EH -> EO
