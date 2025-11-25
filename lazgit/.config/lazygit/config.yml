@@ -41,9 +41,6 @@ gui:
   commandLogSize: 8
   splitDiff: 'auto'
 git:
-  pagers:
-    - colorArg: always
-      pager: delta --dark --paging=never
   commit:
     signOff: false
   merging:
