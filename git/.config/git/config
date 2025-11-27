@@ -1,11 +1,5 @@
-[interactive]
-    diffFilter = delta --color-only
 [gpg]
 	format = ssh
-
-[delta]
-    navigate = true    # use n and N to move between diff sections
-    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 
 [merge]
     conflictstyle = diff3
@@ -29,9 +23,6 @@
     cmd = meld "$LOCAL" "$REMOTE"
 [color]
     ui = true
-[core]
-	autocrlf = input
-    pager = delta
 [rebase]
 	autosquash = true
 [fetch]
@@ -43,19 +34,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-
-[pager]
-    diff = delta
-    show = delta
-    log = delta
-    blame = delta
-    reflog = delta
-
-[interactive]
-    diffFilter = delta --color-only
-
-[delta]
-    syntax-theme = Coldark-Dark
 
 [pull]
     rebase = true
