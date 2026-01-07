@@ -83,6 +83,7 @@ unzip
 usbutils
 uwsm
 wayland-protocols
+wl-kbptr
 wlr-randr
 xdg-desktop-portal-termfilechooser-hunkyburrito-git
 xdg-desktop-portal-wlr
