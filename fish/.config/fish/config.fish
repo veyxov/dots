@@ -12,12 +12,12 @@ if status is-interactive
     alias fl="cd ~/dots && lazygit"
 
     alias g="lazygit"
-    alias s="lsd --ignore-config --human-readable --extensionsort --long --blocks size,date,name --date relative"
+    alias s="ls"
 end
-set -x PATH $PATH $HOME/.dotnet/tools
-set -x DOTNET_ROOT $HOME/.dotnet
-set -x PATH $PATH $DOTNET_ROOT
-export DOTNET_ROOT=$(dirname $(readlink $(command -v dotnet)))
+
+# set -x PATH $PATH $HOME/.dotnet/tools
+set -x DOTNET_ROOT /usr/share/dotnet
+# set -x PATH $PATH $DOTNET_ROOT
 
 # vi based cursor style
 set -gx fish_vi_force_cursor 1
