@@ -4,7 +4,8 @@ enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
     NUMWORD,
     CRYLTG,
-    REP
+    REP,
+    SN_ESC_CRYL
 };
 
 #include "keymap.h"
@@ -171,6 +172,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 else                                         layer_on (_CRYL);
             }
             return false;
+        case SN_ESC_CRYL:
+            if (record->event.pressed) {
+                if (get_highest_layer(layer_state) == _CRYL) {
+                    toggle_lg();
+                    layer_off(_CRYL);
+                } else {
+                    tap_code(KC_ESC);
+                }
+            }
+            return false;
         // remove the lag after repeating KC_T
         case LTNAV:
             if (get_repeat_key_count() > 0) {
@@ -263,7 +274,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
        _______,  _______,   _______,   _______,   _______,   _______,                       _______,   _______,   _______,   _______,   _______, KC_Z,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______, _______,   _______,   _______,   _______,   _______,                       _______,   _______,   _______,  _______,  _______,   _______,
+        _______, _______,   _______,   _______,   _______,   _______,                       _______,   _______,   _______,  _______,  _______,   KC_Z,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
                 _______, _______, KC_2, KC_3,    _______, KC_LEFT, _______,   OSM(MOD_RALT)
     ),
