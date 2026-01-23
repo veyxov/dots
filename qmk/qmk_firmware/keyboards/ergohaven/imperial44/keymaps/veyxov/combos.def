@@ -3,7 +3,7 @@ COMB(jf_q, KC_Q, KC_J, KC_F)
 SUBS(fm_qu, "qu", KC_F, KC_M)
 
 COMB(ei_enter, KC_ENT, KC_E, KC_I)
-COMB(sn_esc, KC_ESC, KC_S, KC_N)
+COMB(sn_esc, SN_ESC_CRYL, KC_S, KC_N)
 COMB(nd_tab, KC_TAB, KC_N, KC_D)
 COMB(ae_bsp, KC_BSPC, KC_A, KC_E)
 
