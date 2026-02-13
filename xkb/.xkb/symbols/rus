@@ -3,52 +3,55 @@ xkb_symbols "rulemak" {
 
     name[Group1]= "Russian (Rulemak, phonetic Hands Down)";
 
-    key <AE02> { [     Cyrillic_che_descender, Cyrillic_CHE_descender                                                    ] }; // 2@ -> ҷҶ
-    key <AE03> { [     Cyrillic_yu,            Cyrillic_YU                                                                  ] }; // 3 -> юЮ
-    key <AC05> { [     Cyrillic_ghe,           Cyrillic_GHE,               Cyrillic_ghe_bar,               Cyrillic_GHE_bar ] }; // gG -> гғГҒ
-    key <AE12> { [     Cyrillic_ze,                                        Cyrillic_ZE                                      ] }; // - -> TODO
-    key <AD07> { [     Cyrillic_u,             Cyrillic_U,                 Cyrillic_u_macron,              Cyrillic_U_macron] }; // uU -> уӯУӮ
-    key <AC11> { [     Cyrillic_yeru,          Cyrillic_hardsign                                                            ] }; // ыъ
-    key <AC03> { [     Cyrillic_de,            Cyrillic_DE                                                                  ] }; // дД
-    key <LEFT> { [     Cyrillic_softsign                                                                                    ] }; // дД
+    // Row E (Numbers)
+    key <AE01> { [ Cyrillic_ka_descender, exclam                                    ] }; // 1 -> қ !
+    key <AE02> { [ Cyrillic_che_descender, Cyrillic_CHE_descender                   ] }; // 2 -> ҷ Ҷ
+    key <AE03> { [ Cyrillic_yu,           Cyrillic_YU                               ] }; // 3 -> ю Ю
+    key <AE12> { [ Cyrillic_ze,           Cyrillic_ZE                               ] }; // - -> з З
 
-    key <AE01> { [     Cyrillic_ka_descender,                       exclam                                     ] }; // 1! -> қ !
+    // Row D (Top Letter Row)
+    // key <AD01> { [ Cyrillic_er,           Cyrillic_ER                               ] }; // q -> р Р
+    key <AD02> { [ Cyrillic_sha,          Cyrillic_SHA,          Cyrillic_tse,       Cyrillic_TSE       ] }; // w -> с С (L3: ц Ц)
+    key <AD03> { [ Cyrillic_ie,           Cyrillic_IE,           Cyrillic_io,        Cyrillic_IO        ] }; // e -> е Е (L3: ё Ё)
+    key <AD04> { [ Cyrillic_er,           Cyrillic_ER                               ] }; // r -> р Р
+    key <AD05> { [ Cyrillic_te,           Cyrillic_TE,           Cyrillic_shcha,     Cyrillic_SHCHA     ] }; // t -> т Т (L3: щ Щ)
+    key <AD06> { [ Cyrillic_shorti,       Cyrillic_SHORTI,       Cyrillic_shcha,     Cyrillic_SHCHA     ] }; // y -> й Й (L3: щ Щ)
+    key <AD07> { [ Cyrillic_u,            Cyrillic_U,            Cyrillic_u_macron,  Cyrillic_U_macron  ] }; // u -> у У (L3: ӯ Ӯ)
+    key <AD08> { [ Cyrillic_i,            Cyrillic_I,            Cyrillic_i_macron,  Cyrillic_I_macron  ] }; // i -> и И (L3: ӣ Ӣ)
+    key <AD09> { [ Cyrillic_o,            Cyrillic_O                                ] }; // o -> о О
+    key <AD10> { [ Cyrillic_pe,           Cyrillic_PE,           Cyrillic_io,        Cyrillic_IO        ] }; // p -> п П (L3: ё Ё)
+    key <AD11> { [ Cyrillic_i,            Cyrillic_I,            Cyrillic_i_macron,  colon              ] }; // [ -> и И (L3: ӣ, L4: :)
+    key <AD12> { [ Cyrillic_ha_descender, Cyrillic_HA_descender, guillemotleft,      doublelowquotemark ] }; // ] -> ҳ Ҳ (L3: « L4: „)
 
-    key <FK05>  { [     Cyrillic_ya,                                 Cyrillic_YA                                     ] }; // я Я
+    // Row C (Home Row)
+    key <AC01> { [ Cyrillic_a,            Cyrillic_A,            Cyrillic_ghe_bar,   Cyrillic_GHE_bar   ] }; // a -> а А (L3: ғ Ғ)
+    key <AC02> { [ Cyrillic_es,           Cyrillic_ES,           registered                             ] }; // s -> с С (L3: ®)
+    key <AC03> { [ Cyrillic_de,           Cyrillic_DE                               ] }; // d -> д Д
+    key <AC04> { [ Cyrillic_ef,           Cyrillic_EF                               ] }; // f -> ф Ф
+    key <AC05> { [ Cyrillic_ghe,          Cyrillic_GHE,          Cyrillic_ghe_bar,   Cyrillic_GHE_bar   ] }; // g -> г Г (L3: ғ Ғ)
+    key <AC06> { [ Cyrillic_ha_descender, Cyrillic_HA_descender, Cyrillic_hardsign,  Cyrillic_HARDSIGN  ] }; // h -> ҳ Ҳ (L3: ъ Ъ)
+    key <AC07> { [ Cyrillic_ka_descender, Cyrillic_KA_descender                     ] }; // j -> қ Қ
+    key <AC08> { [ Cyrillic_ka,           Cyrillic_KA,           Cyrillic_nje,       Cyrillic_NJE       ] }; // k -> к К (L3: њ Њ)
+    key <AC09> { [ Cyrillic_el,           Cyrillic_EL,           Cyrillic_u_macron                      ] }; // l -> л Л (L3: ӯ)
+    key <AC10> { [ Cyrillic_HARDSIGN,     colon,                 Cyrillic_i_macron,  Cyrillic_I_macron  ] }; // ; -> Ъ : (L3: ӣ Ӣ)
+    key <AC11> { [ Cyrillic_yeru,         Cyrillic_hardsign                         ] }; // ' -> ы ъ
 
-    // assign as q key <AD01> { [     Cyrillic_er,                                 Cyrillic_ER                                     ] }; // р Р
-    key <AD02> { [     Cyrillic_sha,                                 Cyrillic_SHA,  Cyrillic_tse,    Cyrillic_TSE     ] }; // с С ц Ц
-    key <AD03> { [     Cyrillic_ie,                                 Cyrillic_IE, Cyrillic_io, Cyrillic_IO                                     ] }; // e
-    key <AD04> { [     Cyrillic_er,                                 Cyrillic_ER                                     ] }; // д Д
-    key <AD05> { [     Cyrillic_te,                                Cyrillic_TE, Cyrillic_shcha,  Cyrillic_SHCHA   ] }; // ш Ш щ Щ
-    key <AD06> { [     Cyrillic_shorti,                                Cyrillic_SHORTI, Cyrillic_shcha,  Cyrillic_SHCHA   ] }; // ш Ш щ Щ
-    key <AD08> { [Cyrillic_i,     Cyrillic_I, Cyrillic_i_macron, Cyrillic_I_macron] };
-    key <AD09> { [     Cyrillic_o,                                  Cyrillic_O                                      ] };
-    key <AD10> { [     Cyrillic_pe,                                 Cyrillic_PE,    Cyrillic_io,     Cyrillic_IO    ] };
-    key <AD11> { [     Cyrillic_i,                                  Cyrillic_I,       Cyrillic_i_macron,           colon ] };
-    key <AD12> { [     Cyrillic_ha_descender,    Cyrillic_HA_descender,   guillemotleft,  doublelowquotemark ] };
-    // key <BKSL> { [     Cyrillic_em,     Cyrillic_EM, Cyrillic_ka_descender, Cyrillic_KA_descender                                 ] }; // э Э
-    key <CAPS> { [     Cyrillic_ha,     Cyrillic_HA                                 ] };
+    // Row B (Bottom Row)
+    key <AB01> { [ Cyrillic_ze,           Cyrillic_ZE,           Cyrillic_zhe,       Cyrillic_ZHE       ] }; // z -> з З (L3: ж Ж)
+    key <AB02> { [ Cyrillic_ha,           Cyrillic_HA,           Cyrillic_dzhe,      Cyrillic_DZHE      ] }; // x -> х Х (L3: џ Џ)
+    key <AB03> { [ Cyrillic_che,          Cyrillic_CHE,          Serbian_dje,        Serbian_DJE        ] }; // c -> ч Ч (L3: ђ Ђ)
+    key <AB04> { [ Cyrillic_ve,           Cyrillic_VE                               ] }; // v -> в В
+    key <AB05> { [ Cyrillic_be,           Cyrillic_BE,           Macedonia_dse,      Macedonia_DSE      ] }; // b -> б Б (L3: ѕ Ѕ)
+    key <AB06> { [ Cyrillic_en,           Cyrillic_EN,           backslash,          bar                ] }; // n -> н Н (L3: \ |)
+    key <AB07> { [ Cyrillic_em,           Cyrillic_EM,           Macedonia_kje,      Macedonia_KJE      ] }; // m -> м М (L3: ќ Ќ)
+    key <AB08> { [ comma                                                            ] }; // , -> ,
+    key <AB09> { [ period,                question,              less                                   ] }; // . -> . ? <
+    key <AB10> { [ slash,                 question,              greater                                ] }; // / -> / ? >
 
-    key <AC01> { [     Cyrillic_a,      Cyrillic_A, Cyrillic_ghe_bar, Cyrillic_GHE_bar ] };
-    key <AC02> { [     Cyrillic_es,     Cyrillic_ES,      registered                  ] };
-    key <AC04> { [     Cyrillic_ef,     Cyrillic_EF                                ] };
-    key <AC06> { [     Cyrillic_ha_descender,     Cyrillic_HA_descender, Cyrillic_hardsign, Cyrillic_HARDSIGN ] };
-    key <AC07> { [     Cyrillic_ka_descender,     Cyrillic_KA_descender                        ] };
-    key <AC08> { [     Cyrillic_ka,     Cyrillic_KA,    Cyrillic_nje,    Cyrillic_NJE ] };
-    key <AC09> { [     Cyrillic_el,      Cyrillic_EL,    Cyrillic_u_macron ] };
-    key <AC10> { [     Cyrillic_HARDSIGN,      Cyrillic_hardsign,     Cyrillic_i_macron,     Cyrillic_I_macron ] }; // ӣ Ӣ
-
-    key <AB01> { [     Cyrillic_ze,     Cyrillic_ZE, Cyrillic_zhe, Cyrillic_ZHE                                   ] };
-    key <AB02> { [     Cyrillic_ha,     Cyrillic_HA,   Cyrillic_dzhe,   Cyrillic_DZHE ] };
-    key <AB03> { [     Cyrillic_che,     Cyrillic_CHE,     Serbian_dje,     Serbian_DJE ] };
-    key <AB04> { [     Cyrillic_ve,     Cyrillic_VE                                   ] }; // NON_FUNCTIONAL
-    key <AB05> { [     Cyrillic_be,     Cyrillic_BE,   Macedonia_dse,   Macedonia_DSE ] };
-    key <AB06> { [     Cyrillic_en,       Cyrillic_EN,       backslash,             bar ] };
-    key <AB07> { [     Cyrillic_em,       Cyrillic_EM,   Macedonia_kje,   Macedonia_KJE ] };
-    key <AB08> { [     comma                                                          ] }; // ҳ Ҳ
-    key <AB09> { [     period,       question,            less                  ] };
-    key <AB10> { [     Cyrillic_,           question,         greater                  ] }; // /? -> TODO
+    // Function Keys & Others
+    key <FK05> { [ Cyrillic_ya,           Cyrillic_YA                               ] }; // F5 -> я Я
+    key <CAPS> { [ Cyrillic_ha,           Cyrillic_HA                               ] }; // Caps -> х Х
+    key <LEFT> { [ Cyrillic_softsign                                                ] }; // Left -> ь
 
     include "level3(ralt_switch)"
     include "nbsp(level4)"
