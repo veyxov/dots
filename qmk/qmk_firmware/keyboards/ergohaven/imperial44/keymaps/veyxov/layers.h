@@ -1,9 +1,11 @@
 #pragma once
 
-#define _BASE 0
-#define _NAV 1
-#define _MOUSE 2
-#define _NUM 3
-#define _CRYL 4
-#define _FN 5
-#define _SYM 6
+enum layers {
+    _BASE,
+    _NAV,
+    _MOUSE,
+    _NUM,
+    _CRYL,
+    _FN,
+    _SYM,
+};

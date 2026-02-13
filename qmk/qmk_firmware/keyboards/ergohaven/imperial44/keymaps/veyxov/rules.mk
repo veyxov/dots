@@ -21,7 +21,7 @@ MOUSEKEYS_ENABLE = no
 
 EXTRAKEY_ENABLE = yes
 LTO_ENABLE = yes
-TAP_DANCE_ENABLE = no
+TAP_DANCE_ENABLE = yes
 
 COMBO_ENABLE = yes
 VPATH += keyboards/gboards
