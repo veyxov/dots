@@ -8,8 +8,19 @@ enum custom_keycodes {
     SN_ESC_CRYL
 };
 
+enum {
+    TD_Z_SCLN = 0
+};
+
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_Z_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_Z, S(KC_SCLN))
+};
+
 #include "keymap.h"
+#ifdef CONSOLE_ENABLE
 #include "print.h"
+#endif
 #include "g/keymap_combo.h"
 #include "adaptive.h"
 
@@ -61,8 +72,6 @@ bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
             return false;
     }
 
-    // Should be unreachable
-    return false;
 }
 bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
     // Handle the custom keycodes that go with this feature
@@ -124,7 +133,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
     }
 
-    // no adaptive keys on the cryllic layer
+    // no adaptive keys on the cyrillic layer
     if (get_highest_layer(layer_state) != _CRYL) {
         if (!process_adaptive_user(keycode, record)) {
             return false; // We have declared no more processing.
@@ -233,7 +242,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         LT(_FN, KC_LGUI), KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                        KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
-                S_MOUS, LTNAV, REP,  QK_BOOTLOADER,                     LGUI(KC_L),   MT(MOD_LCTL, KC_LEFT), SPC, KC_RGHT
+                S_MOUS, LTNAV, REP,  QK_BOOTLOADER,                     LGUI(KC_L),   MT(MOD_LCTL, KC_LEFT), SYM_SPC, KC_RGHT
     ),
 
     [_NAV] = LAYOUT(
@@ -272,9 +281,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
         _______,  _______,   _______,   _______,   _______,   _______,                      _______, _______, _______, _______, _______, _______,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-       _______,  _______,   _______,   _______,   _______,   _______,                       _______,   _______,   _______,   _______,   _______, KC_Z,
+       _______,  _______,   _______,   _______,   _______,   _______,                       _______,   _______,   _______,   _______,   _______, TD(TD_Z_SCLN),
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______, _______,   _______,   _______,   _______,   _______,                       _______,   _______,   _______,  _______,  _______,   KC_Z,
+        _______, _______,   _______,   _______,   _______,   _______,                       _______,   _______,   _______,  _______,  _______,   KC_NO,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
                 _______, _______, KC_2, KC_3,    _______, KC_LEFT, _______,   OSM(MOD_RALT)
     ),
@@ -307,8 +316,8 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_DOT, S(KC_GRV)}, // . -> ~
     {KC_SLSH, S(KC_7)}, // / -> &
     {S(KC_SLSH), S(KC_1)}, // ? -> !
-    {KC_COMM, S(KC_BSLS)}, // ' -> "
-    {S(KC_MINS), KC_GRV}, // , -> |
+    {KC_COMM, S(KC_BSLS)}, // , -> |
+    {S(KC_MINS), KC_GRV}, // _ -> `
     {KC_MINS, S(KC_EQL)}, // - -> +
     {S(KC_SCLN), KC_SCLN}, // : -> ;
 };
@@ -320,14 +329,7 @@ void leader_end_user(void) {
     }
 }
 
-bool process_combo_keycode_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    }
-    return true;
-}
-// combo end
-
-// matrix can
+// matrix scan
 void matrix_scan_user(void) {
     matrix_adaptive_user();
 }
