@@ -15,9 +15,8 @@ if status is-interactive
     alias s="ls"
 end
 
-# set -x PATH $PATH $HOME/.dotnet/tools
 set -x DOTNET_ROOT /usr/share/dotnet
-# set -x PATH $PATH $DOTNET_ROOT
+set -x PATH $PATH:$DOTNET_ROOT:$HOME/.dotnet/tools
 
 # vi based cursor style
 set -gx fish_vi_force_cursor 1
