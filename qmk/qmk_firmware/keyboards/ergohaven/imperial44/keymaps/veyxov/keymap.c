@@ -5,7 +5,7 @@ enum custom_keycodes {
     NUMWORD,
     CRYLTG,
     REP,
-    SN_ESC_CRYL
+    SN_ESC_CRYL,
 };
 
 enum {
@@ -123,6 +123,14 @@ bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
     return true;
 }
 
+static bool s_mous_held = false;
+static uint16_t s_mous_timer = 0;
+
+static bool rep_held = false;
+static bool rep_alt_active = false;
+static uint16_t rep_timer = 0;
+
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
@@ -139,9 +147,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false; // We have declared no more processing.
         }
     }
-
-    static bool shift_triggered = false;
-    static uint16_t shift_timer = 0;
 
     #ifdef CONSOLE_ENABLE
         const bool is_combo = record->event.type == COMBO_EVENT;
@@ -161,19 +166,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
         case REP:
-            // if the lgui modifier is active
-            if (get_mods() & MOD_MASK_CTRL) {
-                // type the alternate
-                uint8_t temp_mods = get_mods();
-                // remove the ctrl mod, because it's the trigger
-                del_mods(MOD_MASK_CTRL);
-                alt_repeat_key_invoke(&record->event);
-                set_mods(temp_mods);
-                return false;
+            if (record->event.pressed) {
+                rep_timer = timer_read();
+                rep_held = true;
             } else {
-                repeat_key_invoke(&record->event);
-                return false;
+                if (rep_held) {
+                    // Quick tap: fire press + release for repeat
+                    rep_held = false;
+                    keyevent_t press_event = record->event;
+                    press_event.pressed = true;
+                    if (get_mods() & MOD_MASK_CTRL) {
+                        uint8_t temp_mods = get_mods();
+                        del_mods(MOD_MASK_CTRL);
+                        alt_repeat_key_invoke(&press_event);
+                        alt_repeat_key_invoke(&record->event);
+                        set_mods(temp_mods);
+                    } else {
+                        repeat_key_invoke(&press_event);
+                        repeat_key_invoke(&record->event);
+                    }
+                } else if (rep_alt_active) {
+                    // Was held: release Alt
+                    unregister_code(KC_LALT);
+                    rep_alt_active = false;
+                }
             }
+            return false;
         case CRYLTG:
             if (record->event.pressed) {
                 toggle_lg();
@@ -205,29 +223,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case S_MOUS:
             if (record->event.pressed) {
-                shift_timer = timer_read();
-                register_code(KC_LSFT);
-                shift_triggered = true;
+                if (layer_state_is(_MOUSE)) {
+                    // Already in mouse layer: toggle it off
+                    layer_off(_MOUSE);
+                } else {
+                    s_mous_timer = timer_read();
+                    register_code(KC_LSFT);
+                    s_mous_held = true;
+                }
             } else {
-                if (shift_triggered && (timer_elapsed(shift_timer) < TAPPING_TERM)) {
-                    // If released quickly, trigger one-shot shift
+                if (s_mous_held) {
+                    // Released before threshold: one-shot shift
                     unregister_code(KC_LSFT);
                     set_oneshot_mods(MOD_LSFT);
-                } else {
-                    // If it was held, disable the mouse layer
-                    unregister_code(KC_LSFT);
-                    layer_off(_MOUSE);
+                    s_mous_held = false;
                 }
-                shift_triggered = false;
+                // If s_mous_held is false, matrix_scan already activated
+                // the layer and unregistered shift — layer stays on
             }
             return false;
-    }
-
-    // Add this outside the switch statement
-    if (shift_triggered && timer_elapsed(shift_timer) > TAPPING_TERM) {
-        unregister_code(KC_LSFT);  // Unregister shift before enabling mouse layer
-        layer_on(_MOUSE);
-        shift_triggered = false;
     }
 
     return true;
@@ -275,7 +289,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         _______, _______, _______, _______, KC_8, _______,                 _______, KC_9, _______, _______, _______, _______,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
-                                _______,KC_BSPC,_______, _______,         _______,KC_SPC, MS_BTN1,MS_BTN2
+                                _______,KC_BSPC,_______, _______,         _______,MS_BTN1, KC_SPC,MS_BTN2
     ),
     [_CRYL] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
@@ -329,9 +343,20 @@ void leader_end_user(void) {
     }
 }
 
-// matrix scan
 void matrix_scan_user(void) {
     matrix_adaptive_user();
+    // REP: activate Alt after hold threshold
+    if (rep_held && timer_elapsed(rep_timer) > TAPPING_TERM) {
+        register_code(KC_LALT);
+        rep_held = false;
+        rep_alt_active = true;
+    }
+    // S_MOUS: switch from shift to mouse layer once hold threshold is reached
+    if (s_mous_held && timer_elapsed(s_mous_timer) > TAPPING_TERM) {
+        unregister_code(KC_LSFT);
+        layer_on(_MOUSE);
+        s_mous_held = false;
+    }
 }
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
