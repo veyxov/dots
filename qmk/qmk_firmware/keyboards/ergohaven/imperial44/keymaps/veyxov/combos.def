@@ -13,7 +13,6 @@ COMB(glc_all, C(KC_A), KC_G, KC_L, KC_C)
 
 COMB(aei_scol, KC_SCLN, KC_A, KC_E, KC_I)
 
-COMB(oy_leader, QK_LEAD, KC_O, KC_Y)
 COMB(caps_combo, CW_TOGG, SYM_SPC, LTNAV)
 
 COMB(pg_up, KC_PGUP, KC_SLSH, S(KC_SLSH))
