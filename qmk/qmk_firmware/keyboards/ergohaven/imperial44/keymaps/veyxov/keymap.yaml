@@ -1,0 +1,67 @@
+layout:
+  ortho_layout:
+    split: true
+    rows: 3
+    columns: 6
+    thumbs: 4
+
+layers:
+  BASE:
+    - [{t: NUM, h: OSL}, J, F, M, P, V,        LEAD, {t: ".", s: "~"}, {t: /, s: "&"}, {t: "?", s: "!"}, "'", {t: _, s: "`"}]
+    - [DEL, R, S, N, D, W,                      {t: ",", s: "|"}, A, E, I, H, {t: ":", s: ";"}]
+    - [{t: GUI, h: FN}, X, G, L, C, B,          {t: "-", s: "+"}, U, O, Y, K, {t: CRYL, type: layer}]
+    - [{t: "⇧", h: MOUSE}, {t: T, h: NAV}, {t: REP, h: ALT}, BOOT,    "⌘L", {t: "←", h: CTRL}, {t: SPC, h: SYM}, "→"]
+
+  NAV:
+    - [{type: trans}, {type: trans}, "⌘F", {type: trans}, "⌘P", "⌘V",        {type: trans}, "⌘1", "⌘2", "⌘3", "⌘4", {type: trans}]
+    - [{type: trans}, "⌘S", ALT, SHFT, CTRL, GUI,                             HOME, "←", "↓", "↑", "→", END]
+    - [{type: trans}, {type: trans}, {type: trans}, "⌘N", "⎌", "↷",    {type: trans}, "⌘C", "⌘R", "⌘K", {type: trans}, {type: trans}]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, SelLine, "⌘X", SelWord]
+
+  MOUSE:
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, MHold, "↓", MRel, WhlUp, {type: trans}]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, "←", "↑", "→", WhlDn, {type: trans}]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, Btn1, Btn2, Btn3, {type: trans}, {type: trans}]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, "2×", BtnM, Slow]
+
+  NUM:
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, "+", {type: trans}, {type: trans}, {type: trans}]
+    - [{type: trans}, "6", "4", "0", "2", {type: trans},                                            {type: trans}, "3", "1", "5", "7", {type: trans}]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, "8", {type: trans},              {type: trans}, "9", {type: trans}, {type: trans}, {type: trans}, {type: trans}]
+    - [{type: trans}, BSPC, {type: trans}, {type: trans},    {type: trans}, BTN1, SPC, BTN2]
+
+  CRYL:
+    - [{type: trans}, қ, ф, м, п, в,    {type: trans}, {type: trans}, {type: trans}, {type: trans}, ы, {type: trans}]
+    - [я, р, с, н, д, ш,    {type: trans}, а, е, и, ҳ, {t: з, h: ":"}]
+    - [{type: trans}, х, г, л, ч, б,    {type: trans}, у, о, й, к, ""]
+    - [{type: trans}, {type: trans}, "2", "3",    {type: trans}, ь, {type: trans}, RAlt]
+
+  FN:
+    - [{type: trans}, REC, STOP, PLAY, {type: trans}, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    MUTE, "Vol-", {type: trans}, {type: trans}, "Vol+", {type: trans}]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, Prev, Play, Next, {type: trans}, {type: trans}]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}]
+
+  SYM:
+    - [{type: trans}, "'", "<", ">", '"', {type: trans},    {type: trans}, ".", "&", "]", "[", "%"]
+    - [{type: trans}, "!", "-", "+", "=", "#",              "0", ";", ")", "(", "$", {type: trans}]
+    - [{type: trans}, "^", "/", "@", "\\", {type: trans},   "~", "*", "}", "{", "@", {type: trans}]
+    - [BSPC, SPC, ENT, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}]
+
+combos:
+  - {p: [3, 4],       k: Z,      l: [BASE]}
+  - {p: [1, 2],       k: Q,      l: [BASE]}
+  - {p: [2, 3],       k: qu,     l: [BASE]}
+  - {p: [14, 15],     k: Esc,    l: [BASE]}
+  - {p: [15, 16],     k: Tab,    l: [BASE]}
+  - {p: [19, 20],     k: BSPC,   l: [BASE]}
+  - {p: [20, 21],     k: Enter,  l: [BASE]}
+  - {p: [26, 27],     k: Copy,   l: [BASE]}
+  - {p: [27, 28],     k: Paste,  l: [BASE]}
+  - {p: [26, 27, 28], k: SelAll, l: [BASE]}
+  - {p: [19, 20, 21], k: ";",    l: [BASE]}
+  - {p: [37, 42],     k: CapsWd, l: [BASE]}
+  - {p: [8, 9],       k: PgUp,   l: [BASE]}
+  - {p: [9, 10],      k: PgDn,   l: [BASE]}
+  - {p: [8, 20],      k: "=>",   l: [BASE]}
+  - {p: [20, 21],     k: Enter,  l: [SYM]}
