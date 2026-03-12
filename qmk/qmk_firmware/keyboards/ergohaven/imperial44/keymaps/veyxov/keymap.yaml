@@ -10,12 +10,12 @@ layers:
     - [{t: NUM, h: OSL}, J, F, M, P, V,        LEAD, {t: ".", s: "~"}, {t: /, s: "&"}, {t: "?", s: "!"}, "'", {t: _, s: "`"}]
     - [DEL, R, S, N, D, W,                      {t: ",", s: "|"}, A, E, I, H, {t: ":", s: ";"}]
     - [{t: GUI, h: FN}, X, G, L, C, B,          {t: "-", s: "+"}, U, O, Y, K, {t: CRYL, type: layer}]
-    - [{t: "⇧", h: MOUSE}, {t: T, h: NAV}, REP, BOOT,    "⌘L", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
+    - [{t: "⇧", h: MOUSE}, {t: T, h: NAV}, REP, TAB,     "⌘L", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
 
   NAV:
     - [{type: trans}, {type: trans}, "⌘F", {type: trans}, "⌘P", "⌘V",        {type: trans}, "⌘1", "⌘2", "⌘3", "⌘4", {type: trans}]
     - [{type: trans}, "⌘S", ALT, SHFT, CTRL, GUI,                             HOME, "←", "↓", "↑", "→", END]
-    - [{type: trans}, {type: trans}, {type: trans}, "⌘N", "⎌", "↷",    {type: trans}, "⌘C", "⌘R", "⌘K", {type: trans}, {type: trans}]
+    - [{type: trans}, {type: trans}, {type: trans}, "⌘N", "⎌", "↷",    {type: trans}, "⌘C", "⌘R", "⌘K", Mon, WinMon]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, SelLine, "⌘X", SelWord]
 
   MOUSE:
