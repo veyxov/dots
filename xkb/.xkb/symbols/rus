@@ -49,7 +49,7 @@ xkb_symbols "rulemak" {
     key <AB10> { [ slash,                 question,              greater                                ] }; // / -> / ? >
 
     // Function Keys & Others
-    key <FK05> { [ Cyrillic_ya,           Cyrillic_YA                               ] }; // F5 -> я Я
+    key <DELE> { [ Cyrillic_ya,           Cyrillic_YA                               ] }; // Del -> я Я
     key <CAPS> { [ Cyrillic_ha,           Cyrillic_HA                               ] }; // Caps -> х Х
     key <LEFT> { [ Cyrillic_softsign                                                ] }; // Left -> ь
 
