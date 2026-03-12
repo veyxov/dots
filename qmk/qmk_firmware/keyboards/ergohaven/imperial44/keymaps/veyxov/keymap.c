@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include <string.h>
 
 enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
@@ -21,8 +22,12 @@ tap_dance_action_t tap_dance_actions[] = {
 #ifdef CONSOLE_ENABLE
 #include "print.h"
 #endif
+#include "raw_hid.h"
 #include "g/keymap_combo.h"
 #include "adaptive.h"
+
+#define BOOTLOADER_MAGIC "BOOTLDR1"
+#define RAW_HID_REPORT_SIZE 32
 
 void toggle_lg(void) {
     register_code(KC_LSFT);
@@ -353,3 +358,70 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   }
   return KC_TRNS; 
 }
+
+void raw_hid_receive(uint8_t *data, uint8_t length) {
+    if (length != RAW_HID_REPORT_SIZE) {
+        return;
+    }
+
+    if (memcmp(data, BOOTLOADER_MAGIC, sizeof(BOOTLOADER_MAGIC) - 1) == 0) {
+        uint8_t response[RAW_HID_REPORT_SIZE] = {0};
+        memcpy(response, "BOOTING", 7);
+        raw_hid_send(response, sizeof(response));
+        wait_ms(10);
+        reset_keyboard();
+    }
+}
+
+#ifdef OLED_ENABLE
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    if (!is_keyboard_master()) {
+        return OLED_ROTATION_180;
+    }
+
+    return rotation;
+}
+
+bool oled_task_user(void) {
+    oled_clear();
+
+    if (is_keyboard_master()) {
+        oled_write_ln_P(PSTR("I44 veyxov"), false);
+        oled_write_ln_P(PSTR("MASTER"), false);
+    } else {
+        oled_write_ln_P(PSTR("I44 veyxov"), false);
+        oled_write_ln_P(PSTR("OFFHAND"), false);
+    }
+
+    oled_write_P(PSTR("Layer: "), false);
+
+    switch (get_highest_layer(layer_state)) {
+        case _BASE:
+            oled_write_ln_P(PSTR("BASE"), false);
+            break;
+        case _NAV:
+            oled_write_ln_P(PSTR("NAV"), false);
+            break;
+        case _MOUSE:
+            oled_write_ln_P(PSTR("MOUSE"), false);
+            break;
+        case _NUM:
+            oled_write_ln_P(PSTR("NUM"), false);
+            break;
+        case _CRYL:
+            oled_write_ln_P(PSTR("CRYL"), false);
+            break;
+        case _FN:
+            oled_write_ln_P(PSTR("FN"), false);
+            break;
+        case _SYM:
+            oled_write_ln_P(PSTR("SYM"), false);
+            break;
+        default:
+            oled_write_ln_P(PSTR("?"), false);
+            break;
+    }
+
+    return false;
+}
+#endif
