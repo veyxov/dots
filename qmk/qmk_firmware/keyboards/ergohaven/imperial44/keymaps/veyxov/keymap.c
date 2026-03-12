@@ -126,10 +126,6 @@ bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
 static bool s_mous_held = false;
 static uint16_t s_mous_timer = 0;
 
-static bool rep_held = false;
-static bool rep_alt_active = false;
-static uint16_t rep_timer = 0;
-
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -166,29 +162,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
         case REP:
-            if (record->event.pressed) {
-                rep_timer = timer_read();
-                rep_held = true;
-            } else {
-                if (rep_held) {
-                    // Quick tap: fire press + release for repeat
-                    rep_held = false;
-                    keyevent_t press_event = record->event;
-                    press_event.pressed = true;
-                    if (get_mods() & MOD_MASK_CTRL) {
-                        uint8_t temp_mods = get_mods();
-                        del_mods(MOD_MASK_CTRL);
-                        alt_repeat_key_invoke(&press_event);
-                        alt_repeat_key_invoke(&record->event);
-                        set_mods(temp_mods);
-                    } else {
-                        repeat_key_invoke(&press_event);
-                        repeat_key_invoke(&record->event);
-                    }
-                } else if (rep_alt_active) {
-                    // Was held: release Alt
-                    unregister_code(KC_LALT);
-                    rep_alt_active = false;
+            if (!record->event.pressed) {
+                keyevent_t press_event = record->event;
+                press_event.pressed = true;
+                if (get_mods() & MOD_MASK_CTRL) {
+                    uint8_t temp_mods = get_mods();
+                    del_mods(MOD_MASK_CTRL);
+                    alt_repeat_key_invoke(&press_event);
+                    alt_repeat_key_invoke(&record->event);
+                    set_mods(temp_mods);
+                } else {
+                    repeat_key_invoke(&press_event);
+                    repeat_key_invoke(&record->event);
                 }
             }
             return false;
@@ -256,7 +241,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         LT(_FN, KC_LGUI), KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                        KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
-                S_MOUS, LTNAV, REP,  QK_BOOTLOADER,                     LGUI(KC_L),   MT(MOD_LCTL, KC_LEFT), SYM_SPC, KC_RGHT
+                S_MOUS, LTNAV, REP,  QK_BOOTLOADER,                     LGUI(KC_L),   MT(MOD_LCTL, KC_LEFT), SYM_SPC, MT(MOD_LALT, KC_RGHT)
     ),
 
     [_NAV] = LAYOUT(
@@ -345,12 +330,6 @@ void leader_end_user(void) {
 
 void matrix_scan_user(void) {
     matrix_adaptive_user();
-    // REP: activate Alt after hold threshold
-    if (rep_held && timer_elapsed(rep_timer) > TAPPING_TERM) {
-        register_code(KC_LALT);
-        rep_held = false;
-        rep_alt_active = true;
-    }
     // S_MOUS: switch from shift to mouse layer once hold threshold is reached
     if (s_mous_held && timer_elapsed(s_mous_timer) > TAPPING_TERM) {
         unregister_code(KC_LSFT);

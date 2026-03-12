@@ -10,7 +10,7 @@ layers:
     - [{t: NUM, h: OSL}, J, F, M, P, V,        LEAD, {t: ".", s: "~"}, {t: /, s: "&"}, {t: "?", s: "!"}, "'", {t: _, s: "`"}]
     - [DEL, R, S, N, D, W,                      {t: ",", s: "|"}, A, E, I, H, {t: ":", s: ";"}]
     - [{t: GUI, h: FN}, X, G, L, C, B,          {t: "-", s: "+"}, U, O, Y, K, {t: CRYL, type: layer}]
-    - [{t: "⇧", h: MOUSE}, {t: T, h: NAV}, {t: REP, h: ALT}, BOOT,    "⌘L", {t: "←", h: CTRL}, {t: SPC, h: SYM}, "→"]
+    - [{t: "⇧", h: MOUSE}, {t: T, h: NAV}, REP, BOOT,    "⌘L", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
 
   NAV:
     - [{type: trans}, {type: trans}, "⌘F", {type: trans}, "⌘P", "⌘V",        {type: trans}, "⌘1", "⌘2", "⌘3", "⌘4", {type: trans}]
@@ -54,7 +54,7 @@ combos:
   - {p: [2, 3],       k: qu,     l: [BASE]}
   - {p: [14, 15],     k: Esc,    l: [BASE]}
   - {p: [15, 16],     k: Tab,    l: [BASE]}
-  - {p: [19, 20],     k: BSPC,   l: [BASE]}
+  - {p: [19, 20],     k: "⌃⌫",   l: [BASE]}
   - {p: [20, 21],     k: Enter,  l: [BASE]}
   - {p: [26, 27],     k: Copy,   l: [BASE]}
   - {p: [27, 28],     k: Paste,  l: [BASE]}
