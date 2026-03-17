@@ -1,5 +1,8 @@
 #include QMK_KEYBOARD_H
 #include <string.h>
+#include "rgblight.h"
+void ergohaven_dark_draw(void);
+void ergohaven_dark_reset(void);
 
 enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
@@ -28,6 +31,41 @@ tap_dance_action_t tap_dance_actions[] = {
 
 #define BOOTLOADER_MAGIC "BOOTLDR1"
 #define RAW_HID_REPORT_SIZE 32
+#define HSV_WARM 40, 200, 50
+
+#ifdef RGBLIGHT_ENABLE
+const rgblight_segment_t PROGMEM layer_base[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_WARM}
+);
+const rgblight_segment_t PROGMEM layer_nav[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_GREEN}
+);
+const rgblight_segment_t PROGMEM layer_mouse[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_PURPLE}
+);
+const rgblight_segment_t PROGMEM layer_num[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_GOLD}
+);
+const rgblight_segment_t PROGMEM layer_cryl[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_RED}
+);
+const rgblight_segment_t PROGMEM layer_fn[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_CYAN}
+);
+const rgblight_segment_t PROGMEM layer_sym[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_BLUE}
+);
+
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    layer_base,
+    layer_nav,
+    layer_mouse,
+    layer_num,
+    layer_cryl,
+    layer_fn,
+    layer_sym
+);
+#endif
 
 void toggle_lg(void) {
     register_code(KC_LSFT);
@@ -129,6 +167,7 @@ bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
 }
 
 static bool s_mous_held = false;
+static bool s_mous_mouse_active = false;
 static uint16_t s_mous_timer = 0;
 
 
@@ -213,23 +252,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case S_MOUS:
             if (record->event.pressed) {
-                if (layer_state_is(_MOUSE)) {
-                    // Already in mouse layer: toggle it off
-                    layer_off(_MOUSE);
-                } else {
-                    s_mous_timer = timer_read();
-                    register_code(KC_LSFT);
-                    s_mous_held = true;
-                }
+                s_mous_timer = timer_read();
+                register_code(KC_LSFT);
+                s_mous_held = true;
+                s_mous_mouse_active = false;
             } else {
                 if (s_mous_held) {
                     // Released before threshold: one-shot shift
                     unregister_code(KC_LSFT);
                     set_oneshot_mods(MOD_LSFT);
                     s_mous_held = false;
+                } else if (s_mous_mouse_active) {
+                    layer_off(_MOUSE);
+                    s_mous_mouse_active = false;
                 }
-                // If s_mous_held is false, matrix_scan already activated
-                // the layer and unregistered shift — layer stays on
             }
             return false;
     }
@@ -262,11 +298,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MOUSE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        _______, _______, _______,_______, _______, _______,                      _______,OM_HLDS,OM_D, OM_RELS, OM_W_U, _______,
+        UG_VALU, _______, _______,_______, _______, _______,                      _______,OM_HLDS,OM_D, OM_RELS, OM_W_U, _______,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         _______, _______,  _______,   _______,  _______,   _______,                     _______,OM_L, OM_U, OM_R, OM_W_D, _______,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______, _______, _______, _______, _______, _______,                  _______, OM_SEL1, OM_SEL2, OM_SEL3, _______, _______,
+        UG_VALD, _______, _______, _______, _______, _______,                  _______, OM_SEL1, OM_SEL2, OM_SEL3, _______, _______,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
                                 _______,_______,_______, _______,         _______,OM_DBLS,OM_BTNS,OM_SLOW
     ),
@@ -335,11 +371,12 @@ void leader_end_user(void) {
 
 void matrix_scan_user(void) {
     matrix_adaptive_user();
-    // S_MOUS: switch from shift to mouse layer once hold threshold is reached
+    // S_MOUS: convert hold into a momentary mouse layer
     if (s_mous_held && timer_elapsed(s_mous_timer) > TAPPING_TERM) {
         unregister_code(KC_LSFT);
         layer_on(_MOUSE);
         s_mous_held = false;
+        s_mous_mouse_active = true;
     }
 }
 
@@ -373,55 +410,45 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
     }
 }
 
+void keyboard_post_init_user(void) {
+    ergohaven_dark_reset();
+#ifdef RGBLIGHT_ENABLE
+    rgblight_layers = my_rgb_layers;
+    rgblight_enable_noeeprom();
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+#endif
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+#ifdef RGBLIGHT_ENABLE
+    const uint8_t layer = get_highest_layer(state);
+    rgblight_set_layer_state(0, layer == _BASE);
+    rgblight_set_layer_state(1, layer == _NAV);
+    rgblight_set_layer_state(2, layer == _MOUSE);
+    rgblight_set_layer_state(3, layer == _NUM);
+    rgblight_set_layer_state(4, layer == _CRYL);
+    rgblight_set_layer_state(5, layer == _FN);
+    rgblight_set_layer_state(6, layer == _SYM);
+#endif
+    return state;
+}
+
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (!is_keyboard_master()) {
         return OLED_ROTATION_180;
     }
 
+    ergohaven_dark_reset();
+
     return rotation;
 }
 
 bool oled_task_user(void) {
-    oled_clear();
-
-    if (is_keyboard_master()) {
-        oled_write_ln_P(PSTR("I44 veyxov"), false);
-        oled_write_ln_P(PSTR("MASTER"), false);
-    } else {
-        oled_write_ln_P(PSTR("I44 veyxov"), false);
-        oled_write_ln_P(PSTR("OFFHAND"), false);
+    if (!is_keyboard_master()) {
+        return false;
     }
-
-    oled_write_P(PSTR("Layer: "), false);
-
-    switch (get_highest_layer(layer_state)) {
-        case _BASE:
-            oled_write_ln_P(PSTR("BASE"), false);
-            break;
-        case _NAV:
-            oled_write_ln_P(PSTR("NAV"), false);
-            break;
-        case _MOUSE:
-            oled_write_ln_P(PSTR("MOUSE"), false);
-            break;
-        case _NUM:
-            oled_write_ln_P(PSTR("NUM"), false);
-            break;
-        case _CRYL:
-            oled_write_ln_P(PSTR("CRYL"), false);
-            break;
-        case _FN:
-            oled_write_ln_P(PSTR("FN"), false);
-            break;
-        case _SYM:
-            oled_write_ln_P(PSTR("SYM"), false);
-            break;
-        default:
-            oled_write_ln_P(PSTR("?"), false);
-            break;
-    }
-
+    ergohaven_dark_draw();
     return false;
 }
 #endif

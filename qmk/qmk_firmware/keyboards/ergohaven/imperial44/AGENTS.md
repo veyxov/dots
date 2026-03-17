@@ -33,18 +33,28 @@
   - Left hand alpha block: `J F M P V` / `R S N D W` / `X G L C B`
   - Right hand alpha block: `. / ? ' _` / `, A E I H :` / `- U O Y K`
 - Notable behaviors:
-  - `S_MOUS`: tap for one-shot Shift, hold past `TAPPING_TERM` to enable mouse layer, tap again from mouse layer to turn it off
+  - `S_MOUS`: tap for one-shot Shift, hold past `TAPPING_TERM` for a momentary mouse layer, release to turn mouse off
   - `REP`: repeat key; with Ctrl held it uses alt-repeat
   - `LTNAV`: tap `T`, hold for nav
   - `CRYLTG`: toggles Cyrillic layer and system language
   - `NUMWORD`: supported through leader sequence
+- Display animation: `keymaps/veyxov/animation.c` draws the OLED pattern, `keyboard_post_init_user` and `oled_init_user` reset it, and `oled_task_user` only runs on the master side so the screen shows the glitch/logo loop.
 
 ## Timing / Features
 - `TAPPING_TERM 200`
 - `COMBO_TERM 20`
 - `ADAPTIVE_TERM 200`
 - Enabled features in the active keymap include combos, dynamic macros, repeat key, tap dance, leader, caps word, NKRO, mouse, and bootmagic.
-- OLED is disabled in `keymaps/veyxov/rules.mk`.
+- OLED is enabled in `keymaps/veyxov/rules.mk`.
+- RGB lighting is enabled in `keymaps/veyxov/rules.mk`.
+- The board has 2 split RGB LEDs total (`RGBLED_SPLIT {1, 1}`), and the current keymap drives them with layer colors:
+  - `BASE` white
+  - `NAV` green
+  - `MOUSE` purple
+  - `NUM` gold
+  - `CRYL` red
+  - `FN` cyan
+  - `SYM` blue
 
 ## Build / Flash Workflow
 - User’s normal workflow from this directory:
@@ -60,11 +70,16 @@ nd qmk && sleep 2 ; qmk compile && sudo mount /dev/sda1 /mnt && sudo cp -v .buil
 - `reflash.sh` now compiles once, then tries to trigger bootloader over Raw HID with `bootloader_rawhid.py`, then deploys via QMK's native `uf2conv.py --wait --deploy`.
 - `RAW_ENABLE = yes` in the active keymap, and `raw_hid_receive()` in `keymap.c` recognizes the `BOOTLDR1` command and calls `reset_keyboard()`.
 - Bootstrap requirement: the first flash after introducing Raw HID still needs a manual bootloader entry, because the currently running firmware does not yet expose the Raw HID interface.
+- For split keyboards, both halves need to be flashed when changing split RGB layer contents or other split-visible features.
 
 ## Working Notes
 - Prefer preserving the existing ergonomic model over introducing standard-QWERTY assumptions.
 - Neovim has its own mapping layer.
 - When changing symbols, navigation, thumbs, or language keys, also inspect the Neovim and Hyprland bindings for conflicts.
+- When changing the keymap, also update the visualization files so they stay truthful.
+- Prefer direct layer key definitions over adding `process_record_user()` custom handlers when standard QMK mod-tap or mod-combo keycodes are sufficient.
+- For monitor actions on this setup, prefer ergonomic single-tap actions from the `NAV` layer over awkward Hyprland punctuation chords.
+- User has two monitors only, so monitor focus and move-window actions should use single toggle actions rather than separate previous/next buttons.
 
 ## User Preferences
 - Uses Neovim (QMK leader ≠ Neovim leader — they are independent)
