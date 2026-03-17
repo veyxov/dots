@@ -36,8 +36,9 @@
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_MAX_LAYERS 16
 #define RGBLIGHT_LAYERS_RETAIN_VAL
-#define RGBLIGHT_DEFAULT_VAL 150
-#define RGBLIGHT_LIMIT_VAL 150
+#define RGBLIGHT_DEFAULT_VAL 100 // Starts at ~40% brightness
+#define RGBLIGHT_LIMIT_VAL 255   // Allows you to go to 100% brightness
+#define RGBLIGHT_VAL_STEP 15     // Changes brightness by ~6% per click
 #define RGBLIGHT_DEFAULT_SAT 0
 
 #define TAP_CODE_DELAY 1
