@@ -8,3 +8,7 @@ SERIAL_DRIVER = vendor
 UNICODE_COMMON = no
 UNICODE_ENABLE = no
 NKRO_ENABLE = yes
+
+# optimizations
+# disable the startup->bootloader keys
+BOOTMAGIC_ENABLE = no
