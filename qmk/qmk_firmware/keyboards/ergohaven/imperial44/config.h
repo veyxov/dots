@@ -8,33 +8,9 @@
 #define SPLIT_LAYER_STATE_ENABLE
 #define SPLIT_WATCHDOG_ENABLE
 
-#ifdef OLED_ENABLE
-#    define OLED_DISPLAY_128X32
-#define I2C1_SCL_PIN        GP3
-#define I2C1_SDA_PIN        GP2
-#define OLED_BRIGHTNESS 128
-#define I2C_DRIVER I2CD1
-#define SPLIT_MODS_ENABLE
-#define SPLIT_ACTIVITY_ENABLE
-#define SPLIT_LED_STATE_ENABLE
-#define SPLIT_OLED_ENABLE
-#endif
-
 /* split protocol settings */
 #define SELECT_SOFT_SERIAL_SPEED 1
 #define SPLIT_TRANSACTION_IDS_USER RPC_SYNC_CONFIG, RPC_SYNC_HID
-
-#define RGBLIGHT_LED_COUNT 2
-#define RGBLED_SPLIT {1, 1}
-#define RGBLIGHT_SLEEP
-#define RGBLIGHT_SPLIT
-#define RGBLIGHT_LAYERS
-#define RGBLIGHT_MAX_LAYERS 16
-#define RGBLIGHT_LAYERS_RETAIN_VAL
-#define RGBLIGHT_DEFAULT_VAL 100 // Starts at ~40% brightness
-#define RGBLIGHT_LIMIT_VAL 255   // Allows you to go to 100% brightness
-#define RGBLIGHT_VAL_STEP 15     // Changes brightness by ~6% per click
-#define RGBLIGHT_DEFAULT_SAT 0
 
 #define TAP_CODE_DELAY 1
 
