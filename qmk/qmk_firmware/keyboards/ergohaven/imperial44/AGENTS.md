@@ -20,6 +20,7 @@
 ## Important Keyboard Files
 - `keymaps/veyxov/keymap.c`: layers, custom keycodes, hold/tap behavior, repeat logic
 - `keymaps/veyxov/keymap.h`: key aliases/macros such as layer-taps
+- `keymaps/veyxov/features.c` / `features.h`: extracted keymap-local behavior helpers such as num-word, `S_MOUS`, language toggle, and raw HID bootloader handling
 - `keymaps/veyxov/layers.h`: layer enum
 - `keymaps/veyxov/combos.def`: combos
 - `keymaps/veyxov/adaptive.h`: adaptive key behavior
@@ -43,7 +44,7 @@
 - `TAPPING_TERM 200`
 - `COMBO_TERM 20`
 - `ADAPTIVE_TERM 200`
-- Enabled features in the active keymap include combos, dynamic macros, repeat key, tap dance, leader, caps word, NKRO, mouse, and bootmagic.
+- Enabled features in the active keymap include combos, dynamic macros, repeat key, tap dance, leader, NKRO, mouse, and bootmagic.
 
 ## Build / Flash Workflow
 - User’s normal workflow from this directory:
@@ -93,6 +94,7 @@ nd qmk && sleep 2 ; qmk compile && sudo mount /dev/sda1 /mnt && sudo cp -v .buil
 |------|---------|
 | `keymap.c` | Main logic, layers, custom keycodes |
 | `keymap.h` | Macro shorthands (LTNAV, SYM_SPC, F5_ALT) |
+| `features.c` / `features.h` | Extracted keymap-local behavior helpers |
 | `layers.h` | Layer enum |
 | `combos.def` | All combo definitions |
 | `adaptive.h` | Adaptive key sequences |

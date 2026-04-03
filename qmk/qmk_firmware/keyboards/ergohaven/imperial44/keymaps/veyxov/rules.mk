@@ -1,10 +1,11 @@
+SRC += features.c
+
 RAW_ENABLE = yes
 
-CAPS_WORD_ENABLE = yes
 LEADER_ENABLE = yes
 BOOTMAGIC_ENABLE = yes
 
-MOUSE_ENABLE = yes
+MOUSEKEY_ENABLE = yes
 
 EXTRAKEY_ENABLE = yes
 LTO_ENABLE = yes

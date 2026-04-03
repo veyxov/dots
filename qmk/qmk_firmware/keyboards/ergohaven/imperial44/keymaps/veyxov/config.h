@@ -10,9 +10,6 @@
 #define MOUSEKEY_MAX_SPEED   6
 #define MOUSEKEY_TIME_TO_MAX 64
 
-// caps word
-#define CAPS_WORD_IDLE_TIMEOUT 1000
-
 // combos
 #define COMBO_TERM 20
 #define COMBO_VARIABLE_LEN

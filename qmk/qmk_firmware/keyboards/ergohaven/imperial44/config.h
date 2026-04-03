@@ -15,6 +15,3 @@
 #define TAP_CODE_DELAY 1
 
 #define EH_SHORT_PRODUCT_NAME "I44"
-
-#define ORBITAL_MOUSE_SPEED_CURVE \
-      {25, 30, 44, 69, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}
