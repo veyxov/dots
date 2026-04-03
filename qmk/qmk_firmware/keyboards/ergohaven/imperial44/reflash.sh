@@ -6,7 +6,7 @@ KEYBOARD="${KEYBOARD:-ergohaven/imperial44}"
 KEYMAP="${KEYMAP:-veyxov}"
 QMK_HOME="${QMK_HOME:-/home/iz/qmk_firmware}"
 TARGET="${TARGET:-ergohaven_imperial44_veyxov}"
-UF2_FILE="${UF2_FILE:-$QMK_HOME/.build/${TARGET}.uf2}"
+UF2_FILE="${UF2_FILE:-}"
 BOOT_DRIVE_LABEL="${BOOT_DRIVE_LABEL:-RPI-RP2}"
 MOUNT_POINT="${MOUNT_POINT:-/mnt/keyboard}"
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
@@ -34,7 +34,25 @@ cd "$QMK_HOME"
 ensure_upstream_keyboard_link
 
 printf 'Compiling %s:%s\n' "$KEYBOARD" "$KEYMAP"
+build_started_at="$(date +%s)"
 make "$KEYBOARD:$KEYMAP"
+
+if [[ -z "$UF2_FILE" ]]; then
+    for candidate in \
+        "$QMK_HOME/${TARGET}.uf2" \
+        "$QMK_HOME/.build/${TARGET}.uf2"
+    do
+        if [[ -f "$candidate" ]] && [[ "$(stat -c %Y -- "$candidate")" -ge "$build_started_at" ]]; then
+            UF2_FILE="$candidate"
+            break
+        fi
+    done
+fi
+
+if [[ -z "$UF2_FILE" ]] || [[ ! -f "$UF2_FILE" ]]; then
+    printf 'Expected fresh UF2 was not produced for %s\n' "$TARGET" >&2
+    exit 1
+fi
 
 if sudo -n python3 "$SCRIPT_DIR/bootloader_rawhid.py"; then
     printf 'Entered bootloader over Raw HID.\n'
