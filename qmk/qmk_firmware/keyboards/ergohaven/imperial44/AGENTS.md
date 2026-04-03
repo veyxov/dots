@@ -18,9 +18,9 @@
 - Dotfiles repo root: `~/dots`
 
 ## Important Keyboard Files
-- `keymaps/veyxov/keymap.c`: layers, custom keycodes, hold/tap behavior, repeat logic
+- `keymaps/veyxov/keymap.c`: layer definitions and thin QMK hook wrappers
 - `keymaps/veyxov/keymap.h`: key aliases/macros such as layer-taps
-- `keymaps/veyxov/features.c` / `features.h`: extracted keymap-local behavior helpers such as num-word, `S_MOUS`, language toggle, and raw HID bootloader handling
+- `keymaps/veyxov/features.c` / `features.h`: extracted keymap-local behavior helpers such as num-word, `S_MOUS`, language toggle, repeat handling, leader actions, and raw HID bootloader handling
 - `keymaps/veyxov/layers.h`: layer enum
 - `keymaps/veyxov/combos.def`: combos
 - `keymaps/veyxov/adaptive.h`: adaptive key behavior
@@ -44,7 +44,7 @@
 - `TAPPING_TERM 200`
 - `COMBO_TERM 20`
 - `ADAPTIVE_TERM 200`
-- Enabled features in the active keymap include combos, dynamic macros, repeat key, leader, NKRO, mouse, and bootmagic.
+- Enabled features in the active keymap include combos, dynamic macros, repeat key, leader, mouse keys, raw HID, and bootmagic.
 
 ## Build / Flash Workflow
 - User’s normal workflow from this directory:
@@ -57,8 +57,9 @@ nd qmk && sleep 2 ; qmk compile && sudo mount /dev/sda1 /mnt && sudo cp -v .buil
 ```bash
 ./reflash.sh
 ```
-- `reflash.sh` now compiles once, then tries to trigger bootloader over Raw HID with `bootloader_rawhid.py`, then deploys via QMK's native `uf2conv.py --wait --deploy`.
-- `RAW_ENABLE = yes` in the active keymap, and `raw_hid_receive()` in `keymap.c` recognizes the `BOOTLDR1` command and calls `reset_keyboard()`.
+- After upstream QMK changes, `reflash.sh` must expose this external keyboard to `/home/iz/qmk_firmware` before compiling. The script now creates or refreshes a symlink at `qmk_firmware/keyboards/ergohaven/imperial44` pointing back to this repo copy, then builds with `make ergohaven/imperial44:veyxov`.
+- `reflash.sh` then tries to trigger bootloader over Raw HID with `bootloader_rawhid.py`, waits for the `RPI-RP2` drive, and copies the UF2 manually.
+- `RAW_ENABLE = yes` in the active keymap, and `raw_hid_receive()` lives in `features.c`; it recognizes the `BOOTLDR1` command and calls `reset_keyboard()`.
 - Bootstrap requirement: the first flash after introducing Raw HID still needs a manual bootloader entry, because the currently running firmware does not yet expose the Raw HID interface.
 - For split keyboards, both halves need to be flashed when changing split-visible features or behavior that must stay in sync across halves.
 
@@ -92,7 +93,7 @@ nd qmk && sleep 2 ; qmk compile && sudo mount /dev/sda1 /mnt && sudo cp -v .buil
 ## Files
 | File | Purpose |
 |------|---------|
-| `keymap.c` | Main logic, layers, custom keycodes |
+| `keymap.c` | Layer definitions and thin hook wrappers |
 | `keymap.h` | Macro shorthands (LTNAV, SYM_SPC, F5_ALT) |
 | `features.c` / `features.h` | Extracted keymap-local behavior helpers |
 | `layers.h` | Layer enum |

@@ -10,13 +10,33 @@ UF2_FILE="${UF2_FILE:-$QMK_HOME/.build/${TARGET}.uf2}"
 BOOT_DRIVE_LABEL="${BOOT_DRIVE_LABEL:-RPI-RP2}"
 MOUNT_POINT="${MOUNT_POINT:-/mnt/keyboard}"
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+UPSTREAM_KEYBOARD_DIR="$QMK_HOME/keyboards/$KEYBOARD"
 
-cd "$SCRIPT_DIR"
+ensure_upstream_keyboard_link() {
+    local parent_dir
+    parent_dir="$(dirname -- "$UPSTREAM_KEYBOARD_DIR")"
+
+    mkdir -p "$parent_dir"
+
+    if [[ -L "$UPSTREAM_KEYBOARD_DIR" ]]; then
+        if [[ "$(readlink -f -- "$UPSTREAM_KEYBOARD_DIR")" == "$SCRIPT_DIR" ]]; then
+            return
+        fi
+        rm -f "$UPSTREAM_KEYBOARD_DIR"
+    elif [[ -e "$UPSTREAM_KEYBOARD_DIR" ]]; then
+        return
+    fi
+
+    ln -s "$SCRIPT_DIR" "$UPSTREAM_KEYBOARD_DIR"
+}
+
+cd "$QMK_HOME"
+ensure_upstream_keyboard_link
 
 printf 'Compiling %s:%s\n' "$KEYBOARD" "$KEYMAP"
-qmk compile -kb "$KEYBOARD" -km "$KEYMAP"
+make "$KEYBOARD:$KEYMAP"
 
-if sudo -n python3 ./bootloader_rawhid.py; then
+if sudo -n python3 "$SCRIPT_DIR/bootloader_rawhid.py"; then
     printf 'Entered bootloader over Raw HID.\n'
 else
     printf 'Raw HID bootloader jump unavailable. Press QK_BOOTLOADER now.\n'
