@@ -26,6 +26,7 @@
 - `keymaps/veyxov/adaptive.h`: adaptive key behavior
 - `keymaps/veyxov/config.h`: timing constants
 - `keymaps/veyxov/rules.mk`: keymap feature flags
+- `keyboard.json`: board build marker and hardware metadata
 - `config.h` / `rules.mk`: board-level split / RP2040 settings
 
 ## Current Firmware Shape
@@ -57,11 +58,13 @@ nd qmk && sleep 2 ; qmk compile && sudo mount /dev/sda1 /mnt && sudo cp -v .buil
 ```bash
 ./reflash.sh
 ```
-- After upstream QMK changes, `reflash.sh` must expose this external keyboard to `/home/iz/qmk_firmware` before compiling. The script now creates or refreshes a symlink at `qmk_firmware/keyboards/ergohaven/imperial44` pointing back to this repo copy, then builds with `make ergohaven/imperial44:veyxov`.
+- After upstream QMK changes, this board needs a `keyboard.json` build marker. `reflash.sh` exposes this external keyboard to `/home/iz/qmk_firmware` by ensuring the `ergohaven` path points back to this repo copy, then builds with `make ergohaven/imperial44:veyxov`.
 - `reflash.sh` then tries to trigger bootloader over Raw HID with `bootloader_rawhid.py`, waits for the `RPI-RP2` drive, and copies the UF2 manually.
+- QMK 0.32.x may place the fresh UF2 either in `qmk_firmware/<target>.uf2` or `qmk_firmware/.build/<target>.uf2`; `reflash.sh` must accept either, but only if the file is newer than the current build start time.
+- `reflash.sh` must verify that a fresh UF2 was produced before flashing so it cannot deploy a stale build artifact after a failed compile.
 - `RAW_ENABLE = yes` in the active keymap, and `raw_hid_receive()` lives in `features.c`; it recognizes the `BOOTLDR1` command and calls `reset_keyboard()`.
 - Bootstrap requirement: the first flash after introducing Raw HID still needs a manual bootloader entry, because the currently running firmware does not yet expose the Raw HID interface.
-- For split keyboards, both halves need to be flashed when changing split-visible features or behavior that must stay in sync across halves.
+- For this split keyboard, flash both halves after firmware changes. It uses one shared UF2 and `SPLIT_HAND_PIN` for handedness, but split communication and user RPC state still need matching firmware on both sides; mixed versions can make the offhand appear dead until it is reflashed too.
 
 ## Working Notes
 - Prefer preserving the existing ergonomic model over introducing standard-QWERTY assumptions.
