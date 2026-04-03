@@ -1,13 +1,4 @@
 #include QMK_KEYBOARD_H
-#include <string.h>
-
-enum custom_keycodes {
-    S_MOUS = SAFE_RANGE,
-    NUMWORD,
-    CRYLTG,
-    REP,
-    SN_ESC_CRYL,
-};
 
 enum {
     TD_Z_SCLN = 0
@@ -19,118 +10,9 @@ tap_dance_action_t tap_dance_actions[] = {
 };
 
 #include "keymap.h"
-#ifdef CONSOLE_ENABLE
-#include "print.h"
-#endif
-#include "raw_hid.h"
+#include "features.h"
 #include "g/keymap_combo.h"
 #include "adaptive.h"
-
-#define BOOTLOADER_MAGIC "BOOTLDR1"
-#define RAW_HID_REPORT_SIZE 32
-
-void toggle_lg(void) {
-    register_code(KC_LSFT);
-    register_code(KC_RSFT);
-    unregister_code(KC_LSFT);
-    unregister_code(KC_RSFT);
-}
-
-static uint16_t num_word_timer = 0;
-static bool is_num_word_on = false;
-void enable_num_word(void) {
-    if (is_num_word_on) return;
-    is_num_word_on = true;
-    layer_on(_NUM);
-}
-void disable_num_word(void) {
-    if (!is_num_word_on) return;
-    is_num_word_on = false;
-    layer_off(_NUM);
-}
-bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
-    switch (keycode) {
-        // Keycodes which should not disable num word mode.
-        // We could probably be more brief with these definitions by using
-        // a couple more ranges, but I believe "explicit is better than
-        // implicit"
-        case KC_1 ... KC_0:
-        case KC_EQL:
-        case KC_SCLN:
-        case KC_MINS:
-        case KC_DOT:
-
-        // Numpad keycodes
-        case KC_P1 ... KC_P0:
-        case KC_PSLS ... KC_PPLS:
-        case KC_PDOT:
-
-        // Misc
-        case KC_UNDS:
-        case KC_BSPC:
-            return false;
-
-        default:
-            if (record->event.pressed) {
-                return true;
-            }
-            return false;
-    }
-
-}
-bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
-    // Handle the custom keycodes that go with this feature
-    if (keycode == NUMWORD) {
-        if (record->event.pressed) {
-            enable_num_word();
-            num_word_timer = timer_read();
-            return false;
-        }
-        else {
-            if (timer_elapsed(num_word_timer) > TAPPING_TERM) {
-                // If the user held the key longer than TAPPING_TERM,
-                // consider it a hold, and disable the behavior on
-                // key release.
-                disable_num_word();
-                return false;
-            }
-        }
-    }
-
-    // Other than the custom keycodes, nothing else in this feature will
-    // activate if the behavior is not on, so allow QMK to handle the
-    // event as usual
-    if (!is_num_word_on) return true;
-
-    // Nothing else acts on key release, either
-    if (!record->event.pressed) {
-        return true;
-    }
-
-    // Get the base keycode of a mod or layer tap key
-    switch (keycode) {
-        case QK_MOD_TAP ... QK_MOD_TAP_MAX:
-        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-        case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
-            // Earlier return if this has not been considered tapped yet
-            if (record->tap.count == 0)
-                return true;
-            keycode = keycode & 0xFF;
-            break;
-        default:
-            break;
-    }
-
-    if (should_terminate_num_word(keycode, record)) {
-        disable_num_word();
-    }
-
-    return true;
-}
-
-static bool s_mous_held = false;
-static bool s_mous_mouse_active = false;
-static uint16_t s_mous_timer = 0;
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -150,21 +32,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
     }
 
-    #ifdef CONSOLE_ENABLE
-        const bool is_combo = record->event.type == COMBO_EVENT;
-        uprintf("0x%04X,%u,%u,%u,%b,0x%02X,0x%02X,%u\n",
-             keycode,
-             is_combo ? 254 : record->event.key.row,
-             is_combo ? 254 : record->event.key.col,
-             get_highest_layer(layer_state),
-             record->event.pressed,
-             get_mods(),
-             get_oneshot_mods(),
-             record->tap.count
-             );
-    #endif
-
-    process_record_num_word(keycode, record);
+    if (!process_record_num_word(keycode, record)) {
+        return false;
+    }
 
     switch (keycode) {
         case REP:
@@ -213,23 +83,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case S_MOUS:
-            if (record->event.pressed) {
-                s_mous_timer = timer_read();
-                register_code(KC_LSFT);
-                s_mous_held = true;
-                s_mous_mouse_active = false;
-            } else {
-                if (s_mous_held) {
-                    // Released before threshold: one-shot shift
-                    unregister_code(KC_LSFT);
-                    set_oneshot_mods(MOD_LSFT);
-                    s_mous_held = false;
-                } else if (s_mous_mouse_active) {
-                    layer_off(_MOUSE);
-                    s_mous_mouse_active = false;
-                }
-            }
-            return false;
+            return process_s_mous(record);
     }
 
     return true;
@@ -255,18 +109,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         _______, _______, _______, G(KC_N), C(KC_Z), C(S(KC_Z)),                 _______, G(KC_C), G(KC_R), G(KC_K), MON_TOG, MON_MOV,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
-                                _______, _______,_______, _______,         _______,SELLINE,G(KC_X),SELWORD
+                                _______, _______,_______, _______,         _______, _______,G(KC_X),_______
     ),
 
     [_MOUSE] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        UG_VALU, _______, _______,_______, _______, _______,                      _______,OM_HLDS,OM_D, OM_RELS, OM_W_U, _______,
+        _______, _______, _______,_______, _______, _______,                      _______, _______, KC_WH_D, KC_WH_U, _______, _______,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______, _______,  _______,   _______,  _______,   _______,                     _______,OM_L, OM_U, OM_R, OM_W_D, _______,
+        _______, _______,  _______,   _______,  _______,   _______,                     KC_WH_L, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_WH_R,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        UG_VALD, _______, _______, _______, _______, _______,                  _______, OM_SEL1, OM_SEL2, OM_SEL3, _______, _______,
+        _______, _______, _______, _______, _______, _______,                  _______, _______, _______, _______, _______, _______,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
-                                _______,_______,_______, _______,         _______,OM_DBLS,OM_BTNS,OM_SLOW
+                                _______,_______,_______, _______,         MS_BTN3, MS_BTN2, MS_BTN1, _______
     ),
 
     [_NUM] = LAYOUT(
@@ -338,13 +192,7 @@ void leader_end_user(void) {
 
 void matrix_scan_user(void) {
     matrix_adaptive_user();
-    // S_MOUS: convert hold into a momentary mouse layer
-    if (s_mous_held && timer_elapsed(s_mous_timer) > TAPPING_TERM) {
-        unregister_code(KC_LSFT);
-        layer_on(_MOUSE);
-        s_mous_held = false;
-        s_mous_mouse_active = true;
-    }
+    matrix_scan_s_mous();
 }
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
@@ -352,27 +200,4 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
   // In remember_last_key_user(), we ignore the LT_REP key. Otherwise, pressing it will "remember" itself as the last key just before it is handled, in which case repeating the last key will do nothing.
   if (keycode == REP) { return false; }
   return true;
-}
-
-uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
-   switch (keycode) {
-    case SELWBAK: return SELWORD;
-    case SELWORD: return SELWBAK;
-    // ...
-  }
-  return KC_TRNS; 
-}
-
-void raw_hid_receive(uint8_t *data, uint8_t length) {
-    if (length != RAW_HID_REPORT_SIZE) {
-        return;
-    }
-
-    if (memcmp(data, BOOTLOADER_MAGIC, sizeof(BOOTLOADER_MAGIC) - 1) == 0) {
-        uint8_t response[RAW_HID_REPORT_SIZE] = {0};
-        memcpy(response, "BOOTING", 7);
-        raw_hid_send(response, sizeof(response));
-        wait_ms(10);
-        reset_keyboard();
-    }
 }
