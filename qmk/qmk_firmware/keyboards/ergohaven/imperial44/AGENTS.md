@@ -44,7 +44,7 @@
 - `TAPPING_TERM 200`
 - `COMBO_TERM 20`
 - `ADAPTIVE_TERM 200`
-- Enabled features in the active keymap include combos, dynamic macros, repeat key, tap dance, leader, NKRO, mouse, and bootmagic.
+- Enabled features in the active keymap include combos, dynamic macros, repeat key, leader, NKRO, mouse, and bootmagic.
 
 ## Build / Flash Workflow
 - User’s normal workflow from this directory:

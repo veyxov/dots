@@ -74,7 +74,6 @@ bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
     switch (keycode) {
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
         case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-        case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
             if (record->tap.count == 0) {
                 return true;
             }
@@ -136,6 +135,73 @@ void matrix_scan_s_mous(void) {
     if (s_mous_held && timer_elapsed(s_mous_timer) > TAPPING_TERM) {
         s_mous_hold();
     }
+}
+
+bool process_record_features(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case REP:
+            if (!record->event.pressed) {
+                keyevent_t press_event = record->event;
+                press_event.pressed = true;
+                if (get_mods() & MOD_MASK_CTRL) {
+                    uint8_t temp_mods = get_mods();
+                    del_mods(MOD_MASK_CTRL);
+                    alt_repeat_key_invoke(&press_event);
+                    alt_repeat_key_invoke(&record->event);
+                    set_mods(temp_mods);
+                } else {
+                    repeat_key_invoke(&press_event);
+                    repeat_key_invoke(&record->event);
+                }
+            }
+            return false;
+        case CRYLTG:
+            if (record->event.pressed) {
+                toggle_lg();
+                if (get_highest_layer(layer_state) == _CRYL) {
+                    layer_off(_CRYL);
+                } else {
+                    layer_on(_CRYL);
+                }
+            }
+            return false;
+        case SN_ESC_CRYL:
+            if (record->event.pressed) {
+                if (get_highest_layer(layer_state) == _CRYL) {
+                    toggle_lg();
+                    layer_off(_CRYL);
+                } else {
+                    tap_code(KC_ESC);
+                }
+            }
+            return false;
+        case LTNAV:
+            if (get_repeat_key_count() > 0) {
+                if (record->event.pressed) {
+                    tap_code(KC_T);
+                }
+                return false;
+            }
+            return true;
+        case S_MOUS:
+            return process_s_mous(record);
+        default:
+            return true;
+    }
+}
+
+void leader_end_features(void) {
+    if (leader_sequence_one_key(KC_N)) {
+        enable_num_word();
+    }
+
+    if (leader_sequence_one_key(QK_LEAD)) {
+        tap_code(KC_F24);
+    }
+}
+
+bool remember_last_key_features(uint16_t keycode) {
+    return keycode != REP;
 }
 
 void raw_hid_receive(uint8_t *data, uint8_t length) {

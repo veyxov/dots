@@ -1,14 +1,5 @@
 #include QMK_KEYBOARD_H
 
-enum {
-    TD_Z_SCLN = 0
-};
-
-// Tap Dance definitions
-tap_dance_action_t tap_dance_actions[] = {
-    [TD_Z_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_Z, S(KC_SCLN))
-};
-
 #include "keymap.h"
 #include "features.h"
 #include "g/keymap_combo.h"
@@ -36,57 +27,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 
-    switch (keycode) {
-        case REP:
-            if (!record->event.pressed) {
-                keyevent_t press_event = record->event;
-                press_event.pressed = true;
-                if (get_mods() & MOD_MASK_CTRL) {
-                    uint8_t temp_mods = get_mods();
-                    del_mods(MOD_MASK_CTRL);
-                    alt_repeat_key_invoke(&press_event);
-                    alt_repeat_key_invoke(&record->event);
-                    set_mods(temp_mods);
-                } else {
-                    repeat_key_invoke(&press_event);
-                    repeat_key_invoke(&record->event);
-                }
-            }
-            return false;
-        case CRYLTG:
-            if (record->event.pressed) {
-                toggle_lg();
-                if (get_highest_layer(layer_state) == _CRYL) layer_off(_CRYL);
-                else                                         layer_on (_CRYL);
-            }
-            return false;
-        case SN_ESC_CRYL:
-            if (record->event.pressed) {
-                if (get_highest_layer(layer_state) == _CRYL) {
-                    toggle_lg();
-                    layer_off(_CRYL);
-                } else {
-                    tap_code(KC_ESC);
-                }
-            }
-            return false;
-        // remove the lag after repeating KC_T
-        case LTNAV:
-            if (get_repeat_key_count() > 0) {
-                if (record->event.pressed) {
-                    // send directly KC_T, don't trigger tap-dance
-                    tap_code(KC_T);
-                }
-            } else {
-                // do nothing, (tap dance)
-                return true;
-            }
-            return false;
-        case S_MOUS:
-            return process_s_mous(record);
-    }
-
-    return true;
+    return process_record_features(keycode, record);
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -137,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
         _______,  _______,   _______,   _______,   _______,   _______,                      _______, _______, _______, _______, _______, _______,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-       _______,  _______,   _______,   _______,   _______,   _______,                       _______,   _______,   _______,   _______,   _______, TD(TD_Z_SCLN),
+       _______,  _______,   _______,   _______,   _______,   _______,                       _______,   _______,   _______,   _______,   _______, KC_Z,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         _______, _______,   _______,   _______,   _______,   _______,                       _______,   _______,   _______,  _______,  _______,   KC_NO,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
@@ -179,15 +120,7 @@ const custom_shift_key_t custom_shift_keys[] = {
 };
 
 void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_N)) {
-        // activate the numword
-        enable_num_word();
-    }
-
-    if (leader_sequence_one_key(QK_LEAD)) {
-        // send F24, this is to toggle between workspaces in hyprland
-        tap_code(KC_F24);
-    }
+    leader_end_features();
 }
 
 void matrix_scan_user(void) {
@@ -197,7 +130,5 @@ void matrix_scan_user(void) {
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
                             uint8_t* remembered_mods) {
-  // In remember_last_key_user(), we ignore the LT_REP key. Otherwise, pressing it will "remember" itself as the last key just before it is handled, in which case repeating the last key will do nothing.
-  if (keycode == REP) { return false; }
-  return true;
+  return remember_last_key_features(keycode);
 }

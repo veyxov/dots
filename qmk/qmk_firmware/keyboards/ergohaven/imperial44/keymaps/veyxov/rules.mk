@@ -9,7 +9,6 @@ MOUSEKEY_ENABLE = yes
 
 EXTRAKEY_ENABLE = yes
 LTO_ENABLE = yes
-TAP_DANCE_ENABLE = yes
 
 COMBO_ENABLE = yes
 VPATH += keyboards/gboards
