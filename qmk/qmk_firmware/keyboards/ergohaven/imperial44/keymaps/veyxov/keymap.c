@@ -1,8 +1,5 @@
 #include QMK_KEYBOARD_H
 #include <string.h>
-#include "rgblight.h"
-void ergohaven_dark_draw(void);
-void ergohaven_dark_reset(void);
 
 enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
@@ -31,41 +28,6 @@ tap_dance_action_t tap_dance_actions[] = {
 
 #define BOOTLOADER_MAGIC "BOOTLDR1"
 #define RAW_HID_REPORT_SIZE 32
-#define HSV_WARM 40, 200, 50
-
-#ifdef RGBLIGHT_ENABLE
-const rgblight_segment_t PROGMEM layer_base[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_WARM}
-);
-const rgblight_segment_t PROGMEM layer_nav[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_GREEN}
-);
-const rgblight_segment_t PROGMEM layer_mouse[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_PURPLE}
-);
-const rgblight_segment_t PROGMEM layer_num[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_GOLD}
-);
-const rgblight_segment_t PROGMEM layer_cryl[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_RED}
-);
-const rgblight_segment_t PROGMEM layer_fn[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_CYAN}
-);
-const rgblight_segment_t PROGMEM layer_sym[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_BLUE}
-);
-
-const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
-    layer_base,
-    layer_nav,
-    layer_mouse,
-    layer_num,
-    layer_cryl,
-    layer_fn,
-    layer_sym
-);
-#endif
 
 void toggle_lg(void) {
     register_code(KC_LSFT);
@@ -367,6 +329,11 @@ void leader_end_user(void) {
         // activate the numword
         enable_num_word();
     }
+
+    if (leader_sequence_one_key(QK_LEAD)) {
+        // send F24, this is to toggle between workspaces in hyprland
+        tap_code(KC_F24);
+    }
 }
 
 void matrix_scan_user(void) {
@@ -409,46 +376,3 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
         reset_keyboard();
     }
 }
-
-void keyboard_post_init_user(void) {
-    ergohaven_dark_reset();
-#ifdef RGBLIGHT_ENABLE
-    rgblight_layers = my_rgb_layers;
-    rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
-#endif
-}
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-#ifdef RGBLIGHT_ENABLE
-    const uint8_t layer = get_highest_layer(state);
-    rgblight_set_layer_state(0, layer == _BASE);
-    rgblight_set_layer_state(1, layer == _NAV);
-    rgblight_set_layer_state(2, layer == _MOUSE);
-    rgblight_set_layer_state(3, layer == _NUM);
-    rgblight_set_layer_state(4, layer == _CRYL);
-    rgblight_set_layer_state(5, layer == _FN);
-    rgblight_set_layer_state(6, layer == _SYM);
-#endif
-    return state;
-}
-
-#ifdef OLED_ENABLE
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (!is_keyboard_master()) {
-        return OLED_ROTATION_180;
-    }
-
-    ergohaven_dark_reset();
-
-    return rotation;
-}
-
-bool oled_task_user(void) {
-    if (!is_keyboard_master()) {
-        return false;
-    }
-    ergohaven_dark_draw();
-    return false;
-}
-#endif

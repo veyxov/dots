@@ -38,23 +38,12 @@
   - `LTNAV`: tap `T`, hold for nav
   - `CRYLTG`: toggles Cyrillic layer and system language
   - `NUMWORD`: supported through leader sequence
-- Display animation: `keymaps/veyxov/animation.c` draws the OLED pattern, `keyboard_post_init_user` and `oled_init_user` reset it, and `oled_task_user` only runs on the master side so the screen shows the glitch/logo loop.
 
 ## Timing / Features
 - `TAPPING_TERM 200`
 - `COMBO_TERM 20`
 - `ADAPTIVE_TERM 200`
 - Enabled features in the active keymap include combos, dynamic macros, repeat key, tap dance, leader, caps word, NKRO, mouse, and bootmagic.
-- OLED is enabled in `keymaps/veyxov/rules.mk`.
-- RGB lighting is enabled in `keymaps/veyxov/rules.mk`.
-- The board has 2 split RGB LEDs total (`RGBLED_SPLIT {1, 1}`), and the current keymap drives them with layer colors:
-  - `BASE` white
-  - `NAV` green
-  - `MOUSE` purple
-  - `NUM` gold
-  - `CRYL` red
-  - `FN` cyan
-  - `SYM` blue
 
 ## Build / Flash Workflow
 - User’s normal workflow from this directory:
@@ -70,7 +59,7 @@ nd qmk && sleep 2 ; qmk compile && sudo mount /dev/sda1 /mnt && sudo cp -v .buil
 - `reflash.sh` now compiles once, then tries to trigger bootloader over Raw HID with `bootloader_rawhid.py`, then deploys via QMK's native `uf2conv.py --wait --deploy`.
 - `RAW_ENABLE = yes` in the active keymap, and `raw_hid_receive()` in `keymap.c` recognizes the `BOOTLDR1` command and calls `reset_keyboard()`.
 - Bootstrap requirement: the first flash after introducing Raw HID still needs a manual bootloader entry, because the currently running firmware does not yet expose the Raw HID interface.
-- For split keyboards, both halves need to be flashed when changing split RGB layer contents or other split-visible features.
+- For split keyboards, both halves need to be flashed when changing split-visible features or behavior that must stay in sync across halves.
 
 ## Working Notes
 - Prefer preserving the existing ergonomic model over introducing standard-QWERTY assumptions.
