@@ -17,6 +17,8 @@ end
 
 set -x DOTNET_ROOT /usr/share/dotnet
 set -x PATH $PATH:$DOTNET_ROOT:$HOME/.dotnet/tools
+set -x PATH $PATH:$HOME/.local/roslyn/lib/net10.0/
+set -x PATH $PATH:$HOME/.local/roslyn/content/LanguageServer/linux-x64/
 
 # vi based cursor style
 set -gx fish_vi_force_cursor 1
