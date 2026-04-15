@@ -80,6 +80,10 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
                             return_state = false;
                             second       = KC_S;
                             break;
+                        case KC_G: // GG -> GF
+                            return_state = false;
+                            second = KC_F;
+                            break;
                     }
                     break;
                 case KC_U: // UH -> UA
