@@ -4,7 +4,6 @@
 
 enum custom_keycodes {
     S_MOUS = SAFE_RANGE,
-    NUMWORD,
     CRYLTG,
     REP,
     SN_ESC_CRYL,
