@@ -13,6 +13,7 @@ if status is-interactive
 
     alias g="lazygit"
     alias s="ls"
+    alias ssh="kitty +kitten ssh"
 end
 
 set -x DOTNET_ROOT /usr/share/dotnet
