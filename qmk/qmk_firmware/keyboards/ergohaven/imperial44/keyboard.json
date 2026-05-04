@@ -20,13 +20,7 @@
             {"pin_a": "GP27", "pin_b": "GP26"}
         ]
     },
-    "rgb_matrix": {
-        "driver": "ws2812"
-    },
-    "ws2812": {
-        "pin": "GP28",
-        "driver": "vendor"
-    },
+
     "layouts": {
         "LAYOUT": {
             "layout": [

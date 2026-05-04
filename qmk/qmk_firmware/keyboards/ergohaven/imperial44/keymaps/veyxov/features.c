@@ -14,82 +14,6 @@ void toggle_lg(void) {
     unregister_code(KC_RSFT);
 }
 
-static uint16_t num_word_timer = 0;
-static bool is_num_word_on = false;
-
-void enable_num_word(void) {
-    if (is_num_word_on) {
-        return;
-    }
-
-    is_num_word_on = true;
-    layer_on(_NUM);
-}
-
-static void disable_num_word(void) {
-    if (!is_num_word_on) {
-        return;
-    }
-
-    is_num_word_on = false;
-    layer_off(_NUM);
-}
-
-static bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
-    switch (keycode) {
-        case KC_1 ... KC_0:
-        case KC_EQL:
-        case KC_SCLN:
-        case KC_MINS:
-        case KC_DOT:
-        case KC_P1 ... KC_P0:
-        case KC_PSLS ... KC_PPLS:
-        case KC_PDOT:
-        case KC_UNDS:
-        case KC_BSPC:
-            return false;
-        default:
-            return record->event.pressed;
-    }
-}
-
-bool process_record_num_word(uint16_t keycode, const keyrecord_t *record) {
-    if (keycode == NUMWORD) {
-        if (record->event.pressed) {
-            enable_num_word();
-            num_word_timer = timer_read();
-            return false;
-        }
-
-        if (timer_elapsed(num_word_timer) > TAPPING_TERM) {
-            disable_num_word();
-            return false;
-        }
-    }
-
-    if (!is_num_word_on || !record->event.pressed) {
-        return true;
-    }
-
-    switch (keycode) {
-        case QK_MOD_TAP ... QK_MOD_TAP_MAX:
-        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-            if (record->tap.count == 0) {
-                return true;
-            }
-            keycode &= 0xFF;
-            break;
-        default:
-            break;
-    }
-
-    if (should_terminate_num_word(keycode, record)) {
-        disable_num_word();
-    }
-
-    return true;
-}
-
 static bool s_mous_held = false;
 static bool s_mous_mouse_active = false;
 static uint16_t s_mous_timer = 0;
@@ -187,16 +111,6 @@ bool process_record_features(uint16_t keycode, keyrecord_t *record) {
             return process_s_mous(record);
         default:
             return true;
-    }
-}
-
-void leader_end_features(void) {
-    if (leader_sequence_one_key(KC_N)) {
-        enable_num_word();
-    }
-
-    if (leader_sequence_one_key(QK_LEAD)) {
-        tap_code(KC_F24);
     }
 }
 

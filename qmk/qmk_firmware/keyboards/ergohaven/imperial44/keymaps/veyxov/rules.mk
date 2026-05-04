@@ -1,17 +1,18 @@
 SRC += features.c
 
-RAW_ENABLE = yes
-
-LEADER_ENABLE = yes
-BOOTMAGIC_ENABLE = yes
-
-MOUSEKEY_ENABLE = yes
-
-EXTRAKEY_ENABLE = yes
 LTO_ENABLE = yes
 
+# features in use
+RAW_ENABLE = yes
+MOUSEKEY_ENABLE = yes
+EXTRAKEY_ENABLE = yes
 COMBO_ENABLE = yes
-VPATH += keyboards/gboards
-
 DYNAMIC_MACRO_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
+VPATH += keyboards/gboards
+
+# disable unused defaults
+BOOTMAGIC_ENABLE = no
+GRAVE_ESC_ENABLE = no
+SPACE_CADET_ENABLE = no
+MAGIC_ENABLE = no
