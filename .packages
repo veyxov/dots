@@ -1,4 +1,5 @@
 7zip
+albert-bin
 anydesk-bin
 aspnet-runtime
 base
@@ -23,6 +24,7 @@ firefox
 firefox-tridactyl-native
 fish
 freerdp
+fuzzel
 fzf
 git
 grim
