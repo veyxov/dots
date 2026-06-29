@@ -1,0 +1,17 @@
+# ripgrep config — loaded via $RIPGREP_CONFIG_PATH
+# Only search-behavior flags here (no output-format flags — they'd corrupt
+# parsing in tools like mini.pick that drive rg).
+
+# Case
+--smart-case
+
+# Search dotfiles too, but never descend into VCS metadata
+--hidden
+--glob=!**/.git/**
+
+# Skip common heavy dirs even when not gitignored
+--glob=!**/node_modules/**
+--glob=!**/.venv/**
+
+# Follow symlinks
+--follow
