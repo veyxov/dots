@@ -7,6 +7,10 @@
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // Observe every keypress before any dispatch path (mod-tap early-return,
+    // adaptive/combo consumption) can short-circuit and hide it from S_MOUS.
+    s_mous_note_interrupt(keycode, record);
+
     switch (keycode) {
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
         case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
