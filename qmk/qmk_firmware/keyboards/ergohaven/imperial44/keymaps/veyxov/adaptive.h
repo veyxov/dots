@@ -12,7 +12,6 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
             return true;
         }
         if (timer_elapsed32(prior_keydown) < ADAPTIVE_TERM) {
-            return_state    = true;
             uint16_t first  = KC_NO;
             uint16_t second = KC_NO;
             clear_mods();
@@ -133,7 +132,9 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
                 set_mods(saved_mods);
             } else {
                 set_mods(prior_saved_mods);
-                tap_code(first);
+                if (first) {
+                    tap_code(first);
+                }
                 clear_mods();
                 tap_code(second);
             }

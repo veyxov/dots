@@ -14,8 +14,14 @@ void toggle_lg(void) {
     unregister_code(KC_RSFT);
 }
 
+static void cryl_off(void) {
+    toggle_lg();
+    layer_off(_CRYL);
+}
+
 static bool s_mous_held = false;
 static bool s_mous_mouse_active = false;
+static bool s_mous_interrupted = false;
 static uint16_t s_mous_timer = 0;
 
 static void s_mous_start(void) {
@@ -23,11 +29,17 @@ static void s_mous_start(void) {
     register_code(KC_LSFT);
     s_mous_held = true;
     s_mous_mouse_active = false;
+    s_mous_interrupted = false;
 }
 
 static void s_mous_tap(void) {
     unregister_code(KC_LSFT);
-    set_oneshot_mods(MOD_LSFT);
+    // If another key was pressed while S_MOUS was held, the physical shift
+    // already applied to it; setting a one-shot here would leak an extra
+    // shift onto the next key.
+    if (!s_mous_interrupted) {
+        set_oneshot_mods(MOD_LSFT);
+    }
     s_mous_held = false;
 }
 
@@ -61,6 +73,15 @@ void matrix_scan_s_mous(void) {
     }
 }
 
+// Must run for EVERY key event, before adaptive/combo/mod-tap dispatch can
+// swallow a key. A key pressed while S_MOUS is held means we're rolling into a
+// held-shift, not tapping for a one-shot, so the one-shot must be suppressed.
+void s_mous_note_interrupt(uint16_t keycode, keyrecord_t *record) {
+    if (s_mous_held && record->event.pressed && keycode != S_MOUS) {
+        s_mous_interrupted = true;
+    }
+}
+
 bool process_record_features(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case REP:
@@ -81,10 +102,10 @@ bool process_record_features(uint16_t keycode, keyrecord_t *record) {
             return false;
         case CRYLTG:
             if (record->event.pressed) {
-                toggle_lg();
                 if (get_highest_layer(layer_state) == _CRYL) {
-                    layer_off(_CRYL);
+                    cryl_off();
                 } else {
+                    toggle_lg();
                     layer_on(_CRYL);
                 }
             }
@@ -92,8 +113,7 @@ bool process_record_features(uint16_t keycode, keyrecord_t *record) {
         case SN_ESC_CRYL:
             if (record->event.pressed) {
                 if (get_highest_layer(layer_state) == _CRYL) {
-                    toggle_lg();
-                    layer_off(_CRYL);
+                    cryl_off();
                 } else {
                     tap_code(KC_ESC);
                 }
