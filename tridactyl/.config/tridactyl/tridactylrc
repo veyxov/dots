@@ -1,148 +1,19 @@
 " General Settings
-
-set completions.Tab.statusstylepretty true
-
-set update.lastchecktime 1691987542254
-set update.nag true
-set update.nagwait 7
-set update.lastnaggedversion 1.14.0
-set update.checkintervalsecs 86400
-set configversion 2.0
 set theme midnight
-set smoothscroll true
-set searchengine google
-set incsearch true
-set modeindicator true
-set modeindicatorshowkeys true
-set scrollduration 50
+set hintnames short
+set hintchars nerisadt
 
 " Binds
-bind n fillcmdline tabopen -b
 bind e scrollline 20
 bind i scrollline -20
-bind <ArrowLeft> back
-bind <ArrowRight> forward
-unbind d
-unbind r
-bind a tabprev
-bind h tabnext
-bind x tabclose
-bind t fillcmdline tab
-bind <A-p> pin
-bind <A-m> mute toggle
-bind <F1> help
-bind o fillcmdline open
-bind O current_url open
-bind w fillcmdline winopen
-bind W current_url winopen
-bind ]] followpage next
-bind [[ followpage prev
-bind [c urlincrement -1
-bind ]c urlincrement 1
-bind <C-x> urlincrement -1
-bind <C-a> urlincrement 1
-bind T current_url tabopen
-bind yy clipboard yank
-bind ys clipboard yankshort
-bind yc clipboard yankcanon
-bind ym clipboard yankmd
-bind yo clipboard yankorg
-bind yt clipboard yanktitle
-bind gh home
-bind gH home true
-bind p clipboard open
-bind P clipboard tabopen
-bind <C-e> scrollline 10
-bind <C-y> scrollline -10
-bind G scrollto 100
-bind gg scrollto 0
-bind <C-u> scrollpage -0.5
-bind <C-d> scrollpage 0.5
-bind <C-f> scrollpage 1
-bind <C-b> scrollpage -1
-bind <C-v> nmode ignore 1 mode normal
-bind $ scrollto 100 x
-bind ^ scrollto 0 x
-bind <C-o> jumpprev
-bind <C-i> jumpnext
-bind D composite tabprev; tabclose #
+unbind j
+unbind k
 
-bind gx0 tabclosealltoleft
-bind gx$ tabclosealltoright
-bind gxx composite tabclosealltoright tabclosealltoleft
-
-bind << tabmove -1
-bind >> tabmove +1
-
-bind u undo
-bind U undo window
-
-bind R reloadhard
-
-bind gi focusinput -l
-
-bind g? rot13
-bind g! jumble
-
-bind g; changelistjump -1
-bind gt tabnext_gt
-bind gT tabprev
-bind g^ tabfirst
-bind g0 tabfirst
-bind g$ tablast
-bind ga tabaudio
-bind gr reader
-bind gu urlparent
-bind gU urlroot
-bind gf viewsource
-bind : fillcmdline_notrail
-bind M gobble 1 quickmark
-bind ZZ qall
-
-bind <S-Escape> mode ignore
-bind <Escape> composite mode normal ; hidecmdline
-bind <C-[> composite mode normal ; hidecmdline
-bind --mode=ex <C-d> ex.execute_ex_on_completion_args tabclose
-
-bind A bmark
-
-bind zi zoom 0.1 true
-bind zo zoom -0.1 true
-bind zm zoom 0.5 true
-bind zr zoom -0.5 true
-bind zz zoom 1
-
-bind . repeat
-
-bind m gobble 1 markadd
-bind ` gobble 1 markjump
-
-" Copy hinted text
-set hintchars nerisadt
-set hintnames short
-set hintshift true
 bind s hint
-bind S hint -t
-bind yt hint -p
 
-" Search bindings
-bind / fillcmdline find
-bind & fillcmdline find --reverse
-bind f findnext --search-from-view
-bind F findnext --search-from-view --reverse
-bind gn findselect
-bind gN composite findnext --search-from-view --reverse; findselect
-
-unbind --mode=normal l
-bind lp nohlsearch
-
-unbind --mode=normal b
-bind b fillcmdline back 
-bind B fillcmdline forward 
-bind j fillcmdline goto 
+bind f fillcmdline open lucky
 
 " Autocmds
 autocmd TriStart .* source
 
-set searchurls.gsc https://github.com/search?q=%s&type=code
-set searchurls.gsp https://github.com/search?q=path%3A%s
+set searchurls.lucky https://duckduckgo.com/?q=\%s
