@@ -2,6 +2,7 @@
 albert-bin
 anydesk-bin
 aspnet-runtime
+atuin
 base
 base-devel
 bluez
@@ -71,6 +72,7 @@ rustup
 satty
 slurp
 sof-firmware
+starship
 stow
 stretchly-bin
 sudo
