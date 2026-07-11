@@ -1,0 +1,3 @@
+zsh-users/zsh-autosuggestions
+Aloxaf/fzf-tab
+zdharma-continuum/fast-syntax-highlighting
