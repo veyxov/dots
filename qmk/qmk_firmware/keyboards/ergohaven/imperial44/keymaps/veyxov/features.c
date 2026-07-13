@@ -3,6 +3,7 @@
 
 #include "raw_hid.h"
 #include "keymap.h"
+#include "os_detection.h"
 
 #define BOOTLOADER_MAGIC "BOOTLDR1"
 #define RAW_HID_REPORT_SIZE 32
@@ -17,6 +18,18 @@ void toggle_lg(void) {
 static void cryl_off(void) {
     toggle_lg();
     layer_off(_CRYL);
+}
+
+// Windows/Linux use Ctrl for copy/paste/select-all, macOS uses Cmd.
+// OS detection is best-effort and known to misdetect behind hubs/docks
+// (see QMK os_detection docs), so an unsure/misdetected result falls back
+// to Cmd rather than Ctrl, since macOS is the primary machine.
+static void tap_os_mod(uint16_t kc) {
+    os_variant_t os = detected_host_os();
+    uint8_t mod = (os == OS_WINDOWS || os == OS_LINUX) ? MOD_BIT(KC_LCTL) : MOD_BIT(KC_LGUI);
+    register_mods(mod);
+    tap_code(kc);
+    unregister_mods(mod);
 }
 
 static bool s_mous_held = false;
@@ -129,6 +142,15 @@ bool process_record_features(uint16_t keycode, keyrecord_t *record) {
             return true;
         case S_MOUS:
             return process_s_mous(record);
+        case CG_COPY:
+            if (record->event.pressed) tap_os_mod(KC_C);
+            return false;
+        case CG_PASTE:
+            if (record->event.pressed) tap_os_mod(KC_V);
+            return false;
+        case CG_SELALL:
+            if (record->event.pressed) tap_os_mod(KC_A);
+            return false;
         default:
             return true;
     }

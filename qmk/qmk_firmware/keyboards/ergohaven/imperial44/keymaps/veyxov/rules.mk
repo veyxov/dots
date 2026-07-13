@@ -4,6 +4,7 @@ LTO_ENABLE = yes
 
 # features in use
 RAW_ENABLE = yes
+OS_DETECTION_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 EXTRAKEY_ENABLE = yes
 COMBO_ENABLE = yes

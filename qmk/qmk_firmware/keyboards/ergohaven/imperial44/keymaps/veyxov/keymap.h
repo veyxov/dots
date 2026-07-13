@@ -7,6 +7,9 @@ enum custom_keycodes {
     CRYLTG,
     REP,
     SN_ESC_CRYL,
+    CG_COPY,
+    CG_PASTE,
+    CG_SELALL,
 };
 
 #define LTNAV LT(_NAV, KC_T)
