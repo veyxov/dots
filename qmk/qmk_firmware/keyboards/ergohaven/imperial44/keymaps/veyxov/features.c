@@ -8,11 +8,22 @@
 #define BOOTLOADER_MAGIC "BOOTLDR1"
 #define RAW_HID_REPORT_SIZE 32
 
+// Linux (Hyprland kb_options=grp:shifts_toggle) switches input source on a
+// both-shifts tap; macOS's input-source-switch shortcut is Ctrl+Space
+// instead, so a plain both-shifts tap is a no-op there and the firmware's
+// _CRYL layer desyncs from the OS's actual active layout.
 void toggle_lg(void) {
-    register_code(KC_LSFT);
-    register_code(KC_RSFT);
-    unregister_code(KC_LSFT);
-    unregister_code(KC_RSFT);
+    os_variant_t os = detected_host_os();
+    if (os == OS_WINDOWS || os == OS_LINUX) {
+        register_code(KC_LSFT);
+        register_code(KC_RSFT);
+        unregister_code(KC_LSFT);
+        unregister_code(KC_RSFT);
+    } else {
+        register_code(KC_LCTL);
+        tap_code(KC_SPC);
+        unregister_code(KC_LCTL);
+    }
 }
 
 static void cryl_off(void) {
