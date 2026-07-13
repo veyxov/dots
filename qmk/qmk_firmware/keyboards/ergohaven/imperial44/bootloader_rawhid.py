@@ -29,15 +29,26 @@ def main() -> int:
     payload = BOOTLOADER_MAGIC.ljust(REPORT_SIZE, b"\0")
     path = device_info["path"]
 
-    dev = hid.device()
-    dev.open_path(path)
-    try:
-        dev.write(b"\0" + payload)
-        dev.set_nonblocking(1)
-        time.sleep(0.25)
-        dev.read(REPORT_SIZE)
-    finally:
-        dev.close()
+    # Two incompatible packages both import as `hid`: trezor's hid
+    # (hid.Device context manager) and the classic hidapi wheel
+    # (hid.device() + open_path()). Support whichever is installed.
+    if hasattr(hid, "Device"):
+        with hid.Device(path=path) as dev:
+            dev.write(b"\0" + payload)
+            try:
+                dev.read(REPORT_SIZE, timeout=250)
+            except OSError:
+                pass
+    else:
+        dev = hid.device()
+        dev.open_path(path)
+        try:
+            dev.write(b"\0" + payload)
+            dev.set_nonblocking(1)
+            time.sleep(0.25)
+            dev.read(REPORT_SIZE)
+        finally:
+            dev.close()
 
     time.sleep(0.25)
     return 0
