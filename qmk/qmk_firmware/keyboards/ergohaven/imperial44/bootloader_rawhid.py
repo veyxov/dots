@@ -29,12 +29,15 @@ def main() -> int:
     payload = BOOTLOADER_MAGIC.ljust(REPORT_SIZE, b"\0")
     path = device_info["path"]
 
-    with hid.Device(path=path) as dev:
+    dev = hid.device()
+    dev.open_path(path)
+    try:
         dev.write(b"\0" + payload)
-        try:
-            dev.read(REPORT_SIZE, timeout=250)
-        except OSError:
-            pass
+        dev.set_nonblocking(1)
+        time.sleep(0.25)
+        dev.read(REPORT_SIZE)
+    finally:
+        dev.close()
 
     time.sleep(0.25)
     return 0
