@@ -7,6 +7,7 @@ enum custom_keycodes {
     CRYLTG,
     REP,
     SN_ESC_CRYL,
+    CG_WBSPC,
     CG_COPY,
     CG_PASTE,
     CG_SELALL,

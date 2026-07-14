@@ -31,6 +31,16 @@ static void cryl_off(void) {
     layer_off(_CRYL);
 }
 
+// Word-delete: Ctrl+Backspace on Windows/Linux, Option+Backspace on macOS
+// (Ctrl+Backspace is a no-op there).
+static void tap_word_bspc(void) {
+    os_variant_t os = detected_host_os();
+    uint8_t mod = (os == OS_WINDOWS || os == OS_LINUX) ? MOD_BIT(KC_LCTL) : MOD_BIT(KC_LALT);
+    register_mods(mod);
+    tap_code(KC_BSPC);
+    unregister_mods(mod);
+}
+
 // Windows/Linux use Ctrl for copy/paste/select-all, macOS uses Cmd.
 // OS detection is best-effort and known to misdetect behind hubs/docks
 // (see QMK os_detection docs), so an unsure/misdetected result falls back
@@ -125,16 +135,15 @@ bool process_record_features(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case CRYLTG:
-            if (record->event.pressed) {
-                if (get_highest_layer(layer_state) == _CRYL) {
-                    cryl_off();
-                } else {
-                    toggle_lg();
-                    layer_on(_CRYL);
-                }
+            // Enable-only: turning Russian OFF is Esc's job (SN_ESC_CRYL),
+            // so a repeated press can't blind-toggle the OS out of sync.
+            if (record->event.pressed && get_highest_layer(layer_state) != _CRYL) {
+                toggle_lg();
+                layer_on(_CRYL);
             }
             return false;
         case SN_ESC_CRYL:
+            // Esc disables Russian when it's on; plain Esc otherwise.
             if (record->event.pressed) {
                 if (get_highest_layer(layer_state) == _CRYL) {
                     cryl_off();
@@ -142,6 +151,9 @@ bool process_record_features(uint16_t keycode, keyrecord_t *record) {
                     tap_code(KC_ESC);
                 }
             }
+            return false;
+        case CG_WBSPC:
+            if (record->event.pressed) tap_word_bspc();
             return false;
         case LTNAV:
             if (get_repeat_key_count() > 0) {
