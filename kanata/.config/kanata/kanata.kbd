@@ -175,8 +175,8 @@
   grv  grv
   @osl   j    A-f  @am  A-p  A-v  XX   x     A-1    A-2    A-3    A-4     @funds
   del    A-s  lalt lsft lctl lmet home left  down   up     rght   end
-  @ax    @ag  A-n  C-z  C-S-z @fmins A-c M-spc A-k  @montog @monmov
-  @fngui rpt  @ltnav @smous tab M-S-spc @lock @ctlleft @altrght .
+  @ax    M-S-g A-n  C-z  C-S-z @fmins A-c M-spc A-k  @montog @monmov
+  @fngui rpt  @ltnav @smous tab M-S-spc @lock M-S-s M-S-c .
 )
 
 (deflayer mouse
