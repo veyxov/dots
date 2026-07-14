@@ -2,7 +2,7 @@
 # PATH
 # ------------------------------------------------------------------
 typeset -U path PATH
-path=("$HOME/.local/bin" "$HOME/.cargo/bin" $path)
+path=("$HOME/.local/bin" "$HOME/.cargo/bin" "$HOME/.local/opt/xpack-arm-none-eabi-gcc-15.2.1-1.1/bin" $path)
 
 # ------------------------------------------------------------------
 # Core options
@@ -12,6 +12,8 @@ export EDITOR=nvim
 export KEYTIMEOUT=1                    # kill the lag switching in/out of vi mode
 export DISABLE_MAGIC_FUNCTIONS=true    # make pasting into terminal faster
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
+
+export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
 
 bindkey -v                             # vi mode
 autoload edit-command-line; zle -N edit-command-line
@@ -68,10 +70,13 @@ eval "$(atuin init zsh)"
 # ------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------
-alias ea="clear; lsd --long --octal-permissions --no-permissions --no-user --icons --sort time --reverse"
-alias nd="z"
+alias s="eza --icons --group-directories-first"
+alias ea="clear; eza --long --octal-permissions --no-permissions --no-user --icons --git --sort=modified --reverse"
+alias lt="eza --tree --icons --level=2 --group-directories-first"
+alias nd="zi"
+alias d="z"
 alias n="nvim"
-alias ei="lazygit"
+alias g="lazygit"
 alias nvil="nvim" # "Hands down" did this to me :)
 
 # file-system manipulation
