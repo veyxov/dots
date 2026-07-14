@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
+<!--
+  Ported from xkb/.xkb/symbols/rus ("Russian (Rulemak, phonetic Hands Down)").
+  Same phonetic mapping (a->а, s->с, d->д, ...), same Tajik-only letters on
+  Right-Option (ғ қ ӯ ҳ ҷ ӣ), same odd/duplicate slots as the source file —
+  faithful port, not a redesign. Untouched keys (digits, punctuation not
+  listed in the source) keep standard US output.
+
+  Caveat: Caps Lock and Left Arrow overrides (from the source file's CAPS/LEFT
+  entries) may not take effect — macOS handles both specially before the
+  normal key-output pipeline runs. Included for fidelity; verify on device.
+-->
+<keyboard group="126" id="-19770" name="Russian-Tajik Phonetic (Hands Down)">
+
+    <layouts>
+        <layout first="0" last="123" modifiers="Modifiers" mapSet="ANSI" />
+    </layouts>
+
+    <modifierMap id="Modifiers" defaultIndex="0">
+        <keyMapSelect mapIndex="0">
+            <modifier keys="" />
+        </keyMapSelect>
+        <keyMapSelect mapIndex="1">
+            <modifier keys="anyShift" />
+        </keyMapSelect>
+        <keyMapSelect mapIndex="2">
+            <modifier keys="anyOption" />
+        </keyMapSelect>
+        <keyMapSelect mapIndex="3">
+            <modifier keys="anyOption anyShift" />
+        </keyMapSelect>
+    </modifierMap>
+
+    <keyMapSet id="ANSI">
+
+        <!-- Level 1: unshifted -->
+        <keyMap index="0">
+            <key code="0" output="а" /> <!-- A -->
+            <key code="1" output="с" /> <!-- S -->
+            <key code="2" output="д" /> <!-- D -->
+            <key code="3" output="ф" /> <!-- F -->
+            <key code="4" output="ҳ" /> <!-- H -->
+            <key code="5" output="г" /> <!-- G -->
+            <key code="6" output="з" /> <!-- Z -->
+            <key code="7" output="х" /> <!-- X -->
+            <key code="8" output="ч" /> <!-- C -->
+            <key code="9" output="в" /> <!-- V -->
+            <key code="11" output="б" /> <!-- B -->
+            <!-- code 12 (Q) intentionally undefined, matches source's disabled AD01 -->
+            <key code="13" output="ш" /> <!-- W -->
+            <key code="14" output="е" /> <!-- E -->
+            <key code="15" output="р" /> <!-- R -->
+            <key code="16" output="й" /> <!-- Y -->
+            <key code="17" output="т" /> <!-- T -->
+            <key code="18" output="қ" /> <!-- 1 -->
+            <key code="19" output="ҷ" /> <!-- 2 -->
+            <key code="20" output="ю" /> <!-- 3 -->
+            <key code="21" output="4" />
+            <key code="22" output="6" />
+            <key code="23" output="5" />
+            <key code="24" output="з" /> <!-- = -->
+            <key code="25" output="9" />
+            <key code="26" output="7" />
+            <key code="27" output="-" />
+            <key code="28" output="8" />
+            <key code="29" output="0" />
+            <key code="30" output="ҳ" /> <!-- ] -->
+            <key code="31" output="о" /> <!-- O -->
+            <key code="32" output="у" /> <!-- U -->
+            <key code="33" output="и" /> <!-- [ -->
+            <key code="34" output="и" /> <!-- I -->
+            <key code="35" output="п" /> <!-- P -->
+            <key code="36" output="&#x0d;" /> <!-- Return -->
+            <key code="37" output="л" /> <!-- L -->
+            <key code="38" output="қ" /> <!-- J -->
+            <key code="39" output="ы" /> <!-- ' -->
+            <key code="40" output="к" /> <!-- K -->
+            <key code="41" output="Ъ" /> <!-- ; -->
+            <key code="42" output="\" />
+            <key code="43" output="," />
+            <key code="44" output="/" />
+            <key code="45" output="н" /> <!-- N -->
+            <key code="46" output="м" /> <!-- M -->
+            <key code="47" output="." />
+            <key code="48" output="&#x09;" /> <!-- Tab -->
+            <key code="49" output=" " /> <!-- Space -->
+            <key code="50" output="`" />
+            <key code="57" output="х" /> <!-- Caps Lock -->
+            <key code="123" output="ь" /> <!-- Left Arrow -->
+        </keyMap>
+
+        <!-- Level 2: shift -->
+        <keyMap index="1">
+            <key code="0" output="А" />
+            <key code="1" output="С" />
+            <key code="2" output="Д" />
+            <key code="3" output="Ф" />
+            <key code="4" output="Ҳ" />
+            <key code="5" output="Г" />
+            <key code="6" output="З" />
+            <key code="7" output="Х" />
+            <key code="8" output="Ч" />
+            <key code="9" output="В" />
+            <key code="11" output="Б" />
+            <key code="13" output="Ш" />
+            <key code="14" output="Е" />
+            <key code="15" output="Р" />
+            <key code="16" output="Й" />
+            <key code="17" output="Т" />
+            <key code="18" output="!" />
+            <key code="19" output="Ҷ" />
+            <key code="20" output="Ю" />
+            <key code="21" output="$" />
+            <key code="22" output="^" />
+            <key code="23" output="%" />
+            <key code="24" output="З" />
+            <key code="25" output="(" />
+            <key code="26" output="&amp;" />
+            <key code="27" output="_" />
+            <key code="28" output="*" />
+            <key code="29" output=")" />
+            <key code="30" output="Ҳ" />
+            <key code="31" output="О" />
+            <key code="32" output="У" />
+            <key code="33" output="И" />
+            <key code="34" output="И" />
+            <key code="35" output="П" />
+            <key code="36" output="&#x0d;" />
+            <key code="37" output="Л" />
+            <key code="38" output="Қ" />
+            <key code="39" output="ъ" />
+            <key code="40" output="К" />
+            <key code="41" output=":" />
+            <key code="42" output="|" />
+            <key code="43" output="," />
+            <key code="44" output="?" />
+            <key code="45" output="Н" />
+            <key code="46" output="М" />
+            <key code="47" output="?" />
+            <key code="48" output="&#x09;" />
+            <key code="49" output=" " />
+            <key code="50" output="~" />
+            <key code="57" output="Х" />
+            <key code="123" output="ь" />
+        </keyMap>
+
+        <!-- Level 3: option (Tajik-only / extra letters; matches source's level3(ralt_switch)) -->
+        <keyMap index="2">
+            <key code="0" output="ғ" /> <!-- A -->
+            <key code="1" output="с" /> <!-- S (no L3 in source, falls back) -->
+            <key code="2" output="я" /> <!-- D (repurposed: source's DELE->я moved here, code117/Forward-Delete now stays plain delete) -->
+            <key code="3" output="ф" /> <!-- F -->
+            <key code="4" output="ъ" /> <!-- H -->
+            <key code="5" output="ғ" /> <!-- G -->
+            <key code="6" output="ж" /> <!-- Z -->
+            <key code="7" output="х" /> <!-- X (no L3 in source, falls back) -->
+            <key code="8" output="ч" /> <!-- C (no L3 in source, falls back) -->
+            <key code="9" output="в" /> <!-- V -->
+            <key code="11" output="б" /> <!-- B (no L3 in source, falls back) -->
+            <key code="13" output="ц" /> <!-- W -->
+            <key code="14" output="ё" /> <!-- E -->
+            <key code="15" output="р" /> <!-- R -->
+            <key code="16" output="щ" /> <!-- Y -->
+            <key code="17" output="щ" /> <!-- T -->
+            <key code="18" output="қ" /> <!-- 1 -->
+            <key code="19" output="ҷ" /> <!-- 2 -->
+            <key code="20" output="ю" /> <!-- 3 -->
+            <key code="21" output="4" />
+            <key code="22" output="6" />
+            <key code="23" output="5" />
+            <key code="24" output="з" />
+            <key code="25" output="9" />
+            <key code="26" output="7" />
+            <key code="27" output="-" />
+            <key code="28" output="8" />
+            <key code="29" output="0" />
+            <key code="30" output="«" /> <!-- ] -->
+            <key code="31" output="о" />
+            <key code="32" output="ӯ" /> <!-- U -->
+            <key code="33" output="ӣ" /> <!-- [ -->
+            <key code="34" output="ӣ" /> <!-- I -->
+            <key code="35" output="ё" /> <!-- P -->
+            <key code="36" output="&#x0d;" />
+            <key code="37" output="ӯ" /> <!-- L -->
+            <key code="38" output="қ" /> <!-- J -->
+            <key code="39" output="ы" /> <!-- ' -->
+            <key code="40" output="к" /> <!-- K (no L3 in source, falls back) -->
+            <key code="41" output="ӣ" /> <!-- ; -->
+            <key code="42" output="\" />
+            <key code="43" output="," />
+            <key code="44" output="&gt;" /> <!-- / -->
+            <key code="45" output="\" /> <!-- N -->
+            <key code="46" output="м" /> <!-- M (no L3 in source, falls back) -->
+            <key code="47" output="&lt;" /> <!-- . -->
+            <key code="48" output="&#x09;" />
+            <key code="49" output=" " />
+            <key code="50" output="`" />
+            <key code="57" output="х" />
+            <key code="123" output="ь" />
+        </keyMap>
+
+        <!-- Level 4: option+shift -->
+        <keyMap index="3">
+            <key code="0" output="Ғ" />
+            <key code="1" output="С" /> <!-- no L4 in source, falls back to L2 -->
+            <key code="2" output="Я" /> <!-- repurposed, see Level 3 code 2 -->
+            <key code="3" output="Ф" />
+            <key code="4" output="Ъ" />
+            <key code="5" output="Ғ" />
+            <key code="6" output="Ж" />
+            <key code="7" output="Х" />
+            <key code="8" output="Ч" />
+            <key code="9" output="В" />
+            <key code="11" output="Б" />
+            <key code="13" output="Ц" />
+            <key code="14" output="Ё" />
+            <key code="15" output="Р" />
+            <key code="16" output="Щ" />
+            <key code="17" output="Щ" />
+            <key code="18" output="!" />
+            <key code="19" output="Ҷ" />
+            <key code="20" output="Ю" />
+            <key code="21" output="$" />
+            <key code="22" output="^" />
+            <key code="23" output="%" />
+            <key code="24" output="З" />
+            <key code="25" output="(" />
+            <key code="26" output="&amp;" />
+            <key code="27" output="_" />
+            <key code="28" output="*" />
+            <key code="29" output=")" />
+            <key code="30" output="„" /> <!-- ] -->
+            <key code="31" output="О" />
+            <key code="32" output="Ӯ" /> <!-- U -->
+            <key code="33" output=":" /> <!-- [ -->
+            <key code="34" output="Ӣ" /> <!-- I -->
+            <key code="35" output="Ё" /> <!-- P -->
+            <key code="36" output="&#x0d;" />
+            <key code="37" output="Л" /> <!-- L, no L4 in source -->
+            <key code="38" output="Қ" />
+            <key code="39" output="ъ" />
+            <key code="40" output="К" /> <!-- K (no L4 in source, falls back) -->
+            <key code="41" output="Ӣ" /> <!-- ; -->
+            <key code="42" output="|" />
+            <key code="43" output="," />
+            <key code="44" output="?" /> <!-- / no L4 in source -->
+            <key code="45" output="|" /> <!-- N -->
+            <key code="46" output="М" /> <!-- M (no L4 in source, falls back) -->
+            <key code="47" output="?" /> <!-- . no L4 in source -->
+            <key code="48" output="&#x09;" />
+            <key code="49" output=" " />
+            <key code="50" output="~" />
+            <key code="57" output="Х" />
+            <key code="123" output="ь" />
+        </keyMap>
+
+    </keyMapSet>
+
+</keyboard>
