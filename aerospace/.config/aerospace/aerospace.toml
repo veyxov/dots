@@ -106,6 +106,7 @@ key-mapping.preset = 'qwerty'
     alt-equal = 'resize smart +50'
 
     # Ported from hypr/.config/hypr/hyprland.conf
+    alt-r = 'exec-and-forget osascript -e "tell application \"System Events\" to key code 49 using command down"' # launcher (Spotlight), hypr: albert
     alt-f = 'fullscreen'
     alt-c = 'close'
     alt-v = 'layout floating tiling'
@@ -123,6 +124,9 @@ key-mapping.preset = 'qwerty'
     alt-shift-4 = 'move-node-to-workspace 4'
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'
+    # Monitor keys match QMK NAV layer: MON_TOG = cmd+ctrl+right, MON_MOV = cmd+ctrl+shift+right
+    ctrl-cmd-right = 'focus-monitor --wrap-around next'
+    ctrl-cmd-shift-right = 'move-node-to-monitor --wrap-around next'
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
     alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
