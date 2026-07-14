@@ -20,6 +20,7 @@ dotnet-targeting-pack
 dotnet-targeting-pack-preview-bin
 efibootmgr
 exfat-utils
+eza
 fd
 firefox
 firefox-tridactyl-native
