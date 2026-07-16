@@ -1,8 +1,5 @@
 #pragma once
 
-// tapping term
-#define TAPPING_TERM 200
-
 // mouse
 #define MOUSEKEY_DELAY       0
 #define MOUSEKEY_INTERVAL    16

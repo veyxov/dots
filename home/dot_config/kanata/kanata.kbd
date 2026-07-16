@@ -32,6 +32,13 @@
   z    x    c    v    b    spc  n    m    ,    .
 )
 
+;; adaptive-key guard: prior-key condition + QMK's mod guard, single source
+;; for the 200ms ADAPTIVE_TERM and the "skip when ctrl/alt/cmd held" policy.
+(deftemplate prior (cond)
+  ((key-timing 1 less-than 200) $cond
+   (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+)
+
 (defalias
   ;; layer holds / one-shots
   osl    (one-shot 2000 (layer-while-held num))          ;; OSL(_NUM)
@@ -44,7 +51,7 @@
   ;; thumb row
   ctlleft (tap-hold 200 200 left lctl)                   ;; MT(MOD_LCTL, KC_LEFT)
   altrght (tap-hold 200 200 rght lalt)                   ;; MT(MOD_LALT, KC_RGHT)
-  lock    M-l                                            ;; LGUI(KC_L)
+  lock    C-M-q                                          ;; macOS native Lock Screen (was Cmd+L, clashed w/ browser addr bar)
 
   ;; monitor toggle/move (macOS shortcuts, same as QMK MON_TOG/MON_MOV)
   montog M-C-rght
@@ -81,63 +88,50 @@
 
   ;; adaptive keys (adaptive.h). key-history uses PHYSICAL input names:
   ;; f=3 m=4 p=5 v=6 g=a l=s c=d d=r x=caps/8 u=l a=o o=; e=p h=]
-  ;; guarded like QMK: skip when ctrl/alt/cmd held; 200ms ADAPTIVE_TERM.
+  ;; guarded like QMK via the `prior` template (defined above defalias):
+  ;; skip when ctrl/alt/cmd held; 200ms ADAPTIVE_TERM.
   am (switch
-    ( (key-timing 1 less-than 200)
-      (or (key-history 3 1) (key-history 6 1) (key-history 5 1))
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (or (key-history 3 1) (key-history 6 1) (key-history 5 1)))
      l break                                ;; FM/VM/PM -> .L
     () m break)
   ap (switch
-    ( (key-timing 1 less-than 200) (key-history 3 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (key-history 3 1))
      S-[ break                              ;; FP -> F{  (as QMK codes it)
     () p break)
   av (switch
-    ( (key-timing 1 less-than 200) (key-history 4 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (key-history 4 1))
      b break                                ;; MV -> MB
-    ( (key-timing 1 less-than 200) (key-history 5 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (key-history 5 1))
      (macro bspc l v) break                 ;; PV -> LV (p already typed)
     () v break)
   add (switch
-    ( (key-timing 1 less-than 200) (key-history r 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (key-history r 1))
      c break                                ;; DD -> DC
     () d break)
   ac (switch
-    ( (key-timing 1 less-than 200) (key-history s 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (key-history s 1))
      p break                                ;; LC -> LP
     () c break)
   al (switch
-    ( (key-timing 1 less-than 200) (key-history s 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (key-history s 1))
      m break                                ;; LL -> LM
     () l break)
   ag (switch
-    ( (key-timing 1 less-than 200) (key-history a 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (key-history a 1))
      f break                                ;; GG -> GF
     () g break)
   ax (switch
-    ( (key-timing 1 less-than 200) (key-history a 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (key-history a 1))
      s break                                ;; GX -> GS
     () x break)
   ah (switch
-    ( (key-timing 1 less-than 200) (key-history l 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (key-history l 1))
      a break                                ;; UH -> UA
-    ( (key-timing 1 less-than 200) (key-history o 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (key-history o 1))
      u break                                ;; AH -> AU
-    ( (key-timing 1 less-than 200) (key-history ; 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (key-history ; 1))
      e break                                ;; OH -> OE
-    ( (key-timing 1 less-than 200) (key-history p 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
+    (t! prior (key-history p 1))
      o break                                ;; EH -> EO
     () h break)
 )
@@ -152,7 +146,7 @@
   (p [)   ret            20 first-release (nav num mouse)     ;; ei -> enter, () -> enter
   (w e)   (switch ((layer cryl)) @cryloff break () esc break) 20 first-release (nav sym num) ;; sn -> esc / exit cryl
   (e r)   tab            20 first-release (nav sym num)       ;; nd -> tab
-  (o p)   C-bspc         20 first-release (nav sym num mouse) ;; ae -> ctrl+bspc
+  (o p)   M-bspc         20 first-release (nav sym num mouse) ;; ae -> opt+bspc (Ctrl+Bspc is a no-op on macOS)
   (a s)   M-c            20 first-release (nav sym)           ;; gl -> copy
   (s d)   M-v            20 first-release (nav sym)           ;; lc -> paste
   (a s d) M-a            20 first-release (nav sym)           ;; glc -> select all
@@ -174,7 +168,7 @@
 (deflayer nav
   grv  grv
   @osl   j    A-f  @am  A-p  A-v  XX   x     A-1    A-2    A-3    A-4     @funds
-  del    A-s  lalt lsft lctl lmet home left  down   up     rght   end
+  del    M-S-s lalt lsft lctl lmet home left  down   up     rght   end
   @ax    M-S-g A-n  C-z  C-S-z @fmins A-c M-spc A-k  @montog @monmov
   @fngui rpt  @ltnav @smous tab M-S-spc @lock M-S-s M-S-c .
 )
@@ -198,7 +192,7 @@
 (deflayer cryl
   grv  grv
   @osl   j    f    m    p    v    XX   x     @fdot  @fslsh @fques '       @funds
-  del    r    s    n    d    w    @fcomm a   e      i      h      z
+  del    r    s    n    d    w    @fcomm a   e      i      h      A-d
   x      g    l    c    b    @fmins u   o    y      k      @cryloff
   @fngui 2    @ltnav @smous 3 @symspc @lock left @osralt .
 )
