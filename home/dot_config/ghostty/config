@@ -1,0 +1,18 @@
+background-opacity = 0.85
+
+macos-titlebar-style = tabs
+macos-option-as-alt = true
+mouse-hide-while-typing = true
+confirm-close-surface = false
+
+# font size
+keybind = alt+slash=increase_font_size:2
+keybind = alt+shift+slash=decrease_font_size:2
+
+# clipboard: ctrl+c copies only when selection exists, else passes SIGINT through
+keybind = performable:ctrl+c=copy_to_clipboard
+keybind = ctrl+v=paste_from_clipboard
+
+# ctrl/alt+backspace delete word
+keybind = ctrl+backspace=text:\x17
+keybind = alt+backspace=text:\x17
