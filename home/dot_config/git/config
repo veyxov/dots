@@ -16,34 +16,16 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [diff]
     colorMoved = zebra
-    tool = meld
-[difftool]
-    prompt = false
-[difftool "meld"]
-    cmd = meld "$LOCAL" "$REMOTE"
-[color]
-    ui = true
 [rebase]
 	autosquash = true
 [fetch]
 	prune = true
 [help]
 	autocorrect = 20
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-
 [pull]
     rebase = true
 
-[advice]
-    statusHints = true
-    detachedHead = true
 [commit]
 	gpgsign = true
-[rerere]
-	enabled = false
 [credential]
 	useHttpPath = true

@@ -8,9 +8,12 @@ if [ ! -d "$DOTS_DIR" ]; then
   git clone git@github.com:veyxov/dots.git "$DOTS_DIR"
 fi
 
-mkdir -p "${HOME}/.config/chezmoi"
-cat > "${HOME}/.config/chezmoi/chezmoi.toml" <<EOF
+# don't clobber an existing config (it may hold [data] etc.)
+if [ ! -f "${HOME}/.config/chezmoi/chezmoi.toml" ]; then
+  mkdir -p "${HOME}/.config/chezmoi"
+  cat > "${HOME}/.config/chezmoi/chezmoi.toml" <<EOF
 sourceDir = "${DOTS_DIR}"
 EOF
+fi
 
 chezmoi apply

@@ -12,7 +12,7 @@
 // both-shifts tap; macOS's input-source-switch shortcut is Ctrl+Space
 // instead, so a plain both-shifts tap is a no-op there and the firmware's
 // _CRYL layer desyncs from the OS's actual active layout.
-void toggle_lg(void) {
+static void toggle_lg(void) {
     os_variant_t os = detected_host_os();
     if (os == OS_WINDOWS || os == OS_LINUX) {
         register_code(KC_LSFT);

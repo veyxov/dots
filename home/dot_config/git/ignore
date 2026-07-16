@@ -1,4 +1,4 @@
 **/.claude/settings.local.json
-zsh/.config/zsh/.zsh_plugins.zsh
-zsh/.config/zsh/.zcompdump*
-zsh/.config/zsh/.zsh_history
+.zsh_plugins.zsh
+.zcompdump*
+.zsh_history

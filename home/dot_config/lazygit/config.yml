@@ -5,13 +5,6 @@ gui:
   showRootItemInFileTree: false
   nerdFontsVersion: "3"
 
-git:
-  pagers:
-    - pager: delta --dark --paging=never
-    - pager: ydiff -p cat -s --wrap --width={{columnWidth}}
-      colorArg: never
-    - externalDiffCommand: difft --color=always
-
 update:
   method: never
 keybinding:

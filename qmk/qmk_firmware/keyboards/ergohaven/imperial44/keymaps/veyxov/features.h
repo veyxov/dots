@@ -2,7 +2,6 @@
 
 #include QMK_KEYBOARD_H
 
-void toggle_lg(void);
 void s_mous_note_interrupt(uint16_t keycode, keyrecord_t *record);
 bool process_record_features(uint16_t keycode, keyrecord_t *record);
 bool process_s_mous(keyrecord_t *record);
