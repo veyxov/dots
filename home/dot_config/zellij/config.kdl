@@ -1,0 +1,16 @@
+pane_frames false
+default_layout "compact"
+scrollback_editor "nvim"
+
+keybinds {
+    shared_except "locked" {
+        bind "Alt n" { NewTab; }
+        bind "Alt a" { GoToPreviousTab; }
+        bind "Alt e" { GoToNextTab; }
+        bind "Alt d" { NewPane "Down"; }
+        bind "Alt s" { NewPane "Right"; }
+        bind "Alt l" { FocusNextPane; }
+        bind "Alt x" { CloseFocus; }
+        bind "Alt t" { EditScrollback; }
+    }
+}
