@@ -148,15 +148,11 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
                 tap_code16(second);
             }
         }
-        switch (keycode) {
-            // If pressed, gobble these keys until
-            // `ADAPTIVE_TERM` (handled in `matrix_adaptive_user`)
-            // or another keypress (handled in `case`s above).
-            // A P consumed by a pair above was already emitted — don't
-            // re-buffer it.
-            case KC_P:
-                if (!pair_fired) return_state = false;
-                break;
+        // Gobble P until `ADAPTIVE_TERM` (handled in `matrix_adaptive_user`)
+        // or another keypress (handled in the pair cases above). A P consumed
+        // by a pair above was already emitted — don't re-buffer it.
+        if (keycode == KC_P && !pair_fired) {
+            return_state = false;
         }
         prior_saved_mods = saved_mods;
         // After a rewrite the effective last key is what was emitted, not
@@ -169,14 +165,11 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
 }
 void matrix_adaptive_user(void) {
     if (timer_elapsed32(prior_keydown) >= ADAPTIVE_TERM) {
-        switch (prior_keycode) {
-            // If `ADAPTIVE_TERM` has elapsed,
-            // with no other key presses
-            case KC_P:
-                set_mods(prior_saved_mods);
-                tap_code(prior_keycode);
-                clear_mods();
-                break;
+        // `ADAPTIVE_TERM` elapsed with no other key press — flush gobbled P.
+        if (prior_keycode == KC_P) {
+            set_mods(prior_saved_mods);
+            tap_code(prior_keycode);
+            clear_mods();
         }
         prior_keydown = timer_read32();
         prior_keycode = KC_NO;
