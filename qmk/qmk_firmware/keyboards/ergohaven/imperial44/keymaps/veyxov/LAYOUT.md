@@ -7,13 +7,13 @@ Base alpha layout is [Hands Down Gold](https://sites.google.com/alanreiser.com/h
 
 ```
 ┌─────┬─────┬─────┬─────┬─────┐         ┌─────┬─────┬─────┬─────┬─────┐
-│OSL/N│  J  │  F  │  M  │  P  │  V       LEAD  │  .  │  /  │  ?  │  '  │  _  │
+│OSL/N│  J  │  F  │  M  │  P  │  V        X    │  .  │  /  │  ?  │  '  │  _  │
 ├─────┼─────┼─────┼─────┼─────┤         ├─────┼─────┼─────┼─────┼─────┤
 │ DEL │  R  │  S  │  N  │  D  │  W        ,    │  A  │  E  │  I  │  H  │  :  │
 ├─────┼─────┼─────┼─────┼─────┤         ├─────┼─────┼─────┼─────┼─────┤
 │GUI/F│  X  │  G  │  L  │  C  │  B        -    │  U  │  O  │  Y  │  K  │CRYL │
 └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┴─────┴─────┴─────┘
-                   │ Sh/M│ T/N │ REP │ │ TAB │⌘Lock│←/Ct │SPC/S│→/Alt│
+                   │ REP │ T/N │ Sh/M│ TAB │ │⌘Lock│←/Ct │SPC/S│→/Alt│
                    └─────┴─────┴─────┘ └─────┴─────┴─────┴─────┘
 ```
 - Shifted punctuation: `.`→`~`, `/`→`&`, `?`→`!`, `,`→`|`, `_`→`` ` ``, `-`→`+`, `:`↔`;` (custom shift keys, `keymap.c`).
@@ -42,16 +42,16 @@ right: . / ? ' _  /  , A E I H  /  - U O Y K
 
 ## Other layers
 
-**NAV** (hold `T`) — arrow cluster (`Home ← ↓ ↑ → End`) on the right home+bottom rows, window/monitor management, undo/redo, app switching (`⌘1..4`), select-line/word, copy-ish shortcuts.
+**NAV** (hold `T`) — arrow cluster (`Home ← ↓ ↑ → End`) on the right home row, one-hand mods on the left home row, window/monitor management, undo/redo, app switching (`⌥1..4`).
 
 ```
-left:  ·    ·   ⌘F   ·   ⌘P  ⌘V   |  right:  ·   ⌘1  ⌘2  ⌘3  ⌘4   ·
-       ·  ⌘S  Alt  Sft  Ctl  Gui   |         Home  ←   ↓   ↑   →  End
-       ·    ·    ·  ⌘N  Undo Redo  |          ·   ⌘C  ⌘R  ⌘K  Mon WinMon
-thumbs:  ·    ·    ·    ·          |  SelLn  ⌘X  SelWd
+left:  ·    ·   ⌥F   ·   ⌥P  ⌥V    |  right:  ·   ⌥1  ⌥2  ⌥3  ⌥4   ·
+       ·  ⌘⇧S Alt  Sft  Ctl  Gui   |         Home  ←   ↓   ↑   →  End
+       ·    ·  ⌘⇧G  ⌥N  Undo Redo  |          ·   ⌥C ⌘Spc  ⌥K  Mon WinMon
+thumbs:  ·    ·    ·    ·          |   ·  ⌘⇧S  ⌘⇧Spc  ⌘⇧C
 ```
 
-**MOUSE** (hold `Sh/M` past tapping term) — cursor on right hand (`← ↓ ↑ →` + wheel), buttons on thumbs, `2×` = accel toggle, `Slow` = precision mode.
+**MOUSE** (hold `Sh/M` past tapping term) — cursor on right hand (`← ↓ ↑ →` + wheel on the surrounding keys), buttons on right thumbs (left/middle/right click).
 
 **NUM** (one-shot from `OSL/N`) — numpad-style digits on left hand (`6 4 0 2` / `8` and `3 1 5 7` / `9`), `+` and `BTN1/BTN2` (mouse buttons) plus `SPC`/`BSPC` on thumbs.
 
@@ -91,8 +91,8 @@ thumbs:  ·    ·    ·    ·          |  SelLn  ⌘X  SelWd
 | `SPC/S`+`T/N` | Caps-word toggle | BASE |
 | `/`+`?` | Page Up | BASE |
 | `?`+`'` | Page Down | BASE |
-| `/`+`-`(NAV col) | `=>` (string) | BASE |
-| `!`+`(` (shifted 0/9) | Enter | SYM |
+| `/`+`E` | `=>` (string) | BASE |
+| `)`+`(` (shifted 0/9) | Enter | SYM |
 
 `COMBO_TERM` 20ms, variable-length combos enabled.
 

@@ -13,8 +13,10 @@
 ;; lsft stays native shift (imperial has none; zero-cost safety net).
 ;; Known deviations from QMK: no alt-repeat (Ctrl+REP), PV->LV uses a
 ;; backspace rewrite (p already typed), S_MOUS interrupt nuance approximated
-;; by tap-hold, adaptive keys keyed on physical inputs so same-position
-;; symbols from other layers can count as the prior key.
+;; by tap-hold, adaptive prior-key is kanata's emitted-output history (so a
+;; letter typed via combo/macro also counts, and after an adaptive rewrite
+;; the rewritten output — not the pressed key — is the prior), no LTNAV
+;; repeat-guard (T right after REP can still hold into NAV).
 
 (defcfg
   macos-dev-names-include (
@@ -79,64 +81,65 @@
   dms dynamic-macro-record-stop
   dmp (dynamic-macro-play 0)
 
-  ;; adaptive keys (adaptive.h). key-history uses PHYSICAL input names:
-  ;; f=3 m=4 p=5 v=6 g=a l=s c=d d=r x=caps/8 u=l a=o o=; e=p h=]
+  ;; adaptive keys (adaptive.h). key-history matches kanata's OUTPUT history:
+  ;; recency 1 = previous emitted key (the current press is not in history
+  ;; yet), named by output keycode — NOT physical input position.
   ;; guarded like QMK: skip when ctrl/alt/cmd held; 200ms ADAPTIVE_TERM.
   am (switch
     ( (key-timing 1 less-than 200)
-      (or (key-history 3 1) (key-history 6 1) (key-history 5 1))
+      (or (key-history f 1) (key-history v 1) (key-history p 1))
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      l break                                ;; FM/VM/PM -> .L
     () m break)
   ap (switch
-    ( (key-timing 1 less-than 200) (key-history 3 1)
+    ( (key-timing 1 less-than 200) (key-history f 1)
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      S-[ break                              ;; FP -> F{  (as QMK codes it)
     () p break)
   av (switch
-    ( (key-timing 1 less-than 200) (key-history 4 1)
+    ( (key-timing 1 less-than 200) (key-history m 1)
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      b break                                ;; MV -> MB
-    ( (key-timing 1 less-than 200) (key-history 5 1)
+    ( (key-timing 1 less-than 200) (key-history p 1)
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      (macro bspc l v) break                 ;; PV -> LV (p already typed)
     () v break)
   add (switch
-    ( (key-timing 1 less-than 200) (key-history r 1)
+    ( (key-timing 1 less-than 200) (key-history d 1)
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      c break                                ;; DD -> DC
     () d break)
   ac (switch
-    ( (key-timing 1 less-than 200) (key-history s 1)
+    ( (key-timing 1 less-than 200) (key-history l 1)
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      p break                                ;; LC -> LP
     () c break)
   al (switch
-    ( (key-timing 1 less-than 200) (key-history s 1)
+    ( (key-timing 1 less-than 200) (key-history l 1)
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      m break                                ;; LL -> LM
     () l break)
   ag (switch
-    ( (key-timing 1 less-than 200) (key-history a 1)
+    ( (key-timing 1 less-than 200) (key-history g 1)
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      f break                                ;; GG -> GF
     () g break)
   ax (switch
-    ( (key-timing 1 less-than 200) (key-history a 1)
+    ( (key-timing 1 less-than 200) (key-history g 1)
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      s break                                ;; GX -> GS
     () x break)
   ah (switch
-    ( (key-timing 1 less-than 200) (key-history l 1)
+    ( (key-timing 1 less-than 200) (key-history u 1)
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      a break                                ;; UH -> UA
-    ( (key-timing 1 less-than 200) (key-history o 1)
+    ( (key-timing 1 less-than 200) (key-history a 1)
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      u break                                ;; AH -> AU
-    ( (key-timing 1 less-than 200) (key-history ; 1)
+    ( (key-timing 1 less-than 200) (key-history o 1)
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      e break                                ;; OH -> OE
-    ( (key-timing 1 less-than 200) (key-history p 1)
+    ( (key-timing 1 less-than 200) (key-history e 1)
       (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
      o break                                ;; EH -> EO
     () h break)
@@ -152,10 +155,10 @@
   (p [)   ret            20 first-release (nav num mouse)     ;; ei -> enter, () -> enter
   (w e)   (switch ((layer cryl)) @cryloff break () esc break) 20 first-release (nav sym num) ;; sn -> esc / exit cryl
   (e r)   tab            20 first-release (nav sym num)       ;; nd -> tab
-  (o p)   C-bspc         20 first-release (nav sym num mouse) ;; ae -> ctrl+bspc
+  (o p)   A-bspc         20 first-release (nav sym num mouse) ;; ae -> word-bspc (alt+bspc on macOS)
   (a s)   M-c            20 first-release (nav sym)           ;; gl -> copy
-  (s d)   M-v            20 first-release (nav sym)           ;; lc -> paste
-  (a s d) M-a            20 first-release (nav sym)           ;; glc -> select all
+  (s d)   M-v            20 first-release (nav sym num)       ;; lc -> paste (num: c is 8)
+  (a s d) M-a            20 first-release (nav sym num)       ;; glc -> select all (num: c is 8)
   (o p [) ;              20 first-release (nav sym num mouse) ;; aei -> ;
   (spc c) (caps-word-toggle 2000) 20 first-release (nav sym num mouse) ;; caps word
   (0 -)   pgup           20 first-release (nav sym num mouse) ;; / ? -> pgup
@@ -174,7 +177,7 @@
 (deflayer nav
   grv  grv
   @osl   j    A-f  @am  A-p  A-v  XX   x     A-1    A-2    A-3    A-4     @funds
-  del    A-s  lalt lsft lctl lmet home left  down   up     rght   end
+  del    M-S-s lalt lsft lctl lmet home left  down   up     rght   end
   @ax    M-S-g A-n  C-z  C-S-z @fmins A-c M-spc A-k  @montog @monmov
   @fngui rpt  @ltnav @smous tab M-S-spc @lock M-S-s M-S-c .
 )
