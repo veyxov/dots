@@ -11,9 +11,10 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
             // Don't do anything if mods are present.
             return true;
         }
+        uint16_t second     = KC_NO;
+        bool     pair_fired = false;
         if (timer_elapsed32(prior_keydown) < ADAPTIVE_TERM) {
-            uint16_t first  = KC_NO;
-            uint16_t second = KC_NO;
+            uint16_t first = KC_NO;
             clear_mods();
 
             switch (prior_keycode) {
@@ -23,7 +24,7 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
                             return_state = false;
                             second       = KC_L;
                             break;
-                        case KC_P: // FP -> (
+                        case KC_P: // FP -> {
                             return_state = false;
                             second       = S(KC_LBRC);
                             break;
@@ -58,7 +59,11 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
                             second       = KC_L;
                             break;
                         default:
+                            // Replay the gobbled P with the mods it was
+                            // pressed with (Shift+P must stay "P").
+                            set_mods(prior_saved_mods);
                             tap_code(prior_keycode);
+                            break;
                     }
                     break;
                 case KC_L: // LC -> LP
@@ -128,27 +133,36 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
                     break;
             }
 
+            pair_fired = !return_state;
             if (return_state) {
                 set_mods(saved_mods);
             } else {
                 set_mods(prior_saved_mods);
                 if (first) {
-                    tap_code(first);
+                    tap_code16(first);
                 }
-                clear_mods();
-                tap_code(second);
+                // The rewritten key follows the current shift state, and
+                // 16-bit codes like S(KC_LBRC) need tap_code16 (tap_code
+                // truncates { down to [).
+                set_mods(saved_mods);
+                tap_code16(second);
             }
         }
         switch (keycode) {
             // If pressed, gobble these keys until
             // `ADAPTIVE_TERM` (handled in `matrix_adaptive_user`)
-            // or another keypress (handled in `case`s above)
+            // or another keypress (handled in `case`s above).
+            // A P consumed by a pair above was already emitted — don't
+            // re-buffer it.
             case KC_P:
-                return_state = false;
+                if (!pair_fired) return_state = false;
                 break;
         }
         prior_saved_mods = saved_mods;
-        prior_keycode    = keycode;
+        // After a rewrite the effective last key is what was emitted, not
+        // what was pressed (same semantics as the kanata port, which reads
+        // output history).
+        prior_keycode    = pair_fired ? (second & QK_BASIC_MAX) : keycode;
         prior_keydown    = timer_read32();
     }
     return return_state;

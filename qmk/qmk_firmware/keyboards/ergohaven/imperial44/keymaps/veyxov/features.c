@@ -155,14 +155,6 @@ bool process_record_features(uint16_t keycode, keyrecord_t *record) {
         case CG_WBSPC:
             if (record->event.pressed) tap_word_bspc();
             return false;
-        case LTNAV:
-            if (get_repeat_key_count() > 0) {
-                if (record->event.pressed) {
-                    tap_code(KC_T);
-                }
-                return false;
-            }
-            return true;
         case S_MOUS:
             return process_s_mous(record);
         case CG_COPY:

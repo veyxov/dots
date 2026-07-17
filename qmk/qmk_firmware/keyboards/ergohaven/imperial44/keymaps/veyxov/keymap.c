@@ -16,12 +16,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
             if (record->tap.count == 0) // If not tapped yet,
                 return true;            // let QMK handle it first.
+            // A tap of LTNAV during an active repeat sequence sends plain T
+            // directly (bypassing repeat bookkeeping), so T after REP can't
+            // disturb the sequence. Must run before the keycode is trimmed —
+            // features.c would only ever see KC_T.
+            if (keycode == LTNAV && get_repeat_key_count() > 0) {
+                if (record->event.pressed) tap_code(KC_T);
+                return false;
+            }
             keycode &= QK_BASIC_MAX;    // Trim mods + taps.
             break;
     }
 
-    // no adaptive keys on the cyrillic layer
-    if (get_highest_layer(layer_state) != _CRYL) {
+    // Adaptive keys are for plain typing on the base layer only — on other
+    // layers transparent positions resolve to the same base keycodes and
+    // would misfire pairs (e.g. F+M on MOUSE).
+    if (get_highest_layer(layer_state) == _BASE) {
         if (!process_adaptive_user(keycode, record)) {
             return false; // We have declared no more processing.
         }
