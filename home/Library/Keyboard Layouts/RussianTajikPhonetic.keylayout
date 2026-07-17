@@ -88,6 +88,13 @@
             <key code="50" output="`" />
             <key code="57" output="х" /> <!-- Caps Lock -->
             <key code="123" output="ь" /> <!-- Left Arrow -->
+            <key code="51" output="&#x08;" /> <!-- Backspace -->
+            <key code="53" output="&#x1B;" /> <!-- Escape -->
+            <key code="115" output="&#x01;" /> <!-- Home -->
+            <key code="116" output="&#x0B;" /> <!-- Page Up -->
+            <key code="117" output="&#x7F;" /> <!-- Forward Delete -->
+            <key code="119" output="&#x04;" /> <!-- End -->
+            <key code="121" output="&#x0C;" /> <!-- Page Down -->
         </keyMap>
 
         <!-- Level 2: shift -->
@@ -143,6 +150,13 @@
             <key code="50" output="~" />
             <key code="57" output="Х" />
             <key code="123" output="ь" />
+            <key code="51" output="&#x08;" /> <!-- Backspace -->
+            <key code="53" output="&#x1B;" /> <!-- Escape -->
+            <key code="115" output="&#x01;" /> <!-- Home -->
+            <key code="116" output="&#x0B;" /> <!-- Page Up -->
+            <key code="117" output="&#x7F;" /> <!-- Forward Delete -->
+            <key code="119" output="&#x04;" /> <!-- End -->
+            <key code="121" output="&#x0C;" /> <!-- Page Down -->
         </keyMap>
 
         <!-- Level 3: option (Tajik-only / extra letters; matches source's level3(ralt_switch)) -->
@@ -198,6 +212,13 @@
             <key code="50" output="`" />
             <key code="57" output="х" />
             <key code="123" output="ь" />
+            <key code="51" output="&#x08;" /> <!-- Backspace -->
+            <key code="53" output="&#x1B;" /> <!-- Escape -->
+            <key code="115" output="&#x01;" /> <!-- Home -->
+            <key code="116" output="&#x0B;" /> <!-- Page Up -->
+            <key code="117" output="&#x7F;" /> <!-- Forward Delete -->
+            <key code="119" output="&#x04;" /> <!-- End -->
+            <key code="121" output="&#x0C;" /> <!-- Page Down -->
         </keyMap>
 
         <!-- Level 4: option+shift -->
@@ -253,6 +274,13 @@
             <key code="50" output="~" />
             <key code="57" output="Х" />
             <key code="123" output="ь" />
+            <key code="51" output="&#x08;" /> <!-- Backspace -->
+            <key code="53" output="&#x1B;" /> <!-- Escape -->
+            <key code="115" output="&#x01;" /> <!-- Home -->
+            <key code="116" output="&#x0B;" /> <!-- Page Up -->
+            <key code="117" output="&#x7F;" /> <!-- Forward Delete -->
+            <key code="119" output="&#x04;" /> <!-- End -->
+            <key code="121" output="&#x0C;" /> <!-- Page Down -->
         </keyMap>
 
     </keyMapSet>
