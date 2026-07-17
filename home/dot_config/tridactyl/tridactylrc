@@ -1,6 +1,5 @@
 " General Settings
 set theme midnight
-set hintnames short
 set hintchars nerisadt
 
 " Binds

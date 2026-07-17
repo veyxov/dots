@@ -8,7 +8,6 @@ path=("$HOME/.local/bin" "$HOME/.cargo/bin" "$HOME"/.local/opt/xpack-arm-none-ea
 # Core options
 # ------------------------------------------------------------------
 export KEYTIMEOUT=1                    # kill the lag switching in/out of vi mode
-export DISABLE_MAGIC_FUNCTIONS=true    # make pasting into terminal faster
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 export HOMEBREW_NO_REQUIRE_TAP_TRUST=1

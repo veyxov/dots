@@ -6,13 +6,10 @@ command_timeout = 1000
 format = """$directory$git_branch$git_status$nodejs$rust$dotnet$cmd_duration$character"""
 
 [character]
-vicmd_symbol = '[❮](bold green)'
 success_symbol = '[❯](bold fg)'
-error_symbol = '[❯](bold red)'
 
 [directory]
 truncation_length = 4
-truncate_to_repo = true
 style = 'bold cyan'
 
 [git_branch]

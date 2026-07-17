@@ -1,7 +1,5 @@
 gui:
   skipAmendWarning: true
-  commitLength:
-    show: true
   showRootItemInFileTree: false
   nerdFontsVersion: "3"
 
