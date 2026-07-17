@@ -7,22 +7,22 @@ layout:
 
 layers:
   BASE:
-    - [{t: NUM, h: OSL}, J, F, M, P, V,        LEAD, {t: ".", s: "~"}, {t: /, s: "&"}, {t: "?", s: "!"}, "'", {t: _, s: "`"}]
+    - [{t: NUM, h: OSL}, J, F, M, P, V,        X, {t: ".", s: "~"}, {t: /, s: "&"}, {t: "?", s: "!"}, "'", {t: _, s: "`"}]
     - [DEL, R, S, N, D, W,                      {t: ",", s: "|"}, A, E, I, H, {t: ":", s: ";"}]
     - [{t: GUI, h: FN}, X, G, L, C, B,          {t: "-", s: "+"}, U, O, Y, K, {t: CRYL, type: layer}]
-    - [{t: "⇧", h: MOUSE}, {t: T, h: NAV}, REP, TAB,     "⌘L", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
+    - [REP, {t: T, h: NAV}, {t: "⇧", h: MOUSE}, TAB,     "⌘Lock", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
 
   NAV:
-    - [{type: trans}, {type: trans}, "⌘F", {type: trans}, "⌘P", "⌘V",        {type: trans}, "⌘1", "⌘2", "⌘3", "⌘4", {type: trans}]
-    - [{type: trans}, "⌘S", ALT, SHFT, CTRL, GUI,                             HOME, "←", "↓", "↑", "→", END]
-    - [{type: trans}, {type: trans}, {type: trans}, "⌘N", "⎌", "↷",    {type: trans}, "⌘C", "⌘R", "⌘K", Mon, WinMon]
-    - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, SelLine, "⌘X", SelWord]
+    - [{type: trans}, {type: trans}, "⌥F", {type: trans}, "⌥P", "⌥V",        {type: trans}, "⌥1", "⌥2", "⌥3", "⌥4", {type: trans}]
+    - [{type: trans}, "⌘⇧S", ALT, SHFT, CTRL, GUI,                             HOME, "←", "↓", "↑", "→", END]
+    - [{type: trans}, {type: trans}, "⌘⇧G", "⌥N", "⎌", "↷",    {type: trans}, "⌥C", "⌘Spc", "⌥K", Mon, WinMon]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, "⌘⇧S", "⌘⇧Spc", "⌘⇧C"]
 
   MOUSE:
-    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, MHold, "↓", MRel, WhlUp, {type: trans}]
-    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, "←", "↑", "→", WhlDn, {type: trans}]
-    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, Btn1, Btn2, Btn3, {type: trans}, {type: trans}]
-    - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, "2×", BtnM, Slow]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, WhlDn, WhlUp, {type: trans}, {type: trans}]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    WhlL, "←", "↓", "↑", "→", WhlR]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    Btn3, Btn2, Btn1, {type: trans}]
 
   NUM:
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, "+", {type: trans}, {type: trans}, {type: trans}]
@@ -32,18 +32,18 @@ layers:
 
   CRYL:
     - [{type: trans}, қ, ф, м, п, в,    {type: trans}, {type: trans}, {type: trans}, {type: trans}, ы, {type: trans}]
-    - [я, р, с, н, д, ш,    {type: trans}, а, е, и, ҳ, {t: з, h: ":"}]
+    - [я, р, с, н, д, ш,    {type: trans}, а, е, и, ҳ, "⌥D"]
     - [{type: trans}, х, г, л, ч, б,    {type: trans}, у, о, й, к, ""]
-    - [{type: trans}, {type: trans}, "2", "3",    {type: trans}, ь, {type: trans}, RAlt]
+    - ["2", {type: trans}, {type: trans}, "3",    {type: trans}, "←", {type: trans}, RAlt]
 
   FN:
-    - [{type: trans}, REC, STOP, PLAY, {type: trans}, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}]
+    - [{type: trans}, REC, STOP, PLAY, {type: trans}, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, BOOT]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    MUTE, "Vol-", {type: trans}, {type: trans}, "Vol+", {type: trans}]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, Prev, Play, Next, {type: trans}, {type: trans}]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}]
 
   SYM:
-    - [{type: trans}, "'", "<", ">", '"', {type: trans},    {type: trans}, ".", "&", "]", "[", "%"]
+    - [{type: trans}, "'", "<", ">", '"', {type: trans},    ".", "&", "]", "[", "%", {type: trans}]
     - [{type: trans}, "!", "-", "+", "=", "#",              "0", ";", ")", "(", "$", {type: trans}]
     - [{type: trans}, "^", "/", "@", "\\", {type: trans},   "~", "*", "}", "{", "@", {type: trans}]
     - [BSPC, SPC, ENT, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}]

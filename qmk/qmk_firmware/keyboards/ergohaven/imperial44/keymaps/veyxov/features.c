@@ -89,7 +89,7 @@ static void s_mous_stop(void) {
     s_mous_mouse_active = false;
 }
 
-bool process_s_mous(keyrecord_t *record) {
+static bool process_s_mous(keyrecord_t *record) {
     if (record->event.pressed) {
         s_mous_start();
     } else if (s_mous_held) {
