@@ -34,7 +34,7 @@ persistent-workspaces = ["1", "2", "3", "4"]
     alt-minus = 'resize smart -50'
     alt-equal = 'resize smart +50'
 
-    # Ported from hypr/.config/hypr/hyprland.conf
+    # Ported from archive/hypr/.config/hypr/hyprland.conf
     alt-r = 'exec-and-forget osascript -e "tell application \"System Events\" to key code 49 using command down"' # launcher (Spotlight), hypr: albert
     alt-f = 'fullscreen'
     alt-c = 'close'
