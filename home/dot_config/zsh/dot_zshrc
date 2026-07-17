@@ -22,7 +22,8 @@ bindkey -M vicmd v edit-command-line
 HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
-setopt SHARE_HISTORY
+setopt SHARE_HISTORY INC_APPEND_HISTORY EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS
 
 # ------------------------------------------------------------------
 # Completion
@@ -39,6 +40,8 @@ fi
 
 zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' menu no
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compcache"
 zstyle ':fzf-tab:*' fzf-command fzf
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color=always $realpath'
 
@@ -87,7 +90,7 @@ alias g="lazygit"
 alias nvil="nvim" # "Hands down" did this to me :)
 
 # file-system manipulation
-alias rm="rm -rfv"
+alias rm="rm -iv"
 alias mv="mv -v"
 alias cp="cp -v"
 
