@@ -16,6 +16,14 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [diff]
     colorMoved = zebra
+[core]
+	pager = delta
+	excludesfile = ~/.config/git/ignore
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	line-numbers = true
 [rebase]
 	autosquash = true
 [fetch]
@@ -29,3 +37,5 @@
 	gpgsign = true
 [credential]
 	useHttpPath = true
+[rerere]
+	enabled = true
