@@ -8,7 +8,7 @@
 ;;   1    2 3 4 5 6   |  7  8 9 0 - = bspc     row1: num! j f m p v | ∅ x . / ? ' _
 ;;   tab  q w e r t   |  i o p [ ] ret         row2: del  r s n d w | , a e i h :
 ;;   caps a s d f     |  k l ; ' \  rsft       row3: x g l c b | - u o y k CRYLTG
-;;   z  x c v b  spc  n m , .                  z=FN/Cmd, thumbs: REP NAV/t SFT/MOUSE TAB | SYM/spc LOCK CTL/left ALT/right
+;;   z  x c v b  spc  n m , .                  z=FN/Cmd, thumbs: REP NAV/t SYM/spc TAB | LOCK CTL/left SYM/spc ALT/right (spacebar = SFT/MOUSE)
 ;;
 ;; lsft stays native shift (imperial has none; zero-cost safety net).
 ;; Known deviations from QMK: no alt-repeat (Ctrl+REP), PV->LV uses a
@@ -33,6 +33,13 @@
   caps a    s    d    f    k    l    ;    '    \    rsft
   z    x    c    v    b    spc  n    m    ,    .
 )
+
+;; One adaptive-key case: fire $out when the previous emitted key was $prior
+;; within 200ms (ADAPTIVE_TERM) and no mods are held (QMK guard).
+(deftemplate adapt (prior out)
+  ((and (key-timing 1 less-than 200) (key-history $prior 1)
+        (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet)))
+  $out break)
 
 (defalias
   ;; layer holds / one-shots
@@ -81,69 +88,21 @@
   dms dynamic-macro-record-stop
   dmp (dynamic-macro-play 0)
 
-  ;; adaptive keys (adaptive.h). key-history matches kanata's OUTPUT history:
-  ;; recency 1 = previous emitted key (the current press is not in history
-  ;; yet), named by output keycode — NOT physical input position.
-  ;; guarded like QMK: skip when ctrl/alt/cmd held; 200ms ADAPTIVE_TERM.
-  ;; Aliases are used on the base layer only (QMK gates adaptive to _BASE).
-  am (switch
-    ( (key-timing 1 less-than 200)
-      (or (key-history f 1) (key-history v 1) (key-history p 1))
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     l break                                ;; FM/VM/PM -> .L
-    () m break)
-  ap (switch
-    ( (key-timing 1 less-than 200) (key-history f 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     S-[ break                              ;; FP -> F{  (as QMK codes it)
-    () p break)
-  av (switch
-    ( (key-timing 1 less-than 200) (key-history m 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     b break                                ;; MV -> MB
-    ( (key-timing 1 less-than 200) (key-history p 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     (macro bspc l v) break                 ;; PV -> LV (p already typed)
-    () v break)
-  add (switch
-    ( (key-timing 1 less-than 200) (key-history d 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     c break                                ;; DD -> DC
-    () d break)
-  ac (switch
-    ( (key-timing 1 less-than 200) (key-history l 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     p break                                ;; LC -> LP
-    () c break)
-  al (switch
-    ( (key-timing 1 less-than 200) (key-history l 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     m break                                ;; LL -> LM
-    () l break)
-  ag (switch
-    ( (key-timing 1 less-than 200) (key-history g 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     f break                                ;; GG -> GF
-    () g break)
-  ax (switch
-    ( (key-timing 1 less-than 200) (key-history g 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     s break                                ;; GX -> GS
-    () x break)
-  ah (switch
-    ( (key-timing 1 less-than 200) (key-history u 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     a break                                ;; UH -> UA
-    ( (key-timing 1 less-than 200) (key-history a 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     u break                                ;; AH -> AU
-    ( (key-timing 1 less-than 200) (key-history o 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     e break                                ;; OH -> OE
-    ( (key-timing 1 less-than 200) (key-history e 1)
-      (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet))
-     o break                                ;; EH -> EO
-    () h break)
+  ;; adaptive keys (adaptive.h) via the adapt template. key-history matches
+  ;; kanata's OUTPUT history: recency 1 = previous emitted key (the current
+  ;; press is not in history yet), named by output keycode — NOT physical
+  ;; input position. Base layer only (QMK gates adaptive to _BASE).
+  am  (switch (t! adapt f l) (t! adapt v l) (t! adapt p l) () m break) ;; FM/VM/PM -> .L
+  ap  (switch (t! adapt f S-[) () p break)                    ;; FP -> F{ (as QMK codes it)
+  av  (switch (t! adapt m b)                                  ;; MV -> MB
+              (t! adapt p (macro bspc l v)) () v break)       ;; PV -> LV (p already typed)
+  add (switch (t! adapt d c) () d break)                      ;; DD -> DC
+  ac  (switch (t! adapt l p) () c break)                      ;; LC -> LP
+  al  (switch (t! adapt l m) () l break)                      ;; LL -> LM
+  ag  (switch (t! adapt g f) () g break)                      ;; GG -> GF
+  ax  (switch (t! adapt g s) () x break)                      ;; GX -> GS
+  ah  (switch (t! adapt u a) (t! adapt a u)                   ;; UH -> UA, AH -> AU
+              (t! adapt o e) (t! adapt e o) () h break)       ;; OH -> OE, EH -> EO
 )
 
 ;; combos (combos.def), 20ms COMBO_TERM. Keys are physical inputs; each
@@ -161,7 +120,7 @@
   (s d)   M-v            20 first-release (nav sym num)       ;; lc -> paste (num: c is 8)
   (a s d) M-a            20 first-release (nav sym num)       ;; glc -> select all (num: c is 8)
   (o p [) ;              20 first-release (nav sym num mouse fn) ;; aei -> ;
-  (spc c) (caps-word-toggle 5000) 20 first-release (nav sym num mouse) ;; caps word (QMK 5s idle default)
+  (, c)   (caps-word-toggle 5000) 20 first-release (nav sym num mouse) ;; caps word (QMK 5s idle default), sym/spc + nav/t
   (0 -)   pgup           20 first-release (nav sym num mouse) ;; / ? -> pgup
   (- =)   pgdn           20 first-release (nav sym mouse)     ;; ? ' -> pgdn
   (0 p)   (macro = S-.)  20 first-release (nav sym num mouse) ;; /e -> "=>"
@@ -172,7 +131,7 @@
   @osl   j    f    @am  @ap  @av  XX   x     @fdot  @fslsh @fques '       @funds
   del    r    s    n    @add w    @fcomm a   e      i      @ah    @fcoln
   @ax    @ag  @al  @ac  b    @fmins u   o    y      k      @crylon
-  @fngui rpt  @ltnav @smous tab @symspc @lock @ctlleft @altrght .
+  @fngui rpt  @ltnav @symspc tab @smous @lock @ctlleft @symspc @altrght
 )
 
 (deflayer nav
@@ -180,7 +139,7 @@
   @osl   j    A-f  m    A-p  A-v  XX   x     A-1    A-2    A-3    A-4     @funds
   del    M-S-s lalt lsft lctl lmet home left  down   up     rght   end
   x      M-S-g A-n  C-z  C-S-z @fmins A-c M-spc A-k  @montog @monmov
-  @fngui rpt  @ltnav @smous tab M-S-spc @lock M-S-s M-S-c .
+  @fngui rpt  @ltnav M-S-spc tab @smous @lock M-S-s M-S-spc M-S-c
 )
 
 (deflayer mouse
@@ -188,7 +147,7 @@
   @osl   j    f    m    p    v    XX   x     @fdot  @mwd   @mwu   '       @funds
   del    r    s    n    d    w    @mwl @msl  @msd   @msu   @msr   @mwr
   x      g    l    c    b    @fmins u   o    y      k      @crylon
-  @fngui rpt  @ltnav @smous tab mlft mmid mrgt @altrght .
+  @fngui rpt  @ltnav mlft tab @smous mmid mrgt mlft @altrght
 )
 
 (deflayer num
@@ -196,7 +155,7 @@
   @osl   j    f    m    p    v    XX   x     @fdot  S-=    @fques '       @funds
   del    6    4    0    2    w    @fcomm 3   1      5      7      @fcoln
   x      g    l    8    b    @fmins 9   o    y      k      @crylon
-  @fngui rpt  bspc @smous tab spc @lock mlft mrgt .
+  @fngui rpt  bspc spc tab @smous @lock mlft spc mrgt
 )
 
 (deflayer cryl
@@ -204,7 +163,7 @@
   @osl   j    f    m    p    v    XX   x     @fdot  @fslsh @fques '       @funds
   del    r    s    n    d    w    @fcomm a   e      i      h      A-d
   x      g    l    c    b    @fmins u   o    y      k      @cryloff
-  @fngui 2    @ltnav @smous 3 @symspc @lock left @osralt .
+  @fngui 2    @ltnav @symspc 3 @smous @lock left @symspc @osralt
 )
 
 (deflayer fn
@@ -212,7 +171,7 @@
   @osl   @dmr @dms @dmp p    v    XX   x     @fdot  @fslsh @fques '       lrld
   del    r    s    n    d    w    mute vold  e      i      volu   @fcoln
   x      g    l    c    b    @fmins prev pp next    k      @crylon
-  @fngui rpt  @ltnav @smous tab @symspc @lock @ctlleft @altrght .
+  @fngui rpt  @ltnav @symspc tab @smous @lock @ctlleft @symspc @altrght
 )
 
 (deflayer sym
@@ -220,5 +179,5 @@
   @osl   '    S-,  S-.  S-'  v    XX   @fdot S-7    ]      [      S-5     @funds
   del    S-1  @fmins S-= =   S-3  0    ;     S-0    S-9    S-4    @fcoln
   S-6    @fslsh S-2 \   b    S-grv S-8 S-]   S-[    S-2    @crylon
-  @fngui bspc spc  ret  tab  @symspc @lock @ctlleft @altrght .
+  @fngui bspc spc  @symspc tab  ret @lock @ctlleft @symspc @altrght
 )
