@@ -2,6 +2,9 @@ config-version = 2
 
 start-at-login = true
 
+# aerospace starts at login itself; launch Telegram alongside it
+after-startup-command = ['exec-and-forget open -a "Telegram Desktop"']
+
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
@@ -11,6 +14,18 @@ persistent-workspaces = ["1", "2", "3", "4"]
 [[on-window-detected]]
 if.app-id = 'cc.ffitch.shottr'
 run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'org.mozilla.firefox'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.tdesktop.Telegram'
+run = 'move-node-to-workspace 4'
 
 [mode.main.binding]
 
