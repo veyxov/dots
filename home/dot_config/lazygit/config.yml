@@ -2,6 +2,26 @@ gui:
   skipAmendWarning: true
   showRootItemInFileTree: false
   nerdFontsVersion: "3"
+  theme:
+    activeBorderColor:
+      - "#cba6f7"
+      - bold
+    inactiveBorderColor:
+      - "#6c7086"
+    optionsTextColor:
+      - "#89b4fa"
+    selectedLineBgColor:
+      - "#313244"
+    cherryPickedCommitBgColor:
+      - "#45475a"
+    cherryPickedCommitFgColor:
+      - "#cba6f7"
+    unstagedChangesColor:
+      - "#f38ba8"
+    defaultFgColor:
+      - "#cdd6f4"
+    searchingActiveBorderColor:
+      - "#f9e2af"
 
 update:
   method: never
