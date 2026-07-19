@@ -138,7 +138,7 @@
   grv  grv
   @osl   j    A-f  m    A-p  A-v  XX   x     A-1    A-2    A-3    A-4     @funds
   del    M-S-s lalt lsft lctl lmet home left  down   up     rght   end
-  x      M-S-g A-n  C-z  C-S-z @fmins A-c M-spc A-k  @montog @monmov
+  x      M-S-g A-n  C-z  C-S-z @fmins A-c A-spc A-k  @montog @monmov
   @fngui rpt  @ltnav M-S-spc tab @smous @lock M-S-s M-S-spc M-S-c
 )
 
