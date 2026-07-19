@@ -1,5 +1,6 @@
 theme = Catppuccin Mocha
 background-opacity = 0.85
+background-blur-radius = 20
 
 macos-titlebar-style = tabs
 macos-option-as-alt = true
