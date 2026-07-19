@@ -11,6 +11,7 @@ export KEYTIMEOUT=1                    # kill the lag switching in/out of vi mod
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
+export LS_COLORS="di=1;34:ln=1;36:so=1;35:pi=33:ex=1;32:bd=1;33:cd=1;33:su=37;41:sg=30;43:tw=30;42:ow=34;42"
 
 bindkey -v                             # vi mode
 autoload edit-command-line; zle -N edit-command-line
@@ -40,6 +41,7 @@ fi
 
 zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' menu no
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compcache"
 zstyle ':fzf-tab:*' fzf-command fzf
