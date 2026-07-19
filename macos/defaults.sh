@@ -35,6 +35,10 @@ defaults write com.apple.dock launchanim -bool false
 # Spotlight: stop indexing the heavy firmware checkout, cuts mdworker background load
 touch "${HOME}/dots/qmk/qmk_firmware/.metadata_never_index"
 
+# Menu bar
+defaults write com.apple.controlcenter BatteryShowPercentage -bool true
+defaults write com.apple.Spotlight MenuItemHidden -bool true # Raycast owns launcher duties now
+
 killall Finder Dock SystemUIServer 2>/dev/null || true
 
 echo "Done. Some changes (trackpad, keyboard repeat) may need logout/restart to fully apply."
