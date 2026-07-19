@@ -5,12 +5,12 @@ start-at-login = true
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+# Workspaces that stay alive even when empty and invisible
+persistent-workspaces = ["1", "2", "3", "4"]
+
 [[on-window-detected]]
 if.app-id = 'cc.ffitch.shottr'
 run = 'layout floating'
-
-# Workspaces that stay alive even when empty and invisible
-persistent-workspaces = ["1", "2", "3", "4"]
 
 [mode.main.binding]
 
