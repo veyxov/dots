@@ -10,6 +10,8 @@ macOS dotfiles, managed with [chezmoi](https://chezmoi.io).
 - `install.sh` — bootstrap: clone the repo, point chezmoi at it, `chezmoi apply`.
 - `macos/launchdaemons/` — LaunchDaemon plists for kanata and the
   Karabiner VirtualHIDDevice daemon (install instructions in each plist).
+- `macos/defaults.sh` — Finder/Dock/trackpad/keyboard/screenshot defaults,
+  not applied automatically; run manually with `./macos/defaults.sh`.
 - `qmk/` — QMK keyboard firmware/layout.
 - `bin/`, `sony/` — personal utility scripts.
 - `archive/` — old Arch Linux (stow-era) configs, kept for reference; not applied.
