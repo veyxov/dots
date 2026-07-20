@@ -7,10 +7,6 @@
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    // Observe every keypress before any dispatch path (mod-tap early-return,
-    // adaptive/combo consumption) can short-circuit and hide it from S_MOUS.
-    s_mous_note_interrupt(keycode, record);
-
     switch (keycode) {
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
         case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
@@ -30,7 +26,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     // Adaptive keys are for plain typing on the base layer only — on other
     // layers transparent positions resolve to the same base keycodes and
-    // would misfire pairs (e.g. F+M on MOUSE).
+    // would misfire pairs (e.g. F+M on NAV).
     if (get_highest_layer(layer_state) == _BASE) {
         if (!process_adaptive_user(keycode, record)) {
             return false; // We have declared no more processing.
@@ -49,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         LT(_FN, KC_LGUI), KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                        KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   CRYLTG,
     // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
-                REP, LTNAV, S_MOUS,  KC_TAB,                            OS_LOCK,   MT(MOD_LCTL, KC_LEFT), SYM_SPC, MT(MOD_LALT, KC_RGHT)
+                REP, LTNAV, OSM(MOD_LSFT),  KC_TAB,                    OS_LOCK,   MT(MOD_LCTL, KC_LEFT), SYM_SPC, MT(MOD_LALT, KC_RGHT)
     ),
 
     [_NAV] = LAYOUT(
@@ -63,17 +59,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 _______, _______,_______, _______,         _______, G(S(KC_S)),G(S(KC_SPC)),G(S(KC_C))
     ),
 
-    [_MOUSE] = LAYOUT(
-    // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        _______, _______, _______,_______, _______, _______,                      _______, _______, MS_WHLD, MS_WHLU, _______, _______,
-    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______, _______,  _______,   _______,  _______,   _______,                     MS_WHLL, MS_LEFT, MS_DOWN, MS_UP, MS_RGHT, MS_WHLR,
-    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______, _______, _______, _______, _______, _______,                  _______, _______, _______, _______, _______, _______,
-    // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
-                                _______,_______,_______, _______,         MS_BTN3, MS_BTN2, MS_BTN1, _______
-    ),
-
     [_NUM] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
         _______, _______, _______, _______, _______, _______,                 _______,_______,S(KC_EQL),_______,_______, _______,
@@ -82,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         _______, _______, _______, _______, KC_8, _______,                 _______, KC_9, _______, _______, _______, _______,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
-                                _______,KC_BSPC,_______, _______,         _______,MS_BTN1, KC_SPC,MS_BTN2
+                                _______,KC_BSPC,_______, _______,         _______,_______, KC_SPC,_______
     ),
     [_CRYL] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
@@ -97,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_FN] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        _______,  DM_REC1,   DM_RSTP,   DM_PLY1,   _______,   _______,                      _______, _______, _______, _______, _______, QK_BOOT,
+        _______,  _______,   _______,   _______,   _______,   _______,                      _______, _______, _______, _______, _______, QK_BOOT,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
        _______,  _______,   _______,   _______,   _______,   _______,                         KC_MUTE, KC_VOLD, _______,  _______,  KC_VOLU , _______,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
@@ -131,7 +116,6 @@ const custom_shift_key_t custom_shift_keys[] = {
 
 void matrix_scan_user(void) {
     matrix_adaptive_user();
-    matrix_scan_s_mous();
 }
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,

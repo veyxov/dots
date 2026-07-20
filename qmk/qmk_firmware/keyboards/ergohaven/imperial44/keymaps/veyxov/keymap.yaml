@@ -10,7 +10,7 @@ layers:
     - [{t: NUM, h: OSL}, J, F, M, P, V,        X, {t: ".", s: "~"}, {t: /, s: "&"}, {t: "?", s: "!"}, "'", {t: _, s: "`"}]
     - [DEL, R, S, N, D, W,                      {t: ",", s: "|"}, A, E, I, H, {t: ":", s: ";"}]
     - [{t: GUI, h: FN}, X, G, L, C, B,          {t: "-", s: "+"}, U, O, Y, K, {t: CRYL, type: layer}]
-    - [REP, {t: T, h: NAV}, {t: "⇧", h: MOUSE}, TAB,     "⌘Lock", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
+    - [REP, {t: T, h: NAV}, "⇧", TAB,     "⌘Lock", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
 
   NAV:
     - [{type: trans}, {type: trans}, "⌥F", {type: trans}, "⌥P", "⌥V",        {type: trans}, "⌥1", "⌥2", "⌥3", "⌥4", {type: trans}]
@@ -18,17 +18,11 @@ layers:
     - [{type: trans}, {type: trans}, "⌘⇧G", "⌥N", "⎌", "↷",    {type: trans}, "⌥C", "⌘Spc", "⌥K", Mon, WinMon]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, "⌘⇧S", "⌘⇧Spc", "⌘⇧C"]
 
-  MOUSE:
-    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, WhlDn, WhlUp, {type: trans}, {type: trans}]
-    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    WhlL, "←", "↓", "↑", "→", WhlR]
-    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}]
-    - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    Btn3, Btn2, Btn1, {type: trans}]
-
   NUM:
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, "+", {type: trans}, {type: trans}, {type: trans}]
     - [{type: trans}, "6", "4", "0", "2", {type: trans},                                            {type: trans}, "3", "1", "5", "7", {type: trans}]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, "8", {type: trans},              {type: trans}, "9", {type: trans}, {type: trans}, {type: trans}, {type: trans}]
-    - [{type: trans}, BSPC, {type: trans}, {type: trans},    {type: trans}, BTN1, SPC, BTN2]
+    - [{type: trans}, BSPC, {type: trans}, {type: trans},    {type: trans}, {type: trans}, SPC, {type: trans}]
 
   CRYL:
     - [{type: trans}, қ, ф, м, п, в,    {type: trans}, {type: trans}, {type: trans}, {type: trans}, ы, {type: trans}]
@@ -37,7 +31,7 @@ layers:
     - ["2", {type: trans}, {type: trans}, "3",    {type: trans}, "←", {type: trans}, RAlt]
 
   FN:
-    - [{type: trans}, REC, STOP, PLAY, {type: trans}, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, BOOT]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, BOOT]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    MUTE, "Vol-", {type: trans}, {type: trans}, "Vol+", {type: trans}]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, Prev, Play, Next, {type: trans}, {type: trans}]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}]
