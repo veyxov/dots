@@ -11,6 +11,7 @@ keybinds {
         bind "Alt d" { NewPane "Down"; }
         bind "Alt s" { NewPane "Right"; }
         bind "Alt l" { FocusNextPane; }
+        bind "Alt m" { MovePane; }
         bind "Alt x" { CloseFocus; }
         bind "Alt t" { EditScrollback; }
     }
