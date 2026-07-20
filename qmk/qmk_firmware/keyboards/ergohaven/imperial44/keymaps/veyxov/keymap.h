@@ -3,8 +3,7 @@
 #include "layers.h"
 
 enum custom_keycodes {
-    S_MOUS = SAFE_RANGE,
-    CRYLTG,
+    CRYLTG = SAFE_RANGE,
     REP,
     SN_ESC_CRYL,
     CG_WBSPC,

@@ -20,7 +20,7 @@
 ## Important Keyboard Files
 - `keymaps/veyxov/keymap.c`: layer definitions and thin QMK hook wrappers
 - `keymaps/veyxov/keymap.h`: key aliases/macros such as layer-taps
-- `keymaps/veyxov/features.c` / `features.h`: extracted keymap-local behavior helpers such as num-word, `S_MOUS`, language toggle, repeat handling, leader actions, and raw HID bootloader handling
+- `keymaps/veyxov/features.c` / `features.h`: extracted keymap-local behavior helpers such as num-word, language toggle, repeat handling, leader actions, and raw HID bootloader handling
 - `keymaps/veyxov/layers.h`: layer enum
 - `keymaps/veyxov/combos.def`: combos
 - `keymaps/veyxov/adaptive.h`: adaptive key behavior
@@ -30,12 +30,12 @@
 - `config.h` / `rules.mk`: board-level split / RP2040 settings
 
 ## Current Firmware Shape
-- Layers present: `BASE`, `NAV`, `MOUSE`, `NUM`, `CRYL`, `FN`, `SYM`
+- Layers present: `BASE`, `NAV`, `NUM`, `CRYL`, `FN`, `SYM`
 - Base layer is Hands Down Gold-derived:
   - Left hand alpha block: `J F M P V` / `R S N D W` / `X G L C B`
   - Right hand alpha block: `. / ? ' _` / `, A E I H :` / `- U O Y K`
 - Notable behaviors:
-  - `S_MOUS`: tap for one-shot Shift, hold past `TAPPING_TERM` for a momentary mouse layer, release to turn mouse off
+  - `OSM(MOD_LSFT)`: tap for one-shot Shift, hold for a normal held Shift (built-in QMK one-shot mod)
   - `REP`: repeat key; with Ctrl held it uses alt-repeat
   - `LTNAV`: tap `T`, hold for nav
   - `CRYLTG`: toggles Cyrillic layer and system language
@@ -45,7 +45,7 @@
 - `TAPPING_TERM 200`
 - `COMBO_TERM 20`
 - `ADAPTIVE_TERM 200`
-- Enabled features in the active keymap include combos, dynamic macros, repeat key, leader, mouse keys, raw HID, and bootmagic.
+- Enabled features in the active keymap include combos, repeat key, leader, and raw HID.
 
 ## Build / Flash Workflow
 - User’s normal workflow from this directory:
