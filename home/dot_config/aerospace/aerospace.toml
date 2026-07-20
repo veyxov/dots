@@ -2,8 +2,11 @@ config-version = 2
 
 start-at-login = true
 
-# aerospace starts at login itself; launch Telegram alongside it
-after-startup-command = ['exec-and-forget open -a "Telegram Desktop"']
+# aerospace starts at login itself; launch Telegram and Hammerspoon alongside it
+after-startup-command = [
+    'exec-and-forget open -a "Telegram Desktop"',
+    'exec-and-forget open -a "Hammerspoon"',
+]
 
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
