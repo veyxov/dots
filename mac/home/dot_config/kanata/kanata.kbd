@@ -8,15 +8,15 @@
 ;;   1    2 3 4 5 6   |  7  8 9 0 - = bspc     row1: num! j f m p v | Scrn x . / ? ' _
 ;;   tab  q w e r t   |  i o p [ ] ret         row2: del  r s n d w | , a e i h :
 ;;   caps a s d f     |  k l ; ' \  rsft       row3: x g l c b | - u o y k CRYLTG
-;;   z  x c v b  spc  n m , .                  z=FN/Cmd, thumbs: REP NAV/t SYM/spc TAB | LOCK CTL/left SYM/spc ALT/right (spacebar = SFT/MOUSE)
+;;   z  x c v b  spc  n m , .                  z=FN/Cmd, thumbs: REP NAV/t SYM/spc TAB | LOCK CTL/left SYM/spc ALT/right (spacebar = one-shot Shift)
 ;;
 ;; lsft stays native shift (imperial has none; zero-cost safety net).
 ;; Known deviations from QMK: no alt-repeat (Ctrl+REP), PV->LV uses a
-;; backspace rewrite (p already typed), S_MOUS interrupt nuance approximated
-;; by tap-hold, adaptive prior-key is kanata's emitted-output history (a
-;; letter typed via combo/macro also counts; QMK likewise treats a rewrite's
-;; output as the prior), no LTNAV repeat-guard (T right after REP can still
-;; hold into NAV), one-shots expire after 65.5s (kanata max; QMK never).
+;; backspace rewrite (p already typed), adaptive prior-key is kanata's
+;; emitted-output history (a letter typed via combo/macro also counts; QMK
+;; likewise treats a rewrite's output as the prior), no LTNAV repeat-guard
+;; (T right after REP can still hold into NAV), one-shots expire after
+;; 65.5s (kanata max; QMK never).
 
 (defcfg
   macos-dev-names-include (
@@ -47,8 +47,7 @@
   ltnav  (tap-hold 200 200 t (layer-while-held nav))     ;; LT(_NAV, KC_T)
   symspc (tap-hold 200 200 spc (layer-while-held sym))   ;; LT(_SYM, KC_SPC)
   fngui  (tap-hold 200 200 lmet (layer-while-held fn))   ;; LT(_FN, KC_LGUI)
-  ;; S_MOUS: tap = one-shot shift, hold = mouse layer
-  smous  (tap-hold 200 200 (one-shot 65535 lsft) (layer-while-held mouse))
+  smous  (one-shot 65535 lsft)                           ;; OSM(MOD_LSFT)
 
   ;; thumb row
   ctlleft (tap-hold 200 200 left lctl)                   ;; MT(MOD_LCTL, KC_LEFT)
@@ -74,21 +73,6 @@
   fmins (fork - S-= (lsft rsft))            ;; - -> +
   fcoln (fork S-; (unshift ;) (lsft rsft))  ;; : -> ;
 
-  ;; mouse layer
-  msu (movemouse-accel-up    16 1000 1 6)
-  msd (movemouse-accel-down  16 1000 1 6)
-  msl (movemouse-accel-left  16 1000 1 6)
-  msr (movemouse-accel-right 16 1000 1 6)
-  mwu (mwheel-up    60 120)
-  mwd (mwheel-down  60 120)
-  mwl (mwheel-left  60 120)
-  mwr (mwheel-right 60 120)
-
-  ;; fn layer dynamic macros
-  dmr (dynamic-macro-record 0)
-  dms dynamic-macro-record-stop
-  dmp (dynamic-macro-play 0)
-
   ;; adaptive keys (adaptive.h) via the adapt template. key-history matches
   ;; kanata's OUTPUT history: recency 1 = previous emitted key (the current
   ;; press is not in history yet), named by output keycode — NOT physical
@@ -110,21 +94,21 @@
 ;; chord is disabled on layers where QMK remaps its keys away from the
 ;; combo's keycodes. (p [) covers both ei_enter and fnc "()"->enter.
 (defchordsv2
-  (4 5)   z              20 first-release (nav sym fn)        ;; mp -> z (fn: m is DM_PLY1)
-  (2 3)   q              20 first-release (nav sym fn)        ;; jf -> q (fn: j/f are DM_REC1/RSTP)
-  (3 4)   (macro q u)    20 first-release (nav sym fn)        ;; fm -> "qu"
-  (p [)   ret            20 first-release (nav num mouse)     ;; ei -> enter, () -> enter
+  (4 5)   z              20 first-release (nav sym)           ;; mp -> z
+  (2 3)   q              20 first-release (nav sym)           ;; jf -> q
+  (3 4)   (macro q u)    20 first-release (nav sym)           ;; fm -> "qu"
+  (p [)   ret            20 first-release (nav num)           ;; ei -> enter, () -> enter
   (w e)   (switch ((layer cryl)) @cryloff break () esc break) 20 first-release (nav sym num) ;; sn -> esc / exit cryl
   (e r)   tab            20 first-release (nav sym num)       ;; nd -> tab
-  (o p)   A-bspc         20 first-release (nav sym num mouse fn) ;; ae -> word-bspc (fn: a is vold)
+  (o p)   A-bspc         20 first-release (nav sym num fn)    ;; ae -> word-bspc (fn: a is vold)
   (a s)   M-c            20 first-release (nav sym)           ;; gl -> copy
   (s d)   M-v            20 first-release (nav sym num)       ;; lc -> paste (num: c is 8)
   (a s d) M-a            20 first-release (nav sym num)       ;; glc -> select all (num: c is 8)
-  (o p [) ;              20 first-release (nav sym num mouse fn) ;; aei -> ;
-  (, c)   (caps-word-toggle 5000) 20 first-release (nav sym num mouse) ;; caps word (QMK 5s idle default), sym/spc + nav/t
-  (0 -)   pgup           20 first-release (nav sym num mouse) ;; / ? -> pgup
-  (- =)   pgdn           20 first-release (nav sym mouse)     ;; ? ' -> pgdn
-  (0 p)   (macro = S-.)  20 first-release (nav sym num mouse) ;; /e -> "=>"
+  (o p [) ;              20 first-release (nav sym num fn)    ;; aei -> ;
+  (, c)   (caps-word-toggle 5000) 20 first-release (nav sym num) ;; caps word (QMK 5s idle default), sym/spc + nav/t
+  (0 -)   pgup           20 first-release (nav sym num)       ;; / ? -> pgup
+  (- =)   pgdn           20 first-release (nav sym)           ;; ? ' -> pgdn
+  (0 p)   (macro = S-.)  20 first-release (nav sym num)       ;; /e -> "=>"
 )
 
 (deflayer base
@@ -141,14 +125,6 @@
   del    M-S-s lalt lsft lctl lmet home left  down   up     rght   end
   x      M-S-g A-n  C-z  C-S-z @fmins A-c M-spc A-k  @montog @monmov
   @fngui rpt  @ltnav M-S-spc tab @smous @lock M-S-s M-S-spc M-S-c
-)
-
-(deflayer mouse
-  grv  grv
-  @osl   j    f    m    p    v    @scrn   x     @fdot  @mwd   @mwu   '       @funds
-  del    r    s    n    d    w    @mwl @msl  @msd   @msu   @msr   @mwr
-  x      g    l    c    b    @fmins u   o    y      k      @crylon
-  @fngui rpt  @ltnav mlft tab @smous mmid mrgt mlft @altrght
 )
 
 (deflayer num
@@ -169,8 +145,8 @@
 
 (deflayer fn
   grv  grv
-  @osl   @dmr @dms @dmp p    v    @scrn   x     @fdot  @fslsh @fques '       lrld
-  del    r    s    n    d    w    mute vold  e      i      volu   @fcoln
+  @osl   j    f    m    p    v    @scrn   x     @fdot  @fslsh @fques '       lrld
+  del    r    s    n    d    w    mute vold  brdn   brup   volu   @fcoln
   x      g    l    c    b    @fmins prev pp next    k      @crylon
   @fngui rpt  @ltnav @symspc tab @smous @lock @ctlleft @symspc @altrght
 )
