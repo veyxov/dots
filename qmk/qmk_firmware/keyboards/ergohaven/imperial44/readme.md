@@ -2,8 +2,6 @@
 
 Imperial44 is 44 keys, mechanical, ergonomic split-hand keyboard.
 
-![Imperial44]()
-
 * Keyboard Maintainer: [Ergohaven](https://github.com/ergohaven) [Site](https://ergohaven.xyz/)
 * Hardware Supported: Imperial44
 
