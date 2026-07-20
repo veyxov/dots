@@ -55,7 +55,7 @@ thumbs:  ·    ·    ·    ·          |   ·  ⌘⇧S  ⌘⇧Spc  ⌘⇧C
 
 **CRYL** (Cyrillic, toggled by `CRYLTG`) — remaps alpha keys to Cyrillic (қ ф м п в / я р с н д ш / х г л ч б on the left; ы / а е и ҳ з / у о й к on the right), keeps punctuation layer mostly transparent. See "Language toggle" below.
 
-**FN** (hold `GUI/FN`) — media transport, volume, `QK_BOOT` (bootloader) top-right.
+**FN** (hold `GUI/FN`) — media transport, volume, display brightness, `QK_BOOT` (bootloader) top-right.
 
 **SYM** (hold `SPC/S`) — full symbol layer: brackets, quotes, math operators, `!@#$%^&*()`, backtick/tilde, with `BSPC`/`SPC`/`ENT` on thumbs.
 

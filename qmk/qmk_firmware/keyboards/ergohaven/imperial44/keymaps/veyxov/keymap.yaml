@@ -32,7 +32,7 @@ layers:
 
   FN:
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, BOOT]
-    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    MUTE, "Vol-", {type: trans}, {type: trans}, "Vol+", {type: trans}]
+    - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    MUTE, "Vol-", "Bri-", "Bri+", "Vol+", {type: trans}]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, Prev, Play, Next, {type: trans}, {type: trans}]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}]
 
