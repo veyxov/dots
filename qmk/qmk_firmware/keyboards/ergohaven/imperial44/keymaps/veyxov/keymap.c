@@ -5,6 +5,19 @@
 #include "g/keymap_combo.h"
 #include "adaptive.h"
 
+// Only the arrow-thumb mod-taps resolve hold on the next keypress (needed for
+// fast rolls like Alt+M). Everything else — especially LTNAV, since T is a
+// layer-tap on a very common letter — keeps waiting out TAPPING_TERM so fast
+// typing isn't misread as a layer hold.
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MT(MOD_LALT, KC_RGHT):
+        case MT(MOD_LCTL, KC_LEFT):
+            return true;
+        default:
+            return false;
+    }
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
