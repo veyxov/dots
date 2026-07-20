@@ -5,7 +5,7 @@
 ;; laptop mimics the split board. Letters live one row up from their qwerty
 ;; position; bottom letter row is the thumb row.
 ;;
-;;   1    2 3 4 5 6   |  7  8 9 0 - = bspc     row1: num! j f m p v | ∅ x . / ? ' _
+;;   1    2 3 4 5 6   |  7  8 9 0 - = bspc     row1: num! j f m p v | Scrn x . / ? ' _
 ;;   tab  q w e r t   |  i o p [ ] ret         row2: del  r s n d w | , a e i h :
 ;;   caps a s d f     |  k l ; ' \  rsft       row3: x g l c b | - u o y k CRYLTG
 ;;   z  x c v b  spc  n m , .                  z=FN/Cmd, thumbs: REP NAV/t SYM/spc TAB | LOCK CTL/left SYM/spc ALT/right (spacebar = SFT/MOUSE)
@@ -54,6 +54,7 @@
   ctlleft (tap-hold 200 200 left lctl)                   ;; MT(MOD_LCTL, KC_LEFT)
   altrght (tap-hold 200 200 rght lalt)                   ;; MT(MOD_LALT, KC_RGHT)
   lock    C-M-q                                          ;; macOS native Lock Screen (was Cmd+L, clashed w/ browser addr bar)
+  scrn    M-C-S-4                                        ;; macOS region screenshot to clipboard
 
   ;; monitor toggle/move (macOS shortcuts, same as QMK MON_TOG/MON_MOV)
   montog M-C-rght
@@ -128,7 +129,7 @@
 
 (deflayer base
   grv  grv
-  @osl   j    f    @am  @ap  @av  XX   x     @fdot  @fslsh @fques '       @funds
+  @osl   j    f    @am  @ap  @av  @scrn   x     @fdot  @fslsh @fques '       @funds
   del    r    s    n    @add w    @fcomm a   e      i      @ah    @fcoln
   @ax    @ag  @al  @ac  b    @fmins u   o    y      k      @crylon
   @fngui rpt  @ltnav @symspc tab @smous @lock @ctlleft @symspc @altrght
@@ -136,15 +137,15 @@
 
 (deflayer nav
   grv  grv
-  @osl   j    A-f  m    A-p  A-v  XX   x     A-1    A-2    A-3    A-4     @funds
+  @osl   j    A-f  m    A-p  A-v  @scrn   x     A-1    A-2    A-3    A-4     @funds
   del    M-S-s lalt lsft lctl lmet home left  down   up     rght   end
-  x      M-S-g A-n  C-z  C-S-z @fmins A-c A-spc A-k  @montog @monmov
+  x      M-S-g A-n  C-z  C-S-z @fmins A-c M-spc A-k  @montog @monmov
   @fngui rpt  @ltnav M-S-spc tab @smous @lock M-S-s M-S-spc M-S-c
 )
 
 (deflayer mouse
   grv  grv
-  @osl   j    f    m    p    v    XX   x     @fdot  @mwd   @mwu   '       @funds
+  @osl   j    f    m    p    v    @scrn   x     @fdot  @mwd   @mwu   '       @funds
   del    r    s    n    d    w    @mwl @msl  @msd   @msu   @msr   @mwr
   x      g    l    c    b    @fmins u   o    y      k      @crylon
   @fngui rpt  @ltnav mlft tab @smous mmid mrgt mlft @altrght
@@ -152,15 +153,15 @@
 
 (deflayer num
   grv  grv
-  @osl   j    f    m    p    v    XX   x     @fdot  S-=    @fques '       @funds
+  @osl   j    f    m    p    v    @scrn   x     @fdot  S-=    @fques '       @funds
   del    6    4    0    2    w    @fcomm 3   1      5      7      @fcoln
   x      g    l    8    b    @fmins 9   o    y      k      @crylon
-  @fngui rpt  bspc spc tab @smous @lock mlft spc mrgt
+  @fngui rpt  bspc spc tab @smous @lock .    spc -
 )
 
 (deflayer cryl
   grv  grv
-  @osl   j    f    m    p    v    XX   x     @fdot  @fslsh @fques '       @funds
+  @osl   j    f    m    p    v    @scrn   x     @fdot  @fslsh @fques '       @funds
   del    r    s    n    d    w    @fcomm a   e      i      h      A-d
   x      g    l    c    b    @fmins u   o    y      k      @cryloff
   @fngui 2    @ltnav @symspc 3 @smous @lock left @symspc @osralt
@@ -168,7 +169,7 @@
 
 (deflayer fn
   grv  grv
-  @osl   @dmr @dms @dmp p    v    XX   x     @fdot  @fslsh @fques '       lrld
+  @osl   @dmr @dms @dmp p    v    @scrn   x     @fdot  @fslsh @fques '       lrld
   del    r    s    n    d    w    mute vold  e      i      volu   @fcoln
   x      g    l    c    b    @fmins prev pp next    k      @crylon
   @fngui rpt  @ltnav @symspc tab @smous @lock @ctlleft @symspc @altrght
@@ -176,7 +177,7 @@
 
 (deflayer sym
   grv  grv
-  @osl   '    S-,  S-.  S-'  v    XX   @fdot S-7    ]      [      S-5     @funds
+  @osl   '    S-,  S-.  S-'  v    @scrn   @fdot S-7    ]      [      S-5     @funds
   del    S-1  @fmins S-= =   S-3  0    ;     S-0    S-9    S-4    @fcoln
   S-6    @fslsh S-2 \   b    S-grv S-8 S-]   S-[    S-2    @crylon
   @fngui bspc spc  @symspc tab  ret @lock @ctlleft @symspc @altrght
