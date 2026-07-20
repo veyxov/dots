@@ -7,7 +7,7 @@ layout:
 
 layers:
   BASE:
-    - [{t: NUM, h: OSL}, J, F, M, P, V,        X, {t: ".", s: "~"}, {t: /, s: "&"}, {t: "?", s: "!"}, "'", {t: _, s: "`"}]
+    - [{t: NUM, h: OSL}, J, F, M, P, V,        Scrn, {t: ".", s: "~"}, {t: /, s: "&"}, {t: "?", s: "!"}, "'", {t: _, s: "`"}]
     - [DEL, R, S, N, D, W,                      {t: ",", s: "|"}, A, E, I, H, {t: ":", s: ";"}]
     - [{t: GUI, h: FN}, X, G, L, C, B,          {t: "-", s: "+"}, U, O, Y, K, {t: CRYL, type: layer}]
     - [REP, {t: T, h: NAV}, "⇧", TAB,     "⌘Lock", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
@@ -22,7 +22,7 @@ layers:
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, {type: trans}, "+", {type: trans}, {type: trans}, {type: trans}]
     - [{type: trans}, "6", "4", "0", "2", {type: trans},                                            {type: trans}, "3", "1", "5", "7", {type: trans}]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans}, "8", {type: trans},              {type: trans}, "9", {type: trans}, {type: trans}, {type: trans}, {type: trans}]
-    - [{type: trans}, BSPC, {type: trans}, {type: trans},    {type: trans}, {type: trans}, SPC, {type: trans}]
+    - [{type: trans}, BSPC, {type: trans}, {type: trans},    {type: trans}, ".", SPC, "-"]
 
   CRYL:
     - [{type: trans}, қ, ф, м, п, в,    {type: trans}, {type: trans}, {type: trans}, {type: trans}, ы, {type: trans}]
