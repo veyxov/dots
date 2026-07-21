@@ -7,8 +7,8 @@
 ;;
 ;;   1    2 3 4 5 6   |  7  8 9 0 - = bspc     row1: num! j f m p v | Scrn x . / ? ' _
 ;;   tab  q w e r t   |  i o p [ ] ret         row2: del  r s n d w | , a e i h :
-;;   caps a s d f     |  k l ; ' \  rsft       row3: x g l c b | - u o y k CRYLTG
-;;   z  x c v b  spc  n m , .                  z=FN/Cmd, thumbs: REP NAV/t SYM/spc TAB | LOCK CTL/left SYM/spc ALT/right (spacebar = one-shot Shift)
+;;   caps a s d f     |  k l ; ' \  rsft       row3: x g l c b | - u o y k ·
+;;   z  x c v b  spc  n m , .                  z=Cmd, thumbs: REP NAV/t SYM/spc TAB | LOCK CTL/left SYM/spc ALT/right (spacebar = one-shot Shift)
 ;;
 ;; lsft stays native shift (imperial has none; zero-cost safety net).
 ;; Known deviations from QMK: no alt-repeat (Ctrl+REP), PV->LV uses a
@@ -16,7 +16,11 @@
 ;; emitted-output history (a letter typed via combo/macro also counts; QMK
 ;; likewise treats a rewrite's output as the prior), no LTNAV repeat-guard
 ;; (T right after REP can still hold into NAV), one-shots expire after
-;; 65.5s (kanata max; QMK never).
+;; 65.5s (kanata max; QMK never), NUMWORD here is a plain toggle (press
+;; again to exit) rather than QMK's auto-cancel-on-non-digit smart layer.
+;; FN/CRYL layers removed (matches QMK); media/volume/brightness already
+;; come from the Mac's native F-row hardware keys, untouched by kanata's
+;; defsrc, so nothing was lost by dropping the FN layer.
 
 (defcfg
   macos-dev-names-include (
@@ -46,7 +50,6 @@
   osl    (one-shot 65535 (layer-while-held num))         ;; OSL(_NUM)
   ltnav  (tap-hold 200 200 t (layer-while-held nav))     ;; LT(_NAV, KC_T)
   symspc (tap-hold 200 200 spc (layer-while-held sym))   ;; LT(_SYM, KC_SPC)
-  fngui  (tap-hold 200 200 lmet (layer-while-held fn))   ;; LT(_FN, KC_LGUI)
   smous  (one-shot 65535 lsft)                           ;; OSM(MOD_LSFT)
 
   ;; thumb row
@@ -59,10 +62,9 @@
   montog M-C-rght
   monmov M-C-S-rght
 
-  ;; cyrillic layer toggle: OS input switch (Ctrl+Space on macOS) + layer
-  crylon  (multi C-spc (layer-switch cryl))
-  cryloff (multi C-spc (layer-switch base))
-  osralt  (one-shot 65535 ralt)                          ;; OSM(MOD_RALT)
+  ;; NUMWORD: plain toggle (QMK's version also auto-cancels on the first
+  ;; non-digit key; kanata just toggles back off on a second press)
+  numword (switch ((layer num)) (layer-switch base) break () (layer-switch num) break)
 
   ;; custom shift keys (QMK custom_shift_keys[])
   fdot  (fork . S-grv (lsft rsft))          ;; . -> ~
@@ -98,14 +100,16 @@
   (2 3)   q              20 first-release (nav sym)           ;; jf -> q
   (3 4)   (macro q u)    20 first-release (nav sym)           ;; fm -> "qu"
   (p [)   ret            20 first-release (nav num)           ;; ei -> enter, () -> enter
-  (w e)   (switch ((layer cryl)) @cryloff break () esc break) 20 first-release (nav sym num) ;; sn -> esc / exit cryl
+  (w e)   esc            20 first-release (nav sym num)       ;; sn -> esc
+  (w r)   C-spc          20 first-release (nav sym num)       ;; sd -> lang switch (ctrl+space)
   (e r)   tab            20 first-release (nav sym num)       ;; nd -> tab
-  (o p)   A-bspc         20 first-release (nav sym num fn)    ;; ae -> word-bspc (fn: a is vold)
+  (o p)   A-bspc         20 first-release (nav sym num)       ;; ae -> word-bspc
   (a s)   M-c            20 first-release (nav sym)           ;; gl -> copy
   (s d)   M-v            20 first-release (nav sym num)       ;; lc -> paste (num: c is 8)
   (a s d) M-a            20 first-release (nav sym num)       ;; glc -> select all (num: c is 8)
-  (o p [) ;              20 first-release (nav sym num fn)    ;; aei -> ;
-  (, c)   (caps-word-toggle 5000) 20 first-release (nav sym num) ;; caps word (QMK 5s idle default), sym/spc + nav/t
+  (o p [) ;              20 first-release (nav sym num)       ;; aei -> ;
+  (, c)   (caps-word-toggle 5000) 20 first-release (nav sym num) ;; caps word, sym/spc + nav/t
+  (v spc) @numword       20 first-release (nav sym)           ;; sym/spc + shift -> numword toggle
   (0 -)   pgup           20 first-release (nav sym num)       ;; / ? -> pgup
   (- =)   pgdn           20 first-release (nav sym)           ;; ? ' -> pgdn
   (0 p)   (macro = S-.)  20 first-release (nav sym num)       ;; /e -> "=>"
@@ -115,8 +119,8 @@
   grv  grv
   @osl   j    f    @am  @ap  @av  @scrn   x     @fdot  @fslsh @fques '       @funds
   del    r    s    n    @add w    @fcomm a   e      i      @ah    @fcoln
-  @ax    @ag  @al  @ac  b    @fmins u   o    y      k      @crylon
-  @fngui rpt  @ltnav @symspc tab @smous @lock @ctlleft @symspc @altrght
+  @ax    @ag  @al  @ac  b    @fmins u   o    y      k      XX
+  lmet rpt  @ltnav @symspc tab @smous @lock @ctlleft @symspc @altrght
 )
 
 (deflayer nav
@@ -124,37 +128,21 @@
   @osl   j    A-f  m    A-p  A-v  @scrn   x     A-1    A-2    A-3    A-4     @funds
   del    M-S-s lalt lsft lctl lmet home left  down   up     rght   end
   x      M-S-g A-n  C-z  C-S-z @fmins A-c M-spc A-k  @montog @monmov
-  @fngui rpt  @ltnav M-S-spc tab @smous @lock M-S-s M-S-spc M-S-c
+  lmet rpt  @ltnav M-S-spc tab @smous @lock M-S-s M-S-spc M-S-c
 )
 
 (deflayer num
   grv  grv
   @osl   j    f    m    p    v    @scrn   x     @fdot  S-=    @fques '       @funds
   del    6    4    0    2    w    @fcomm 3   1      5      7      @fcoln
-  x      g    l    8    b    @fmins 9   o    y      k      @crylon
-  @fngui rpt  bspc spc tab @smous @lock .    spc -
-)
-
-(deflayer cryl
-  grv  grv
-  @osl   j    f    m    p    v    @scrn   x     @fdot  @fslsh @fques '       @funds
-  del    r    s    n    d    w    @fcomm a   e      i      h      A-d
-  x      g    l    c    b    @fmins u   o    y      k      @cryloff
-  @fngui 2    @ltnav @symspc 3 @smous @lock left @symspc @osralt
-)
-
-(deflayer fn
-  grv  grv
-  @osl   j    f    m    p    v    @scrn   x     @fdot  @fslsh @fques '       lrld
-  del    r    s    n    d    w    mute vold  brdn   brup   volu   @fcoln
-  x      g    l    c    b    @fmins prev pp next    k      @crylon
-  @fngui rpt  @ltnav @symspc tab @smous @lock @ctlleft @symspc @altrght
+  x      g    l    8    b    @fmins 9   o    y      k      XX
+  lmet rpt  bspc spc tab @smous @lock .    spc -
 )
 
 (deflayer sym
   grv  grv
   @osl   '    S-,  S-.  S-'  v    @scrn   @fdot S-7    ]      [      S-5     @funds
   del    S-1  @fmins S-= =   S-3  0    ;     S-0    S-9    S-4    @fcoln
-  S-6    @fslsh S-2 \   b    S-grv S-8 S-]   S-[    S-2    @crylon
-  @fngui bspc spc  @symspc tab  ret @lock @ctlleft @symspc @altrght
+  S-6    @fslsh S-2 \   b    S-grv S-8 S-]   S-[    S-2    XX
+  lmet bspc spc  @symspc tab  ret @lock @ctlleft @symspc @altrght
 )
