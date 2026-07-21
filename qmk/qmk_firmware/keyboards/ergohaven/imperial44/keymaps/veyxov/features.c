@@ -7,18 +7,29 @@
 #define BOOTLOADER_MAGIC "BOOTLDR1"
 #define RAW_HID_REPORT_SIZE 32
 
-// macOS input-source-switch shortcut: Ctrl+Space.
-static void cryl_toggle_input_source(void) {
-    tap_code16(C(KC_SPC));
-}
-
-static void cryl_off(void) {
-    cryl_toggle_input_source();
-    layer_off(_CRYL);
-}
-
 bool process_record_features(uint16_t keycode, keyrecord_t *record) {
+    // NUMWORD: smart num layer (T-34 style). Toggled by the thumb combo;
+    // stays on while numeric-ish keys are typed, turns itself off on the
+    // first other key. Layer state is the source of truth, no shadow flag.
+    if (keycode != NUMWORD && layer_state_is(_NUM) && record->event.pressed) {
+        switch (keycode) {
+            case KC_1 ... KC_0:
+            case KC_DOT:
+            case KC_MINS:
+            case S(KC_EQL):
+            case KC_BSPC:
+            case REP:
+                break;
+            default:
+                layer_off(_NUM);
+        }
+    }
     switch (keycode) {
+        case NUMWORD:
+            if (record->event.pressed) {
+                if (layer_state_is(_NUM)) layer_off(_NUM); else layer_on(_NUM);
+            }
+            return false;
         case REP:
             if (!record->event.pressed) {
                 keyevent_t press_event = record->event;
@@ -35,23 +46,9 @@ bool process_record_features(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return false;
-        case CRYLTG:
-            // Enable-only: turning Russian OFF is Esc's job (SN_ESC_CRYL),
-            // so a repeated press can't blind-toggle the OS out of sync.
-            if (record->event.pressed && get_highest_layer(layer_state) != _CRYL) {
-                cryl_toggle_input_source();
-                layer_on(_CRYL);
-            }
-            return false;
-        case SN_ESC_CRYL:
-            // Esc disables Russian when it's on; plain Esc otherwise.
-            if (record->event.pressed) {
-                if (get_highest_layer(layer_state) == _CRYL) {
-                    cryl_off();
-                } else {
-                    tap_code(KC_ESC);
-                }
-            }
+        case LANG_SW:
+            // macOS input-source-switch shortcut: Ctrl+Space.
+            if (record->event.pressed) tap_code16(C(KC_SPC));
             return false;
         case CG_WBSPC:
             if (record->event.pressed) tap_code16(A(KC_BSPC));
