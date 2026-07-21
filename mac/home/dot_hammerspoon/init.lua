@@ -9,7 +9,10 @@ hs.window.highlight.start()
 -- Dark mode when external monitor connected; otherwise light during the day, dark at night
 local DAY_START, DAY_END = 7, 19 -- ponytail: fixed hours, swap for hs.location sunrise/sunset if precision matters
 
+local lastDark = nil
 local function setDarkMode(dark)
+  if dark == lastDark then return end
+  lastDark = dark
   hs.osascript.applescript(([[
     tell application "System Events" to tell appearance preferences to set dark mode to %s
   ]]):format(dark and "true" or "false"))

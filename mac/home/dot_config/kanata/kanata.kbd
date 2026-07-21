@@ -64,7 +64,7 @@
 
   ;; NUMWORD: plain toggle (QMK's version also auto-cancels on the first
   ;; non-digit key; kanata just toggles back off on a second press)
-  numword (switch ((layer num)) (layer-switch base) break () (layer-switch num) break)
+  numword (layer-toggle num)
 
   ;; custom shift keys (QMK custom_shift_keys[])
   fdot  (fork . S-grv (lsft rsft))          ;; . -> ~

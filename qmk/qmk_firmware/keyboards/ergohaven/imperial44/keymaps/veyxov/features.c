@@ -26,9 +26,7 @@ bool process_record_features(uint16_t keycode, keyrecord_t *record) {
     }
     switch (keycode) {
         case NUMWORD:
-            if (record->event.pressed) {
-                if (layer_state_is(_NUM)) layer_off(_NUM); else layer_on(_NUM);
-            }
+            if (record->event.pressed) layer_invert(_NUM);
             return false;
         case REP:
             if (!record->event.pressed) {
