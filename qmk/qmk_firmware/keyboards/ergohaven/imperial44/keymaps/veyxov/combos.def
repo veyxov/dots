@@ -3,9 +3,11 @@ COMB(jf_q, KC_Q, KC_J, KC_F)
 SUBS(fm_qu, "qu", KC_F, KC_M)
 
 COMB(ei_enter, KC_ENT, KC_E, KC_I)
-COMB(sn_esc, SN_ESC_CRYL, KC_S, KC_N)
+COMB(sn_esc, KC_ESC, KC_S, KC_N)
 COMB(nd_tab, KC_TAB, KC_N, KC_D)
 COMB(ae_bsp, CG_WBSPC, KC_A, KC_E)
+
+COMB(sd_lang, LANG_SW, KC_S, KC_D)
 
 COMB(gl_cpy, CG_COPY, KC_G, KC_L)
 COMB(lc_pst, CG_PASTE, KC_L, KC_C)
@@ -14,6 +16,7 @@ COMB(glc_all, CG_SELALL, KC_G, KC_L, KC_C)
 COMB(aei_scol, KC_SCLN, KC_A, KC_E, KC_I)
 
 COMB(caps_combo, CW_TOGG, SYM_SPC, LTNAV)
+COMB(numword, NUMWORD, SYM_SPC, OSM(MOD_LSFT))
 
 COMB(pg_up, KC_PGUP, KC_SLSH, S(KC_SLSH))
 COMB(pg_dw, KC_PGDN, S(KC_SLSH), KC_QUOT)
