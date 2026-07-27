@@ -2,10 +2,10 @@ config-version = 2
 
 start-at-login = true
 
-# aerospace starts at login itself; launch Telegram and Hammerspoon alongside it
+# aerospace starts at login itself; launch Telegram and Dimsum alongside it
 after-startup-command = [
     'exec-and-forget open -a "Telegram Desktop"',
-    'exec-and-forget open -a "Hammerspoon"',
+    'exec-and-forget open -a "Dimsum"',
 ]
 
 # Mouse follows focus when focused monitor changes
@@ -33,7 +33,7 @@ run = 'move-node-to-workspace 4'
 [mode.main.binding]
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-    alt-slash = 'layout tiles horizontal vertical'
+    alt-period = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
