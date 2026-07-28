@@ -1,0 +1,12 @@
+#!/bin/bash
+file="/tmp/brew_pkg_list"
+if [ ! -f "$file" ]; then
+    echo "Creating cache..."
+    { brew formulae; brew casks; } > "$file"
+fi
+
+if [ $# -eq 0 ]; then
+    fzf --multi --no-height --preview 'brew info {1}' < "$file" | xargs -ro brew install
+else
+    brew install "$@"
+fi
