@@ -1,77 +1,32 @@
-# General settings
-# See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#general
 [general]
-passthrough_unbounded_keys = true            # Unbound Cmd/Ctrl/Alt shortcuts reach macOS (aerospace alt-* keeps working)
-should_exit_after_passthrough = true         # Exit mode after a shortcut passes through
+passthrough_unbounded_keys = true
+should_exit_after_passthrough = true
 
-# Theme palette
-# See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#theme
 [theme.light]
-surface = "#EEF2FF"
-accent = "#465FBC"
-accent_alt = "#0B2377"
+surface       = "#EEF2FF"
+accent        = "#465FBC"
+accent_alt    = "#0B2377"
 on_accent_alt = "#F8FAFF"
-text = "#17327A"
+text          = "#17327A"
 
 [theme.dark]
-surface = "#0A1338"
-accent = "#6E82D6"
-accent_alt = "#8FA2F0"
+surface       = "#0A1338"
+accent        = "#6E82D6"
+accent_alt    = "#8FA2F0"
 on_accent_alt = "#081022"
-text = "#E8EEFF"
+text          = "#E8EEFF"
 
-# Hotkeys
-# See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#hotkeys
-# See https://github.com/y3owk1n/neru/blob/main/docs/CLI.md
-[hotkeys]
-"Primary+Shift+Space" = "hints --action left_click"
-"Primary+Shift+G" = "grid --action left_click"
-"Primary+Shift+C" = "recursive_grid --action left_click"
-"Primary+Shift+S" = "scroll"
 
 # Hint mode
 # See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#hints
 [hints]
-enabled = true
 strategy = "axtree"                         # Element detection: "axtree" (AX API) or "vision" (Vision Framework)
-hint_characters = "aeihrsndt"               # Home row of veyxov QMK layout (AEIH | RSND + thumb T)
-label_direction = "normal"                  # Hint label algorithm: "normal" (default) or "reverse"
-max_depth = 50                              # Max accessibility tree depth (0 = unlimited)
-include_menubar_hints = false
-include_dock_hints = false
-include_nc_hints = false
-include_stage_manager_hints = false
-include_pip_hints = false
-include_screen_capture_hints = false
-detect_mission_control = false
-clickable_roles = [
-    "AXButton",
-	"AXMenuButton",
-    "AXComboBox",
-    "AXCheckBox",
-    "AXRadioButton",
-    "AXLink",
-    "AXPopUpButton",
-    "AXTextField",
-    "AXSlider",
-    "AXTabButton",
-    "AXSwitch",
-    "AXDisclosureTriangle",
-    "AXTextArea",
-    "AXMenuItem",
-    "AXCell",
-    "AXRow",
-	"AXGenericElement",
-]
-ignore_clickable_check = false
-visible_check_enabled = false
+hint_characters = "nesidarht"               # Home row of veyxov QMK layout (AEIH | RSND + thumb T)
 
 [hints.hotkeys]
 "Escape" = "idle"
 "/" = "action search_hints"
 "Backspace" = "action backspace"
-"Tab" = "action cycle_hint"
-"Shift+Tab" = "action cycle_hint --backward"
 "Shift+L" = "action left_click"
 "Shift+R" = "action right_click"
 "Shift+M" = "action middle_click"
@@ -83,32 +38,14 @@ visible_check_enabled = false
 "Right" = "action move_mouse_relative --dx=10 --dy=0"
 
 [hints.ui]
-font_size = 10
-font_family = ""                            # Empty = system font
-border_radius = -1                          # -1 = auto pill
-padding_x = -1                              # -1 = auto based on font size
-padding_y = -1                              # -1 = auto based on font size
+font_size = 9
 border_width = 1
 placement = "bottom"                        # top, center, bottom
 
-[hints.search_input_ui]
-font_size = 10
-font_family = ""                            # Empty = system font
-border_radius = -1                          # -1 = auto pill
-padding_x = -1                              # -1 = auto based on font size
-padding_y = -1                              # -1 = auto based on font size
-border_width = 1
-position = "bottom_center"                     # top_left, top_center, top_right, center, bottom_left, bottom_center, bottom_right
-x_offset = 0                                # Offset from the selected position on the active screen
-y_offset = 24                               # Offset from the selected position on the active screen
-width = 320                                 # Search input width in pixels
-
-# Grid mode
-# See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#grid
 [grid]
 enabled = true
-characters = "abcdefghijklmnpqrstuvwxyz"    # Primary grid labels
-sublayer_keys = "abcdefghijklmnpqrstuvwxyz" # Subgrid labels (fallback to characters)
+characters = "nesidarhtm/f?gyloxkcu"
+sublayer_keys = "nesidarhtm/f?gyloxkcu"
 live_match_update = true                    # Highlight cells as you type
 hide_unmatched = true                       # Hide non-matching cells
 prewarm_enabled = true                      # Pre-compute grid on startup (~1.5MB RAM)
@@ -134,26 +71,17 @@ font_size = 10
 font_family = ""
 border_width = 1
 
-# Recursive grid mode (recommended)
-# See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#recursive_grid
 [recursive_grid]
-enabled = true
-grid_cols = 3                               # Number of columns (>= 1)
-grid_rows = 3                               # Number of rows (>= 1)
 keys = "fmpsndglc"                          # Left-hand 3x3 block on veyxov layout: FMP / SND / GLC
-min_size_width = 1                          # Stop subdividing below this width (px)
-min_size_height = 1                         # Stop subdividing below this height (px)
-max_depth = 10                              # Maximum recursion levels (1–20)
+max_depth = 4
 
 [recursive_grid.animation]
 enabled = true                              # Opt out from native depth transition animation on supported platforms
-duration_ms = 50                            # Recursive-grid animation duration in milliseconds
+duration_ms = 25                            # Recursive-grid animation duration in milliseconds
 
 [recursive_grid.hotkeys]
 "Escape" = "idle"
-"`" = "toggle-cursor-follow-selection"
 "Space" = "action reset"
-"Backspace" = "action backspace"
 "Shift+L" = "action left_click"
 "Shift+R" = "action right_click"
 "Shift+M" = "action middle_click"
@@ -165,84 +93,41 @@ duration_ms = 50                            # Recursive-grid animation duration 
 "Right" = "action move_mouse_relative --dx=10 --dy=0"
 
 [recursive_grid.ui]
-line_width = 1
-font_size = 10
-font_family = ""
-label_background = false                    # Add rounded backgrounds behind cell labels
-label_background_padding_x = -1
-label_background_padding_y = -1
-label_background_border_radius = -1
-label_background_border_width = 1
-sub_key_preview = false                     # Draw miniature key grid inside each cell
+line_width = 2
+font_size = 15
+sub_key_preview = true                     # Draw miniature key grid inside each cell
 sub_key_preview_font_size = 8
 sub_key_preview_autohide_multiplier = 1.5
-
-# Virtual pointer
-# See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#virtual_pointer
-[virtual_pointer]
-enabled = true
-
-[virtual_pointer.ui]
-size = 3
 
 # Scroll mode
 # See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#scroll
 [scroll]
-scroll_step = 50                            # Pixels per j/k press
-scroll_step_half = 500                      # Pixels for d/u (half page)
+scroll_step = 300                            # Pixels per arrow-key press
+scroll_step_half = 800                      # Pixels for d/u (half page)
 scroll_step_full = 1000000                  # Pixels for gg/G (top/bottom)
 invert_scroll = false                       # Invert scroll direction (for tools like Mos)
 
 [scroll.hotkeys]
 "Escape" = "idle"
-# Direction keys mirror QMK NAV/MOUSE layers: A/E/I/H = left/down/up/right
-"a" = "action scroll_left"
-"e" = "action scroll_down"
-"i" = "action scroll_up"
-"h" = "action scroll_right"
+"Up" = "action scroll_up"
+"Down" = "action scroll_down"
+"Left" = "action scroll_left"
+"Right" = "action scroll_right"
 "gg" = "action go_top"
 "Shift+G" = "action go_bottom"
 "u" = "action page_up"
 "PageUp" = "action page_up"
-"d" = "action page_down"
 "PageDown" = "action page_down"
-"Shift+L" = "action left_click"
-"Shift+R" = "action right_click"
+"/" = "action left_click"
+"Shift+/" = "action right_click"
 "Shift+M" = "action middle_click"
 "Shift+I" = "action mouse_down"
 "Shift+U" = "action mouse_up"
-"Up" = "action move_mouse_relative --dx=0 --dy=-10"
-"Down" = "action move_mouse_relative --dx=0 --dy=10"
-"Left" = "action move_mouse_relative --dx=-10 --dy=0"
-"Right" = "action move_mouse_relative --dx=10 --dy=0"
-
-# Mode indicator
-# See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#mode_indicator
-[mode_indicator.scroll]
-enabled = true
-text = "Scroll"
-
-[mode_indicator.hints]
-enabled = false
-
-[mode_indicator.grid]
-enabled = false
-
-[mode_indicator.recursive_grid]
-enabled = false
-
-[mode_indicator.monitor_select]
-enabled = false
-
-[mode_indicator.ui]
-font_size = 10
-font_family = ""
-border_width = 1
-padding_x = -1
-padding_y = -1
-border_radius = -1
-indicator_x_offset = 20
-indicator_y_offset = 20
+# Left-hand home row = mouse move (right hand carries the NAV layer)
+"s" = "action move_mouse_relative --dx=0 --dy=-50"
+"n" = "action move_mouse_relative --dx=0 --dy=50"
+"r" = "action move_mouse_relative --dx=-50 --dy=0"
+"d" = "action move_mouse_relative --dx=50 --dy=0"
 
 # Sticky modifiers
 # See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#sticky_modifiers
@@ -262,17 +147,15 @@ indicator_y_offset = 20
 
 # Smooth cursor / smooth scroll / held-key repeat: disabled defaults, omitted.
 
-# Systray
-# See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#systray
 [systray]
-enabled = true                              # Show menu bar icon (false = headless mode)
+enabled = false
 
-# Logging
-# See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#logging
 [logging]
-log_level = "info"                          # debug, info, warn, error
-log_file = ""                               # Custom log path (empty = default location)
-disable_file_logging = true                 # Console only (no file); file logs use JSON
-max_file_size = 10                          # MB before rotation
-max_backups = 5                             # Old log files to keep
-max_age = 30                                # Days to retain old logs
+log_level = "warn"                          # debug, info, warn, error
+log_file = "/tmp/neru.log"                               # Custom log path (empty = default location)
+
+[hotkeys]
+"Primary+Shift+Space" = "hints --action left_click"
+"Primary+Shift+G" = "grid --action left_click"
+"Primary+Shift+C" = "recursive_grid --action left_click"
+"Primary+Shift+S" = "scroll"
