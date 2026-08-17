@@ -9,7 +9,7 @@ fi
 # PATH
 # ------------------------------------------------------------------
 typeset -U path PATH
-path=("$HOME/.local/bin" "$HOME/.cargo/bin" "$HOME"/.local/opt/xpack-arm-none-eabi-gcc-*/bin(N) $path)
+path=("$HOME/.local/bin" "$HOME/dots/bin" "$HOME/.cargo/bin" "$HOME"/.local/opt/xpack-arm-none-eabi-gcc-*/bin(N) $path)
 
 # ------------------------------------------------------------------
 # Core options

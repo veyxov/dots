@@ -2,25 +2,8 @@
 passthrough_unbounded_keys = true
 should_exit_after_passthrough = true
 
-[theme.light]
-surface       = "#EEF2FF"
-accent        = "#465FBC"
-accent_alt    = "#0B2377"
-on_accent_alt = "#F8FAFF"
-text          = "#17327A"
-
-[theme.dark]
-surface       = "#0A1338"
-accent        = "#6E82D6"
-accent_alt    = "#8FA2F0"
-on_accent_alt = "#081022"
-text          = "#E8EEFF"
-
-
-# Hint mode
-# See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#hints
 [hints]
-strategy = "axtree"                         # Element detection: "axtree" (AX API) or "vision" (Vision Framework)
+strategy = "vision"                         # Element detection: "axtree" (AX API) or "vision" (Vision Framework)
 hint_characters = "nesidarht"               # Home row of veyxov QMK layout (AEIH | RSND + thumb T)
 
 [hints.hotkeys]
@@ -32,10 +15,10 @@ hint_characters = "nesidarht"               # Home row of veyxov QMK layout (AEI
 "Shift+M" = "action middle_click"
 "Shift+I" = "action mouse_down"
 "Shift+U" = "action mouse_up"
-"Up" = "action move_mouse_relative --dx=0 --dy=-10"
-"Down" = "action move_mouse_relative --dx=0 --dy=10"
-"Left" = "action move_mouse_relative --dx=-10 --dy=0"
-"Right" = "action move_mouse_relative --dx=10 --dy=0"
+"Up" = "action move_mouse_relative --dx=0 --dy=-5"
+"Down" = "action move_mouse_relative --dx=0 --dy=5"
+"Left" = "action move_mouse_relative --dx=-5 --dy=0"
+"Right" = "action move_mouse_relative --dx=5 --dy=0"
 
 [hints.ui]
 font_size = 9
@@ -61,10 +44,10 @@ enable_gc = false                           # Periodic memory cleanup (adds CPU 
 "Shift+M" = "action middle_click"
 "Shift+I" = "action mouse_down"
 "Shift+U" = "action mouse_up"
-"Up" = "action move_mouse_relative --dx=0 --dy=-10"
-"Down" = "action move_mouse_relative --dx=0 --dy=10"
-"Left" = "action move_mouse_relative --dx=-10 --dy=0"
-"Right" = "action move_mouse_relative --dx=10 --dy=0"
+"Up" = "action move_mouse_relative --dx=0 --dy=-5"
+"Down" = "action move_mouse_relative --dx=0 --dy=5"
+"Left" = "action move_mouse_relative --dx=-5 --dy=0"
+"Right" = "action move_mouse_relative --dx=5 --dy=0"
 
 [grid.ui]
 font_size = 10
@@ -72,12 +55,8 @@ font_family = ""
 border_width = 1
 
 [recursive_grid]
-keys = "fmpsndglc"                          # Left-hand 3x3 block on veyxov layout: FMP / SND / GLC
+keys = "sndaeirth"
 max_depth = 4
-
-[recursive_grid.animation]
-enabled = true                              # Opt out from native depth transition animation on supported platforms
-duration_ms = 25                            # Recursive-grid animation duration in milliseconds
 
 [recursive_grid.hotkeys]
 "Escape" = "idle"
@@ -87,10 +66,10 @@ duration_ms = 25                            # Recursive-grid animation duration 
 "Shift+M" = "action middle_click"
 "Shift+I" = "action mouse_down"
 "Shift+U" = "action mouse_up"
-"Up" = "action move_mouse_relative --dx=0 --dy=-10"
-"Down" = "action move_mouse_relative --dx=0 --dy=10"
-"Left" = "action move_mouse_relative --dx=-10 --dy=0"
-"Right" = "action move_mouse_relative --dx=10 --dy=0"
+"Up" = "action move_mouse_relative --dx=0 --dy=-5"
+"Down" = "action move_mouse_relative --dx=0 --dy=5"
+"Left" = "action move_mouse_relative --dx=-5 --dy=0"
+"Right" = "action move_mouse_relative --dx=5 --dy=0"
 
 [recursive_grid.ui]
 line_width = 2
@@ -115,19 +94,23 @@ invert_scroll = false                       # Invert scroll direction (for tools
 "Right" = "action scroll_right"
 "gg" = "action go_top"
 "Shift+G" = "action go_bottom"
-"u" = "action page_up"
-"PageUp" = "action page_up"
-"PageDown" = "action page_down"
-"/" = "action left_click"
-"Shift+/" = "action right_click"
-"Shift+M" = "action middle_click"
-"Shift+I" = "action mouse_down"
-"Shift+U" = "action mouse_up"
+"Shift+/" = "action page_up"
+"/" = "action page_down"
+"e" = "action left_click"
+"i" = "action right_click"
+"o" = "action middle_click"
+"u" = "action mouse_down"
+"y" = "action mouse_up"
 # Left-hand home row = mouse move (right hand carries the NAV layer)
-"s" = "action move_mouse_relative --dx=0 --dy=-50"
-"n" = "action move_mouse_relative --dx=0 --dy=50"
-"r" = "action move_mouse_relative --dx=-50 --dy=0"
-"d" = "action move_mouse_relative --dx=50 --dy=0"
+"s" = "action move_mouse_relative --dx=0 --dy=-5"
+"n" = "action move_mouse_relative --dx=0 --dy=5"
+"r" = "action move_mouse_relative --dx=-5 --dy=0"
+"d" = "action move_mouse_relative --dx=5 --dy=0"
+# Diagonals: row above/below the R/D columns (no simultaneous-key composition in neru)
+"f" = "action move_mouse_relative --dx=-5 --dy=-5"
+"v" = "action move_mouse_relative --dx=5 --dy=-5"
+"x" = "action move_mouse_relative --dx=-5 --dy=5"
+"c" = "action move_mouse_relative --dx=5 --dy=5"
 
 # Sticky modifiers
 # See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#sticky_modifiers
@@ -145,8 +128,6 @@ border_radius = -1
 indicator_x_offset = -40
 indicator_y_offset = 20
 
-# Smooth cursor / smooth scroll / held-key repeat: disabled defaults, omitted.
-
 [systray]
 enabled = false
 
@@ -159,3 +140,14 @@ log_file = "/tmp/neru.log"                               # Custom log path (empt
 "Primary+Shift+G" = "grid --action left_click"
 "Primary+Shift+C" = "recursive_grid --action left_click"
 "Primary+Shift+S" = "scroll"
+
+# Held-key repeat + mouse-move acceleration
+# See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#held_repeat
+[held_repeat]
+enabled = true
+initial_delay_ms = 150                      # Tap-vs-slide threshold
+interval_ms = 10                            # One tick per frame at 100Hz
+accel_enabled = true
+accel_ramp_ms = 2500                        # Time from first repeat to top speed
+accel_max_multiplier = 35.0                 # Calibrated against the 5px step above
+accel_targets = ["move_mouse_relative"]

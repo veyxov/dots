@@ -14,5 +14,14 @@ keybinds {
         bind "Alt m" { MovePane; }
         bind "Alt x" { CloseFocus; }
         bind "Alt t" { EditScrollback; }
+        bind "Alt z" { ToggleFocusFullscreen; }
+
+        // Ctrl-o clashes with neovim/claude code; move session mode off it
+        unbind "Ctrl o"
+        bind "Ctrl Alt o" { SwitchToMode "Session"; }
+    }
+    session {
+        unbind "Ctrl o"
+        bind "Ctrl Alt o" { SwitchToMode "Normal"; }
     }
 }

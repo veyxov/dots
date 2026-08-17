@@ -29,3 +29,6 @@ keybinding:
   universal:
     quit: [<esc>]
     return: <ctrl+x>
+
+git:
+  overrideGpg: true

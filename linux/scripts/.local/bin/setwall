@@ -1,16 +1,6 @@
-# Get all image files recursively from ~/.local/walls and its subdirectories
+# Pick a random wallpaper from ~/.local/walls and set it with swaybg
 Files=($(find ~/.local/walls -type f))
-
-# Count the total number of files
-Amount=${#Files[@]}
-
-# Generate a random index based on the total count
-Rand=$(($RANDOM % $Amount))
-
-# Select a random file
-wall=${Files[Rand]}
-
-# Set the selected file as the wallpaper using swaybg
+wall=$(shuf -n1 -e "${Files[@]}")
 
 echo "$wall" > /tmp/current_wall
 
