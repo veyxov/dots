@@ -1,53 +1,7 @@
 #include QMK_KEYBOARD_H
 
 #include "keymap.h"
-#include "features.h"
 #include "g/keymap_combo.h"
-#include "adaptive.h"
-
-// Only the arrow-thumb mod-taps resolve hold on the next keypress (needed for
-// fast rolls like Alt+M). Everything else — especially LTNAV, since T is a
-// layer-tap on a very common letter — keeps waiting out TAPPING_TERM so fast
-// typing isn't misread as a layer hold.
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_LALT, KC_RGHT):
-        case MT(MOD_LCTL, KC_LEFT):
-            return true;
-        default:
-            return false;
-    }
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case QK_MOD_TAP ... QK_MOD_TAP_MAX:
-        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-            if (record->tap.count == 0) // If not tapped yet,
-                return true;            // let QMK handle it first.
-            // A tap of LTNAV during an active repeat sequence sends plain T
-            // directly (bypassing repeat bookkeeping), so T after REP can't
-            // disturb the sequence. Must run before the keycode is trimmed —
-            // features.c would only ever see KC_T.
-            if (keycode == LTNAV && get_repeat_key_count() > 0) {
-                if (record->event.pressed) tap_code(KC_T);
-                return false;
-            }
-            keycode &= QK_BASIC_MAX;    // Trim mods + taps.
-            break;
-    }
-
-    // Adaptive keys are for plain typing on the base layer only — on other
-    // layers transparent positions resolve to the same base keycodes and
-    // would misfire pairs (e.g. F+M on NAV).
-    if (get_highest_layer(layer_state) == _BASE) {
-        if (!process_adaptive_user(keycode, record)) {
-            return false; // We have declared no more processing.
-        }
-    }
-
-    return process_record_features(keycode, record);
-}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
@@ -67,7 +21,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
         _______,G(S(KC_S)), KC_LALT, KC_LSFT, KC_LCTL, KC_LGUI,                 KC_HOME,KC_LEFT,KC_DOWN,KC_UP,KC_RGHT, KC_END,
     // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______, _______, G(S(KC_G)), A(KC_RGHT), C(KC_Z), C(S(KC_Z)),                 _______, A(KC_C), G(KC_SPC), A(KC_K), MON_TOG, MON_MOV,
+        _______, _______, G(S(KC_G)), A(KC_RGHT), _______, _______,                 _______, A(KC_C), G(KC_SPC), A(KC_K), MON_TOG, MON_MOV,
     // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
                                 _______, _______,_______, _______,         _______, G(S(KC_S)),G(S(KC_SPC)),G(S(KC_C))
     ),
@@ -95,7 +49,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
-
 const custom_shift_key_t custom_shift_keys[] = {
     {KC_DOT, S(KC_GRV)}, // . -> ~
     {KC_SLSH, S(KC_7)}, // / -> &
@@ -105,12 +58,3 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_MINS, S(KC_EQL)}, // - -> +
     {S(KC_SCLN), KC_SCLN}, // : -> ;
 };
-
-void matrix_scan_user(void) {
-    matrix_adaptive_user();
-}
-
-bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
-                            uint8_t* remembered_mods) {
-  return remember_last_key_features(keycode);
-}

@@ -42,12 +42,12 @@ right: . / ? ' _  /  , A E I H  /  - U O Y K
 
 ## Other layers
 
-**NAV** (hold `T`) — arrow cluster (`Home ← ↓ ↑ → End`) on the right home row, one-hand mods on the left home row, window/monitor management, undo/redo, app switching (`⌥1..4`).
+**NAV** (hold `T`) — arrow cluster (`Home ← ↓ ↑ → End`) on the right home row, one-hand mods on the left home row, window/monitor management, app switching (`⌥1..4`).
 
 ```
 left:  ·    ·   ⌥F   ·   ⌥P  ⌥V    |  right:  ·   ⌥1  ⌥2  ⌥3  ⌥4   ·
        ·  ⌘⇧S Alt  Sft  Ctl  Gui   |         Home  ←   ↓   ↑   →  End
-       ·    ·  ⌘⇧G  ⌥N  Undo Redo  |          ·   ⌥C ⌘Spc  ⌥K  Mon WinMon
+       ·    ·  ⌘⇧G  ⌥N   ·    ·    |          ·   ⌥C ⌘Spc  ⌥K  Mon WinMon
 thumbs:  ·    ·    ·    ·          |   ·  ⌘⇧S  ⌘⇧Spc  ⌘⇧C
 ```
 

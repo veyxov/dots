@@ -15,7 +15,7 @@ layers:
   NAV:
     - [{type: trans}, {type: trans}, "⌥F", {type: trans}, "⌥P", "⌥V",        {type: trans}, "⌥1", "⌥2", "⌥3", "⌥4", {type: trans}]
     - [{type: trans}, "⌘⇧S", ALT, SHFT, CTRL, GUI,                             HOME, "←", "↓", "↑", "→", END]
-    - [{type: trans}, {type: trans}, "⌘⇧G", "⌥N", "⎌", "↷",    {type: trans}, "⌥C", "⌘Spc", "⌥K", Mon, WinMon]
+    - [{type: trans}, {type: trans}, "⌘⇧G", "⌥N", {type: trans}, {type: trans},    {type: trans}, "⌥C", "⌘Spc", "⌥K", Mon, WinMon]
     - [{type: trans}, {type: trans}, {type: trans}, {type: trans},    {type: trans}, "⌘⇧S", "⌘⇧Spc", "⌘⇧C"]
 
   NUM:
