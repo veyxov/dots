@@ -2,7 +2,7 @@
 
 add_newline = false
 command_timeout = 1000
-palette = 'catppuccin_mocha'
+palette = 'rose_pine'
 
 format = """$directory$git_branch$git_status$nodejs$rust$dotnet$cmd_duration$character"""
 
@@ -11,42 +11,31 @@ success_symbol = '[❯](bold green)'
 
 [directory]
 truncation_length = 4
-style = 'bold blue'
+style = 'bold foam'
 
 [git_branch]
 symbol = ' '
-style = 'bold mauve'
+style = 'bold iris'
 
 [git_status]
-style = 'bold yellow'
+style = 'bold gold'
 
-[palettes.catppuccin_mocha]
-rosewater = '#f5e0dc'
-flamingo = '#f2cdcd'
-pink = '#f5c2e7'
-mauve = '#cba6f7'
-red = '#f38ba8'
-maroon = '#eba0ac'
-peach = '#fab387'
-yellow = '#f9e2af'
-green = '#a6e3a1'
-teal = '#94e2d5'
-sky = '#89dceb'
-sapphire = '#74c7ec'
-blue = '#89b4fa'
-lavender = '#b4befe'
-text = '#cdd6f4'
-subtext1 = '#bac2de'
-subtext0 = '#a6adc8'
-overlay2 = '#9399b2'
-overlay1 = '#7f849c'
-overlay0 = '#6c7086'
-surface2 = '#585b70'
-surface1 = '#45475a'
-surface0 = '#313244'
-base = '#1e1e2e'
-mantle = '#181825'
-crust = '#11111b'
+[palettes.rose_pine]
+love = '#eb6f92'
+gold = '#f6c177'
+rose = '#ebbcba'
+pine = '#31748f'
+foam = '#9ccfd8'
+iris = '#c4a7e7'
+text = '#e0def4'
+subtle = '#908caa'
+muted = '#6e6a86'
+highlight_high = '#524f67'
+highlight_med = '#403d52'
+highlight_low = '#21202e'
+overlay = '#26233a'
+surface = '#1f1d2e'
+base = '#191724'
 
 [nodejs]
 symbol = ' '
