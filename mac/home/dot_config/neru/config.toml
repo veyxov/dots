@@ -366,7 +366,7 @@ duration_per_pixel = 1.00
 
 [held_repeat]
 enabled = true
-initial_delay_ms = 150
+initial_delay_ms = 60
 interval_ms = 10
 accel_enabled = true
 accel_ramp_ms = 2500
