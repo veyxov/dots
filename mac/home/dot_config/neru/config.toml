@@ -180,7 +180,7 @@ border_width = 1
 enabled = true
 grid_cols = 3
 grid_rows = 3
-keys = "nesidarht"                          # 3x3 = veyxov home row
+keys = "aeisndrth"                          # 3x3 = veyxov home row
 min_size_width = 1
 min_size_height = 1
 max_depth = 10
