@@ -1,8 +1,11 @@
 # ------------------------------------------------------------------
-# Zellij: auto-start on interactive shells, skip if already inside one
+# Zellij: attach one persistent session, skip nested/embedded terminals
 # ------------------------------------------------------------------
-if [[ -z "$ZELLIJ" && -n "$PS1" ]]; then
-    exec zellij
+# $PS1 is always set in zsh, so it never gated anything; -o interactive does.
+# $NVIM / IDE terminals want a plain shell, not a multiplexer inside one.
+if [[ -o interactive && -t 1 && -z "$ZELLIJ" && -z "$NVIM" && -z "$INSIDE_EMACS" \
+      && "$TERM_PROGRAM" != "vscode" && "$TERM" != "dumb" ]]; then
+    exec zellij attach --create main
 fi
 
 # ------------------------------------------------------------------
@@ -10,6 +13,9 @@ fi
 # ------------------------------------------------------------------
 typeset -U path PATH
 path=("$HOME/.local/bin" "$HOME/dots/bin" "$HOME/.cargo/bin" "$HOME"/.local/opt/xpack-arm-none-eabi-gcc-*/bin(N) $path)
+
+# TMP
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 
 # ------------------------------------------------------------------
 # Core options
@@ -114,3 +120,25 @@ zle -N cmd_to_clip
 bindkey '^Y' cmd_to_clip
 
 bindkey -s '^e' 'cd ./$(fd -t d -d 7 | fzf)^M'
+
+# Copy a file object to macOS clipboard
+copyfile() {
+    if [ -f "$1" ]; then
+        osascript -e "set the clipboard to (POSIX file \"$(realpath "$1")\")"
+        echo "Copied '$1' to clipboard."
+    else
+        echo "Error: File '$1' not found."
+    fi
+}
+
+# cd to yazi's last directory on exit
+y() {
+    local tmp cwd; tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    command yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
+    command rm -f -- "$tmp"
+}
+
+# Bug-bounty engagement scaffolding (bug-bounty-claude-skills)
+source ~/.claude/scripts/hunt.sh
