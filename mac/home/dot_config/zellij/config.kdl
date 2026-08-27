@@ -1,7 +1,8 @@
 pane_frames false
 default_layout "compact"
 scrollback_editor "nvim"
-theme "rose-pine"
+theme_dark "rose-pine"
+theme_light "rose-pine-dawn"
 
 keybinds {
     shared_except "locked" {

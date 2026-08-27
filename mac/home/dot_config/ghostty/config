@@ -1,4 +1,4 @@
-theme = Rose Pine
+theme = light:Rose Pine Dawn,dark:Rose Pine
 background-opacity = 0.85
 background-blur-radius = 20
 minimum-contrast = 1.05
@@ -9,6 +9,8 @@ mouse-hide-while-typing = true
 confirm-close-surface = false
 quit-after-last-window-closed = true
 font-thicken = true
+font-family = FantasqueSansM Nerd Font Mono
+font-size = 16
 
 # quake-style dropdown terminal
 keybind = global:cmd+grave_accent=toggle_quick_terminal
