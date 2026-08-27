@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# picks delta's light/dark syntax theme to match current macOS appearance
+if [ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" = "Dark" ]; then
+  exec delta --dark "$@"
+else
+  exec delta --light "$@"
+fi

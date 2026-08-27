@@ -17,20 +17,13 @@
 [diff]
     colorMoved = zebra
 [core]
-	pager = delta
+	pager = git-delta-theme
 	excludesfile = ~/.config/git/ignore
 [interactive]
-	diffFilter = delta --color-only
+	diffFilter = git-delta-theme --color-only
 [delta]
 	navigate = true
 	line-numbers = true
-	plus-color = "#a6e3a1"
-	plus-emph-color = "#40a02b"
-	minus-color = "#f38ba8"
-	minus-emph-color = "#d20f39"
-	line-numbers-plus-style = "#a6e3a1"
-	line-numbers-minus-style = "#f38ba8"
-	line-numbers-zero-style = "#6c7086"
 [rebase]
 	autosquash = true
 [fetch]
