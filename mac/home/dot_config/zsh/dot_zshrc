@@ -11,6 +11,8 @@ fi
 # ------------------------------------------------------------------
 # PATH
 # ------------------------------------------------------------------
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 typeset -U path PATH
 path=("$HOME/.local/bin" "$HOME/dots/bin" "$HOME/.cargo/bin" "$HOME"/.local/opt/xpack-arm-none-eabi-gcc-*/bin(N) $path)
 
