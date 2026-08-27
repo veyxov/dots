@@ -1,0 +1,13 @@
+[mgr]
+prepend_keymap = [
+	{ on = "l", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+
+	{ on = ["C"], run = "plugin ouch", desc = "Compress with ouch" },
+
+	{ on = [".", "s"], run = "plugin what-size", desc = "Calc size of selection or cwd" },
+
+	{ on = "<C-h>", run = "plugin duckdb -1", desc = "duckdb: scroll one column left" },
+	{ on = "<C-l>", run = "plugin duckdb +1", desc = "duckdb: scroll one column right" },
+	{ on = ["g", "o"], run = "plugin duckdb -open", desc = "Open with duckdb" },
+	{ on = ["g", "u"], run = "plugin duckdb -ui", desc = "Open with duckdb ui" },
+]

@@ -2,3 +2,33 @@
 sort_by      = "mtime"
 sort_reverse = true
 show_hidden  = true
+
+[plugin]
+prepend_fetchers = [
+	{ url = "*",  run = "git", group = "git" },
+	{ url = "*/", run = "git", group = "git" },
+]
+prepend_previewers = [
+	{ mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch" },
+	{ url = "*.csv",     run = "duckdb" },
+	{ url = "*.tsv",     run = "duckdb" },
+	{ url = "*.json",    run = "duckdb" },
+	{ url = "*.parquet", run = "duckdb" },
+	{ url = "*.txt",     run = "duckdb" },
+	{ url = "*.xlsx",    run = "duckdb" },
+	{ url = "*.db",      run = "duckdb" },
+	{ url = "*.duckdb",  run = "duckdb" },
+]
+prepend_preloaders = [
+	{ url = "*.csv",     run = "duckdb", multi = false },
+	{ url = "*.tsv",     run = "duckdb", multi = false },
+	{ url = "*.json",    run = "duckdb", multi = false },
+	{ url = "*.parquet", run = "duckdb", multi = false },
+	{ url = "*.txt",     run = "duckdb", multi = false },
+	{ url = "*.xlsx",    run = "duckdb", multi = false },
+]
+
+[opener]
+extract = [
+	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch" },
+]
