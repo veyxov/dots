@@ -1,14 +1,4 @@
 # ------------------------------------------------------------------
-# Zellij: attach one persistent session, skip nested/embedded terminals
-# ------------------------------------------------------------------
-# $PS1 is always set in zsh, so it never gated anything; -o interactive does.
-# $NVIM / IDE terminals want a plain shell, not a multiplexer inside one.
-if [[ -o interactive && -t 1 && -z "$ZELLIJ" && -z "$NVIM" && -z "$INSIDE_EMACS" \
-      && "$TERM_PROGRAM" != "vscode" && "$TERM" != "dumb" ]]; then
-    exec zellij attach --create main
-fi
-
-# ------------------------------------------------------------------
 # PATH
 # ------------------------------------------------------------------
 eval "$(/opt/homebrew/bin/brew shellenv)"
