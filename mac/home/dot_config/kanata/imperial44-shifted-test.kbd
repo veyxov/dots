@@ -1,0 +1,140 @@
+;; Disposable A/B test: move the Imperial44 model one physical row up on the
+;; MacBook keyboard.  Keep kanata.kbd as the normal, unshifted configuration.
+;;
+;; Physical anchors (the names below are the MacBook key labels):
+;; Esc=NUM; F1..F5=J F M P V; F6=gap; F7..F12=Screenshot . / ? ' _
+;; Grave=Delete; 1..5=R S N D W; 8..Backspace=, A E I H :
+;; Tab/Q/W/E/R=X G L C B
+;; Curved thumbs: S/D/C=Repeat T/NAV Shift; F=Tab.
+;; J/M/K/L=Lock Ctrl/Left Space/SYM Alt/Right. G/H are the central gap.
+;; Fn holds the media layer; Fn+Esc sends Escape.
+;; Right Shift remains native. Media-layer F3..F6 send ordinary function keys.
+
+(defcfg
+  macos-dev-names-include (
+    "Apple Internal Keyboard / Trackpad"
+  )
+  concurrent-tap-hold yes
+  process-unmapped-keys no
+)
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  nubs
+  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    i    o    p    [    ]    ret
+  caps a    s    d    f    g    h    j    k    l    ;    '    \    rsft
+  z    x    c    v    b    spc  n    m    ,    .
+  fn
+)
+
+(deftemplate adapt (prior out)
+  ((and (key-timing 1 less-than 200) (key-history $prior 1)
+        (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet)))
+  $out break)
+
+(defalias
+  osl     (one-shot 65535 (layer-while-held num))
+  ltnav   (tap-hold 200 200 t (layer-while-held nav))
+  symspc  (tap-hold 200 200 spc (layer-while-held sym))
+  smous   (one-shot 65535 lsft)
+  ctlleft (tap-hold-press 200 200 left lctl)
+  altrght (tap-hold-press 200 200 rght lalt)
+  lock    C-M-q
+  scrn    M-C-S-4
+  montog  M-C-rght
+  monmov  M-C-S-rght
+  numword (layer-toggle num)
+  fnmedia (layer-while-held media)
+
+  fdot  (fork . S-grv (lsft rsft))
+  fslsh (fork / S-7 (lsft rsft))
+  fques (fork S-/ S-1 (lsft rsft))
+  fcomm (fork , S-\ (lsft rsft))
+  funds (fork S-- (unshift grv) (lsft rsft))
+  fmins (fork - S-= (lsft rsft))
+  fcoln (fork S-; (unshift ;) (lsft rsft))
+
+  am  (switch (t! adapt f l) (t! adapt v l) (t! adapt p l) () m break)
+  ap  (switch (t! adapt f S-[) () p break)
+  av  (switch (t! adapt m b) (t! adapt p (macro bspc l v)) () v break)
+  add (switch (t! adapt d c) () d break)
+  ac  (switch (t! adapt l p) () c break)
+  al  (switch (t! adapt l m) () l break)
+  ag  (switch (t! adapt g f) () g break)
+  ax  (switch (t! adapt g s) () x break)
+  ah  (switch (t! adapt u a) (t! adapt a u) (t! adapt o e) (t! adapt e o) () h break)
+)
+
+;; Physical chords follow their logical QMK keys after the one-row shift.
+(defchordsv2
+  (f3 f4)  z              20 first-release (nav sym media)
+  (f1 f2)  q              20 first-release (nav sym media)
+  (f2 f3)  (macro q u)    20 first-release (nav sym media)
+  (0 -)    ret            20 first-release (nav num)
+  (2 3)    esc            20 first-release (nav sym num)
+  (3 4)    tab            20 first-release (nav sym num)
+  (9 0)    A-bspc         20 first-release (nav sym num)
+  (2 4)    C-spc          20 first-release (nav sym num)
+  (q w)    M-c            20 first-release (nav sym)
+  (w e)    M-v            20 first-release (nav sym num)
+  (q w e)  M-a            20 first-release (nav sym num)
+  (9 0 -)  ;              20 first-release (nav sym num)
+  (k d)    (caps-word-toggle 5000) 20 first-release (nav sym num media)
+  (k c)    @numword       20 first-release (nav sym media)
+  (f9 f10) pgup           20 first-release (nav sym num media)
+  (f10 f11) pgdn          20 first-release (nav sym num media)
+  (f9 0)   (macro = S-.)  20 first-release (nav sym num media)
+)
+
+(deflayer base
+  @osl j    f    @am  @ap  @av  XX   @scrn @fdot @fslsh @fques '     @funds
+  del  nubs
+  r    s    n    @add w    XX   XX     @fcomm a     e      i      @ah   @fcoln
+  @ax  @ag  @al  @ac  b    XX   @fmins u      o      y      k     XX
+  caps lmet rpt  @ltnav tab XX XX @lock @symspc @altrght ; ' \    rsft
+  z    x    @smous v    b    spc  n    @ctlleft ,    .
+  @fnmedia
+)
+
+(deflayer nav
+  @osl j    A-f  m    A-p  A-v  XX   @scrn A-1  A-2  A-3  A-4  @funds
+  del  nubs
+  M-S-s lalt lsft lctl lmet XX   XX   home left down up rght end
+  x    M-S-g A-rght c    b    XX   @fmins A-c  M-spc A-k  @montog @monmov
+  caps lmet rpt  @ltnav tab XX XX @lock M-S-spc M-S-c ; ' \    rsft
+  z    x    @smous v    b    spc  n    M-S-s ,    .
+  @fnmedia
+)
+
+(deflayer num
+  @osl j    f    m    p    v    XX   mute vold brdn brup volu @funds
+  del  nubs
+  6    4    0    2    w    XX   XX     @fcomm 3    1    5    7    S-=
+  x    g    l    8    b    XX   @fmins 9    prev pp   next XX
+  caps lmet rpt  bspc tab XX XX @lock spc - ; ' \    rsft
+  z    x    @smous v    b    spc  n    . ,    .
+  @fnmedia
+)
+
+(deflayer sym
+  @osl '    S-,  S-.  S-'  v    XX   @fdot S-7 ] [ S-5 @funds
+  del  nubs
+  S-1  @fmins S-=  =    S-3  XX  XX 0     ;    S-0  S-9  S-4  @fcoln
+  S-6  @fslsh S-2  \    b    XX   S-grv S-8 S-] S-[  S-2  XX
+  caps lmet bspc spc tab XX XX @lock @symspc @altrght ; ' \    rsft
+  z    x    ret  v    b    spc  n    @ctlleft ,    .
+  @fnmedia
+)
+
+;; Fn restores the familiar MacBook top-row controls without altering the
+;; ordinary Imperial44 layer state. Other keys fall through to their base map.
+(deflayer media
+  esc  brdn brup f3 f4 f5 f6 prev pp next mute vold volu
+  _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _
+  _
+)
