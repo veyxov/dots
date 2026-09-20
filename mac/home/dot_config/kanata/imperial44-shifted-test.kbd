@@ -3,7 +3,7 @@
 ;;
 ;; Physical anchors (the names below are the MacBook key labels):
 ;; Esc=NUM; F1..F5=J F M P V; F6=gap; F7..F12=Screenshot . / ? ' _
-;; Grave=Delete; 1..5=R S N D W; 8..Backspace=, A E I H :
+;; Grave/ISO § key=Delete; 1..5=R S N D W; 8..Backspace=, A E I H :
 ;; Tab/Q/W/E/R=X G L C B
 ;; Curved thumbs: S/D/C=Repeat T/NAV Shift; F=Tab.
 ;; J/M/K/L=Lock Ctrl/Left Space/SYM Alt/Right. G/H are the central gap.
@@ -89,7 +89,7 @@
 
 (deflayer base
   @osl j    f    @am  @ap  @av  XX   @scrn @fdot @fslsh @fques '     @funds
-  del  nubs
+  del  del
   r    s    n    @add w    XX   XX     @fcomm a     e      i      @ah   @fcoln
   @ax  @ag  @al  @ac  b    XX   @fmins u      o      y      k     XX
   caps lmet rpt  @ltnav tab XX XX @lock @symspc @altrght ; ' \    rsft
@@ -99,7 +99,7 @@
 
 (deflayer nav
   @osl j    A-f  m    A-p  A-v  XX   @scrn A-1  A-2  A-3  A-4  @funds
-  del  nubs
+  del  del
   M-S-s lalt lsft lctl lmet XX   XX   home left down up rght end
   x    M-S-g A-rght c    b    XX   @fmins A-c  M-spc A-k  @montog @monmov
   caps lmet rpt  @ltnav tab XX XX @lock M-S-spc M-S-c ; ' \    rsft
@@ -109,7 +109,7 @@
 
 (deflayer num
   @osl j    f    m    p    v    XX   mute vold brdn brup volu @funds
-  del  nubs
+  del  del
   6    4    0    2    w    XX   XX     @fcomm 3    1    5    7    S-=
   x    g    l    8    b    XX   @fmins 9    prev pp   next XX
   caps lmet rpt  bspc tab XX XX @lock spc - ; ' \    rsft
@@ -119,7 +119,7 @@
 
 (deflayer sym
   @osl '    S-,  S-.  S-'  v    XX   @fdot S-7 ] [ S-5 @funds
-  del  nubs
+  del  del
   S-1  @fmins S-=  =    S-3  XX  XX 0     ;    S-0  S-9  S-4  @fcoln
   S-6  @fslsh S-2  \    b    XX   S-grv S-8 S-] S-[  S-2  XX
   caps lmet bspc spc tab XX XX @lock @symspc @altrght ; ' \    rsft
