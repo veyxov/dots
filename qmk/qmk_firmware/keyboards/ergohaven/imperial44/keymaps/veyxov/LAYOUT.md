@@ -51,7 +51,7 @@ left:  ·    ·   ⌥F   ·   ⌥P  ⌥V    |  right:  ·   ⌥1  ⌥2  ⌥3  �
 thumbs:  ·    ·    ·    ·          |   ·  ⌘⇧S  ⌘⇧Spc  ⌘⇧C
 ```
 
-**NUM** (one-shot from `OSL/N`, or NUMWORD combo) — numpad-style digits (`6 4 0 2` / `8` and `3 1 5 7` / `9`), `+` on right home pinky, `.`/`SPC`/`BSPC`/`-` on thumbs. Also hosts the former FN keys: volume/brightness/mute on right top row, media transport on right bottom row. `QK_BOOT` deliberately left off — `reflash.sh` enters bootloader over raw HID (falling back to the physical board button), so a keymap bootloader key was only accidental-trigger risk.
+**NUM** (one-shot from `OSL/N`, or NUMWORD combo) — numpad-style digits (`6 4 0 2` / `8` and `3 1 5 7` / `9`), `+` on right home pinky, `.`/`SPC`/`BSPC`/`-` on thumbs. It also provides volume/brightness/mute on the right top row and media transport on the right bottom row. `QK_BOOT` is deliberately left off — `reflash.sh` enters bootloader over raw HID (falling back to the physical board button), so a keymap bootloader key is only accidental-trigger risk.
 
 **SYM** (hold `SPC/S`) — full symbol layer: brackets, quotes, math operators, `!@#$%^&*()`, backtick/tilde, with `BSPC`/`SPC`/`ENT` on thumbs.
 
@@ -96,11 +96,10 @@ thumbs:  ·    ·    ·    ·          |   ·  ⌘⇧S  ⌘⇧Spc  ⌘⇧C
 
 | Constant | Value |
 |---|---|
-| `TAPPING_TERM` | 200ms |
 | `COMBO_TERM` | 20ms |
 | `ADAPTIVE_TERM` | 200ms |
 | `QUICK_TAP_TERM` | 0 (disabled — `REP` covers repeats) |
 
 ## File map
 
-See `AGENTS.md` in this keyboard's root for the full file map, build/flash workflow (`reflash.sh`), and Neovim/Hyprland cross-references. This file (`LAYOUT.md`) is the layout reference; `keymap.yaml` is the machine-readable source for the [keymap-drawer](https://keymap-drawer.streamlit.app) visualization.
+QMK is the keyboard source of truth. `mac/home/dot_config/kanata/kanata.kbd` is a laptop compatibility port with intentional behavioral differences documented in that file. See `AGENTS.md` in this keyboard's root for the full file map, build/flash workflow (`reflash.sh`), and Neovim/Aerospace cross-references. This file (`LAYOUT.md`) is the layout reference; `keymap.yaml` is the machine-readable source for the [keymap-drawer](https://keymap-drawer.streamlit.app) visualization.
