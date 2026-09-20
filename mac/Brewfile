@@ -1,59 +1,146 @@
-tap "armmbed/formulae"
+tap "armmbed/formulae", "https://github.com/ArmMbed/homebrew-formulae"
 tap "nikitabobko/tap"
+tap "sorokin-vladimir/tap", trusted: true
 tap "y3owk1n/tap"
-brew "arm-none-eabi-gcc", link: false
+# GNU multiple precision arithmetic library
+brew "gmp"
+# C library for multiple-precision floating-point computations
+brew "mpfr"
+# GNU compiler collection for arm-none-eabi
+brew "arm-none-eabi-gcc"
+# Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
+# Incredibly fast JavaScript runtime, bundler, test runner, and package manager
 brew "bun"
+# Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 brew "clang-format"
+# Cross-platform make
+brew "cmake"
+# Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
+# Perl lib for reading and writing EXIF metadata
 brew "exiftool"
+# XML 1.0 parser
 brew "expat"
+# Modern, maintained replacement for ls
 brew "eza"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
 brew "gh"
+# Distributed revision control system
 brew "git"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
-brew "duckdb"
-brew "harper"
-brew "hidapi"
-brew "imagemagick"
-brew "kanata"
-brew "lazygit"
+# Quickly rewrite git repository history
+brew "git-filter-repo"
+# Git extension for versioning large files
+brew "git-lfs"
+# Library for USB device access
 brew "libusb"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Fast linters runner for Go
+brew "golangci-lint"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
+# Grammar Checker for Developers
+brew "harper"
+# Library for communicating with USB and Bluetooth HID devices
+brew "hidapi"
+# ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
+brew "libheif"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
+# Handy way to save and run project-specific commands
+brew "just"
+# Cross-platform software keyboard remapper for Linux, macOS and Windows
+brew "kanata"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Utility for directing compilation
 brew "make"
+# Media player based on MPlayer and mplayer2
+brew "mpv"
+# NCurses Disk Usage
+brew "ncdu"
+# Incremental parsing library
+brew "tree-sitter"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
-brew "ouch"
+# Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Protocol buffers (Google's data interchange format)
+brew "protobuf"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
+# SVG rendering tool and library
 brew "resvg"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# CLI proxy to minimize LLM token consumption
+brew "rtk"
+# Rust toolchain installer
+brew "rustup"
+# 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
+# Cross-shell prompt for astronauts
 brew "starship"
+# User interface to the TELNET protocol
+brew "telnet"
+# Parser generator tool
 brew "tree-sitter-cli"
-brew "xh"
+# Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
+# General-purpose lossless data-compression library
+brew "zlib"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
+# TUI Telegram client
+brew "sorokin-vladimir/tap/tele"
+# Time tracker
 cask "activitywatch"
-cask "aerospace"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "nikitabobko/tap/aerospace", trusted: true
+# Screen recording software
+cask "cap"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# Developer platform
 cask "dotnet-sdk"
-cask "figma"
+# Web browser
 cask "firefox"
-cask "font-jetbrains-mono-nerd-font"
 cask "font-fantasque-sans-mono-nerd-font"
+# Web browser
+cask "google-chrome"
+# GPU-based terminal emulator
 cask "kitty"
-cask "microsoft-remote-desktop"
-cask "monitorcontrol"
-cask "neru"
-cask "notion"
-cask "obsidian"
+# Keyboard driven navigation for macOS
+cask "y3owk1n/tap/neru", trusted: true
+# Replacement for Docker Desktop
 cask "orbstack"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Screenshot measurement and annotation tool
 cask "shottr"
-cask "stats"
-cask "time-out"
-cask "teamviewer"
+# Desktop client for Telegram messenger
 cask "telegram-desktop"
+cargo "cargo-watch"
+uv "qmk", with: ["pip"]
+npm "@colbymchenry/codegraph"
