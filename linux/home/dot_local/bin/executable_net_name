@@ -1,0 +1,1 @@
+nmcli -c no -t -f name connection show --active

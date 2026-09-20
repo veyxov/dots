@@ -1,0 +1,7 @@
+# Pick a random wallpaper from ~/.local/walls and set it with swaybg
+Files=($(find ~/.local/walls -type f))
+wall=$(shuf -n1 -e "${Files[@]}")
+
+echo "$wall" > /tmp/current_wall
+
+swaybg -i "$wall"
