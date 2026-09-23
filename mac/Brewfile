@@ -1,13 +1,5 @@
-tap "armmbed/formulae", "https://github.com/ArmMbed/homebrew-formulae"
-tap "nikitabobko/tap"
-tap "sorokin-vladimir/tap", trusted: true
-tap "y3owk1n/tap"
-# GNU multiple precision arithmetic library
-brew "gmp"
-# C library for multiple-precision floating-point computations
-brew "mpfr"
-# GNU compiler collection for arm-none-eabi
-brew "arm-none-eabi-gcc"
+# Plugin manager for zsh, inspired by antigen and antibody
+brew "antidote"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
 # Incredibly fast JavaScript runtime, bundler, test runner, and package manager
@@ -22,8 +14,6 @@ brew "cmake"
 brew "dos2unix"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
-# XML 1.0 parser
-brew "expat"
 # Modern, maintained replacement for ls
 brew "eza"
 # Like neofetch, but much faster because written mostly in C
@@ -42,18 +32,18 @@ brew "git-delta"
 brew "git-filter-repo"
 # Git extension for versioning large files
 brew "git-lfs"
+# GNU multiple precision arithmetic library
+brew "gmp"
 # Library for USB device access
 brew "libusb"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Fast linters runner for Go
 brew "golangci-lint"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
-# Grammar Checker for Developers
-brew "harper"
-# Library for communicating with USB and Bluetooth HID devices
-brew "hidapi"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
 # Tools and libraries to manipulate images in select formats
@@ -66,8 +56,6 @@ brew "kanata"
 brew "lazygit"
 # Utility for directing compilation
 brew "make"
-# Media player based on MPlayer and mplayer2
-brew "mpv"
 # NCurses Disk Usage
 brew "ncdu"
 # Incremental parsing library
@@ -78,12 +66,6 @@ brew "neovim"
 brew "node"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
-# PDF rendering library (based on the xpdf-3.0 code base)
-brew "poppler"
-# Protocol buffers (Google's data interchange format)
-brew "protobuf"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
 # SVG rendering tool and library
@@ -94,26 +76,16 @@ brew "ripgrep"
 brew "rtk"
 # Rust toolchain installer
 brew "rustup"
-# 7-Zip is a file archiver with a high compression ratio
-brew "sevenzip"
 # Cross-shell prompt for astronauts
 brew "starship"
-# User interface to the TELNET protocol
-brew "telnet"
 # Parser generator tool
 brew "tree-sitter-cli"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
 brew "zellij"
-# General-purpose lossless data-compression library
-brew "zlib"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-# TUI Telegram client
-brew "sorokin-vladimir/tap/tele"
-# Time tracker
-cask "activitywatch"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace", trusted: true
 # Screen recording software
@@ -126,21 +98,23 @@ cask "codex"
 cask "dotnet-sdk"
 # Web browser
 cask "firefox"
-cask "font-fantasque-sans-mono-nerd-font"
 # Web browser
 cask "google-chrome"
 # GPU-based terminal emulator
 cask "kitty"
-# Keyboard driven navigation for macOS
+# Keyboard driven navigation
 cask "y3owk1n/tap/neru", trusted: true
+# Android file transfer
+cask "openmtp"
 # Replacement for Docker Desktop
 cask "orbstack"
 # Control your tools with a few keystrokes
 cask "raycast"
-# Screenshot measurement and annotation tool
-cask "shottr"
-# Desktop client for Telegram messenger
-cask "telegram-desktop"
+# Messaging app with a focus on speed and security
+cask "telegram"
+# Unpacks archive files
+cask "the-unarchiver"
 cargo "cargo-watch"
+uv "pylatexenc"
 uv "qmk", with: ["pip"]
 npm "@colbymchenry/codegraph"
