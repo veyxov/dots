@@ -16,3 +16,7 @@ bind f fillcmdline open lucky
 autocmd TriStart .* source
 
 set searchurls.lucky https://duckduckgo.com/?q=\%s
+
+" google search select which one to open by number: <space><number>
+command google_result js -d@ const a = Array.from(document.querySelectorAll('#search h3')).map(h => h.closest('a[href]')).filter(Boolean)[Number(JS_ARGS[1]) - 1]; if (a) location.assign(a.href) @
+bindurl ^https?://(www\.)?google\.[^/]+/search --mode=normal <Space> gobble 1 google_result
