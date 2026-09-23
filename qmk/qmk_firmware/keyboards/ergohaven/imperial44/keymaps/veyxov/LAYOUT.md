@@ -11,13 +11,13 @@ Base alpha layout is [Hands Down Gold](https://sites.google.com/alanreiser.com/h
 ├─────┼─────┼─────┼─────┼─────┤         ├─────┼─────┼─────┼─────┼─────┤
 │ DEL │  R  │  S  │  N  │  D  │  W        ,    │  A  │  E  │  I  │  H  │  :  │
 ├─────┼─────┼─────┼─────┼─────┤         ├─────┼─────┼─────┼─────┼─────┤
-│ GUI │  X  │  G  │  L  │  C  │  B        -    │  U  │  O  │  Y  │  K  │  ·  │
+│ HYP │  X  │  G  │  L  │  C  │  B        -    │  U  │  O  │  Y  │  K  │ GUI │
 └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┴─────┴─────┴─────┘
                    │ REP │ T/N │  Sh │ TAB │ │⌘Lock│←/Ct │SPC/S│→/Alt│
                    └─────┴─────┴─────┘ └─────┴─────┴─────┴─────┘
 ```
 - Shifted punctuation: `.`→`~`, `/`→`&`, `?`→`!`, `,`→`|`, `_`→`` ` ``, `-`→`+`, `:`↔`;` (custom shift keys, `keymap.c`).
-- `OSL/N` = one-shot layer → NUM. `GUI` = plain Cmd (held modifier). `Sh` = `OSM(MOD_LSFT)` (tap one-shot shift, hold for normal held shift). `T/N` = LTNAV (tap T, hold → NAV). `←/Ct`, `→/Alt` = mod-tap arrows. `SPC/S` = tap space, hold → SYM. `⌘Lock` = `OS_LOCK` (macOS lock screen, `Cmd+Ctrl+Q`). `Scrn` = `Cmd+Shift+Ctrl+4` (macOS region screenshot to clipboard).
+- `OSL/N` = one-shot layer → NUM. `HYP` = hold-only Hyper (`Ctrl+Alt+Shift+Cmd`); `GUI` = plain Cmd on the right corner. `Sh` = `OSM(MOD_LSFT)` (tap one-shot shift, hold for normal held Shift). `T/N` = LTNAV (tap T, hold → NAV). `←/Ct`, `→/Alt` = mod-tap arrows. `SPC/S` = tap space, hold → SYM. `⌘Lock` = `OS_LOCK` (macOS lock screen, `Cmd+Ctrl+Q`). `Scrn` = `Cmd+Shift+Ctrl+4` (macOS region screenshot to clipboard).
 
 ### Differences from stock Hands Down Gold
 
@@ -36,7 +36,7 @@ right: . / ? ' _  /  , A E I H  /  - U O Y K
 - **B ↔ W swapped** between home row and bottom row (stock home has B, bottom has W; here it's the reverse).
 - Right-hand top row drops the leading `:` and shifts everything one slot left (`. / ? ' _` instead of `: . / ' ?`); `:` moved to the home-row pinky slot (shift-`;`), and `_` gained a slot on top row. Bottom-row `_` became `-` (shifted to `+`).
 - Right hand `, A E I H` (home row) is unchanged from stock.
-- **Home-row mods removed.** Stock Hands Down Gold puts Ctrl/Gui/Alt/Shift on `R S N D` (left) and `A E I H` (right, mirrored) as mod-taps. This keymap keeps those eight keys as plain letters and moves all modifiers to the thumb cluster instead: `OSM(MOD_LSFT)` (shift), `LTNAV` (nav), mod-tap arrows (`Ctrl`, `Alt`), and plain `GUI` on the pinky-adjacent key. Trade-off: fewer simultaneous chorded mods, but no risk of a home-row letter misfiring as a modifier on a fast roll.
+- **Home-row mods removed.** Stock Hands Down Gold puts Ctrl/Gui/Alt/Shift on `R S N D` (left) and `A E I H` (right, mirrored) as mod-taps. This keymap keeps those eight keys as plain letters and moves modifiers to the thumb cluster and the two outer bottom corners: `OSM(MOD_LSFT)` (shift), `LTNAV` (nav), mod-tap arrows (`Ctrl`, `Alt`), hold-only Hyper on the left, and plain `GUI` on the right. Trade-off: fewer simultaneous chorded mods, but no risk of a home-row letter misfiring as a modifier on a fast roll.
 - T-on-thumb (the "Neu" variant) is preserved (`LTNAV = LT(_NAV, KC_T)`).
 - Thumb cluster is 4+4 here vs. Ergodox's 6+6 — Emoji/Intl-layer/Fkeys thumb keys from stock don't exist; media/system keys live on the NUM layer.
 
@@ -59,7 +59,8 @@ thumbs:  ·    ·    ·    ·          |   ·  ⌘⇧S  ⌘⇧Spc  ⌘⇧C
 
 - **`REP`** — repeat key. Plain: repeats last key (`repeat_key_invoke`). With Ctrl held: alt-repeat (`alt_repeat_key_invoke`), Ctrl stripped and reapplied around the call. Rationale for no dedicated `//`/`??` keys — just repeat.
 - **`LTNAV`** — tap `T`, hold → NAV layer. If a repeat sequence is active (`get_repeat_key_count() > 0`), a tap always sends `T` instead of participating in hold-detection, so `T` after `REP` doesn't misfire as nav.
-- **`LANG_SW`** — combo `S`+`D`, plain OS input-source switch (`Ctrl+Space`). No layer/state logic. Bottom-right corner key is unused (`KC_NO`).
+- **`LANG_SW`** — combo `S`+`D`, plain OS input-source switch (`Ctrl+Space`). No layer/state logic. Bottom-left corner key is hold-only Hyper (`Ctrl+Alt+Shift+Cmd`); its tap action is disabled.
+- **OLED and RGB status** — both OLEDs are enabled: the master shows layer, Caps Word, Caps Lock, and held Hyper; the offhand animates an I44/Hands Down orbit at 4 FPS. The two RGB LEDs show dim warm white on Base, green on Nav, amber on Num, and blue on Sym.
 - **`NUMWORD`** — combo `SPC/S`+`Sh` (mirror thumbs), smart NUM layer: stays active over `0-9 . - + BSPC REP`, self-deactivates on any other key (T-34 style). `OSL/N` still works for one-shot/held access.
 - **Adaptive substitutions (`adaptive.h`, `ADAPTIVE_TERM` 200ms)** — two keys typed in quick succession on BASE produce a third key instead, active only on the BASE layer and not when any Ctrl/Alt/Gui mod is held:
   - `F`+`M`→`L`, `F`+`P`→`{`, `V`+`M`→`L`, `M`+`V`→`B`, `P`+`V`→`LV`, `P`+`M`→`PL`, `L`+`C`→`P`, `L`+`L`→`M`, `G`+`X`→`S`, `G`+`G`→`F`, `U`+`H`→`A`, `A`+`H`→`U`, `O`+`H`→`E`, `D`+`D`→`C`, `E`+`H`→`O`.
