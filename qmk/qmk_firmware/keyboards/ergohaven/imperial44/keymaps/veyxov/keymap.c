@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 
+#include "display.h"
 #include "keymap.h"
 #include "g/keymap_combo.h"
 
@@ -58,3 +59,26 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_MINS, S(KC_EQL)}, // - -> +
     {S(KC_SCLN), KC_SCLN}, // : -> ;
 };
+
+void keyboard_post_init_user(void) {
+    display_init();
+}
+
+void housekeeping_task_user(void) {
+    display_sync();
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    display_layer_state_set(state);
+    return state;
+}
+
+#ifdef OLED_ENABLE
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    return display_oled_init(rotation);
+}
+
+bool oled_task_user(void) {
+    return display_oled_task();
+}
+#endif

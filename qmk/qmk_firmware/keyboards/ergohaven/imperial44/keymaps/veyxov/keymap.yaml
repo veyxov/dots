@@ -9,7 +9,7 @@ layers:
   BASE:
     - [{t: NUM, h: OSL}, J, F, M, P, V,        Scrn, {t: ".", s: "~"}, {t: /, s: "&"}, {t: "?", s: "!"}, "'", {t: _, s: "`"}]
     - [DEL, R, S, N, D, W,                      {t: ",", s: "|"}, A, E, I, H, {t: ":", s: ";"}]
-    - [GUI, X, G, L, C, B,                      {t: "-", s: "+"}, U, O, Y, K, {type: ghost}]
+    - [{t: Hyper, type: held}, X, G, L, C, B,    {t: "-", s: "+"}, U, O, Y, K, GUI]
     - [REP, {t: T, h: NAV}, "⇧", TAB,     "⌘Lock", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
 
   NAV:
