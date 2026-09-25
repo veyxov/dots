@@ -76,7 +76,7 @@
             <key code="38" output="қ" /> <!-- J -->
             <key code="39" output="ы" /> <!-- ' -->
             <key code="40" output="к" /> <!-- K -->
-            <key code="41" output="Ъ" /> <!-- ; -->
+            <key code="41" output=";" /> <!-- ;: Custom Shift and SYM layer; Ъ remains on Option+Shift+H -->
             <key code="42" output="\" />
             <key code="43" output="," />
             <key code="44" output="я" /> <!-- / -->
@@ -121,7 +121,7 @@
             <key code="21" output="$" />
             <key code="22" output="^" />
             <key code="23" output="%" />
-            <key code="24" output="З" />
+            <key code="24" output="+" /> <!-- Shift+=: Custom Shift on the keyboard's - key -->
             <key code="25" output="(" />
             <key code="26" output="&amp;" />
             <key code="27" output="_" />
