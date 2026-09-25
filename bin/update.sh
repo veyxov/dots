@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# update.sh — update Homebrew packages, casks (incl. self-updating ones), and nvim plugins.
 set -euo pipefail
 
 export HOMEBREW_NO_ENV_HINTS=1
@@ -14,6 +13,3 @@ brew upgrade --greedy --force
 brew cleanup -s
 brew autoremove
 nvim --headless -c 'lua vim.pack.update(nil, {force=true})' -c 'q'
-rustup update
-pipx upgrade-all
-zsh -ic 'antidote update'
