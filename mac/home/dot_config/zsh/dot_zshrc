@@ -75,13 +75,14 @@ source "${zsh_plugins}.zsh"
 # init output is static per binary version — cache it instead of forking 3 tools every shell
 _cached_init() {
     local cache="${XDG_CACHE_HOME:-$HOME/.cache}/$1-init.zsh"
-    if [[ $commands[$1] -nt $cache || ! -s $cache ]]; then
+    local command_path="${commands[$1]:-}"
+    [[ -z $command_path ]] && return 0
+    if [[ $command_path -nt $cache || ! -s $cache ]]; then
         mkdir -p "${cache:h}"
         "$1" init zsh >| "$cache"
     fi
     source "$cache"
 }
-_cached_init starship
 _cached_init zoxide
 _cached_init atuin
 
