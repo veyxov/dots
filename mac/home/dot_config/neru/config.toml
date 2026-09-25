@@ -295,15 +295,15 @@ invert_scroll = false
 "u" = "action left_click --state down"
 "y" = "action left_click --state up"
 # Left-hand home row = mouse move (right hand carries the NAV layer)
-"s" = "action move_mouse_relative --dx=0 --dy=-5"
-"n" = "action move_mouse_relative --dx=0 --dy=5"
-"r" = "action move_mouse_relative --dx=-5 --dy=0"
-"d" = "action move_mouse_relative --dx=5 --dy=0"
+"s" = "action move_mouse_relative --dx=0 --dy=-2"
+"n" = "action move_mouse_relative --dx=0 --dy=2"
+"r" = "action move_mouse_relative --dx=-2 --dy=0"
+"d" = "action move_mouse_relative --dx=2 --dy=0"
 # Diagonals: row above/below the R/D columns (no simultaneous-key composition in neru)
-"f" = "action move_mouse_relative --dx=-5 --dy=-5"
-"v" = "action move_mouse_relative --dx=5 --dy=-5"
-"x" = "action move_mouse_relative --dx=-5 --dy=5"
-"c" = "action move_mouse_relative --dx=5 --dy=5"
+"f" = "action move_mouse_relative --dx=-2 --dy=-2"
+"v" = "action move_mouse_relative --dx=2 --dy=-2"
+"x" = "action move_mouse_relative --dx=-2 --dy=2"
+"c" = "action move_mouse_relative --dx=2 --dy=2"
 
 [mode_indicator]
 
