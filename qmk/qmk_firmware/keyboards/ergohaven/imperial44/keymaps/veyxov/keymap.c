@@ -16,6 +16,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 REP, LTNAV, OSM(MOD_LSFT),  KC_TAB,                    OS_LOCK,   MT(MOD_LCTL, KC_LEFT), SYM_SPC, MT(MOD_LALT, KC_RGHT)
     ),
 
+    // macOS maps these physical keycodes through Russian-Tajik Phonetic.
+    // Keep this layer explicit so Cyrillic-specific keys can diverge later.
+    [_CYR] = LAYOUT(
+        OSL(_NUM),  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                     G(S(C(KC_4))), KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
+        KC_DEL,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I, KC_H,  S(KC_SCLN),
+        HYPR_T(KC_NO), KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                 KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   KC_LGUI,
+                REP, LTNAV, OSM(MOD_LSFT),  KC_TAB,                    OS_LOCK,   MT(MOD_LCTL, KC_LEFT), SYM_SPC, MT(MOD_LALT, KC_RGHT)
+    ),
+
     [_NAV] = LAYOUT(
     // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
         _______, _______, A(KC_F), _______, A(KC_P), A(KC_V),                 _______,A(KC_1),A(KC_2),A(KC_3),A(KC_4), _______,
@@ -60,6 +69,9 @@ const custom_shift_key_t custom_shift_keys[] = {
     {S(KC_SCLN), KC_SCLN}, // : -> ;
 };
 
+// CUSTOM_SHIFT_KEYS_LAYER_MASK uses layer numbers in config.h.
+_Static_assert(_BASE == 0 && _CYR == 1 && _NAV == 2 && _NUM == 3 && _SYM == 4, "Update custom Shift layer mask");
+
 void keyboard_post_init_user(void) {
     display_init();
 }
@@ -69,7 +81,12 @@ void housekeeping_task_user(void) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    display_layer_state_set(state);
+    display_layer_state_set(state | default_layer_state);
+    return state;
+}
+
+layer_state_t default_layer_state_set_user(layer_state_t state) {
+    display_layer_state_set(layer_state | state);
     return state;
 }
 

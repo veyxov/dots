@@ -12,6 +12,12 @@ layers:
     - [{t: Hyper, type: held}, X, G, L, C, B,    {t: "-", s: "+"}, U, O, Y, K, GUI]
     - [REP, {t: T, h: NAV}, "⇧", TAB,     "⌘Lock", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
 
+  CYR:
+    - [{t: NUM, h: OSL}, қ, ф, м, п, в,        Scrn, {t: ".", s: "~"}, я, {t: "?", s: "!"}, ы, {t: _, s: "`"}]
+    - [DEL, р, с, н, д, ш,                      {t: ",", s: "|"}, а, е, и, ҳ, {t: ":", s: ";"}]
+    - [{t: Hyper, type: held}, х, г, л, ч, б,    {t: "-", s: "+"}, у, о, й, к, GUI]
+    - [REP, {t: т, h: NAV}, "⇧", TAB,     "⌘Lock", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
+
   NAV:
     - [{type: trans}, {type: trans}, "⌥F", {type: trans}, "⌥P", "⌥V",        {type: trans}, "⌥1", "⌥2", "⌥3", "⌥4", {type: trans}]
     - [{type: trans}, "⌘⇧S", ALT, SHFT, CTRL, GUI,                             HOME, "←", "↓", "↑", "→", END]
@@ -31,19 +37,21 @@ layers:
     - [BSPC, SPC, ENT, {type: trans},    {type: trans}, {type: trans}, {type: trans}, {type: trans}]
 
 combos:
-  - {p: [3, 4],       k: Z,      l: [BASE]}
-  - {p: [1, 2],       k: Q,      l: [BASE]}
-  - {p: [2, 3],       k: qu,     l: [BASE]}
-  - {p: [14, 15],     k: Esc,    l: [BASE]}
-  - {p: [15, 16],     k: Tab,    l: [BASE]}
-  - {p: [19, 20],     k: "⌃⌫",   l: [BASE]}
-  - {p: [20, 21],     k: Enter,  l: [BASE]}
-  - {p: [26, 27],     k: Copy,   l: [BASE]}
-  - {p: [27, 28],     k: Paste,  l: [BASE]}
-  - {p: [26, 27, 28], k: SelAll, l: [BASE]}
-  - {p: [19, 20, 21], k: ";",    l: [BASE]}
-  - {p: [37, 42],     k: CapsWd, l: [BASE]}
-  - {p: [8, 9],       k: PgUp,   l: [BASE]}
-  - {p: [9, 10],      k: PgDn,   l: [BASE]}
-  - {p: [8, 20],      k: "=>",   l: [BASE]}
+  - {p: [3, 4],       k: Z,      l: [BASE, CYR]}
+  - {p: [1, 2],       k: Q,      l: [BASE, CYR]}
+  - {p: [2, 3],       k: qu,     l: [BASE, CYR]}
+  - {p: [14, 15],     k: Esc,    l: [BASE, CYR]}
+  - {p: [15, 16],     k: Tab,    l: [BASE, CYR]}
+  - {p: [14, 16],     k: Lang,   l: [BASE, CYR]}
+  - {p: [19, 20],     k: "⌃⌫",   l: [BASE, CYR]}
+  - {p: [20, 21],     k: Enter,  l: [BASE, CYR]}
+  - {p: [26, 27],     k: Copy,   l: [BASE, CYR]}
+  - {p: [27, 28],     k: Paste,  l: [BASE, CYR]}
+  - {p: [26, 27, 28], k: SelAll, l: [BASE, CYR]}
+  - {p: [19, 20, 21], k: ";",    l: [BASE, CYR]}
+  - {p: [37, 42],     k: CapsWd, l: [BASE, CYR]}
+  - {p: [38, 42],     k: NumWd,  l: [BASE, CYR]}
+  - {p: [8, 9],       k: PgUp,   l: [BASE, CYR]}
+  - {p: [9, 10],      k: PgDn,   l: [BASE, CYR]}
+  - {p: [8, 20],      k: "=>",   l: [BASE, CYR]}
   - {p: [20, 21],     k: Enter,  l: [SYM]}

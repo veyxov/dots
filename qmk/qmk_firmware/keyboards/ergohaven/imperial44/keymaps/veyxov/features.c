@@ -6,11 +6,11 @@
 #include "adaptive.h"
 
 #define BOOTLOADER_MAGIC "BOOTLDR1"
+#define LANGUAGE_MAGIC "SETLANG"
 #define RAW_HID_REPORT_SIZE 32
 
 // One-shot taps: pressing `custom` sends `action` once.
 static const struct { uint16_t custom, action; } tap_macros[] = {
-    {LANG_SW, C(KC_SPC)},   // macOS input-source switch
     {CG_WBSPC, A(KC_BSPC)}, // word backspace
     {CG_COPY, G(KC_C)},
     {CG_PASTE, G(KC_V)},
@@ -42,6 +42,13 @@ static bool process_record_features(uint16_t keycode, keyrecord_t *record) {
     }
 
     switch (keycode) {
+        case LANG_SW:
+            if (record->event.pressed) {
+                reset_adaptive_user();
+                set_single_default_layer(get_highest_layer(default_layer_state) == _BASE ? _CYR : _BASE);
+                tap_code16(C(KC_SPC));
+            }
+            return false;
         case NUMWORD:
             if (record->event.pressed) layer_invert(_NUM);
             return false;
@@ -74,6 +81,8 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (keycode == LANG_SW) return process_record_features(keycode, record);
+
     switch (keycode) {
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
         case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
@@ -90,7 +99,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     // Adaptive pairs are base-layer-only; on other layers transparent keys
     // resolve to the same base keycodes and would misfire (e.g. F+M on NAV).
-    if (get_highest_layer(layer_state) == _BASE && !process_adaptive_user(keycode, record)) {
+    if (get_highest_layer(layer_state | default_layer_state) == _BASE && !process_adaptive_user(keycode, record)) {
         return false;
     }
 
@@ -116,5 +125,12 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
         raw_hid_send(response, sizeof(response));
         wait_ms(10);
         reset_keyboard();
+    } else if (memcmp(data, LANGUAGE_MAGIC, sizeof(LANGUAGE_MAGIC) - 1) == 0 &&
+               (data[7] == '0' || data[7] == '1')) {
+        const uint8_t layer = data[7] == '1' ? _CYR : _BASE;
+        if (get_highest_layer(default_layer_state) != layer) {
+            reset_adaptive_user();
+            set_single_default_layer(layer);
+        }
     }
 }

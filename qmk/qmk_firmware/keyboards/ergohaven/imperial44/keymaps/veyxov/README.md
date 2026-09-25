@@ -13,8 +13,8 @@ The status display writes only when its values change. Keycat updates every
 200 ms using the upstream behavior: idle at 0–30 WPM, raised paws at 31–39 WPM,
 and alternating taps at 40+ WPM. The renderer does not own display power.
 
-Both RGB LEDs indicate the active layer: dim white for BASE, green for NAV,
-amber for NUM, and blue for SYM. RGB initialization is independent of OLED
+Both RGB LEDs indicate the active layer: dim white for BASE, cyan for CYR,
+green for NAV, amber for NUM, and blue for SYM. RGB initialization is independent of OLED
 rendering. The hardware data pin is GP28.
 
 ## Artwork source
@@ -30,3 +30,17 @@ Build with `qmk compile -kb ergohaven/imperial44 -km veyxov`.
 Run the board's `reflash.sh` for each half, moving USB between them.
 Both halves must receive the same firmware, especially after split transport
 configuration changes.
+
+## macOS input-source sync
+
+The helper source is installed by chezmoi at
+`~/.local/bin/qmk-input-source-sync.swift`. Compile it with
+`swiftc -O -o ~/.local/bin/qmk-input-source-sync ~/.local/bin/qmk-input-source-sync.swift`.
+The LaunchAgent is `~/Library/LaunchAgents/com.shekhovismoil.qmk-input-source-sync.plist`.
+Give the compiled binary Input Monitoring access in macOS Privacy & Security,
+then load the agent with
+`launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.shekhovismoil.qmk-input-source-sync.plist`.
+The helper reads the active macOS keyboard input source and sends `SETLANG0`
+or `SETLANG1` to keep the firmware base layer aligned. Run
+`~/.local/bin/qmk-input-source-sync --status` to check the input source and
+keyboard connection, or `--once` to send one synchronization report.

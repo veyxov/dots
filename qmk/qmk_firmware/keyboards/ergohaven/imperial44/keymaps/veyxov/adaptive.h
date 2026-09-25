@@ -26,6 +26,18 @@ static const adaptive_pair_t adaptive_pairs[] = {
     {KC_E, KC_H, KC_NO, KC_O},          // EH -> EO
 };
 
+// Finish a buffered English P before changing the host input source.
+void reset_adaptive_user(void) {
+    if (prior_keycode == KC_P) {
+        const uint8_t current_mods = get_mods();
+        set_mods(prior_saved_mods);
+        tap_code(KC_P);
+        set_mods(current_mods);
+    }
+    prior_keycode = KC_NO;
+    prior_keydown = timer_read32();
+}
+
 bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
     bool return_state = true;
 

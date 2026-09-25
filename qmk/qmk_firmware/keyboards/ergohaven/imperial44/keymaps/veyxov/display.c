@@ -24,16 +24,18 @@ static void receive_caps_word(uint8_t in_size, const void *in_data, uint8_t out_
 #include "rgblight.h"
 
 #define HSV_BASE 30, 0, 25
+#define HSV_CYR 195, 255, 90
 #define HSV_NAV 85, 255, 120
 #define HSV_NUM 32, 255, 120
 #define HSV_SYM 170, 255, 120
 
 static const rgblight_segment_t PROGMEM base_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, RGBLIGHT_LED_COUNT, HSV_BASE});
+static const rgblight_segment_t PROGMEM cyr_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, RGBLIGHT_LED_COUNT, HSV_CYR});
 static const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, RGBLIGHT_LED_COUNT, HSV_NAV});
 static const rgblight_segment_t PROGMEM num_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, RGBLIGHT_LED_COUNT, HSV_NUM});
 static const rgblight_segment_t PROGMEM sym_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, RGBLIGHT_LED_COUNT, HSV_SYM});
 static const rgblight_segment_t *const PROGMEM lighting_layers[] =
-    RGBLIGHT_LAYERS_LIST(base_layer, nav_layer, num_layer, sym_layer);
+    RGBLIGHT_LAYERS_LIST(base_layer, cyr_layer, nav_layer, num_layer, sym_layer);
 #endif
 
 void display_init(void) {
@@ -44,7 +46,7 @@ void display_init(void) {
     rgblight_layers = lighting_layers;
     rgblight_enable_noeeprom();
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
-    display_layer_state_set(layer_state);
+    display_layer_state_set(layer_state | default_layer_state);
 #endif
 }
 
@@ -52,9 +54,10 @@ void display_layer_state_set(layer_state_t state) {
 #ifdef RGBLIGHT_ENABLE
     const uint8_t layer = get_highest_layer(state);
     rgblight_set_layer_state(0, layer == _BASE);
-    rgblight_set_layer_state(1, layer == _NAV);
-    rgblight_set_layer_state(2, layer == _NUM);
-    rgblight_set_layer_state(3, layer == _SYM);
+    rgblight_set_layer_state(1, layer == _CYR);
+    rgblight_set_layer_state(2, layer == _NAV);
+    rgblight_set_layer_state(3, layer == _NUM);
+    rgblight_set_layer_state(4, layer == _SYM);
 #else
     (void)state;
 #endif
@@ -92,6 +95,9 @@ typedef struct {
 
 static void render_layer_name(uint8_t layer) {
     switch (layer) {
+    case _CYR:
+        oled_write_P(PSTR("CYR"), false);
+        break;
     case _NAV:
         oled_write_P(PSTR("NAV"), false);
         break;

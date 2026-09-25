@@ -9,7 +9,7 @@
 ## User Setup
 - Primary alpha layout is Hands Down Gold, not QWERTY.
 - User switches between English and Russian.
-- The `S`+`D` combo emits `Ctrl+Space`, the macOS input-source-switch shortcut.
+- The `S`+`D` combo changes the English/Cyrillic default layer and emits `Ctrl+Space`, the macOS input-source-switch shortcut.
 - macOS, Aerospace window manager, zsh. Keyboard config is related to local Neovim and Aerospace configs, so check those when changing navigation, symbols, or language toggles.
 
 ## Relevant External Configs
@@ -30,7 +30,7 @@
 - `config.h` / `rules.mk`: board-level split / RP2040 settings
 
 ## Current Firmware Shape
-- QMK is the keyboard source of truth. Layers present: `BASE`, `NAV`, `NUM`, `SYM`.
+- macOS is the source of truth for the English/Cyrillic base layer when the input-source helper is running. Layers present: `BASE`, `CYR`, `NAV`, `NUM`, `SYM`.
 - Base layer is Hands Down Gold-derived:
   - Left hand alpha block: `J F M P V` / `R S N D W` / `X G L C B`
   - Right hand alpha block: `. / ? ' _` / `, A E I H :` / `- U O Y K`
@@ -38,7 +38,7 @@
   - `OSM(MOD_LSFT)`: tap for one-shot Shift, hold for a normal held Shift (built-in QMK one-shot mod)
   - `REP`: repeat key; with Ctrl held it uses alt-repeat
   - `LTNAV`: tap `T`, hold for nav
-  - `LANG_SW`: `S`+`D` combo sends the macOS input-source shortcut
+  - `LANG_SW`: `S`+`D` combo changes `BASE`/`CYR` and sends the macOS input-source shortcut
 
 ## Timing / Features
 - `COMBO_TERM 20`
@@ -52,6 +52,7 @@
 ```
 - `reflash.sh` symlinks this repo copy into `~/qmk_firmware/keyboards/ergohaven/imperial44`, tries to trigger the bootloader over Raw HID via `bootloader_rawhid.py`, falls back to "press the physical BOOT/RESET button" if Raw HID is unavailable, then runs `qmk flash -kb ergohaven/imperial44 -km veyxov`, which auto-detects the mounted `RPI-RP2` volume under `/Volumes/` and copies the UF2.
 - `RAW_ENABLE = yes` in the active keymap, and `raw_hid_receive()` lives in `features.c`; it recognizes the `BOOTLDR1` command and calls `reset_keyboard()`.
+- macOS `~/.local/bin/qmk-input-source-sync` runs as a LaunchAgent (source: `~/.local/bin/qmk-input-source-sync.swift`) and sends `SETLANG0`/`SETLANG1` over Raw HID to match the active OS input source. Keep that host helper and firmware protocol aligned when changing language switching. The binary needs macOS Input Monitoring permission.
 - Bootstrap requirement: the first flash after introducing Raw HID (or after Raw HID gets removed then re-added) needs a manual bootloader entry, because the currently running firmware doesn't yet expose the Raw HID interface.
 - For this split keyboard, flash both halves after firmware changes — physically switch the USB-C connection to the other half and re-run `./reflash.sh`.
 

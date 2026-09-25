@@ -42,6 +42,10 @@ right: . / ? ' _  /  , A E I H  /  - U O Y K
 
 ## Other layers
 
+**CYR** is the second base layer for the macOS Russian–Tajik Phonetic input source. Its physical letter keycodes currently match BASE, so macOS still performs the Cyrillic mapping. This separate layer leaves room for Cyrillic-specific keys and adaptives later. The `S`+`D` combo switches both the QMK base layer and macOS input source with `Ctrl+Space`; QMK starts in English after power-up. The macOS input-source helper corrects QMK when the OS source changes separately or the shortcut fails.
+
+English adaptive pairs are disabled on CYR. Custom Shift mappings and all combos work on both base layers. NAV, NUM, and SYM work over either base layer. macOS periodically sends its active input-source state over Raw HID, so QMK corrects a missed or external language switch.
+
 **NAV** (hold `T`) — arrow cluster (`Home ← ↓ ↑ → End`) on the right home row, one-hand mods on the left home row, window/monitor management, app switching (`⌥1..4`).
 
 ```
@@ -59,36 +63,36 @@ thumbs:  ·    ·    ·    ·          |   ·  ⌘⇧S  ⌘⇧Spc  ⌘⇧C
 
 - **`REP`** — repeat key. Plain: repeats last key (`repeat_key_invoke`). With Ctrl held: alt-repeat (`alt_repeat_key_invoke`), Ctrl stripped and reapplied around the call. Rationale for no dedicated `//`/`??` keys — just repeat.
 - **`LTNAV`** — tap `T`, hold → NAV layer. If a repeat sequence is active (`get_repeat_key_count() > 0`), a tap always sends `T` instead of participating in hold-detection, so `T` after `REP` doesn't misfire as nav.
-- **`LANG_SW`** — combo `S`+`D`, plain OS input-source switch (`Ctrl+Space`). No layer/state logic. Bottom-left corner key is hold-only Hyper (`Ctrl+Alt+Shift+Cmd`); its tap action is disabled.
-- **OLED and RGB status** — both OLEDs are enabled: the master shows layer, Caps Word, Caps Lock, and held Hyper; the offhand animates an I44/Hands Down orbit at 4 FPS. The two RGB LEDs show dim warm white on Base, green on Nav, amber on Num, and blue on Sym.
+- **`LANG_SW`** — combo `S`+`D`, switches BASE/CYR and sends the macOS input-source shortcut (`Ctrl+Space`). Bottom-left corner key is hold-only Hyper (`Ctrl+Alt+Shift+Cmd`); its tap action is disabled.
+- **OLED and RGB status** — both OLEDs are enabled: the master shows layer, Caps Word, Caps Lock, and held Hyper; the offhand animates an I44/Hands Down orbit at 4 FPS. The two RGB LEDs show dim warm white on Base, cyan on CYR, green on Nav, amber on Num, and blue on Sym.
 - **`NUMWORD`** — combo `SPC/S`+`Sh` (mirror thumbs), smart NUM layer: stays active over `0-9 . - + BSPC REP`, self-deactivates on any other key (T-34 style). `OSL/N` still works for one-shot/held access.
-- **Adaptive substitutions (`adaptive.h`, `ADAPTIVE_TERM` 200ms)** — two keys typed in quick succession on BASE produce a third key instead, active only on the BASE layer and not when any Ctrl/Alt/Gui mod is held:
+- **Adaptive substitutions (`adaptive.h`, `ADAPTIVE_TERM` 200ms)** — two keys typed in quick succession on English BASE produce a third key instead, active only on the English base layer and not when any Ctrl/Alt/Gui mod is held:
   - `F`+`M`→`L`, `F`+`P`→`{`, `V`+`M`→`L`, `M`+`V`→`B`, `P`+`V`→`LV`, `P`+`M`→`PL`, `L`+`C`→`P`, `L`+`L`→`M`, `G`+`X`→`S`, `G`+`G`→`F`, `U`+`H`→`A`, `A`+`H`→`U`, `O`+`H`→`E`, `D`+`D`→`C`, `E`+`H`→`O`.
   - `P` alone is buffered (gobbled) until `ADAPTIVE_TERM` elapses or a matching second key arrives, then emitted plain if nothing matched.
 - **macOS taps (`features.c`)** — word-backspace is `Alt+Bspc`; copy/paste/select-all use `Cmd`.
-- **Raw HID bootloader (`raw_hid_receive`)** — listens for `"BOOTLDR1"` magic string, replies `"BOOTING"`, calls `reset_keyboard()`. Used by `reflash.sh` to enter the bootloader without a physical key combo.
+- **Raw HID (`raw_hid_receive`)** — `"BOOTLDR1"` enters the bootloader; `"SETLANG0"` and `"SETLANG1"` set the default layer to BASE and CYR. The macOS input-source helper sends the latter two commands.
 
 ## Combos (`combos.def`)
 
 | Keys | Result | Layer |
 |---|---|---|
-| `M`+`P` | `Z` | BASE |
-| `J`+`F` | `Q` | BASE |
-| `F`+`M` | `qu` (string) | BASE |
-| `E`+`I` | Enter | BASE |
-| `S`+`N` | Esc | BASE |
-| `N`+`D` | Tab | BASE |
-| `A`+`E` | word-backspace | BASE |
-| `S`+`D` | `LANG_SW` (OS input-source switch) | BASE |
-| `G`+`L` | copy | BASE |
-| `L`+`C` | paste | BASE |
-| `G`+`L`+`C` | select-all | BASE |
-| `A`+`E`+`I` | `;` | BASE |
-| `SPC/S`+`T/N` | Caps-word toggle | BASE |
-| `SPC/S`+`Sh` | NUMWORD toggle | BASE |
-| `/`+`?` | Page Up | BASE |
-| `?`+`'` | Page Down | BASE |
-| `/`+`E` | `=>` (string) | BASE |
+| `M`+`P` | `Z` | BASE, CYR |
+| `J`+`F` | `Q` | BASE, CYR |
+| `F`+`M` | `qu` (string) | BASE, CYR |
+| `E`+`I` | Enter | BASE, CYR |
+| `S`+`N` | Esc | BASE, CYR |
+| `N`+`D` | Tab | BASE, CYR |
+| `A`+`E` | word-backspace | BASE, CYR |
+| `S`+`D` | `LANG_SW` (QMK base layer + OS input-source switch) | BASE, CYR |
+| `G`+`L` | copy | BASE, CYR |
+| `L`+`C` | paste | BASE, CYR |
+| `G`+`L`+`C` | select-all | BASE, CYR |
+| `A`+`E`+`I` | `;` | BASE, CYR |
+| `SPC/S`+`T/N` | Caps-word toggle | BASE, CYR |
+| `SPC/S`+`Sh` | NUMWORD toggle | BASE, CYR |
+| `/`+`?` | Page Up | BASE, CYR |
+| `?`+`'` | Page Down | BASE, CYR |
+| `/`+`E` | `=>` (string) | BASE, CYR |
 | `)`+`(` (shifted 0/9) | Enter | SYM |
 
 `COMBO_TERM` 20ms, variable-length combos enabled.
