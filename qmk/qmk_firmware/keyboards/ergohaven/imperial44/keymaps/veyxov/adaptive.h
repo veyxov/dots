@@ -90,8 +90,10 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
         prior_saved_mods = saved_mods;
         // After a rewrite the effective last key is what was emitted, not
         // what was pressed (same semantics as the kanata port, which reads
-        // output history).
-        prior_keycode    = match ? (match->second & QK_BASIC_MAX) : keycode;
+        // output history). An emitted P is already on the host, so don't
+        // mistake it for a physical P waiting in the buffer.
+        const uint16_t effective_keycode = match ? (match->second & QK_BASIC_MAX) : keycode;
+        prior_keycode = match && effective_keycode == KC_P ? KC_NO : effective_keycode;
         prior_keydown    = timer_read32();
     }
     return return_state;
