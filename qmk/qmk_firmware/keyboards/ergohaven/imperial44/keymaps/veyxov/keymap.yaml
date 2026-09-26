@@ -40,7 +40,7 @@ combos:
   - {p: [3, 4],       k: Z,      l: [BASE, CYR]}
   - {p: [1, 2],       k: Q,      l: [BASE, CYR]}
   - {p: [2, 3],       k: qu,     l: [BASE, CYR]}
-  - {p: [14, 15],     k: Esc,    l: [BASE, CYR]}
+  - {p: [14, 15],     k: Esc,    l: [BASE, CYR, NUM]}
   - {p: [15, 16],     k: Tab,    l: [BASE, CYR]}
   - {p: [14, 16],     k: Lang,   l: [BASE, CYR]}
   - {p: [19, 20],     k: "⌃⌫",   l: [BASE, CYR]}

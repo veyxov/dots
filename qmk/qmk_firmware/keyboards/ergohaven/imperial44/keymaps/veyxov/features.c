@@ -25,9 +25,8 @@ static bool process_record_features(uint16_t keycode, keyrecord_t *record) {
     }
 
     // NUMWORD: smart num layer (T-34 style), self-exits on any key not in
-    // this allowlist. A locked one-shot NUM layer stays active until Escape.
-    const bool num_layer_locked = get_oneshot_layer() == _NUM && (get_oneshot_layer_state() & ONESHOT_TOGGLED);
-    if (!num_layer_locked && keycode != NUMWORD && layer_state_is(_NUM) && record->event.pressed) {
+    // this allowlist. Let QMK consume single and locked one-shot layers itself.
+    if (get_oneshot_layer() != _NUM && keycode != NUMWORD && layer_state_is(_NUM) && record->event.pressed) {
         switch (keycode) {
             case KC_1 ... KC_0:
             case KC_DOT:

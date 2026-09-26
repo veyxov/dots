@@ -4,6 +4,7 @@ SUBS(fm_qu, "qu", KC_F, KC_M)
 
 COMB(ei_enter, KC_ENT, KC_E, KC_I)
 COMB(sn_esc, KC_ESC, KC_S, KC_N)
+COMB(num_sn_esc, KC_ESC, KC_4, KC_0)
 COMB(nd_tab, KC_TAB, KC_N, KC_D)
 COMB(ae_bsp, CG_WBSPC, KC_A, KC_E)
 
@@ -22,10 +23,4 @@ COMB(pg_up, KC_PGUP, KC_SLSH, S(KC_SLSH))
 COMB(pg_dw, KC_PGDN, S(KC_SLSH), KC_QUOT)
 
 SUBS(lambda, "=>", KC_SLSH, KC_E)
-
-
 COMB(fnc, KC_ENT, S(KC_0),  S(KC_9))
-
-// Resolve combo positions from BASE while NUM is active, so S+N still sends
-// Escape and can close a locked one-shot NUM layer.
-COMBO_REF_LAYER(_NUM, _BASE)

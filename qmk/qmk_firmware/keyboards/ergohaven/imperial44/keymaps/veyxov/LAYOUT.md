@@ -55,7 +55,7 @@ left:  ·    ·   ⌥F   ·   ⌥P  ⌥V    |  right:  ·   ⌥1  ⌥2  ⌥3  �
 thumbs:  ·    ·    ·    ·          |   ·  ⌘⇧S  ⌘⇧Spc  ⌘⇧C
 ```
 
-**NUM** (one-shot from `OSL/N`, double-tap locked from `OSL/N`, or NUMWORD combo) — numpad-style digits (`6 4 0 2` / `8` and `3 1 5 7` / `9`), `+` on right home pinky, `.`/`SPC`/`BSPC`/`-` on thumbs. The physical `S`+`N` Escape combo closes a locked NUM layer. It also provides volume/brightness/mute on the right top row and media transport on the right bottom row. `QK_BOOT` is deliberately left off — `reflash.sh` enters bootloader over raw HID (falling back to the physical board button), so a keymap bootloader key is only accidental-trigger risk.
+**NUM** (one-shot from `OSL/N`, double-tap locked from `OSL/N`, or NUMWORD combo) — numpad-style digits (`6 4 0 2` / `8` and `3 1 5 7` / `9`), `+` on right home pinky, `.`/`SPC`/`BSPC`/`-` on thumbs. The physical `S`+`N` Escape combo closes a locked NUM layer. The right top row provides macOS consumer controls (`Mute`, `Vol-`, `Bri-`, `Bri+`, `Vol+`), and the right bottom row provides media transport. `QK_BOOT` is deliberately left off — `reflash.sh` enters bootloader over raw HID (falling back to the physical board button), so a keymap bootloader key is only accidental-trigger risk.
 
 **SYM** (hold `SPC/S`) — full symbol layer: brackets, quotes, math operators, `!@#$%^&*()`, backtick/tilde, with `BSPC`/`SPC`/`ENT` on thumbs.
 
@@ -80,7 +80,7 @@ thumbs:  ·    ·    ·    ·          |   ·  ⌘⇧S  ⌘⇧Spc  ⌘⇧C
 | `J`+`F` | `Q` | BASE, CYR |
 | `F`+`M` | `qu` (string) | BASE, CYR |
 | `E`+`I` | Enter | BASE, CYR |
-| `S`+`N` | Esc | BASE, CYR |
+| `S`+`N` | Esc | BASE, CYR, NUM |
 | `N`+`D` | Tab | BASE, CYR |
 | `A`+`E` | word-backspace | BASE, CYR |
 | `S`+`D` | `LANG_SW` (QMK base layer + OS input-source switch) | BASE, CYR |
