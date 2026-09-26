@@ -9,14 +9,6 @@
 #define LANGUAGE_MAGIC "SETLANG"
 #define RAW_HID_REPORT_SIZE 32
 
-// One-shot taps: pressing `custom` sends `action` once.
-static const struct { uint16_t custom, action; } tap_macros[] = {
-    {CG_WBSPC, A(KC_BSPC)}, // word backspace
-    {CG_COPY, G(KC_C)},
-    {CG_PASTE, G(KC_V)},
-    {CG_SELALL, G(KC_A)},
-};
-
 static bool process_record_features(uint16_t keycode, keyrecord_t *record) {
     // Escape also clears a NUM layer locked by double-tapping OSL(_NUM).
     if (keycode == KC_ESC && record->event.pressed && get_oneshot_layer() == _NUM) {
@@ -37,13 +29,6 @@ static bool process_record_features(uint16_t keycode, keyrecord_t *record) {
                 break;
             default:
                 layer_off(_NUM);
-        }
-    }
-
-    for (uint8_t i = 0; i < ARRAY_SIZE(tap_macros); i++) {
-        if (keycode == tap_macros[i].custom) {
-            if (record->event.pressed) tap_code16(tap_macros[i].action);
-            return false;
         }
     }
 
@@ -105,7 +90,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if (record->event.pressed) tap_code(KC_T);
                 return false;
             }
-            keycode &= QK_BASIC_MAX; // trim mods + taps
+            keycode = IS_QK_MOD_TAP(keycode) ? QK_MOD_TAP_GET_TAP_KEYCODE(keycode)
+                                             : QK_LAYER_TAP_GET_TAP_KEYCODE(keycode);
             break;
     }
 

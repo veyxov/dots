@@ -6,10 +6,6 @@ enum custom_keycodes {
     LANG_SW = SAFE_RANGE,
     NUMWORD,
     REP,
-    CG_WBSPC,
-    CG_COPY,
-    CG_PASTE,
-    CG_SELALL,
 };
 
 #define LTNAV LT(_NAV, KC_T)

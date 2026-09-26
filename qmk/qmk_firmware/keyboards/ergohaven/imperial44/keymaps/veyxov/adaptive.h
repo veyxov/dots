@@ -26,14 +26,19 @@ static const adaptive_pair_t adaptive_pairs[] = {
     {KC_E, KC_H, KC_NO, KC_O},          // EH -> EO
 };
 
-// Finish a buffered English P before changing the host input source.
+static void flush_pending_p(void) {
+    if (prior_keycode != KC_P) return;
+
+    const uint8_t current_mods = get_mods();
+    set_mods(prior_saved_mods);
+    tap_code(KC_P);
+    set_mods(current_mods);
+    prior_keycode = KC_NO;
+}
+
+// Finish buffered input before changing the host input source.
 void reset_adaptive_user(void) {
-    if (prior_keycode == KC_P) {
-        const uint8_t current_mods = get_mods();
-        set_mods(prior_saved_mods);
-        tap_code(KC_P);
-        set_mods(current_mods);
-    }
+    flush_pending_p();
     prior_keycode = KC_NO;
     prior_keydown = timer_read32();
 }
@@ -43,8 +48,12 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
 
     if (record->event.pressed) {
         uint8_t saved_mods = get_mods();
+        if (prior_keycode == KC_P && timer_elapsed32(prior_keydown) >= ADAPTIVE_TERM) {
+            flush_pending_p();
+        }
         if (saved_mods & MOD_MASK_CAG) {
-            // Don't do anything if mods are present.
+            // Preserve input order and prevent pairs from spanning shortcuts.
+            reset_adaptive_user();
             return true;
         }
         const adaptive_pair_t *match = NULL;
@@ -99,14 +108,7 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
     return return_state;
 }
 void matrix_adaptive_user(void) {
-    if (timer_elapsed32(prior_keydown) >= ADAPTIVE_TERM) {
-        // `ADAPTIVE_TERM` elapsed with no other key press — flush gobbled P.
-        if (prior_keycode == KC_P) {
-            set_mods(prior_saved_mods);
-            tap_code(prior_keycode);
-            clear_mods();
-        }
-        prior_keydown = timer_read32();
-        prior_keycode = KC_NO;
+    if (prior_keycode == KC_P && timer_elapsed32(prior_keydown) >= ADAPTIVE_TERM) {
+        flush_pending_p();
     }
 }
