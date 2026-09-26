@@ -18,9 +18,16 @@ static const struct { uint16_t custom, action; } tap_macros[] = {
 };
 
 static bool process_record_features(uint16_t keycode, keyrecord_t *record) {
+    // Escape also clears a NUM layer locked by double-tapping OSL(_NUM).
+    if (keycode == KC_ESC && record->event.pressed && get_oneshot_layer() == _NUM) {
+        reset_oneshot_layer();
+        layer_off(_NUM);
+    }
+
     // NUMWORD: smart num layer (T-34 style), self-exits on any key not in
-    // this allowlist. Layer state is the source of truth, no shadow flag.
-    if (keycode != NUMWORD && layer_state_is(_NUM) && record->event.pressed) {
+    // this allowlist. A locked one-shot NUM layer stays active until Escape.
+    const bool num_layer_locked = get_oneshot_layer() == _NUM && (get_oneshot_layer_state() & ONESHOT_TOGGLED);
+    if (!num_layer_locked && keycode != NUMWORD && layer_state_is(_NUM) && record->event.pressed) {
         switch (keycode) {
             case KC_1 ... KC_0:
             case KC_DOT:
@@ -78,6 +85,12 @@ static bool process_record_features(uint16_t keycode, keyrecord_t *record) {
 // LTNAV still waits out TAPPING_TERM since T is too common to misread as NAV.
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     return keycode == MT(MOD_LALT, KC_RGHT) || keycode == MT(MOD_LCTL, KC_LEFT);
+}
+
+// Repeated taps must stay within a nonzero window for QMK to reach
+// ONESHOT_TAP_TOGGLE. Keep quick-tap disabled for every other dual-role key.
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    return keycode == OSL(_NUM) || keycode == OSM(MOD_LSFT) ? TAPPING_TERM : QUICK_TAP_TERM;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

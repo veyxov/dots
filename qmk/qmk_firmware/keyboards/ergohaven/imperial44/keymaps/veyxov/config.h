@@ -8,7 +8,10 @@
 
 #define ADAPTIVE_TERM 200
 
+#define ONESHOT_TAP_TOGGLE 2
+
 #define QUICK_TAP_TERM 0 // REP covers repeats, no need for quick-tap
+#define QUICK_TAP_TERM_PER_KEY
 
 // per-key so LTNAV (T) isn't swept up — see get_hold_on_other_key_press in features.c
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY

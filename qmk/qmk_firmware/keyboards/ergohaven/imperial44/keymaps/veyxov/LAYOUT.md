@@ -17,7 +17,7 @@ Base alpha layout is [Hands Down Gold](https://sites.google.com/alanreiser.com/h
                    └─────┴─────┴─────┘ └─────┴─────┴─────┴─────┘
 ```
 - Shifted punctuation: `.`→`~`, `/`→`&`, `?`→`!`, `,`→`|`, `_`→`` ` ``, `-`→`+`, `:`↔`;` (custom shift keys, `keymap.c`).
-- `OSL/N` = one-shot layer → NUM. `HYP` = hold-only Hyper (`Ctrl+Alt+Shift+Cmd`); `GUI` = plain Cmd on the right corner. `Sh` = `OSM(MOD_LSFT)` (tap one-shot shift, hold for normal held Shift). `T/N` = LTNAV (tap T, hold → NAV). `←/Ct`, `→/Alt` = mod-tap arrows. `SPC/S` = tap space, hold → SYM. `⌘Lock` = `OS_LOCK` (macOS lock screen, `Cmd+Ctrl+Q`). `Scrn` = `Cmd+Shift+Ctrl+4` (macOS region screenshot to clipboard).
+- `OSL/N` = one-shot layer → NUM; double-tap locks NUM until the `S`+`N` Escape combo. `HYP` = hold-only Hyper (`Ctrl+Alt+Shift+Cmd`); `GUI` = plain Cmd on the right corner. `Sh` = `OSM(MOD_LSFT)` (tap one-shot shift, hold for normal held Shift; double-tap locks Shift). `T/N` = LTNAV (tap T, hold → NAV). `←/Ct`, `→/Alt` = mod-tap arrows. `SPC/S` = tap space, hold → SYM. `⌘Lock` = `OS_LOCK` (macOS lock screen, `Cmd+Ctrl+Q`). `Scrn` = `Cmd+Shift+Ctrl+4` (macOS region screenshot to clipboard).
 
 ### Differences from stock Hands Down Gold
 
@@ -55,7 +55,7 @@ left:  ·    ·   ⌥F   ·   ⌥P  ⌥V    |  right:  ·   ⌥1  ⌥2  ⌥3  �
 thumbs:  ·    ·    ·    ·          |   ·  ⌘⇧S  ⌘⇧Spc  ⌘⇧C
 ```
 
-**NUM** (one-shot from `OSL/N`, or NUMWORD combo) — numpad-style digits (`6 4 0 2` / `8` and `3 1 5 7` / `9`), `+` on right home pinky, `.`/`SPC`/`BSPC`/`-` on thumbs. It also provides volume/brightness/mute on the right top row and media transport on the right bottom row. `QK_BOOT` is deliberately left off — `reflash.sh` enters bootloader over raw HID (falling back to the physical board button), so a keymap bootloader key is only accidental-trigger risk.
+**NUM** (one-shot from `OSL/N`, double-tap locked from `OSL/N`, or NUMWORD combo) — numpad-style digits (`6 4 0 2` / `8` and `3 1 5 7` / `9`), `+` on right home pinky, `.`/`SPC`/`BSPC`/`-` on thumbs. The physical `S`+`N` Escape combo closes a locked NUM layer. It also provides volume/brightness/mute on the right top row and media transport on the right bottom row. `QK_BOOT` is deliberately left off — `reflash.sh` enters bootloader over raw HID (falling back to the physical board button), so a keymap bootloader key is only accidental-trigger risk.
 
 **SYM** (hold `SPC/S`) — full symbol layer: brackets, quotes, math operators, `!@#$%^&*()`, backtick/tilde, with `BSPC`/`SPC`/`ENT` on thumbs.
 

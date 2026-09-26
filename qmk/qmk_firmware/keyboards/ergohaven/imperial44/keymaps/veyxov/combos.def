@@ -25,3 +25,7 @@ SUBS(lambda, "=>", KC_SLSH, KC_E)
 
 
 COMB(fnc, KC_ENT, S(KC_0),  S(KC_9))
+
+// Resolve combo positions from BASE while NUM is active, so S+N still sends
+// Escape and can close a locked one-shot NUM layer.
+COMBO_REF_LAYER(_NUM, _BASE)

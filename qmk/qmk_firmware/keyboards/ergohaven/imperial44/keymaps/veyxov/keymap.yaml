@@ -7,13 +7,13 @@ layout:
 
 layers:
   BASE:
-    - [{t: NUM, h: OSL}, J, F, M, P, V,        Scrn, {t: ".", s: "~"}, {t: /, s: "&"}, {t: "?", s: "!"}, "'", {t: _, s: "`"}]
+    - [{t: NUM, h: "OSL · ×2 Lock"}, J, F, M, P, V,        Scrn, {t: ".", s: "~"}, {t: /, s: "&"}, {t: "?", s: "!"}, "'", {t: _, s: "`"}]
     - [DEL, R, S, N, D, W,                      {t: ",", s: "|"}, A, E, I, H, {t: ":", s: ";"}]
     - [{t: Hyper, type: held}, X, G, L, C, B,    {t: "-", s: "+"}, U, O, Y, K, GUI]
     - [REP, {t: T, h: NAV}, "⇧", TAB,     "⌘Lock", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
 
   CYR:
-    - [{t: NUM, h: OSL}, қ, ф, м, п, в,        Scrn, {t: ".", s: "~"}, я, {t: "?", s: "!"}, ы, {t: _, s: "`"}]
+    - [{t: NUM, h: "OSL · ×2 Lock"}, қ, ф, м, п, в,        Scrn, {t: ".", s: "~"}, я, {t: "?", s: "!"}, ы, {t: _, s: "`"}]
     - [DEL, р, с, н, д, ш,                      {t: ",", s: "|"}, а, е, и, ҳ, {t: ":", s: ";"}]
     - [{t: Hyper, type: held}, х, г, л, ч, б,    {t: "-", s: "+"}, у, о, й, к, GUI]
     - [REP, {t: т, h: NAV}, "⇧", TAB,     "⌘Lock", {t: "←", h: CTRL}, {t: SPC, h: SYM}, {t: "→", h: ALT}]
