@@ -1,39 +1,36 @@
-# ------------------------------------------------------------------
-# PATH
-# ------------------------------------------------------------------
+# p10k instant prompt: keep above anything that may print or prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 typeset -U path PATH
-path=("$HOME/.local/bin" "$HOME/dots/bin" "$HOME/.cargo/bin" "$HOME"/.local/opt/xpack-arm-none-eabi-gcc-*/bin(N) $path)
+path=(
+    "$HOME/.local/bin"
+    "$HOME/dots/bin"
+    /opt/homebrew/opt/rustup/bin
+    "$HOME/.cargo/bin"
+    "$HOME"/.local/opt/xpack-arm-none-eabi-gcc-*/bin(N)
+    $path
+    "$HOME/.dotnet/tools"
+)
 
-# TMP
-export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
-
-# ------------------------------------------------------------------
-# Core options
-# ------------------------------------------------------------------
 export KEYTIMEOUT=1                    # kill the lag switching in/out of vi mode
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 
-export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
 export LS_COLORS="di=1;34:ln=1;36:so=1;35:pi=33:ex=1;32:bd=1;33:cd=1;33:su=37;41:sg=30;43:tw=30;42:ow=34;42"
 
 bindkey -v                             # vi mode
 autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
-# ------------------------------------------------------------------
-# History
-# ------------------------------------------------------------------
 HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
 setopt SHARE_HISTORY INC_APPEND_HISTORY EXTENDED_HISTORY
 setopt HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS
 
-# ------------------------------------------------------------------
-# Completion
-# ------------------------------------------------------------------
 autoload -Uz compinit
 setopt extendedglob # needed for the (#q...) glob qualifier below to actually evaluate
 # compaudit (compinit's insecure-directory scan) is the slow part of every
@@ -56,25 +53,14 @@ zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview 'git diff $word 
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview 'ps -o command= -p $word'
 source <(fzf --zsh) # Ctrl-T: fuzzy insert file, Alt-C: fuzzy cd, Ctrl-R: fuzzy history (shadowed by atuin below)
 
-# ------------------------------------------------------------------
-# Antidote (plugin manager)
-# ------------------------------------------------------------------
-ANTIDOTE_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/antidote"
-if [[ ! -d $ANTIDOTE_HOME ]]; then
-    git clone --depth=1 https://github.com/mattmc3/antidote.git "$ANTIDOTE_HOME"
-fi
-
 # antidote itself is only needed when the static bundle is stale
 zsh_plugins="${ZDOTDIR:-$HOME}/.zsh_plugins"
 if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
-    source "$ANTIDOTE_HOME/antidote.zsh"
+    source "$HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh"
     antidote bundle <"${zsh_plugins}.txt" >"${zsh_plugins}.zsh"
 fi
 source "${zsh_plugins}.zsh"
 
-# ------------------------------------------------------------------
-# Prompt / navigation / history
-# ------------------------------------------------------------------
 # init output is static per binary version — cache it instead of forking 3 tools every shell
 _cached_init() {
     local cache="${XDG_CACHE_HOME:-$HOME/.cache}/$1-init.zsh"
@@ -89,9 +75,6 @@ _cached_init() {
 _cached_init zoxide
 _cached_init atuin
 
-# ------------------------------------------------------------------
-# Aliases
-# ------------------------------------------------------------------
 alias s="eza --icons --group-directories-first"
 alias ea="clear; eza --long --octal-permissions --no-permissions --no-user --icons --git --sort=modified --reverse"
 alias lt="eza --tree --icons --level=2 --group-directories-first"
@@ -106,9 +89,6 @@ alias rm="rm -iv"
 alias mv="mv -v"
 alias cp="cp -v"
 
-# ------------------------------------------------------------------
-# Custom widgets
-# ------------------------------------------------------------------
 cmd_to_clip() {
     echo $BUFFER | tr -d '\n' | pbcopy
 }
@@ -137,4 +117,6 @@ y() {
 }
 
 # Bug-bounty engagement scaffolding (bug-bounty-claude-skills)
-source ~/.claude/scripts/hunt.sh
+[[ -r ~/.claude/scripts/hunt.sh ]] && source ~/.claude/scripts/hunt.sh
+
+[[ -r ${ZDOTDIR:-$HOME}/.p10k.zsh ]] && source ${ZDOTDIR:-$HOME}/.p10k.zsh
