@@ -2,26 +2,6 @@ gui:
   skipAmendWarning: true
   showRootItemInFileTree: false
   nerdFontsVersion: "3"
-  theme:
-    activeBorderColor:
-      - "#c4a7e7"
-      - bold
-    inactiveBorderColor:
-      - "#6e6a86"
-    optionsTextColor:
-      - "#9ccfd8"
-    selectedLineBgColor:
-      - "#1f1d2e"
-    cherryPickedCommitBgColor:
-      - "#26233a"
-    cherryPickedCommitFgColor:
-      - "#c4a7e7"
-    unstagedChangesColor:
-      - "#eb6f92"
-    defaultFgColor:
-      - "#e0def4"
-    searchingActiveBorderColor:
-      - "#f6c177"
 
 update:
   method: never
@@ -32,3 +12,7 @@ keybinding:
 
 git:
   overrideGpg: true
+  diffRenderers:
+    - command: git-delta-theme --paging=never
+    - type: extDiff
+      command: difft --color=always --context={{diffContext}}

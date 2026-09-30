@@ -95,7 +95,7 @@ alias lt="eza --tree --icons --level=2 --group-directories-first"
 alias nd="zi"
 alias d="z"
 alias n="nvim"
-alias g="lazygit"
+alias g="lazygit-theme"
 alias nvil="nvim" # "Hands down" did this to me :)
 
 # file-system manipulation
