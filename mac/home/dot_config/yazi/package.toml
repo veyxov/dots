@@ -1,2 +1,39 @@
-[plugin]
-deps = []
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "33dde28"
+hash = "187cc58ba7ac3befd49c342129e6f1b6"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "33dde28"
+hash = "f281261ff04ad7ec867c3f802a50835f"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "33dde28"
+hash = "347cc6b190eb0c2fd60513cc7ae37412"
+
+[[plugin.deps]]
+use = "pirafrank/what-size"
+rev = "1cb456f"
+hash = "7699acf73a1079f8a4afef5cec84ce73"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "596b666"
+hash = "c2f4f4aca257dcceafa9e3b828dbf1c9"
+
+[[plugin.deps]]
+use = "wylie102/duckdb"
+rev = "3f8c863"
+hash = "87b9233a74325e95011670ed20bbd0d4"
+
+[[flavor.deps]]
+use = "dangooddd/kanagawa"
+rev = "04985d1"
+hash = "c69a63981e254a3a06a11c2bf0e6af1d"
+
+[[flavor.deps]]
+use = "muratoffalex/kanagawa-lotus"
+rev = "adc1be6"
+hash = "e07042bfc3177c35d5e0723414e8bfaf"

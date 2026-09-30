@@ -26,6 +26,7 @@ Dotfiles for macOS and Linux, managed with [chezmoi](https://chezmoi.io).
 ```sh
 ./install.sh                         # first-time bootstrap on macOS or Linux
 brew bundle --file mac/Brewfile       # macOS packages
+ya pkg install                        # yazi plugins and flavors from package.toml
 
 # Explicit source roots; use the one for the current operating system.
 chezmoi -S "$HOME/dots/mac/home" diff
