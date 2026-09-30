@@ -14,7 +14,6 @@ Dotfiles for macOS and Linux, managed with [chezmoi](https://chezmoi.io).
     not applied automatically; run manually with `./mac/macos/defaults.sh`.
 - `linux/` — Arch Linux setup:
   - `home/` — Linux chezmoi source state.
-  - the sibling directories are retained stow-era sources during the migration.
   - `pacman/etc/pacman.d/hooks/precommit.hook` is system-level and remains a
     manual install; chezmoi manages only home-relative Linux files.
 - `install.sh` — bootstrap: clone the repo, choose the OS-specific chezmoi
@@ -36,5 +35,4 @@ chezmoi -S "$HOME/dots/linux/home" apply
 ```
 
 Edit the source tree for the target OS, then use the matching explicit
-`chezmoi -S ... apply` command. The Linux migration is additive: validate the
-new `linux/home` deployment before retiring any stow-era source directory.
+`chezmoi -S ... apply` command.
