@@ -2,7 +2,7 @@
 	format = ssh
 
 [merge]
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 
 [user]
 	email = veyxov@gmail.com
@@ -10,12 +10,16 @@
 	signingkey = ~/.ssh/id_ed25519.pub
 [push]
     autoSetupRemote = true
+    followTags = true
 [init]
     defaultBranch = main
 [alias]
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    dft = -c diff.external=difft diff
+    dlog = -c diff.external=difft log -p --ext-diff
 [diff]
     colorMoved = zebra
+    algorithm = histogram
 [core]
 	pager = git-delta-theme
 	excludesfile = ~/.config/git/ignore
@@ -26,6 +30,8 @@
 	line-numbers = true
 [rebase]
 	autosquash = true
+	updateRefs = true
+	autoStash = true
 [fetch]
 	prune = true
 [help]
@@ -39,3 +45,9 @@
 	useHttpPath = true
 [rerere]
 	enabled = true
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[column]
+	ui = auto
