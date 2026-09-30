@@ -1,53 +1,69 @@
-[gpg]
-	format = ssh
-
-[merge]
-    conflictstyle = zdiff3
-
 [user]
 	email = veyxov@gmail.com
 	name = Shekhov Ismoil
 	signingkey = ~/.ssh/id_ed25519.pub
-[push]
-    autoSetupRemote = true
-    followTags = true
-[init]
-    defaultBranch = main
-[alias]
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    dft = -c diff.external=difft diff
-    dlog = -c diff.external=difft log -p --ext-diff
-[diff]
-    colorMoved = zebra
-    algorithm = histogram
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
+
 [core]
 	pager = git-delta-theme
 	excludesfile = ~/.config/git/ignore
-[interactive]
-	diffFilter = git-delta-theme --color-only
+
+[init]
+	defaultBranch = main
+
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	dft = -c diff.external=difft diff
+	dlog = -c diff.external=difft log -p --ext-diff
+
+[diff]
+	colorMoved = zebra
+	algorithm = histogram
+
 [delta]
 	navigate = true
 	line-numbers = true
+
+[interactive]
+	diffFilter = git-delta-theme --color-only
+
+[merge]
+	conflictstyle = zdiff3
+
+[rerere]
+	enabled = true
+
 [rebase]
 	autosquash = true
 	updateRefs = true
 	autoStash = true
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+	followTags = true
+
 [fetch]
 	prune = true
-[help]
-	autocorrect = 20
-[pull]
-    rebase = true
 
-[commit]
-	gpgsign = true
-[credential]
-	useHttpPath = true
-[rerere]
-	enabled = true
 [branch]
 	sort = -committerdate
+
 [tag]
 	sort = version:refname
+
 [column]
 	ui = auto
+
+[credential]
+	useHttpPath = true
+
+[help]
+	autocorrect = 20
