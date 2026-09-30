@@ -50,7 +50,10 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compcache"
 zstyle ':fzf-tab:*' fzf-command fzf
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color=always $realpath'
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'if [[ -d $realpath ]]; then eza --tree --level=2 --icons --color=always $realpath; elif [[ -f $realpath ]]; then head -200 $realpath; fi'
+zstyle ':fzf-tab:complete:git-(checkout|switch|rebase|merge|log):*' fzf-preview 'git log --oneline --graph --color=always $word 2>/dev/null | head -50'
+zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview 'git diff $word | git-delta-theme'
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview 'ps -o command= -p $word'
 source <(fzf --zsh) # Ctrl-T: fuzzy insert file, Alt-C: fuzzy cd, Ctrl-R: fuzzy history (shadowed by atuin below)
 
 # ------------------------------------------------------------------
