@@ -1,6 +1,7 @@
 " General Settings
 set theme midnight
 set hintchars nerisadt
+set hintfiltermode vimperator-reflow
 
 " Binds
 bind e scrollline 20
@@ -10,12 +11,11 @@ unbind k
 
 bind s hint
 
-bind f fillcmdline open lucky
-
 " Autocmds
-autocmd TriStart .* source
+autocmd TriStart .* source_quiet
 
-set searchurls.lucky https://duckduckgo.com/?q=\%s
+set searchurls.lucky https://duckduckgo.com/?q=%s
+set searchengine lucky
 
 " google search select which one to open by number: <space><number>
 command google_result js -d@ const a = Array.from(document.querySelectorAll('#search h3')).map(h => h.closest('a[href]')).filter(Boolean)[Number(JS_ARGS[1]) - 1]; if (a) location.assign(a.href) @

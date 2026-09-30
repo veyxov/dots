@@ -28,13 +28,6 @@ text = "#E8EEFF"
 "Primary+Shift+C" = "recursive_grid --action left_click"
 "Primary+Shift+S" = "scroll"
 
-# [macros]
-# click_and_exit = ["action left_click --bail-on-error", "idle"]
-# click_at = ["action move_mouse --x $1 --y $2", "action left_click"]
-#
-# [hints.hotkeys]
-# "Enter" = "macro click_and_exit"
-
 [[app_configs]]
 bundle_id = "com.tdesktop.Telegram"
 hotkeys = { "Primary+Shift+R" = "action feed cmd+up" } # Telegram's native reply-to-last-message shortcut
@@ -46,41 +39,6 @@ hint_characters = "nesidarht"               # veyxov home row: AEIH | RSND + thu
 label_direction = "normal"
 max_depth = 50
 include_menubar_hints = false
-additional_menubar_hints_targets = [
-    "com.apple.TextInputMenuAgent",
-    "com.apple.controlcenter",
-    "com.apple.systemuiserver",
-    "com.y3owk1n.neru",
-]
-include_dock_hints = false
-include_nc_hints = false
-include_stage_manager_hints = false
-include_pip_hints = false
-include_screen_capture_hints = false
-detect_mission_control = false
-# on_mission_control_activated = "idle"     # left unset: an empty value here would claim a default that doesn't exist
-# on_mission_control_deactivated = ["hints"]
-clickable_roles = [
-    "button",
-    "menu_button",
-    "popup_button",
-    "combo_box",
-    "checkbox",
-    "radio",
-    "switch",
-    "disclosure",
-    "link",
-    "text_field",
-    "text_area",
-    "slider",
-    "tab",
-    "menu_item",
-    "cell",
-    "row",
-    "ax:AXGenericElement",
-]
-ignore_clickable_check = false
-visible_check_enabled = false
 
 [hints.hotkeys]
 "Escape" = "idle"
@@ -287,7 +245,6 @@ invert_scroll = false
 "Right" = "action scroll_right"
 "gg" = "action go_top"
 "Shift+G" = "action go_bottom"
-"Shift+/" = "action page_up"
 "/" = "action page_down"
 "e" = "action left_click"
 "i" = "action right_click"
@@ -309,33 +266,7 @@ invert_scroll = false
 
 [mode_indicator.scroll]
 enabled = true
-text = "Scroll"
-
-[mode_indicator.hints]
-enabled = false
-text = "Hints"
-
-[mode_indicator.grid]
-enabled = false
-text = "Grid"
-
-[mode_indicator.recursive_grid]
-enabled = false
-text = "Recursive Grid"
-
-[mode_indicator.monitor_select]
-enabled = false
-text = "Monitor Select"
-
-[mode_indicator.ui]
-font_size = 10
-font_family = ""
-border_width = 1
-padding_x = -1
-padding_y = -1
-border_radius = -1
-indicator_x_offset = 20
-indicator_y_offset = 20
+text = "scroll"
 
 [sticky_modifiers]
 enabled = true
@@ -351,13 +282,6 @@ border_radius = -1
 indicator_x_offset = -40
 indicator_y_offset = 20
 
-[smooth_cursor]
-move_mouse_enabled = false
-steps = 10
-max_duration = 200
-duration_per_pixel = 0.1
-relative_movement_duration = 50
-
 [smooth_scroll]
 enabled = true
 steps = 20
@@ -371,7 +295,7 @@ interval_ms = 10
 accel_enabled = true
 accel_ramp_ms = 2500
 accel_max_multiplier = 35.0
-accel_targets = ["move_mouse_relative"] # only target supported today — scroll accel tracked in y3owk1n/neru#1104
+accel_targets = ["move_mouse_relative"]
 
 [systray]
 enabled = false
