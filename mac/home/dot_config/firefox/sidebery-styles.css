@@ -1,0 +1,30 @@
+/* Paste into Sidebery > Settings > Styles editor > Sidebar.
+   Adapted from deciare/firefox-css sidebery/sidebar.css (MPL 2.0).
+   Set Appearance > Density "relaxed" and close buttons "on mouse hover". */
+#root.root {
+  --tabs-activated-bg: rgba(128,128,128,.25);
+  --tabs-font: 0.8rem sans-serif;
+  --general-border-radius: 0px;
+}
+#root[data-density="loose"].root { --tabs-favicon-shift: 3px; --tabs-title-shift: 4px; }
+
+/* Collapsed strip: no indent, no custom new-tab buttons */
+#root.root:not(:hover) { --tabs-indent: 0px; }
+#root.root:not(:hover) .TabsPanel .new-tab-btn.-custom { visibility: collapse; opacity: 0; }
+
+#root[data-density="loose"] .Tab .fav > .fav-icon { margin-left: var(--tabs-favicon-shift); }
+#root[data-density="loose"] .Tab .title { margin-left: var(--tabs-title-shift); }
+
+.Tab[data-discarded="true"] > .body > .fav { opacity: unset; }
+.Tab[data-discarded="true"] > .body > .fav .fav-icon { opacity: 0.35; }
+.Tab .ctx { left: 1px; }
+.Tab[data-unread="true"] .title { font-weight: bold; }
+
+/* Close button on the left, replacing the favicon on hover */
+#root[data-tabs-close-btn="hover"] {
+  .Tab:hover .close { left: var(--tabs-close-btn-margin); right: auto; }
+  .Tab:hover .t-box { mask: linear-gradient(-90deg, transparent, #000 8px, #000) !important; }
+  .Tab[data-parent="false"]:hover .fav > .fav-icon { opacity: 0; }
+  .PinnedTabsBar .Tab .close { display: none; }
+  .PinnedTabsBar .Tab:hover .fav > .fav-icon { opacity: inherit; }
+}

@@ -1,0 +1,119 @@
+/* Native tab strip off; Sidebery handles tabs */
+#TabsToolbar > * { display: none !important; }
+#TabsToolbar { min-height: 0 !important; }
+
+/* Window buttons live in the single toolbar */
+#nav-bar > .titlebar-buttonbox-container,
+#nav-bar > .titlebar-buttonbox-container > .titlebar-buttonbox { display: flex !important; }
+
+/* Native sidebar launcher and headers are redundant next to Sidebery */
+sidebar-main, #sidebar-container, #sidebar-launcher-splitter,
+#sidebar-panel-header, #sidebar-header { display: none !important; }
+
+#sidebar-box { padding: 0 !important; border: none !important; }
+#sidebar-box #sidebar { box-shadow: none !important; border: none !important; outline: none !important; }
+
+#sidebar-splitter {
+  --splitter-width: 3px !important;
+  min-width: var(--splitter-width) !important;
+  width: var(--splitter-width) !important;
+  margin: 0 calc(1px - var(--splitter-width)) 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  opacity: 0 !important;
+}
+
+/* One flat toolbar line; the URL bar doubles as search */
+#nav-bar { border-color: transparent !important; box-shadow: none !important; }
+#search-container { display: none !important; }
+.urlbar-background { border: none !important; box-shadow: none !important; background: transparent !important; }
+#urlbar:not([focused]) .urlbar-background { background: color-mix(in srgb, currentColor 6%, transparent) !important; }
+#urlbar:not([focused]) :is(#identity-box, #tracking-protection-icon-container, #page-action-buttons, #star-button-box) { display: none !important; }
+
+/* Square everything */
+:root {
+  --toolbarbutton-border-radius: 0 !important;
+  --urlbar-margin-inline: 0 !important;
+  --border-radius-xsmall: 0 !important;
+  --border-radius-small: 0 !important;
+  --border-radius-medium: 0 !important;
+  --border-radius-large: 0 !important;
+}
+#tabbrowser-tabbox, #tabbrowser-tabpanels, .browserSidebarContainer, #appcontent, browser { border-radius: 0 !important; }
+#tabbrowser-tabpanels, .browserSidebarContainer { box-shadow: none !important; border: none !important; margin: 0 !important; }
+
+/* Autohide toolbox, from MrOtherGuy/firefox-csshacks autohide_toolbox.css (MPL 2.0).
+   The toolbox is rotated nearly edge-on so a thin sliver stays hoverable at the top. */
+:root { --uc-autohide-toolbox-delay: 200ms; --uc-toolbox-rotation: 75deg; }
+:root[sizemode="maximized"] { --uc-toolbox-rotation: 84deg; }
+:root[sizemode="fullscreen"], :root[sizemode="fullscreen"] #navigator-toolbox { margin-top: 0 !important; }
+
+#navigator-toolbox {
+  --browser-area-z-index-toolbox: 3;
+  position: fixed !important;
+  background: inherit;
+  background-color: var(--lwt-accent-color, black) !important;
+  transition: transform 82ms linear, opacity 82ms linear !important;
+  transition-delay: var(--uc-autohide-toolbox-delay) !important;
+  transform-origin: top;
+  transform: rotateX(var(--uc-toolbox-rotation));
+  opacity: 0;
+  line-height: 0;
+  z-index: 1;
+  pointer-events: none;
+  width: 100vw;
+}
+#navigator-toolbox > * { line-height: normal; pointer-events: auto; }
+
+:root[sessionrestored] toolbar #searchbar-new:popover-open,
+:root[sessionrestored] #urlbar:popover-open {
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 82ms linear var(--uc-autohide-toolbox-delay), opacity 0ms calc(var(--uc-autohide-toolbox-delay) + 82ms);
+  transform-origin: 0px calc(0px - var(--tab-min-height) - var(--tab-margin-block, var(--tab-block-margin, 0px)) * 2);
+  transform: rotateX(89.9deg);
+}
+:root:is([window-modal-open],[customizing]) toolbar #searchbar-new:popover-open,
+:root:is([window-modal-open],[customizing]) #urlbar:popover-open,
+#mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts,#selection-shortcut-action-panel,#chat-shortcuts-options-panel,#tab-preview-panel), > #tab-group-editor > [panelopen]) ~ toolbox :is(.urlbar:popover-open,#urlbar:popover-open),
+#navigator-toolbox:is(:hover,:focus-within,[movingtab]) :is(.urlbar:popover-open,#urlbar:popover-open),
+:where(:root[sessionrestored]) #navigator-toolbox .urlbar:popover-open:is([focused],[open]),
+:where(:root[sessionrestored]) #urlbar-container > #urlbar:popover-open:is([focused],[open]) {
+  pointer-events: auto;
+  opacity: 1;
+  transition-delay: 33ms;
+  transform: rotateX(0deg);
+}
+
+:root[window-modal-open] #navigator-toolbox,
+#mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts,#selection-shortcut-action-panel,#chat-shortcuts-options-panel,#tab-preview-panel), > #tab-group-editor > [panelopen]) ~ toolbox,
+#navigator-toolbox:has(#urlbar:is([open],[focus-within])),
+#navigator-toolbox:has(.urlbar:is([open],[focus-within])),
+#navigator-toolbox:is(:hover,:focus-within,[movingtab]) {
+  transition-delay: 33ms !important;
+  transform: rotateX(0);
+  opacity: 1;
+}
+
+:root:not([sessionrestored]) #navigator-toolbox { transform: none !important; }
+:root[customizing] #navigator-toolbox { position: relative !important; transform: none !important; opacity: 1 !important; }
+#PersonalToolbar:is([collapsed=""],[collapsed="true"]) { display: none; }
+:is(#urlbar,.urlbar)[breakout][breakout-extend]:popover-open > .urlbar-input-container {
+  padding-block: calc(min(4px,(var(--urlbar-container-height) - var(--urlbar-height)) / 2) + var(--urlbar-container-padding)) !important;
+}
+
+/* Auto-hiding Sidebery strip, adapted from deciare/firefox-css sideberyMods.css (MPL 2.0).
+   Collapsed strip shows favicons; expands over the page on hover. */
+:root { --autohide-sidebar-extended: 240px; --autohide-sidebar-collapsed: 34px; }
+#main-window #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:not([hidden]) {
+  width: var(--autohide-sidebar-collapsed) !important;
+  min-width: unset !important;
+  z-index: 10 !important;
+}
+#main-window #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] #sidebar {
+  width: var(--autohide-sidebar-collapsed) !important;
+  transition: width 0.2s ease-in-out;
+}
+#main-window #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:hover #sidebar {
+  width: var(--autohide-sidebar-extended) !important;
+}
