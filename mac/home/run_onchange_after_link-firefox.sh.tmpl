@@ -1,0 +1,13 @@
+#!/bin/bash
+# betterfox.js: {{ include "dot_config/firefox/betterfox.js" | sha256sum }}
+# user-overrides.js: {{ include "dot_config/firefox/user-overrides.js" | sha256sum }}
+# Firefox only reads user.js, so build it from the two parts; the profile folder name differs per machine.
+set -e
+ff="$HOME/Library/Application Support/Firefox"
+rel=$(awk -F= '/^\[Install/{i=1} i&&/^Default=/{print $2; exit}' "$ff/profiles.ini")
+profile="$ff/$rel"
+[ -d "$profile" ] || { echo "firefox profile not found: $profile" >&2; exit 1; }
+mkdir -p "$profile/chrome"
+ln -sf "$HOME/.config/firefox/userChrome.css" "$profile/chrome/userChrome.css"
+rm -f "$profile/user.js"
+cat "$HOME/.config/firefox/betterfox.js" "$HOME/.config/firefox/user-overrides.js" > "$profile/user.js"
