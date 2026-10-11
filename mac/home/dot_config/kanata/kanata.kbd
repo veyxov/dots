@@ -26,7 +26,7 @@
     "Apple Internal Keyboard / Trackpad"
   )
   concurrent-tap-hold yes
-  process-unmapped-keys no ;; y/u/g/h/j etc. stay native (split-gap keys)
+  process-unmapped-keys yes ;; y/u/g/h/j etc. pass through; needed so smous can see physical Opt/Cmd/Ctrl
 )
 
 (defsrc
@@ -35,6 +35,7 @@
   tab  q    w    e    r    t    i    o    p    [    ]    ret
   caps a    s    d    f    k    l    ;    '    \    rsft
   z    x    c    v    b    spc  n    m    ,    .
+  lmet
 )
 
 ;; One adaptive-key case: fire $out when the previous emitted key was $prior
@@ -55,7 +56,12 @@
   ltnav  (switch ((input-history real x 2)) t break
                  () (tap-hold 0 200 t (layer-while-held nav)) break) ;; LT(_NAV, KC_T)
   symspc (tap-hold 0 200 spc (layer-while-held sym))   ;; LT(_SYM, KC_SPC)
-  smous  (one-shot 65535 lsft)                           ;; OSM(MOD_LSFT)
+  ;; Spacebar is one-shot Shift, but a real Space when any other mod is held
+  ;; (Opt+Space launcher, Cmd+Space, Ctrl+Space).
+  ;; Cmd tap opens the launcher (Vorssaint command bar = Opt+Space); hold stays Cmd
+  cmdl   (tap-hold-press 0 200 A-spc lmet)
+  smous  (switch ((or lalt ralt lmet rmet lctl rctl)) spc break
+                 () (one-shot 65535 lsft) break)         ;; OSM(MOD_LSFT)
 
   ;; thumb row
   ;; HOLD_ON_OTHER_KEY_PRESS for the arrow mod-taps (fast Alt+M rolls)
@@ -128,7 +134,8 @@
   @osl   j    f    @am  @ap  @av  @scrn   x     @fdot  @fslsh @fques '       @funds
   del    r    s    n    @add w    @fcomm a   e      i      @ah    @fcoln
   @ax    @ag  @al  @ac  b    @fmins u   o    y      k      XX
-  lmet rpt  @ltnav @symspc tab @smous @lock @ctlleft @symspc @altrght
+  @cmdl rpt  @ltnav @symspc tab @smous @lock @ctlleft @symspc @altrght
+  @cmdl
 )
 
 (deflayer nav
@@ -136,7 +143,8 @@
   @osl   j    A-f  m    A-p  A-v  @scrn   x     A-1    A-2    A-3    A-4     @funds
   del    M-S-s lalt lsft lctl lmet home left  down   up     rght   end
   x      M-S-g A-n  C-z  C-S-z @fmins A-c M-spc A-k  @montog @monmov
-  lmet rpt  @ltnav M-S-spc tab @smous @lock M-S-s M-S-spc M-S-c
+  @cmdl rpt  @ltnav M-S-spc tab @smous @lock M-S-s M-S-spc M-S-c
+  @cmdl
 )
 
 (deflayer num
@@ -144,7 +152,8 @@
   @osl   j    f    m    p    v    @scrn   x     @fdot  S-=    @fques '       @funds
   del    6    4    0    2    w    @fcomm 3   1      5      7      @fcoln
   x      g    l    8    b    @fmins 9   o    y      k      XX
-  lmet rpt  bspc spc tab @smous @lock .    spc -
+  @cmdl rpt  bspc spc tab @smous @lock .    spc -
+  @cmdl
 )
 
 ;; NUMWORD layer, same keys as num; anything outside QMK's allowlist (digits
@@ -154,7 +163,8 @@
   (t! ex @osl) (t! ex j) (t! ex f) (t! ex m) (t! ex p) (t! ex v) (t! ex @scrn) (t! ex x) @fdot S-= (t! ex @fques) (t! ex ') (t! ex @funds)
   (t! ex del)  6    4    0    2    (t! ex w) (t! ex @fcomm) 3   1      5      7      (t! ex @fcoln)
   (t! ex x) (t! ex g) (t! ex l) 8 (t! ex b) @fmins 9 (t! ex o) (t! ex y) (t! ex k) XX
-  (t! ex lmet) rpt bspc (t! ex spc) (t! ex tab) (t! ex @smous) (t! ex @lock) . (t! ex spc) -
+  (t! ex @cmdl) rpt bspc (t! ex spc) (t! ex tab) (t! ex @smous) (t! ex @lock) . (t! ex spc) -
+  @cmdl
 )
 
 (deflayer sym
@@ -162,5 +172,6 @@
   @osl   '    S-,  S-.  S-'  v    @scrn   @fdot S-7    ]      [      S-5     @funds
   del    S-1  @fmins S-= =   S-3  0    ;     S-0    S-9    S-4    @fcoln
   S-6    @fslsh S-2 \   b    S-grv S-8 S-]   S-[    S-2    XX
-  lmet bspc spc  @symspc tab  ret @lock @ctlleft @symspc @altrght
+  @cmdl bspc spc  @symspc tab  ret @lock @ctlleft @symspc @altrght
+  @cmdl
 )
