@@ -14,10 +14,9 @@
 ;; Known deviations from QMK: no alt-repeat (Ctrl+REP), PV->LV uses a
 ;; backspace rewrite (p already typed), adaptive prior-key is kanata's
 ;; emitted-output history (a letter typed via combo/macro also counts; QMK
-;; likewise treats a rewrite's output as the prior), no LTNAV repeat-guard
-;; (T right after REP can still hold into NAV), one-shots expire after
-;; 65.5s (kanata max; QMK never), NUMWORD here is a plain toggle (press
-;; again to exit) rather than QMK's auto-cancel-on-non-digit smart layer.
+;; likewise treats a rewrite's output as the prior), the LTNAV repeat-guard
+;; only looks one input back (T right after REP), one-shots expire after
+;; 65.5s (kanata max; QMK never).
 ;; FN/CRYL layers removed (matches QMK); media/volume/brightness already
 ;; come from the Mac's native F-row hardware keys, untouched by kanata's
 ;; defsrc, so nothing was lost by dropping the FN layer.
@@ -45,16 +44,23 @@
         (not lctl) (not rctl) (not lalt) (not ralt) (not lmet) (not rmet)))
   $out break)
 
+;; numw key that also leaves numword
+(deftemplate ex (k) (multi $k (layer-switch base)))
+
 (defalias
   ;; layer holds / one-shots
   osl    (one-shot 65535 (layer-while-held num))         ;; OSL(_NUM)
-  ltnav  (tap-hold 200 200 t (layer-while-held nav))     ;; LT(_NAV, KC_T)
-  symspc (tap-hold 200 200 spc (layer-while-held sym))   ;; LT(_SYM, KC_SPC)
+  ;; T straight after REP stays a plain tap (QMK repeat-guard); input-history
+  ;; recency 2 = previous input, 1 is this press. x is the physical REP key.
+  ltnav  (switch ((input-history real x 2)) t break
+                 () (tap-hold 0 200 t (layer-while-held nav)) break) ;; LT(_NAV, KC_T)
+  symspc (tap-hold 0 200 spc (layer-while-held sym))   ;; LT(_SYM, KC_SPC)
   smous  (one-shot 65535 lsft)                           ;; OSM(MOD_LSFT)
 
   ;; thumb row
-  ctlleft (tap-hold 200 200 left lctl)                   ;; MT(MOD_LCTL, KC_LEFT)
-  altrght (tap-hold 200 200 rght lalt)                   ;; MT(MOD_LALT, KC_RGHT)
+  ;; HOLD_ON_OTHER_KEY_PRESS for the arrow mod-taps (fast Alt+M rolls)
+  ctlleft (tap-hold-press 0 200 left lctl)             ;; MT(MOD_LCTL, KC_LEFT)
+  altrght (tap-hold-press 0 200 rght lalt)             ;; MT(MOD_LALT, KC_RGHT)
   lock    C-M-q                                          ;; macOS native Lock Screen (was Cmd+L, clashed w/ browser addr bar)
   scrn    M-C-S-4                                        ;; macOS region screenshot to clipboard
 
@@ -62,9 +68,11 @@
   montog M-C-rght
   monmov M-C-S-rght
 
-  ;; NUMWORD: plain toggle (QMK's version also auto-cancels on the first
-  ;; non-digit key; kanata just toggles back off on a second press)
-  numword (layer-toggle num)
+  ;; NUMWORD: switches the base layer to numw, whose non-numeric keys fall
+  ;; back to base (QMK allowlist: digits . - + bspc rep). Chord toggles it off.
+  exnw    (layer-switch base)                             ;; leave numword (no-op elsewhere)
+  numword (switch ((layer numw)) (layer-switch base) break
+                  () (layer-switch numw) break)
 
   ;; custom shift keys (QMK custom_shift_keys[])
   fdot  (fork . S-grv (lsft rsft))          ;; . -> ~
@@ -96,23 +104,23 @@
 ;; chord is disabled on layers where QMK remaps its keys away from the
 ;; combo's keycodes. (p [) covers both ei_enter and fnc "()"->enter.
 (defchordsv2
-  (4 5)   z              20 first-release (nav sym)           ;; mp -> z
-  (2 3)   q              20 first-release (nav sym)           ;; jf -> q
-  (3 4)   (macro q u)    20 first-release (nav sym)           ;; fm -> "qu"
-  (p [)   ret            20 first-release (nav num)           ;; ei -> enter, () -> enter
-  (w e)   esc            20 first-release (nav sym num)       ;; sn -> esc
-  (w r)   C-spc          20 first-release (nav sym num)       ;; sd -> lang switch (ctrl+space)
-  (e r)   tab            20 first-release (nav sym num)       ;; nd -> tab
-  (o p)   A-bspc         20 first-release (nav sym num)       ;; ae -> word-bspc
-  (a s)   M-c            20 first-release (nav sym)           ;; gl -> copy
-  (s d)   M-v            20 first-release (nav sym num)       ;; lc -> paste (num: c is 8)
-  (a s d) M-a            20 first-release (nav sym num)       ;; glc -> select all (num: c is 8)
-  (o p [) ;              20 first-release (nav sym num)       ;; aei -> ;
-  (, c)   (caps-word-toggle 5000) 20 first-release (nav sym num) ;; caps word, sym/spc + nav/t
-  (v spc) @numword       20 first-release (nav sym)           ;; sym/spc + shift -> numword toggle
-  (0 -)   pgup           20 first-release (nav sym num)       ;; / ? -> pgup
-  (- =)   pgdn           20 first-release (nav sym)           ;; ? ' -> pgdn
-  (0 p)   (macro = S-.)  20 first-release (nav sym num)       ;; /e -> "=>"
+  (4 5)   (multi z @exnw)              20 first-release (nav sym)                       ;; mp -> z
+  (2 3)   (multi q @exnw)              20 first-release (nav sym)                       ;; jf -> q
+  (3 4)   (multi (macro q u) @exnw)    20 first-release (nav sym)                       ;; fm -> "qu"
+  (p [)   ret            20 first-release (nav num numw)                                ;; ei -> enter, () -> enter
+  (w e)   esc            20 first-release (nav sym num numw)                            ;; sn -> esc
+  (w r)   C-spc          20 first-release (nav sym num numw)                            ;; sd -> lang switch (ctrl+space)
+  (e r)   tab            20 first-release (nav sym num numw)                            ;; nd -> tab
+  (o p)   A-bspc         20 first-release (nav sym num numw)                            ;; ae -> word-bspc
+  (a s)   (multi M-c @exnw)            20 first-release (nav sym)                       ;; gl -> copy
+  (s d)   M-v            20 first-release (nav sym num numw)                            ;; lc -> paste (num: c is 8)
+  (a s d) M-a            20 first-release (nav sym num numw)                            ;; glc -> select all (num: c is 8)
+  (o p [) ;              20 first-release (nav sym num numw)                            ;; aei -> ;
+  (, c)   (caps-word-toggle 5000) 20 first-release (nav sym num numw)                   ;; caps word, sym/spc + nav/t
+  (v spc) @numword       20 first-release (nav sym)                                     ;; sym/spc + shift -> numword toggle
+  (0 -)   pgup           20 first-release (nav sym num numw)                            ;; / ? -> pgup
+  (- =)   (multi pgdn @exnw)           20 first-release (nav sym)                       ;; ? ' -> pgdn
+  (0 p)   (macro = S-.)  20 first-release (nav sym num numw)                            ;; /e -> "=>"
 )
 
 (deflayer base
@@ -137,6 +145,16 @@
   del    6    4    0    2    w    @fcomm 3   1      5      7      @fcoln
   x      g    l    8    b    @fmins 9   o    y      k      XX
   lmet rpt  bspc spc tab @smous @lock .    spc -
+)
+
+;; NUMWORD layer, same keys as num; anything outside QMK's allowlist (digits
+;; . - + bspc rep) is sent and drops back to base.
+(deflayer numw
+  grv  grv
+  (t! ex @osl) (t! ex j) (t! ex f) (t! ex m) (t! ex p) (t! ex v) (t! ex @scrn) (t! ex x) @fdot S-= (t! ex @fques) (t! ex ') (t! ex @funds)
+  (t! ex del)  6    4    0    2    (t! ex w) (t! ex @fcomm) 3   1      5      7      (t! ex @fcoln)
+  (t! ex x) (t! ex g) (t! ex l) 8 (t! ex b) @fmins 9 (t! ex o) (t! ex y) (t! ex k) XX
+  (t! ex lmet) rpt bspc (t! ex spc) (t! ex tab) (t! ex @smous) (t! ex @lock) . (t! ex spc) -
 )
 
 (deflayer sym

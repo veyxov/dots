@@ -9,7 +9,9 @@ Dotfiles for macOS and Linux, managed with [chezmoi](https://chezmoi.io).
     `dot_config/` → `~/.config/`, plus `dot_zshenv`, `Library/`, etc.
   - `Brewfile` — Homebrew packages and casks (`brew bundle`).
   - `macos/launchdaemons/` — LaunchDaemon plists for kanata and the
-    Karabiner VirtualHIDDevice daemon (install instructions in each plist).
+    Karabiner VirtualHIDDevice daemon.
+  - `macos/install-kanata.sh` — installs the pinned DriverKit driver (6.2.0,
+    what kanata 1.12 needs) and bootstraps both daemons; run manually.
   - `macos/defaults.sh` — Finder/Dock/trackpad/keyboard/screenshot defaults,
     not applied automatically; run manually with `./mac/macos/defaults.sh`.
 - `linux/` — Arch Linux setup:
