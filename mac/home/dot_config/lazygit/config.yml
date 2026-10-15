@@ -14,5 +14,3 @@ git:
   overrideGpg: true
   diffRenderers:
     - command: git-delta-theme --paging=never
-    - type: extDiff
-      command: difft --color=always --context={{diffContext}}

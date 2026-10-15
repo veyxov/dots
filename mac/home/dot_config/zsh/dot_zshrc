@@ -47,7 +47,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compcache"
 zstyle ':fzf-tab:*' fzf-command fzf
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'if [[ -d $realpath ]]; then eza --tree --level=2 --icons --color=always $realpath; elif [[ -f $realpath ]]; then head -200 $realpath; fi'
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'if [[ -d $realpath ]]; then ls -A $realpath; elif [[ -f $realpath ]]; then head -200 $realpath; fi'
 zstyle ':fzf-tab:complete:git-(checkout|switch|rebase|merge|log):*' fzf-preview 'git log --oneline --graph --color=always $word 2>/dev/null | head -50'
 zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview 'git diff $word | git-delta-theme'
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview 'ps -o command= -p $word'
@@ -75,9 +75,6 @@ _cached_init() {
 _cached_init zoxide
 _cached_init atuin
 
-alias s="eza --icons --group-directories-first"
-alias ea="clear; eza --long --octal-permissions --no-permissions --no-user --icons --git --sort=modified --reverse"
-alias lt="eza --tree --icons --level=2 --group-directories-first"
 alias nd="zi"
 alias d="z"
 alias n="nvim"
@@ -120,3 +117,6 @@ y() {
 [[ -r ~/.claude/scripts/hunt.sh ]] && source ~/.claude/scripts/hunt.sh
 
 [[ -r ${ZDOTDIR:-$HOME}/.p10k.zsh ]] && source ${ZDOTDIR:-$HOME}/.p10k.zsh
+
+export PROTO_HOME="$HOME/.proto"
+export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"

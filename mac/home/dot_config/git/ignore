@@ -2,3 +2,4 @@
 .zsh_plugins.zsh
 .zcompdump*
 .zsh_history
+graphify-out/

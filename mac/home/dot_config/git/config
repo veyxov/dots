@@ -18,8 +18,6 @@
 
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	dft = -c diff.external=difft diff
-	dlog = -c diff.external=difft log -p --ext-diff
 
 [diff]
 	colorMoved = zebra

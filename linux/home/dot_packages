@@ -1,4 +1,3 @@
-7zip
 albert-bin
 anydesk-bin
 aspnet-runtime
@@ -8,7 +7,6 @@ base-devel
 bluez
 cliphist
 clipman
-cmake
 cpio
 dbus-broker
 dhclient
@@ -20,7 +18,6 @@ dotnet-targeting-pack
 dotnet-targeting-pack-preview-bin
 efibootmgr
 exfat-utils
-eza
 fd
 firefox
 firefox-tridactyl-native
@@ -62,7 +59,6 @@ pipewire-pulse
 playerctl
 pnpm
 postgresql
-qmk
 qt6-base
 qt6-tools
 remmina
