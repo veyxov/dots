@@ -4,6 +4,7 @@ SUBS(fm_qu, "qu", KC_F, KC_M)
 
 COMB(ei_enter, KC_ENT, KC_E, KC_I)
 COMB(sn_esc, KC_ESC, KC_S, KC_N)
+// Same physical keys on NUM; COMBO_REF_LAYER would also remap the media keys.
 COMB(num_sn_esc, KC_ESC, KC_4, KC_0)
 COMB(nd_tab, KC_TAB, KC_N, KC_D)
 COMB(ae_bsp, A(KC_BSPC), KC_A, KC_E)
@@ -17,10 +18,10 @@ COMB(glc_all, G(KC_A), KC_G, KC_L, KC_C)
 COMB(aei_scol, KC_SCLN, KC_A, KC_E, KC_I)
 
 COMB(caps_combo, CW_TOGG, SYM_SPC, LTNAV)
-COMB(numword, NUMWORD, SYM_SPC, OSM(MOD_LSFT))
+COMB(numword, NUMWORD, SYM_SPC, OS_SFT)
 
 COMB(pg_up, KC_PGUP, KC_SLSH, S(KC_SLSH))
 COMB(pg_dw, KC_PGDN, S(KC_SLSH), KC_QUOT)
 
 SUBS(lambda, "=>", KC_SLSH, KC_E)
-COMB(fnc, KC_ENT, S(KC_0),  S(KC_9))
+COMB(sym_enter, KC_ENT, S(KC_0), S(KC_9))

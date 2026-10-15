@@ -2,9 +2,9 @@
 #include "display.h"
 #include "layers.h"
 
+#ifdef OLED_ENABLE
 #define DISPLAY_IDLE_TIMEOUT_MS 600000UL
 
-#ifdef OLED_ENABLE
 #include "caps_word.h"
 #include "keycat.h"
 #include "transactions.h"

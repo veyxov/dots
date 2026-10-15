@@ -4,72 +4,59 @@
 #include "keymap.h"
 #include "g/keymap_combo.h"
 
+// clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
-    // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        OSL(_NUM),  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                     G(S(C(KC_4))), KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
-    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        KC_DEL,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I, KC_H,  S(KC_SCLN),
-    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        HYPR_T(KC_NO), KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                        KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   KC_LGUI,
-    // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
-                REP, LTNAV, OSM(MOD_LSFT),  KC_TAB,                    OS_LOCK,   MT(MOD_LCTL, KC_LEFT), SYM_SPC, MT(MOD_LALT, KC_RGHT)
+        OSL(_NUM), KC_J,    KC_F,    KC_M,    KC_P,    KC_V,       SCRNSHT, KC_DOT,  KC_SLSH, S(KC_SLSH), KC_QUOT, S(KC_MINS),
+        KC_DEL,    KC_R,    KC_S,    KC_N,    KC_D,    KC_W,       KC_COMM, KC_A,    KC_E,    KC_I,       KC_H,    S(KC_SCLN),
+        HYPR_HD,   KC_X,    KC_G,    KC_L,    KC_C,    KC_B,       KC_MINS, KC_U,    KC_O,    KC_Y,       KC_K,    KC_LGUI,
+                            REP,     LTNAV,   OS_SFT,  KC_TAB,     OS_LOCK, CTL_LFT, SYM_SPC, ALT_RGT
     ),
 
     // macOS maps these physical keycodes through Russian-Tajik Phonetic.
     // Keep this layer explicit so Cyrillic-specific keys can diverge later.
     [_CYR] = LAYOUT(
-        OSL(_NUM),  KC_J,   KC_F,   KC_M,   KC_P,   KC_V,                     G(S(C(KC_4))), KC_DOT, KC_SLSH, S(KC_SLSH),  KC_QUOT,   S(KC_MINS),
-        KC_DEL,  KC_R,   KC_S,   KC_N,   KC_D,   KC_W,                        KC_COMM,   KC_A,   KC_E,   KC_I, KC_H,  S(KC_SCLN),
-        HYPR_T(KC_NO), KC_X,   KC_G,   KC_L,   KC_C,   KC_B,                 KC_MINS,   KC_U,   KC_O,  KC_Y,  KC_K,   KC_LGUI,
-                REP, LTNAV, OSM(MOD_LSFT),  KC_TAB,                    OS_LOCK,   MT(MOD_LCTL, KC_LEFT), SYM_SPC, MT(MOD_LALT, KC_RGHT)
+        OSL(_NUM), KC_J,    KC_F,    KC_M,    KC_P,    KC_V,       SCRNSHT, KC_DOT,  KC_SLSH, S(KC_SLSH), KC_QUOT, S(KC_MINS),
+        KC_DEL,    KC_R,    KC_S,    KC_N,    KC_D,    KC_W,       KC_COMM, KC_A,    KC_E,    KC_I,       KC_H,    S(KC_SCLN),
+        HYPR_HD,   KC_X,    KC_G,    KC_L,    KC_C,    KC_B,       KC_MINS, KC_U,    KC_O,    KC_Y,       KC_K,    KC_LGUI,
+                            REP,     LTNAV,   OS_SFT,  KC_TAB,     OS_LOCK, CTL_LFT, SYM_SPC, ALT_RGT
     ),
 
     [_NAV] = LAYOUT(
-    // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        _______, _______, A(KC_F), _______, A(KC_P), A(KC_V),                 _______,A(KC_1),A(KC_2),A(KC_3),A(KC_4), _______,
-    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______,G(S(KC_S)), KC_LALT, KC_LSFT, KC_LCTL, KC_LGUI,                 KC_HOME,KC_LEFT,KC_DOWN,KC_UP,KC_RGHT, KC_END,
-    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______, _______, G(S(KC_G)), A(KC_RGHT), _______, _______,                 _______, A(KC_C), G(KC_SPC), A(KC_K), MON_TOG, MON_MOV,
-    // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
-                                _______, _______,_______, _______,         _______, G(S(KC_S)),G(S(KC_SPC)),G(S(KC_C))
+        _______, _______,    A(KC_F),    _______,    A(KC_P), A(KC_V),     _______, A(KC_1),    A(KC_2),      A(KC_3),    A(KC_4), _______,
+        _______, G(S(KC_S)), KC_LALT,    KC_LSFT,    KC_LCTL, KC_LGUI,     KC_HOME, KC_LEFT,    KC_DOWN,      KC_UP,      KC_RGHT, KC_END,
+        _______, _______,    G(S(KC_G)), A(KC_RGHT), _______, _______,     _______, A(KC_C),    G(KC_SPC),    A(KC_K),    MON_TOG, MON_MOV,
+                             _______,    _______,    _______, _______,     _______, G(S(KC_S)), G(S(KC_SPC)), G(S(KC_C))
     ),
 
     [_NUM] = LAYOUT(
-    // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        _______, _______, _______, _______, _______, _______,                 KC_MUTE,KC_VOLD,KC_BRID,KC_BRIU,KC_VOLU, _______,
-    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______,KC_6, KC_4, KC_0, KC_2, _______,                                _______,KC_3,KC_1,KC_5,  KC_7, S(KC_EQL),
-    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______, _______, _______, _______, KC_8, _______,                 _______, KC_9, KC_MPRV, KC_MPLY, KC_MNXT, _______,
-    // └───────┴───────┴───────┬───────┬───────┬───────┐                 ┌───────┬─────┴─┬───────┬───────┬────────────────────────┘
-                                _______,KC_BSPC,_______, _______,         _______,KC_DOT, KC_SPC,KC_MINS
+        _______, _______, _______, _______, _______, _______,     KC_MUTE, KC_VOLD, KC_BRID, KC_BRIU, KC_VOLU, _______,
+        _______, KC_6,    KC_4,    KC_0,    KC_2,    _______,     _______, KC_3,    KC_1,    KC_5,    KC_7,    S(KC_EQL),
+        _______, _______, _______, _______, KC_8,    _______,     _______, KC_9,    KC_MPRV, KC_MPLY, KC_MNXT, _______,
+                          _______, KC_BSPC, _______, _______,     _______, KC_DOT,  KC_SPC,  KC_MINS
     ),
 
     [_SYM] = LAYOUT(
-    // ┌───────┬───────┬───────┬───────┬───────┬───────┐                     ┌───────┬───────┬───────┬───────┬───────┬────────┐
-        _______,  KC_QUOT,   S(KC_COMM),   S(KC_DOT), S(KC_QUOT),              _______, KC_DOT,   S(KC_7), KC_RBRC, KC_LBRC, S(KC_5), _______,
-    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-       _______,  S(KC_1),   KC_MINS,   S(KC_EQL),   KC_EQL,   S(KC_3),         KC_0, KC_SCLN, S(KC_0),  S(KC_9),  S(KC_4), _______,
-    // ├───────┼───────┼───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┼───────┼────────┤
-        _______, S(KC_6),    KC_SLSH,S(KC_2),   KC_BSLS,   _______,           S(KC_GRV),   S(KC_8), S(KC_RBRC),  S(KC_LBRC),  S(KC_2),   _______,
-    // └───────┴───────┴───────┼───────┼───────┼───────┤                     ├───────┼───────┼───────┼───────┴───────┴────────┘
-                KC_BSPC, KC_SPC, KC_ENTER, _______,    _______, _______, _______,   _______
+        _______, KC_QUOT, S(KC_COMM), S(KC_DOT), S(KC_QUOT), _______,     KC_DOT,    S(KC_7), KC_RBRC,    KC_LBRC,    S(KC_5), _______,
+        _______, S(KC_1), KC_MINS,    S(KC_EQL), KC_EQL,     S(KC_3),     KC_0,      KC_SCLN, S(KC_0),    S(KC_9),    S(KC_4), _______,
+        _______, S(KC_6), KC_SLSH,    S(KC_2),   KC_BSLS,    _______,     S(KC_GRV), S(KC_8), S(KC_RBRC), S(KC_LBRC), S(KC_2), _______,
+                          KC_BSPC,    KC_SPC,    KC_ENT,     _______,     _______,   _______, _______,    _______
     ),
 };
 
 const custom_shift_key_t custom_shift_keys[] = {
-    {KC_DOT, S(KC_GRV)}, // . -> ~
-    {KC_SLSH, S(KC_7)}, // / -> &
-    {S(KC_SLSH), S(KC_1)}, // ? -> !
-    {KC_COMM, S(KC_BSLS)}, // , -> |
-    {S(KC_MINS), KC_GRV}, // _ -> `
-    {KC_MINS, S(KC_EQL)}, // - -> +
-    {S(KC_SCLN), KC_SCLN}, // : -> ;
+    {KC_DOT,     S(KC_GRV)},  // . -> ~
+    {KC_SLSH,    S(KC_7)},    // / -> &
+    {S(KC_SLSH), S(KC_1)},    // ? -> !
+    {KC_COMM,    S(KC_BSLS)}, // , -> |
+    {S(KC_MINS), KC_GRV},     // _ -> `
+    {KC_MINS,    S(KC_EQL)},  // - -> +
+    {S(KC_SCLN), KC_SCLN},    // : -> ;
 };
+// clang-format on
 
-// CUSTOM_SHIFT_KEYS_LAYER_MASK uses layer numbers in config.h.
+// CUSTOM_SHIFT_KEYS_LAYER_MASK in config.h and the RGB layer indices in
+// display.c both assume this order.
 _Static_assert(_BASE == 0 && _CYR == 1 && _NAV == 2 && _NUM == 3 && _SYM == 4, "Update custom Shift layer mask");
 
 void keyboard_post_init_user(void) {

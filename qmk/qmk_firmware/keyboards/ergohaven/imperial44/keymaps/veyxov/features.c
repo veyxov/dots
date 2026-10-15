@@ -7,10 +7,13 @@
 
 #define BOOTLOADER_MAGIC "BOOTLDR1"
 #define LANGUAGE_MAGIC "SETLANG"
+#define LANGUAGE_ARG (sizeof(LANGUAGE_MAGIC) - 1)
 #define RAW_HID_REPORT_SIZE 32
 
 static bool process_record_features(uint16_t keycode, keyrecord_t *record) {
     // Escape also clears a NUM layer locked by double-tapping OSL(_NUM).
+    // reset_oneshot_layer() only clears one-shot bookkeeping; layer_off() is
+    // still needed to drop the layer itself.
     if (keycode == KC_ESC && record->event.pressed && get_oneshot_layer() == _NUM) {
         reset_oneshot_layer();
         layer_off(_NUM);
@@ -68,13 +71,13 @@ static bool process_record_features(uint16_t keycode, keyrecord_t *record) {
 // Arrow-thumb mod-taps resolve hold on next keypress (fast Alt+M rolls);
 // LTNAV still waits out TAPPING_TERM since T is too common to misread as NAV.
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
-    return keycode == MT(MOD_LALT, KC_RGHT) || keycode == MT(MOD_LCTL, KC_LEFT);
+    return keycode == ALT_RGT || keycode == CTL_LFT;
 }
 
 // Repeated taps must stay within a nonzero window for QMK to reach
 // ONESHOT_TAP_TOGGLE. Keep quick-tap disabled for every other dual-role key.
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
-    return keycode == OSL(_NUM) || keycode == OSM(MOD_LSFT) ? TAPPING_TERM : QUICK_TAP_TERM;
+    return keycode == OSL(_NUM) || keycode == OS_SFT ? TAPPING_TERM : QUICK_TAP_TERM;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -123,9 +126,9 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
         raw_hid_send(response, sizeof(response));
         wait_ms(10);
         reset_keyboard();
-    } else if (memcmp(data, LANGUAGE_MAGIC, sizeof(LANGUAGE_MAGIC) - 1) == 0 &&
-               (data[7] == '0' || data[7] == '1')) {
-        const uint8_t layer = data[7] == '1' ? _CYR : _BASE;
+    } else if (memcmp(data, LANGUAGE_MAGIC, LANGUAGE_ARG) == 0 &&
+               (data[LANGUAGE_ARG] == '0' || data[LANGUAGE_ARG] == '1')) {
+        const uint8_t layer = data[LANGUAGE_ARG] == '1' ? _CYR : _BASE;
         if (get_highest_layer(default_layer_state) != layer) {
             reset_adaptive_user();
             set_single_default_layer(layer);

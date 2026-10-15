@@ -1,6 +1,8 @@
-static uint8_t  prior_saved_mods = 0;
-static uint16_t prior_keycode    = KC_NO;
-static uint32_t prior_keydown    = 0;
+#pragma once
+
+static uint8_t prior_saved_mods = 0;
+static uint16_t prior_keycode = KC_NO;
+static uint32_t prior_keydown = 0;
 
 // Pair rewrites: typing `prior` then `key` within ADAPTIVE_TERM emits
 // `first` (if set) followed by `second` instead of the literal pair.
@@ -103,10 +105,11 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
         // mistake it for a physical P waiting in the buffer.
         const uint16_t effective_keycode = match ? (match->second & QK_BASIC_MAX) : keycode;
         prior_keycode = match && effective_keycode == KC_P ? KC_NO : effective_keycode;
-        prior_keydown    = timer_read32();
+        prior_keydown = timer_read32();
     }
     return return_state;
 }
+
 void matrix_adaptive_user(void) {
     if (prior_keycode == KC_P && timer_elapsed32(prior_keydown) >= ADAPTIVE_TERM) {
         flush_pending_p();
