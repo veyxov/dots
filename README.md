@@ -20,7 +20,6 @@ Dotfiles for macOS and Linux, managed with [chezmoi](https://chezmoi.io).
     manual install; chezmoi manages only home-relative Linux files.
 - `install.sh` — bootstrap: clone the repo, choose the OS-specific chezmoi
   source state, then run `chezmoi apply`.
-- `qmk/` — QMK keyboard firmware/layout.
 - `bin/`, `sony/` — personal utility scripts.
 
 ## Usage
