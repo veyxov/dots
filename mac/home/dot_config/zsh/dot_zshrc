@@ -9,9 +9,6 @@ typeset -U path PATH
 path=(
     "$HOME/.local/bin"
     "$HOME/dots/bin"
-    /opt/homebrew/opt/rustup/bin
-    "$HOME/.cargo/bin"
-    "$HOME"/.local/opt/xpack-arm-none-eabi-gcc-*/bin(N)
     $path
     "$HOME/.dotnet/tools"
 )
