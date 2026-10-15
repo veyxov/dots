@@ -33,14 +33,9 @@ configuration changes.
 
 ## macOS input-source sync
 
-The helper source is installed by chezmoi at
-`~/.local/bin/qmk-input-source-sync.swift`. Compile it with
-`swiftc -O -o ~/.local/bin/qmk-input-source-sync ~/.local/bin/qmk-input-source-sync.swift`.
-The LaunchAgent is `~/Library/LaunchAgents/com.shekhovismoil.qmk-input-source-sync.plist`.
-Give the compiled binary Input Monitoring access in macOS Privacy & Security,
-then load the agent with
-`launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.shekhovismoil.qmk-input-source-sync.plist`.
-The helper reads the active macOS keyboard input source and sends `SETLANG0`
-or `SETLANG1` to keep the firmware base layer aligned. Run
-`~/.local/bin/qmk-input-source-sync --status` to check the input source and
-keyboard connection, or `--once` to send one synchronization report.
+The firmware accepts `SETLANG0`/`SETLANG1` over Raw HID to follow the macOS
+input source. The Swift helper and LaunchAgent that sent them are no longer in
+dots; restore them from git history
+(`mac/home/dot_local/bin/executable_qmk-input-source-sync.swift` and
+`mac/home/Library/LaunchAgents/com.shekhovismoil.qmk-input-source-sync.plist`
+as of commit `f5f63aa^`).

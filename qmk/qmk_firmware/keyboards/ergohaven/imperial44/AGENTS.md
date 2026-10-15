@@ -19,31 +19,19 @@
 
 ## Important Keyboard Files
 - `keymaps/veyxov/keymap.c`: layer definitions and thin QMK hook wrappers
-- `keymaps/veyxov/keymap.h`: key aliases/macros such as layer-taps
-- `keymaps/veyxov/features.c`: keymap-local behavior helpers such as language toggle, repeat handling, and raw HID bootloader handling
+- `keymaps/veyxov/keymap.h`: custom keycodes and key aliases (`LTNAV`, `SYM_SPC`, `OS_SFT`, `CTL_LFT`, `ALT_RGT`, ...)
+- `keymaps/veyxov/features.c`: language toggle, NUMWORD, repeat handling, tap-hold tuning, raw HID commands
+- `keymaps/veyxov/display.c` / `keycat.c`: OLED status, Keycat animation, RGB layer colors, Caps Word split sync
 - `keymaps/veyxov/layers.h`: layer enum
 - `keymaps/veyxov/combos.def`: combos
 - `keymaps/veyxov/adaptive.h`: adaptive key behavior
-- `keymaps/veyxov/config.h`: timing constants
+- `keymaps/veyxov/config.h`: timing constants and tap-hold options
 - `keymaps/veyxov/rules.mk`: keymap feature flags
 - `keyboard.json`: board build marker and hardware metadata
 - `config.h` / `rules.mk`: board-level split / RP2040 settings
 
-## Current Firmware Shape
-- macOS is the source of truth for the English/Cyrillic base layer when the input-source helper is running. Layers present: `BASE`, `CYR`, `NAV`, `NUM`, `SYM`.
-- Base layer is Hands Down Gold-derived:
-  - Left hand alpha block: `J F M P V` / `R S N D W` / `X G L C B`
-  - Right hand alpha block: `. / ? ' _` / `, A E I H :` / `- U O Y K`
-- Notable behaviors:
-  - `OSM(MOD_LSFT)`: tap for one-shot Shift, hold for a normal held Shift (built-in QMK one-shot mod)
-  - `REP`: repeat key; with Ctrl held it uses alt-repeat
-  - `LTNAV`: tap `T`, hold for nav
-  - `LANG_SW`: `S`+`D` combo changes `BASE`/`CYR` and sends the macOS input-source shortcut
-
-## Timing / Features
-- `COMBO_TERM 20`
-- `ADAPTIVE_TERM 200`
-- Enabled features in the active keymap include combos, repeat key, and raw HID.
+## Layout
+`keymaps/veyxov/LAYOUT.md` is the layout and behavior reference; `keymaps/veyxov/README.md` covers OLEDs, RGB and building.
 
 ## Build / Flash Workflow
 - Normal path from this directory:
@@ -52,7 +40,7 @@
 ```
 - `reflash.sh` symlinks this repo copy into `~/qmk_firmware/keyboards/ergohaven/imperial44`, tries to trigger the bootloader over Raw HID via `bootloader_rawhid.py`, falls back to "press the physical BOOT/RESET button" if Raw HID is unavailable, then runs `qmk flash -kb ergohaven/imperial44 -km veyxov`, which auto-detects the mounted `RPI-RP2` volume under `/Volumes/` and copies the UF2.
 - `RAW_ENABLE = yes` in the active keymap, and `raw_hid_receive()` lives in `features.c`; it recognizes the `BOOTLDR1` command and calls `reset_keyboard()`.
-- macOS `~/.local/bin/qmk-input-source-sync` runs as a LaunchAgent (source: `~/.local/bin/qmk-input-source-sync.swift`) and sends `SETLANG0`/`SETLANG1` over Raw HID to match the active OS input source. Keep that host helper and firmware protocol aligned when changing language switching. The binary needs macOS Input Monitoring permission.
+- Raw HID also accepts `SETLANG0`/`SETLANG1` from a macOS input-source helper. The helper is not installed right now (see `keymaps/veyxov/README.md`).
 - Bootstrap requirement: the first flash after introducing Raw HID (or after Raw HID gets removed then re-added) needs a manual bootloader entry, because the currently running firmware doesn't yet expose the Raw HID interface.
 - For this split keyboard, flash both halves after firmware changes — physically switch the USB-C connection to the other half and re-run `./reflash.sh`.
 
@@ -81,15 +69,3 @@
 - Key order: row-by-row, left+right interleaved per row, thumbs last
 - Key spec: `{t: tap, h: hold, s: shifted, type: layer/trans/held/ghost}`
 - Combo spec: `{p: [positions], k: key, l: [layers]}` — always set `l:` to avoid showing on all layers
-
-## Files
-| File | Purpose |
-|------|---------|
-| `keymap.c` | Layer definitions and thin hook wrappers |
-| `keymap.h` | Macro shorthands (LTNAV, SYM_SPC, OS_LOCK) |
-| `features.c` | Keymap-local behavior helpers |
-| `layers.h` | Layer enum |
-| `combos.def` | All combo definitions |
-| `adaptive.h` | Adaptive key sequences |
-| `config.h` | Timing constants |
-| `rules.mk` | Feature flags |

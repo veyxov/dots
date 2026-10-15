@@ -42,16 +42,16 @@ right: . / ? ' _  /  , A E I H  /  - U O Y K
 
 ## Other layers
 
-**CYR** is the second base layer for the macOS Russian–Tajik Phonetic input source. Its physical letter keycodes currently match BASE, so macOS still performs the Cyrillic mapping. This separate layer leaves room for Cyrillic-specific keys and adaptives later. The `S`+`D` combo switches both the QMK base layer and macOS input source with `Ctrl+Space`; QMK starts in English after power-up. The macOS input-source helper corrects QMK when the OS source changes separately or the shortcut fails.
+**CYR** is the second base layer for the macOS Russian–Tajik Phonetic input source. Its physical letter keycodes currently match BASE, so macOS still performs the Cyrillic mapping. This separate layer leaves room for Cyrillic-specific keys and adaptives later. The `S`+`D` combo switches both the QMK base layer and macOS input source with `Ctrl+Space`; QMK starts in English after power-up. If the OS input source changes on its own, the two can drift until the next `S`+`D`; the firmware also accepts `SETLANG0`/`SETLANG1` over Raw HID from a host helper (not currently installed).
 
-English adaptive pairs are disabled on CYR. Custom Shift mappings and all combos work on both base layers. NAV, NUM, and SYM work over either base layer. macOS periodically sends its active input-source state over Raw HID, so QMK corrects a missed or external language switch.
+English adaptive pairs are disabled on CYR. Custom Shift mappings and all combos work on both base layers. NAV, NUM, and SYM work over either base layer.
 
 **NAV** (hold `T`) — arrow cluster (`Home ← ↓ ↑ → End`) on the right home row, one-hand mods on the left home row, window/monitor management, app switching (`⌥1..4`).
 
 ```
 left:  ·    ·   ⌥F   ·   ⌥P  ⌥V    |  right:  ·   ⌥1  ⌥2  ⌥3  ⌥4   ·
        ·  ⌘⇧S Alt  Sft  Ctl  Gui   |         Home  ←   ↓   ↑   →  End
-       ·    ·  ⌘⇧G  ⌥N   ·    ·    |          ·   ⌥C ⌘Spc  ⌥K  Mon WinMon
+       ·    ·  ⌘⇧G  ⌥→   ·    ·    |          ·   ⌥C ⌘Spc  ⌥K  Mon WinMon
 thumbs:  ·    ·    ·    ·          |   ·  ⌘⇧S  ⌘⇧Spc  ⌘⇧C
 ```
 
@@ -64,13 +64,12 @@ thumbs:  ·    ·    ·    ·          |   ·  ⌘⇧S  ⌘⇧Spc  ⌘⇧C
 - **`REP`** — repeat key. Plain: repeats last key (`repeat_key_invoke`). With Ctrl held: alt-repeat (`alt_repeat_key_invoke`), Ctrl stripped and reapplied around the call. Rationale for no dedicated `//`/`??` keys — just repeat.
 - **`LTNAV`** — tap `T`, hold → NAV layer. If a repeat sequence is active (`get_repeat_key_count() > 0`), a tap always sends `T` instead of participating in hold-detection, so `T` after `REP` doesn't misfire as nav.
 - **`LANG_SW`** — combo `S`+`D`, switches BASE/CYR and sends the macOS input-source shortcut (`Ctrl+Space`). Bottom-left corner key is hold-only Hyper (`Ctrl+Alt+Shift+Cmd`); its tap action is disabled.
-- **OLED and RGB status** — both OLEDs are enabled: the master shows layer, Caps Word, Caps Lock, and held Hyper; the offhand animates an I44/Hands Down orbit at 4 FPS. The two RGB LEDs show dim warm white on Base, cyan on CYR, green on Nav, amber on Num, and blue on Sym.
+- **OLED and RGB status** — see `README.md`.
 - **`NUMWORD`** — combo `SPC/S`+`Sh` (mirror thumbs), smart NUM layer: stays active over `0-9 . - + BSPC REP`, self-deactivates on any other key (T-34 style). `OSL/N` still works for one-shot/held access.
 - **Adaptive substitutions (`adaptive.h`, `ADAPTIVE_TERM` 200ms)** — two keys typed in quick succession on English BASE produce a third key instead, active only on the English base layer and not when any Ctrl/Alt/Gui mod is held:
   - `F`+`M`→`L`, `F`+`P`→`{`, `V`+`M`→`L`, `M`+`V`→`B`, `P`+`V`→`LV`, `P`+`M`→`PL`, `L`+`C`→`P`, `L`+`L`→`M`, `G`+`X`→`S`, `G`+`G`→`F`, `U`+`H`→`A`, `A`+`H`→`U`, `O`+`H`→`E`, `D`+`D`→`C`, `E`+`H`→`O`.
   - `P` alone is buffered (gobbled) until `ADAPTIVE_TERM` elapses or a matching second key arrives, then emitted plain if nothing matched.
-- **macOS taps (`features.c`)** — word-backspace is `Alt+Bspc`; copy/paste/select-all use `Cmd`.
-- **Raw HID (`raw_hid_receive`)** — `"BOOTLDR1"` enters the bootloader; `"SETLANG0"` and `"SETLANG1"` set the default layer to BASE and CYR. The macOS input-source helper sends the latter two commands.
+- **Raw HID (`raw_hid_receive`)** — `"BOOTLDR1"` enters the bootloader; `"SETLANG0"` and `"SETLANG1"` set the default layer to BASE and CYR.
 
 ## Combos (`combos.def`)
 
