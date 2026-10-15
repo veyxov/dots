@@ -1,4 +1,4 @@
-;; imperial44 QMK keymap (removed from this repo, see git history for qmk/) ported onto
+;; imperial44 keymap (qmk/.../ergohaven/imperial44/keymaps/veyxov) ported onto
 ;; the MacBook internal keyboard.
 ;;
 ;; Physical mapping: row shift + virtual split-gap (skip y/u, g/h/j) so the

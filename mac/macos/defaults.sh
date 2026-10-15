@@ -35,6 +35,9 @@ defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write com.apple.dock launchanim -bool false
 
+# Spotlight: stop indexing the heavy firmware checkout, cuts mdworker background load
+touch "$DOTS_DIR/qmk/qmk_firmware/.metadata_never_index"
+
 # Menu bar
 defaults write com.apple.controlcenter BatteryShowPercentage -bool true
 defaults write com.apple.Spotlight MenuItemHidden -bool true # Vorssaint command bar owns launcher duties now
