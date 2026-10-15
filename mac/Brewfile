@@ -1,5 +1,6 @@
 brew "antidote"
 brew "atuin"
+brew "bun"
 brew "chezmoi"
 brew "fd"
 brew "fzf"
