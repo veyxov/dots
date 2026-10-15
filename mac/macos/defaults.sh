@@ -40,7 +40,7 @@ touch "$DOTS_DIR/qmk/qmk_firmware/.metadata_never_index"
 
 # Menu bar
 defaults write com.apple.controlcenter BatteryShowPercentage -bool true
-defaults write com.apple.Spotlight MenuItemHidden -bool true # Raycast owns launcher duties now
+defaults write com.apple.Spotlight MenuItemHidden -bool true # Vorssaint command bar owns launcher duties now
 
 killall Finder Dock SystemUIServer 2>/dev/null || true
 
