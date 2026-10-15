@@ -53,11 +53,9 @@ void display_init(void) {
 void display_layer_state_set(layer_state_t state) {
 #ifdef RGBLIGHT_ENABLE
     const uint8_t layer = get_highest_layer(state);
-    rgblight_set_layer_state(0, layer == _BASE);
-    rgblight_set_layer_state(1, layer == _CYR);
-    rgblight_set_layer_state(2, layer == _NAV);
-    rgblight_set_layer_state(3, layer == _NUM);
-    rgblight_set_layer_state(4, layer == _SYM);
+    for (uint8_t i = 0; i <= _SYM; i++) {
+        rgblight_set_layer_state(i, i == layer);
+    }
 #else
     (void)state;
 #endif
@@ -93,25 +91,7 @@ typedef struct {
     bool hyper;
 } display_status_t;
 
-static void render_layer_name(uint8_t layer) {
-    switch (layer) {
-    case _CYR:
-        oled_write_P(PSTR("CYR"), false);
-        break;
-    case _NAV:
-        oled_write_P(PSTR("NAV"), false);
-        break;
-    case _NUM:
-        oled_write_P(PSTR("NUM"), false);
-        break;
-    case _SYM:
-        oled_write_P(PSTR("SYM"), false);
-        break;
-    default:
-        oled_write_P(PSTR("BASE"), false);
-        break;
-    }
-}
+static const char *const layer_names[] = {"BASE", "CYR", "NAV", "NUM", "SYM"};
 
 static void render_status(void) {
     static bool drawn;
@@ -124,9 +104,7 @@ static void render_status(void) {
         .caps_lock = host_keyboard_led_state().caps_lock,
         .hyper = (mods & MOD_MASK_CTRL) && (mods & MOD_MASK_SHIFT) && (mods & MOD_MASK_ALT) && (mods & MOD_MASK_GUI),
     };
-    if (drawn && current.layer == previous.layer && current.wpm == previous.wpm &&
-        current.caps_word == previous.caps_word && current.caps_lock == previous.caps_lock &&
-        current.hyper == previous.hyper) {
+    if (drawn && memcmp(&current, &previous, sizeof(current)) == 0) {
         return;
     }
     previous = current;
@@ -135,8 +113,7 @@ static void render_status(void) {
     // Overwrite complete rows; avoid clearing and dirtying an unchanged buffer.
     oled_set_cursor(0, 0);
     oled_write_P(PSTR("LAYER: "), false);
-    render_layer_name(current.layer);
-    oled_write_ln_P(PSTR(""), false);
+    oled_write_ln(current.layer < ARRAY_SIZE(layer_names) ? layer_names[current.layer] : layer_names[_BASE], false);
     oled_write_P(PSTR("WPM:   "), false);
     char wpm_text[] = {
         '0' + current.wpm / 100,

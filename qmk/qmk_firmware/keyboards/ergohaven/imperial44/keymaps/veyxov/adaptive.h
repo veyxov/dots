@@ -38,6 +38,10 @@ static void flush_pending_p(void) {
     prior_keycode = KC_NO;
 }
 
+static void flush_expired_p(void) {
+    if (timer_elapsed32(prior_keydown) >= ADAPTIVE_TERM) flush_pending_p();
+}
+
 // Finish buffered input before changing the host input source.
 void reset_adaptive_user(void) {
     flush_pending_p();
@@ -50,9 +54,7 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
 
     if (record->event.pressed) {
         uint8_t saved_mods = get_mods();
-        if (prior_keycode == KC_P && timer_elapsed32(prior_keydown) >= ADAPTIVE_TERM) {
-            flush_pending_p();
-        }
+        flush_expired_p();
         if (saved_mods & MOD_MASK_CAG) {
             // Preserve input order and prevent pairs from spanning shortcuts.
             reset_adaptive_user();
@@ -111,7 +113,5 @@ bool process_adaptive_user(uint16_t keycode, const keyrecord_t *record) {
 }
 
 void matrix_adaptive_user(void) {
-    if (prior_keycode == KC_P && timer_elapsed32(prior_keydown) >= ADAPTIVE_TERM) {
-        flush_pending_p();
-    }
+    flush_expired_p();
 }
