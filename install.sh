@@ -25,4 +25,4 @@ sourceDir = "${DOTS_DIR}/${SOURCE_SUBDIR}"
 EOF
 fi
 
-chezmoi apply
+chezmoi -S "${DOTS_DIR}/${SOURCE_SUBDIR}" apply

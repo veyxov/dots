@@ -25,9 +25,14 @@ Dotfiles for macOS and Linux, managed with [chezmoi](https://chezmoi.io).
 
 ## Usage
 
+The bootstrap requires Git/SSH access and an installed `chezmoi`; it does
+not install package managers. On a new Mac, install the Brewfile packages
+and launch Firefox once to create its profile before applying the home
+configuration. Neovim's configuration is maintained in a separate repository.
+
 ```sh
-./install.sh                         # first-time bootstrap on macOS or Linux
 brew bundle --file mac/Brewfile       # macOS packages
+./install.sh                         # select the OS source and apply dotfiles
 ya pkg install                        # yazi plugins and flavors from package.toml
 
 # Explicit source roots; use the one for the current operating system.
@@ -39,3 +44,9 @@ chezmoi -S "$HOME/dots/linux/home" apply
 
 Edit the source tree for the target OS, then use the matching explicit
 `chezmoi -S ... apply` command.
+
+## Maintenance and discoveries
+
+Run `brew bundle check --file mac/Brewfile --no-upgrade --verbose` to check
+for missing packages without upgrading them. Review `chezmoi -S ... diff`
+before applying: live configuration can contain changes not yet in this repo.

@@ -82,6 +82,7 @@ alias nvil="nvim" # "Hands down" did this to me :)
 alias rm="rm -iv"
 alias mv="mv -v"
 alias cp="cp -v"
+alias kr="sudo launchctl kickstart -k system/dev.kanata.kanata"
 
 cmd_to_clip() {
     echo $BUFFER | tr -d '\n' | pbcopy

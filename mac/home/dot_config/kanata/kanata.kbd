@@ -7,7 +7,7 @@
 ;;
 ;;   1    2 3 4 5 6   |  7  8 9 0 - = bspc     row1: num! j f m p v | Scrn x . / ? ' _
 ;;   tab  q w e r t   |  i o p [ ] ret         row2: del  r s n d w | , a e i h :
-;;   caps a s d f     |  k l ; ' \  rsft       row3: x g l c b | - u o y k ·
+;;   caps a s d f     |  k l ; ' \  rsft       row3: x g l c b | - u o y k Cmd
 ;;   z  x c v b  spc  n m , .                  z=Cmd, thumbs: REP NAV/t SYM/spc TAB | LOCK CTL/left SYM/spc ALT/right (spacebar = one-shot Shift)
 ;;
 ;; lsft stays native shift (imperial has none; zero-cost safety net).
@@ -118,7 +118,8 @@
   (w r)   C-spc          20 first-release (nav sym num numw)                            ;; sd -> lang switch (ctrl+space)
   (e r)   tab            20 first-release (nav sym num numw)                            ;; nd -> tab
   (o p)   A-bspc         20 first-release (nav sym num numw)                            ;; ae -> word-bspc
-  (a s)   (multi M-c @exnw)            20 first-release (nav sym)                       ;; gl -> copy
+  (a s)   (switch ((layer numw)) (multi M-c @exnw) break
+                  () M-c break) 20 first-release (nav sym)                            ;; gl -> direct copy; also leave numword
   (s d)   M-v            20 first-release (nav sym num numw)                            ;; lc -> paste (num: c is 8)
   (a s d) M-a            20 first-release (nav sym num numw)                            ;; glc -> select all (num: c is 8)
   (o p [) ;              20 first-release (nav sym num numw)                            ;; aei -> ;
@@ -133,7 +134,7 @@
   grv  grv
   @osl   j    f    @am  @ap  @av  @scrn   x     @fdot  @fslsh @fques '       @funds
   del    r    s    n    @add w    @fcomm a   e      i      @ah    @fcoln
-  @ax    @ag  @al  @ac  b    @fmins u   o    y      k      XX
+  @ax    @ag  @al  @ac  b    @fmins u   o    y      k      lmet
   @cmdl rpt  @ltnav @symspc tab @smous @lock @ctlleft @symspc @altrght
   @cmdl
 )
@@ -151,7 +152,7 @@
   grv  grv
   @osl   j    f    m    p    v    @scrn   x     @fdot  S-=    @fques '       @funds
   del    6    4    0    2    w    @fcomm 3   1      5      7      @fcoln
-  x      g    l    8    b    @fmins 9   o    y      k      XX
+  x      g    l    8    b    @fmins 9   o    y      k      lmet
   @cmdl rpt  bspc spc tab @smous @lock .    spc -
   @cmdl
 )
@@ -162,7 +163,7 @@
   grv  grv
   (t! ex @osl) (t! ex j) (t! ex f) (t! ex m) (t! ex p) (t! ex v) (t! ex @scrn) (t! ex x) @fdot S-= (t! ex @fques) (t! ex ') (t! ex @funds)
   (t! ex del)  6    4    0    2    (t! ex w) (t! ex @fcomm) 3   1      5      7      (t! ex @fcoln)
-  (t! ex x) (t! ex g) (t! ex l) 8 (t! ex b) @fmins 9 (t! ex o) (t! ex y) (t! ex k) XX
+  (t! ex x) (t! ex g) (t! ex l) 8 (t! ex b) @fmins 9 (t! ex o) (t! ex y) (t! ex k) lmet
   (t! ex @cmdl) rpt bspc (t! ex spc) (t! ex tab) (t! ex @smous) (t! ex @lock) . (t! ex spc) -
   @cmdl
 )
@@ -171,7 +172,7 @@
   grv  grv
   @osl   '    S-,  S-.  S-'  v    @scrn   @fdot S-7    ]      [      S-5     @funds
   del    S-1  @fmins S-= =   S-3  0    ;     S-0    S-9    S-4    @fcoln
-  S-6    @fslsh S-2 \   b    S-grv S-8 S-]   S-[    S-2    XX
+  S-6    @fslsh S-2 \   b    S-grv S-8 S-]   S-[    S-2    lmet
   @cmdl bspc spc  @symspc tab  ret @lock @ctlleft @symspc @altrght
   @cmdl
 )
