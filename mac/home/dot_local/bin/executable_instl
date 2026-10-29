@@ -1,6 +1,7 @@
 #!/bin/bash
 file="/tmp/brew_pkg_list"
-if [ ! -f "$file" ]; then
+# refresh daily so new formulae show up without a reboot clearing /tmp
+if [ -z "$(find "$file" -mtime -1 2>/dev/null)" ]; then
     echo "Creating cache..."
     { brew formulae; brew casks; } > "$file"
 fi

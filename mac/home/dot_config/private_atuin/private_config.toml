@@ -1,0 +1,12 @@
+enter_accept = true
+search_mode = "daemon-fuzzy"
+
+[sync]
+records = true
+
+[daemon]
+enabled = true
+autostart = true
+
+[ai]
+enabled = true

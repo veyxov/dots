@@ -26,6 +26,7 @@
     "Apple Internal Keyboard / Trackpad"
   )
   concurrent-tap-hold yes
+  log-layer-changes no ;; each change dumps the whole layer into the root-owned log (36 MB by Oct 28)
   process-unmapped-keys yes ;; y/u/g/h/j etc. pass through; needed so smous can see physical Opt/Cmd/Ctrl
 )
 

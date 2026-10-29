@@ -2,6 +2,26 @@ gui:
   skipAmendWarning: true
   showRootItemInFileTree: false
   nerdFontsVersion: "3"
+  darkTheme:
+    activeBorderColor: ["#957FB8", bold]
+    inactiveBorderColor: ["#54546D"]
+    optionsTextColor: ["#7FB4CA"]
+    selectedLineBgColor: ["#2D4F67"]
+    cherryPickedCommitBgColor: ["#223249"]
+    cherryPickedCommitFgColor: ["#957FB8"]
+    unstagedChangesColor: ["#C34043"]
+    defaultFgColor: ["#DCD7BA"]
+    searchingActiveBorderColor: ["#FF9E3B"]
+  lightTheme:
+    activeBorderColor: ["#624c83", bold]
+    inactiveBorderColor: ["#a09cac"]
+    optionsTextColor: ["#597b75"]
+    selectedLineBgColor: ["#c9cbd1"]
+    cherryPickedCommitBgColor: ["#d5cea3"]
+    cherryPickedCommitFgColor: ["#624c83"]
+    unstagedChangesColor: ["#c84053"]
+    defaultFgColor: ["#545464"]
+    searchingActiveBorderColor: ["#cc6d00"]
 
 update:
   method: never
@@ -13,4 +33,4 @@ keybinding:
 git:
   overrideGpg: true
   diffRenderers:
-    - command: git-delta-theme --paging=never
+    - command: delta --{{colorScheme}} --paging=never

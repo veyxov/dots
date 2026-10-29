@@ -14,5 +14,5 @@ if [ $# -eq 0 ]; then
 	cat $file | fzf --multi --no-height --preview 'yay -Si {1}' | xargs -ro yay -S
 else
 	# Install all given arguments
-	yay -S $*
+	yay -S "$@"
 fi

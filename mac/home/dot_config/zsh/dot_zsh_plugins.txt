@@ -1,4 +1,4 @@
-zsh-users/zsh-autosuggestions
 Aloxaf/fzf-tab
+zsh-users/zsh-autosuggestions
 zdharma-continuum/fast-syntax-highlighting
 romkatv/powerlevel10k

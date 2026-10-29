@@ -5,8 +5,7 @@ passthrough_unbounded_keys = true
 should_exit_after_passthrough = true
 passthrough_unbounded_keys_blacklist = []
 hide_overlay_in_screen_share = true
-# exec_shell = "/bin/bash"                   # absolute path overrides on every platform, so pick one that's valid everywhere
-# exec_shell_args = ["-lc"]
+shell = { darwin = ["/bin/zsh", "-lc"] }   # 1.60+: per-platform; unnamed platforms keep their default
 
 [theme.light]
 surface = "#EEF2FF"

@@ -50,13 +50,9 @@ zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview 'git diff $word 
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview 'ps -o command= -p $word'
 source <(fzf --zsh) # Ctrl-T: fuzzy insert file, Alt-C: fuzzy cd, Ctrl-R: fuzzy history (shadowed by atuin below)
 
-# antidote itself is only needed when the static bundle is stale
-zsh_plugins="${ZDOTDIR:-$HOME}/.zsh_plugins"
-if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
-    source "$HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh"
-    antidote bundle <"${zsh_plugins}.txt" >"${zsh_plugins}.zsh"
-fi
-source "${zsh_plugins}.zsh"
+# Antidote also rebuilds the static bundle when its plugin cache is cleared.
+source "$HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh"
+antidote load
 
 # init output is static per binary version — cache it instead of forking 3 tools every shell
 _cached_init() {
@@ -75,7 +71,7 @@ _cached_init atuin
 alias nd="zi"
 alias d="z"
 alias n="nvim"
-alias g="lazygit-theme"
+alias g="lazygit"
 alias nvil="nvim" # "Hands down" did this to me :)
 
 # file-system manipulation
@@ -85,17 +81,18 @@ alias cp="cp -v"
 alias kr="sudo launchctl kickstart -k system/dev.kanata.kanata"
 
 cmd_to_clip() {
-    echo $BUFFER | tr -d '\n' | pbcopy
+    print -rn -- $BUFFER | pbcopy
 }
 zle -N cmd_to_clip
 bindkey '^Y' cmd_to_clip
 
-bindkey -s '^e' 'cd ./$(fd -t d -d 7 | fzf)^M'
+bindkey -s '^e' 'cd "./$(fd -t d -d 7 | fzf)"^M'
 
 # Copy a file object to macOS clipboard
 copyfile() {
     if [ -f "$1" ]; then
-        osascript -e "set the clipboard to (POSIX file \"$(realpath "$1")\")"
+        # argv, not string interpolation: a " in the filename would break the AppleScript
+        osascript -e 'on run argv' -e 'set the clipboard to (POSIX file (item 1 of argv))' -e 'end run' "$(realpath "$1")"
         echo "Copied '$1' to clipboard."
     else
         echo "Error: File '$1' not found."

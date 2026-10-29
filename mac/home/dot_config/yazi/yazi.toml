@@ -29,6 +29,14 @@ prepend_preloaders = [
 ]
 
 [opener]
+video = [
+	{ run = "mpv -- %s", orphan = true, desc = "Play with mpv", for = "unix" },
+]
 extract = [
-	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch" },
+	{ run = "ouch d -y %s", desc = "Extract here with ouch" },
+]
+
+[open]
+prepend_rules = [
+	{ mime = "video/*", use = "video" },
 ]

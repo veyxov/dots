@@ -6,4 +6,4 @@ Target = *
 
 [Action]
 When = PostTransaction
-Exec = /bin/sh -c '/usr/bin/pacman -Qqe > /home/iz/dots/.packages'
+Exec = /bin/sh -c '/usr/bin/pacman -Qqe > /home/iz/dots/linux/home/dot_packages'

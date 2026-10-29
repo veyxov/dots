@@ -3,9 +3,6 @@
 # Not applied automatically by chezmoi — run manually: ./mac/macos/defaults.sh
 set -e
 
-SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-DOTS_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/../.." && pwd)
-
 # Finder
 defaults write com.apple.finder AppleShowAllExtensions -bool true
 defaults write com.apple.finder ShowPathbar -bool true
@@ -34,9 +31,6 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write com.apple.dock launchanim -bool false
-
-# Spotlight: stop indexing the heavy firmware checkout, cuts mdworker background load
-touch "$DOTS_DIR/qmk/qmk_firmware/.metadata_never_index"
 
 # Menu bar
 defaults write com.apple.controlcenter BatteryShowPercentage -bool true

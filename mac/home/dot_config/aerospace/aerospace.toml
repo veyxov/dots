@@ -7,7 +7,7 @@ persistent-workspaces = ["1", "2", "3", "4"]
 automatically-unhide-macos-hidden-apps = true
 
 [mode.main.binding]
-    alt-right = 'focus --wrap-around dfs-next'
+    #alt-right = 'focus --wrap-around dfs-next'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     alt-shift-left = 'move left'
@@ -31,6 +31,13 @@ automatically-unhide-macos-hidden-apps = true
     alt-shift-2 = 'move-node-to-workspace 2'
     alt-shift-3 = 'move-node-to-workspace 3'
     alt-shift-4 = 'move-node-to-workspace 4'
+
+    # Toggle between tiled and accordion layouts
+    alt-backslash = 'layout tiles accordion'
+
+    # Cycle through windows in the current workspace
+    alt-j = 'focus --wrap-around dfs-next'
+    alt-k = 'focus --wrap-around dfs-prev'
 
     alt-tab = 'workspace-back-and-forth'
 

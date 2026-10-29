@@ -63,6 +63,7 @@ sidebar-main, #sidebar-container, #sidebar-launcher-splitter,
   pointer-events: none;
   width: 100vw;
 }
+#navigator-toolbox.chrome-block { margin-top: 0 !important; border-top-width: 0 !important; }
 #navigator-toolbox > * { line-height: normal; pointer-events: auto; }
 
 :root[sessionrestored] toolbar #searchbar-new:popover-open,
