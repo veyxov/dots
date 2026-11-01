@@ -69,7 +69,7 @@
   ctlleft (tap-hold-press 0 200 left lctl)             ;; MT(MOD_LCTL, KC_LEFT)
   altrght (tap-hold-press 0 200 rght lalt)             ;; MT(MOD_LALT, KC_RGHT)
   lock    C-M-q                                          ;; macOS native Lock Screen (was Cmd+L, clashed w/ browser addr bar)
-  scrn    M-C-S-4                                        ;; macOS region screenshot to clipboard
+  scrn    C-A-M-4                                        ;; Vorssaint screenshot
 
   ;; monitor toggle/move (macOS shortcuts, same as QMK MON_TOG/MON_MOV)
   montog M-C-rght
