@@ -50,3 +50,9 @@ Edit the source tree for the target OS, then use the matching explicit
 Run `brew bundle check --file mac/Brewfile --no-upgrade --verbose` to check
 for missing packages without upgrading them. Review `chezmoi -S ... diff`
 before applying: live configuration can contain changes not yet in this repo.
+
+Use `./bin/update.sh --check` to refresh Homebrew metadata and preview available
+versions without installing anything. Run `./bin/update.sh` to upgrade Homebrew
+packages and Neovim plugins, then see actual installed version changes and release
+news. GitHub release excerpts are best effort; other packages show upstream links.
+The updater requires `brew`, `python3`, `sudo`, `nvim`, `uv`, and `zsh` on `PATH`; it also upgrades uv tools and antidote bundles.
